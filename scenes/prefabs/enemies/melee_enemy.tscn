@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://do5mufdhjo2pg"]
+
+[ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_fv56k"]
+[ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="2_li4h1"]
+[ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="3_cph10"]
+[ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_rtgbl"]
+[ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_touag"]
+[ext_resource type="PackedScene" uid="uid://dl0b8wl8o6knn" path="res://assets/models/enemies/purple_mushroom_enemy/purple_enemy.blend" id="6_cph10"]
+
+[node name="MeleeEnemy" type="Node3D"]
+script = ExtResource("1_fv56k")
+
+[node name="DetectionComponent" parent="." instance=ExtResource("2_li4h1")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_cph10")]
+
+[node name="ParticleComponent" parent="." instance=ExtResource("4_rtgbl")]
+
+[node name="SoundComponent" parent="." instance=ExtResource("5_touag")]
+
+[node name="Model" parent="." instance=ExtResource("6_cph10")]

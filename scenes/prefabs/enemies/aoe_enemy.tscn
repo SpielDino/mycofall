@@ -1,0 +1,21 @@
+[gd_scene load_steps=7 format=3 uid="uid://3wuaxsi24trg"]
+
+[ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="1_4p2hn"]
+[ext_resource type="PackedScene" uid="uid://b0jpp6u3v4cii" path="res://assets/models/enemies/aoe_enemy/Burt3.blend" id="1_m0wdi"]
+[ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="2_08sua"]
+[ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="2_kuhmj"]
+[ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="3_myiyv"]
+[ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="4_h0ss0"]
+
+[node name="AoeEnemy" type="Node3D"]
+
+[node name="DetectionComponent" parent="." instance=ExtResource("1_4p2hn")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("2_kuhmj")]
+
+[node name="ParticleComponent" parent="." instance=ExtResource("3_myiyv")]
+
+[node name="SoundComponent" parent="." instance=ExtResource("4_h0ss0")]
+
+[node name="Model" parent="." instance=ExtResource("1_m0wdi")]
+script = ExtResource("2_08sua")
