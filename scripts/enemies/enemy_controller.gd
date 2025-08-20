@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-enum States {NONE, IDLE, ATTACK_TYPE_1, ATTACK_TYPE_2, MOVING, SEARCH}
+enum States {NONE, IDLE, ATTACK_TYPE_1, ATTACK_TYPE_2, MOVING, SEARCH, PATROLLING}
 
 @export_category("Stats")
 @export_subgroup("Enemy Stats")

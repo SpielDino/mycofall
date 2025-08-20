@@ -4,15 +4,18 @@ extends Node3D
 @export var acceleration: int = 5
 
 @export_group("Movement Behaviour")
-@export_enum("stand still", "move towards player", "keep set distance from player", "patrol betwen set locations") var movement_type: String = "stand still"
-@export var patrol_locations: Array[Node3D]
+@export_enum("stand still", "move towards player", "keep set distance from player") var movement_type: String = "stand still"
 @export var keep_distance: float = 5
+@export var has_patrol_route: bool = false
+@export var patrol_locations: Array[Node3D]
+
 
 var enemy
 var player
 var is_moving = false
 var move_time: float = 0
 var move_delay: float = 0.2
+var patrol_counter: float = 0
 
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 
@@ -21,6 +24,9 @@ func _ready():
 	player = GlobalPlayer.getPlayer()
 
 func _physics_process(delta):
+	if (enemy.state == enemy.States.None or enemy.state == enemy.States.PATROLLING) and has_patrol_route:
+		patrol_between_set_locations()
+	enemy.state = enemy.States.PATROLLING
 	enemy.move_and_slide()
 
 func move_towards_player(delta):

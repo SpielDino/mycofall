@@ -19,3 +19,29 @@ script = ExtResource("1_f8il8")
 [node name="SoundComponent" parent="." instance=ExtResource("5_i8y0w")]
 
 [node name="Model" parent="." instance=ExtResource("1_2pltl")]
+
+[node name="BeinR" parent="Model/Armature/Skeleton3D" index="0"]
+transform = Transform3D(1, 2.88237e-08, -5.96046e-08, -2.88237e-08, 1, 7.58446e-08, -5.96046e-08, -7.58446e-08, 1, -0.00176748, 0.0957672, -0.00346246)
+
+[node name="BeinL" parent="Model/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 2.88237e-08, -5.96046e-08, -2.88237e-08, 1, 7.58446e-08, -5.96046e-08, -7.58446e-08, 1, -0.00176747, 0.0912583, 1.19209e-07)
+
+[node name="ArmL" parent="Model/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 5.96047e-08, 5.96046e-08, 1, 5.96046e-08, -7.10543e-15, -1.19209e-07, 1, -0.00176743, 0.054626, -8.9407e-08)
+
+[node name="ArmR" parent="Model/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, 1.2991e-07, -8.9407e-08, 1, 9.83076e-08, -8.85069e-08, -3.03124e-07, 1, -0.00176746, 0.054626, 1.3411e-07)
+
+[node name="Hutshell" parent="Model/Armature/Skeleton3D" index="4"]
+transform = Transform3D(0.998025, -0.0628088, 0.000250362, 0.0628089, 0.998025, -0.000142453, -0.000240921, 0.000157897, 1, 0.000384342, -0.000264063, -1.47798e-07)
+
+[node name="Körper" parent="Model/Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.984812, 0.172965, -0.0150834, -0.172805, 0.984891, 0.0113287, 0.016815, -0.00855018, 0.999822, -0.00204646, -0.0116529, 0.000101158)
+
+[node name="Hut" parent="Model/Armature/Skeleton3D" index="6"]
+transform = Transform3D(0.984812, 0.172965, -0.0150834, -0.172805, 0.984891, 0.0113287, 0.016815, -0.00855018, 0.999822, -2.09548e-09, 1.58325e-08, -4.94038e-09)
+
+[node name="Sphere_002" parent="Model/Armature/Skeleton3D" index="7"]
+transform = Transform3D(0.984812, 0.172965, -0.0150834, -0.172805, 0.984891, 0.0113287, 0.016815, -0.00855018, 0.999822, -0.10615, 0.0740848, -0.00244084)
+
+[editable path="Model"]
