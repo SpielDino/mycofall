@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_oy421"]
 [ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_nbj0t"]
 
-[node name="ChargeEnemy" type="Node3D"]
+[node name="ChargeEnemy" type="CharacterBody3D"]
 script = ExtResource("1_r1xi1")
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_nd33r")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://do5mufdhjo2pg"]
+[gd_scene load_steps=9 format=3 uid="uid://do5mufdhjo2pg"]
 
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_fv56k"]
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="2_li4h1"]
@@ -6,8 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_rtgbl"]
 [ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_touag"]
 [ext_resource type="PackedScene" uid="uid://dl0b8wl8o6knn" path="res://assets/models/enemies/purple_mushroom_enemy/purple_enemy.blend" id="6_cph10"]
+[ext_resource type="PackedScene" uid="uid://887shgpmuhl5" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_melee_attack_component.tscn" id="6_rtgbl"]
 
-[node name="MeleeEnemy" type="Node3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rtgbl"]
+radius = 0.45
+height = 1.8
+
+[node name="MeleeEnemy" type="CharacterBody3D"]
 script = ExtResource("1_fv56k")
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_li4h1")]
@@ -18,4 +23,27 @@ script = ExtResource("1_fv56k")
 
 [node name="SoundComponent" parent="." instance=ExtResource("5_touag")]
 
+[node name="EnemyMeleeAttackComponent" parent="." instance=ExtResource("6_rtgbl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01829, 0)
+
 [node name="Model" parent="." instance=ExtResource("6_cph10")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Model/PurpleMushroomEnemy" index="1"]
+bones/0/rotation = Quaternion(-0.037557, -0.0863011, 0.0248375, 0.995251)
+bones/1/rotation = Quaternion(-0.0226767, 0.000990087, 0.00400233, 0.999734)
+bones/2/position = Vector3(0.177935, 0.104646, -0.0276735)
+bones/2/rotation = Quaternion(0.998863, -0.00827973, 0.00204817, -0.046912)
+bones/3/position = Vector3(0.339065, 0.536492, 0.0816328)
+bones/3/rotation = Quaternion(0.604054, 0.557515, 0.423895, 0.380274)
+bones/4/position = Vector3(-0.163061, 0.110433, -0.0280276)
+bones/4/rotation = Quaternion(0.998863, -0.00827973, 0.00204817, -0.046912)
+bones/5/position = Vector3(-0.324938, 0.512327, 0.109862)
+bones/5/rotation = Quaternion(0.445305, -0.67701, -0.28738, 0.51066)
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.887902, 0)
+shape = SubResource("CapsuleShape3D_rtgbl")
+
+[editable path="EnemyMeleeAttackComponent"]
+[editable path="Model"]

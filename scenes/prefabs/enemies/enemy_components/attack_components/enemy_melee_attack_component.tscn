@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://887shgpmuhl5"]
+
+[ext_resource type="Script" uid="uid://sou7bpovajxg" path="res://scripts/enemies/attack_scripts/enemy_melee_attack.gd" id="1_dwuop"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3yrm7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ftv80"]
+
+[node name="EnemyMeleeAttackComponent" type="Node3D"]
+script = ExtResource("1_dwuop")
+
+[node name="InnerAttackArea" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InnerAttackArea"]
+shape = SubResource("SphereShape3D_3yrm7")
+
+[node name="OuterAttackArea" type="Area3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OuterAttackArea"]
+shape = SubResource("SphereShape3D_ftv80")
+
+[connection signal="area_entered" from="InnerAttackArea" to="." method="_on_inner_attack_area_entered"]
+[connection signal="area_exited" from="InnerAttackArea" to="." method="_on_inner_attack_area_exited"]
+[connection signal="area_entered" from="OuterAttackArea" to="." method="_on_outer_attack_area_entered"]
+[connection signal="area_exited" from="OuterAttackArea" to="." method="_on_outer_attack_area_exited"]

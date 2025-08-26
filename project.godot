@@ -17,3 +17,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalPlayer="*res://scripts/globals/GlobalPlayer.gd"
+PlayerActionTracker="*res://scripts/globals/PlayerActionTracker.gd"
+
+[rendering]
+
+renderer/rendering_method="gl_compatibility"
