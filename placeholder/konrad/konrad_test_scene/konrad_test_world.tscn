@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3c650unruhvy"]
+
+[ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_vmj8w"]
+
+[sub_resource type="Environment" id="Environment_r6cbd"]
+
+[node name="KonradTestWorld" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 2.74091, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_r6cbd")
+
+[node name="World" type="Node3D" parent="WorldEnvironment"]
+
+[node name="Ground" type="Node3D" parent="WorldEnvironment/World"]
+
+[node name="GrassGroundWithCollision" parent="WorldEnvironment/World/Ground" instance=ExtResource("1_vmj8w")]
