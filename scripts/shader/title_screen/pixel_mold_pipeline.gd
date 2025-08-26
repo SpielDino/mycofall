@@ -40,7 +40,7 @@ func _ready() -> void:
 
 	node_ssbo_rid = rd.storage_buffer_create(node_positions.size() * 4, node_positions.to_byte_array())
 
-	var rd_file: RDShaderFile = load("res://scripts/shader/title_screen/pixel_mold_dijkstra.glsl")
+	var rd_file: RDShaderFile = load("res://scripts/shader/title_screen/pixel_mold_dijkstra_compute.glsl")
 	var spirv: RDShaderSPIRV = rd_file.get_spirv()
 	shader_rid = rd.shader_create_from_spirv(spirv)
 	pipeline_rid = rd.compute_pipeline_create(shader_rid)

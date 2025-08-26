@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bt1oul08n6tr"]
 
 [ext_resource type="Script" uid="uid://cg8prg0mtpess" path="res://scripts/ui/cursor.gd" id="1_4cgdc"]
-[ext_resource type="Texture2D" uid="uid://231bp5s4d3ti" path="res://assets/textures/ui_textures/menus/CursorClickIdle.png" id="1_aorgw"]
+[ext_resource type="Texture2D" uid="uid://bdqh1kq4u4me3" path="res://assets/textures/ui_textures/menus/Cursor.png" id="1_aorgw"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 layer = 128
