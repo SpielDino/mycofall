@@ -1,0 +1,294 @@
+[gd_scene load_steps=2 format=3 uid="uid://dg6bo61dgvqu7"]
+
+[sub_resource type="GDScript" id="GDScript_grvsv"]
+script/source = "extends Node2D
+
+@export var grid_size: Vector2i = Vector2i(1024, 1024)
+@export var num_food: int = 1500
+@export var relax_passes_per_frame: int = 24
+@export var steps_per_food: int = 1800
+@export var weight_scale: float = 0.85
+@export var decay: float = 0.985
+@export var seed: Vector2i = Vector2i(-1, -1)
+
+var rd: RenderingDevice
+var shader_rid: RID
+var pipeline_rid: RID
+
+var slime_tex: RID
+var dist_a_tex: RID
+var dist_b_tex: RID
+var weights_tex: RID
+var food_ssbo: RID
+
+var set0: RID
+var set1: RID
+
+var display_tex: ImageTexture
+
+const LOCAL_X := 8
+const LOCAL_Y := 8
+var groups_x: int
+var groups_y: int
+
+func _ready() -> void:
+	randomize()
+	_init_rendering_device()
+	_create_textures_and_buffers()
+	_create_uniform_sets()
+	_init_simulation()
+	_blit_to_sprite()
+	set_process(true)
+
+func _process(_dt: float) -> void:
+	# relax (ping-pong)
+	for i in relax_passes_per_frame:
+		_dispatch(1, i % 2)
+
+	# trace foods
+	_dispatch(2)
+
+	# diffuse / decay
+	_dispatch(3)
+
+	_update_display_texture()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") or (event is InputEventKey and event.pressed and event.scancode == KEY_R):
+		_randomize_food()
+		_init_simulation()
+	if event is InputEventMouseButton and event.pressed:
+		var pos := Vector2i(get_viewport().get_mouse_position())
+		pos = Vector2i(clamp(pos.x, 0, grid_size.x - 1), clamp(pos.y, 0, grid_size.y - 1))
+		_scatter_food(pos, 60, 150)
+
+# -----------------------
+# setup
+# -----------------------
+func _init_rendering_device() -> void:
+	rd = RenderingServer.create_local_rendering_device()
+
+	var rd_shader: RDShaderFile = load(\"res://scripts/shader/title_screen/slime.compute.glsl\")
+	if rd_shader == null:
+		push_error(\"Failed to load RDShaderFile: check path and import settings (must be imported as Compute RDShaderFile).\")
+		return
+
+	var spv := rd_shader.get_spirv()
+
+	if spv == null:
+		push_error(\"Shader SPIR-V is empty. Re-import slime.compute.glsl as a Compute shader (RDShaderFile) in the Import dock and reimport.\")
+		return
+
+	var compute_bytes: PackedByteArray = spv.get_stage_bytecode(RenderingDevice.SHADER_STAGE_COMPUTE)
+	print_debug(\"Compute SPIR-V length: \", compute_bytes.size())
+	shader_rid = rd.shader_create_from_spirv(spv)
+	if not shader_rid.is_valid():
+		push_error(\"rd.shader_create_from_spirv returned invalid RID. Shader likely failed to compile.\")
+		return
+
+	pipeline_rid = rd.compute_pipeline_create(shader_rid)
+	if not pipeline_rid.is_valid():
+		push_error(\"compute_pipeline_create failed; pipeline_rid invalid.\")
+		return
+
+	groups_x = int(ceil(float(grid_size.x) / float(LOCAL_X)))
+	groups_y = int(ceil(float(grid_size.y) / float(LOCAL_Y)))
+	print(\"RenderingDevice initialized OK.\")
+
+func _create_texture(fmt: int, usage: int) -> RID:
+	var tf := RDTextureFormat.new()
+	tf.width = grid_size.x
+	tf.height = grid_size.y
+	tf.usage_bits = usage
+	tf.format = fmt
+	tf.texture_type = RenderingDevice.TEXTURE_TYPE_2D
+	return rd.texture_create(tf, RDTextureView.new(), [])
+
+func _create_textures_and_buffers() -> void:
+	var usage := RenderingDevice.TEXTURE_USAGE_STORAGE_BIT \\
+		| RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT \\
+		| RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT
+
+	slime_tex  = _create_texture(RenderingDevice.DATA_FORMAT_R8G8B8A8_UNORM, usage)
+	dist_a_tex = _create_texture(RenderingDevice.DATA_FORMAT_R32_SFLOAT, usage)
+	dist_b_tex = _create_texture(RenderingDevice.DATA_FORMAT_R32_SFLOAT, usage)
+	weights_tex= _create_texture(RenderingDevice.DATA_FORMAT_R32_SFLOAT, usage)
+
+	_randomize_food()
+
+func _randomize_food() -> void:
+	var pts := PackedInt32Array()
+	pts.resize(num_food * 2)
+	for i in num_food:
+		var p := Vector2i(randi() % grid_size.x, randi() % grid_size.y)
+		pts[i * 2 + 0] = p.x
+		pts[i * 2 + 1] = p.y
+
+	var out_buf := StreamPeerBuffer.new()
+	for v in pts:
+		out_buf.put_32(v)
+
+	if food_ssbo and food_ssbo.is_valid():
+		rd.free_rid(food_ssbo) 
+	food_ssbo = rd.storage_buffer_create(out_buf.get_data_array().size(), out_buf.get_data_array())
+	if not food_ssbo.is_valid():
+		push_error(\"Failed to create food storage buffer (food_ssbo).\")
+
+func _scatter_food(center: Vector2i, radius: int, count: int) -> void:
+	if not food_ssbo or not food_ssbo.is_valid():
+		push_error(\"scatter called but food_ssbo invalid; aborting scatter.\")
+		return
+
+	var bytes := rd.buffer_get_data(food_ssbo)
+	var spb := StreamPeerBuffer.new()
+	spb.data_array = bytes
+	var vals: PackedInt32Array = PackedInt32Array()
+	while spb.get_position() < spb.get_size():
+		vals.append(spb.get_32())
+
+	for i in count:
+		var ang := randf() * TAU
+		var r := int(randf() * float(radius))
+		var p := center + Vector2i(int(cos(ang) * r), int(sin(ang) * r))
+		p.x = clamp(p.x, 0, grid_size.x - 1)
+		p.y = clamp(p.y, 0, grid_size.y - 1)
+		vals.append(p.x)
+		vals.append(p.y)
+
+	num_food = int(vals.size() / 2)
+
+	var out := StreamPeerBuffer.new()
+	for v in vals:
+		out.put_32(v)
+
+	rd.free_rid(food_ssbo)
+	food_ssbo = rd.storage_buffer_create(out.get_data_array().size(), out.get_data_array())
+	if not food_ssbo.is_valid():
+		push_error(\"Failed to recreate food_ssbo in scatter.\")
+
+func _create_uniform_sets() -> void:
+	# sanity checks
+	if not slime_tex or not slime_tex.is_valid(): push_error(\"slime_tex invalid\"); return
+	if not dist_a_tex or not dist_a_tex.is_valid(): push_error(\"dist_a_tex invalid\"); return
+	if not dist_b_tex or not dist_b_tex.is_valid(): push_error(\"dist_b_tex invalid\"); return
+	if not weights_tex or not weights_tex.is_valid(): push_error(\"weights_tex invalid\"); return
+	if not food_ssbo or not food_ssbo.is_valid():
+		push_error(\"food_ssbo invalid at uniform set creation; creating fallback 0,0 buffer.\")
+		var fb := StreamPeerBuffer.new()
+		fb.put_32(0); fb.put_32(0)
+		food_ssbo = rd.storage_buffer_create(fb.data_array.size(), fb.data_array)
+		if not food_ssbo.is_valid():
+			push_error(\"Unable to create fallback food_ssbo.\")
+			return
+
+	# set0 images
+	var u0 := RDUniform.new(); u0.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE; u0.binding = 0; u0.add_id(slime_tex)
+	var u1 := RDUniform.new(); u1.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE; u1.binding = 1; u1.add_id(dist_a_tex)
+	var u2 := RDUniform.new(); u2.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE; u2.binding = 2; u2.add_id(dist_b_tex)
+	var u3 := RDUniform.new(); u3.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE; u3.binding = 3; u3.add_id(weights_tex)
+
+	set0 = rd.uniform_set_create([u0, u1, u2, u3], shader_rid, 0)
+	if not set0.is_valid():
+		push_error(\"uniform_set_create for set0 FAILED. Ensure the shader declares images at set=0 binding=0..3.\")
+		return
+
+	# set1 ssbo
+	var buf := RDUniform.new(); buf.uniform_type = RenderingDevice.UNIFORM_TYPE_STORAGE_BUFFER; buf.binding = 0; buf.add_id(food_ssbo)
+	set1 = rd.uniform_set_create([buf], shader_rid, 1)
+	if not set1.is_valid():
+		push_error(\"uniform_set_create for set1 FAILED. Ensure the shader declares a storage buffer at set=1 binding=0.\")
+		return
+
+	print(\"Uniform sets created OK: set0=\", set0, \" set1=\", set1)
+
+func _init_simulation() -> void:
+	if seed.x < 0 or seed.y < 0:
+		seed = Vector2i(grid_size.x / 2, grid_size.y / 2)
+	_dispatch(0)
+
+func _blit_to_sprite() -> void:
+	display_tex = ImageTexture.create_from_image(Image.create(grid_size.x, grid_size.y, false, Image.FORMAT_RGBA8))
+	$Sprite2D.texture = display_tex
+	$Sprite2D.scale = Vector2(float(get_viewport().size.x) / float(grid_size.x), float(get_viewport().size.y) / float(grid_size.y))
+
+# -----------------------
+# dispatch helpers
+# -----------------------
+func _push_constants(pass_id: int, use_b_to_a: int = 0) -> PackedByteArray:
+	var spb := StreamPeerBuffer.new()
+	spb.put_32(grid_size.x)
+	spb.put_32(grid_size.y)
+	spb.put_32(pass_id)
+	spb.put_32(use_b_to_a)
+	spb.put_32(num_food)
+	spb.put_32(seed.x)
+	spb.put_32(seed.y)
+	spb.put_float(weight_scale)
+	spb.put_float(decay)
+	spb.put_32(steps_per_food)
+	# pad to 48 bytes
+	spb.put_32(0)
+	spb.put_32(0)
+	return spb.data_array
+
+func _dispatch(pass_id: int, use_b_to_a: int = 0) -> void:
+	if not pipeline_rid or not pipeline_rid.is_valid():
+		push_error(\"pipeline_rid invalid in _dispatch. Aborting.\")
+		return
+	if not set0 or not set0.is_valid():
+		push_error(\"set0 invalid in _dispatch. Aborting.\")
+		return
+	if not set1 or not set1.is_valid():
+		push_error(\"set1 invalid in _dispatch. Aborting.\")
+		return
+
+	var cl := rd.compute_list_begin()
+	rd.compute_list_bind_compute_pipeline(cl, pipeline_rid)
+	rd.compute_list_bind_uniform_set(cl, set0, 0)
+	rd.compute_list_bind_uniform_set(cl, set1, 1)
+
+	var pc := _push_constants(pass_id, use_b_to_a)
+	rd.compute_list_set_push_constant(cl, pc, pc.size())
+
+	if pass_id == 2:
+		var groups_food := int(ceil(float(num_food) / float(LOCAL_X)))
+		rd.compute_list_dispatch(cl, groups_food, 1, 1)
+	else:
+		rd.compute_list_dispatch(cl, groups_x, groups_y, 1)
+
+	rd.compute_list_end()
+	rd.submit()
+	rd.sync()
+
+	if pass_id == 1:
+		_swap_dist()
+
+func _swap_dist() -> void:
+	var a := dist_a_tex
+	dist_a_tex = dist_b_tex
+	dist_b_tex = a
+
+	# rebuild set0 images (free only if valid)
+	if set0 and set0.is_valid():
+		rd.free_rid(set0)
+
+	var u0 := RDUniform.new(); u0.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE; u0.binding = 0; u0.add_id(slime_tex)
+	var u1 := RDUniform.new(); u1.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE; u1.binding = 1; u1.add_id(dist_a_tex)
+	var u2 := RDUniform.new(); u2.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE; u2.binding = 2; u2.add_id(dist_b_tex)
+	var u3 := RDUniform.new(); u3.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE; u3.binding = 3; u3.add_id(weights_tex)
+
+	set0 = rd.uniform_set_create([u0, u1, u2, u3], shader_rid, 0)
+	if not set0.is_valid():
+		push_error(\"_swap_dist: uniform_set_create for set0 FAILED on swap (check shader bindings).\")
+
+func _update_display_texture() -> void:
+	var bytes: PackedByteArray = rd.texture_get_data(slime_tex, 0)
+	var tf := rd.texture_get_format(slime_tex)
+	var w := tf.width
+	var h := tf.height
+	var img := Image.create_from_data(w, h, false, Image.FORMAT_RGBA8, bytes)
+	display_tex.update(img)
+"
+
+[node name="TitleScreen" type="Node2D"]
+script = SubResource("GDScript_grvsv")
