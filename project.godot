@@ -14,6 +14,13 @@ config/name="mycofall"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+UiManager="*res://placeholder/konrad/konrad_scripts/ui_manager.gd"
+GameManager="*res://placeholder/konrad/konrad_scripts/game_manager.gd"
+GlobalPlayer="*res://placeholder/konrad/konrad_scripts/global_player.gd"
+PlayerActionTracker="*res://placeholder/konrad/konrad_scripts/player_action_tracker.gd"
+
 [display]
 
 window/size/viewport_width=1920
