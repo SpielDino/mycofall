@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://6hcs42nnksvl"]
+
+[ext_resource type="Script" uid="uid://bsyqwria6dtbe" path="res://scripts/enemies/enemy_detection_component.gd" id="1_hpkyx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7e06y"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hpkyx"]
+points = PackedVector3Array(0, 0, 0, 4, 0.75, 0.75, 4, -0.75, 0.75, 4, -0.75, -0.75, 4, 0.75, -0.75)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dxe4s"]
+
+[node name="DetectionComponent" type="Node3D"]
+script = ExtResource("1_hpkyx")
+
+[node name="HearingArea" type="Area3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HearingArea"]
+shape = SubResource("SphereShape3D_7e06y")
+
+[node name="VisionArea" type="Area3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VisionArea"]
+shape = SubResource("ConvexPolygonShape3D_hpkyx")
+
+[node name="NotifyArea" type="Area3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NotifyArea"]
+shape = SubResource("SphereShape3D_dxe4s")
+
+[connection signal="area_entered" from="HearingArea" to="." method="_on_hearing_area_entered"]
+[connection signal="area_exited" from="HearingArea" to="." method="_on_hearing_area_exited"]
+[connection signal="area_entered" from="VisionArea" to="." method="_on_vision_area_entered"]
+[connection signal="area_exited" from="VisionArea" to="." method="_on_vision_area_exited"]
+[connection signal="area_entered" from="NotifyArea" to="." method="_on_notify_area_entered"]
+[connection signal="area_exited" from="NotifyArea" to="." method="_on_notify_area_exited"]

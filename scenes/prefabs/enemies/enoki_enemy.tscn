@@ -1,0 +1,83 @@
+[gd_scene load_steps=18 format=3 uid="uid://dpb707vikystx"]
+
+[ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="1_3quey"]
+[ext_resource type="PackedScene" uid="uid://br57tc42i7wf" path="res://assets/models/enemies/enoki_enemy/Enoki_Enemy.blend" id="1_po56c"]
+[ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="2_5dd6s"]
+[ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="2_t0bd7"]
+[ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="3_5x2ut"]
+[ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="4_smu6q"]
+[ext_resource type="PackedScene" uid="uid://b6w6khy2v04x1" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_enoki_attack_component.tscn" id="5_5x2ut"]
+[ext_resource type="Texture2D" uid="uid://btdwlxvsr1gas" path="res://assets/models/enemies/enoki_enemy/enoki-texture.png" id="7_5dd6s"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5x2ut"]
+albedo_texture = ExtResource("7_5dd6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smu6q"]
+albedo_texture = ExtResource("7_5dd6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wygmd"]
+albedo_texture = ExtResource("7_5dd6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d3mk"]
+albedo_texture = ExtResource("7_5dd6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_216h1"]
+albedo_texture = ExtResource("7_5dd6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4q1mq"]
+albedo_texture = ExtResource("7_5dd6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2du4o"]
+albedo_texture = ExtResource("7_5dd6s")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sc17h"]
+albedo_texture = ExtResource("7_5dd6s")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5x2ut"]
+radius = 0.8
+height = 5.0
+
+[node name="EnokiEnemy" type="CharacterBody3D"]
+script = ExtResource("2_t0bd7")
+
+[node name="DetectionComponent" parent="." instance=ExtResource("1_3quey")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("2_5dd6s")]
+
+[node name="ParticleComponent" parent="." instance=ExtResource("3_5x2ut")]
+
+[node name="SoundComponent" parent="." instance=ExtResource("4_smu6q")]
+
+[node name="EnemyRangedAttackComponent" parent="." instance=ExtResource("5_5x2ut")]
+
+[node name="Model" parent="." instance=ExtResource("1_po56c")]
+
+[node name="Enoki_001" parent="Model/Armature_bendy_009/Skeleton3D" index="0"]
+material_override = SubResource("StandardMaterial3D_5x2ut")
+
+[node name="Enoki_002" parent="Model/Armature_bendy_009/Skeleton3D" index="1"]
+material_override = SubResource("StandardMaterial3D_smu6q")
+
+[node name="Enoki_003" parent="Model/Armature_bendy_009/Skeleton3D" index="2"]
+material_override = SubResource("StandardMaterial3D_wygmd")
+
+[node name="Enoki_004" parent="Model/Armature_bendy_009/Skeleton3D" index="3"]
+material_override = SubResource("StandardMaterial3D_4d3mk")
+
+[node name="Enoki_005" parent="Model/Armature_bendy_009/Skeleton3D" index="4"]
+material_override = SubResource("StandardMaterial3D_216h1")
+
+[node name="Enoki_006" parent="Model/Armature_bendy_009/Skeleton3D" index="5"]
+material_override = SubResource("StandardMaterial3D_4q1mq")
+
+[node name="Enoki_007" parent="Model/Armature_bendy_009/Skeleton3D" index="6"]
+material_override = SubResource("StandardMaterial3D_2du4o")
+
+[node name="Enoki_008" parent="Model/Armature_bendy_009/Skeleton3D" index="7"]
+material_override = SubResource("StandardMaterial3D_sc17h")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45539, 0)
+shape = SubResource("CapsuleShape3D_5x2ut")
+
+[editable path="Model"]
