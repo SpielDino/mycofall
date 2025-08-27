@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://be4b3d1g5njg4" path="res://assets/textures/model_textures/grass_boden/grass_01_normal_gl_2k.png" id="4_sq3jn"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mj7mv"]
-size = Vector2(10, 10)
+size = Vector2(50, 50)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8o3n"]
 albedo_texture = ExtResource("1_103yu")
@@ -17,7 +17,7 @@ ao_light_affect = 1.0
 ao_texture = ExtResource("2_risos")
 heightmap_enabled = true
 heightmap_texture = ExtResource("3_e8g0i")
-uv1_scale = Vector3(4, 4, 4)
+uv1_scale = Vector3(10, 10, 10)
 
 [node name="GrassGround" type="Node3D"]
 

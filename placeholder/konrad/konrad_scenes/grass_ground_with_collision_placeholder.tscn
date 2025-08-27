@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b2kmvc6nkdq05" path="res://placeholder/konrad/konrad_scenes/grass_ground_placeholder.tscn" id="1_wxdb6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cvnfm"]
-size = Vector3(9.97095, 0.500732, 9.98242)
+size = Vector3(49.9375, 0.500732, 50.8047)
 
 [node name="GrassGroundWithCollision" type="Node3D"]
 

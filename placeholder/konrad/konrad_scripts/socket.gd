@@ -23,19 +23,23 @@ var shield_intance
 var empty_socket = true
 var current_weapon_in_socket = ""
 
-@onready var attachment = $"Weapon Slot"
+var bow_scale = 0.5
+
+@onready var attachment = $"WeaponSlot"
 
 # Models
-@onready var bow = preload("res://assets/models/weapons/alt_bogen.blend")
-@onready var shield = preload("res://assets/models/weapons/alt_schild.blend")
-@onready var staff = preload("res://assets/models/weapons/alt_stab.blend")
-@onready var sword = preload("res://assets/models/weapons/alt_schwert.blend")
+@onready var bow = preload("res://placeholder/konrad/konrad_scenes/bow.tscn")
+@onready var shield = preload("res://placeholder/konrad/konrad_scenes/shield.tscn")
+@onready var staff = preload("res://placeholder/konrad/konrad_scenes/staff.tscn")
+@onready var sword = preload("res://placeholder/konrad/konrad_scenes/sword.tscn")
 
 func _ready() -> void:
 	sword_intance = sword.instantiate()
 	staff_intance = staff.instantiate()
 	bow_intance = bow.instantiate()
 	shield_intance = shield.instantiate()
+	
+	bow_intance.scale = Vector3(bow_scale, bow_scale, bow_scale)
 	
 	match Weapon:
 		socket_sword_name:
@@ -56,12 +60,14 @@ func _ready() -> void:
 			current_weapon_in_socket = shield_name
 
 func _on_interacted(body: Variant) -> void:
+	# Take a weapon without having a weapon
 	if empty_socket == false and GameManager.get_weapon_in_hand() == false:
 		var attachment_weapon = attachment.get_child(0)
 		attachment.remove_child(attachment_weapon)
 		current_weapon_in_socket = ""
 		empty_socket = true
-		
+	
+	# Put away weapon
 	elif empty_socket == true and GameManager.get_weapon_in_hand() == true:
 		var player_weapon = GameManager.get_first_weapon()
 		match player_weapon:
@@ -79,12 +85,14 @@ func _on_interacted(body: Variant) -> void:
 				current_weapon_in_socket = shield_intance.get_name()
 		empty_socket = false
 		
+	# Take a 2nd weapon while having 1 weapon
 	elif empty_socket == false and GameManager.get_weapon_in_hand() == true and GameManager.get_weapon_on_back() == false:
 		var attachment_weapon = attachment.get_child(0)
 		attachment.remove_child(attachment_weapon)
 		current_weapon_in_socket = ""
 		empty_socket = true
 		
+	# Swap weapon in hand with socket weapon (only works if you have 2 weapons)
 	elif empty_socket == false and GameManager.get_weapon_in_hand() == true and GameManager.get_weapon_on_back() == true:
 		var attachment_weapon = attachment.get_child(0)
 		attachment.remove_child(attachment_weapon)

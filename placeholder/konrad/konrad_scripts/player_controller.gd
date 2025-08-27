@@ -125,11 +125,11 @@ func dash_ability(delta):
 func block():
 	if Input.is_action_pressed("block"):
 		#if check_for_equipped_shield():
-		print("blocking")
+		#print("blocking")
 		player.is_blocking = true
 		GameManager.set_is_blocking(true)
 	if Input.is_action_just_released("block"):
-		print("not blocking")
+		#print("not blocking")
 		player.is_blocking = false
 		GameManager.set_is_blocking(false)
 		

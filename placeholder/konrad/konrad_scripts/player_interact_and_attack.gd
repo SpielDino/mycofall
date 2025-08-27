@@ -1,5 +1,62 @@
 extends RayCast3D
 
+# Controller
+@export_category("Controller")
+@export var player_controller: CharacterBody3D
+
+# Animation
+@export_category("Animation")
+@export var animation_tree: AnimationTree
+@export var staff_animation_player: AnimationPlayer
+@export var bow_animation_player: AnimationPlayer
+@export var sword_animation_player: AnimationPlayer
+
+# Weapon Positions
+@export_category("Weapon Position")
+@export var hand: BoneAttachment3D
+@export var offhand: BoneAttachment3D
+@export var back: BoneAttachment3D
+
+# Weapons Stats for Attacks
+@export_category("Weapon Stats")
+@export var max_attack_cooldown: float = 1
+@export var max_input_cooldown: float = 0.36
+@export var max_reset_combo_step_cooldown: float = 1
+@export var mana_cost_per_attack: int = 60
+@export var bow_cooldown: float = 1
+@export var bow_max_cooldown: float = 3
+
+# Weapons
+@export_category("Weapons")
+@export_subgroup("Right Hand")
+# ------- Main Hand -------
+#@onready var sword_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Sword"
+@export var sword_main: Area3D
+@export var shield_main: Node3D
+@export var staff_main: Node3D
+@export var bow_main: Node3D
+#@onready var shield_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Shield"
+#@onready var bow_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Bow"
+#@onready var staff_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Staff"
+
+@export_subgroup("Left Hand")
+# ------- Offhand -------
+@export var shield_offhand: Node3D
+#@onready var shield_offhand = $"../Player/Armature/Skeleton3D/LeftWeaponHand/Shield"
+@export var bow_offhand: Node3D
+#@onready var bow_offhand = $"../Player/Armature/Skeleton3D/LeftWeaponHand/Bow"
+
+@export_subgroup("Back")
+# ------- Back -------
+@export var sword_back: Area3D
+#@onready var sword_back = $"../Player/Armature/Skeleton3D/BackWeapon/Sword"
+@export var shield_back: Node3D
+#@onready var shield_back = $"../Player/Armature/Skeleton3D/BackWeapon/Shield"
+@export var bow_back: Node3D
+#@onready var bow_back = $"../Player/Armature/Skeleton3D/BackWeapon/Bow"
+@export var staff_back: Node3D
+#@onready var staff_back = $"../Player/Armature/Skeleton3D/BackWeapon/Staff"
+
 var sword_name = "Sword"
 var shield_name = "Shield"
 var staff_name = "Staff"
@@ -20,6 +77,8 @@ var finished_bow_attack_timer: float = 0
 var finished_bow_attack = false
 var staff_timer: float = 0
 var is_blocking = false
+var controller_input_device = false
+var weapon
 
 # Transforms for Weapons
 # ------- Main Hand -------
@@ -91,46 +150,11 @@ var shield_blocking_position_offhand = Vector3(0.14, 1.52, -0.19)
 var shield_blocking_rotation_offhand = Vector3(48.5, 11.7, 82)
 var shield_blocking_scale_offhand = Vector3(4, 4, 4)
 
-
-var controller_input_device = false
-var weapon
-
-# Attacking
+# Player Stats
 @onready var settings: Node3D = GlobalPlayer.get_player()
-@onready var animation_tree = $"../Player/AnimationTree"
-@onready var staff_animation_player = $"../Player/Armature/Skeleton3D/RightWeaponHand/Staff/AnimationPlayer"
-@onready var bow_animation_player = $"../Player/Armature/Skeleton3D/LeftWeaponHand/Bow/AnimationPlayer"
-@onready var sword_animation_player = $"../Player/Armature/Skeleton3D/RightWeaponHand/Sword/AnimationPlayer"
-@onready var player_controller = $"../.."
-
-@export var max_attack_cooldown: float = 1
-@export var max_input_cooldown: float = 0.36
-@export var max_reset_combo_step_cooldown: float = 1
-@export var manaCostPerAttack: int = 60
-@export var bow_cooldown: float = 1
-@export var bow_max_cooldown: float = 3
 
 # Interacting
 @onready var prompt = $Prompt
-@onready var hand = $"../Player/Armature/Skeleton3D/RightWeaponHand"
-@onready var offhand = $"../Player/Armature/Skeleton3D/LeftWeaponHand"
-@onready var back = $"../Player/Armature/Skeleton3D/BackWeapon"
-
-# ------- Main Hand -------
-@onready var sword_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Sword"
-@onready var shield_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Shield"
-@onready var bow_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Bow"
-@onready var staff_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Staff"
-
-# ------- Offhand -------
-@onready var shield_offhand = $"../Player/Armature/Skeleton3D/LeftWeaponHand/Shield"
-@onready var bow_offhand = $"../Player/Armature/Skeleton3D/LeftWeaponHand/Bow"
-
-# ------- Back -------
-@onready var sword_back = $"../Player/Armature/Skeleton3D/BackWeapon/Sword"
-@onready var shield_back = $"../Player/Armature/Skeleton3D/BackWeapon/Shield"
-@onready var bow_back = $"../Player/Armature/Skeleton3D/BackWeapon/Bow"
-@onready var staff_back = $"../Player/Armature/Skeleton3D/BackWeapon/Staff"
 
 func _ready() -> void:
 	change_transform_of_weapon_main_hand(sword_main, sword_idle_position, sword_idle_rotation, sword_idle_scale)
@@ -392,6 +416,7 @@ func interacting_with_world():
 								sword_main.visible = true
 								sword_main.process_mode = Node.PROCESS_MODE_INHERIT
 								
+								hitObj.interact(owner)
 								GameManager.set_first_weapon(GameManager.get_second_weapon())
 								GameManager.set_second_weapon(weapon_name)
 								GameManager.weapons_updated()
@@ -457,14 +482,14 @@ func staff_attack(delta):
 
 func staff_attack_animation():
 	if player_controller.velocity.length() > 0.2:
-		if Input.is_action_pressed("attack") and settings.mana >= manaCostPerAttack and staff_timer <= 0:
+		if Input.is_action_pressed("attack") and settings.mana >= mana_cost_per_attack and staff_timer <= 0:
 			staff_timer = 0.8333
 			animation_tree.set("parameters/WalkStaffBlend/blend_amount", 1)
 			staff_animation_player.play("MagicAttack")
 			is_attacking = true
 			GameManager.set_is_attacking(is_attacking)
 	else: 
-		if Input.is_action_pressed("attack") and settings.mana >= manaCostPerAttack and staff_timer <= 0:
+		if Input.is_action_pressed("attack") and settings.mana >= mana_cost_per_attack and staff_timer <= 0:
 			staff_timer = 0.8333
 			animation_tree.set("parameters/WalkOrStaffBlend/blend_amount", 1)
 			staff_animation_player.play("MagicAttack")

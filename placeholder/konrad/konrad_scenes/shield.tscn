@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bx1yxprog4dh3"]
+
+[ext_resource type="PackedScene" uid="uid://cyvd3fl776vqk" path="res://assets/models/weapons/holz_schild.blend" id="1_s3aak"]
+[ext_resource type="PackedScene" uid="uid://cs7e2el5jwhjr" path="res://assets/models/weapons/alt_schild.blend" id="2_v2kua"]
+[ext_resource type="PackedScene" uid="uid://baurv6dppbsay" path="res://assets/models/weapons/metal_schild.blend" id="3_muwb2"]
+
+[node name="Shield" type="Node3D"]
+
+[node name="HolzSchild" parent="." instance=ExtResource("1_s3aak")]
+transform = Transform3D(-0.3, -4.52987e-08, 1.98007e-15, 0, -1.31134e-08, -0.3, 4.52987e-08, -0.3, 1.31134e-08, 0, 0, 0)
+visible = false
+
+[node name="AltSchild" parent="." instance=ExtResource("2_v2kua")]
+transform = Transform3D(-0.3, -4.52987e-08, 1.98007e-15, 0, -1.31134e-08, -0.3, 4.52987e-08, -0.3, 1.31134e-08, 0, 0, 0)
+visible = false
+
+[node name="MetalSchild" parent="." instance=ExtResource("3_muwb2")]
+transform = Transform3D(-0.3, -4.52987e-08, 1.98007e-15, 0, -1.31134e-08, -0.3, 4.52987e-08, -0.3, 1.31134e-08, 0, 0, 0)

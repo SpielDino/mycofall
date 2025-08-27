@@ -15,8 +15,8 @@ var is_sneaking = false
 @onready var state_machine_playback: AnimationNodeStateMachinePlayback = self.get("parameters/StateMachine/playback")
 @onready var player_controller = $"../../.."
 @onready var front_pointer = $"../../FrontPointer"
-@onready var stamina_cost_per_dash = settings.staminaCostPerDash
-@onready var max_stamina = settings.maxStamina
+@onready var stamina_cost_per_dash = settings.stamina_cost_per_dash
+@onready var max_stamina = settings.max_stamina
 
 func _physics_process(delta: float) -> void:
 	update_animation(delta)

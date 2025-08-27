@@ -1,6 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3c650unruhvy"]
+[gd_scene load_steps=6 format=3 uid="uid://c3c650unruhvy"]
 
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_vmj8w"]
+[ext_resource type="PackedScene" uid="uid://bnyfrlfrn4h4w" path="res://placeholder/konrad/konrad_scenes/player.tscn" id="2_3xeft"]
+[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://placeholder/konrad/trash/socket.tscn" id="2_w1y6w"]
+[ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://placeholder/konrad/trash/training_dummy.tscn" id="3_h0rvv"]
 
 [sub_resource type="Environment" id="Environment_r6cbd"]
 
@@ -17,3 +20,35 @@ environment = SubResource("Environment_r6cbd")
 [node name="Ground" type="Node3D" parent="WorldEnvironment/World"]
 
 [node name="GrassGroundWithCollision" parent="WorldEnvironment/World/Ground" instance=ExtResource("1_vmj8w")]
+
+[node name="Objects" type="Node3D" parent="WorldEnvironment/World"]
+
+[node name="Socket" parent="WorldEnvironment/World/Objects" instance=ExtResource("2_w1y6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.82087)
+
+[node name="Socket2" parent="WorldEnvironment/World/Objects" instance=ExtResource("2_w1y6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45436, 0, -7.55674)
+Weapon = "STAFF"
+
+[node name="Socket3" parent="WorldEnvironment/World/Objects" instance=ExtResource("2_w1y6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66799, 0, -8.01067)
+Weapon = "BOW"
+
+[node name="Socket4" parent="WorldEnvironment/World/Objects" instance=ExtResource("2_w1y6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.9796)
+Weapon = "SHIELD"
+
+[node name="training_dummy" parent="WorldEnvironment/World/Objects" instance=ExtResource("3_h0rvv")]
+transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -12.1868, 0.0217261, -3.97915)
+
+[node name="Player" parent="WorldEnvironment" instance=ExtResource("2_3xeft")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49418, 0)
+rotation_type = "rotate based on second input"
+dash_type = "dash with stamina"
+shield_radius_protection = 120.0
+
+[editable path="WorldEnvironment/Player"]
+[editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel"]
+[editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Sword"]
+[editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Staff"]
+[editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Bow"]

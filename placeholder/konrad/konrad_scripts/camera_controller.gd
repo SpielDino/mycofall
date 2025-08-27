@@ -8,6 +8,9 @@ func _ready():
 	player = GlobalPlayer.get_player()
 	speed = player.camera_follow_speed
 	camera_target = player.get_child(0).get_child(1).get_child(0)
+	print(player)
+	print(speed)
+	print(camera_target)
 	
 func _physics_process(delta):
 	move_camera_to_player()
