@@ -1,0 +1,171 @@
+[gd_scene load_steps=8 format=3 uid="uid://b2rtleo5lquvb"]
+
+[ext_resource type="Script" uid="uid://djxvmnwkuufb1" path="res://scripts/ui/stats/stats.gd" id="1_55ayf"]
+[ext_resource type="Script" uid="uid://yc4ag12qhq02" path="res://scripts/ui/stats/branches/branches.gd" id="1_btbxx"]
+[ext_resource type="Texture2D" uid="uid://xuvui8xsoxdl" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0000.png" id="2_2ukyj"]
+[ext_resource type="Texture2D" uid="uid://c608pdyb20nhs" path="res://assets/textures/ui_textures/interface/stats/health/Health0000.png" id="2_bgrgj"]
+[ext_resource type="Texture2D" uid="uid://b4cb8xdcnpau7" path="res://assets/textures/ui_textures/interface/stats/branches/weapon_two/BranchSecondWeapon0019.png" id="2_gfc1h"]
+[ext_resource type="Texture2D" uid="uid://c1kgdie7yosjt" path="res://assets/textures/ui_textures/interface/stats/branches/branch_two/branch_two0000.png" id="4_2ukyj"]
+[ext_resource type="Texture2D" uid="uid://c0nf25nfpjnao" path="res://assets/textures/ui_textures/interface/stats/branches/branch_three/branch_three0081.png" id="5_bgrgj"]
+
+[node name="UserStats" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main"]
+layout_mode = 2
+
+[node name="stats" type="MarginContainer" parent="main/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+script = ExtResource("1_55ayf")
+
+[node name="health" type="MarginContainer" parent="main/VBoxContainer/stats"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_left = 155
+
+[node name="health_bar" type="HBoxContainer" parent="main/VBoxContainer/stats/health"]
+layout_mode = 2
+theme_override_constants/separation = -17
+
+[node name="leaf_one" type="MarginContainer" parent="main/VBoxContainer/stats/health/health_bar"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = -85
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/health/health_bar/leaf_one"]
+layout_mode = 2
+texture = ExtResource("2_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="leaf_two" type="MarginContainer" parent="main/VBoxContainer/stats/health/health_bar"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = -90
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/health/health_bar/leaf_two"]
+layout_mode = 2
+texture = ExtResource("2_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="leaf_three" type="MarginContainer" parent="main/VBoxContainer/stats/health/health_bar"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = -90
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/health/health_bar/leaf_three"]
+layout_mode = 2
+texture = ExtResource("2_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="leaf_four" type="MarginContainer" parent="main/VBoxContainer/stats/health/health_bar"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = -75
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/health/health_bar/leaf_four"]
+layout_mode = 2
+texture = ExtResource("2_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="branches" type="MarginContainer" parent="main/VBoxContainer/stats"]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_btbxx")
+
+[node name="weapon_two" type="TextureRect" parent="main/VBoxContainer/stats/branches"]
+layout_mode = 2
+texture = ExtResource("2_gfc1h")
+expand_mode = 3
+
+[node name="branch_one_full" type="TextureRect" parent="main/VBoxContainer/stats/branches"]
+layout_mode = 2
+texture = ExtResource("2_2ukyj")
+expand_mode = 3
+
+[node name="branch_two" type="TextureRect" parent="main/VBoxContainer/stats/branches"]
+layout_mode = 2
+texture = ExtResource("4_2ukyj")
+expand_mode = 3
+
+[node name="branch_three" type="TextureRect" parent="main/VBoxContainer/stats/branches"]
+layout_mode = 2
+texture = ExtResource("5_bgrgj")
+expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="main/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="Button2" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stamina"
+
+[node name="Button3" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mana"
+
+[node name="Button4" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "WeaponTwo"
+
+[node name="Button5" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DamagePlayerOne"
+
+[node name="Button6" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DamagePlayerFive"
+
+[node name="Button7" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "HealPlayerFive"
+
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button" to="main/VBoxContainer/stats/branches" method="_on_menu_toggle"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button2" to="main/VBoxContainer/stats/branches" method="_on_stamina_toggle"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button3" to="main/VBoxContainer/stats/branches" method="_on_mana_toggle"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button4" to="main/VBoxContainer/stats/branches" method="_on_second_weapon_toggle"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button5" to="main/VBoxContainer/stats" method="_on_payer_damaged_one"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button6" to="main/VBoxContainer/stats" method="_on_payer_damaged_five"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button7" to="main/VBoxContainer/stats" method="_on_payer_heal"]

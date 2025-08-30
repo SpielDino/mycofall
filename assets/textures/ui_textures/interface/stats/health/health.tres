@@ -1,0 +1,54 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://cg7hfg1cjkw3o"]
+
+[ext_resource type="Texture2D" uid="uid://c608pdyb20nhs" path="res://assets/textures/ui_textures/interface/stats/health/Health0000.png" id="1_j87a0"]
+[ext_resource type="Texture2D" uid="uid://q1t1otvoeqvd" path="res://assets/textures/ui_textures/interface/stats/health/Health0001.png" id="2_3k5fm"]
+[ext_resource type="Texture2D" uid="uid://l3bp6unjnlxn" path="res://assets/textures/ui_textures/interface/stats/health/Health0003.png" id="3_6r7ox"]
+[ext_resource type="Texture2D" uid="uid://4lt8ctue8xbk" path="res://assets/textures/ui_textures/interface/stats/health/Health0004.png" id="4_r6wnw"]
+[ext_resource type="Texture2D" uid="uid://cld363mwk6o4h" path="res://assets/textures/ui_textures/interface/stats/health/Health0005.png" id="5_3vbnd"]
+[ext_resource type="Texture2D" uid="uid://ba5erlvsmv57u" path="res://assets/textures/ui_textures/interface/stats/health/Health006.png" id="6_cvc64"]
+[ext_resource type="Texture2D" uid="uid://cf378fiyavdqg" path="res://assets/textures/ui_textures/interface/stats/health/Health007.png" id="7_t283a"]
+[ext_resource type="Texture2D" uid="uid://c3uuume4cu7xe" path="res://assets/textures/ui_textures/interface/stats/health/Health008.png" id="8_uimji"]
+[ext_resource type="Texture2D" uid="uid://dsrtwj2p2chrw" path="res://assets/textures/ui_textures/interface/stats/health/Health0009.png" id="9_2pafw"]
+[ext_resource type="Texture2D" uid="uid://dlefyyjepgpj6" path="res://assets/textures/ui_textures/interface/stats/health/Health0010.png" id="10_oiea7"]
+[ext_resource type="Texture2D" uid="uid://b7w1k8erheyp5" path="res://assets/textures/ui_textures/interface/stats/health/Health0011.png" id="11_v71y2"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_j87a0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3k5fm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6r7ox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r6wnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3vbnd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_cvc64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_t283a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_uimji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2pafw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_oiea7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_v71y2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

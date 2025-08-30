@@ -1,0 +1,594 @@
+[gd_resource type="SpriteFrames" load_steps=147 format=3 uid="uid://dnwc7tkiv43ov"]
+
+[ext_resource type="Texture2D" uid="uid://xuvui8xsoxdl" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0000.png" id="1_hnibt"]
+[ext_resource type="Texture2D" uid="uid://cdk0044bkhs6o" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0001.png" id="2_r33ry"]
+[ext_resource type="Texture2D" uid="uid://pm1cm0a6o2be" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0002.png" id="3_dcmma"]
+[ext_resource type="Texture2D" uid="uid://ckvwl5weewn3t" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0003.png" id="4_ihwg0"]
+[ext_resource type="Texture2D" uid="uid://c0uepvhpms11n" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0004.png" id="5_yji1n"]
+[ext_resource type="Texture2D" uid="uid://c5satejg6ngku" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0005.png" id="6_ys1re"]
+[ext_resource type="Texture2D" uid="uid://xa5l58q1tt6m" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0006.png" id="7_rpwrn"]
+[ext_resource type="Texture2D" uid="uid://ckygewr7rhe4x" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0007.png" id="8_58lpj"]
+[ext_resource type="Texture2D" uid="uid://8jodyv7nox87" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0008.png" id="9_00ut1"]
+[ext_resource type="Texture2D" uid="uid://dtql2g7a004l4" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0009.png" id="10_syhx4"]
+[ext_resource type="Texture2D" uid="uid://c5e5nfrnbaw3b" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0010.png" id="11_nus6p"]
+[ext_resource type="Texture2D" uid="uid://b2fu0bd6u66ij" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0011.png" id="12_qqbon"]
+[ext_resource type="Texture2D" uid="uid://cot6b6dlh2c6p" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0012.png" id="13_nqilx"]
+[ext_resource type="Texture2D" uid="uid://u1cfs6f6m8dc" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0013.png" id="14_edtdy"]
+[ext_resource type="Texture2D" uid="uid://y5qgmj4750uq" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0014.png" id="15_a3u0x"]
+[ext_resource type="Texture2D" uid="uid://cag11nw7ma1o6" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0015.png" id="16_qlvrv"]
+[ext_resource type="Texture2D" uid="uid://tkl57geyr1cu" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0016.png" id="17_dpqeh"]
+[ext_resource type="Texture2D" uid="uid://cx3k8mfybpkji" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0017.png" id="18_o2dfa"]
+[ext_resource type="Texture2D" uid="uid://b7nvi1r06fmdk" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0018.png" id="19_uacbg"]
+[ext_resource type="Texture2D" uid="uid://ddpfov0fm26wg" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0019.png" id="20_5jfpk"]
+[ext_resource type="Texture2D" uid="uid://dgda0rtm1hci8" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0020.png" id="21_tehpe"]
+[ext_resource type="Texture2D" uid="uid://dm80phna2idtx" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0021.png" id="22_spl2l"]
+[ext_resource type="Texture2D" uid="uid://cnquh71oqiwqj" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0022.png" id="23_gg63k"]
+[ext_resource type="Texture2D" uid="uid://c1a40vjbwg88t" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0023.png" id="24_4c5m0"]
+[ext_resource type="Texture2D" uid="uid://blgllpmyl3pfp" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0024.png" id="25_v1osj"]
+[ext_resource type="Texture2D" uid="uid://blenqj68nhtnl" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0025.png" id="26_h73vo"]
+[ext_resource type="Texture2D" uid="uid://c1jg1xv1wyq5c" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0026.png" id="27_w74dg"]
+[ext_resource type="Texture2D" uid="uid://ncd7xt2jklxg" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0027.png" id="28_y2ksn"]
+[ext_resource type="Texture2D" uid="uid://bw7r8eql1mb6y" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0028.png" id="29_3774s"]
+[ext_resource type="Texture2D" uid="uid://bmq1i5x1ydhil" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0029.png" id="30_0fh3n"]
+[ext_resource type="Texture2D" uid="uid://bo6w7qnv7rn4o" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0030.png" id="31_lnc1a"]
+[ext_resource type="Texture2D" uid="uid://b0tram5semyyi" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0031.png" id="32_1p2cm"]
+[ext_resource type="Texture2D" uid="uid://dgmsv7hhjk4k7" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0032.png" id="33_yvlg7"]
+[ext_resource type="Texture2D" uid="uid://d3ufk2ny6qvlq" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0033.png" id="34_j876m"]
+[ext_resource type="Texture2D" uid="uid://c7f78gicxph7o" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0034.png" id="35_oy52s"]
+[ext_resource type="Texture2D" uid="uid://bvstem2yxg0h3" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0035.png" id="36_prfd1"]
+[ext_resource type="Texture2D" uid="uid://cix8hwojc6it4" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0036.png" id="37_on6ko"]
+[ext_resource type="Texture2D" uid="uid://dv2etq6ou72ve" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0037.png" id="38_jow6a"]
+[ext_resource type="Texture2D" uid="uid://xq6s77s0qs5" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0038.png" id="39_73uh1"]
+[ext_resource type="Texture2D" uid="uid://chgdrcrm4thvp" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0039.png" id="40_djne1"]
+[ext_resource type="Texture2D" uid="uid://dwcl3ojhmlmcn" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0040.png" id="41_pcccg"]
+[ext_resource type="Texture2D" uid="uid://d0mmn3nv8qclo" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0041.png" id="42_tr2rk"]
+[ext_resource type="Texture2D" uid="uid://cq14ttus6ye0v" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0042.png" id="43_d7700"]
+[ext_resource type="Texture2D" uid="uid://cowbnw1s8445i" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0043.png" id="44_0pbyr"]
+[ext_resource type="Texture2D" uid="uid://ddrtj6pvebly4" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0044.png" id="45_js30s"]
+[ext_resource type="Texture2D" uid="uid://dnn0lan8cws6w" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0045.png" id="46_05bxt"]
+[ext_resource type="Texture2D" uid="uid://do56itg7l0d8h" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0046.png" id="47_1wrj1"]
+[ext_resource type="Texture2D" uid="uid://dh7m00cniceuw" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0047.png" id="48_s7pp2"]
+[ext_resource type="Texture2D" uid="uid://bj28quiqwsgr1" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0048.png" id="49_sww0e"]
+[ext_resource type="Texture2D" uid="uid://bdnaqn61oqnof" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0049.png" id="50_yysey"]
+[ext_resource type="Texture2D" uid="uid://cc3tpf4ypdbfk" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0050.png" id="51_mpjcm"]
+[ext_resource type="Texture2D" uid="uid://dyvtb6n5tsxiy" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0051.png" id="52_hayfe"]
+[ext_resource type="Texture2D" uid="uid://c53ywv1p74xi0" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0052.png" id="53_xldci"]
+[ext_resource type="Texture2D" uid="uid://bcublw7irv7al" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0053.png" id="54_4fix4"]
+[ext_resource type="Texture2D" uid="uid://cf0c5tjtllr0k" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0054.png" id="55_objmc"]
+[ext_resource type="Texture2D" uid="uid://c0ycg413dnmac" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0055.png" id="56_gbmkt"]
+[ext_resource type="Texture2D" uid="uid://bk73lbfwg2pi8" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0056.png" id="57_8s3id"]
+[ext_resource type="Texture2D" uid="uid://b3xu0qt7hnx5u" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0057.png" id="58_vjndc"]
+[ext_resource type="Texture2D" uid="uid://cdbhhs1rrlomr" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0058.png" id="59_j23ty"]
+[ext_resource type="Texture2D" uid="uid://cbmw7iia4s7re" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0059.png" id="60_d7vm7"]
+[ext_resource type="Texture2D" uid="uid://dfhly2kww3m08" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0060.png" id="61_qnfrd"]
+[ext_resource type="Texture2D" uid="uid://bx3gq5mv2qo64" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0061.png" id="62_b7ekp"]
+[ext_resource type="Texture2D" uid="uid://c0avb5al0do7v" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0062.png" id="63_q5gaw"]
+[ext_resource type="Texture2D" uid="uid://d4ghdflu11wf4" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0063.png" id="64_dp38c"]
+[ext_resource type="Texture2D" uid="uid://ou2losdubveb" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0064.png" id="65_6dcuu"]
+[ext_resource type="Texture2D" uid="uid://ctsrlftraiwae" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0065.png" id="66_k4jch"]
+[ext_resource type="Texture2D" uid="uid://ch81i8ahnultd" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0066.png" id="67_jhasg"]
+[ext_resource type="Texture2D" uid="uid://c0lr72061hxa2" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0067.png" id="68_4pkhj"]
+[ext_resource type="Texture2D" uid="uid://d2ni455v827ra" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0068.png" id="69_obgdp"]
+[ext_resource type="Texture2D" uid="uid://djeirdl322wh0" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0069.png" id="70_7qqeo"]
+[ext_resource type="Texture2D" uid="uid://okyhm1pbkox" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0070.png" id="71_pi7p5"]
+[ext_resource type="Texture2D" uid="uid://wmtc7t4hq8ow" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0071.png" id="72_d6ccp"]
+[ext_resource type="Texture2D" uid="uid://bq4jitcyowpar" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0072.png" id="73_8yamh"]
+[ext_resource type="Texture2D" uid="uid://d3une1ne5ctso" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0073.png" id="74_60iux"]
+[ext_resource type="Texture2D" uid="uid://fse7qul3fnxj" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0074.png" id="75_rbb8j"]
+[ext_resource type="Texture2D" uid="uid://b47wg5pdmpxvo" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0075.png" id="76_saxyh"]
+[ext_resource type="Texture2D" uid="uid://c2gvgx6wukee5" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0076.png" id="77_4i5sn"]
+[ext_resource type="Texture2D" uid="uid://xs2juvf0jhr" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0077.png" id="78_v888p"]
+[ext_resource type="Texture2D" uid="uid://dk805js84ebmc" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0078.png" id="79_6h8ob"]
+[ext_resource type="Texture2D" uid="uid://dufxjw4bag1j1" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0079.png" id="80_vfbg4"]
+[ext_resource type="Texture2D" uid="uid://dyxytwc3juewu" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0080.png" id="81_2qfwn"]
+[ext_resource type="Texture2D" uid="uid://cx2n6oti0jv8y" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0081.png" id="82_f7boq"]
+[ext_resource type="Texture2D" uid="uid://okcq7rxg6pj3" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0082.png" id="83_l70fb"]
+[ext_resource type="Texture2D" uid="uid://8v4egba3hkc6" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0083.png" id="84_yt4ww"]
+[ext_resource type="Texture2D" uid="uid://iw0klexmqhfg" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0084.png" id="85_nkmyw"]
+[ext_resource type="Texture2D" uid="uid://daqts120fwk4g" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0085.png" id="86_0838y"]
+[ext_resource type="Texture2D" uid="uid://chjlxgl7u4fsj" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0086.png" id="87_bwj58"]
+[ext_resource type="Texture2D" uid="uid://cpna3n6lt0vlf" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0087.png" id="88_uofqa"]
+[ext_resource type="Texture2D" uid="uid://c4glmyxyxfacs" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0088.png" id="89_7jjqg"]
+[ext_resource type="Texture2D" uid="uid://d3v7jfaee8kfx" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0089.png" id="90_ru7v1"]
+[ext_resource type="Texture2D" uid="uid://qyof23uvns81" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0090.png" id="91_vp55u"]
+[ext_resource type="Texture2D" uid="uid://dqgkem1c5p83p" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0091.png" id="92_fhf64"]
+[ext_resource type="Texture2D" uid="uid://dbyqo7buadelu" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0092.png" id="93_lxn10"]
+[ext_resource type="Texture2D" uid="uid://bd3bgjnc238qh" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0093.png" id="94_x8owa"]
+[ext_resource type="Texture2D" uid="uid://cjahypv6fmdtd" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0094.png" id="95_3rwee"]
+[ext_resource type="Texture2D" uid="uid://ficr4ylciypq" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0095.png" id="96_k8byr"]
+[ext_resource type="Texture2D" uid="uid://b4w5y5d7hnaxm" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0096.png" id="97_2wvkd"]
+[ext_resource type="Texture2D" uid="uid://4g80b1y0rq67" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0097.png" id="98_hr74i"]
+[ext_resource type="Texture2D" uid="uid://cdo3jltabjnei" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0098.png" id="99_i461j"]
+[ext_resource type="Texture2D" uid="uid://b21khluyf4go1" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0099.png" id="100_bcde4"]
+[ext_resource type="Texture2D" uid="uid://dkv852svfkff3" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0100.png" id="101_ap317"]
+[ext_resource type="Texture2D" uid="uid://ce5t6h2fyr4ii" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0101.png" id="102_a27uf"]
+[ext_resource type="Texture2D" uid="uid://c12fpuv6a58ui" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0102.png" id="103_7qogf"]
+[ext_resource type="Texture2D" uid="uid://cqk4a42ryqhw" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0103.png" id="104_cpl1g"]
+[ext_resource type="Texture2D" uid="uid://cnvb5ckn1jyvh" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0104.png" id="105_05ye0"]
+[ext_resource type="Texture2D" uid="uid://bxb0ytw4v64r2" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0105.png" id="106_6l47a"]
+[ext_resource type="Texture2D" uid="uid://c5b0h7haik0q" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0106.png" id="107_8awdg"]
+[ext_resource type="Texture2D" uid="uid://cj3o3i0ovee4t" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0107.png" id="108_clodr"]
+[ext_resource type="Texture2D" uid="uid://dq5cllsfjjmah" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0108.png" id="109_dbtfg"]
+[ext_resource type="Texture2D" uid="uid://bpako8uuyxpei" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0109.png" id="110_wrr31"]
+[ext_resource type="Texture2D" uid="uid://cihts4d1737uk" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0110.png" id="111_c5axe"]
+[ext_resource type="Texture2D" uid="uid://by8eynowc5v1h" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0111.png" id="112_xqya0"]
+[ext_resource type="Texture2D" uid="uid://bknfbtspcn2ks" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0112.png" id="113_d6x2e"]
+[ext_resource type="Texture2D" uid="uid://c1lgno3jvwuwk" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0113.png" id="114_3dyg8"]
+[ext_resource type="Texture2D" uid="uid://dxhqqc44s6iqc" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0114.png" id="115_5n0mf"]
+[ext_resource type="Texture2D" uid="uid://bq8j3acgcqjit" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0115.png" id="116_pu8mk"]
+[ext_resource type="Texture2D" uid="uid://b50ge47n08amy" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0116.png" id="117_slsgt"]
+[ext_resource type="Texture2D" uid="uid://wl0e5saky6rd" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0117.png" id="118_y23fj"]
+[ext_resource type="Texture2D" uid="uid://dwmjkiu3tvef1" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0118.png" id="119_vurx0"]
+[ext_resource type="Texture2D" uid="uid://dwayepfe12rtt" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0119.png" id="120_qp808"]
+[ext_resource type="Texture2D" uid="uid://bhvldfnk35ffk" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0120.png" id="121_kdlsf"]
+[ext_resource type="Texture2D" uid="uid://dyp4411g1csdy" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0121.png" id="122_iwen5"]
+[ext_resource type="Texture2D" uid="uid://c3ljnbdai6hlf" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0122.png" id="123_46pdy"]
+[ext_resource type="Texture2D" uid="uid://dwmw061xj1rw5" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0123.png" id="124_jsuiy"]
+[ext_resource type="Texture2D" uid="uid://dmc18daejacdr" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0124.png" id="125_7kxgm"]
+[ext_resource type="Texture2D" uid="uid://d24s0kt5o1xff" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0125.png" id="126_u1qq3"]
+[ext_resource type="Texture2D" uid="uid://fm0e62k51ri1" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0126.png" id="127_qdd25"]
+[ext_resource type="Texture2D" uid="uid://2kmwyprwnhv8" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0127.png" id="128_uxclb"]
+[ext_resource type="Texture2D" uid="uid://csak71aoh566k" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0128.png" id="129_tpunu"]
+[ext_resource type="Texture2D" uid="uid://dtf7t0g1ngdtp" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0129.png" id="130_xpnrj"]
+[ext_resource type="Texture2D" uid="uid://dm6utcwgrkwce" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0130.png" id="131_ccrle"]
+[ext_resource type="Texture2D" uid="uid://ctaqmhx0e3r38" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0131.png" id="132_2euwa"]
+[ext_resource type="Texture2D" uid="uid://t2d4uccnw7t" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0132.png" id="133_wjppg"]
+[ext_resource type="Texture2D" uid="uid://cstdunkdqkr47" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0133.png" id="134_55h1q"]
+[ext_resource type="Texture2D" uid="uid://dt0rc8ji8ajgd" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0134.png" id="135_cte8d"]
+[ext_resource type="Texture2D" uid="uid://b5injgm2omo81" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0135.png" id="136_5x3ry"]
+[ext_resource type="Texture2D" uid="uid://bu13ps1bcd2r" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0136.png" id="137_gmljb"]
+[ext_resource type="Texture2D" uid="uid://kcviqsyj8kkx" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0137.png" id="138_owaw0"]
+[ext_resource type="Texture2D" uid="uid://dsvbvf8ortmg6" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0138.png" id="139_mtyra"]
+[ext_resource type="Texture2D" uid="uid://dmgpxh7gshilh" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0139.png" id="140_mbsus"]
+[ext_resource type="Texture2D" uid="uid://dhn1bafb0ef8n" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0140.png" id="141_dhbsl"]
+[ext_resource type="Texture2D" uid="uid://dx74k23vrq5ce" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0141.png" id="142_0benr"]
+[ext_resource type="Texture2D" uid="uid://ciohdk517q62g" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0142.png" id="143_pjyxy"]
+[ext_resource type="Texture2D" uid="uid://jtkhy1gyaw5e" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0143.png" id="144_dbbxy"]
+[ext_resource type="Texture2D" uid="uid://ca5ilhrbvmfte" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0144.png" id="145_yav0y"]
+[ext_resource type="Texture2D" uid="uid://dy4nw8l8m4vel" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0145.png" id="146_fdqtg"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hnibt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_r33ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dcmma")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ihwg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yji1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ys1re")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_rpwrn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_58lpj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_00ut1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_syhx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_nus6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qqbon")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nqilx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_edtdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_a3u0x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_qlvrv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_dpqeh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_o2dfa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_uacbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_5jfpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_tehpe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_spl2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_gg63k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_4c5m0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_v1osj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_h73vo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_w74dg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_y2ksn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_3774s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_0fh3n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_lnc1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_1p2cm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_yvlg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_j876m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_oy52s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_prfd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_on6ko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_jow6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_73uh1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_djne1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_pcccg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_tr2rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_d7700")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_0pbyr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_js30s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_05bxt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_1wrj1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_s7pp2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_sww0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_yysey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_mpjcm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_hayfe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_xldci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_4fix4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_objmc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_gbmkt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_8s3id")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_vjndc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_j23ty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_d7vm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_qnfrd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_b7ekp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_q5gaw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_dp38c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_6dcuu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_k4jch")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_jhasg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_4pkhj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_obgdp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_7qqeo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_pi7p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_d6ccp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_8yamh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_60iux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_rbb8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_saxyh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_4i5sn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_v888p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_6h8ob")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_vfbg4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_2qfwn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_f7boq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_l70fb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_yt4ww")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_nkmyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_0838y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_bwj58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_uofqa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_7jjqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_ru7v1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_vp55u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_fhf64")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_lxn10")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_x8owa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_3rwee")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_k8byr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_2wvkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_hr74i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_i461j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_bcde4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_ap317")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_a27uf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_7qogf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_cpl1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_05ye0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_6l47a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_8awdg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_clodr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_dbtfg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_wrr31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_c5axe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_xqya0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_d6x2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_3dyg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_5n0mf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_pu8mk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_slsgt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_y23fj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_vurx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_qp808")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_kdlsf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_iwen5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_46pdy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_jsuiy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_7kxgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_u1qq3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_qdd25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_uxclb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_tpunu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_xpnrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_ccrle")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_2euwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_wjppg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_55h1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_cte8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_5x3ry")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_gmljb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_owaw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_mtyra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_mbsus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_dhbsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_0benr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_pjyxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_dbbxy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_yav0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_fdqtg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 60.0
+}]
