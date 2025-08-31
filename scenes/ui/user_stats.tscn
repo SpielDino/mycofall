@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b2rtleo5lquvb"]
+[gd_scene load_steps=10 format=3 uid="uid://b2rtleo5lquvb"]
 
 [ext_resource type="Script" uid="uid://djxvmnwkuufb1" path="res://scripts/ui/stats/stats.gd" id="1_55ayf"]
 [ext_resource type="Script" uid="uid://yc4ag12qhq02" path="res://scripts/ui/stats/branches/branches.gd" id="1_btbxx"]
-[ext_resource type="Texture2D" uid="uid://xuvui8xsoxdl" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0000.png" id="2_2ukyj"]
 [ext_resource type="Texture2D" uid="uid://c608pdyb20nhs" path="res://assets/textures/ui_textures/interface/stats/health/Health0000.png" id="2_bgrgj"]
 [ext_resource type="Texture2D" uid="uid://b4cb8xdcnpau7" path="res://assets/textures/ui_textures/interface/stats/branches/weapon_two/BranchSecondWeapon0019.png" id="2_gfc1h"]
+[ext_resource type="Texture2D" uid="uid://cgydcj02iin01" path="res://assets/textures/ui_textures/interface/stats/stamina/StaminaBerries0000.png" id="3_bgrgj"]
 [ext_resource type="Texture2D" uid="uid://c1kgdie7yosjt" path="res://assets/textures/ui_textures/interface/stats/branches/branch_two/branch_two0000.png" id="4_2ukyj"]
-[ext_resource type="Texture2D" uid="uid://c0nf25nfpjnao" path="res://assets/textures/ui_textures/interface/stats/branches/branch_three/branch_three0081.png" id="5_bgrgj"]
+[ext_resource type="Texture2D" uid="uid://fcq8xur3nh5" path="res://assets/textures/ui_textures/interface/stats/mana/Mana0000.png" id="4_svxl1"]
+[ext_resource type="Texture2D" uid="uid://dgda0rtm1hci8" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0020.png" id="5_55ayf"]
+[ext_resource type="Texture2D" uid="uid://bostptls3iaya" path="res://assets/textures/ui_textures/interface/stats/branches/branch_three/branch_three0000.png" id="9_i6shg"]
 
 [node name="UserStats" type="Control"]
 layout_mode = 3
@@ -35,66 +37,284 @@ theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 30
 script = ExtResource("1_55ayf")
 
-[node name="health" type="MarginContainer" parent="main/VBoxContainer/stats"]
+[node name="player_stats" type="VBoxContainer" parent="main/VBoxContainer/stats"]
+layout_mode = 2
+
+[node name="health" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats"]
 custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 theme_override_constants/margin_left = 155
 
-[node name="health_bar" type="HBoxContainer" parent="main/VBoxContainer/stats/health"]
+[node name="health_bar" type="HBoxContainer" parent="main/VBoxContainer/stats/player_stats/health"]
 layout_mode = 2
 theme_override_constants/separation = -17
 
-[node name="leaf_one" type="MarginContainer" parent="main/VBoxContainer/stats/health/health_bar"]
+[node name="leaf_one" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/health/health_bar"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = -85
 
-[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/health/health_bar/leaf_one"]
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/health/health_bar/leaf_one"]
 layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/health/health_bar/leaf_one/pivot_bl"]
+layout_mode = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 60.0
+pivot_offset = Vector2(0, 85)
 texture = ExtResource("2_bgrgj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="leaf_two" type="MarginContainer" parent="main/VBoxContainer/stats/health/health_bar"]
+[node name="leaf_two" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/health/health_bar"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = -90
 
-[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/health/health_bar/leaf_two"]
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/health/health_bar/leaf_two"]
 layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/health/health_bar/leaf_two/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 90.0
+pivot_offset = Vector2(0, 90)
 texture = ExtResource("2_bgrgj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="leaf_three" type="MarginContainer" parent="main/VBoxContainer/stats/health/health_bar"]
+[node name="leaf_three" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/health/health_bar"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = -90
 
-[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/health/health_bar/leaf_three"]
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/health/health_bar/leaf_three"]
 layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/health/health_bar/leaf_three/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 90.0
+pivot_offset = Vector2(0, 90)
 texture = ExtResource("2_bgrgj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="leaf_four" type="MarginContainer" parent="main/VBoxContainer/stats/health/health_bar"]
+[node name="leaf_four" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/health/health_bar"]
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = -75
 
-[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/health/health_bar/leaf_four"]
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/health/health_bar/leaf_four"]
 layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/health/health_bar/leaf_four/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 75.0
+pivot_offset = Vector2(0, 75)
 texture = ExtResource("2_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="stamina" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 155
+
+[node name="stamina_bar" type="HBoxContainer" parent="main/VBoxContainer/stats/player_stats/stamina"]
+layout_mode = 2
+
+[node name="berry_one" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar"]
+custom_minimum_size = Vector2(30, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_bottom = 70
+
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar/berry_one"]
+layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar/berry_one/pivot_bl"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 60.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(0, 85)
+texture = ExtResource("3_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="berry_two" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = -125
+
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar/berry_two"]
+layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar/berry_two/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 90.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(0, 90)
+texture = ExtResource("3_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="berry_three" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = -117
+
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar/berry_three"]
+layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar/berry_three/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 90.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(0, 90)
+texture = ExtResource("3_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="berry_four" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = -107
+
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar/berry_four"]
+layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/stamina/stamina_bar/berry_four/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 75.0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(0, 75)
+texture = ExtResource("3_bgrgj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="mana" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_constants/margin_left = 155
+
+[node name="mana_bar" type="HBoxContainer" parent="main/VBoxContainer/stats/player_stats/mana"]
+layout_mode = 2
+
+[node name="crystal_one" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar"]
+custom_minimum_size = Vector2(30, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = -15
+theme_override_constants/margin_bottom = 85
+
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar/crystal_one"]
+layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar/crystal_one/pivot_bl"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -85.0
+offset_right = 60.0
+pivot_offset = Vector2(0, 85)
+texture = ExtResource("4_svxl1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="crystal_two" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = -132
+
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar/crystal_two"]
+layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar/crystal_two/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 90.0
+pivot_offset = Vector2(0, 90)
+texture = ExtResource("4_svxl1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="crystal_three" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = -132
+
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar/crystal_three"]
+layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar/crystal_three/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 90.0
+pivot_offset = Vector2(0, 90)
+texture = ExtResource("4_svxl1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="crystal_four" type="MarginContainer" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar"]
+custom_minimum_size = Vector2(60, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = -117
+
+[node name="pivot_bl" type="Control" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar/crystal_four"]
+layout_mode = 2
+
+[node name="texture" type="TextureRect" parent="main/VBoxContainer/stats/player_stats/mana/mana_bar/crystal_four/pivot_bl"]
+layout_mode = 2
+offset_right = 60.0
+offset_bottom = 75.0
+pivot_offset = Vector2(0, 75)
+texture = ExtResource("4_svxl1")
 expand_mode = 1
 stretch_mode = 5
 
@@ -112,7 +332,7 @@ expand_mode = 3
 
 [node name="branch_one_full" type="TextureRect" parent="main/VBoxContainer/stats/branches"]
 layout_mode = 2
-texture = ExtResource("2_2ukyj")
+texture = ExtResource("5_55ayf")
 expand_mode = 3
 
 [node name="branch_two" type="TextureRect" parent="main/VBoxContainer/stats/branches"]
@@ -122,7 +342,7 @@ expand_mode = 3
 
 [node name="branch_three" type="TextureRect" parent="main/VBoxContainer/stats/branches"]
 layout_mode = 2
-texture = ExtResource("5_bgrgj")
+texture = ExtResource("9_i6shg")
 expand_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="main/VBoxContainer"]
@@ -158,14 +378,34 @@ text = "DamagePlayerOne"
 layout_mode = 2
 text = "DamagePlayerFive"
 
+[node name="Button8" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stamina -1"
+
+[node name="Button9" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mana -1"
+
 [node name="Button7" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "HealPlayerFive"
 
+[node name="Button10" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stamina +1"
+
+[node name="Button11" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mana +1"
+
 [connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button" to="main/VBoxContainer/stats/branches" method="_on_menu_toggle"]
 [connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button2" to="main/VBoxContainer/stats/branches" method="_on_stamina_toggle"]
 [connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button3" to="main/VBoxContainer/stats/branches" method="_on_mana_toggle"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button4" to="main/VBoxContainer/stats/branches" method="_on_second_weapon_toggle"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button4" to="main/VBoxContainer/stats/branches" method="_on_weapon_two_toggle"]
 [connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button5" to="main/VBoxContainer/stats" method="_on_payer_damaged_one"]
 [connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button6" to="main/VBoxContainer/stats" method="_on_payer_damaged_five"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button8" to="main/VBoxContainer/stats" method="_on_player_stamina_damaged_five"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button9" to="main/VBoxContainer/stats" method="_on_player_mana_damaged_five"]
 [connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button7" to="main/VBoxContainer/stats" method="_on_payer_heal"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button10" to="main/VBoxContainer/stats" method="_on_player_stamina_regain"]
+[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button11" to="main/VBoxContainer/stats" method="_on_player_mana_regain"]
