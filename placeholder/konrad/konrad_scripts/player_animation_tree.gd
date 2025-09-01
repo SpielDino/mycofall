@@ -15,7 +15,7 @@ var is_sneaking = false
 @onready var state_machine_playback: AnimationNodeStateMachinePlayback = self.get("parameters/StateMachine/playback")
 @onready var player_controller = $"../../.."
 @onready var front_pointer = $"../../FrontPointer"
-@onready var stamina_cost_per_dash = settings.stamina_cost_per_dash
+@onready var stamina_cost_per_dodge = settings.stamina_cost_per_dodge
 @onready var max_stamina = settings.max_stamina
 
 func _physics_process(delta: float) -> void:
@@ -152,7 +152,7 @@ func calc_dash_timer(delta):
 		dash_timer -= delta
 
 func calc_dash():
-	if (settings.stamina >= stamina_cost_per_dash and settings.stamina <= max_stamina):
+	if (settings.stamina >= stamina_cost_per_dodge and settings.stamina <= max_stamina):
 		dash = true
-	elif (settings.stamina >= 0 and settings.stamina <= stamina_cost_per_dash):
+	elif (settings.stamina >= 0 and settings.stamina <= stamina_cost_per_dodge):
 		dash = false

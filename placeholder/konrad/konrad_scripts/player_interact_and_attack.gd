@@ -30,32 +30,23 @@ extends RayCast3D
 @export_category("Weapons")
 @export_subgroup("Right Hand")
 # ------- Main Hand -------
-#@onready var sword_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Sword"
 @export var sword_main: Area3D
 @export var shield_main: Node3D
 @export var staff_main: Node3D
 @export var bow_main: Node3D
-#@onready var shield_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Shield"
-#@onready var bow_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Bow"
-#@onready var staff_main = $"../Player/Armature/Skeleton3D/RightWeaponHand/Staff"
 
 @export_subgroup("Left Hand")
 # ------- Offhand -------
 @export var shield_offhand: Node3D
-#@onready var shield_offhand = $"../Player/Armature/Skeleton3D/LeftWeaponHand/Shield"
 @export var bow_offhand: Node3D
-#@onready var bow_offhand = $"../Player/Armature/Skeleton3D/LeftWeaponHand/Bow"
 
 @export_subgroup("Back")
 # ------- Back -------
 @export var sword_back: Area3D
-#@onready var sword_back = $"../Player/Armature/Skeleton3D/BackWeapon/Sword"
 @export var shield_back: Node3D
-#@onready var shield_back = $"../Player/Armature/Skeleton3D/BackWeapon/Shield"
 @export var bow_back: Node3D
-#@onready var bow_back = $"../Player/Armature/Skeleton3D/BackWeapon/Bow"
 @export var staff_back: Node3D
-#@onready var staff_back = $"../Player/Armature/Skeleton3D/BackWeapon/Staff"
+
 
 var sword_name = "Sword"
 var shield_name = "Shield"

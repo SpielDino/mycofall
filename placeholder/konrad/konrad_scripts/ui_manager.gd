@@ -75,7 +75,8 @@ func get_controller_type():
 
 # future changes - generic also to keyboard
 func get_controller_input_key(action: String, controller_connected: bool) -> String:
-	return button_mappings[current_controller.to_lower()][action.to_lower()]
+	return "Press Button HIHI XD"
+	#return button_mappings[current_controller.to_lower()][action.to_lower()]
 
 func toggle_display_text(sign_name: String, text_displayed: bool):
 	if !can_toggle_display:

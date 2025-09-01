@@ -44,7 +44,6 @@ transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014
 [node name="Player" parent="WorldEnvironment" instance=ExtResource("2_3xeft")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49418, 0)
 rotation_type = "rotate based on second input"
-dash_type = "dash with stamina"
 shield_radius_protection = 120.0
 
 [editable path="WorldEnvironment/Player"]

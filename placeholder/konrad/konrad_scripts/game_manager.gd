@@ -13,7 +13,8 @@ var bow_attack_timer: float
 var attack_loading_value: float = bow_attack_timer
 var is_attacking: bool = false
 var is_blocking: bool = false
-var is_dashing: bool = false
+var having_i_frames: bool = false
+var is_dodging: bool = false
 
 func get_weapon_in_hand():
 	return weapon_in_hand
@@ -73,11 +74,17 @@ func set_is_blocking(check):
 	is_blocking = check
 	GameManager.blocks.emit()
 	
-func get_is_dashing():
-	return is_dashing
+func get_having_i_frames():
+	return having_i_frames
 
-func set_is_dashing(check):
-	is_dashing = check
+func set_having_i_frames(check):
+	having_i_frames = check
+	
+func get_is_dodging():
+	return is_dodging
+
+func set_is_dodging(check):
+	is_dodging = check
 
 func weapons_updated():
 	weapons_changed.emit()

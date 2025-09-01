@@ -2,6 +2,7 @@ extends CharacterBody3D
 
 @export_category("Components")
 @export var player_shape: CollisionShape3D
+@export var dodge_indicator: MeshInstance3D
 
 var speed
 var acceleration 
@@ -9,30 +10,36 @@ var friction
 #@onready var sensitivity: float = settings.sensitivity
 var rotation_type: String 
 var lock_active: bool
-var dash_strength: int 
-var dash_max_cooldown: float 
 var max_stamina: int 
 var stamina_per_second: int
-var stamina_cost_per_dash: int
-var dash_type: String
-var no_stamina_after_dash_time: float
+var stamina_cost_per_dodge: int
+var no_stamina_after_dodge_time: float
+var dodge_duration: float
+var dodge_distance: float
+var dodge_speed: float
+var dodge_strength_multiplier_shield: float
+var dodge_strength_multiplier_bow: float
+var dodge_strength_multiplier_staff: float
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var temprotation = 0
-var dash_cooldown: float = 0
 var mouse_mode: bool = false
 var mouse_timer: float = 0
 var player: Node3D
 var lock = false
 var sneak_toggle = false
 
-var dash_timer: float = 0.5
-var max_dash_timer: float = 0.5
-var is_dashing = false
-var different_dash_strength: int
-var dash_strength_multiplier_shield: float = 0.6
-var dash_strength_multiplier_bow: float = 0.9
-var dash_strength_multiplier_staff: float = 0.8
+var i_frame_timer: float
+var max_i_frame_timer: float
+var having_i_frames = false
+var dodge_direction: Vector3 = Vector3.ZERO
+var dodge_timer: float = 0.0
+var is_dodging: bool = false
+
+var sword_name = "Sword"
+var shield_name = "Shield"
+var staff_name = "Staff"
+var bow_name = "Bow"
 
 @onready var spring_arm = $CameraArm
 
@@ -44,98 +51,109 @@ func _ready():
 	#@onready var sensitivity: float = settings.sensitivity
 	rotation_type = player.rotation_type
 	lock_active = player.lock_active
-	dash_strength = player.dash_strength
-	dash_max_cooldown = player.dash_max_cooldown
 	max_stamina = player.max_stamina
 	stamina_per_second = player.stamina_per_second
-	stamina_cost_per_dash = player.stamina_cost_per_dash
-	dash_type = player.dash_type
-	no_stamina_after_dash_time = player.no_stamina_after_dash_time
+	stamina_cost_per_dodge = player.stamina_cost_per_dodge
+	no_stamina_after_dodge_time = player.no_stamina_after_dodge_time
+	dodge_duration = player.dodge_duration
+	dodge_distance = player.dodge_distance
+	max_i_frame_timer = player.max_i_frame_timer
+	i_frame_timer = player.i_frame_timer
+	dodge_strength_multiplier_shield = player.dodge_strength_multiplier_shield
+	dodge_strength_multiplier_bow = player.dodge_strength_multiplier_bow
+	dodge_strength_multiplier_staff = player.dodge_strength_multiplier_staff
 
-func _physics_process(delta):	
+
+func _physics_process(delta):
 	apply_gravity(delta)
-	get_move_input(delta)
-	move_and_slide()
-	rotate_player()
-	dash(delta)
-	block()
-	dash_timer_calc(delta)
+	
+	if is_dodging:
+		process_dodge(delta)
+		i_frame_timer_calc(delta)
+	else:
+		get_move_input(delta)
+		move_and_slide()
+		rotate_player()
+		block()
+		dodge_with_stamina()
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		if event.velocity.x > 0 or event.velocity.y > 0:
 			mouse_mode = true
 
-func dash(delta):
-	match dash_type:
-		"dash with cooldown":
-			dash_with_cooldown(delta)
-		"dash with stamina":
-			dash_with_stamina(delta)
 
-func dash_with_cooldown(delta):
-	if Input.is_action_just_pressed("dash") and dash_cooldown <= 0:
-		dash_ability(delta)
-		dash_cooldown = dash_max_cooldown
-	if dash_cooldown >= 0:
-		dash_cooldown = dash_cooldown - delta
-
-func dash_with_stamina(delta):
-	if Input.is_action_just_pressed("dash") and player.stamina >= stamina_cost_per_dash and !is_dashing:
-		dash_ability(delta)
-		player.reduce_stamina(stamina_cost_per_dash)
+func dodge_with_stamina():
+	if Input.is_action_just_pressed("dash") and player.stamina >= stamina_cost_per_dodge:
+		dodge_ability()
+		player.reduce_stamina(stamina_cost_per_dodge)
 		#$PlayerAudio/DashSFX.play()
-		is_dashing = true
-		dash_timer = max_dash_timer
-		GameManager.set_is_dashing(is_dashing)
-	elif Input.is_action_just_pressed("dash") and player.stamina <= stamina_cost_per_dash:
+		having_i_frames = true
+		i_frame_timer = max_i_frame_timer
+		GameManager.set_having_i_frames(having_i_frames)
+	elif Input.is_action_just_pressed("dash") and player.stamina <= stamina_cost_per_dodge:
 		#$PlayerAudio/NoStaminaSFX.play()
 		pass
 
-func dash_timer_calc(delta):
-	if dash_timer > 0 and is_dashing:
-		dash_timer = dash_timer - delta
-	elif dash_timer <= 0 and is_dashing:
-		is_dashing = false
-		GameManager.set_is_dashing(is_dashing)
+func i_frame_timer_calc(delta):
+	if i_frame_timer > 0 and having_i_frames:
+		i_frame_timer = i_frame_timer - delta
+	elif i_frame_timer <= 0 and having_i_frames:
+		having_i_frames = false
+		GameManager.set_having_i_frames(having_i_frames)
 
-func dash_ability(delta):
-	var vy = velocity.y
-	velocity.y = 0
+func dodge_ability():
 	var input = Input.get_vector("left", "right", "forward", "backward").normalized()
-	var direction = Vector3(input.x, 0, input.y).rotated(Vector3.UP, spring_arm.rotation.y)
-	different_dash_strength = dash_strength
-	match GameManager.get_first_weapon():
-		"Sword":
-			if GameManager.get_second_weapon() == "Shield":
-				different_dash_strength = dash_strength * dash_strength_multiplier_shield
-		"Bow":
-			different_dash_strength = dash_strength * dash_strength_multiplier_bow
-		"Staff":
-			different_dash_strength = dash_strength * dash_strength_multiplier_staff
-		"Shield":
-			different_dash_strength = dash_strength * dash_strength_multiplier_shield
-	#velocity = lerp(velocity, direction * dash_strength, acceleration * delta)
-	velocity = lerp(velocity, direction * different_dash_strength, acceleration * delta)
-	velocity.y = vy
-	player.set_stamina_regen_cooldown(no_stamina_after_dash_time)
+	if input == Vector2.ZERO:
+		dodge_direction = -player_shape.global_transform.basis.z.normalized()
+	else:
+		dodge_direction = Vector3(input.x, 0, input.y).rotated(Vector3.UP, spring_arm.rotation.y).normalized()
+	
+	is_dodging = true
+	GameManager.set_is_dodging(is_dodging)
+	dodge_timer = dodge_duration
+	
+	player.set_stamina_regen_cooldown(no_stamina_after_dodge_time)
 	if player.is_detected:
 		PlayerActionTracker.times_dodged_in_combat += 1
+	dodge_indicator.visible = true
+
+#var how_long_dash_timer = 0
+
+func process_dodge(delta):
+	if dodge_timer > 0:
+		dodge_timer -= delta
+		#how_long_dash_timer += delta
+		# fixed speed to travel the distance in the set duration
+		dodge_speed = dodge_distance / dodge_duration
+		match GameManager.get_first_weapon():
+			sword_name:
+				if GameManager.get_second_weapon() == shield_name:
+					dodge_speed = dodge_speed * dodge_strength_multiplier_shield
+			staff_name:
+				dodge_speed = dodge_speed * dodge_strength_multiplier_staff
+			bow_name:
+				dodge_speed = dodge_speed * dodge_strength_multiplier_bow
+			shield_name:
+				dodge_speed = dodge_speed * dodge_strength_multiplier_shield
+		velocity = dodge_direction * dodge_speed
+		move_and_slide()
+	else:
+		#print(how_long_dash_timer)
+		is_dodging = false
+		GameManager.set_is_dodging(is_dodging)
+		velocity = Vector3.ZERO
+		dodge_indicator.visible = false
+		#how_long_dash_timer = 0
 
 func block():
 	if Input.is_action_pressed("block"):
-		#if check_for_equipped_shield():
-		#print("blocking")
 		player.is_blocking = true
 		GameManager.set_is_blocking(true)
 	if Input.is_action_just_released("block"):
-		#print("not blocking")
 		player.is_blocking = false
 		GameManager.set_is_blocking(false)
 		
-
-func check_for_equipped_shield():
-	return true
 
 func rotate_player():
 	match rotation_type:

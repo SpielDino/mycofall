@@ -6,22 +6,27 @@ signal mana_changed
 
 @export_category("Actions")
 @export_subgroup("Walking")
-@export var speed = 5.0
-@export var acceleration = 4.0
+@export var speed = 6.0
+@export var acceleration = 20.0
 ##0 = No slowdown, 1 = Instant slowdown when the input ends
-@export_range(0, 1) var friction: float = 0
+@export_range(0, 1) var friction: float = 0.7
 #@export_range(0, 1) var sensitivity: float = 1 #Currently not used
 @export_subgroup("Looking")
 @export_enum("rotate based on last movement", "rotate based on second input") var rotation_type: String = "rotate based on last movement"
 ##If player keep rotation if lock input key is pressed
 @export var lock_active: bool = true #
 
-@export_subgroup("Dash")
-@export_enum("dash with cooldown","dash with stamina") var dash_type: String = "dash with cooldown"
-@export var stamina_cost_per_dash: int = 50
-@export var dash_strength: int = 200
-@export var dash_max_cooldown: float = 3
-@export var no_stamina_after_dash_time: float = 1
+@export_subgroup("Dodge")
+@export var stamina_cost_per_dodge: int = 50
+@export var dodge_distance: float = 5.0     
+@export var dodge_duration: float = 0.3     
+@export var no_stamina_after_dodge_time: float = 1
+@export var dodge_strength_multiplier_shield: float = 0.6
+@export var dodge_strength_multiplier_bow: float = 0.8
+@export var dodge_strength_multiplier_staff: float = 0.7
+@export_subgroup("I-Frames")
+@export var i_frame_timer: float = 0.3
+@export var max_i_frame_timer: float = 0.3
 @export_subgroup("Sneak")
 @export var sneak_speed_modifier: float = 2
 @export_subgroup("Blocking")
@@ -175,7 +180,7 @@ func break_block():
 	print("Block was broken from attack")
 
 func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifier):
-	if GameManager.get_is_dashing():
+	if GameManager.get_having_i_frames():
 		pass
 	else:
 		health_regen_delay = 2

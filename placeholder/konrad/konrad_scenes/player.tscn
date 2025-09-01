@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://bnyfrlfrn4h4w"]
+[gd_scene load_steps=89 format=3 uid="uid://bnyfrlfrn4h4w"]
 
 [ext_resource type="PackedScene" uid="uid://crhbf5h33h20p" path="res://assets/models/player/new_player_model.blend" id="1_6l3bt"]
 [ext_resource type="PackedScene" uid="uid://i40hh252nalo" path="res://placeholder/konrad/konrad_scenes/interact_ray_cast.tscn" id="1_7bqlq"]
@@ -99,7 +99,7 @@ animation = &"Dodge_Forward"
 use_custom_timeline = true
 timeline_length = 0.7
 stretch_time_scale = true
-start_offset = 0.0
+start_offset = 0.2
 loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_unxwf"]
@@ -126,7 +126,7 @@ animation = &"Dodge_Forward"
 use_custom_timeline = true
 timeline_length = 0.7
 stretch_time_scale = true
-start_offset = 0.0
+start_offset = 0.2
 loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wphcr"]
@@ -274,7 +274,7 @@ states/Start/position = Vector2(159, 100)
 states/Walking/node = SubResource("AnimationNodeBlendSpace2D_0fs2y")
 states/Walking/position = Vector2(379, 118)
 transitions = ["Walking", "Dashing", SubResource("AnimationNodeStateMachineTransition_wphcr"), "Dashing", "Walking", SubResource("AnimationNodeStateMachineTransition_and0b"), "Walking", "Sneaking", SubResource("AnimationNodeStateMachineTransition_405c5"), "Sneaking", "Walking", SubResource("AnimationNodeStateMachineTransition_i3mxk"), "Dashing2", "Walking", SubResource("AnimationNodeStateMachineTransition_evqxc"), "Walking", "Dashing2", SubResource("AnimationNodeStateMachineTransition_6gc6r"), "Dashing2", "Dashing", SubResource("AnimationNodeStateMachineTransition_juxdh"), "Dashing", "Dashing2", SubResource("AnimationNodeStateMachineTransition_4qbli"), "Sneaking", "Dashing3", SubResource("AnimationNodeStateMachineTransition_ob8dk"), "Dashing3", "Dashing4", SubResource("AnimationNodeStateMachineTransition_faewp"), "Dashing4", "Dashing3", SubResource("AnimationNodeStateMachineTransition_da5es"), "Dashing4", "Sneaking", SubResource("AnimationNodeStateMachineTransition_375py"), "Sneaking", "Dashing4", SubResource("AnimationNodeStateMachineTransition_3rsih"), "Dashing3", "Sneaking", SubResource("AnimationNodeStateMachineTransition_6qop4")]
-graph_offset = Vector2(-23, -28)
+graph_offset = Vector2(-109, 114)
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6gc6r"]
 
@@ -314,7 +314,7 @@ filter_enabled = true
 filters = ["Armature/Skeleton3D:Brust", "Armature/Skeleton3D:Hals", "Armature/Skeleton3D:Hand1.L", "Armature/Skeleton3D:Hand1.R", "Armature/Skeleton3D:Hand2.L", "Armature/Skeleton3D:Hand2.R", "Armature/Skeleton3D:Hand3.L", "Armature/Skeleton3D:Hand3.R", "Armature/Skeleton3D:Kopf", "Armature/Skeleton3D:Oberarm.L", "Armature/Skeleton3D:Oberarm.R", "Armature/Skeleton3D:Unterarm.L", "Armature/Skeleton3D:Unterarm.R"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-1063.56, 17.221)
+graph_offset = Vector2(-1020.28, 40.324)
 nodes/Aim/node = SubResource("AnimationNodeAnimation_i3mxk")
 nodes/Aim/position = Vector2(-140, 1140)
 nodes/AimTimeSeek/node = SubResource("AnimationNodeTimeSeek_ms580")
@@ -380,15 +380,18 @@ nodes/WalkStaffBlend/position = Vector2(1080, 1140)
 nodes/output/position = Vector2(2360, 1300)
 node_connections = [&"AimTimeSeek", 0, &"Aim", &"BlockTimeSeek", 0, &"Block", &"Bow", 0, &"AimTimeSeek", &"Bow", 1, &"ShootTimeSeek", &"OffhandBlockTimeSeek", 0, &"OffhandShieldBlock", &"ShootTimeSeek", 0, &"Shoot", &"StaffTimeSeek", 0, &"Staff", &"StaffTimeSeek2", 0, &"Staff2", &"Sword", 0, &"SwordTimeSeek", &"Sword", 1, &"SwordTimeSeek2", &"Sword2", 0, &"Sword2TimeSeek", &"Sword2", 1, &"Sword2TimeSeek2", &"Sword2TimeSeek", 0, &"Melee3", &"Sword2TimeSeek2", 0, &"Melee4", &"SwordTimeSeek", 0, &"Melee1", &"SwordTimeSeek2", 0, &"Melee2", &"WalkBlockBlend", 0, &"WalkOffhandBlockBlend", &"WalkBlockBlend", 1, &"BlockTimeSeek", &"WalkMeleeBlend", 0, &"WalkOrMeleeBlend", &"WalkMeleeBlend", 1, &"Sword2", &"WalkOffhandBlockBlend", 0, &"WalkStaffBlend", &"WalkOffhandBlockBlend", 1, &"OffhandBlockTimeSeek", &"WalkOrBowBlend", 0, &"WalkMeleeBlend", &"WalkOrBowBlend", 1, &"Bow", &"WalkOrMeleeBlend", 0, &"StateMachine", &"WalkOrMeleeBlend", 1, &"Sword", &"WalkOrStaffBlend", 0, &"WalkOrBowBlend", &"WalkOrStaffBlend", 1, &"StaffTimeSeek", &"WalkStaffBlend", 0, &"WalkOrStaffBlend", &"WalkStaffBlend", 1, &"StaffTimeSeek2", &"output", 0, &"WalkBlockBlend"]
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_gm3ih"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ffkv0"]
 
 [node name="Player" type="Node3D" groups=["Player"]]
 script = ExtResource("1_ko21d")
 camera_follow_speed = 0.08
 
-[node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape") groups=["Player"]]
+[node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator") groups=["Player"]]
 script = ExtResource("1_ffkv0")
 player_shape = NodePath("Model")
+dodge_indicator = NodePath("Model/DodgeIndicator")
 
 [node name="Model" type="CollisionShape3D" parent="Controller" groups=["Player"]]
 shape = SubResource("CapsuleShape3D_cxhtl")
@@ -485,7 +488,7 @@ parameters/OffhandBlockTimeSeek/seek_request = -1.0
 parameters/ShootTimeSeek/seek_request = -1.0
 parameters/StaffTimeSeek/seek_request = -1.0
 parameters/StaffTimeSeek2/seek_request = -1.0
-parameters/StateMachine/Dashing/blend_position = Vector2(0.000823021, -1)
+parameters/StateMachine/Dashing/blend_position = Vector2(-0.00280112, -0.991379)
 parameters/StateMachine/Dashing2/blend_position = Vector2(-0.000823021, -0.990868)
 parameters/StateMachine/Dashing3/blend_position = 1.0
 parameters/StateMachine/Dashing4/blend_position = 0.035404
@@ -504,6 +507,11 @@ parameters/WalkOrMeleeBlend/blend_amount = 0.0
 parameters/WalkOrStaffBlend/blend_amount = 0.0
 parameters/WalkStaffBlend/blend_amount = 0.0
 script = ExtResource("2_7bqlq")
+
+[node name="DodgeIndicator" type="MeshInstance3D" parent="Controller/Model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15368, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_gm3ih")
 
 [node name="CameraArm" type="SpringArm3D" parent="Controller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
