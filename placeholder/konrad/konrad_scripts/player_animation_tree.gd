@@ -32,7 +32,7 @@ func movement_animation():
 	if Input.is_action_just_pressed("sneak") and !is_sneaking:
 		is_sneaking = true
 		state_machine_playback.travel("Sneaking")
-	elif Input.is_action_just_pressed("dash") and dash and is_sneaking:
+	elif Input.is_action_just_pressed("dodge") and dash and is_sneaking:
 		if dash_count2 == 0:
 			state_machine_playback.travel("Dashing3")
 			
@@ -79,7 +79,7 @@ func movement_animation():
 		is_sneaking = false
 		state_machine_playback.travel("Walking")
 	
-	elif Input.is_action_just_pressed("dash") and dash and !is_sneaking:
+	elif Input.is_action_just_pressed("dodge") and dash and !is_sneaking:
 		if dash_count == 0:
 			state_machine_playback.travel("Dashing")
 			

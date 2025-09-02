@@ -20,7 +20,7 @@ func _ready():
 	player = GlobalPlayer.get_player()
 
 func _physics_process(delta):
-	input.text = str(Input.get_vector("left", "right", "forward", "backward"))
+	input.text = str(Input.get_vector("move_left", "move_right", "move_forward", "move_backward"))
 	xyz.text = "(" + str(round_to_2(controller.transform.origin.x)) + ", " + str(round_to_2(controller.transform.origin.y)) + ", " + str(round_to_2(controller.transform.origin.z)) + ")"
 	speed.text = "(" + str(round_to_2(controller.velocity.x)) + ", " + str(round_to_2(controller.velocity.y)) + ", " + str(round_to_2(controller.velocity.z)) + ")"
 	sneaking.text = str(player.is_sneaking)
