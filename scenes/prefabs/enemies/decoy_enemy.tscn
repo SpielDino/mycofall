@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3q7riq5ay6me"]
+[gd_scene load_steps=8 format=3 uid="uid://c3q7riq5ay6me"]
 
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_nrhsp"]
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="2_44n3r"]
 [ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="3_kh01o"]
 [ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_jkl21"]
 [ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_frirj"]
+[ext_resource type="PackedScene" uid="uid://ddkwdun0iapae" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_slow_attack_component.tscn" id="6_jkl21"]
+[ext_resource type="PackedScene" uid="uid://bnkfj88svmbux" path="res://assets/models/enemies/spider_enemy/spider_enemy.blend" id="6_kh01o"]
 
 [node name="DecoyEnemy" type="CharacterBody3D"]
 script = ExtResource("1_nrhsp")
@@ -16,3 +18,10 @@ script = ExtResource("1_nrhsp")
 [node name="ParticleComponent" parent="." instance=ExtResource("4_jkl21")]
 
 [node name="SoundComponent" parent="." instance=ExtResource("5_frirj")]
+
+[node name="EnemySlowAttackComponent" parent="." instance=ExtResource("6_jkl21")]
+
+[node name="Model" parent="." instance=ExtResource("6_kh01o")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]

@@ -3,12 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://5gt4y7ewiqtm"
-valid=false
+uid="uid://c2njctlmqd1bv"
+path="res://.godot/imported/ram_enemy.blend-db708316ae5028cac17b4141737cd9cf.scn"
 
 [deps]
 
-source_file="res://assets/models/weapons/holz_bogen.blend"
+source_file="res://assets/models/enemies/charge_enemy/ram_enemy.blend"
+dest_files=["res://.godot/imported/ram_enemy.blend-db708316ae5028cac17b4141737cd9cf.scn"]
 
 [params]
 

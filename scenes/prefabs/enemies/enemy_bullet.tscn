@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://7n0dxdf43jki"]
 
-[ext_resource type="Script" uid="uid://ckxe41r5558le" path="res://Scripts/Enemy Scripts/EnemyBullet.gd" id="1_26jo2"]
-[ext_resource type="Texture2D" uid="uid://cbu02u0njv72o" path="res://Assets/Kenney Particles Transparent Background/smoke_07.png" id="2_l2msq"]
+[ext_resource type="Script" uid="uid://cf55buory6tsq" path="res://scripts/enemies/enemy_bullet.gd" id="1_26jo2"]
+[ext_resource type="Texture2D" uid="uid://cbu02u0njv72o" path="res://assets/textures/Kenney Particles Transparent Background/smoke_07.png" id="2_l2msq"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_k711p"]
 radius = 0.2

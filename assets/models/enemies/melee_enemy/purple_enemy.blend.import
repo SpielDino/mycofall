@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://dl0b8wl8o6knn"
-path="res://.godot/imported/purple_enemy.blend-4e98c91e8e03956904401275bed0f8c2.scn"
+path="res://.godot/imported/purple_enemy.blend-ca7b97d5f994f7d4ae0b45731a706167.scn"
 
 [deps]
 
-source_file="res://assets/models/enemies/purple_mushroom_enemy/purple_enemy.blend"
-dest_files=["res://.godot/imported/purple_enemy.blend-4e98c91e8e03956904401275bed0f8c2.scn"]
+source_file="res://assets/models/enemies/melee_enemy/purple_enemy.blend"
+dest_files=["res://.godot/imported/purple_enemy.blend-ca7b97d5f994f7d4ae0b45731a706167.scn"]
 
 [params]
 

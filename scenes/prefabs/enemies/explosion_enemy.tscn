@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bscovpt7jdhyu"]
+[gd_scene load_steps=9 format=3 uid="uid://bscovpt7jdhyu"]
 
 [ext_resource type="PackedScene" uid="uid://bms0j18pli3eq" path="res://assets/models/enemies/explosion_enemy/Roller2.blend" id="1_2pltl"]
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_f8il8"]
@@ -6,6 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="3_wfkd4"]
 [ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_y4dku"]
 [ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_i8y0w"]
+[ext_resource type="PackedScene" uid="uid://b8sxotknjgsqi" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_explosion_attack_component.tscn" id="6_y4dku"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i8y0w"]
+radius = 0.439949
 
 [node name="ExplosionEnemy" type="CharacterBody3D"]
 script = ExtResource("1_f8il8")
@@ -17,6 +21,8 @@ script = ExtResource("1_f8il8")
 [node name="ParticleComponent" parent="." instance=ExtResource("4_y4dku")]
 
 [node name="SoundComponent" parent="." instance=ExtResource("5_i8y0w")]
+
+[node name="EnemyExplosionAttackComponent" parent="." instance=ExtResource("6_y4dku")]
 
 [node name="Model" parent="." instance=ExtResource("1_2pltl")]
 
@@ -43,5 +49,9 @@ transform = Transform3D(0.984812, 0.172965, -0.0150834, -0.172805, 0.984891, 0.0
 
 [node name="Sphere_002" parent="Model/Armature/Skeleton3D" index="7"]
 transform = Transform3D(0.984812, 0.172965, -0.0150834, -0.172805, 0.984891, 0.0113287, 0.016815, -0.00855018, 0.999822, -0.10615, 0.0740848, -0.00244084)
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0329404, 0)
+shape = SubResource("SphereShape3D_i8y0w")
 
 [editable path="Model"]

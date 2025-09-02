@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cxo6bubwi2772"
-path.s3tc="res://.godot/imported/purple-mushroom-body.png-fdcf200f4e55d8dd36233c8dd3dea109.s3tc.ctex"
+path.s3tc="res://.godot/imported/purple-mushroom-body.png-ea4c6fa2866ef5123773e66279e69030.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/models/enemies/purple_mushroom_enemy/purple-mushroom-body.png"
-dest_files=["res://.godot/imported/purple-mushroom-body.png-fdcf200f4e55d8dd36233c8dd3dea109.s3tc.ctex"]
+source_file="res://assets/models/enemies/melee_enemy/purple-mushroom-body.png"
+dest_files=["res://.godot/imported/purple-mushroom-body.png-ea4c6fa2866ef5123773e66279e69030.s3tc.ctex"]
 
 [params]
 

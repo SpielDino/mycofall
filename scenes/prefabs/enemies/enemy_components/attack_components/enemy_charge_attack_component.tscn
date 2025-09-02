@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://ceh3efrojhnkb"]
+
+[node name="EnemyChargeAttackComponent" type="Node3D"]

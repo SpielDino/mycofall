@@ -58,6 +58,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72402, 0.0318675, 1.96075)
 [editable path="MeleeEnemy"]
 [editable path="MeleeEnemy/MovementComponent"]
 [editable path="MeleeEnemy/EnemyMeleeAttackComponent"]
-[editable path="MeleeEnemy/Model"]
 [editable path="EnokiEnemy"]
-[editable path="EnokiEnemy/Model"]
