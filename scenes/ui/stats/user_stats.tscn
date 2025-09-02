@@ -28,60 +28,6 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="main"]
 layout_mode = 2
-size_flags_vertical = 8
-
-[node name="MarginContainer" type="MarginContainer" parent="main/VBoxContainer"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="main/VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Menu"
-
-[node name="Button2" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Stamina"
-
-[node name="Button3" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Mana"
-
-[node name="Button4" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "WeaponTwo"
-
-[node name="Button5" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "DamagePlayerOne"
-
-[node name="Button6" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "DamagePlayerFive"
-
-[node name="Button8" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Stamina -1"
-
-[node name="Button9" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Mana -1"
-
-[node name="Button7" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "HealPlayerFive"
-
-[node name="Button10" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Stamina +1"
-
-[node name="Button11" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Mana +1"
 
 [node name="stats" type="MarginContainer" parent="main/VBoxContainer"]
 layout_mode = 2
@@ -398,6 +344,59 @@ expand_mode = 3
 layout_mode = 2
 texture = ExtResource("9_12t6a")
 expand_mode = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="main/VBoxContainer"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="main/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="Button2" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stamina"
+
+[node name="Button3" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mana"
+
+[node name="Button4" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "WeaponTwo"
+
+[node name="Button5" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DamagePlayerOne"
+
+[node name="Button6" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "DamagePlayerFive"
+
+[node name="Button8" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stamina -1"
+
+[node name="Button9" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mana -1"
+
+[node name="Button7" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "HealPlayerFive"
+
+[node name="Button10" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Stamina +1"
+
+[node name="Button11" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mana +1"
 
 [connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button" to="main/VBoxContainer/stats/branches" method="_on_menu_toggle"]
 [connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button2" to="main/VBoxContainer/stats/branches" method="_on_stamina_toggle"]
