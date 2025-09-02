@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://jfw7ttembhc2"]
+
+[ext_resource type="Texture2D" uid="uid://c1fh1hirq3uks" path="res://assets/textures/ui_textures/interface/nav/CursorSpores.png" id="1_2gkpp"]
+
+[node name="click_explosion" type="CPUParticles2D"]
+rotation = 2.35619
+emitting = false
+amount = 64
+texture = ExtResource("1_2gkpp")
+lifetime = 0.5
+one_shot = true
+speed_scale = 0.5
+explosiveness = 0.49
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+scale_amount_min = 0.02
+scale_amount_max = 0.03
+color = Color(1, 1, 1, 0.498039)

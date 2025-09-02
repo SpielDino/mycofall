@@ -55,7 +55,7 @@ var _animations : Dictionary[String, Dictionary] = {
 		},
 	"branch_two":
 		{
-			"fps": 60,
+			"fps": 120,
 			"is_shrinking": false,
 			"frame_id": 67,
 			"timer": 0.0,
@@ -63,7 +63,7 @@ var _animations : Dictionary[String, Dictionary] = {
 		},
 	"branch_three":
 		{
-			"fps": 60,
+			"fps": 120,
 			"is_shrinking": false,
 			"frame_id": 81,
 			"timer": 0.0,
@@ -71,7 +71,7 @@ var _animations : Dictionary[String, Dictionary] = {
 		},
 	"weapon_one":
 		{
-			"fps": 60,
+			"fps": 120,
 			"is_shrinking": false,
 			"frame_id": 19,
 			"timer": 0.0,
@@ -88,7 +88,6 @@ var _animations : Dictionary[String, Dictionary] = {
 	
 }
 #@onready var player: Node3D = GlobalPlayer.get_player()
-
 func _ready() -> void:
 	var frames: Array[SpriteFrames] = [
 		branch_one_full_sprite_frames,
@@ -102,6 +101,7 @@ func _ready() -> void:
 			push_warning("SpriteFrames do not match or are null: ", ANIMATION_NAMES[animation])
 			continue
 		_set_current_frame_texture(frames[animation], ANIMATION_NAMES[animation])
+	UIManager.toggle_menu.connect(_on_menu_toggle);
 	#player.toggle_weapon_one.connect(_on_weapon_one_toggle())
 	#player.toggle_weapon_two.connect(_on_weapon_two_toggle())
 	#ui.toggle_menu.connect(_on_menu_toggle())
@@ -130,14 +130,8 @@ func _process(delta: float) -> void:
 				_animations[res_name]["timer"] = 0.0
 				break
 			_animations[res_name]["timer"] -= frame_time
-			print("frame_id: ", _animations[res_name]["frame_id"])
 			_change_frame_id(animation, res_name, 1)
 			advanced = true
-		#if _animations[res_name]["timer"] >= frame_time:
-			#var advance_frames: int = roundi(delta / frame_time)
-			#_animations[res_name]["timer"] -= frame_time * 1;
-			#_change_frame_id(animation, res_name, 1);
-			#_set_current_frame_texture(animation, res_name)
 		if advanced:
 			_set_current_frame_texture(animation, res_name);
 
@@ -152,7 +146,6 @@ func _change_frame_id(frames: SpriteFrames, res_name: String, advance_frames) ->
 	if _animations[res_name]["is_shrinking"]:
 		if _animations[res_name]["frame_id"] + advance_frames >= frames.get_frame_count("default"):
 			_stop(res_name, _animations[res_name]["active_index"]);
-			print(frames.get_frame_count("default"))
 			_animations[res_name]["frame_id"] = frames.get_frame_count("default") - 1
 			return
 		else:
@@ -171,13 +164,10 @@ func _set_current_frame_texture(frames: SpriteFrames, res_name: String) -> void:
 	element.texture = frames.get_frame_texture("default", _animations[res_name]["frame_id"]);
 
 func _stop(res_name: String, index: int) -> void:
-	print("stop: ", res_name, index)
 	_active_animations.remove_at(index);
 	_animations[res_name]["active_index"] = -1
 	for animation: String in ANIMATION_NAMES:
-		print("animation: ", animation, _animations[animation]["active_index"])
 		if _animations[animation]["active_index"] > index:
-			print("reduce: ", animation)
 			_animations[animation]["active_index"] -= 1
 	
 func _on_weapon_one_toggle() -> void:
@@ -207,11 +197,9 @@ func _on_weapon_two_toggle() -> void:
 		_is_weapon_two_active = _is_weapon_two
 	
 func _on_menu_toggle() -> void:
-	_is_menu = !_is_menu
 	if _animations[ANIMATION_NAMES[0]]["active_index"] == -1:
 		_active_animations.append(branch_one_full_sprite_frames);
 		_animations[ANIMATION_NAMES[0]]["active_index"] = len(_active_animations) - 1;
-		print("branch_one active: ", _animations[ANIMATION_NAMES[0]]["active_index"])
 	
 	if _is_branch_one: 
 		_animations[ANIMATION_NAMES[0]]["is_shrinking"] = true;
