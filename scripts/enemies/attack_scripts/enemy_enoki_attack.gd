@@ -16,9 +16,7 @@ var player
 
 var is_attacking = false
 var attack_cooldown: float = 0
-var is_in_inner_attack_area: bool = false
-var is_in_outer_attack_area: bool = false
-#var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
+var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
 var got_attacked_time: float = 0
 var throw_timer: float = 0
 var punch_timer: float = 0
@@ -55,10 +53,10 @@ func rangedAttack(delta):
 	if attack_cooldown <= 0 and enemy.detect_player_raycast() and ranged_attack_delay <= 0:
 		var pos: Vector3 = bullet_spawn_point.global_position 
 		var vel: Vector3 = player.get_child(0).global_position - pos
-		#var bullet = bullet_scene.instantiate()
-		#bullet.setParameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
-		#self.add_child(bullet)
-		#bullet.global_position = pos
+		var bullet = bullet_scene.instantiate()
+		bullet.setParameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
+		self.add_child(bullet)
+		bullet.global_position = pos
 		attack_cooldown = 1.0/attack_speed
 		throw_timer = 1.6667
 	if(attack_cooldown >= 0): 
@@ -108,18 +106,18 @@ func meleeAttack(delta):
 			player.takeDamage(melee_damage, enemy, true, 0)
 		punch_timer -= 10
 
-
 func _on_melee_attack_range_entered(area: Area3D) -> void:
-	pass # Replace with function body.
-
+	if area.is_in_group("Player"):
+		in_melee_range = true
 
 func _on_melee_attack_range_exited(area: Area3D) -> void:
-	pass # Replace with function body.
+	if area.is_in_group("Player"):
+		in_melee_range = false
 
+func _on_melee_damage_area_entered(area: Area3D) -> void:
+	if area.is_in_group("Player"):
+		in_melee_damage_area = true
 
-func _on_ranged_attack_range_entered(area: Area3D) -> void:
-	pass # Replace with function body.
-
-
-func _on_ranged_attack_range_exited(area: Area3D) -> void:
-	pass # Replace with function body.
+func _on_melee_damage_area_exited(area: Area3D) -> void:
+	if area.is_in_group("Player"):
+		in_melee_damage_area = false

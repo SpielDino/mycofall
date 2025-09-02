@@ -14,6 +14,11 @@ config/name="mycofall"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalPlayer="*res://scripts/globals/GlobalPlayer.gd"
+PlayerActionTracker="*res://scripts/globals/PlayerActionTracker.gd"
+
 [display]
 
 window/size/viewport_width=1920

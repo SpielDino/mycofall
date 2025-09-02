@@ -7,16 +7,20 @@ extends Node3D
 @export_enum("stand still", "move towards player", "keep set distance from player") var movement_type: String = "stand still"
 @export var keep_distance: float = 5
 @export var has_patrol_route: bool = false
+@export var always_tracking: bool = false
 
-@export_group("Animation names")
+@export_group("Animation Variables")
 @export var walking_name: String = "Walking"
 @export var idle_name: String = "Idle"
+@export var warmup_animation_name: String = "Idle"
+@export var warmup_animation_time: float = 0
 
 var enemy
 var player
 var is_moving = false
 var move_time: float = 0
-var move_delay: float = 0.2
+var move_delay: float = 0.2 
+var warmup_timer: float = warmup_animation_time
 
 var patrol_counter: int = 0
 var next_patrol_point: Vector3
@@ -35,13 +39,14 @@ func _physics_process(delta):
 	apply_gravity(delta)
 	enemy.move_and_slide()
 
-func move_towards_player(delta):
+func move_towards_location(delta, location):
 	var direction = Vector3()
-	nav.target_position = player.get_child(0).global_position
+	nav.target_position = location.global_position
 	
 	direction = (nav.get_next_path_position() - global_position).normalized()
 	enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
-	rotate_to_target(player.get_child(0))
+	rotate_to_target(location)
+	
 
 func keep_set_distance_from_player(delta):
 	var distance = global_position.distance_to(player.get_child(0).global_position)
@@ -73,23 +78,50 @@ func stand_still():
 func play_movement_animations():
 	if enemy.state == enemy.States.IDLE:
 		enemy.animation_player.play(idle_name)
-	if enemy.state == enemy.States.PATROLLING or enemy.state == enemy.States.SEARCHING or enemy.state == enemy.States.MOVING:
-		enemy.animation_player.play(walking_name)
+	if enemy.state == enemy.States.PATROLLING or enemy.state == enemy.States.SEARCHING or enemy.state == enemy.States.MOVING or always_tracking:
+		if warmup_timer <= 0:
+			enemy.animation_player.play(walking_name)
+		else: 
+			enemy.animation_player.play(warmup_animation_name)
 
 func decide_movement_type(delta):
 	if (enemy.state == enemy.States.NONE or enemy.state == enemy.States.PATROLLING) and has_patrol_route:
 		patrol_between_set_locations(delta)
 		enemy.state = enemy.States.PATROLLING
+		warmup_timer = warmup_animation_time
+		searching(delta)
 	if enemy.state == enemy.States.NONE and !has_patrol_route:
 		enemy.state = enemy.States.IDLE
-	if enemy.state == enemy.States.MOVING:
-		match movement_type:
-			"stand still":
-				stand_still()
-			"move towards player":
-				move_towards_player(delta)
-			"keep set distance from player":
-				keep_set_distance_from_player(delta)
+		warmup_timer = warmup_animation_time
+		searching(delta)
+	if enemy.state == enemy.States.MOVING or always_tracking:
+		if warmup_timer <= 0:
+			match movement_type:
+				"stand still":
+					stand_still()
+				"move towards player":
+					move_towards_location(delta, player.get_child(0))
+				"keep set distance from player":
+					keep_set_distance_from_player(delta)
+		else:
+			warmup_timer -= delta
+
+func searching(delta):
+	var detection_component = enemy.get_node("DetectionComponent")
+	if detection_component.player_location_known_from_ally:
+		if detection_component.tracking_duration <= 0:
+			enemy.state = enemy.States.NONE
+			detection_component.player_location_known_from_ally = false
+			#TODO maybe let them walk back to from where they came from
+		else: 
+			detection_component.tracking_duration -= delta
+			enemy.state = enemy.States.SEARCHING
+			move_towards_location(delta, detection_component.last_known_location)
+			if global_position.distance_to(detection_component.last_known_location) <= 0.5:
+				enemy.state = enemy.States.NONE
+				detection_component.tracking_duration = 0
+				detection_component.player_location_known_from_ally = false
+				#TODO maybe add the enemy randomly looking around in different directions
 
 func apply_gravity(delta):
 	enemy.velocity.y += -enemy.gravity * delta
@@ -98,3 +130,6 @@ func rotate_to_target(target):
 	var angleVector = target.global_position - global_position
 	var angle = atan2(angleVector.x, angleVector.z)
 	enemy.rotation.y = angle - PI/2
+
+func activate_tracking():
+	always_tracking = true

@@ -59,7 +59,7 @@ func detect_player_raycast():
 				return true
 	return false
 
-func takeDamage(damage: int, type: String):
+func take_damage(damage: int, type: String, has_knockback: bool = false, knockback_strenght: float = 0):
 	health -= damage
 	$AudioStreamPlayer3D.play()
 	if health <= 0 and deathTimer == 10:
@@ -71,5 +71,7 @@ func takeDamage(damage: int, type: String):
 		if type == "sword":
 			PlayerActionTracker.meleeKills += 1
 	else:
-		pass
+		if has_knockback:
+			var direction = -(global_position - player.global_position).normalized
+			velocity += direction * knockback_strenght
 		#TODO send signal to detection component

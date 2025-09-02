@@ -73,7 +73,7 @@ func get_pinged(player_location):
 
 func ping_allies():
 	for ally in allies:
-		ally.get_pinged(player.global_position)
+		ally.get_pinged(player.get_child(0).global_position)
 
 func _on_hearing_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):

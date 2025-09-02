@@ -4,24 +4,25 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iyfiy"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_pqlni"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyfiy"]
 
-[node name="EnemyRangedAttackComponent" type="Node3D"]
+[node name="EnemyEnokiAttackComponent" type="Node3D"]
 script = ExtResource("1_iyfiy")
 
 [node name="MeleeAttackRange" type="Area3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeleeAttackRange"]
 shape = SubResource("SphereShape3D_iyfiy")
 
-[node name="RangedAttackRange" type="Area3D" parent="."]
+[node name="MeleeDamageArea" type="Area3D" parent="."]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RangedAttackRange"]
-shape = SubResource("SphereShape3D_pqlni")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeleeDamageArea"]
+shape = SubResource("BoxShape3D_iyfiy")
 
 [node name="BulletSpawnPoint" type="Node3D" parent="."]
 
 [connection signal="area_entered" from="MeleeAttackRange" to="." method="_on_melee_attack_range_entered"]
 [connection signal="area_exited" from="MeleeAttackRange" to="." method="_on_melee_attack_range_exited"]
-[connection signal="area_entered" from="RangedAttackRange" to="." method="_on_ranged_attack_range_entered"]
-[connection signal="area_exited" from="RangedAttackRange" to="." method="_on_ranged_attack_range_exited"]
+[connection signal="area_entered" from="MeleeDamageArea" to="." method="_on_melee_damage_area_entered"]
+[connection signal="area_exited" from="MeleeDamageArea" to="." method="_on_melee_damage_area_exited"]
