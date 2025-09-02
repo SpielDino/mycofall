@@ -84,14 +84,14 @@ func _input(event):
 
 
 func dodge_with_stamina():
-	if Input.is_action_just_pressed("dash") and player.stamina >= stamina_cost_per_dodge:
+	if Input.is_action_just_pressed("dodge") and player.stamina >= stamina_cost_per_dodge:
 		dodge_ability()
 		player.reduce_stamina(stamina_cost_per_dodge)
 		#$PlayerAudio/DashSFX.play()
 		having_i_frames = true
 		i_frame_timer = max_i_frame_timer
 		GameManager.set_having_i_frames(having_i_frames)
-	elif Input.is_action_just_pressed("dash") and player.stamina <= stamina_cost_per_dodge:
+	elif Input.is_action_just_pressed("dodge") and player.stamina <= stamina_cost_per_dodge:
 		#$PlayerAudio/NoStaminaSFX.play()
 		pass
 
@@ -103,7 +103,7 @@ func i_frame_timer_calc(delta):
 		GameManager.set_having_i_frames(having_i_frames)
 
 func dodge_ability():
-	var input = Input.get_vector("left", "right", "forward", "backward").normalized()
+	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward").normalized()
 	if input == Vector2.ZERO:
 		dodge_direction = -player_shape.global_transform.basis.z.normalized()
 	else:
@@ -163,7 +163,7 @@ func rotate_player():
 			rotate_based_on_second_input()
 
 func rotate_based_on_last_movement():
-	var input = Input.get_vector("left", "right", "forward", "backward")
+	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 	if lock_active:
 		lock = Input.is_action_pressed("lock_movement")
 	if (input.x != 0 or input.y != 0) and !lock:
@@ -177,7 +177,7 @@ func rotate_based_on_second_input():
 	if lock_active:
 		lock = Input.is_action_pressed("lock_movement")
 	if !mouse_mode:
-		var input = Input.get_vector("left", "right", "forward", "backward")
+		var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 		if (input.x != 0 or input.y != 0):
 			temprotation = atan2(-input.x, -input.y)
 		if (look_input.x != 0 or look_input.y != 0):
@@ -208,7 +208,7 @@ func get_move_input(delta):
 	sneak_toggler()
 	var vy = velocity.y
 	velocity.y = 0
-	var input = Input.get_vector("left", "right", "forward", "backward").normalized()
+	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward").normalized()
 	var direction = Vector3(input.x, 0, input.y).rotated(Vector3.UP, spring_arm.rotation.y)
 	var player_speed = player.speed
 	player.set_sneaking(false)

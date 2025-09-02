@@ -30,7 +30,7 @@ const button_mappings: Dictionary[String, Dictionary] = {
 		"attack": "RT",
 		"weapon_swap": "Y",
 		"sneak": "L3",
-		"dash": "LB"
+		"dodge": "LB"
 	},
 	"ps5": {
 		"interact": "✕",
@@ -39,7 +39,7 @@ const button_mappings: Dictionary[String, Dictionary] = {
 		"attack": "R2",
 		"weapon_swap": "△",
 		"sneak": "L3",
-		"dash": "L1"
+		"dodge": "L1"
 	},
 	"nintendo": {
 		"interact": "B",
@@ -48,7 +48,7 @@ const button_mappings: Dictionary[String, Dictionary] = {
 		"attack": "ZR",
 		"weapon_swap": "X",
 		"sneak": "L3",
-		"dash": "L"
+		"dodge": "L"
 	},
 	"none": {
 		"interact": "A",
@@ -57,7 +57,7 @@ const button_mappings: Dictionary[String, Dictionary] = {
 		"attack": "RT",
 		"weapon_swap": "Y",
 		"sneak": "L3",
-		"dash": "LB"
+		"dodge": "LB"
 	}
 }
 

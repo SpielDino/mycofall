@@ -14,9 +14,9 @@ func get_prompt(controller_input_device):
 				key_name = action.as_text_physical_keycode()
 				break
 		elif controller_input_device == true:
-			UiManager.get_controller_type()
+			UIManager.get_controller_type()
 			if action is InputEventJoypadButton:
-				key_name = UiManager.get_controller_input_key("interact", true)
+				key_name = UIManager.get_controller_input_key("interact", true)
 	return prompt_message + "\n[" + key_name + "]"
 	
 func interact(body):
