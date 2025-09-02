@@ -1,0 +1,76 @@
+[gd_scene load_steps=6 format=3 uid="uid://byt6hxlbksy0i"]
+
+[ext_resource type="Theme" uid="uid://bw0qfmu2hvgr6" path="res://assets/ui_themes/buttons/menu_buttons.tres" id="1_5p30d"]
+[ext_resource type="Script" uid="uid://y56anmv80gck" path="res://scripts/ui/menus/pause_menu.gd" id="1_hf471"]
+[ext_resource type="PackedScene" uid="uid://dji5viwylm52o" path="res://scenes/ui/menus/DisplayOld.tscn" id="2_hf471"]
+[ext_resource type="PackedScene" uid="uid://iu8ed2r4ttfo" path="res://scenes/ui/menus/controls.tscn" id="3_2f5f3"]
+[ext_resource type="PackedScene" uid="uid://b4yec1hemrrk3" path="res://scenes/ui/menus/options.tscn" id="5_hf471"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hf471")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="ButtonsMargin" type="MarginContainer" parent="CenterContainer/PauseMenu"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/PauseMenu/ButtonsMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resume" type="Button" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_5p30d")
+text = "BUTTON_RESUME"
+
+[node name="Options" type="Button" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_5p30d")
+text = "BUTTON_OPTIONS"
+
+[node name="ExitGame" type="Button" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons"]
+layout_mode = 2
+theme = ExtResource("1_5p30d")
+text = "BUTTON_EXIT_TO_MENU"
+
+[node name="Controls" parent="." instance=ExtResource("3_2f5f3")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
+[node name="Display" parent="." instance=ExtResource("2_hf471")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
+[node name="Options" parent="." instance=ExtResource("5_hf471")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="CenterContainer/PauseMenu/ButtonsMargin/Buttons/Options" to="." method="_on_options_pressed"]

@@ -21,6 +21,10 @@ GameManager="*res://placeholder/konrad/konrad_scripts/game_manager.gd"
 GlobalPlayer="*res://placeholder/konrad/konrad_scripts/global_player.gd"
 PlayerActionTracker="*res://placeholder/konrad/konrad_scripts/player_action_tracker.gd"
 DamageNumbers="*res://placeholder/konrad/konrad_scripts/damage_numbers.gd"
+UIManager="*res://scripts/globals/ui/ui_manager.gd"
+SettingsSignalBus="*res://scripts/globals/data/settings_signal_bus.gd"
+SettingsDataContainer="*res://scripts/globals/data/settings_data_container.gd"
+SaveManager="*res://scripts/globals/data/save_manager.gd"
 
 [display]
 

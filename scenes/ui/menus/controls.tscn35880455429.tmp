@@ -1,0 +1,243 @@
+[gd_scene load_steps=14 format=3 uid="uid://iu8ed2r4ttfo"]
+
+[ext_resource type="Theme" uid="uid://snlsj1gyjpyx" path="res://assets/ui_themes/bold_text.tres" id="1_ffx26"]
+[ext_resource type="Script" uid="uid://ck3kmorf4pv8t" path="res://scripts/ui/menus/controls.gd" id="1_thn1f"]
+[ext_resource type="Texture2D" uid="uid://wepage32nyco" path="res://assets/textures/ui_textures/menus/buttons/ButtonArrowTextureLeft.png" id="2_gksqo"]
+[ext_resource type="Texture2D" uid="uid://db0jtar0k2wem" path="res://assets/textures/ui_textures/menus/buttons/ButtonArrowTextureLeftHover.png" id="3_thn1f"]
+[ext_resource type="Texture2D" uid="uid://bu8m3e0dovb0r" path="res://assets/textures/ui_textures/menus/buttons/ButtonArrowTextureRight.png" id="4_60vt1"]
+[ext_resource type="Texture2D" uid="uid://bi538ris6js2y" path="res://assets/textures/ui_textures/menus/buttons/ButtonArrowTextureRightHover.png" id="5_iggcd"]
+[ext_resource type="PackedScene" uid="uid://dv3lnhuc5p0rd" path="res://scenes/ui/nav/keybind_button.tscn" id="7_60vt1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g6ee7"]
+font_size = 40
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iggcd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5s077"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dgm3k"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qv046"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cfr20"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_thn1f")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ControlsMenuContainer" type="VBoxContainer" parent="MarginContainer"]
+process_mode = 3
+z_index = 3
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ControlsMenuContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 50
+
+[node name="Titles" type="VBoxContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Controls" type="Label" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Titles"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ffx26")
+theme_override_font_sizes/font_size = 50
+text = "BUTTON_CONTROLS"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Titles"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ButtonLeft" type="TextureButton" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("2_gksqo")
+texture_hover = ExtResource("3_thn1f")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Controller" type="Label" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer"]
+visible = false
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ffx26")
+theme_override_font_sizes/font_size = 40
+text = "BUTTON_CONTROLLER"
+horizontal_alignment = 1
+
+[node name="Keyboard" type="Label" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ffx26")
+theme_override_font_sizes/font_size = 40
+text = "BUTTON_KEYBOARD"
+label_settings = SubResource("LabelSettings_g6ee7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonRight" type="TextureButton" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer"]
+custom_minimum_size = Vector2(55, 55)
+layout_mode = 2
+texture_normal = ExtResource("4_60vt1")
+texture_hover = ExtResource("5_iggcd")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Controller" type="MarginContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer"]
+visible = false
+custom_minimum_size = Vector2(1280, 720)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Inputs" type="TextureRect" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Controller"]
+visible = false
+layout_mode = 2
+expand_mode = 1
+
+[node name="Connect_Controller" type="Label" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Controller"]
+layout_mode = 2
+theme = ExtResource("1_ffx26")
+theme_override_font_sizes/font_size = 40
+text = "SETTING_CONNECT_CONTROLLER"
+horizontal_alignment = 1
+
+[node name="Keyboard" type="MarginContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(1500, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 0
+
+[node name="KeyRows" type="HBoxContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard"]
+custom_minimum_size = Vector2(1200, 720)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 100
+
+[node name="keysRow1" type="VBoxContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 85
+
+[node name="KeybindButton" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow1" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "move_forward"
+
+[node name="KeybindButton2" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow1" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "move_left"
+
+[node name="KeybindButton3" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow1" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "move_right"
+
+[node name="KeybindButton4" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow1" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "move_backward"
+
+[node name="KeybindButton5" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow1" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "dodge"
+
+[node name="KeybindButton6" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow1" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "sneak"
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows"]
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_iggcd")
+
+[node name="keysRow2" type="VBoxContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 85
+
+[node name="KeybindButton" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow2" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "attack"
+
+[node name="KeybindButton2" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow2" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "block"
+
+[node name="KeybindButton3" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow2" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "lcok_direction"
+
+[node name="KeybindButton4" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow2" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "swap_weapon"
+
+[node name="KeybindButton5" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow2" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "interact"
+
+[node name="KeybindButton6" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow2" instance=ExtResource("7_60vt1")]
+layout_mode = 2
+action_name = "pause"
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer/ControlsMenuContainer/MarginContainer"]
+custom_minimum_size = Vector2(400, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ButtonMargin" type="MarginContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -33.5
+offset_right = 111.0
+offset_bottom = 33.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Back" type="Button" parent="MarginContainer/ControlsMenuContainer/MarginContainer/NinePatchRect/ButtonMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_ffx26")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_5s077")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_dgm3k")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qv046")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_cfr20")
+text = "BUTTON_BACK"
+
+[connection signal="pressed" from="MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer/ButtonLeft" to="." method="_on_button_left_pressed"]
+[connection signal="pressed" from="MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer/ButtonRight" to="." method="_on_button_right_pressed"]
+[connection signal="focus_entered" from="MarginContainer/ControlsMenuContainer/MarginContainer/NinePatchRect/ButtonMargin/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="focus_exited" from="MarginContainer/ControlsMenuContainer/MarginContainer/NinePatchRect/ButtonMargin/Back" to="." method="_on_back_mouse_exited"]
+[connection signal="mouse_entered" from="MarginContainer/ControlsMenuContainer/MarginContainer/NinePatchRect/ButtonMargin/Back" to="." method="_on_back_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/ControlsMenuContainer/MarginContainer/NinePatchRect/ButtonMargin/Back" to="." method="_on_back_mouse_exited"]
+[connection signal="pressed" from="MarginContainer/ControlsMenuContainer/MarginContainer/NinePatchRect/ButtonMargin/Back" to="." method="_on_back_pressed"]

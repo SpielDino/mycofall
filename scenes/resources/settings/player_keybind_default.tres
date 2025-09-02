@@ -1,0 +1,70 @@
+[gd_resource type="Resource" script_class="PlayerKeybindResource" load_steps=14 format=3 uid="uid://bfrvjskljqfy4"]
+
+[ext_resource type="Script" uid="uid://um8l002l2r7k" path="res://scripts/data/settings/player_keybind_resource.gd" id="1_gduok"]
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_ur8r1"]
+button_index = 1
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_gduok"]
+button_index = 2
+
+[sub_resource type="InputEventKey" id="InputEventKey_aiy15"]
+device = -1
+physical_keycode = 4194325
+
+[sub_resource type="InputEventKey" id="InputEventKey_pouwa"]
+device = -1
+physical_keycode = 69
+unicode = 101
+
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_lxd7a"]
+button_index = 2
+
+[sub_resource type="InputEventKey" id="InputEventKey_ur8r1"]
+device = -1
+physical_keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_o21pp"]
+device = -1
+physical_keycode = 87
+unicode = 119
+
+[sub_resource type="InputEventKey" id="InputEventKey_7qx4t"]
+device = -1
+physical_keycode = 65
+unicode = 97
+
+[sub_resource type="InputEventKey" id="InputEventKey_5sgfx"]
+device = -1
+physical_keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_wwkmw"]
+device = -1
+physical_keycode = 4194305
+
+[sub_resource type="InputEventKey" id="InputEventKey_gduok"]
+device = -1
+physical_keycode = 4194326
+
+[sub_resource type="InputEventKey" id="InputEventKey_la88w"]
+device = -1
+physical_keycode = 81
+unicode = 113
+
+[resource]
+script = ExtResource("1_gduok")
+DEFAULT_MOVE_FORWARD_KEY = SubResource("InputEventKey_o21pp")
+DEFAULT_MOVE_LEFT_KEY = SubResource("InputEventKey_7qx4t")
+DEFAULT_MOVE_RIGHT_KEY = SubResource("InputEventKey_5sgfx")
+DEFAULT_MOVE_BACKWARD_KEY = SubResource("InputEventKey_ur8r1")
+DEFAULT_DODGE_KEY = SubResource("InputEventKey_aiy15")
+DEFAULT_SNEAK_KEY = SubResource("InputEventKey_gduok")
+DEFAULT_ATTACK_KEY = SubResource("InputEventMouseButton_ur8r1")
+DEFAULT_BLOCK_KEY = SubResource("InputEventMouseButton_gduok")
+DEFAULT_LOCK_DIRECTION_KEY = SubResource("InputEventMouseButton_lxd7a")
+DEFAULT_SWAP_WEAPON_KEY = SubResource("InputEventKey_la88w")
+DEFAULT_INTERACT_KEY = SubResource("InputEventKey_pouwa")
+DEFAULT_PAUSE_KEY = SubResource("InputEventKey_wwkmw")
+metadata/_custom_type_script = "uid://um8l002l2r7k"

@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://snlsj1gyjpyx"]
+
+[ext_resource type="FontFile" uid="uid://vyhhxpu0v1jw" path="res://assets/fonts/Caudex-Bold.ttf" id="1_pegu3"]
+
+[resource]
+default_font = ExtResource("1_pegu3")
+default_font_size = 38

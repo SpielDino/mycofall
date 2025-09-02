@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4yec1hemrrk3"]
+
+[ext_resource type="Script" uid="uid://dpukpmyugn3iq" path="res://scripts/ui/menus/options.gd" id="1_hfbhb"]
+[ext_resource type="Theme" uid="uid://bw0qfmu2hvgr6" path="res://assets/ui_themes/buttons/menu_buttons.tres" id="2_vt88a"]
+
+[node name="Options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hfbhb")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsMenu" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+
+[node name="ButtonsMargin" type="MarginContainer" parent="CenterContainer/OptionsMenu"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/OptionsMenu/ButtonsMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Display" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_vt88a")
+text = "BUTTON_DISPLAY"
+
+[node name="Controls" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_vt88a")
+text = "BUTTON_CONTROLS"
+
+[node name="Back" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_vt88a")
+text = "BUTTON_BACK"
+
+[connection signal="pressed" from="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Display" to="." method="_on_display_pressed"]
+[connection signal="pressed" from="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Back" to="." method="_on_back_pressed"]
