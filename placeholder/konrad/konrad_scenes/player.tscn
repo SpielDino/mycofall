@@ -444,11 +444,13 @@ visible = false
 [node name="Shield" parent="Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand" instance=ExtResource("6_iwjwu")]
 visible = false
 
-[node name="Staff" parent="Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand" instance=ExtResource("7_2btxm")]
+[node name="Staff" parent="Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand" node_paths=PackedStringArray("ray_position") instance=ExtResource("7_2btxm")]
 visible = false
+ray_position = NodePath("../../../../../AimRayCast3D")
 
-[node name="Bow" parent="Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand" instance=ExtResource("8_gm3ih")]
+[node name="Bow" parent="Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand" node_paths=PackedStringArray("ray_position") instance=ExtResource("8_gm3ih")]
 visible = false
+ray_position = NodePath("../../../../../AimRayCast3D2")
 
 [node name="LeftWeaponHand" type="BoneAttachment3D" parent="Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="2"]
 transform = Transform3D(-0.165291, 0.879337, -0.446592, -0.932135, -0.287216, -0.220528, -0.322187, 0.379832, 0.867135, 2.84966, 1.51509, 0.564782)

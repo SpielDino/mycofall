@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3c650unruhvy"]
+[gd_scene load_steps=7 format=3 uid="uid://c3c650unruhvy"]
 
+[ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://placeholder/konrad/konrad_scripts/world_environment.gd" id="1_ch4m0"]
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_vmj8w"]
 [ext_resource type="PackedScene" uid="uid://bnyfrlfrn4h4w" path="res://placeholder/konrad/konrad_scenes/player.tscn" id="2_3xeft"]
 [ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://placeholder/konrad/trash/socket.tscn" id="2_w1y6w"]
@@ -14,6 +15,7 @@ transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_r6cbd")
+script = ExtResource("1_ch4m0")
 
 [node name="World" type="Node3D" parent="WorldEnvironment"]
 
@@ -45,15 +47,6 @@ transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49418, 0)
 rotation_type = "rotate based on second input"
 shield_radius_protection = 120.0
-
-[node name="RightWeaponHand" parent="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.165291, -0.879337, 0.446592, 0.932135, -0.287216, -0.220528, 0.322187, 0.379832, 0.867135, -2.84966, 1.51509, 0.564782)
-
-[node name="LeftWeaponHand" parent="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.165291, 0.879337, -0.446592, -0.932135, -0.287216, -0.220528, -0.322187, 0.379832, 0.867135, 2.84966, 1.51509, 0.564782)
-
-[node name="BackWeapon" parent="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 0.949272, -0.314457, 1.42109e-14, 0.314457, 0.949272, 3.55271e-15, 1, 0.194046)
 
 [editable path="WorldEnvironment/Player"]
 [editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel"]

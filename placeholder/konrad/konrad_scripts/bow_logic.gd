@@ -1,8 +1,9 @@
 extends Node3D
 
-@onready var ray_position = $"../../../../../AimRayCast3D2"
+@export var ray_position: RayCast3D
+
 @onready var player: Node3D = GlobalPlayer.get_player()
-@onready var world = $"../../../../../../../.."
+@onready var world = GlobalPlayer.get_world()
 
 var bullet_scene: PackedScene = preload("res://placeholder/konrad/konrad_scenes/arrow.tscn")
 var bullet_intance

@@ -1,11 +1,11 @@
 extends Node3D
 
 @export var mana_cost_per_attack: int = 60
-
-@onready var ray_position = $"../../../../../AimRayCast3D"
+@export var ray_position: RayCast3D
 
 @onready var player: Node3D = GlobalPlayer.get_player()
-@onready var world = $"../../../../../../../.."
+@onready var world = GlobalPlayer.get_world()
+
 
 var bullet_scene: PackedScene = preload("res://placeholder/konrad/konrad_scenes/player_bullet.tscn")
 var bullet_instance
