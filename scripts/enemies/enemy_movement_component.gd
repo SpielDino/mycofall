@@ -31,7 +31,7 @@ var reached_patrol_target: bool
 
 func _ready():
 	enemy = get_parent()
-	player = GlobalPlayer.getPlayer()
+	player = GlobalPlayer.get_player()
 
 func _physics_process(delta):
 	play_movement_animations()

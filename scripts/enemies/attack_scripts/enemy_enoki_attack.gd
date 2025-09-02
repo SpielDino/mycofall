@@ -29,7 +29,7 @@ var ranged_attack_delay: float = 0.54
 @onready var bullet_spawn_point = $BulletSpawnPoint
 
 func _ready():
-	player = GlobalPlayer.getPlayer()
+	player = GlobalPlayer.get_player()
 	enemy = get_parent()
 
 func _physics_process(delta):

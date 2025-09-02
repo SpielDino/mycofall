@@ -32,7 +32,7 @@ var enemy
 
 func _ready():
 	enemy = get_parent()
-	player = GlobalPlayer.getPlayer()
+	player = GlobalPlayer.get_player()
 	
 	hearing_node.scale = Vector3(hearing_range, hearing_range, hearing_range)
 	vision_node.scale = Vector3(vision_range, vision_range, vision_range)

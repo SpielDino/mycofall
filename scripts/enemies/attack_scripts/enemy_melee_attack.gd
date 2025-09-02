@@ -17,7 +17,7 @@ var is_in_outer_attack_area: bool = false
 
 func _ready():
 	enemy = get_parent()
-	player = GlobalPlayer.getPlayer()
+	player = GlobalPlayer.get_player()
 
 func _physics_process(delta):
 	if attack_cooldown > 0:

@@ -21,7 +21,7 @@ var deathTimer: float = 10
 
 func _ready():
 	set_connections()
-	player = GlobalPlayer.getPlayer()
+	player = GlobalPlayer.get_player()
 
 func _physics_process(delta):
 	if health <= 0:
