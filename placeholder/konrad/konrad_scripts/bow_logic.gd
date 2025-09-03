@@ -6,7 +6,6 @@ extends Node3D
 @onready var world = GlobalPlayer.get_world()
 
 var bullet_scene: PackedScene = preload("res://placeholder/konrad/konrad_scenes/arrow.tscn")
-var bullet_intance
 
 func _on_animation_player_animation_started(anim_name: StringName) -> void:
 	if anim_name == "Finish":
@@ -14,10 +13,8 @@ func _on_animation_player_animation_started(anim_name: StringName) -> void:
 		#print("bow attack")
 
 func spawn_bullet():
-	bullet_intance = bullet_scene.instantiate()
+	var bullet_instance = bullet_scene.instantiate()
 	var direction = player.get_child(0).get_child(0)
-	var mouse_position = GameManager.get_mouse_ground_position_fixed(self)
-	bullet_intance.position = ray_position.global_position
-	var direction_bullet = (mouse_position - bullet_intance.position)
-	bullet_intance.transform.basis = Basis.looking_at(direction_bullet, Vector3.UP)
-	world.add_child(bullet_intance)
+	bullet_instance.position = ray_position.global_position
+	bullet_instance.transform.basis = direction.transform.basis
+	world.add_child(bullet_instance)

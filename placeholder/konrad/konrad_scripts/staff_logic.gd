@@ -6,13 +6,10 @@ extends Node3D
 @onready var player: Node3D = GlobalPlayer.get_player()
 @onready var world = GlobalPlayer.get_world()
 
-
 var bullet_scene: PackedScene = preload("res://placeholder/konrad/konrad_scenes/player_bullet.tscn")
-var bullet_instance
-
 
 func spawn_bullet():
-	bullet_instance = bullet_scene.instantiate()
+	var bullet_instance = bullet_scene.instantiate()
 	var direction = player.get_child(0).get_child(0)
 	bullet_instance.position = ray_position.global_position
 	bullet_instance.transform.basis = direction.transform.basis

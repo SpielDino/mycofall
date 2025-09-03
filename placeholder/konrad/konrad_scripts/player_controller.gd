@@ -183,12 +183,7 @@ func rotate_based_on_second_input():
 		if (look_input.x != 0 or look_input.y != 0):
 			temprotation = atan2(-look_input.x, -look_input.y)
 	else:
-		var mouse_position = get_viewport().get_mouse_position()
 		var mouse_world_position = GameManager.get_mouse_ground_position_fixed(self)
-		#var screenSize = get_viewport().get_visible_rect().size
-		#var screenCenter = Vector2(screenSize.x/2,screenSize.y/2 - 20)
-		#var normalizedRelativeMousePosition = Vector2(mouse_position.x - screenCenter.x, mouse_position.y - screenCenter.y).normalized()
-		#temprotation = atan2(normalizedRelativeMousePosition.x, normalizedRelativeMousePosition.y) + PI
 		var direction = (mouse_world_position - global_position)
 		direction.y = 0  # Y-Komponente ignorieren
 		direction = -direction.normalized()
