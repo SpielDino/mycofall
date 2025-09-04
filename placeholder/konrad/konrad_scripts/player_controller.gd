@@ -104,6 +104,8 @@ func i_frame_timer_calc(delta):
 
 func dodge_ability():
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward").normalized()
+	
+	# if no movement input, player will dodge at the direction they are looking at
 	if input == Vector2.ZERO:
 		dodge_direction = -player_shape.global_transform.basis.z.normalized()
 	else:
@@ -123,7 +125,6 @@ func dodge_ability():
 func process_dodge(delta):
 	if dodge_timer > 0:
 		dodge_timer -= delta
-		#how_long_dash_timer += delta
 		# fixed speed to travel the distance in the set duration
 		dodge_speed = dodge_distance / dodge_duration
 		match GameManager.get_first_weapon():

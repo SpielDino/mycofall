@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://placeholder/konrad/konrad_scripts/world_environment.gd" id="1_ch4m0"]
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_vmj8w"]
-[ext_resource type="PackedScene" uid="uid://bnyfrlfrn4h4w" path="res://placeholder/konrad/konrad_scenes/player.tscn" id="2_3xeft"]
 [ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://placeholder/konrad/trash/socket.tscn" id="2_w1y6w"]
 [ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://placeholder/konrad/trash/training_dummy.tscn" id="3_h0rvv"]
+[ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://placeholder/konrad/konrad_scenes/new_player.tscn" id="5_ch4m0"]
 
 [sub_resource type="Environment" id="Environment_r6cbd"]
 
@@ -43,22 +43,5 @@ Weapon = "SHIELD"
 [node name="training_dummy" parent="WorldEnvironment/World/Objects" instance=ExtResource("3_h0rvv")]
 transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -12.1868, 0.0217261, -3.97915)
 
-[node name="Player" parent="WorldEnvironment" instance=ExtResource("2_3xeft")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.49418, 0)
-rotation_type = "rotate based on second input"
-shield_radius_protection = 120.0
-
-[node name="RightWeaponHand" parent="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.165291, -0.879337, 0.446592, 0.932135, -0.287216, -0.220528, 0.322187, 0.379832, 0.867135, -2.84966, 1.51509, 0.564782)
-
-[node name="LeftWeaponHand" parent="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.165291, 0.879337, -0.446592, -0.932135, -0.287216, -0.220528, -0.322187, 0.379832, 0.867135, 2.84966, 1.51509, 0.564782)
-
-[node name="BackWeapon" parent="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 0.949272, -0.314457, 1.42109e-14, 0.314457, 0.949272, 3.55271e-15, 1, 0.194046)
-
-[editable path="WorldEnvironment/Player"]
-[editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel"]
-[editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Sword"]
-[editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Staff"]
-[editable path="WorldEnvironment/Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Bow"]
+[node name="Player" parent="WorldEnvironment" instance=ExtResource("5_ch4m0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80628, 0)
