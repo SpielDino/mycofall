@@ -15,6 +15,7 @@ var is_attacking: bool = false
 var is_blocking: bool = false
 var having_i_frames: bool = false
 var is_dodging: bool = false
+var is_sneaking: bool = false
 
 func get_weapon_in_hand():
 	return weapon_in_hand
@@ -85,6 +86,12 @@ func get_is_dodging():
 
 func set_is_dodging(check):
 	is_dodging = check
+	
+func get_is_sneaking():
+	return is_sneaking
+
+func set_is_sneaking(check):
+	is_sneaking = check
 
 func weapons_updated():
 	weapons_changed.emit()

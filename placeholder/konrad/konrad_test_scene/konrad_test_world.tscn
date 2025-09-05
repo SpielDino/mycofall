@@ -1,12 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3c650unruhvy"]
+[gd_scene load_steps=10 format=3 uid="uid://c3c650unruhvy"]
 
 [ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://placeholder/konrad/konrad_scripts/world_environment.gd" id="1_ch4m0"]
+[ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="1_m28bg"]
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_vmj8w"]
 [ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://placeholder/konrad/trash/socket.tscn" id="2_w1y6w"]
 [ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://placeholder/konrad/trash/training_dummy.tscn" id="3_h0rvv"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://placeholder/konrad/konrad_scenes/new_player.tscn" id="5_ch4m0"]
 
-[sub_resource type="Environment" id="Environment_r6cbd"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]
+panorama = ExtResource("1_m28bg")
+
+[sub_resource type="Sky" id="Sky_oxph1"]
+sky_material = SubResource("PanoramaSkyMaterial_gexbg")
+
+[sub_resource type="Environment" id="Environment_axl6w"]
+background_mode = 2
+sky = SubResource("Sky_oxph1")
 
 [node name="KonradTestWorld" type="Node3D"]
 
@@ -14,7 +23,7 @@
 transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 2.74091, 0)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_r6cbd")
+environment = SubResource("Environment_axl6w")
 script = ExtResource("1_ch4m0")
 
 [node name="World" type="Node3D" parent="WorldEnvironment"]
@@ -42,6 +51,9 @@ Weapon = "SHIELD"
 
 [node name="training_dummy" parent="WorldEnvironment/World/Objects" instance=ExtResource("3_h0rvv")]
 transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -12.1868, 0.0217261, -3.97915)
+
+[node name="training_dummy2" parent="WorldEnvironment/World/Objects" instance=ExtResource("3_h0rvv")]
+transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -13.6722, 0.0217261, -3.97915)
 
 [node name="Player" parent="WorldEnvironment" instance=ExtResource("5_ch4m0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.80628, 0)

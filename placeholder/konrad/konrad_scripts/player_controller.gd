@@ -137,13 +137,17 @@ func process_dodge(delta):
 				dodge_speed = dodge_speed * dodge_strength_multiplier_bow
 			shield_name:
 				dodge_speed = dodge_speed * dodge_strength_multiplier_shield
+		var vy = velocity.y
+		velocity.y = 0
 		velocity = dodge_direction * dodge_speed
+		velocity.y = vy
 		move_and_slide()
 	else:
 		#print(how_long_dash_timer)
 		is_dodging = false
 		GameManager.set_is_dodging(is_dodging)
-		velocity = Vector3.ZERO
+		#velocity = Vector3.ZERO
+		velocity = Vector3(0, velocity.y, 0)
 		dodge_indicator.visible = false
 		#how_long_dash_timer = 0
 
@@ -195,7 +199,8 @@ func rotate_based_on_second_input():
 			temprotation = angle
 	if !lock:
 		# Locking rotation when using melee attack
-		if GameManager.get_is_attacking() and GameManager.get_first_weapon() == "Sword":
+		#if GameManager.get_is_attacking() and GameManager.get_first_weapon() == "Sword":
+		if GameManager.get_is_attacking():
 			pass
 		else:
 			player_shape.rotation.y = temprotation
@@ -219,11 +224,13 @@ func get_move_input(delta):
 		velocity.z -= velocity.z * friction
 
 func sneak_toggler():
-	if Input.is_action_just_pressed("sneak"):
+	if Input.is_action_just_pressed("sneak") and !GameManager.get_is_attacking():
 		if sneak_toggle:
 			sneak_toggle = false
+			GameManager.set_is_sneaking(sneak_toggle)
 		else:
 			sneak_toggle = true
+			GameManager.set_is_sneaking(sneak_toggle)
 
 func apply_gravity(delta):
 	velocity.y += -gravity * delta
