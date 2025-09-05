@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://bogdwn2kqo3lf"]
+[gd_scene load_steps=96 format=3 uid="uid://bogdwn2kqo3lf"]
 
 [ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://placeholder/konrad/konrad_scripts/player_stats.gd" id="1_6jgwm"]
 [ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://placeholder/konrad/konrad_scripts/player_controller.gd" id="2_6ei3l"]
@@ -89,13 +89,14 @@ filters = ["", "Armature/Skeleton3D:Hand1.L", "Armature/Skeleton3D:Hand1.R", "Ar
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_27mn4"]
 animation = &"Roll"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pb7or"]
+animation = &"Roll"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_thxrw"]
 animation = &"Roll"
-use_custom_timeline = true
-timeline_length = 0.7
-stretch_time_scale = true
-start_offset = 0.0
-loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4a4dk"]
+animation = &"Idel"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6iyn6"]
 animation = &"SneakIdle"
@@ -211,6 +212,14 @@ blend_point_7/pos = Vector2(0.6, 0.7)
 blend_point_8/node = SubResource("AnimationNodeAnimation_0ppdl")
 blend_point_8/pos = Vector2(-0.6, 0.7)
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pe6lq"]
+animation = &"Running"
+use_custom_timeline = true
+timeline_length = 0.9
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 1
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6iyn6"]
 xfade_time = 0.3
 
@@ -225,26 +234,75 @@ xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vet34"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1ju0p"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gsaf8"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6jgwm"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4a4dk"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ei3l"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwqfs"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_thxrw"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ppdl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_27mn4"]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_omwr7"]
 xfade_time = 0.2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_fkjak"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lmbuf"]
 xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k0wmv"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jgx0n"]
+xfade_time = 0.2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o4eid"]
+xfade_time = 0.2
+priority = 2
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xyo5o"]
+xfade_time = 0.2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qjulh"]
-states/Roll/node = SubResource("AnimationNodeAnimation_27mn4")
-states/Roll/position = Vector2(390, 277)
-states/Roll2/node = SubResource("AnimationNodeAnimation_thxrw")
-states/Roll2/position = Vector2(637, 269)
+states/Dodge/node = SubResource("AnimationNodeAnimation_27mn4")
+states/Dodge/position = Vector2(650, 100)
+states/DodgeController/node = SubResource("AnimationNodeAnimation_pb7or")
+states/DodgeController/position = Vector2(122, 461.857)
+states/DodgeSneak/node = SubResource("AnimationNodeAnimation_thxrw")
+states/DodgeSneak/position = Vector2(816, 371.857)
+states/IdleController/node = SubResource("AnimationNodeAnimation_4a4dk")
+states/IdleController/position = Vector2(465, 432)
 states/Sneaking/node = SubResource("AnimationNodeBlendSpace2D_thxrw")
-states/Sneaking/position = Vector2(663, 146)
+states/Sneaking/position = Vector2(724, 267)
 states/Start/position = Vector2(159, 100)
 states/Walking/node = SubResource("AnimationNodeBlendSpace2D_0fs2y")
-states/Walking/position = Vector2(358, 146)
-transitions = ["Walking", "Sneaking", SubResource("AnimationNodeStateMachineTransition_6iyn6"), "Sneaking", "Walking", SubResource("AnimationNodeStateMachineTransition_0fad3"), "Walking", "Roll", SubResource("AnimationNodeStateMachineTransition_s6yju"), "Roll", "Walking", SubResource("AnimationNodeStateMachineTransition_7kenn"), "Sneaking", "Roll2", SubResource("AnimationNodeStateMachineTransition_omwr7"), "Roll2", "Sneaking", SubResource("AnimationNodeStateMachineTransition_fkjak")]
-graph_offset = Vector2(24, 55)
+states/Walking/position = Vector2(345, 141)
+states/WalkingController/node = SubResource("AnimationNodeAnimation_pe6lq")
+states/WalkingController/position = Vector2(122, 279)
+transitions = ["Walking", "Sneaking", SubResource("AnimationNodeStateMachineTransition_6iyn6"), "Sneaking", "Walking", SubResource("AnimationNodeStateMachineTransition_0fad3"), "Walking", "Dodge", SubResource("AnimationNodeStateMachineTransition_s6yju"), "Dodge", "Walking", SubResource("AnimationNodeStateMachineTransition_7kenn"), "Walking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_vet34"), "WalkingController", "Walking", SubResource("AnimationNodeStateMachineTransition_1ju0p"), "WalkingController", "IdleController", SubResource("AnimationNodeStateMachineTransition_gsaf8"), "IdleController", "WalkingController", SubResource("AnimationNodeStateMachineTransition_6jgwm"), "IdleController", "Sneaking", SubResource("AnimationNodeStateMachineTransition_4a4dk"), "Sneaking", "IdleController", SubResource("AnimationNodeStateMachineTransition_6ei3l"), "WalkingController", "Sneaking", SubResource("AnimationNodeStateMachineTransition_hwqfs"), "Sneaking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_thxrw"), "IdleController", "Walking", SubResource("AnimationNodeStateMachineTransition_0ppdl"), "Walking", "IdleController", SubResource("AnimationNodeStateMachineTransition_27mn4"), "Sneaking", "DodgeSneak", SubResource("AnimationNodeStateMachineTransition_omwr7"), "DodgeSneak", "Sneaking", SubResource("AnimationNodeStateMachineTransition_lmbuf"), "WalkingController", "DodgeController", SubResource("AnimationNodeStateMachineTransition_k0wmv"), "DodgeController", "WalkingController", SubResource("AnimationNodeStateMachineTransition_jgx0n"), "DodgeController", "IdleController", SubResource("AnimationNodeStateMachineTransition_o4eid"), "IdleController", "DodgeController", SubResource("AnimationNodeStateMachineTransition_xyo5o")]
+graph_offset = Vector2(-116, 26.8569)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vjsh3"]
 animation = &"SwordAttack1"
@@ -305,7 +363,7 @@ filter_enabled = true
 filters = ["Armature/Skeleton3D:Brust", "Armature/Skeleton3D:Hand1.R", "Armature/Skeleton3D:Hand2.R", "Armature/Skeleton3D:Hand3.R", "Armature/Skeleton3D:Hüfte", "Armature/Skeleton3D:Oberarm.R", "Armature/Skeleton3D:Unterarm.R", "Charackter/Skeleton3D:Bone", "Charackter/Skeleton3D:Bone.001", "Charackter/Skeleton3D:Bone.002", "Charackter/Skeleton3D:Bone.004", "Charackter/Skeleton3D:Bone.005", "Charackter/Skeleton3D:Bone.006", "Charackter/Skeleton3D:Bone.007", "Charackter/Skeleton3D:Bone.008", "Charackter/Skeleton3D:Bone.009", "Charackter/Skeleton3D:Bone.013", "Charackter/Skeleton3D:Bone.014", "Charackter/Skeleton3D:Bone.015", "Charackter/Skeleton3D:Bone.016", "Charackter/Skeleton3D:Bone.017", "Charackter/Skeleton3D:Bone.018", "Charackter/Skeleton3D:Cone", "Charackter/Skeleton3D:Cone.001", "Charackter/Skeleton3D:IK.L", "Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackter/Skeleton3D:String", "Charackter/Skeleton3D:forearm.L", "Charackter/Skeleton3D:forearm.R", "Charackter/Skeleton3D:hand.L", "Charackter/Skeleton3D:hand.R", "Charackter/Skeleton3D:shoulder.L", "Charackter/Skeleton3D:shoulder.R", "Charackter/Skeleton3D:spine", "Charackter/Skeleton3D:spine.001", "Charackter/Skeleton3D:spine.002", "Charackter/Skeleton3D:spine.003", "Charackter/Skeleton3D:spine.004", "Charackter/Skeleton3D:upper_arm.L", "Charackter/Skeleton3D:upper_arm.R"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-1623.54, -394.727)
+graph_offset = Vector2(-470.659, -250.175)
 nodes/StandAim/node = SubResource("AnimationNodeAnimation_i3mxk")
 nodes/StandAim/position = Vector2(-460, 800)
 nodes/StandAimTimeSeek/node = SubResource("AnimationNodeTimeSeek_ms580")
@@ -392,8 +450,8 @@ nodes/WalkSword/node = SubResource("AnimationNodeBlend3_6ei3l")
 nodes/WalkSword/position = Vector2(-600, 380)
 nodes/WalkSwordBlend/node = SubResource("AnimationNodeBlend2_m62uw")
 nodes/WalkSwordBlend/position = Vector2(-420, 180)
-nodes/output/position = Vector2(3720, 1560)
-node_connections = [&"StandAimTimeSeek", 0, &"StandAim", &"StandBow", 0, &"StandAimTimeSeek", &"StandBow", 1, &"StandHoldTimeSeek", &"StandBow", 2, &"StandShootTimeSeek", &"StandBowBlend", 0, &"WalkSwordBlend", &"StandBowBlend", 1, &"StandBow", &"StandHoldTimeSeek", 0, &"StandHold", &"StandLeftBlockBlend", 0, &"WalkLeftBlockBlend", &"StandLeftBlockBlend", 1, &"StandLeftBlockTimeSeek", &"StandLeftBlockTimeSeek", 0, &"StandLeftBlock", &"StandRightBlockBlend", 0, &"WalkRightBlockBlend", &"StandRightBlockBlend", 1, &"StandRightBlockTimeSeek", &"StandRightBlockTimeSeek", 0, &"StandRightBlock", &"StandShootTimeSeek", 0, &"StandShoot", &"StandStaffBlend", 0, &"StandBowBlend", &"StandStaffBlend", 1, &"StandStaffTimeSeek", &"StandStaffTimeSeek", 0, &"StandStaffAttack", &"StandSword", 0, &"StandSwordAttack1TimeSeek", &"StandSword", 1, &"StandSwordAttack2TimeSeek", &"StandSword", 2, &"StandSwordAttack3TimeSeek", &"StandSwordAttack1TimeSeek", 0, &"StandSwordAttack1", &"StandSwordAttack2TimeSeek", 0, &"StandSwordAttack2", &"StandSwordAttack3TimeSeek", 0, &"StandSwordAttack3", &"StandSwordBlend", 0, &"StateMachine", &"StandSwordBlend", 1, &"StandSword", &"SwordAttack4TimeSeek", 0, &"SwordAttack4", &"SwordAttack5TimeSeek", 0, &"SwordAttack5", &"SwordAttack6TimeSeek", 0, &"SwordAttack6", &"WalkLeftBlockBlend", 0, &"WalkStaffBlend", &"WalkLeftBlockBlend", 1, &"WalkLeftBlockTimeSeek", &"WalkLeftBlockTimeSeek", 0, &"WalkLeftBlock", &"WalkRightBlockBlend", 0, &"StandLeftBlockBlend", &"WalkRightBlockBlend", 1, &"WalkRightBlockTimeSeek", &"WalkRightBlockTimeSeek", 0, &"WalkRightBlock", &"WalkStaffBlend", 0, &"StandStaffBlend", &"WalkStaffBlend", 1, &"WalkStaffTimeSeek", &"WalkStaffTimeSeek", 0, &"WalkStaffAttack", &"WalkSword", 0, &"SwordAttack4TimeSeek", &"WalkSword", 1, &"SwordAttack5TimeSeek", &"WalkSword", 2, &"SwordAttack6TimeSeek", &"WalkSwordBlend", 0, &"StandSwordBlend", &"WalkSwordBlend", 1, &"WalkSword", &"output", 0, &"StandRightBlockBlend"]
+nodes/output/position = Vector2(1060, 260)
+node_connections = [&"StandAimTimeSeek", 0, &"StandAim", &"StandBow", 0, &"StandAimTimeSeek", &"StandBow", 1, &"StandHoldTimeSeek", &"StandBow", 2, &"StandShootTimeSeek", &"StandBowBlend", 0, &"WalkSwordBlend", &"StandBowBlend", 1, &"StandBow", &"StandHoldTimeSeek", 0, &"StandHold", &"StandLeftBlockBlend", 0, &"WalkLeftBlockBlend", &"StandLeftBlockBlend", 1, &"StandLeftBlockTimeSeek", &"StandLeftBlockTimeSeek", 0, &"StandLeftBlock", &"StandRightBlockBlend", 0, &"WalkRightBlockBlend", &"StandRightBlockBlend", 1, &"StandRightBlockTimeSeek", &"StandRightBlockTimeSeek", 0, &"StandRightBlock", &"StandShootTimeSeek", 0, &"StandShoot", &"StandStaffBlend", 0, &"StandBowBlend", &"StandStaffBlend", 1, &"StandStaffTimeSeek", &"StandStaffTimeSeek", 0, &"StandStaffAttack", &"StandSword", 0, &"StandSwordAttack1TimeSeek", &"StandSword", 1, &"StandSwordAttack2TimeSeek", &"StandSword", 2, &"StandSwordAttack3TimeSeek", &"StandSwordAttack1TimeSeek", 0, &"StandSwordAttack1", &"StandSwordAttack2TimeSeek", 0, &"StandSwordAttack2", &"StandSwordAttack3TimeSeek", 0, &"StandSwordAttack3", &"StandSwordBlend", 1, &"StandSword", &"SwordAttack4TimeSeek", 0, &"SwordAttack4", &"SwordAttack5TimeSeek", 0, &"SwordAttack5", &"SwordAttack6TimeSeek", 0, &"SwordAttack6", &"WalkLeftBlockBlend", 0, &"WalkStaffBlend", &"WalkLeftBlockBlend", 1, &"WalkLeftBlockTimeSeek", &"WalkLeftBlockTimeSeek", 0, &"WalkLeftBlock", &"WalkRightBlockBlend", 0, &"StandLeftBlockBlend", &"WalkRightBlockBlend", 1, &"WalkRightBlockTimeSeek", &"WalkRightBlockTimeSeek", 0, &"WalkRightBlock", &"WalkStaffBlend", 0, &"StandStaffBlend", &"WalkStaffBlend", 1, &"WalkStaffTimeSeek", &"WalkStaffTimeSeek", 0, &"WalkStaffAttack", &"WalkSword", 0, &"SwordAttack4TimeSeek", &"WalkSword", 1, &"SwordAttack5TimeSeek", &"WalkSword", 2, &"SwordAttack6TimeSeek", &"WalkSwordBlend", 0, &"StandSwordBlend", &"WalkSwordBlend", 1, &"WalkSword", &"output", 0, &"StateMachine"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ffkv0"]
 
@@ -452,18 +510,18 @@ parameters/StandSwordAttack2TimeSeek/seek_request = -1.0
 parameters/StandSwordAttack3TimeSeek/seek_request = -1.0
 parameters/StandSwordBlend/blend_amount = 0.0
 parameters/StateMachine/Sneaking/blend_position = Vector2(-0.000933707, 0.0152671)
-parameters/StateMachine/Walking/blend_position = Vector2(-0.00280112, -0.00502515)
-parameters/SwordAttack4TimeSeek/seek_request = -1.0
-parameters/SwordAttack5TimeSeek/seek_request = -1.0
-parameters/SwordAttack6TimeSeek/seek_request = -1.0
-parameters/WalkLeftBlockBlend/blend_amount = 0.0
+parameters/StateMachine/Walking/blend_position = Vector2(0.000933766, -0.986885)
+parameters/SwordAttack4TimeSeek/seek_request = 0.5
+parameters/SwordAttack5TimeSeek/seek_request = 0.833333
+parameters/SwordAttack6TimeSeek/seek_request = 0.833333
+parameters/WalkLeftBlockBlend/blend_amount = -1.0
 parameters/WalkLeftBlockTimeSeek/seek_request = -1.0
-parameters/WalkRightBlockBlend/blend_amount = 0.0
-parameters/WalkRightBlockTimeSeek/seek_request = -1.0
-parameters/WalkStaffBlend/blend_amount = 0.0
+parameters/WalkRightBlockBlend/blend_amount = -1.0
+parameters/WalkRightBlockTimeSeek/seek_request = false
+parameters/WalkStaffBlend/blend_amount = false
 parameters/WalkStaffTimeSeek/seek_request = -1.0
-parameters/WalkSword/blend_amount = 0.0
-parameters/WalkSwordBlend/blend_amount = 0.0
+parameters/WalkSword/blend_amount = false
+parameters/WalkSwordBlend/blend_amount = false
 script = ExtResource("4_6iyn6")
 player_controller = NodePath("../..")
 front_pointer = NodePath("../FrontPointer")
