@@ -1,11 +1,13 @@
-[gd_scene load_steps=111 format=3 uid="uid://bogdwn2kqo3lf"]
+[gd_scene load_steps=101 format=3 uid="uid://bogdwn2kqo3lf"]
 
 [ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://placeholder/konrad/konrad_scripts/player_stats.gd" id="1_6jgwm"]
 [ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://placeholder/konrad/konrad_scripts/player_controller.gd" id="2_6ei3l"]
 [ext_resource type="Script" uid="uid://cpsxfic2osf5w" path="res://placeholder/konrad/konrad_scripts/player_animation_movement.gd" id="4_6iyn6"]
-[ext_resource type="Script" uid="uid://nfu8xws7lgli" path="res://placeholder/konrad/konrad_scripts/player_sword_attack.gd" id="5_0fad3"]
+[ext_resource type="Script" uid="uid://nfu8xws7lgli" path="res://placeholder/konrad/konrad_scripts/player_attack.gd" id="5_0fad3"]
 [ext_resource type="PackedScene" uid="uid://dd83yhc3a3q65" path="res://assets/models/player/new_player_model.blend" id="5_6iyn6"]
 [ext_resource type="PackedScene" uid="uid://btfy637ar5rr7" path="res://placeholder/konrad/konrad_scenes/new_sword.tscn" id="5_fkjak"]
+[ext_resource type="PackedScene" uid="uid://bcsdrurxlfd0" path="res://placeholder/konrad/konrad_scenes/new_interact_ray_cast.tscn" id="7_fkjak"]
+[ext_resource type="Script" uid="uid://bw4negw6nu0l4" path="res://placeholder/konrad/konrad_scripts/player_inventar.gd" id="8_gsaf8"]
 [ext_resource type="Script" uid="uid://dh48lt5m6cfd1" path="res://placeholder/konrad/konrad_scripts/debug_ui.gd" id="10_s6yju"]
 [ext_resource type="Script" uid="uid://1to362nbgwp6" path="res://placeholder/konrad/konrad_scripts/camera_controller.gd" id="11_7kenn"]
 
@@ -15,6 +17,18 @@
 size = Vector3(0.1, 0.1, 0.3)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gm3ih"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gsaf8"]
+animation = &"CrystalStaffRotaion2"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6jgwm"]
+filter_enabled = true
+filters = ["Charackter/Skeleton3D:BackWoodStaffCrystal", "Charackter/Skeleton3D:RightWoodStaffCrystal"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xyo5o"]
+animation = &"CrystalStaffRotaion"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_r8ngw"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i3mxk"]
 animation = &"Bow Aim"
@@ -57,36 +71,6 @@ animation = &"MagicAttack"
 filters = ["", "Armature/Skeleton3D:Brust", "Armature/Skeleton3D:Hals", "Armature/Skeleton3D:Hand1.L", "Armature/Skeleton3D:Hand1.R", "Armature/Skeleton3D:Hand2.L", "Armature/Skeleton3D:Hand2.R", "Armature/Skeleton3D:Hand3.L", "Armature/Skeleton3D:Hand3.R", "Armature/Skeleton3D:Kopf", "Armature/Skeleton3D:Oberarm.L", "Armature/Skeleton3D:Oberarm.R", "Armature/Skeleton3D:Unterarm.L", "Armature/Skeleton3D:Unterarm.R"]
 
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_m62uw"]
-
-[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_0fad3"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qjulh"]
-animation = &"SwordAttack1"
-use_custom_timeline = true
-timeline_length = 1.0
-stretch_time_scale = true
-start_offset = 0.24
-loop_mode = 0
-
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_q7l0e"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_405c5"]
-animation = &"SwordAttack2"
-use_custom_timeline = true
-timeline_length = 0.8
-stretch_time_scale = true
-start_offset = 0.2
-loop_mode = 0
-
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_0fs2y"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gsaf8"]
-animation = &"SwordAttack3"
-
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_fkjak"]
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qjulh"]
-filters = ["", "Armature/Skeleton3D:Hand1.L", "Armature/Skeleton3D:Hand1.R", "Armature/Skeleton3D:Hand2.L", "Armature/Skeleton3D:Hand2.R", "Armature/Skeleton3D:Hand3.L", "Armature/Skeleton3D:Hand3.R", "Armature/Skeleton3D:Oberarm.L", "Armature/Skeleton3D:Oberarm.R", "Armature/Skeleton3D:Unterarm.L", "Armature/Skeleton3D:Unterarm.R"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4eid"]
 animation = &"Rest"
@@ -348,25 +332,10 @@ states/Walking/position = Vector2(354, 142)
 states/WalkingController/node = SubResource("AnimationNodeAnimation_pe6lq")
 states/WalkingController/position = Vector2(122, 279)
 transitions = ["Walking", "Sneaking", SubResource("AnimationNodeStateMachineTransition_6iyn6"), "Sneaking", "Walking", SubResource("AnimationNodeStateMachineTransition_0fad3"), "Walking", "Dodge", SubResource("AnimationNodeStateMachineTransition_s6yju"), "Dodge", "Walking", SubResource("AnimationNodeStateMachineTransition_7kenn"), "Walking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_vet34"), "WalkingController", "Walking", SubResource("AnimationNodeStateMachineTransition_1ju0p"), "WalkingController", "IdleController", SubResource("AnimationNodeStateMachineTransition_gsaf8"), "IdleController", "WalkingController", SubResource("AnimationNodeStateMachineTransition_6jgwm"), "IdleController", "Sneaking", SubResource("AnimationNodeStateMachineTransition_4a4dk"), "Sneaking", "IdleController", SubResource("AnimationNodeStateMachineTransition_6ei3l"), "WalkingController", "Sneaking", SubResource("AnimationNodeStateMachineTransition_hwqfs"), "Sneaking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_thxrw"), "IdleController", "Walking", SubResource("AnimationNodeStateMachineTransition_0ppdl"), "Walking", "IdleController", SubResource("AnimationNodeStateMachineTransition_27mn4"), "Sneaking", "DodgeSneak", SubResource("AnimationNodeStateMachineTransition_omwr7"), "DodgeSneak", "Sneaking", SubResource("AnimationNodeStateMachineTransition_lmbuf"), "WalkingController", "DodgeController", SubResource("AnimationNodeStateMachineTransition_k0wmv"), "DodgeController", "WalkingController", SubResource("AnimationNodeStateMachineTransition_jgx0n"), "DodgeController", "IdleController", SubResource("AnimationNodeStateMachineTransition_o4eid"), "IdleController", "DodgeController", SubResource("AnimationNodeStateMachineTransition_xyo5o")]
-graph_offset = Vector2(18, 108.857)
+graph_offset = Vector2(5, 37.857)
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4a4dk"]
 filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R", "Charackter/Skeleton3D:ArmPol.L", "Charackter/Skeleton3D:ArmPol.R", "Charackter/Skeleton3D:Bone", "Charackter/Skeleton3D:Bone.001", "Charackter/Skeleton3D:Bone.002", "Charackter/Skeleton3D:Bone.004", "Charackter/Skeleton3D:Bone.005", "Charackter/Skeleton3D:Bone.006", "Charackter/Skeleton3D:Bone.007", "Charackter/Skeleton3D:Bone.008", "Charackter/Skeleton3D:Bone.009", "Charackter/Skeleton3D:Bone.013", "Charackter/Skeleton3D:Bone.014", "Charackter/Skeleton3D:Bone.015", "Charackter/Skeleton3D:Bone.016", "Charackter/Skeleton3D:Bone.017", "Charackter/Skeleton3D:Bone.018", "Charackter/Skeleton3D:Cone", "Charackter/Skeleton3D:Cone.001", "Charackter/Skeleton3D:IK.L", "Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackter/Skeleton3D:String", "Charackter/Skeleton3D:forearm.L", "Charackter/Skeleton3D:forearm.R", "Charackter/Skeleton3D:hand.L", "Charackter/Skeleton3D:hand.R", "Charackter/Skeleton3D:shoulder.L", "Charackter/Skeleton3D:shoulder.R", "Charackter/Skeleton3D:spine", "Charackter/Skeleton3D:spine.001", "Charackter/Skeleton3D:spine.002", "Charackter/Skeleton3D:spine.003", "Charackter/Skeleton3D:upper_arm.L", "Charackter/Skeleton3D:upper_arm.R"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vjsh3"]
-animation = &"SwordAttack1"
-
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_di5ps"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_7c0pg"]
-animation = &"SwordAttack2"
-
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_qkk0s"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6jgwm"]
-animation = &"SwordAttack3"
-
-[sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_hwqfs"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_di5ps"]
 animation = &"Block_L"
@@ -405,13 +374,16 @@ filters = ["Armature/Skeleton3D:Brust", "Armature/Skeleton3D:Hals", "Armature/Sk
 
 [sub_resource type="AnimationNodeTimeSeek" id="AnimationNodeTimeSeek_vjsh3"]
 
-[sub_resource type="AnimationNodeBlend3" id="AnimationNodeBlend3_6ei3l"]
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_m62uw"]
-filter_enabled = true
-filters = ["Armature/Skeleton3D:Brust", "Armature/Skeleton3D:Hand1.R", "Armature/Skeleton3D:Hand2.R", "Armature/Skeleton3D:Hand3.R", "Armature/Skeleton3D:Hüfte", "Armature/Skeleton3D:Oberarm.R", "Armature/Skeleton3D:Unterarm.R", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R", "Charackter/Skeleton3D:ArmPol.L", "Charackter/Skeleton3D:ArmPol.R", "Charackter/Skeleton3D:Bone", "Charackter/Skeleton3D:Bone.001", "Charackter/Skeleton3D:Bone.002", "Charackter/Skeleton3D:Bone.004", "Charackter/Skeleton3D:Bone.005", "Charackter/Skeleton3D:Bone.006", "Charackter/Skeleton3D:Bone.007", "Charackter/Skeleton3D:Bone.008", "Charackter/Skeleton3D:Bone.009", "Charackter/Skeleton3D:Bone.013", "Charackter/Skeleton3D:Bone.014", "Charackter/Skeleton3D:Bone.015", "Charackter/Skeleton3D:Bone.016", "Charackter/Skeleton3D:Bone.017", "Charackter/Skeleton3D:Bone.018", "Charackter/Skeleton3D:Cone", "Charackter/Skeleton3D:Cone.001", "Charackter/Skeleton3D:IK.L", "Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackter/Skeleton3D:String", "Charackter/Skeleton3D:forearm.L", "Charackter/Skeleton3D:forearm.R", "Charackter/Skeleton3D:hand.L", "Charackter/Skeleton3D:hand.R", "Charackter/Skeleton3D:shoulder.L", "Charackter/Skeleton3D:shoulder.R", "Charackter/Skeleton3D:spine", "Charackter/Skeleton3D:spine.001", "Charackter/Skeleton3D:spine.002", "Charackter/Skeleton3D:spine.003", "Charackter/Skeleton3D:upper_arm.L", "Charackter/Skeleton3D:upper_arm.R"]
-
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
+graph_offset = Vector2(-531.87, -176.994)
+nodes/BackCrystalStaffAnimation/node = SubResource("AnimationNodeAnimation_gsaf8")
+nodes/BackCrystalStaffAnimation/position = Vector2(-440, 280)
+nodes/CrystalStaffAnimation/node = SubResource("AnimationNodeBlend2_6jgwm")
+nodes/CrystalStaffAnimation/position = Vector2(200, -180)
+nodes/MainHandCrystalStaffAnimation/node = SubResource("AnimationNodeAnimation_xyo5o")
+nodes/MainHandCrystalStaffAnimation/position = Vector2(-520, 40)
+nodes/MainOrBackCrystalStaffAnimation/node = SubResource("AnimationNodeBlend2_r8ngw")
+nodes/MainOrBackCrystalStaffAnimation/position = Vector2(-140, 0)
 nodes/StandAim/node = SubResource("AnimationNodeAnimation_i3mxk")
 nodes/StandAim/position = Vector2(-460, 800)
 nodes/StandAimTimeSeek/node = SubResource("AnimationNodeTimeSeek_ms580")
@@ -446,40 +418,12 @@ nodes/StandStaffBlend/node = SubResource("AnimationNodeBlend2_7c0pg")
 nodes/StandStaffBlend/position = Vector2(920, 620)
 nodes/StandStaffTimeSeek/node = SubResource("AnimationNodeTimeSeek_m62uw")
 nodes/StandStaffTimeSeek/position = Vector2(640, 840)
-nodes/StandSword/node = SubResource("AnimationNodeBlend3_0fad3")
-nodes/StandSword/position = Vector2(-1260, -20)
-nodes/StandSwordAttack1/node = SubResource("AnimationNodeAnimation_qjulh")
-nodes/StandSwordAttack1/position = Vector2(-1920, -60)
-nodes/StandSwordAttack1TimeSeek/node = SubResource("AnimationNodeTimeSeek_q7l0e")
-nodes/StandSwordAttack1TimeSeek/position = Vector2(-1600, -80)
-nodes/StandSwordAttack2/node = SubResource("AnimationNodeAnimation_405c5")
-nodes/StandSwordAttack2/position = Vector2(-1900, 200)
-nodes/StandSwordAttack2TimeSeek/node = SubResource("AnimationNodeTimeSeek_0fs2y")
-nodes/StandSwordAttack2TimeSeek/position = Vector2(-1660, 160)
-nodes/StandSwordAttack3/node = SubResource("AnimationNodeAnimation_gsaf8")
-nodes/StandSwordAttack3/position = Vector2(-1840, 420)
-nodes/StandSwordAttack3TimeSeek/node = SubResource("AnimationNodeTimeSeek_fkjak")
-nodes/StandSwordAttack3TimeSeek/position = Vector2(-1600, 360)
-nodes/StandSwordBlend/node = SubResource("AnimationNodeBlend2_qjulh")
-nodes/StandSwordBlend/position = Vector2(-1080, -120)
 nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_qjulh")
 nodes/StateMachine/position = Vector2(-880, -580)
 "nodes/StateMachine 2/node" = SubResource("AnimationNodeStateMachine_l1rxp")
 "nodes/StateMachine 2/position" = Vector2(-800, -220)
 nodes/SwordAnimation/node = SubResource("AnimationNodeBlend2_4a4dk")
 nodes/SwordAnimation/position = Vector2(-280, -340)
-nodes/SwordAttack4/node = SubResource("AnimationNodeAnimation_vjsh3")
-nodes/SwordAttack4/position = Vector2(-1300, 540)
-nodes/SwordAttack4TimeSeek/node = SubResource("AnimationNodeTimeSeek_di5ps")
-nodes/SwordAttack4TimeSeek/position = Vector2(-920, 320)
-nodes/SwordAttack5/node = SubResource("AnimationNodeAnimation_7c0pg")
-nodes/SwordAttack5/position = Vector2(-1300, 800)
-nodes/SwordAttack5TimeSeek/node = SubResource("AnimationNodeTimeSeek_qkk0s")
-nodes/SwordAttack5TimeSeek/position = Vector2(-920, 520)
-nodes/SwordAttack6/node = SubResource("AnimationNodeAnimation_6jgwm")
-nodes/SwordAttack6/position = Vector2(-1080, 940)
-nodes/SwordAttack6TimeSeek/node = SubResource("AnimationNodeTimeSeek_hwqfs")
-nodes/SwordAttack6TimeSeek/position = Vector2(-840, 740)
 nodes/WalkLeftBlock/node = SubResource("AnimationNodeAnimation_di5ps")
 nodes/WalkLeftBlock/position = Vector2(1220, 1300)
 nodes/WalkLeftBlockBlend/node = SubResource("AnimationNodeBlend2_and0b")
@@ -498,12 +442,8 @@ nodes/WalkStaffBlend/node = SubResource("AnimationNodeBlend2_unxwf")
 nodes/WalkStaffBlend/position = Vector2(1260, 800)
 nodes/WalkStaffTimeSeek/node = SubResource("AnimationNodeTimeSeek_vjsh3")
 nodes/WalkStaffTimeSeek/position = Vector2(980, 1080)
-nodes/WalkSword/node = SubResource("AnimationNodeBlend3_6ei3l")
-nodes/WalkSword/position = Vector2(-560, 320)
-nodes/WalkSwordBlend/node = SubResource("AnimationNodeBlend2_m62uw")
-nodes/WalkSwordBlend/position = Vector2(-220, 40)
-nodes/output/position = Vector2(180, -280)
-node_connections = [&"StandAimTimeSeek", 0, &"StandAim", &"StandBow", 0, &"StandAimTimeSeek", &"StandBow", 1, &"StandHoldTimeSeek", &"StandBow", 2, &"StandShootTimeSeek", &"StandBowBlend", 1, &"StandBow", &"StandHoldTimeSeek", 0, &"StandHold", &"StandLeftBlockBlend", 0, &"WalkLeftBlockBlend", &"StandLeftBlockBlend", 1, &"StandLeftBlockTimeSeek", &"StandLeftBlockTimeSeek", 0, &"StandLeftBlock", &"StandRightBlockBlend", 0, &"WalkRightBlockBlend", &"StandRightBlockBlend", 1, &"StandRightBlockTimeSeek", &"StandRightBlockTimeSeek", 0, &"StandRightBlock", &"StandShootTimeSeek", 0, &"StandShoot", &"StandStaffBlend", 0, &"StandBowBlend", &"StandStaffBlend", 1, &"StandStaffTimeSeek", &"StandStaffTimeSeek", 0, &"StandStaffAttack", &"StandSword", 0, &"StandSwordAttack1TimeSeek", &"StandSword", 1, &"StandSwordAttack2TimeSeek", &"StandSword", 2, &"StandSwordAttack3TimeSeek", &"StandSwordAttack1TimeSeek", 0, &"StandSwordAttack1", &"StandSwordAttack2TimeSeek", 0, &"StandSwordAttack2", &"StandSwordAttack3TimeSeek", 0, &"StandSwordAttack3", &"StandSwordBlend", 1, &"StandSword", &"SwordAnimation", 0, &"StateMachine", &"SwordAnimation", 1, &"StateMachine 2", &"SwordAttack4TimeSeek", 0, &"SwordAttack4", &"SwordAttack5TimeSeek", 0, &"SwordAttack5", &"SwordAttack6TimeSeek", 0, &"SwordAttack6", &"WalkLeftBlockBlend", 0, &"WalkStaffBlend", &"WalkLeftBlockBlend", 1, &"WalkLeftBlockTimeSeek", &"WalkLeftBlockTimeSeek", 0, &"WalkLeftBlock", &"WalkRightBlockBlend", 0, &"StandLeftBlockBlend", &"WalkRightBlockBlend", 1, &"WalkRightBlockTimeSeek", &"WalkRightBlockTimeSeek", 0, &"WalkRightBlock", &"WalkStaffBlend", 0, &"StandStaffBlend", &"WalkStaffBlend", 1, &"WalkStaffTimeSeek", &"WalkStaffTimeSeek", 0, &"WalkStaffAttack", &"WalkSword", 0, &"SwordAttack4TimeSeek", &"WalkSword", 1, &"SwordAttack5TimeSeek", &"WalkSword", 2, &"SwordAttack6TimeSeek", &"WalkSwordBlend", 0, &"WalkSword", &"output", 0, &"SwordAnimation"]
+nodes/output/position = Vector2(520, -200)
+node_connections = [&"CrystalStaffAnimation", 0, &"SwordAnimation", &"CrystalStaffAnimation", 1, &"MainOrBackCrystalStaffAnimation", &"MainOrBackCrystalStaffAnimation", 0, &"MainHandCrystalStaffAnimation", &"MainOrBackCrystalStaffAnimation", 1, &"BackCrystalStaffAnimation", &"StandAimTimeSeek", 0, &"StandAim", &"StandBow", 0, &"StandAimTimeSeek", &"StandBow", 1, &"StandHoldTimeSeek", &"StandBow", 2, &"StandShootTimeSeek", &"StandBowBlend", 1, &"StandBow", &"StandHoldTimeSeek", 0, &"StandHold", &"StandLeftBlockBlend", 0, &"WalkLeftBlockBlend", &"StandLeftBlockBlend", 1, &"StandLeftBlockTimeSeek", &"StandLeftBlockTimeSeek", 0, &"StandLeftBlock", &"StandRightBlockBlend", 0, &"WalkRightBlockBlend", &"StandRightBlockBlend", 1, &"StandRightBlockTimeSeek", &"StandRightBlockTimeSeek", 0, &"StandRightBlock", &"StandShootTimeSeek", 0, &"StandShoot", &"StandStaffBlend", 0, &"StandBowBlend", &"StandStaffBlend", 1, &"StandStaffTimeSeek", &"StandStaffTimeSeek", 0, &"StandStaffAttack", &"SwordAnimation", 0, &"StateMachine", &"SwordAnimation", 1, &"StateMachine 2", &"WalkLeftBlockBlend", 0, &"WalkStaffBlend", &"WalkLeftBlockBlend", 1, &"WalkLeftBlockTimeSeek", &"WalkLeftBlockTimeSeek", 0, &"WalkLeftBlock", &"WalkRightBlockBlend", 0, &"StandLeftBlockBlend", &"WalkRightBlockBlend", 1, &"WalkRightBlockTimeSeek", &"WalkRightBlockTimeSeek", 0, &"WalkRightBlock", &"WalkStaffBlend", 0, &"StandStaffBlend", &"WalkStaffBlend", 1, &"WalkStaffTimeSeek", &"WalkStaffTimeSeek", 0, &"WalkStaffAttack", &"output", 0, &"CrystalStaffAnimation"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ffkv0"]
 
@@ -545,8 +485,10 @@ mesh = SubResource("CapsuleMesh_gm3ih")
 root_node = NodePath("../new_player_model")
 tree_root = SubResource("AnimationNodeBlendTree_evqxc")
 anim_player = NodePath("../new_player_model/AnimationPlayer")
+parameters/CrystalStaffAnimation/blend_amount = 0.0
+parameters/MainOrBackCrystalStaffAnimation/blend_amount = 0.0
 parameters/StandAimTimeSeek/seek_request = -1.0
-parameters/StandBow/blend_amount = 0
+parameters/StandBow/blend_amount = false
 parameters/StandBowBlend/blend_amount = 0.0
 parameters/StandHoldTimeSeek/seek_request = -1.0
 parameters/StandLeftBlockBlend/blend_amount = 0.0
@@ -556,25 +498,15 @@ parameters/StandRightBlockTimeSeek/seek_request = -1.0
 parameters/StandShootTimeSeek/seek_request = -1.0
 parameters/StandStaffBlend/blend_amount = 0.0
 parameters/StandStaffTimeSeek/seek_request = -1.0
-parameters/StandSword/blend_amount = 0.0
-parameters/StandSwordAttack1TimeSeek/seek_request = -1.0
-parameters/StandSwordAttack2TimeSeek/seek_request = -1.0
-parameters/StandSwordAttack3TimeSeek/seek_request = -1.0
-parameters/StandSwordBlend/blend_amount = 0.0
 parameters/StateMachine/Sneaking/blend_position = Vector2(-0.00466853, -0.00294983)
 parameters/StateMachine/Walking/blend_position = Vector2(-0.000933707, 0.00307691)
 parameters/SwordAnimation/blend_amount = 0.0
-parameters/SwordAttack4TimeSeek/seek_request = -1.0
-parameters/SwordAttack5TimeSeek/seek_request = -1.0
-parameters/SwordAttack6TimeSeek/seek_request = -1.0
 parameters/WalkLeftBlockBlend/blend_amount = 0.0
 parameters/WalkLeftBlockTimeSeek/seek_request = -1.0
 parameters/WalkRightBlockBlend/blend_amount = 0.0
 parameters/WalkRightBlockTimeSeek/seek_request = -1.0
 parameters/WalkStaffBlend/blend_amount = false
 parameters/WalkStaffTimeSeek/seek_request = -1.0
-parameters/WalkSword/blend_amount = 0.0
-parameters/WalkSwordBlend/blend_amount = 0.0
 script = ExtResource("4_6iyn6")
 player_controller = NodePath("../..")
 front_pointer = NodePath("../FrontPointer")
@@ -585,115 +517,163 @@ transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 
 
 [node name="Left" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="0"]
 transform = Transform3D(0.972481, -0.0585653, -0.225502, 0.100144, 0.97899, 0.177618, 0.210362, -0.195313, 0.957914, 1.05253, 1.41099, -0.0109157)
-visible = false
 
 [node name="LeftMetalShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="1"]
 transform = Transform3D(0.264934, 0.201462, -0.942986, -0.75035, 0.657282, -0.070389, 0.605627, 0.726218, 0.325304, 1.26144, 1.94279, 0.0748857)
+
+[node name="LeftMetalShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/LeftMetalShield" index="0"]
 visible = false
 
 [node name="LeftShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="2"]
 transform = Transform3D(0.0423466, -0.269089, -0.962184, -0.829231, 0.527722, -0.184081, 0.5573, 0.805667, -0.200789, 1.16232, 1.90414, 0.0279492)
+
+[node name="LeftShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/LeftShield" index="0"]
 visible = false
 
 [node name="LeftWoodShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="3"]
 transform = Transform3D(0.012234, -0.178274, -0.983905, -0.833869, 0.541207, -0.10843, 0.551826, 0.821774, -0.142036, 1.28956, 2.36029, -0.158374)
+
+[node name="LeftWoodShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/LeftWoodShield" index="0"]
 visible = false
 
 [node name="Right" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="4"]
 transform = Transform3D(0.887305, -0.0526565, 0.458167, 0.123786, 0.984197, -0.126617, -0.44426, 0.169063, 0.879801, -1.05253, 1.41099, -0.0109155)
-visible = false
 
 [node name="RightMetalStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="5"]
 transform = Transform3D(0.777609, 0.29432, -0.555606, 0.14663, -0.944196, -0.294948, -0.61141, 0.147885, -0.777372, -1.05253, 1.41099, -0.0109155)
+
+[node name="RightMetalStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightMetalStaff" index="0"]
 visible = false
 
 [node name="RightmetalStaffCrystal" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="6"]
 transform = Transform3D(0.775649, 0.299448, -0.555606, 0.152861, -0.943207, -0.294948, -0.612373, 0.143845, -0.777372, -0.182671, 1.88536, 1.28658)
+
+[node name="RightmetalStaffCrystal" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightmetalStaffCrystal" index="0"]
 visible = false
 
 [node name="RightMetalSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="7"]
 transform = Transform3D(-0.0659792, 0.844566, -0.53137, 0.938552, -0.128272, -0.320415, -0.338771, -0.519859, -0.784206, -1.05614, 1.41883, -0.0166944)
 
+[node name="RightMetalSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightMetalSword" index="0"]
+visible = false
+
 [node name="new_sword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword" index="0" instance=ExtResource("5_fkjak")]
 
 [node name="RightStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="8"]
 transform = Transform3D(0.0915242, -0.799755, -0.593308, -0.980229, 0.0326054, -0.195161, 0.175426, 0.59944, -0.780959, -1.05253, 1.41099, -0.0109155)
+
+[node name="RightStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightStaff" index="0"]
 visible = false
 
 [node name="RightSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="9"]
 transform = Transform3D(-0.0956025, 0.844196, -0.52744, 0.946336, -0.0872526, -0.311183, -0.30872, -0.528885, -0.790551, -1.05614, 1.41883, -0.0166944)
+
+[node name="RightSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightSword" index="0"]
 visible = false
 
 [node name="RightWoodStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="10"]
 transform = Transform3D(0.771513, -0.200028, -0.603951, -0.378522, -0.907313, -0.183039, -0.511359, 0.369826, -0.775719, -1.05253, 1.41099, -0.0109155)
+
+[node name="RightWoodStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightWoodStaff" index="0"]
 visible = false
 
 [node name="RightWoodStaffCrystal" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="11"]
 transform = Transform3D(0.771513, -0.200028, -0.603951, -0.378522, -0.907313, -0.183039, -0.511359, 0.369826, -0.775719, 0.578133, 1.9052, 2.08353)
+
+[node name="RightWoodStaffCrystal" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightWoodStaffCrystal" index="0"]
 visible = false
 
 [node name="RightWoodSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="12"]
 transform = Transform3D(0.995434, 0.0245817, -0.0922309, 0.0953466, -0.30116, 0.948794, -0.00445315, -0.953256, -0.302128, -1.04977, 1.40252, -0.00559679)
+
+[node name="RightWoodSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightWoodSword" index="0"]
 visible = false
 
 [node name="Back" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="13"]
 transform = Transform3D(1, 6.81401e-15, -8.09791e-10, -7.97324e-15, 1, 8.3819e-08, 8.0982e-10, -5.58794e-09, 1, -0.039708, 2.74627, -0.102917)
-visible = false
 
 [node name="BackBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="14"]
 transform = Transform3D(0.645023, 0.0385783, 0.763189, -0.764163, 0.0325634, 0.644201, 4.79245e-09, -0.998725, 0.0504842, 0.178201, 1.97404, -0.538722)
+
+[node name="BackBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackBow" index="0"]
 visible = false
 
 [node name="BackMetalBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="15"]
 transform = Transform3D(0.645023, 0.0385783, 0.763189, -0.764163, 0.0325634, 0.644201, 4.79245e-09, -0.998725, 0.0504842, 0.178201, 1.97404, -0.538722)
+
+[node name="BackMetalBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackMetalBow" index="0"]
 visible = false
 
 [node name="BackMetalShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="16"]
 transform = Transform3D(0.993211, -0.0502682, 0.104903, 0.00768759, 0.928202, 0.371998, -0.116071, -0.368666, 0.922287, 0.101164, 2.89125, -0.61718)
+
+[node name="BackMetalShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackMetalShield" index="0"]
 visible = false
 
 [node name="BackMetalStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="17"]
 transform = Transform3D(0.857179, 0.0380918, 0.513608, 0.511287, 0.0568965, -0.857525, -0.0618871, 0.997653, 0.0292946, -0.039708, 2.74627, -0.724415)
+
+[node name="BackMetalStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackMetalStaff" index="0"]
 visible = false
 
 [node name="BackMetalStaffCrystal" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="18"]
 transform = Transform3D(0.856908, 0.0437504, 0.513608, 0.5109, 0.0602709, -0.857525, -0.0684727, 0.997222, 0.0292946, -0.91841, 4.12143, -0.76929)
+
+[node name="BackMetalStaffCrystal" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackMetalStaffCrystal" index="0"]
 visible = false
 
 [node name="BackMetalSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="19"]
 transform = Transform3D(-0.689635, -0.00298569, -0.72415, -0.723367, -0.043857, 0.68907, -0.0338165, 0.999033, 0.0280857, -1.06536, 3.52011, -0.632308)
+
+[node name="BackMetalSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackMetalSword" index="0"]
 visible = false
 
 [node name="BackShild" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="20"]
 transform = Transform3D(1, 6.81401e-15, -8.09791e-10, -7.97324e-15, 1, 8.3819e-08, 8.0982e-10, -5.58794e-09, 1, -0.0590987, 2.77581, -0.53904)
+
+[node name="BackShild" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackShild" index="0"]
 visible = false
 
 [node name="BackStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="21"]
 transform = Transform3D(0.796109, 0.0543767, 0.602705, 0.605153, -0.0715351, -0.792888, -3.25392e-08, 0.995955, -0.0898561, -0.039708, 2.74627, -0.641553)
+
+[node name="BackStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackStaff" index="0"]
 visible = false
 
 [node name="BackSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="22"]
 transform = Transform3D(-0.681403, -0.0274095, -0.731395, -0.727985, -0.0779395, 0.681148, -0.0756745, 0.996581, 0.0331545, -1.06536, 3.52011, -0.632308)
+
+[node name="BackSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackSword" index="0"]
 visible = false
 
 [node name="BackWoodBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="23"]
 transform = Transform3D(0.645023, 0.0385783, 0.763189, -0.764163, 0.0325634, 0.644201, 4.79245e-09, -0.998725, 0.0504842, 0.178201, 1.97404, -0.538722)
+
+[node name="BackWoodBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackWoodBow" index="0"]
 visible = false
 
 [node name="BackWoodShild" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="24"]
 transform = Transform3D(1, 6.81401e-15, -8.09791e-10, -7.97324e-15, 1, 8.3819e-08, 8.0982e-10, -5.58794e-09, 1, -0.593133, 2.71124, -0.53811)
+
+[node name="BackWoodShild" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackWoodShild" index="0"]
 visible = false
 
 [node name="BackWoodStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="25"]
 transform = Transform3D(-0.0085758, -0.822351, 0.568916, 0.00540363, -0.568967, -0.822343, 0.999948, -0.00397801, 0.00932288, -0.039708, 2.74627, -0.724415)
+
+[node name="BackWoodStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackWoodStaff" index="0"]
 visible = false
 
 [node name="BackWoodStaffCrystal" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="26"]
 transform = Transform3D(-0.0085758, -0.822351, 0.568916, 0.00540363, -0.568967, -0.822343, 0.999948, -0.00397801, 0.00932288, -1.57578, 4.9666, -0.749587)
+
+[node name="BackWoodStaffCrystal" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackWoodStaffCrystal" index="0"]
 visible = false
 
 [node name="BackWoodSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="27"]
 transform = Transform3D(0.239126, -0.680316, 0.692812, -0.558583, 0.487244, 0.671251, -0.794232, -0.547506, -0.2635, -1.10387, 3.71658, -0.696065)
+
+[node name="BackWoodSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/BackWoodSword" index="0"]
 visible = false
 
 [node name="LeftBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="30"]
@@ -705,11 +685,45 @@ visible = false
 [node name="LeftWoodBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="32"]
 visible = false
 
-[node name="sword_attack" type="Node3D" parent="Controller/Model" node_paths=PackedStringArray("animation_tree", "player_controller", "sword_hit_box")]
+[node name="PlayerAttacks" type="Node3D" parent="Controller/Model" node_paths=PackedStringArray("animation_tree", "player_controller", "sword_hit_box")]
 script = ExtResource("5_0fad3")
 animation_tree = NodePath("../AnimationTree")
 player_controller = NodePath("../..")
 sword_hit_box = NodePath("../new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword/new_sword")
+
+[node name="InteractRayCast" parent="Controller/Model" instance=ExtResource("7_fkjak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.239533)
+
+[node name="PlayerInventar" type="Node3D" parent="Controller/Model" node_paths=PackedStringArray("main_hand_wood_sword", "main_hand_sword", "main_hand_metal_sword", "main_hand_wood_staff", "main_hand_crystal_wood_staff", "main_hand_staff", "main_hand_metal_staff", "main_hand_crystal_metal_staff", "off_hand_wood_bow", "off_hand_bow", "off_hand_metal_bow", "off_hand_wood_shield", "off_hand_shield", "off_hand_metal_shield", "back_wood_sword", "back_sword", "back_metal_sword", "back_wood_staff", "back_crystal_wood_staff", "back_staff", "back_metal_staff", "back_crystal_metal_staff", "back_wood_bow", "back_bow", "back_metal_bow", "back_wood_shield", "back_shield", "back_metal_shield")]
+script = ExtResource("8_gsaf8")
+main_hand_wood_sword = NodePath("../new_player_model/Charackter/Skeleton3D/RightWoodSword/RightWoodSword")
+main_hand_sword = NodePath("../new_player_model/Charackter/Skeleton3D/RightSword/RightSword")
+main_hand_metal_sword = NodePath("../new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword")
+main_hand_wood_staff = NodePath("../new_player_model/Charackter/Skeleton3D/RightWoodStaff/RightWoodStaff")
+main_hand_crystal_wood_staff = NodePath("../new_player_model/Charackter/Skeleton3D/RightWoodStaffCrystal/RightWoodStaffCrystal")
+main_hand_staff = NodePath("../new_player_model/Charackter/Skeleton3D/RightStaff/RightStaff")
+main_hand_metal_staff = NodePath("../new_player_model/Charackter/Skeleton3D/RightMetalStaff/RightMetalStaff")
+main_hand_crystal_metal_staff = NodePath("../new_player_model/Charackter/Skeleton3D/RightmetalStaffCrystal/RightmetalStaffCrystal")
+off_hand_wood_bow = NodePath("../new_player_model/Charackter/Skeleton3D/LeftWoodBow")
+off_hand_bow = NodePath("../new_player_model/Charackter/Skeleton3D/LeftBow")
+off_hand_metal_bow = NodePath("../new_player_model/Charackter/Skeleton3D/LeftMetalBow")
+off_hand_wood_shield = NodePath("../new_player_model/Charackter/Skeleton3D/LeftWoodShield/LeftWoodShield")
+off_hand_shield = NodePath("../new_player_model/Charackter/Skeleton3D/LeftShield/LeftShield")
+off_hand_metal_shield = NodePath("../new_player_model/Charackter/Skeleton3D/LeftMetalShield/LeftMetalShield")
+back_wood_sword = NodePath("../new_player_model/Charackter/Skeleton3D/BackWoodSword/BackWoodSword")
+back_sword = NodePath("../new_player_model/Charackter/Skeleton3D/BackSword/BackSword")
+back_metal_sword = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalSword/BackMetalSword")
+back_wood_staff = NodePath("../new_player_model/Charackter/Skeleton3D/BackWoodStaff/BackWoodStaff")
+back_crystal_wood_staff = NodePath("../new_player_model/Charackter/Skeleton3D/BackWoodStaffCrystal/BackWoodStaffCrystal")
+back_staff = NodePath("../new_player_model/Charackter/Skeleton3D/BackStaff/BackStaff")
+back_metal_staff = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalStaff/BackMetalStaff")
+back_crystal_metal_staff = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalStaffCrystal/BackMetalStaffCrystal")
+back_wood_bow = NodePath("../new_player_model/Charackter/Skeleton3D/BackWoodBow/BackWoodBow")
+back_bow = NodePath("../new_player_model/Charackter/Skeleton3D/BackBow/BackBow")
+back_metal_bow = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalBow/BackMetalBow")
+back_wood_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackWoodShild/BackWoodShild")
+back_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackShild/BackShild")
+back_metal_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalShield/BackMetalShield")
 
 [node name="CameraArm" type="SpringArm3D" parent="Controller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
@@ -952,6 +966,7 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 current = true
 script = ExtResource("11_7kenn")
 
+[connection signal="interacted_with_socket" from="Controller/Model/InteractRayCast" to="Controller/Model/PlayerInventar" method="_on_interact_ray_cast_interacted_with_socket"]
 [connection signal="area_entered" from="Controller/Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Controller/Area3D" to="." method="_on_area_3d_area_exited"]
 

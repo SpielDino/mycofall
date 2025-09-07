@@ -5,10 +5,10 @@ signal attacks
 signal blocks
 signal attack_loading_updated
 
-var weapon_in_hand: bool = false
-var weapon_on_back: bool = false
-var first_weapon: String = ""
-var second_weapon: String = ""
+var first_weapon: bool = false
+var second_weapon: bool = false
+var first_weapon_name: String = ""
+var second_weapon_name: String = ""
 var bow_attack_timer: float
 var attack_loading_value: float = bow_attack_timer
 var is_attacking: bool = false
@@ -16,36 +16,45 @@ var is_blocking: bool = false
 var having_i_frames: bool = false
 var is_dodging: bool = false
 var is_sneaking: bool = false
-
-func get_weapon_in_hand():
-	return weapon_in_hand
-
-func set_weapon_in_hand():
-	if !weapon_in_hand:
-		weapon_in_hand = true
-	else:
-		weapon_in_hand = false
-		
-func get_weapon_on_back():
-	return weapon_on_back
-
-func set_weapon_on_back():
-	if !weapon_on_back:
-		weapon_on_back = true
-	else:
-		weapon_on_back = false
+var controller_input_device: bool = false
+var first_weapon_upgrade_level: int = 0
+var second_weapon_upgrade_level: int = 0
 
 func get_first_weapon():
 	return first_weapon
-	
-func set_first_weapon(weapon):
-	first_weapon = weapon
+
+func set_first_weapon(check: bool):
+	first_weapon = check
 
 func get_second_weapon():
 	return second_weapon
+
+func set_second_weapon(check: bool):
+	second_weapon = check
+
+func get_first_weapon_name():
+	return first_weapon_name
 	
-func set_second_weapon(weapon):
-	second_weapon = weapon
+func set_first_weapon_name(check: String):
+	first_weapon_name = check
+
+func get_second_weapon_name():
+	return second_weapon_name
+	
+func set_second_weapon_name(check: String):
+	second_weapon_name = check
+	
+func get_first_weapon_upgrade_level():
+	return first_weapon_upgrade_level
+	
+func set_first_weapon_upgrade_level(check: int):
+	first_weapon_upgrade_level = check
+	
+func get_second_weapon_upgrade_level():
+	return second_weapon_upgrade_level
+
+func set_second_weapon_upgrade_level(check: int):
+	second_weapon_upgrade_level = check
 	
 func get_bow_attack_timer():
 	return bow_attack_timer
@@ -92,13 +101,19 @@ func get_is_sneaking():
 
 func set_is_sneaking(check):
 	is_sneaking = check
+	
+func get_controller_input_device():
+	return controller_input_device
+	
+func set_controller_input_device(check):
+	controller_input_device = check
 
 func weapons_updated():
 	weapons_changed.emit()
 
-func get_child_by_name(parent, name: String):
+func get_child_by_name(parent, check_name: String):
 	for child in parent.get_children():
-		if child.name == name:
+		if child.name == check_name:
 			return child
 			
 func reset_child_to_root(parent, child):

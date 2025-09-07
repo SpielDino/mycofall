@@ -1,5 +1,7 @@
 extends CharacterBody3D
 
+const DEADZONE := 0.2
+
 @export_category("Components")
 @export var player_shape: CollisionShape3D
 @export var dodge_indicator: MeshInstance3D
@@ -23,7 +25,7 @@ var dodge_strength_multiplier_staff: float
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var temprotation = 0
-var mouse_mode: bool = false
+#var mouse_mode: bool = false
 var mouse_timer: float = 0
 var player: Node3D
 var lock = false
@@ -76,12 +78,6 @@ func _physics_process(delta):
 		rotate_player()
 		block()
 		dodge_with_stamina()
-
-func _input(event):
-	if event is InputEventMouseMotion:
-		if event.velocity.x > 0 or event.velocity.y > 0:
-			mouse_mode = true
-
 
 func dodge_with_stamina():
 	if Input.is_action_just_pressed("dodge") and player.stamina >= stamina_cost_per_dodge:
@@ -177,11 +173,9 @@ func rotate_based_on_last_movement():
 
 func rotate_based_on_second_input():
 	var look_input = Input.get_vector("look_left", "look_right", "look_forward", "look_backward")
-	if (look_input.x != 0 or look_input.y != 0):
-		mouse_mode = false
 	if lock_active:
 		lock = Input.is_action_pressed("lock_movement")
-	if !mouse_mode:
+	if GameManager.get_controller_input_device():
 		var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 		if (input.x != 0 or input.y != 0):
 			temprotation = atan2(-input.x, -input.y)
@@ -234,3 +228,22 @@ func sneak_toggler():
 
 func apply_gravity(delta):
 	velocity.y += -gravity * delta
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventJoypadButton:
+		_switch_to_controller()
+	elif event is InputEventJoypadMotion:
+		if abs(event.axis_value) > DEADZONE:
+			_switch_to_controller()
+	elif event is InputEventKey or event is InputEventMouse:
+		_switch_to_kbm()
+
+func _switch_to_controller():
+	if GameManager.get_controller_input_device() != true:
+		GameManager.set_controller_input_device(true)
+		print("Switched to controller")
+		
+func _switch_to_kbm():
+	if GameManager.get_controller_input_device() != false:
+		GameManager.set_controller_input_device(false)
+		print("Switched to keyboard/mouse")

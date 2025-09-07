@@ -61,55 +61,55 @@ func _ready() -> void:
 
 func _on_interacted(body: Variant) -> void:
 	# Take a weapon without having a weapon
-	if empty_socket == false and GameManager.get_weapon_in_hand() == false:
+	if empty_socket == false and GameManager.get_first_weapon() == false:
 		var attachment_weapon = attachment.get_child(0)
 		attachment.remove_child(attachment_weapon)
 		current_weapon_in_socket = ""
 		empty_socket = true
 	
 	# Put away weapon
-	elif empty_socket == true and GameManager.get_weapon_in_hand() == true:
-		var player_weapon = GameManager.get_first_weapon()
+	elif empty_socket == true and GameManager.get_first_weapon() == true:
+		var player_weapon = GameManager.get_first_weapon_name()
 		match player_weapon:
 			sword_name:
 				attachment.add_child(sword_intance)
-				current_weapon_in_socket = sword_intance.get_name()
+				current_weapon_in_socket = sword_name
 			staff_name:
 				attachment.add_child(staff_intance)
-				current_weapon_in_socket = staff_intance.get_name()
+				current_weapon_in_socket = staff_name
 			bow_name:
 				attachment.add_child(bow_intance)
-				current_weapon_in_socket = bow_intance.get_name()
+				current_weapon_in_socket = bow_name
 			shield_name:
 				attachment.add_child(shield_intance)
-				current_weapon_in_socket = shield_intance.get_name()
+				current_weapon_in_socket = shield_name
 		empty_socket = false
 		
 	# Take a 2nd weapon while having 1 weapon
-	elif empty_socket == false and GameManager.get_weapon_in_hand() == true and GameManager.get_weapon_on_back() == false:
+	elif empty_socket == false and GameManager.get_first_weapon() == true and GameManager.get_second_weapon() == false:
 		var attachment_weapon = attachment.get_child(0)
 		attachment.remove_child(attachment_weapon)
 		current_weapon_in_socket = ""
 		empty_socket = true
 		
 	# Swap weapon in hand with socket weapon (only works if you have 2 weapons)
-	elif empty_socket == false and GameManager.get_weapon_in_hand() == true and GameManager.get_weapon_on_back() == true:
+	elif empty_socket == false and GameManager.get_first_weapon() == true and GameManager.get_second_weapon() == true:
 		var attachment_weapon = attachment.get_child(0)
 		attachment.remove_child(attachment_weapon)
-		var player_weapon = GameManager.get_first_weapon()
+		var player_weapon = GameManager.get_first_weapon_name()
 		match player_weapon:
 			sword_name:
 				attachment.add_child(sword_intance)
-				current_weapon_in_socket = sword_intance.get_name()
+				current_weapon_in_socket = sword_name
 			staff_name:
 				attachment.add_child(staff_intance)
-				current_weapon_in_socket = staff_intance.get_name()
+				current_weapon_in_socket = staff_name
 			bow_name:
 				attachment.add_child(bow_intance)
-				current_weapon_in_socket = bow_intance.get_name()
+				current_weapon_in_socket = bow_name
 			shield_name:
 				attachment.add_child(shield_intance)
-				current_weapon_in_socket = shield_intance.get_name()
+				current_weapon_in_socket = shield_name
 		empty_socket = false
 
 func get_current_weapon_in_socket():

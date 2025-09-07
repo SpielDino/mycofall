@@ -12,7 +12,7 @@ func get_prompt(controller_input_device):
 		if controller_input_device == false:
 			if action is InputEventKey:
 				key_name = action.as_text_physical_keycode()
-				break
+				#break
 		elif controller_input_device == true:
 			UIManager.get_controller_type()
 			if action is InputEventJoypadButton:

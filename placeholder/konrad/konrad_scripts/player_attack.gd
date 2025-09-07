@@ -11,12 +11,21 @@ var combo_timer: float = 0
 var max_combo_timer_sword_attack_1: float = 0.5
 var max_combo_timer_sword_attack_2: float = 0.3
 
+var sword_name = "Sword"
+
 @onready var movement_state_machine_playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
 @onready var sword_state_machine_playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine 2/playback")
 @onready var sword_attack_blend = animation_tree.tree_root.get_node("SwordAnimation")
 
 func _physics_process(delta: float) -> void:
-	sword_attack(delta)
+	attacks(delta)
+	
+func attacks(delta):
+	if GameManager.get_first_weapon():
+		var weapon_name = GameManager.get_first_weapon_name()
+		match weapon_name:
+			sword_name:
+				sword_attack(delta)
 	
 func sword_attack(delta):
 	if player_controller.velocity.length() > 0.2:

@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("weapon") and !hit:
 		ani_player.play("GettingHit")
-		var rnd_pitch = randf_range(0.75, 1.25)
+		#var rnd_pitch = randf_range(0.75, 1.25)
 		#audio_player.set_pitch_scale(rnd_pitch)
 		#audio_player.play(0)
 		hit = true
