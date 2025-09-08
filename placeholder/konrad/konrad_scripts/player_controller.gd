@@ -193,8 +193,7 @@ func rotate_based_on_second_input():
 			temprotation = angle
 	if !lock:
 		# Locking rotation when using melee attack
-		#if GameManager.get_is_attacking() and GameManager.get_first_weapon() == "Sword":
-		if GameManager.get_is_attacking():
+		if GameManager.get_is_attacking() and GameManager.get_first_weapon_name() == "Sword":
 			pass
 		else:
 			player_shape.rotation.y = temprotation
@@ -206,9 +205,9 @@ func get_move_input(delta):
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward").normalized()
 	var direction = Vector3(input.x, 0, input.y).rotated(Vector3.UP, spring_arm.rotation.y)
 	var player_speed = player.speed
-	player.set_sneaking(false)
 	if sneak_toggle:
-		player.set_sneaking(true)
+		player_speed = player_speed / player.sneak_speed_modifier
+	if GameManager.get_first_weapon_name() == bow_name and GameManager.get_is_attacking():
 		player_speed = player_speed / player.sneak_speed_modifier
 	velocity = lerp(velocity, direction * player_speed, acceleration * delta)
 	velocity.y = vy
@@ -222,9 +221,11 @@ func sneak_toggler():
 		if sneak_toggle:
 			sneak_toggle = false
 			GameManager.set_is_sneaking(sneak_toggle)
+			player.set_sneaking(false)
 		else:
 			sneak_toggle = true
 			GameManager.set_is_sneaking(sneak_toggle)
+			player.set_sneaking(true)
 
 func apply_gravity(delta):
 	velocity.y += -gravity * delta

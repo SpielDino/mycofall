@@ -19,7 +19,7 @@ signal mana_changed
 @export_subgroup("Dodge")
 @export var stamina_cost_per_dodge: int = 50
 @export var dodge_distance: float = 5.0     
-@export var dodge_duration: float = 0.3     
+@export var dodge_duration: float = 0.625     
 @export var no_stamina_after_dodge_time: float = 1
 @export var dodge_strength_multiplier_shield: float = 0.6
 @export var dodge_strength_multiplier_bow: float = 0.8

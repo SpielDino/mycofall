@@ -9,7 +9,7 @@ const DEADZONE := 0.2
 var rotation_front_pointer
 var rel_vel
 var rel_vel_xz
-#var controller_input_device
+var bow_name = "Bow"
 
 var current_blend := Vector2.ZERO
 var stop_rotation_during_dodge = false
@@ -40,10 +40,16 @@ func movement_animation():
 	walking_animation()
 
 func toogle_sneak_animation():
-	if !GameManager.get_is_sneaking() and !GameManager.get_is_dodging() and !GameManager.get_is_attacking():
-		state_machine_playback.travel("Sneaking")
-	elif GameManager.get_is_sneaking() and !GameManager.get_is_dodging() and !GameManager.get_is_attacking():
-		state_machine_playback.travel("Walking")
+	if (
+		Input.is_action_just_pressed("sneak")
+		and !GameManager.get_is_dodging() 
+		and !GameManager.get_is_attacking() 
+		and !GameManager.get_is_blocking()
+		):
+		if !GameManager.get_is_sneaking():
+			state_machine_playback.travel("Sneaking")
+		elif GameManager.get_is_sneaking():
+			state_machine_playback.travel("Walking")
 
 func sneak_animation():
 	if GameManager.get_is_sneaking() and !GameManager.get_is_dodging():
@@ -120,22 +126,23 @@ func walking_animation_controller():
 func rotate_animation_based_on_look_direction():
 	controller_dodge_false()
 	rotation_front_pointer = rotation_of_front_pointer()
-	state_machine_playback.travel("Walking")
 	# Numbers are degrees, left side positive, right side negative
 	#Looking North
-	if rotation_front_pointer <= 70 and rotation_front_pointer >= -70:
-		self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
+	if rotation_front_pointer <= 50 and rotation_front_pointer >= -50:
+		pass
 	#Looking South
 	elif rotation_front_pointer > 130 and rotation_front_pointer <= 180 or rotation_front_pointer < -130 and rotation_front_pointer >= -180:
 		rel_vel_xz = Vector2(-rel_vel.x, -rel_vel.z)
-		self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
 	#Looking West
-	elif rotation_front_pointer > 70 and rotation_front_pointer <= 130:
+	elif rotation_front_pointer > 50 and rotation_front_pointer <= 130:
 		rel_vel_xz = Vector2(-rel_vel.z, rel_vel.x)
-		self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
 	#Looking East
-	elif rotation_front_pointer < -70 and rotation_front_pointer >= -130:
+	elif rotation_front_pointer < -50 and rotation_front_pointer >= -130:
 		rel_vel_xz = Vector2(rel_vel.z, -rel_vel.x)
+	if GameManager.get_first_weapon_name() == bow_name and GameManager.get_is_attacking():
+		pass
+	else:
+		state_machine_playback.travel("Walking")
 		self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
 
 func walking_animation():

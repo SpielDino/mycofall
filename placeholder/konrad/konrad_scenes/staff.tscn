@@ -160,7 +160,6 @@ script = ExtResource("1_7m86y")
 
 [node name="HolzStab" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
-visible = false
 
 [node name="HolzStarb" type="MeshInstance3D" parent="HolzStab"]
 mesh = SubResource("ArrayMesh_61qw2")
@@ -187,3 +186,4 @@ visible = false
 
 [node name="MetalStab" parent="." instance=ExtResource("4_88va5")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
+visible = false
