@@ -405,26 +405,8 @@ target_position = Vector3(0, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, -1.548)
 target_position = Vector3(0, 0, -1)
 
-[node name="InteractRayCast" parent="Controller/Model" node_paths=PackedStringArray("player_controller", "animation_tree", "staff_animation_player", "bow_animation_player", "sword_animation_player", "hand", "offhand", "back", "sword_main", "shield_main", "staff_main", "bow_main", "shield_offhand", "bow_offhand", "sword_back", "shield_back", "bow_back", "staff_back") instance=ExtResource("1_7bqlq")]
+[node name="InteractRayCast" parent="Controller/Model" instance=ExtResource("1_7bqlq")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.292, -0.375)
-player_controller = NodePath("../..")
-animation_tree = NodePath("../OldPlayerModel/AnimationTree")
-staff_animation_player = NodePath("../OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Staff/AnimationPlayer")
-bow_animation_player = NodePath("../OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Bow/AnimationPlayer")
-sword_animation_player = NodePath("../OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Sword/AnimationPlayer")
-hand = NodePath("../OldPlayerModel/Armature/Skeleton3D/RightWeaponHand")
-offhand = NodePath("../OldPlayerModel/Armature/Skeleton3D/LeftWeaponHand")
-back = NodePath("../OldPlayerModel/Armature/Skeleton3D/BackWeapon")
-sword_main = NodePath("../OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Sword")
-shield_main = NodePath("../OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Shield")
-staff_main = NodePath("../OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Staff")
-bow_main = NodePath("../OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Bow")
-shield_offhand = NodePath("../OldPlayerModel/Armature/Skeleton3D/LeftWeaponHand/Shield")
-bow_offhand = NodePath("../OldPlayerModel/Armature/Skeleton3D/LeftWeaponHand/Bow")
-sword_back = NodePath("../OldPlayerModel/Armature/Skeleton3D/BackWeapon/Sword")
-shield_back = NodePath("../OldPlayerModel/Armature/Skeleton3D/BackWeapon/Shield")
-bow_back = NodePath("../OldPlayerModel/Armature/Skeleton3D/BackWeapon/Bow")
-staff_back = NodePath("../OldPlayerModel/Armature/Skeleton3D/BackWeapon/Staff")
 
 [node name="FrontPointer" type="MeshInstance3D" parent="Controller/Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, -0.609)

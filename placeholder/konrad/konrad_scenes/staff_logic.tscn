@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://252l82i5f0jy"]
 
-[ext_resource type="Script" uid="uid://vcdtw5c4d00n" path="res://placeholder/konrad/konrad_scripts/staff_logic.gd" id="1_u5bm7"]
+[ext_resource type="Script" uid="uid://vcdtw5c4d00n" path="res://placeholder/konrad/konrad_scripts/staff_logic.gd" id="1_x1ew8"]
 
 [sub_resource type="Animation" id="Animation_7m86y"]
 resource_name = "MagicAttack"
@@ -25,8 +25,8 @@ _data = {
 &"MagicAttack": SubResource("Animation_7m86y")
 }
 
-[node name="Staff" type="Node3D"]
-script = ExtResource("1_u5bm7")
+[node name="StaffLogic" type="Node3D"]
+script = ExtResource("1_x1ew8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

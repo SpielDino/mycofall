@@ -11,7 +11,6 @@ var acceleration
 var friction 
 #@onready var sensitivity: float = settings.sensitivity
 var rotation_type: String 
-var lock_active: bool
 var max_stamina: int 
 var stamina_per_second: int
 var stamina_cost_per_dodge: int
@@ -25,7 +24,6 @@ var dodge_strength_multiplier_staff: float
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var temprotation = 0
-#var mouse_mode: bool = false
 var mouse_timer: float = 0
 var player: Node3D
 var lock = false
@@ -35,8 +33,9 @@ var i_frame_timer: float
 var max_i_frame_timer: float
 var having_i_frames = false
 var dodge_direction: Vector3 = Vector3.ZERO
-var dodge_timer: float = 0.0
+var dodge_timer: float = 0
 var is_dodging: bool = false
+var block_timer: float = 0
 
 var sword_name = "Sword"
 var shield_name = "Shield"
@@ -52,7 +51,6 @@ func _ready():
 	friction = player.friction
 	#@onready var sensitivity: float = settings.sensitivity
 	rotation_type = player.rotation_type
-	lock_active = player.lock_active
 	max_stamina = player.max_stamina
 	stamina_per_second = player.stamina_per_second
 	stamina_cost_per_dodge = player.stamina_cost_per_dodge
@@ -72,11 +70,12 @@ func _physics_process(delta):
 	if is_dodging:
 		process_dodge(delta)
 		i_frame_timer_calc(delta)
+		block(delta)
 	else:
 		get_move_input(delta)
 		move_and_slide()
 		rotate_player()
-		block()
+		block(delta)
 		dodge_with_stamina()
 
 func dodge_with_stamina():
@@ -114,9 +113,7 @@ func dodge_ability():
 	player.set_stamina_regen_cooldown(no_stamina_after_dodge_time)
 	if player.is_detected:
 		PlayerActionTracker.times_dodged_in_combat += 1
-	dodge_indicator.visible = true
-
-#var how_long_dash_timer = 0
+	#dodge_indicator.visible = true
 
 func process_dodge(delta):
 	if dodge_timer > 0:
@@ -139,22 +136,30 @@ func process_dodge(delta):
 		velocity.y = vy
 		move_and_slide()
 	else:
-		#print(how_long_dash_timer)
 		is_dodging = false
 		GameManager.set_is_dodging(is_dodging)
-		#velocity = Vector3.ZERO
 		velocity = Vector3(0, velocity.y, 0)
-		dodge_indicator.visible = false
-		#how_long_dash_timer = 0
+		#dodge_indicator.visible = false
 
-func block():
-	if Input.is_action_pressed("block"):
-		player.is_blocking = true
-		GameManager.set_is_blocking(true)
-	if Input.is_action_just_released("block"):
+func block(delta):
+	if (
+		GameManager.get_first_weapon()
+		and !GameManager.get_is_dodging()
+		):
+		if Input.is_action_pressed("block"):
+			if player.is_blocking == false:
+				block_timer = 0.02
+				player.is_blocking = true
+			if block_timer > 0:
+				block_timer -= delta
+			elif block_timer <= 0:
+				GameManager.set_is_blocking(true)
+		elif Input.is_action_just_released("block"):
+			player.is_blocking = false
+			GameManager.set_is_blocking(false)
+	elif GameManager.get_is_blocking() and GameManager.get_is_dodging():
 		player.is_blocking = false
 		GameManager.set_is_blocking(false)
-		
 
 func rotate_player():
 	match rotation_type:
@@ -165,16 +170,12 @@ func rotate_player():
 
 func rotate_based_on_last_movement():
 	var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-	if lock_active:
-		lock = Input.is_action_pressed("lock_movement")
-	if (input.x != 0 or input.y != 0) and !lock:
+	if (input.x != 0 or input.y != 0) and !GameManager.get_is_blocking():
 		temprotation = atan2(-input.x, -input.y)
 	player_shape.rotation.y = temprotation
 
 func rotate_based_on_second_input():
 	var look_input = Input.get_vector("look_left", "look_right", "look_forward", "look_backward")
-	if lock_active:
-		lock = Input.is_action_pressed("lock_movement")
 	if GameManager.get_controller_input_device():
 		var input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 		if (input.x != 0 or input.y != 0):
@@ -191,9 +192,9 @@ func rotate_based_on_second_input():
 			# Direkte Rotation um Y-Achse
 			var angle = atan2(direction.x, direction.z)
 			temprotation = angle
-	if !lock:
+	if !GameManager.get_is_blocking():
 		# Locking rotation when using melee attack
-		if GameManager.get_is_attacking() and GameManager.get_first_weapon_name() == "Sword":
+		if GameManager.get_is_sword_hit():
 			pass
 		else:
 			player_shape.rotation.y = temprotation

@@ -66,9 +66,9 @@ func dodge_animation_while_sneak():
 func dodge_animation():
 	if !GameManager.get_is_sneaking() and GameManager.get_is_dodging():
 		rotate_based_on_last_movement()
-		if !controller_dodge_true:
+		if !controller_dodge:
 			state_machine_playback.travel("Dodge")
-		elif controller_dodge_false:
+		elif controller_dodge:
 			state_machine_playback.travel("DodgeController")
 		stop_rotation_during_dodge_true()
 
@@ -115,6 +115,7 @@ func walking_animation_controller():
 			rotate_animation_based_on_look_direction()
 		# Using the Left Stick only
 		else:
+			calc_right_direction_based_on_rotation()
 			var move_input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
 			if (move_input.x != 0 or move_input.y != 0):
 				state_machine_playback.travel("WalkingController")
@@ -125,20 +126,7 @@ func walking_animation_controller():
 
 func rotate_animation_based_on_look_direction():
 	controller_dodge_false()
-	rotation_front_pointer = rotation_of_front_pointer()
-	# Numbers are degrees, left side positive, right side negative
-	#Looking North
-	if rotation_front_pointer <= 50 and rotation_front_pointer >= -50:
-		pass
-	#Looking South
-	elif rotation_front_pointer > 130 and rotation_front_pointer <= 180 or rotation_front_pointer < -130 and rotation_front_pointer >= -180:
-		rel_vel_xz = Vector2(-rel_vel.x, -rel_vel.z)
-	#Looking West
-	elif rotation_front_pointer > 50 and rotation_front_pointer <= 130:
-		rel_vel_xz = Vector2(-rel_vel.z, rel_vel.x)
-	#Looking East
-	elif rotation_front_pointer < -50 and rotation_front_pointer >= -130:
-		rel_vel_xz = Vector2(rel_vel.z, -rel_vel.x)
+	calc_right_direction_based_on_rotation()
 	if GameManager.get_first_weapon_name() == bow_name and GameManager.get_is_attacking():
 		pass
 	else:
@@ -187,3 +175,19 @@ func play_wood_crystal_staff_animation():
 
 func _on_weapons_changed():
 	play_wood_crystal_staff_animation()
+
+func calc_right_direction_based_on_rotation():
+	rotation_front_pointer = rotation_of_front_pointer()
+	# Numbers are degrees, left side positive, right side negative
+	#Looking North
+	if rotation_front_pointer <= 50 and rotation_front_pointer >= -50:
+		pass
+	#Looking South
+	elif rotation_front_pointer > 130 and rotation_front_pointer <= 180 or rotation_front_pointer < -130 and rotation_front_pointer >= -180:
+		rel_vel_xz = Vector2(-rel_vel.x, -rel_vel.z)
+	#Looking West
+	elif rotation_front_pointer > 50 and rotation_front_pointer <= 130:
+		rel_vel_xz = Vector2(-rel_vel.z, rel_vel.x)
+	#Looking East
+	elif rotation_front_pointer < -50 and rotation_front_pointer >= -130:
+		rel_vel_xz = Vector2(rel_vel.z, -rel_vel.x)

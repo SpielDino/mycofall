@@ -13,13 +13,11 @@ signal mana_changed
 #@export_range(0, 1) var sensitivity: float = 1 #Currently not used
 @export_subgroup("Looking")
 @export_enum("rotate based on last movement", "rotate based on second input") var rotation_type: String = "rotate based on last movement"
-##If player keep rotation if lock input key is pressed
-@export var lock_active: bool = true #
 
 @export_subgroup("Dodge")
 @export var stamina_cost_per_dodge: int = 50
 @export var dodge_distance: float = 5.0     
-@export var dodge_duration: float = 0.625     
+@export var dodge_duration: float = 0.625
 @export var no_stamina_after_dodge_time: float = 1
 @export var dodge_strength_multiplier_shield: float = 0.6
 @export var dodge_strength_multiplier_bow: float = 0.8

@@ -19,6 +19,7 @@ var is_sneaking: bool = false
 var controller_input_device: bool = false
 var first_weapon_upgrade_level: int = 0
 var second_weapon_upgrade_level: int = 0
+var is_sword_hit: bool = false
 
 func get_first_weapon():
 	return first_weapon
@@ -59,8 +60,8 @@ func set_second_weapon_upgrade_level(check: int):
 func get_bow_attack_timer():
 	return bow_attack_timer
 	
-func set_bow_attack_timer(timer):
-	bow_attack_timer = round(timer*100)/100
+func set_bow_attack_timer(check):
+	bow_attack_timer = round(check*100)/100
 	set_attack_loading_value(bow_attack_timer)
 
 func get_attack_loading_value():
@@ -76,6 +77,12 @@ func get_is_attacking():
 func set_is_attacking(check):
 	is_attacking = check
 	GameManager.attacks.emit()
+	
+func get_is_sword_hit():
+	return is_sword_hit
+
+func set_is_sword_hit(check):
+	is_sword_hit = check
 	
 func get_is_blocking():
 	return is_blocking

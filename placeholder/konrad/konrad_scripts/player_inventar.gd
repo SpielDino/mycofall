@@ -334,7 +334,7 @@ func put_away_weapon_while_first_weapon_active(hit_object):
 
 func put_away_weapon_while_first_weapon_and_second_weapon_active(hit_object):
 	remove_first_weapon()
-	equip_second_weapon_as_first_weapon(hit_object)
+	equip_second_weapon_as_first_weapon()
 	hit_object.interact(owner)
 	GameManager.set_first_weapon_name(GameManager.get_second_weapon_name())
 	GameManager.set_first_weapon_upgrade_level(GameManager.get_second_weapon_upgrade_level())
@@ -344,7 +344,7 @@ func put_away_weapon_while_first_weapon_and_second_weapon_active(hit_object):
 	GameManager.set_second_weapon_upgrade_level(UPGRADE_LEVEL_NO_WEAPON)
 	GameManager.weapons_updated()
 
-func equip_second_weapon_as_first_weapon(hit_object):
+func equip_second_weapon_as_first_weapon():
 	match GameManager.get_second_weapon_name():
 		sword_name:
 			back_wood_sword.visible = false
