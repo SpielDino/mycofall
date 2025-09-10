@@ -1,5 +1,9 @@
 extends Node3D
 
+# Main = right = first weapon
+# Off-hand = left = first weapon for bow, second weapon for shield
+# Back = second weapon
+
 const UPGRADE_LEVEL_NO_WEAPON: int = 0
 const UPGRADE_LEVEL_WOOD_WEAPON: int = 1
 const UPGRADE_LEVEL_WEAPON: int = 2
