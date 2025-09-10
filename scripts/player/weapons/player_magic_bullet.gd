@@ -4,8 +4,6 @@ extends Node3D
 @export var dmg = 50
 @export var lifetime = 5
 
-#@onready var mesh = $MeshInstance3D
-#@onready var hitbox = $Hitbox
 var enemy_position_for_tracking
 var tracking = false
 var directions
@@ -14,7 +12,6 @@ func _physics_process(delta: float) -> void:
 	moving(delta)
 	lifetime_of_bullet(delta)
 	
-
 func moving(delta):
 	if !tracking:
 		position += transform.basis * Vector3(0, 0, -speed) * delta

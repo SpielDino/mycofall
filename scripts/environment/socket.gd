@@ -28,10 +28,10 @@ var bow_scale = 0.5
 @onready var attachment = $"WeaponSlot"
 
 # Models
-@onready var bow = preload("res://placeholder/konrad/konrad_scenes/bow.tscn")
-@onready var shield = preload("res://placeholder/konrad/konrad_scenes/shield.tscn")
-@onready var staff = preload("res://placeholder/konrad/konrad_scenes/staff.tscn")
-@onready var sword = preload("res://placeholder/konrad/konrad_scenes/sword.tscn")
+@onready var bow = preload("res://scenes/prefabs/environment/interactables/direct/socket_bow.tscn")
+@onready var shield = preload("res://scenes/prefabs/environment/interactables/direct/socket_shield.tscn")
+@onready var staff = preload("res://scenes/prefabs/environment/interactables/direct/socket_staff.tscn")
+@onready var sword = preload("res://scenes/prefabs/environment/interactables/direct/socket_sword.tscn")
 
 func _ready() -> void:
 	sword_intance = sword.instantiate()

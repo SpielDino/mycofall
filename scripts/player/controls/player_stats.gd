@@ -75,6 +75,11 @@ var enemies_detecting_player: Array = []
 var is_hidden: bool = false
 var is_detected: bool = false
 
+var sword_name = "Sword"
+var shield_name = "Shield"
+var staff_name = "Staff"
+var bow_name = "Bow"
+
 func _enter_tree():
 	GlobalPlayer.set_player(self)
 
@@ -197,17 +202,18 @@ func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifie
 			health_changed.emit()
 
 func get_blocking_damage_reduction():
-	if GameManager.get_first_weapon() == "Bow":
+	if GameManager.get_first_weapon_name() == bow_name:
 		return 0.4
-	if GameManager.get_first_weapon() == "Staff":
+	elif GameManager.get_first_weapon_name() == staff_name:
 		return 0.5
-	if GameManager.get_first_weapon() == "Sword":
-		if GameManager.get_second_weapon() == "Shield":
+	elif GameManager.get_first_weapon_name() == sword_name:
+		if GameManager.get_second_weapon_name() == shield_name:
 			return 1.0
 		return 0.7
-	if GameManager.get_first_weapon() == "Shield":
+	elif GameManager.get_first_weapon_name() == shield_name:
 		return 1.0
-	return 0.0
+	else:
+		return 0.0
 
 func heal(amount):
 	if health <= max_health:

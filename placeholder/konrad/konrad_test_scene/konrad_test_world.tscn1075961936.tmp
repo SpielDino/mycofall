@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3c650unruhvy"]
 
-[ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="1_ch4m0"]
+[ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://placeholder/konrad/konrad_scripts/world_environment.gd" id="1_ch4m0"]
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="1_m28bg"]
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_vmj8w"]
-[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="2_w1y6w"]
-[ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="3_h0rvv"]
+[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://placeholder/konrad/trash/socket.tscn" id="2_w1y6w"]
+[ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://placeholder/konrad/trash/training_dummy.tscn" id="3_h0rvv"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="5_ch4m0"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]

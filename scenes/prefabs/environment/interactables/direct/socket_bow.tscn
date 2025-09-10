@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://uwo1kmloxop4"]
+
+[ext_resource type="PackedScene" uid="uid://f25f1yursyjn" path="res://assets/models/weapons/alt_bogen.blend" id="1_u3ueo"]
+
+[node name="Bow" type="Node3D"]
+
+[node name="alt_bogen" parent="." instance=ExtResource("1_u3ueo")]
+
+[node name="Empty" parent="alt_bogen" index="0"]
+visible = false
+
+[node name="Arrow" parent="alt_bogen" index="1"]
+visible = false
+
+[editable path="alt_bogen"]

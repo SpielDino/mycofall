@@ -1,10 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://i40hh252nalo"]
+[gd_scene load_steps=2 format=3 uid="uid://bcsdrurxlfd0"]
 
-[ext_resource type="Script" uid="uid://bkstyl5kjfwbm" path="res://placeholder/konrad/konrad_scripts/player_interact_and_attack.gd" id="1_xhjho"]
+[ext_resource type="Script" uid="uid://cgbsiy5epft14" path="res://scripts/player/controls/player_interact.gd" id="1_ciskv"]
 
 [node name="InteractRayCast" type="RayCast3D"]
+target_position = Vector3(0, 0, -1)
 collision_mask = 3
-script = ExtResource("1_xhjho")
+script = ExtResource("1_ciskv")
 
 [node name="Prompt" type="Label" parent="."]
 anchors_preset = 14

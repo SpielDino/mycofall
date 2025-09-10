@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=4 uid="uid://bbod5c6l72spi"]
 
-[ext_resource type="Script" uid="uid://vcdtw5c4d00n" path="res://placeholder/konrad/konrad_scripts/staff_logic.gd" id="1_7m86y"]
-[ext_resource type="PackedScene" uid="uid://hiq1c8mg66x" path="res://assets/models/weapons/alt_stab.blend" id="3_6py2k"]
-[ext_resource type="PackedScene" uid="uid://bpofs1yhx4ei2" path="res://assets/models/weapons/metal_stab.blend" id="4_88va5"]
+[ext_resource type="Script" uid="uid://vcdtw5c4d00n" path="res://scripts/player/weapons/staff_logic.gd" id="1_esof5"]
+[ext_resource type="PackedScene" uid="uid://hiq1c8mg66x" path="res://assets/models/weapons/alt_stab.blend" id="2_xt1yb"]
+[ext_resource type="PackedScene" uid="uid://bpofs1yhx4ei2" path="res://assets/models/weapons/metal_stab.blend" id="3_qec7b"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_85hit"]
 resource_name = "Material"
@@ -156,7 +156,7 @@ _data = {
 }
 
 [node name="Staff" type="Node3D"]
-script = ExtResource("1_7m86y")
+script = ExtResource("1_esof5")
 
 [node name="HolzStab" type="Node3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
@@ -180,10 +180,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_svu3h")
 }
 
-[node name="AltStab" parent="." instance=ExtResource("3_6py2k")]
+[node name="AltStab" parent="." instance=ExtResource("2_xt1yb")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
 visible = false
 
-[node name="MetalStab" parent="." instance=ExtResource("4_88va5")]
+[node name="MetalStab" parent="." instance=ExtResource("3_qec7b")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0, 0)
 visible = false

@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://c5uan1ibvvbyy"]
 
-[ext_resource type="Script" uid="uid://cxf0cnvt0jkb6" path="res://placeholder/konrad/konrad_scripts/sword_logic.gd" id="1_apny2"]
-[ext_resource type="PackedScene" uid="uid://cwk8r83h8sq2c" path="res://assets/models/weapons/holz_schwert.blend" id="2_e5264"]
-[ext_resource type="PackedScene" uid="uid://ltlkqs0sw0se" path="res://assets/models/weapons/alt_schwert.blend" id="3_b4lia"]
-[ext_resource type="PackedScene" uid="uid://bwtakav8ny5y6" path="res://assets/models/weapons/metal_schwert.blend" id="4_ybnrc"]
+[ext_resource type="Script" uid="uid://cxf0cnvt0jkb6" path="res://placeholder/konrad/konrad_scripts/old_sword_logic.gd" id="1_fex38"]
+[ext_resource type="PackedScene" uid="uid://cwk8r83h8sq2c" path="res://assets/models/weapons/holz_schwert.blend" id="2_edtu5"]
+[ext_resource type="PackedScene" uid="uid://ltlkqs0sw0se" path="res://assets/models/weapons/alt_schwert.blend" id="3_bf3sp"]
+[ext_resource type="PackedScene" uid="uid://bwtakav8ny5y6" path="res://assets/models/weapons/metal_schwert.blend" id="4_qjaiq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vidav"]
 size = Vector3(0.472656, 0.347656, 1.90567)
@@ -100,9 +100,9 @@ _data = {
 
 [node name="Sword" type="Area3D" groups=["weapon"]]
 monitoring = false
-script = ExtResource("1_apny2")
+script = ExtResource("1_fex38")
 
-[node name="HolzSchwert" parent="." instance=ExtResource("2_e5264")]
+[node name="HolzSchwert" parent="." instance=ExtResource("2_edtu5")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.664063, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -115,11 +115,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_1d1qk")
 }
 
-[node name="AltSchwert" parent="." instance=ExtResource("3_b4lia")]
+[node name="AltSchwert" parent="." instance=ExtResource("3_bf3sp")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.664063, 0)
 visible = false
 
-[node name="MetalSchwert" parent="." instance=ExtResource("4_ybnrc")]
+[node name="MetalSchwert" parent="." instance=ExtResource("4_qjaiq")]
 transform = Transform3D(0.5, 0, 0, 0, -2.18557e-08, -0.5, 0, 0.5, -2.18557e-08, 0, 0.664063, 0)
 visible = false
 

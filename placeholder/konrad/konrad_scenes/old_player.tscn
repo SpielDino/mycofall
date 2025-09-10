@@ -1,16 +1,16 @@
 [gd_scene load_steps=89 format=3 uid="uid://bnyfrlfrn4h4w"]
 
-[ext_resource type="PackedScene" uid="uid://crhbf5h33h20p" path="res://assets/models/player/old_player_model.blend" id="1_6l3bt"]
-[ext_resource type="PackedScene" uid="uid://i40hh252nalo" path="res://placeholder/konrad/konrad_scenes/interact_ray_cast.tscn" id="1_7bqlq"]
-[ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://placeholder/konrad/konrad_scripts/player_controller.gd" id="1_ffkv0"]
-[ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://placeholder/konrad/konrad_scripts/player_stats.gd" id="1_ko21d"]
-[ext_resource type="Script" uid="uid://b88qlk6espown" path="res://placeholder/konrad/konrad_scripts/player_animation_tree.gd" id="2_7bqlq"]
-[ext_resource type="Script" uid="uid://1to362nbgwp6" path="res://placeholder/konrad/konrad_scripts/camera_controller.gd" id="4_cxhtl"]
-[ext_resource type="Script" uid="uid://dh48lt5m6cfd1" path="res://placeholder/konrad/konrad_scripts/debug_ui.gd" id="5_kvfpg"]
-[ext_resource type="PackedScene" uid="uid://c5uan1ibvvbyy" path="res://placeholder/konrad/konrad_scenes/sword.tscn" id="5_sw7mm"]
-[ext_resource type="PackedScene" uid="uid://bx1yxprog4dh3" path="res://placeholder/konrad/konrad_scenes/shield.tscn" id="6_iwjwu"]
-[ext_resource type="PackedScene" uid="uid://bbod5c6l72spi" path="res://placeholder/konrad/konrad_scenes/staff.tscn" id="7_2btxm"]
-[ext_resource type="PackedScene" uid="uid://uwo1kmloxop4" path="res://placeholder/konrad/konrad_scenes/bow.tscn" id="8_gm3ih"]
+[ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://scripts/player/controls/player_stats.gd" id="1_bobby"]
+[ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://scripts/player/controls/player_controller.gd" id="2_2wj7a"]
+[ext_resource type="PackedScene" uid="uid://i40hh252nalo" path="res://placeholder/konrad/konrad_scenes/old_interact_ray_cast.tscn" id="3_8tye1"]
+[ext_resource type="PackedScene" uid="uid://crhbf5h33h20p" path="res://assets/models/player/old_player_model.blend" id="4_uh5p8"]
+[ext_resource type="PackedScene" uid="uid://c5uan1ibvvbyy" path="res://placeholder/konrad/konrad_scenes/old_sword.tscn" id="5_rt3h8"]
+[ext_resource type="PackedScene" uid="uid://bx1yxprog4dh3" path="res://placeholder/konrad/konrad_scenes/old_shield.tscn" id="6_xtpfl"]
+[ext_resource type="PackedScene" uid="uid://bbod5c6l72spi" path="res://placeholder/konrad/konrad_scenes/old_staff.tscn" id="7_fkhgg"]
+[ext_resource type="PackedScene" uid="uid://uwo1kmloxop4" path="res://scenes/prefabs/environment/interactables/direct/socket_bow.tscn" id="8_ke0h8"]
+[ext_resource type="Script" uid="uid://b88qlk6espown" path="res://placeholder/konrad/konrad_scripts/old_player_animation_tree.gd" id="9_ecv8f"]
+[ext_resource type="Script" uid="uid://dh48lt5m6cfd1" path="res://scripts/ui/stats/debug_ui.gd" id="10_qqoxj"]
+[ext_resource type="Script" uid="uid://1to362nbgwp6" path="res://scripts/player/controls/camera_controller.gd" id="11_bc0vd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cxhtl"]
 
@@ -385,12 +385,12 @@ node_connections = [&"AimTimeSeek", 0, &"Aim", &"BlockTimeSeek", 0, &"Block", &"
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ffkv0"]
 
 [node name="Player" type="Node3D" groups=["Player"]]
-script = ExtResource("1_ko21d")
+script = ExtResource("1_bobby")
 rotation_type = "rotate based on second input"
 camera_follow_speed = 0.08
 
 [node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator") groups=["Player"]]
-script = ExtResource("1_ffkv0")
+script = ExtResource("2_2wj7a")
 player_shape = NodePath("Model")
 dodge_indicator = NodePath("Model/DodgeIndicator")
 
@@ -405,7 +405,7 @@ target_position = Vector3(0, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, -1.548)
 target_position = Vector3(0, 0, -1)
 
-[node name="InteractRayCast" parent="Controller/Model" instance=ExtResource("1_7bqlq")]
+[node name="InteractRayCast" parent="Controller/Model" instance=ExtResource("3_8tye1")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.292, -0.375)
 
 [node name="FrontPointer" type="MeshInstance3D" parent="Controller/Model"]
@@ -413,7 +413,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.52, -0.609)
 visible = false
 mesh = SubResource("BoxMesh_6l3bt")
 
-[node name="OldPlayerModel" parent="Controller/Model" instance=ExtResource("1_6l3bt")]
+[node name="OldPlayerModel" parent="Controller/Model" instance=ExtResource("4_uh5p8")]
 transform = Transform3D(-0.5, 0, 4.37114e-08, 0, 0.5, 0, -4.37114e-08, 0, -0.5, 0, -1, 0)
 
 [node name="RightWeaponHand" type="BoneAttachment3D" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D" index="1"]
@@ -421,29 +421,28 @@ transform = Transform3D(-0.165291, -0.879337, 0.446592, 0.932135, -0.287216, -0.
 bone_name = "Hand2.R"
 bone_idx = 12
 
-[node name="Sword" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand" instance=ExtResource("5_sw7mm")]
+[node name="Sword" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand" instance=ExtResource("5_rt3h8")]
 visible = false
 
-[node name="Shield" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand" instance=ExtResource("6_iwjwu")]
+[node name="Shield" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand" instance=ExtResource("6_xtpfl")]
 visible = false
 
-[node name="Staff" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand" node_paths=PackedStringArray("ray_position") instance=ExtResource("7_2btxm")]
+[node name="Staff" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand" node_paths=PackedStringArray("ray_position") instance=ExtResource("7_fkhgg")]
 visible = false
 ray_position = NodePath("../../../../../AimRayCast3D")
 
-[node name="Bow" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand" node_paths=PackedStringArray("ray_position") instance=ExtResource("8_gm3ih")]
+[node name="Bow" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand" instance=ExtResource("8_ke0h8")]
 visible = false
-ray_position = NodePath("../../../../../AimRayCast3D2")
 
 [node name="LeftWeaponHand" type="BoneAttachment3D" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D" index="2"]
 transform = Transform3D(-0.165291, 0.879337, -0.446592, -0.932135, -0.287216, -0.220528, -0.322187, 0.379832, 0.867135, 2.84966, 1.51509, 0.564782)
 bone_name = "Hand2.L"
 bone_idx = 7
 
-[node name="Shield" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/LeftWeaponHand" instance=ExtResource("6_iwjwu")]
+[node name="Shield" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/LeftWeaponHand" instance=ExtResource("6_xtpfl")]
 visible = false
 
-[node name="Bow" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/LeftWeaponHand" instance=ExtResource("8_gm3ih")]
+[node name="Bow" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/LeftWeaponHand" instance=ExtResource("8_ke0h8")]
 visible = false
 
 [node name="BackWeapon" type="BoneAttachment3D" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D" index="3"]
@@ -451,16 +450,16 @@ transform = Transform3D(1, 0, 0, 0, 0.949272, -0.314457, 1.42109e-14, 0.314457, 
 bone_name = "Brust"
 bone_idx = 1
 
-[node name="Sword" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/BackWeapon" instance=ExtResource("5_sw7mm")]
+[node name="Sword" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/BackWeapon" instance=ExtResource("5_rt3h8")]
 visible = false
 
-[node name="Shield" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/BackWeapon" instance=ExtResource("6_iwjwu")]
+[node name="Shield" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/BackWeapon" instance=ExtResource("6_xtpfl")]
 visible = false
 
-[node name="Staff" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/BackWeapon" instance=ExtResource("7_2btxm")]
+[node name="Staff" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/BackWeapon" instance=ExtResource("7_fkhgg")]
 visible = false
 
-[node name="Bow" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/BackWeapon" instance=ExtResource("8_gm3ih")]
+[node name="Bow" parent="Controller/Model/OldPlayerModel/Armature/Skeleton3D/BackWeapon" instance=ExtResource("8_ke0h8")]
 visible = false
 
 [node name="AnimationTree" type="AnimationTree" parent="Controller/Model/OldPlayerModel"]
@@ -491,7 +490,7 @@ parameters/WalkOrBowBlend/blend_amount = 0.0
 parameters/WalkOrMeleeBlend/blend_amount = 0.0
 parameters/WalkOrStaffBlend/blend_amount = 0.0
 parameters/WalkStaffBlend/blend_amount = 0.0
-script = ExtResource("2_7bqlq")
+script = ExtResource("9_ecv8f")
 
 [node name="DodgeIndicator" type="MeshInstance3D" parent="Controller/Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15368, 0)
@@ -515,7 +514,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
 offset_bottom = 646.0
-script = ExtResource("5_kvfpg")
+script = ExtResource("10_qqoxj")
 controller = NodePath("../Controller")
 input = NodePath("GridContainer/Input2/RichTextLabel")
 xyz = NodePath("GridContainer/XYZ2/RichTextLabel")
@@ -738,7 +737,7 @@ text = "vxycvyx"
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 9, 7)
 current = true
-script = ExtResource("4_cxhtl")
+script = ExtResource("11_bc0vd")
 
 [connection signal="area_entered" from="Controller/Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Controller/Area3D" to="." method="_on_area_3d_area_exited"]
@@ -747,3 +746,4 @@ script = ExtResource("4_cxhtl")
 [editable path="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Sword"]
 [editable path="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Staff"]
 [editable path="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Bow"]
+[editable path="Controller/Model/OldPlayerModel/Armature/Skeleton3D/RightWeaponHand/Bow/alt_bogen"]

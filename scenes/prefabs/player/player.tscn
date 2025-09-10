@@ -1,17 +1,15 @@
-[gd_scene load_steps=128 format=3 uid="uid://bogdwn2kqo3lf"]
+[gd_scene load_steps=124 format=3 uid="uid://bogdwn2kqo3lf"]
 
-[ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://placeholder/konrad/konrad_scripts/player_stats.gd" id="1_6jgwm"]
-[ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://placeholder/konrad/konrad_scripts/player_controller.gd" id="2_6ei3l"]
-[ext_resource type="Script" uid="uid://cpsxfic2osf5w" path="res://placeholder/konrad/konrad_scripts/player_animation_movement.gd" id="4_6iyn6"]
-[ext_resource type="Script" uid="uid://nfu8xws7lgli" path="res://placeholder/konrad/konrad_scripts/player_attack_and_block.gd" id="5_0fad3"]
+[ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://scripts/player/controls/player_stats.gd" id="1_6jgwm"]
+[ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://scripts/player/controls/player_controller.gd" id="2_6ei3l"]
+[ext_resource type="Script" uid="uid://cpsxfic2osf5w" path="res://scripts/player/controls/player_animation_movement.gd" id="4_6iyn6"]
 [ext_resource type="PackedScene" uid="uid://dd83yhc3a3q65" path="res://assets/models/player/new_player_model.blend" id="5_6iyn6"]
-[ext_resource type="PackedScene" uid="uid://btfy637ar5rr7" path="res://placeholder/konrad/konrad_scenes/sword_logic.tscn" id="5_fkjak"]
-[ext_resource type="PackedScene" uid="uid://252l82i5f0jy" path="res://placeholder/konrad/konrad_scenes/staff_logic.tscn" id="7_6jgwm"]
-[ext_resource type="PackedScene" uid="uid://bcsdrurxlfd0" path="res://placeholder/konrad/konrad_scenes/new_interact_ray_cast.tscn" id="7_fkjak"]
-[ext_resource type="PackedScene" uid="uid://b80wly3yp4bo1" path="res://placeholder/konrad/konrad_scenes/bow_logic.tscn" id="8_6ei3l"]
-[ext_resource type="Script" uid="uid://bw4negw6nu0l4" path="res://placeholder/konrad/konrad_scripts/player_inventar.gd" id="8_gsaf8"]
-[ext_resource type="Script" uid="uid://dh48lt5m6cfd1" path="res://placeholder/konrad/konrad_scripts/debug_ui.gd" id="10_s6yju"]
-[ext_resource type="Script" uid="uid://1to362nbgwp6" path="res://placeholder/konrad/konrad_scripts/camera_controller.gd" id="11_7kenn"]
+[ext_resource type="PackedScene" uid="uid://btfy637ar5rr7" path="res://scenes/prefabs/weapons/sword_logic.tscn" id="5_fkjak"]
+[ext_resource type="PackedScene" uid="uid://bj236prj2dub5" path="res://scenes/prefabs/player/player_attacks_and_block.tscn" id="6_vo6tk"]
+[ext_resource type="PackedScene" uid="uid://bcsdrurxlfd0" path="res://scenes/prefabs/player/player_interact_ray_cast.tscn" id="7_fkjak"]
+[ext_resource type="Script" uid="uid://bw4negw6nu0l4" path="res://scripts/player/controls/player_inventar.gd" id="8_gsaf8"]
+[ext_resource type="Script" uid="uid://dh48lt5m6cfd1" path="res://scripts/ui/stats/debug_ui.gd" id="10_s6yju"]
+[ext_resource type="Script" uid="uid://1to362nbgwp6" path="res://scripts/player/controls/camera_controller.gd" id="11_7kenn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cxhtl"]
 
@@ -503,7 +501,6 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-79.0867, -188.749)
 nodes/BackCrystalStaffAnimation/node = SubResource("AnimationNodeAnimation_gsaf8")
 nodes/BackCrystalStaffAnimation/position = Vector2(-380, 460)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")
@@ -541,14 +538,6 @@ nodes/WalkBlockAnimation/position = Vector2(2140, 320)
 nodes/output/position = Vector2(3000, 360)
 node_connections = [&"BlockAnimation", 0, &"WalkBlockAnimation", &"BlockAnimation", 1, &"StateMachine 7", &"BowAnimation", 0, &"BowWalkingAnimation", &"BowAnimation", 1, &"StateMachine 5", &"BowWalkingAnimation", 0, &"StaffAnimation", &"BowWalkingAnimation", 1, &"StateMachine 4", &"CrystalStaffAnimation", 0, &"SwordAnimation", &"CrystalStaffAnimation", 1, &"MainOrBackCrystalStaffAnimation", &"MainOrBackCrystalStaffAnimation", 0, &"MainHandCrystalStaffAnimation", &"MainOrBackCrystalStaffAnimation", 1, &"BackCrystalStaffAnimation", &"StaffAnimation", 0, &"CrystalStaffAnimation", &"StaffAnimation", 1, &"StateMachine 3", &"SwordAnimation", 0, &"StateMachine", &"SwordAnimation", 1, &"StateMachine 2", &"WalkBlockAnimation", 0, &"BowAnimation", &"WalkBlockAnimation", 1, &"StateMachine 6", &"output", 0, &"BlockAnimation"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ei3l"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.227451)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hwqfs"]
-material = SubResource("StandardMaterial3D_6ei3l")
-size = Vector3(0.1, 0.1, 1)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ffkv0"]
 
 [node name="Player" type="Node3D" groups=["Player"]]
@@ -566,11 +555,11 @@ dodge_indicator = NodePath("Model/DodgeIndicator")
 [node name="Model" type="CollisionShape3D" parent="Controller" groups=["Player"]]
 shape = SubResource("CapsuleShape3D_cxhtl")
 
-[node name="AimRayCast3D" type="RayCast3D" parent="Controller/Model"]
+[node name="StaffAimRayCast3D" type="RayCast3D" parent="Controller/Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.633, -1.819)
 target_position = Vector3(0, 0, -1)
 
-[node name="AimRayCast3D2" type="RayCast3D" parent="Controller/Model"]
+[node name="BowAimRayCast3D" type="RayCast3D" parent="Controller/Model"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.14, -1.548)
 target_position = Vector3(0, 0, -1)
 
@@ -778,26 +767,17 @@ visible = false
 [node name="LeftWoodBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="32"]
 visible = false
 
-[node name="PlayerAttacksAndBlock" type="Node3D" parent="Controller/Model" node_paths=PackedStringArray("animation_tree", "player_controller", "sword_hit_box", "staff_bullet_spawn", "bow_bullet_spawn", "aim_helper", "bow_charged_indicator")]
-script = ExtResource("5_0fad3")
+[node name="PlayerAttacksAndBlock" parent="Controller/Model" node_paths=PackedStringArray("animation_tree", "player_controller", "sword_hit_box", "bow_charged_indicator") instance=ExtResource("6_vo6tk")]
 animation_tree = NodePath("../AnimationTree")
 player_controller = NodePath("../..")
 sword_hit_box = NodePath("../new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword/SwordLogic")
-staff_bullet_spawn = NodePath("StaffLogic")
-bow_bullet_spawn = NodePath("BowLogic")
-aim_helper = NodePath("BowLogic/AimHelper")
 bow_charged_indicator = NodePath("../DodgeIndicator")
 
-[node name="StaffLogic" parent="Controller/Model/PlayerAttacksAndBlock" node_paths=PackedStringArray("ray_position") instance=ExtResource("7_6jgwm")]
-ray_position = NodePath("../../AimRayCast3D")
+[node name="StaffLogic" parent="Controller/Model/PlayerAttacksAndBlock" index="0" node_paths=PackedStringArray("ray_position")]
+ray_position = NodePath("../../StaffAimRayCast3D")
 
-[node name="BowLogic" parent="Controller/Model/PlayerAttacksAndBlock" node_paths=PackedStringArray("ray_position") instance=ExtResource("8_6ei3l")]
-ray_position = NodePath("../../AimRayCast3D2")
-
-[node name="AimHelper" type="MeshInstance3D" parent="Controller/Model/PlayerAttacksAndBlock/BowLogic"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129803, -3.16663)
-visible = false
-mesh = SubResource("BoxMesh_hwqfs")
+[node name="BowLogic" parent="Controller/Model/PlayerAttacksAndBlock" index="1" node_paths=PackedStringArray("ray_position")]
+ray_position = NodePath("../../BowAimRayCast3D")
 
 [node name="InteractRayCast" parent="Controller/Model" instance=ExtResource("7_fkjak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.239533)
@@ -1080,4 +1060,5 @@ script = ExtResource("11_7kenn")
 
 [editable path="Controller/Model/new_player_model"]
 [editable path="Controller/Model/new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword/SwordLogic"]
+[editable path="Controller/Model/PlayerAttacksAndBlock"]
 [editable path="Controller/Model/PlayerAttacksAndBlock/StaffLogic"]

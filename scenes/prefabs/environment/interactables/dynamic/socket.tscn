@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://vj7to5njslw6"]
 
-[ext_resource type="Script" uid="uid://koludp3bc147" path="res://placeholder/konrad/konrad_scripts/socket.gd" id="1_ln7qy"]
+[ext_resource type="Script" uid="uid://koludp3bc147" path="res://scripts/environment/socket.gd" id="1_ln7qy"]
 [ext_resource type="PackedScene" uid="uid://bputepsec17t1" path="res://assets/models/trees/baumstumpf.blend" id="2_thl2v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3donx"]

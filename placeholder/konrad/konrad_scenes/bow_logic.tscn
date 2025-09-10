@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b80wly3yp4bo1"]
-
-[ext_resource type="Script" uid="uid://bswpcuqtcb6gm" path="res://placeholder/konrad/konrad_scripts/new_bow_logic.gd" id="1_x3twt"]
-
-[node name="BowLogic" type="Node3D"]
-script = ExtResource("1_x3twt")

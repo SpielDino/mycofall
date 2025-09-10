@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://chu0gv1cp633e"]
 
-[ext_resource type="Script" uid="uid://b30gm7y3ksvio" path="res://placeholder/konrad/konrad_scripts/player_arrow.gd" id="1_jalla"]
+[ext_resource type="Script" uid="uid://b30gm7y3ksvio" path="res://scripts/player/weapons/player_arrow.gd" id="1_2ceru"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ov58"]
 resource_name = "Material"
@@ -131,7 +131,7 @@ shadow_mesh = SubResource("ArrayMesh_xvmid")
 size = Vector3(1.58209, 0.131592, 0.607422)
 
 [node name="Arrow" type="Node3D" groups=["weapon"]]
-script = ExtResource("1_jalla")
+script = ExtResource("1_2ceru")
 
 [node name="ArrowMesh" type="Node3D" parent="."]
 transform = Transform3D(-2.62268e-08, 0, -3, 0, 1.4, 0, 0.6, 0, -1.31134e-07, -0.0352437, 0, 0.0184599)

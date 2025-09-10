@@ -5,7 +5,7 @@ extends Node3D
 @onready var player: Node3D = GlobalPlayer.get_player()
 @onready var world = GlobalPlayer.get_world()
 
-var bullet_scene: PackedScene = preload("res://placeholder/konrad/konrad_scenes/arrow.tscn")
+var bullet_scene: PackedScene = preload("res://scenes/prefabs/weapons/player_arrow.tscn")
 
 func spawn_bullet():
 	var bullet_instance = bullet_scene.instantiate()

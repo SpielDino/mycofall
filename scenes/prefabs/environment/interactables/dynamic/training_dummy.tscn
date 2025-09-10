@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://6j2eqyw3n43k"]
 
-[ext_resource type="Script" uid="uid://degru62j4rb7n" path="res://placeholder/konrad/konrad_scripts/training_dummy.gd" id="1_dacpj"]
+[ext_resource type="Script" uid="uid://degru62j4rb7n" path="res://scripts/environment/training_dummy.gd" id="1_dacpj"]
 [ext_resource type="PackedScene" uid="uid://crhsy0a3aia10" path="res://assets/models/objects/training_dummy.blend" id="1_rye1t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pq71n"]

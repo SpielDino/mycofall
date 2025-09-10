@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgqyja3k0w2jx"]
 
-[ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://placeholder/konrad/konrad_scripts/player_stats.gd" id="1_5n17m"]
-[ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://placeholder/konrad/konrad_scripts/player_controller.gd" id="2_hajpc"]
-[ext_resource type="Script" uid="uid://1to362nbgwp6" path="res://placeholder/konrad/konrad_scripts/camera_controller.gd" id="11_11uym"]
+[ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://scripts/player/controls/player_stats.gd" id="1_5n17m"]
+[ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://scripts/player/controls/player_controller.gd" id="2_hajpc"]
+[ext_resource type="Script" uid="uid://1to362nbgwp6" path="res://scripts/player/controls/camera_controller.gd" id="11_11uym"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u1qwb"]
 
