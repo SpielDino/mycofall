@@ -4,6 +4,7 @@ signal weapons_changed
 signal attacks
 signal blocks
 signal attack_loading_updated
+signal heavy_attack
 
 var first_weapon: bool = false
 var second_weapon: bool = false
@@ -20,6 +21,7 @@ var controller_input_device: bool = false
 var first_weapon_upgrade_level: int = 0
 var second_weapon_upgrade_level: int = 0
 var is_sword_hit: bool = false
+var is_heavy_attacking: bool = false
 
 func get_first_weapon():
 	return first_weapon
@@ -84,6 +86,13 @@ func get_is_sword_hit():
 func set_is_sword_hit(check):
 	is_sword_hit = check
 	
+func get_is_heavy_attacking():
+	return is_heavy_attacking
+
+func set_is_heavy_attacking(check):
+	is_heavy_attacking = check
+	heavy_attack.emit()
+
 func get_is_blocking():
 	return is_blocking
 

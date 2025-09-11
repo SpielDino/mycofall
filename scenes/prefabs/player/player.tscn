@@ -1,4 +1,4 @@
-[gd_scene load_steps=124 format=3 uid="uid://bogdwn2kqo3lf"]
+[gd_scene load_steps=134 format=3 uid="uid://bogdwn2kqo3lf"]
 
 [ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://scripts/player/controls/player_stats.gd" id="1_6jgwm"]
 [ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://scripts/player/controls/player_controller.gd" id="2_6ei3l"]
@@ -44,6 +44,9 @@ filters = ["Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackt
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o4eid"]
 animation = &"Rest"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uukly"]
+animation = &"Sword Heavey"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lmbuf"]
 animation = &"SwordAttack1"
 
@@ -62,8 +65,6 @@ loop_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k5es2"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wrtqx"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l1rxp"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bop2c"]
@@ -72,18 +73,31 @@ loop_mode = 0
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ybbpq"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wrhcn"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_e2q2s"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r8dyk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_lqpcr"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_l1rxp"]
 states/Rest/node = SubResource("AnimationNodeAnimation_o4eid")
-states/Rest/position = Vector2(272, 327)
+states/Rest/position = Vector2(310, 383)
 states/Start/position = Vector2(202, 100)
+"states/Sword Heavy/node" = SubResource("AnimationNodeAnimation_uukly")
+"states/Sword Heavy/position" = Vector2(150, 256)
 states/SwordAttack1/node = SubResource("AnimationNodeAnimation_lmbuf")
-states/SwordAttack1/position = Vector2(380, 138)
+states/SwordAttack1/position = Vector2(382, 160)
 states/SwordAttack2/node = SubResource("AnimationNodeAnimation_k0wmv")
 states/SwordAttack2/position = Vector2(686, 187)
 states/SwordAttack3/node = SubResource("AnimationNodeAnimation_jgx0n")
 states/SwordAttack3/position = Vector2(577, 337)
-transitions = ["SwordAttack1", "SwordAttack2", SubResource("AnimationNodeStateMachineTransition_r8ngw"), "SwordAttack2", "SwordAttack3", SubResource("AnimationNodeStateMachineTransition_k5es2"), "SwordAttack2", "SwordAttack1", SubResource("AnimationNodeStateMachineTransition_wrtqx"), "SwordAttack1", "Rest", SubResource("AnimationNodeStateMachineTransition_l1rxp"), "Rest", "SwordAttack1", SubResource("AnimationNodeStateMachineTransition_bop2c"), "SwordAttack2", "Rest", SubResource("AnimationNodeStateMachineTransition_fkjak"), "SwordAttack3", "Rest", SubResource("AnimationNodeStateMachineTransition_ybbpq")]
-graph_offset = Vector2(88, -1)
+transitions = ["SwordAttack1", "SwordAttack2", SubResource("AnimationNodeStateMachineTransition_r8ngw"), "SwordAttack2", "SwordAttack3", SubResource("AnimationNodeStateMachineTransition_k5es2"), "SwordAttack1", "Rest", SubResource("AnimationNodeStateMachineTransition_l1rxp"), "Rest", "SwordAttack1", SubResource("AnimationNodeStateMachineTransition_bop2c"), "SwordAttack2", "Rest", SubResource("AnimationNodeStateMachineTransition_fkjak"), "SwordAttack3", "Rest", SubResource("AnimationNodeStateMachineTransition_ybbpq"), "SwordAttack1", "Sword Heavy", SubResource("AnimationNodeStateMachineTransition_wrhcn"), "SwordAttack2", "Sword Heavy", SubResource("AnimationNodeStateMachineTransition_e2q2s"), "SwordAttack3", "Sword Heavy", SubResource("AnimationNodeStateMachineTransition_r8dyk"), "Sword Heavy", "Rest", SubResource("AnimationNodeStateMachineTransition_lqpcr")]
+graph_offset = Vector2(42, 129)
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vo6tk"]
+animation = &"MagicAOE"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6jgwm"]
 animation = &"MagicAttack"
@@ -95,12 +109,18 @@ animation = &"Rest"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g8op5"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jj1be"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uukly"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ghw6p"]
+states/MagicAOE/node = SubResource("AnimationNodeAnimation_vo6tk")
+states/MagicAOE/position = Vector2(587, 184)
 states/MagicAttack/node = SubResource("AnimationNodeAnimation_6jgwm")
 states/MagicAttack/position = Vector2(428, 100)
 states/Rest/node = SubResource("AnimationNodeAnimation_r8ngw")
 states/Rest/position = Vector2(371, 221)
-transitions = ["MagicAttack", "Rest", SubResource("AnimationNodeStateMachineTransition_pe6lq"), "Rest", "MagicAttack", SubResource("AnimationNodeStateMachineTransition_g8op5")]
+transitions = ["MagicAttack", "Rest", SubResource("AnimationNodeStateMachineTransition_pe6lq"), "Rest", "MagicAttack", SubResource("AnimationNodeStateMachineTransition_g8op5"), "Rest", "MagicAOE", SubResource("AnimationNodeStateMachineTransition_jj1be"), "MagicAOE", "Rest", SubResource("AnimationNodeStateMachineTransition_uukly")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_g8op5"]
 animation = &"Bow Aim Forward"
@@ -168,6 +188,9 @@ animation = &"Bow Aim"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_igt2f"]
 animation = &"Bow Shoot"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jj1be"]
+animation = &"Bow ShotGunFullAttack"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bop2c"]
 animation = &"Rest"
 
@@ -179,14 +202,20 @@ animation = &"Rest"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_igt2f"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vo6tk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_d2wla"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_q0m38"]
 "states/Bow Aim/node" = SubResource("AnimationNodeAnimation_ghw6p")
 "states/Bow Aim/position" = Vector2(422, 135)
 "states/Bow Shoot/node" = SubResource("AnimationNodeAnimation_igt2f")
 "states/Bow Shoot/position" = Vector2(634, 135)
+"states/Bow ShotGunFullAttack/node" = SubResource("AnimationNodeAnimation_jj1be")
+"states/Bow ShotGunFullAttack/position" = Vector2(663, 240)
 states/Rest/node = SubResource("AnimationNodeAnimation_bop2c")
 states/Rest/position = Vector2(441, 240)
-transitions = ["Bow Aim", "Bow Shoot", SubResource("AnimationNodeStateMachineTransition_8wbaq"), "Bow Shoot", "Bow Aim", SubResource("AnimationNodeStateMachineTransition_33p71"), "Bow Aim", "Rest", SubResource("AnimationNodeStateMachineTransition_ghw6p"), "Rest", "Bow Aim", SubResource("AnimationNodeStateMachineTransition_igt2f")]
+transitions = ["Bow Aim", "Bow Shoot", SubResource("AnimationNodeStateMachineTransition_8wbaq"), "Bow Shoot", "Bow Aim", SubResource("AnimationNodeStateMachineTransition_33p71"), "Bow Aim", "Rest", SubResource("AnimationNodeStateMachineTransition_ghw6p"), "Rest", "Bow Aim", SubResource("AnimationNodeStateMachineTransition_igt2f"), "Rest", "Bow ShotGunFullAttack", SubResource("AnimationNodeStateMachineTransition_vo6tk"), "Bow ShotGunFullAttack", "Rest", SubResource("AnimationNodeStateMachineTransition_d2wla")]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_s6yju"]
 animation = &"Idel"
@@ -501,6 +530,7 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
+graph_offset = Vector2(-689.915, -283.61)
 nodes/BackCrystalStaffAnimation/node = SubResource("AnimationNodeAnimation_gsaf8")
 nodes/BackCrystalStaffAnimation/position = Vector2(-380, 460)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")
@@ -582,7 +612,7 @@ parameters/BowAnimation/blend_amount = 0.0
 parameters/BowWalkingAnimation/blend_amount = 0.0
 parameters/CrystalStaffAnimation/blend_amount = 0.0
 parameters/MainOrBackCrystalStaffAnimation/blend_amount = false
-parameters/StaffAnimation/blend_amount = false
+parameters/StaffAnimation/blend_amount = 0.0
 parameters/StateMachine/Sneaking/blend_position = Vector2(-0.00466853, -0.00294983)
 parameters/StateMachine/Walking/blend_position = Vector2(-0.00280112, -0.0111731)
 "parameters/StateMachine 4/BowWalking/blend_position" = Vector2(0.000933766, -0.00666666)
