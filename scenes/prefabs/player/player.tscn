@@ -19,7 +19,7 @@ size = Vector3(0.1, 0.1, 0.3)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gm3ih"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gsaf8"]
-animation = &"CrystalStaffRotaion2"
+animation = &"CrystalStaffRotaion"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_omwr7"]
 filters = ["Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R", "Charackter/Skeleton3D:ArmPol.L", "Charackter/Skeleton3D:ArmPol.R", "Charackter/Skeleton3D:BackWoodStaffCrystal", "Charackter/Skeleton3D:Bone", "Charackter/Skeleton3D:Bone.001", "Charackter/Skeleton3D:Bone.002", "Charackter/Skeleton3D:Bone.004", "Charackter/Skeleton3D:Bone.005", "Charackter/Skeleton3D:Bone.006", "Charackter/Skeleton3D:Bone.007", "Charackter/Skeleton3D:Bone.008", "Charackter/Skeleton3D:Bone.009", "Charackter/Skeleton3D:Bone.013", "Charackter/Skeleton3D:Bone.014", "Charackter/Skeleton3D:Bone.015", "Charackter/Skeleton3D:Bone.016", "Charackter/Skeleton3D:Bone.017", "Charackter/Skeleton3D:Bone.018", "Charackter/Skeleton3D:IK.L", "Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackter/Skeleton3D:RightWoodStaffCrystal", "Charackter/Skeleton3D:String", "Charackter/Skeleton3D:forearm.L", "Charackter/Skeleton3D:forearm.R", "Charackter/Skeleton3D:hand.L", "Charackter/Skeleton3D:hand.R", "Charackter/Skeleton3D:shoulder.L", "Charackter/Skeleton3D:shoulder.R", "Charackter/Skeleton3D:spine", "Charackter/Skeleton3D:spine.001", "Charackter/Skeleton3D:spine.002", "Charackter/Skeleton3D:spine.003", "Charackter/Skeleton3D:spine.004", "Charackter/Skeleton3D:upper_arm.L", "Charackter/Skeleton3D:upper_arm.R"]
@@ -538,7 +538,7 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-547.736, -306.173)
+graph_offset = Vector2(-563.728, -317.619)
 nodes/BackCrystalStaffAnimation/node = SubResource("AnimationNodeAnimation_gsaf8")
 nodes/BackCrystalStaffAnimation/position = Vector2(-380, 460)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")

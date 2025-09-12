@@ -49,6 +49,7 @@ mesh = SubResource("PlaneMesh_c5lhh")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="WorldEnvironment/World/Ground/GrassGroundWithCollision/MeshInstance3D" node_paths=PackedStringArray("player")]
 material_override = ExtResource("4_0tif6")
+cast_shadow = 0
 multimesh = SubResource("MultiMesh_0tif6")
 script = ExtResource("5_0tif6")
 player = NodePath("../../../../../Player")

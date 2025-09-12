@@ -1,19 +1,23 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://buwe41c4685gy"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://buwe41c4685gy"]
 
 [ext_resource type="Shader" uid="uid://32akm4itg6ce" path="res://placeholder/nikolai/Grass.gdshader" id="1_rpalu"]
+
+[sub_resource type="Gradient" id="Gradient_rpalu"]
+colors = PackedColorArray(0.223103, 0.223103, 0.223103, 1, 1, 1, 1, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_0tif6"]
 noise_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0tif6"]
 seamless = true
+color_ramp = SubResource("Gradient_rpalu")
 noise = SubResource("FastNoiseLite_0tif6")
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_rpalu")
-shader_parameter/color = Color(0.320498, 0.793441, 3.54242e-05, 1)
-shader_parameter/color2 = Color(0.216641, 0.346769, 0.185045, 1)
+shader_parameter/color = Color(0.73367, 0.81965, 0.28437, 1)
+shader_parameter/color2 = Color(0.345098, 0.556863, 0.231373, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_0tif6")
 shader_parameter/noiseScale = 100.0
 shader_parameter/scroll_speed = Vector2(0.02, 0.02)
