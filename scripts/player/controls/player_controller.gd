@@ -82,7 +82,6 @@ func _ready():
 	
 	shotgun_push_back_speed =  shotgun_push_back_distance / shotgun_push_back_duration
 	max_finish_shotgun_push_back_timer = max_finish_shotgun_push_back_timer - shotgun_push_back_duration
-	print(max_finish_shotgun_push_back_timer)
 
 
 func _physics_process(delta):

@@ -50,6 +50,11 @@ var heavy_attack_bow_animation_timer: float = 0
 var max_heavy_attack_bow_animation_timer: float = 1.25
 var cooldown_heavy_attack_bow_timer: float = 0
 var max_cooldown_heavy_attack_bow: float = 5
+var max_fix_aim_animation_during_walking_timer: float = 0.25
+var fix_aim_animation_during_walking_timer: float = max_fix_aim_animation_during_walking_timer
+var delay_reset_animations_timer: float = 0
+var delay_reset_animations: bool = false
+var max_delay_reset_animations_timer = 0.05
 
 var use_block: bool = false
 
@@ -85,9 +90,11 @@ func attacks(delta):
 				staff_attack(delta)
 			bow_name:
 				bow_attack(delta)
-		calc_cooldowns_for_weapons(delta)
+			shield_name:
+				shield_heavy_attack(delta)
+		calc_cooldowns_for_heavy_attacks(delta)
 
-func calc_cooldowns_for_weapons(delta):
+func calc_cooldowns_for_heavy_attacks(delta):
 	calc_cooldown_sword_heavy_attack(delta)
 	calc_cooldown_staff_heavy_attack(delta)
 	calc_cooldown_bow_heavy_attack(delta)
@@ -218,6 +225,7 @@ func staff_attack(delta):
 		and !GameManager.get_is_sneaking()
 		and !GameManager.get_is_blocking()
 		and !GameManager.get_is_heavy_attacking()
+		#and !GameManager.get_is_attacking()
 		and reset_animation_timer <= 0
 		and player.mana >= mana_cost_per_attack
 		):
@@ -227,8 +235,8 @@ func staff_attack(delta):
 		and !GameManager.get_is_dodging() 
 		and !GameManager.get_is_sneaking()
 		and !GameManager.get_is_blocking()
-		and reset_animation_timer <= 0
-		and heavy_attack_staff_animation_timer <= 0
+		and !GameManager.get_is_heavy_attacking()
+		and !GameManager.get_is_attacking()
 		and cooldown_heavy_attack_staff_timer <= 0
 		):
 		staff_heavy_attack_animation()
@@ -287,10 +295,16 @@ func staff_heavy_attack_animation():
 
 #--------------------BOW--------------------
 func bow_attack(delta):
-	if player_controller.velocity.length() > 0.2 and !GameManager.get_is_heavy_attacking():
+	if (
+		player_controller.velocity.length() > 0.2 
+		and !GameManager.get_is_heavy_attacking() 
+		and bow_finished 
+		and fix_aim_animation_during_walking_timer <= 0
+		):
 		bow_attack_blend.filter_enabled = true
 	else:
 		bow_attack_blend.filter_enabled = false
+	
 	# Cancel Attack with Dodge or Block
 	if (
 		(GameManager.get_is_dodging() 
@@ -306,8 +320,8 @@ func bow_attack(delta):
 		and !GameManager.get_is_heavy_attacking()
 		and bow_finished
 		):
-		walking_bow_and_hold_aim_animation()
 		bow_aim_animation()
+		walking_bow_and_hold_aim_animation()
 		calc_bow_hold_timer_for_dmg(delta)
 	elif (
 		(Input.is_action_just_released("attack")
@@ -331,10 +345,12 @@ func bow_attack(delta):
 		):
 		bow_shotgun_animation()
 	else:
-		if is_walking_bow and bow_aim_timer <= 0 and bow_shot_timer <= 0:
-			bow_attack_change_back_to_movement_animation()
-		if GameManager.get_is_heavy_attacking() and heavy_attack_bow_animation_timer <= 0:
-			heavy_bow_attack_change_back_to_movement_animation()
+		reset_bow_animations()
+	
+	# Delay Reset Animation for better Animation Flow
+	if delay_reset_animations_timer <= 0 and delay_reset_animations and !GameManager.get_is_attacking():
+		delay_reset_bow_shot_animation()
+	
 	calc_bow_timers(delta)
 
 func bow_aim_animation():
@@ -364,6 +380,10 @@ func calc_bow_timers(delta):
 		bow_shot_timer -= delta
 	if heavy_attack_bow_animation_timer > 0:
 		heavy_attack_bow_animation_timer -= delta
+	if fix_aim_animation_during_walking_timer > 0 and GameManager.get_is_attacking():
+		fix_aim_animation_during_walking_timer -= delta
+	if delay_reset_animations_timer > 0:
+		delay_reset_animations_timer -= delta
 
 func calc_cooldown_bow_heavy_attack(delta):
 	if cooldown_heavy_attack_bow_timer > 0:
@@ -385,9 +405,16 @@ func bow_attack_change_back_to_movement_animation():
 	bow_hold_timer_for_dmg = 0
 	bow_dmg = 0
 	animation_tree.set("parameters/BowWalkingAnimation/blend_amount", 0)
+	walking_bow_state_machine_playback.travel("Rest")
+	GameManager.set_is_attacking(false)
+	fix_aim_animation_during_walking_timer = max_fix_aim_animation_during_walking_timer
+	delay_reset_animations_timer = max_delay_reset_animations_timer
+	delay_reset_animations = true
+
+func delay_reset_bow_shot_animation():
 	animation_tree.set("parameters/BowAnimation/blend_amount", 0)
 	bow_state_machine_playback.travel("Rest")
-	GameManager.set_is_attacking(false)
+	delay_reset_animations = false
 
 func calc_bow_hold_timer_for_dmg(delta):
 	if bow_hold_timer_for_dmg >= 0 and bow_hold_timer_for_dmg <= 3:
@@ -443,6 +470,14 @@ func heavy_bow_attack_change_back_to_movement_animation():
 	GameManager.set_is_heavy_attacking(false)
 	cooldown_heavy_attack_bow_timer = max_cooldown_heavy_attack_bow
 
+func reset_bow_animations():
+	# After normal Bow Attack
+	if is_walking_bow and bow_aim_timer <= 0 and bow_shot_timer <= 0:
+		bow_attack_change_back_to_movement_animation()
+	# After heavy Bow Attack
+	if GameManager.get_is_heavy_attacking() and heavy_attack_bow_animation_timer <= 0:
+		heavy_bow_attack_change_back_to_movement_animation()
+
 #--------------------BLOCK--------------------
 func block():
 	#Cancel Block with Dodge (Animations)
@@ -487,3 +522,17 @@ func right_block_animation():
 func left_block_animation():
 	animation_tree.set("parameters/BlockAnimation/blend_amount", 1)
 	block_state_machine_playback.travel("Block_L")
+
+#--------------------SHIELD--------------------
+func shield_heavy_attack(delta):
+	if (
+		Input.is_action_pressed("heavy_attack")
+		and !GameManager.get_is_dodging() 
+		and !GameManager.get_is_sneaking()
+		and !GameManager.get_is_blocking()
+		and !GameManager.get_is_heavy_attacking()
+		):
+		print("YUP")
+	
+func shield_heavy_attack_animation():
+	pass
