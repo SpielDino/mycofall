@@ -134,8 +134,9 @@ func rotate_animation_based_on_look_direction():
 		self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
 
 func walking_animation():
-	walking_animation_controller()
-	walking_animation_keyboard_and_mouse_2()
+	if !GameManager.get_is_heavy_attacking():
+		walking_animation_controller()
+		walking_animation_keyboard_and_mouse_2()
 
 func stop_rotation_during_dodge_true():
 	if !stop_rotation_during_dodge:

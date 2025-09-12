@@ -6,13 +6,16 @@ const DEADZONE := 0.2
 @export var player_shape: CollisionShape3D
 @export var dodge_indicator: MeshInstance3D
 
+# var you get from player stats script
 var speed
 var acceleration 
 var friction 
 #@onready var sensitivity: float = settings.sensitivity
 var rotation_type: String 
+
 var max_stamina: int 
 var stamina_per_second: int
+
 var stamina_cost_per_dodge: int
 var no_stamina_after_dodge_time: float
 var dodge_duration: float
@@ -22,6 +25,10 @@ var dodge_strength_multiplier_shield: float
 var dodge_strength_multiplier_bow: float
 var dodge_strength_multiplier_staff: float
 
+var shotgun_push_back_duration: float = 0.2
+var shotgun_push_back_distance: float = 2
+
+# normal var
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var temprotation = 0
 var mouse_timer: float = 0
@@ -35,7 +42,17 @@ var having_i_frames = false
 var dodge_direction: Vector3 = Vector3.ZERO
 var dodge_timer: float = 0
 var is_dodging: bool = false
+
 var block_timer: float = 0
+
+var shotgun_push_back: bool = false
+var start_shotgun_push_back_timer: float = 0
+var max_start_shotgun_push_back_timer: float = 0.6
+var shotgun_push_back_direction: Vector3 = Vector3.ZERO
+var shotgun_push_back_speed: float = 0
+var shotgun_push_back_timer: float = 0
+var finish_shotgun_push_back_timer: float = 0
+var max_finish_shotgun_push_back_timer: float = 0.65
 
 var sword_name = "Sword"
 var shield_name = "Shield"
@@ -62,22 +79,90 @@ func _ready():
 	dodge_strength_multiplier_shield = player.dodge_strength_multiplier_shield
 	dodge_strength_multiplier_bow = player.dodge_strength_multiplier_bow
 	dodge_strength_multiplier_staff = player.dodge_strength_multiplier_staff
+	
+	shotgun_push_back_speed =  shotgun_push_back_distance / shotgun_push_back_duration
+	max_finish_shotgun_push_back_timer = max_finish_shotgun_push_back_timer - shotgun_push_back_duration
 
 
 func _physics_process(delta):
 	apply_gravity(delta)
-	
+	movement_control_logic(delta)
+
+func movement_control_logic(delta):
 	if is_dodging:
+		during_dodge_logic(delta)
+	elif !GameManager.get_is_heavy_attacking():
+		normal_movement_logic(delta)
+	elif GameManager.get_is_heavy_attacking():
+		during_heavy_attack_logic(delta)
+
+func during_dodge_logic(delta):
 		process_dodge(delta)
 		i_frame_timer_calc(delta)
 		block(delta)
-	else:
-		get_move_input(delta)
-		move_and_slide()
-		rotate_player()
-		block(delta)
-		dodge_with_stamina()
 
+func normal_movement_logic(delta):
+	get_move_input(delta)
+	move_and_slide()
+	rotate_player()
+	block(delta)
+	dodge_with_stamina()
+	reset_finish_shotgun_push_back_timer(delta)
+
+func during_heavy_attack_logic(delta):
+	if GameManager.get_first_weapon_name() == bow_name:
+		during_bow_heavy_attack_logic(delta)
+	elif GameManager.get_first_weapon_name() == sword_name:
+		rotate_player()
+		stop_movement()
+	else:
+		#This is to reset the velocity
+		stop_movement()
+
+#--------------------BOW--------------------
+func during_bow_heavy_attack_logic(delta):
+	start_shotgun_movement_logic(delta)
+	shotgun_push_back_movement_logic(delta)
+	finish_shotgun_movement_logic(delta)
+
+func start_shotgun_movement_logic(delta):
+	if start_shotgun_push_back_timer <= 0 and !shotgun_push_back and finish_shotgun_push_back_timer <= 0:
+		start_shotgun_push_back_timer = max_start_shotgun_push_back_timer
+	if start_shotgun_push_back_timer > 0 and !shotgun_push_back:
+		rotate_player()
+		stop_movement()
+		calc_start_shotgun_push_back_timer(delta)
+
+func shotgun_push_back_movement_logic(delta):
+	if shotgun_push_back and shotgun_push_back_timer > 0:
+		shotgun_push_back_direction = player_shape.global_transform.basis.z.normalized()
+		var vy = velocity.y
+		velocity.y = 0
+		velocity = shotgun_push_back_direction * shotgun_push_back_speed
+		velocity.y = vy
+		move_and_slide()
+		shotgun_push_back_timer -= delta
+
+func finish_shotgun_movement_logic(delta):
+	if shotgun_push_back and shotgun_push_back_timer <= 0:
+		shotgun_push_back = false
+		finish_shotgun_push_back_timer = max_finish_shotgun_push_back_timer
+	if finish_shotgun_push_back_timer >= 0:
+		finish_shotgun_push_back_timer -= delta
+		stop_movement()
+
+#Just to make sure timers arent weird
+func reset_finish_shotgun_push_back_timer(delta):
+	if finish_shotgun_push_back_timer >= 0:
+		finish_shotgun_push_back_timer -= delta
+
+func calc_start_shotgun_push_back_timer(delta):
+	start_shotgun_push_back_timer -= delta
+	if start_shotgun_push_back_timer <= 0:
+		shotgun_push_back = true
+		shotgun_push_back_timer = shotgun_push_back_duration
+
+#--------------------DODGE--------------------
 func dodge_with_stamina():
 	if Input.is_action_just_pressed("dodge") and player.stamina >= stamina_cost_per_dodge:
 		dodge_ability()
@@ -141,10 +226,12 @@ func process_dodge(delta):
 		velocity = Vector3(0, velocity.y, 0)
 		#dodge_indicator.visible = false
 
+#--------------------BLOCK--------------------
 func block(delta):
 	if (
 		GameManager.get_first_weapon()
 		and !GameManager.get_is_dodging()
+		and !GameManager.get_is_heavy_attacking()
 		):
 		if Input.is_action_pressed("block"):
 			if player.is_blocking == false:
@@ -157,10 +244,12 @@ func block(delta):
 		elif Input.is_action_just_released("block"):
 			player.is_blocking = false
 			GameManager.set_is_blocking(false)
+	#Cancel Block with Dodge (Logic)
 	elif GameManager.get_is_blocking() and GameManager.get_is_dodging():
 		player.is_blocking = false
 		GameManager.set_is_blocking(false)
 
+#--------------------ROTATION--------------------
 func rotate_player():
 	match rotation_type:
 		"rotate based on last movement":
@@ -199,6 +288,7 @@ func rotate_based_on_second_input():
 		else:
 			player_shape.rotation.y = temprotation
 
+#--------------------MOVEMENT--------------------
 func get_move_input(delta):
 	sneak_toggler()
 	var vy = velocity.y
@@ -231,6 +321,10 @@ func sneak_toggler():
 func apply_gravity(delta):
 	velocity.y += -gravity * delta
 
+func stop_movement():
+	velocity = Vector3.ZERO
+
+#--------------------EXTRA--------------------
 func _input(event: InputEvent) -> void:
 	if event is InputEventJoypadButton:
 		_switch_to_controller()
@@ -244,7 +338,7 @@ func _switch_to_controller():
 	if GameManager.get_controller_input_device() != true:
 		GameManager.set_controller_input_device(true)
 		print("Switched to controller")
-		
+
 func _switch_to_kbm():
 	if GameManager.get_controller_input_device() != false:
 		GameManager.set_controller_input_device(false)
