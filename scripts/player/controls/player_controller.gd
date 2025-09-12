@@ -89,12 +89,12 @@ func _physics_process(delta):
 	movement_control_logic(delta)
 
 func movement_control_logic(delta):
+	if !GameManager.get_is_heavy_attacking() and !is_dodging:
+		normal_movement_logic(delta)
+	elif GameManager.get_is_heavy_attacking() and !is_dodging:
+		during_heavy_attack_logic(delta)
 	if is_dodging:
 		during_dodge_logic(delta)
-	elif !GameManager.get_is_heavy_attacking():
-		normal_movement_logic(delta)
-	elif GameManager.get_is_heavy_attacking():
-		during_heavy_attack_logic(delta)
 
 func during_dodge_logic(delta):
 		process_dodge(delta)

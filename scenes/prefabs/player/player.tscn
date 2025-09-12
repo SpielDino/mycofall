@@ -1,4 +1,4 @@
-[gd_scene load_steps=134 format=3 uid="uid://bogdwn2kqo3lf"]
+[gd_scene load_steps=129 format=3 uid="uid://bogdwn2kqo3lf"]
 
 [ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://scripts/player/controls/player_stats.gd" id="1_6jgwm"]
 [ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://scripts/player/controls/player_controller.gd" id="2_6ei3l"]
@@ -19,13 +19,12 @@ size = Vector3(0.1, 0.1, 0.3)
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_gm3ih"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gsaf8"]
-animation = &"CrystalStaffRotaion2"
+animation = &"CrystalStaffRotaion"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_omwr7"]
 filters = ["Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R", "Charackter/Skeleton3D:ArmPol.L", "Charackter/Skeleton3D:ArmPol.R", "Charackter/Skeleton3D:BackWoodStaffCrystal", "Charackter/Skeleton3D:Bone", "Charackter/Skeleton3D:Bone.001", "Charackter/Skeleton3D:Bone.002", "Charackter/Skeleton3D:Bone.004", "Charackter/Skeleton3D:Bone.005", "Charackter/Skeleton3D:Bone.006", "Charackter/Skeleton3D:Bone.007", "Charackter/Skeleton3D:Bone.008", "Charackter/Skeleton3D:Bone.009", "Charackter/Skeleton3D:Bone.013", "Charackter/Skeleton3D:Bone.014", "Charackter/Skeleton3D:Bone.015", "Charackter/Skeleton3D:Bone.016", "Charackter/Skeleton3D:Bone.017", "Charackter/Skeleton3D:Bone.018", "Charackter/Skeleton3D:IK.L", "Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackter/Skeleton3D:RightWoodStaffCrystal", "Charackter/Skeleton3D:String", "Charackter/Skeleton3D:forearm.L", "Charackter/Skeleton3D:forearm.R", "Charackter/Skeleton3D:hand.L", "Charackter/Skeleton3D:hand.R", "Charackter/Skeleton3D:shoulder.L", "Charackter/Skeleton3D:shoulder.R", "Charackter/Skeleton3D:spine", "Charackter/Skeleton3D:spine.001", "Charackter/Skeleton3D:spine.002", "Charackter/Skeleton3D:spine.003", "Charackter/Skeleton3D:spine.004", "Charackter/Skeleton3D:upper_arm.L", "Charackter/Skeleton3D:upper_arm.R"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_6ei3l"]
-filter_enabled = true
 filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R", "Charackter/Skeleton3D:ArmPol.L", "Charackter/Skeleton3D:ArmPol.R", "Charackter/Skeleton3D:BackWoodStaffCrystal", "Charackter/Skeleton3D:Bone", "Charackter/Skeleton3D:Bone.001", "Charackter/Skeleton3D:Bone.002", "Charackter/Skeleton3D:Bone.004", "Charackter/Skeleton3D:Bone.005", "Charackter/Skeleton3D:Bone.006", "Charackter/Skeleton3D:Bone.007", "Charackter/Skeleton3D:Bone.008", "Charackter/Skeleton3D:Bone.009", "Charackter/Skeleton3D:Bone.013", "Charackter/Skeleton3D:Bone.014", "Charackter/Skeleton3D:Bone.015", "Charackter/Skeleton3D:Bone.016", "Charackter/Skeleton3D:Bone.017", "Charackter/Skeleton3D:Bone.018", "Charackter/Skeleton3D:IK.L", "Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackter/Skeleton3D:RightWoodStaffCrystal", "Charackter/Skeleton3D:String", "Charackter/Skeleton3D:forearm.L", "Charackter/Skeleton3D:forearm.R", "Charackter/Skeleton3D:hand.L", "Charackter/Skeleton3D:hand.R", "Charackter/Skeleton3D:shoulder.L", "Charackter/Skeleton3D:shoulder.R", "Charackter/Skeleton3D:spine", "Charackter/Skeleton3D:spine.001", "Charackter/Skeleton3D:spine.002", "Charackter/Skeleton3D:upper_arm.L", "Charackter/Skeleton3D:upper_arm.R"]
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_hwqfs"]
@@ -316,15 +315,22 @@ graph_offset = Vector2(64, 103)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_27mn4"]
 animation = &"Roll"
+use_custom_timeline = true
+timeline_length = 0.68
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pb7or"]
 animation = &"Roll"
+use_custom_timeline = true
+timeline_length = 0.68
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_thxrw"]
 animation = &"Roll"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4a4dk"]
-animation = &"Idel"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6iyn6"]
 animation = &"SneakIdle"
@@ -334,6 +340,7 @@ animation = &"Sneak"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fkjak"]
 animation = &"Sneak"
+play_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6ei3l"]
 animation = &"Sneak"
@@ -440,13 +447,32 @@ blend_point_7/pos = Vector2(0.6, 0.7)
 blend_point_8/node = SubResource("AnimationNodeAnimation_0ppdl")
 blend_point_8/pos = Vector2(-0.6, 0.7)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pe6lq"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_d2wla"]
+animation = &"Idel"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wrhcn"]
 animation = &"Running"
 use_custom_timeline = true
-timeline_length = 0.9
+timeline_length = 0.8
 stretch_time_scale = true
 start_offset = 0.0
 loop_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r8dyk"]
+animation = &"Running"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lqpcr"]
+animation = &"Running"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_awash"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_d2wla")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_wrhcn")
+blend_point_1/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_r8dyk")
+blend_point_2/pos = Vector2(0.5, 1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_lqpcr")
+blend_point_3/pos = Vector2(-0.5, 1)
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6iyn6"]
 xfade_time = 0.3
@@ -462,32 +488,6 @@ xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vet34"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1ju0p"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gsaf8"]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6jgwm"]
-xfade_time = 0.2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4a4dk"]
-xfade_time = 0.3
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6ei3l"]
-xfade_time = 0.3
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hwqfs"]
-xfade_time = 0.3
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_thxrw"]
-xfade_time = 0.3
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ppdl"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_27mn4"]
-
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_omwr7"]
 xfade_time = 0.2
 
@@ -496,41 +496,40 @@ xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_k0wmv"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2wxvc"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rpfui"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1jkk8"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_onub3"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wur7f"]
 xfade_time = 0.2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jgx0n"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b0tsj"]
 xfade_time = 0.2
 switch_mode = 2
 advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o4eid"]
-xfade_time = 0.2
-priority = 2
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xyo5o"]
-xfade_time = 0.2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_qjulh"]
 states/Dodge/node = SubResource("AnimationNodeAnimation_27mn4")
-states/Dodge/position = Vector2(650, 100)
+states/Dodge/position = Vector2(435, 77)
 states/DodgeController/node = SubResource("AnimationNodeAnimation_pb7or")
-states/DodgeController/position = Vector2(122, 461.857)
+states/DodgeController/position = Vector2(288, 383)
 states/DodgeSneak/node = SubResource("AnimationNodeAnimation_thxrw")
-states/DodgeSneak/position = Vector2(816, 371.857)
-states/IdleController/node = SubResource("AnimationNodeAnimation_4a4dk")
-states/IdleController/position = Vector2(465, 432)
+states/DodgeSneak/position = Vector2(597, 383)
 states/Sneaking/node = SubResource("AnimationNodeBlendSpace2D_thxrw")
-states/Sneaking/position = Vector2(724, 267)
+states/Sneaking/position = Vector2(597, 279)
 states/Start/position = Vector2(159, 100)
 states/Walking/node = SubResource("AnimationNodeBlendSpace2D_0fs2y")
-states/Walking/position = Vector2(354, 142)
-states/WalkingController/node = SubResource("AnimationNodeAnimation_pe6lq")
-states/WalkingController/position = Vector2(122, 279)
-transitions = ["Walking", "Sneaking", SubResource("AnimationNodeStateMachineTransition_6iyn6"), "Sneaking", "Walking", SubResource("AnimationNodeStateMachineTransition_0fad3"), "Walking", "Dodge", SubResource("AnimationNodeStateMachineTransition_s6yju"), "Dodge", "Walking", SubResource("AnimationNodeStateMachineTransition_7kenn"), "Walking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_vet34"), "WalkingController", "Walking", SubResource("AnimationNodeStateMachineTransition_1ju0p"), "WalkingController", "IdleController", SubResource("AnimationNodeStateMachineTransition_gsaf8"), "IdleController", "WalkingController", SubResource("AnimationNodeStateMachineTransition_6jgwm"), "IdleController", "Sneaking", SubResource("AnimationNodeStateMachineTransition_4a4dk"), "Sneaking", "IdleController", SubResource("AnimationNodeStateMachineTransition_6ei3l"), "WalkingController", "Sneaking", SubResource("AnimationNodeStateMachineTransition_hwqfs"), "Sneaking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_thxrw"), "IdleController", "Walking", SubResource("AnimationNodeStateMachineTransition_0ppdl"), "Walking", "IdleController", SubResource("AnimationNodeStateMachineTransition_27mn4"), "Sneaking", "DodgeSneak", SubResource("AnimationNodeStateMachineTransition_omwr7"), "DodgeSneak", "Sneaking", SubResource("AnimationNodeStateMachineTransition_lmbuf"), "WalkingController", "DodgeController", SubResource("AnimationNodeStateMachineTransition_k0wmv"), "DodgeController", "WalkingController", SubResource("AnimationNodeStateMachineTransition_jgx0n"), "DodgeController", "IdleController", SubResource("AnimationNodeStateMachineTransition_o4eid"), "IdleController", "DodgeController", SubResource("AnimationNodeStateMachineTransition_xyo5o")]
-graph_offset = Vector2(-40, -63.143)
+states/Walking/position = Vector2(435, 189)
+states/WalkingController/node = SubResource("AnimationNodeBlendSpace2D_awash")
+states/WalkingController/position = Vector2(288, 279)
+transitions = ["Walking", "Sneaking", SubResource("AnimationNodeStateMachineTransition_6iyn6"), "Sneaking", "Walking", SubResource("AnimationNodeStateMachineTransition_0fad3"), "Walking", "Dodge", SubResource("AnimationNodeStateMachineTransition_s6yju"), "Dodge", "Walking", SubResource("AnimationNodeStateMachineTransition_7kenn"), "Sneaking", "DodgeSneak", SubResource("AnimationNodeStateMachineTransition_omwr7"), "DodgeSneak", "Sneaking", SubResource("AnimationNodeStateMachineTransition_lmbuf"), "Walking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_2wxvc"), "WalkingController", "Walking", SubResource("AnimationNodeStateMachineTransition_rpfui"), "WalkingController", "Sneaking", SubResource("AnimationNodeStateMachineTransition_1jkk8"), "Sneaking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_onub3"), "WalkingController", "DodgeController", SubResource("AnimationNodeStateMachineTransition_wur7f"), "DodgeController", "WalkingController", SubResource("AnimationNodeStateMachineTransition_b0tsj")]
+graph_offset = Vector2(-28, 21.857)
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4a4dk"]
 filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R", "Charackter/Skeleton3D:ArmPol.L", "Charackter/Skeleton3D:ArmPol.R", "Charackter/Skeleton3D:Bone", "Charackter/Skeleton3D:Bone.001", "Charackter/Skeleton3D:Bone.002", "Charackter/Skeleton3D:Bone.004", "Charackter/Skeleton3D:Bone.005", "Charackter/Skeleton3D:Bone.006", "Charackter/Skeleton3D:Bone.007", "Charackter/Skeleton3D:Bone.008", "Charackter/Skeleton3D:Bone.009", "Charackter/Skeleton3D:Bone.013", "Charackter/Skeleton3D:Bone.014", "Charackter/Skeleton3D:Bone.015", "Charackter/Skeleton3D:Bone.016", "Charackter/Skeleton3D:Bone.017", "Charackter/Skeleton3D:Bone.018", "Charackter/Skeleton3D:Cone", "Charackter/Skeleton3D:Cone.001", "Charackter/Skeleton3D:IK.L", "Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackter/Skeleton3D:String", "Charackter/Skeleton3D:forearm.L", "Charackter/Skeleton3D:forearm.R", "Charackter/Skeleton3D:hand.L", "Charackter/Skeleton3D:hand.R", "Charackter/Skeleton3D:shoulder.L", "Charackter/Skeleton3D:shoulder.R", "Charackter/Skeleton3D:spine", "Charackter/Skeleton3D:spine.001", "Charackter/Skeleton3D:spine.002", "Charackter/Skeleton3D:spine.003", "Charackter/Skeleton3D:upper_arm.L", "Charackter/Skeleton3D:upper_arm.R"]
@@ -538,7 +537,7 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-547.736, -306.173)
+graph_offset = Vector2(-243.466, -147.87)
 nodes/BackCrystalStaffAnimation/node = SubResource("AnimationNodeAnimation_gsaf8")
 nodes/BackCrystalStaffAnimation/position = Vector2(-380, 460)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")
@@ -621,8 +620,9 @@ parameters/BowWalkingAnimation/blend_amount = 0.0
 parameters/CrystalStaffAnimation/blend_amount = 0.0
 parameters/MainOrBackCrystalStaffAnimation/blend_amount = false
 parameters/StaffAnimation/blend_amount = 0.0
-parameters/StateMachine/Sneaking/blend_position = Vector2(-0.00466853, -0.00294983)
-parameters/StateMachine/Walking/blend_position = 0.0
+parameters/StateMachine/Sneaking/blend_position = Vector2(0.00185525, 0)
+parameters/StateMachine/Walking/blend_position = Vector2(0, -0.99359)
+parameters/StateMachine/WalkingController/blend_position = Vector2(0.00185525, 0)
 "parameters/StateMachine 4/BowWalking/blend_position" = Vector2(0, -0.99262)
 "parameters/StateMachine 6/BlockWalking/blend_position" = Vector2(-0.000933707, -0.984252)
 parameters/SwordAnimation/blend_amount = 0.0

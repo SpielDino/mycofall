@@ -14,6 +14,12 @@ var bow_name = "Bow"
 var current_blend := Vector2.ZERO
 var stop_rotation_during_dodge = false
 var controller_dodge = false
+var sneak_dodge = false
+var controller_move = false
+var kbm_move = false
+var normal_dodge = false
+
+var timer_bs: float = 0
 
 @onready var settings: Node3D = GlobalPlayer.get_player()
 @onready var state_machine_playback: AnimationNodeStateMachinePlayback = self.get("parameters/StateMachine/playback")
@@ -26,18 +32,19 @@ func _ready():
 	GameManager.weapons_changed.connect(_on_weapons_changed)
 
 func _physics_process(delta: float) -> void:
-	update_animation()
+	update_animation(delta)
 
-func update_animation():
+func update_animation(delta):
 	get_rel_vel()
-	movement_animation()
+	movement_animation(delta)
 
-func movement_animation():
+func movement_animation(delta):
 	toogle_sneak_animation()
-	dodge_animation_while_sneak()
+	dodge_animation_while_sneak(delta)
 	sneak_animation()
 	dodge_animation()
 	walking_animation()
+	reset_var_move()
 
 func toogle_sneak_animation():
 	if (
@@ -46,30 +53,38 @@ func toogle_sneak_animation():
 		and !GameManager.get_is_attacking() 
 		and !GameManager.get_is_blocking()
 		):
-		if !GameManager.get_is_sneaking():
+		if GameManager.get_is_sneaking():
 			state_machine_playback.travel("Sneaking")
-		elif GameManager.get_is_sneaking():
+		elif !GameManager.get_is_sneaking():
 			state_machine_playback.travel("Walking")
 
 func sneak_animation():
 	if GameManager.get_is_sneaking() and !GameManager.get_is_dodging():
-		state_machine_playback.travel("Sneaking")
+		calc_right_direction_based_on_rotation()
+		if sneak_dodge:
+			sneak_dodge = false
 		self.set("parameters/StateMachine/Sneaking/blend_position", rel_vel_xz)
 		stop_rotation_during_dodge_false()
 
-func dodge_animation_while_sneak():
+func dodge_animation_while_sneak(delta):
 	if GameManager.get_is_sneaking() and GameManager.get_is_dodging():
 		rotate_based_on_last_movement()
-		state_machine_playback.travel("DodgeSneak")
+		if !sneak_dodge:
+			state_machine_playback.travel("DodgeSneak")
+			sneak_dodge = true
 		stop_rotation_during_dodge_true()
 
 func dodge_animation():
 	if !GameManager.get_is_sneaking() and GameManager.get_is_dodging():
 		rotate_based_on_last_movement()
 		if !controller_dodge:
-			state_machine_playback.travel("Dodge")
+			if !normal_dodge:
+				state_machine_playback.travel("Dodge")
+				normal_dodge = true
 		elif controller_dodge:
-			state_machine_playback.travel("DodgeController")
+			if !normal_dodge:
+				state_machine_playback.travel("DodgeController")
+				normal_dodge = true
 		stop_rotation_during_dodge_true()
 
 func rotate_based_on_last_movement():
@@ -103,12 +118,12 @@ func walking_animation_keyboard_and_mouse():
 		self.set("parameters/StateMachine/Walking/blend_position", current_blend)
 
 func walking_animation_keyboard_and_mouse_2():
-	if !GameManager.get_is_sneaking() and !GameManager.get_is_dodging() and !GameManager.get_controller_input_device():
+	if !GameManager.get_controller_input_device():
 		rotate_animation_based_on_look_direction()
 		stop_rotation_during_dodge_false()
 
 func walking_animation_controller():
-	if !GameManager.get_is_sneaking() and !GameManager.get_is_dodging() and GameManager.get_controller_input_device():
+	if GameManager.get_controller_input_device():
 		var look_input = Input.get_vector("look_left", "look_right", "look_forward", "look_backward")
 		# Using the Right Stick and Left Stick
 		if (look_input.x != 0 or look_input.y != 0):
@@ -117,11 +132,15 @@ func walking_animation_controller():
 		else:
 			calc_right_direction_based_on_rotation()
 			var move_input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-			if (move_input.x != 0 or move_input.y != 0):
+			#if !controller_move and (move_input.x != 0 or move_input.y != 0):
+			if !controller_move:
 				state_machine_playback.travel("WalkingController")
-			else: 
-				state_machine_playback.travel("IdleController")
+				controller_move = true
+			elif controller_move and (move_input.x == 0 or move_input.y == 0):
+				controller_move = false
+			self.set("parameters/StateMachine/WalkingController/blend_position", rel_vel_xz)
 			controller_dodge_true()
+			
 		stop_rotation_during_dodge_false()
 
 func rotate_animation_based_on_look_direction():
@@ -130,18 +149,25 @@ func rotate_animation_based_on_look_direction():
 	if GameManager.get_first_weapon_name() == bow_name and GameManager.get_is_attacking():
 		pass
 	else:
-		state_machine_playback.travel("Walking")
+		var move_input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
+		if !kbm_move and (move_input.x != 0 or move_input.y != 0):
+			state_machine_playback.travel("Walking")
+			kbm_move = true
+		elif kbm_move and (move_input.x == 0 or move_input.y == 0):
+			kbm_move = false
 		self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
 
 func walking_animation():
-	if !GameManager.get_is_heavy_attacking():
+	if !GameManager.get_is_heavy_attacking() and !GameManager.get_is_dodging() and !GameManager.get_is_sneaking():
 		walking_animation_controller()
 		walking_animation_keyboard_and_mouse_2()
+		if normal_dodge:
+			normal_dodge = false
 
 func stop_rotation_during_dodge_true():
 	if !stop_rotation_during_dodge:
 		stop_rotation_during_dodge = true
-		
+
 func stop_rotation_during_dodge_false():
 	if stop_rotation_during_dodge:
 		stop_rotation_during_dodge = false
@@ -192,3 +218,9 @@ func calc_right_direction_based_on_rotation():
 	#Looking East
 	elif rotation_front_pointer < -50 and rotation_front_pointer >= -130:
 		rel_vel_xz = Vector2(rel_vel.z, -rel_vel.x)
+
+func reset_var_move():
+	if kbm_move:
+		kbm_move = false
+	if controller_move:
+		controller_move = false
