@@ -22,6 +22,7 @@ var first_weapon_upgrade_level: int = 0
 var second_weapon_upgrade_level: int = 0
 var is_sword_hit: bool = false
 var is_heavy_attacking: bool = false
+var is_heavy_attack_shield_with_sword: bool = false
 
 func get_first_weapon():
 	return first_weapon
@@ -92,6 +93,12 @@ func get_is_heavy_attacking():
 func set_is_heavy_attacking(check):
 	is_heavy_attacking = check
 	heavy_attack.emit()
+
+func get_is_heavy_attack_shield_with_sword():
+	return is_heavy_attack_shield_with_sword
+
+func set_is_heavy_attack_shield_with_sword(check):
+	is_heavy_attack_shield_with_sword = check
 
 func get_is_blocking():
 	return is_blocking

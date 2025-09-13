@@ -26,7 +26,7 @@ var dodge_strength_multiplier_bow: float
 var dodge_strength_multiplier_staff: float
 
 var shotgun_push_back_duration: float = 0.2
-var shotgun_push_back_distance: float = 2
+var shotgun_push_back_distance: float = 4
 
 # normal var
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -52,7 +52,7 @@ var shotgun_push_back_direction: Vector3 = Vector3.ZERO
 var shotgun_push_back_speed: float = 0
 var shotgun_push_back_timer: float = 0
 var finish_shotgun_push_back_timer: float = 0
-var max_finish_shotgun_push_back_timer: float = 0.65
+var max_finish_shotgun_push_back_timer: float = 0.5
 
 var sword_name = "Sword"
 var shield_name = "Shield"
@@ -82,6 +82,7 @@ func _ready():
 	
 	shotgun_push_back_speed =  shotgun_push_back_distance / shotgun_push_back_duration
 	max_finish_shotgun_push_back_timer = max_finish_shotgun_push_back_timer - shotgun_push_back_duration
+	heavy_shield_attack_speed = heavy_shield_attack_distance / heavy_shield_attack_duration
 
 
 func _physics_process(delta):
@@ -92,14 +93,14 @@ func movement_control_logic(delta):
 	if !GameManager.get_is_heavy_attacking() and !is_dodging:
 		normal_movement_logic(delta)
 	elif GameManager.get_is_heavy_attacking() and !is_dodging:
-		during_heavy_attack_logic(delta)
+		during_heavy_attack_movement_logic(delta)
 	if is_dodging:
-		during_dodge_logic(delta)
+		during_dodge_movement_logic(delta)
 
-func during_dodge_logic(delta):
-		process_dodge(delta)
-		i_frame_timer_calc(delta)
-		block(delta)
+func during_dodge_movement_logic(delta):
+	process_dodge(delta)
+	i_frame_timer_calc(delta)
+	block(delta)
 
 func normal_movement_logic(delta):
 	get_move_input(delta)
@@ -108,16 +109,22 @@ func normal_movement_logic(delta):
 	block(delta)
 	dodge_with_stamina()
 	reset_finish_shotgun_push_back_timer(delta)
+	reset_heavy_shield_attack_timer(delta)
 
-func during_heavy_attack_logic(delta):
-	if GameManager.get_first_weapon_name() == bow_name:
-		during_bow_heavy_attack_logic(delta)
-	elif GameManager.get_first_weapon_name() == sword_name:
-		rotate_player()
-		stop_movement()
-	else:
-		#This is to reset the velocity
-		stop_movement()
+func during_heavy_attack_movement_logic(delta):
+	match GameManager.get_first_weapon_name():
+		bow_name:
+			during_bow_heavy_attack_logic(delta)
+		sword_name:
+			if GameManager.get_is_heavy_attack_shield_with_sword():
+				during_shield_heavy_attack_logic(delta)
+			else:
+				rotate_player()
+				stop_movement()
+		staff_name:
+			stop_movement()
+		shield_name:
+			during_shield_heavy_attack_logic(delta)
 
 #--------------------BOW--------------------
 func during_bow_heavy_attack_logic(delta):
@@ -135,7 +142,6 @@ func start_shotgun_movement_logic(delta):
 
 func shotgun_push_back_movement_logic(delta):
 	if shotgun_push_back and shotgun_push_back_timer > 0:
-		shotgun_push_back_direction = player_shape.global_transform.basis.z.normalized()
 		var vy = velocity.y
 		velocity.y = 0
 		velocity = shotgun_push_back_direction * shotgun_push_back_speed
@@ -147,13 +153,13 @@ func finish_shotgun_movement_logic(delta):
 	if shotgun_push_back and shotgun_push_back_timer <= 0:
 		shotgun_push_back = false
 		finish_shotgun_push_back_timer = max_finish_shotgun_push_back_timer
-	if finish_shotgun_push_back_timer >= 0:
+	if finish_shotgun_push_back_timer > 0:
 		finish_shotgun_push_back_timer -= delta
 		stop_movement()
 
 #Just to make sure timers arent weird
 func reset_finish_shotgun_push_back_timer(delta):
-	if finish_shotgun_push_back_timer >= 0:
+	if finish_shotgun_push_back_timer > 0:
 		finish_shotgun_push_back_timer -= delta
 
 func calc_start_shotgun_push_back_timer(delta):
@@ -161,6 +167,47 @@ func calc_start_shotgun_push_back_timer(delta):
 	if start_shotgun_push_back_timer <= 0:
 		shotgun_push_back = true
 		shotgun_push_back_timer = shotgun_push_back_duration
+		shotgun_push_back_direction = player_shape.global_transform.basis.z.normalized()
+
+#--------------------SHIELD--------------------
+var heavy_shield_attack_direction
+var heavy_shield_attack_duration: float = 0.4
+var heavy_shield_attack_speed
+var heavy_shield_attack_timer: float = 0
+var heavy_shield_attack_distance: float = 4
+var heavy_shield_attack_timer_2: float = 0
+var heavy_shield_attack_timer_3: float = 0
+
+func during_shield_heavy_attack_logic(delta):
+	if heavy_shield_attack_timer <= 0 and heavy_shield_attack_timer_2 <= 0 and heavy_shield_attack_timer_3 <= 0:
+		heavy_shield_attack_timer = 0.24
+	
+	if heavy_shield_attack_timer > 0:
+		rotate_player()
+		stop_movement()
+		heavy_shield_attack_timer -= delta
+		if heavy_shield_attack_timer <= 0:
+			heavy_shield_attack_timer_2 = 0.32
+			heavy_shield_attack_direction = -player_shape.global_transform.basis.z.normalized()
+	
+	if heavy_shield_attack_timer_2 > 0:
+		var vy = velocity.y
+		velocity.y = 0
+		velocity = heavy_shield_attack_direction * heavy_shield_attack_speed
+		velocity.y = vy
+		move_and_slide()
+		heavy_shield_attack_timer_2 -= delta
+		if heavy_shield_attack_timer_2 <= 0:
+			heavy_shield_attack_timer_3 = 0.24
+	
+	if heavy_shield_attack_timer_3 > 0:
+		heavy_shield_attack_timer_3 -= delta
+		stop_movement()
+
+#Just to make sure timers arent weird
+func reset_heavy_shield_attack_timer(delta):
+	if heavy_shield_attack_timer_3 > 0:
+		heavy_shield_attack_timer_3 -= delta
 
 #--------------------DODGE--------------------
 func dodge_with_stamina():

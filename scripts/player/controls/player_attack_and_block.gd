@@ -16,6 +16,7 @@ extends Node3D
 var min_reset_animation_number: float = 0
 var reset_animation_timer: float = 0
 
+#--------------------SWORD--------------------
 var max_sword_animation_timer_sword_attack_1_and_2: float = 0.8
 var max_sword_animation_timer_sword_attack_3: float = 0.8
 var max_sword_animation_timer_sword_heavy_attack: float = 1.6667
@@ -30,13 +31,18 @@ var max_sword_heavy_attack_rotation_timer: float = 1
 var cooldown_heavy_attack_sword_timer: float = 0
 var max_cooldown_heavy_attack_sword: float = 1
 
+#--------------------STAFF--------------------
 var max_staff_animation_timer: float = 1.25
 var mana_cost_per_attack: int = 60
 var heavy_attack_staff_animation_timer: float = 0
 var max_heavy_attack_staff_animation_timer: float = 1.6667
 var cooldown_heavy_attack_staff_timer: float = 0
 var max_cooldown_heavy_attack_staff: float = 5
+var staff_combo: int = 0
+var reset_staff_animation_timer: float = 0
+var delay_reset: float = 0.1
 
+#--------------------BOW--------------------
 var is_walking_bow: bool = false
 var rel_vel_xz
 var bow_aim_timer: float = 0
@@ -47,9 +53,9 @@ var bow_finished: bool = true
 var bow_hold_timer_for_dmg: float = 0
 var bow_dmg: float = 0
 var heavy_attack_bow_animation_timer: float = 0
-var max_heavy_attack_bow_animation_timer: float = 1.25
+var max_heavy_attack_bow_animation_timer: float = 1.1 #1.25
 var cooldown_heavy_attack_bow_timer: float = 0
-var max_cooldown_heavy_attack_bow: float = 5
+var max_cooldown_heavy_attack_bow: float = 1
 var max_fix_aim_animation_during_walking_timer: float = 0.25
 var fix_aim_animation_during_walking_timer: float = max_fix_aim_animation_during_walking_timer
 var delay_reset_animations_timer: float = 0
@@ -58,8 +64,16 @@ var max_delay_reset_animations_timer = 0.05
 var walking_bow_kbm: bool = false
 var walking_bow_controller: bool = false
 
+#--------------------BLOCK--------------------
 var use_block: bool = false
 
+#--------------------SHIELD--------------------
+var heavy_attack_shield_animation_timer: float = 0
+var max_heavy_attack_shield_animation_timer: float = 0.8
+var cooldown_heavy_attack_shield_timer: float = 0
+var max_cooldown_heavy_attack_shield: float = 1
+
+#--------------------ETC--------------------
 var sword_name = "Sword"
 var shield_name = "Shield"
 var staff_name = "Staff"
@@ -87,9 +101,10 @@ func attacks(delta):
 		var weapon_name = GameManager.get_first_weapon_name()
 		match weapon_name:
 			sword_name:
-				sword_attack(delta)
 				if GameManager.get_second_weapon_name() == shield_name:
 					shield_heavy_attack(delta)
+				if !GameManager.get_is_heavy_attack_shield_with_sword():
+					sword_attack(delta)
 			staff_name:
 				staff_attack(delta)
 			bow_name:
@@ -102,6 +117,7 @@ func calc_cooldowns_for_heavy_attacks(delta):
 	calc_cooldown_sword_heavy_attack(delta)
 	calc_cooldown_staff_heavy_attack(delta)
 	calc_cooldown_bow_heavy_attack(delta)
+	calc_cooldown_heavy_attack_shield_timer(delta)
 
 #--------------------SWORD--------------------
 func sword_attack(delta):
@@ -176,7 +192,12 @@ func sword_heavy_attack():
 	reset_animation_timer = max_sword_animation_timer_sword_heavy_attack
 
 func calc_reset_sword_animation_timer(delta):
-	if combo_number == 1 or combo_number == 2 or combo_number == 3 or GameManager.get_is_heavy_attacking():
+	if (
+		combo_number == 1 
+		or combo_number == 2 
+		or combo_number == 3 
+		or GameManager.get_is_heavy_attacking()
+		):
 		if reset_animation_timer > 0:
 			reset_animation_timer -= delta
 		if reset_animation_timer <= 0:
@@ -254,16 +275,28 @@ func staff_attack(delta):
 	calc_reset_staff_animation_timer(delta)
 
 func staff_attack_animation():
-	animation_tree.set("parameters/StaffAnimation/blend_amount", 1)
-	staff_state_machine_playback.travel("MagicAttack")
-	staff_bullet_spawn.get_child(0).play("MagicAttack")
-	reset_animation_timer = max_staff_animation_timer
-	GameManager.set_is_attacking(true)
+	if staff_combo == 0:
+		animation_tree.set("parameters/StaffAnimation/blend_amount", 1)
+		staff_state_machine_playback.travel("MagicAttack")
+		staff_bullet_spawn.get_child(0).play("MagicAttack")
+		reset_animation_timer = max_staff_animation_timer
+		reset_staff_animation_timer = max_staff_animation_timer + delay_reset
+		GameManager.set_is_attacking(true)
+		staff_combo = 1
+	elif staff_combo == 1:
+		animation_tree.set("parameters/StaffAnimation/blend_amount", 1)
+		staff_state_machine_playback.travel("MagicAttack 2")
+		staff_bullet_spawn.get_child(0).play("MagicAttack")
+		reset_animation_timer = max_staff_animation_timer
+		reset_staff_animation_timer = max_staff_animation_timer + delay_reset
+		GameManager.set_is_attacking(true)
+		staff_combo = 0
 
 func staff_attack_change_back_to_movement_animation():
+	animation_tree.set("parameters/StaffAnimation/blend_amount", 0)
 	staff_state_machine_playback.travel("Rest")
 	staff_bullet_spawn.get_child(0).stop()
-	animation_tree.set("parameters/StaffAnimation/blend_amount", 0)
+	staff_combo = 0
 	GameManager.set_is_attacking(false)
 
 func heavy_staff_attack_change_back_to_movement_animation():
@@ -275,10 +308,12 @@ func heavy_staff_attack_change_back_to_movement_animation():
 	cooldown_heavy_attack_staff_timer = max_cooldown_heavy_attack_staff
 
 func calc_reset_staff_animation_timer(delta):
-	if GameManager.get_is_attacking():
 		if reset_animation_timer > 0:
 			reset_animation_timer -= delta
-			if reset_animation_timer <= 0:
+
+		if reset_staff_animation_timer > 0:
+			reset_staff_animation_timer -= delta
+			if reset_staff_animation_timer <= 0:
 				staff_attack_change_back_to_movement_animation()
 		elif heavy_attack_staff_animation_timer > 0:
 			heavy_attack_staff_animation_timer -= delta
@@ -480,6 +515,9 @@ func bow_shotgun_animation():
 	#bow_bullet_spawn.spawn_bullet()
 
 func heavy_bow_attack_change_back_to_movement_animation():
+	rel_vel_xz = animation_tree.rel_vel_xz
+	animation_tree.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
+	animation_tree.set("parameters/StateMachine/WalkingController/blend_position", rel_vel_xz)
 	animation_tree.set("parameters/BowWalkingAnimation/blend_amount", 0)
 	animation_tree.set("parameters/BowAnimation/blend_amount", 0)
 	bow_state_machine_playback.travel("Rest")
@@ -546,10 +584,6 @@ func left_block_animation():
 		use_block = true
 
 #--------------------SHIELD--------------------
-
-var heavy_attack_shield_animation_timer: float = 0
-var max_heavy_attack_shield_animation_timer: float = 1.1
-
 func shield_heavy_attack(delta):
 	if (
 		Input.is_action_pressed("heavy_attack")
@@ -558,12 +592,9 @@ func shield_heavy_attack(delta):
 		and !GameManager.get_is_blocking()
 		and !GameManager.get_is_heavy_attacking()
 		and GameManager.get_first_weapon_name() == shield_name
+		and cooldown_heavy_attack_shield_timer <= 0
 		):
-		animation_tree.set("parameters/ShieldAnimation/blend_amount", 1)
-		animation_tree.set("parameters/ShieldAnimationTimeSeek/seek_request", 0)
-		print("YUP")
-		GameManager.set_is_heavy_attacking(true)
-		heavy_attack_shield_animation_timer = max_heavy_attack_shield_animation_timer
+		shield_heavy_attack_animation()
 	elif (
 		Input.is_action_pressed("weapon_swap")
 		and GameManager.get_first_weapon_name() == sword_name
@@ -572,16 +603,53 @@ func shield_heavy_attack(delta):
 		and !GameManager.get_is_sneaking()
 		and !GameManager.get_is_blocking()
 		and !GameManager.get_is_heavy_attacking()
+		and cooldown_heavy_attack_shield_timer <= 0
+		and combo_timer <= 0
 		):
-		print("YUP")
-	if heavy_attack_shield_animation_timer > 0:
-		heavy_attack_shield_animation_timer -= delta
-		if heavy_attack_shield_animation_timer <= 0:
-			GameManager.set_is_heavy_attacking(false)
-			animation_tree.set("parameters/ShieldAnimation/blend_amount", 0)
-			rel_vel_xz = animation_tree.rel_vel_xz
-			animation_tree.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
-			animation_tree.set("parameters/StateMachine/WalkingController/blend_position", rel_vel_xz)
+		shield_heavy_attack_animation_with_sword()
+	
+	calc_shield_timer(delta)
 
 func shield_heavy_attack_animation():
-	pass
+	animation_tree.set("parameters/ShieldAnimation/blend_amount", 1)
+	animation_tree.set("parameters/ShieldAnimationTimeSeek/seek_request", 0)
+	GameManager.set_is_heavy_attacking(true)
+	GameManager.set_is_attacking(true)
+	heavy_attack_shield_animation_timer = max_heavy_attack_shield_animation_timer
+
+func calc_heavy_attack_shield_animation_timer(delta):
+	if heavy_attack_shield_animation_timer > 0:
+		heavy_attack_shield_animation_timer -= delta
+		heavy_attack_shield_change_back_to_movement_animation()
+
+func heavy_attack_shield_change_back_to_movement_animation():
+	if heavy_attack_shield_animation_timer <= 0:
+		GameManager.set_is_heavy_attacking(false)
+		GameManager.set_is_attacking(false)
+		animation_tree.set("parameters/ShieldAnimation/blend_amount", 0)
+		rel_vel_xz = animation_tree.rel_vel_xz
+		animation_tree.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
+		animation_tree.set("parameters/StateMachine/WalkingController/blend_position", rel_vel_xz)
+		cooldown_heavy_attack_shield_timer = max_cooldown_heavy_attack_shield
+		if GameManager.get_is_heavy_attack_shield_with_sword():
+			GameManager.set_is_heavy_attack_shield_with_sword(false)
+
+func calc_cooldown_heavy_attack_shield_timer(delta):
+	if cooldown_heavy_attack_shield_timer > 0:
+		cooldown_heavy_attack_shield_timer -= delta
+
+func calc_shield_timer(delta):
+	calc_heavy_attack_shield_animation_timer(delta)
+
+func reset_sword_animations_with_shield_heavy_attack():
+	if combo_number == 1 or combo_number == 2 or combo_number == 3:
+		sword_state_machine_playback.travel("Rest")
+		animation_tree.set("parameters/SwordAnimation/blend_amount", 0)
+		sword_hit_box.get_child(1).stop()
+		combo_number = 0
+		GameManager.set_is_sword_hit(false)
+
+func shield_heavy_attack_animation_with_sword():
+	shield_heavy_attack_animation()
+	reset_sword_animations_with_shield_heavy_attack()
+	GameManager.set_is_heavy_attack_shield_with_sword(true)

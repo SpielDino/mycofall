@@ -93,6 +93,7 @@ func swapping_weapons():
 			GameManager.weapons_updated()
 			GameManager.set_second_weapon_name(first_weapon_name)
 			GameManager.weapons_updated()
+			debug_game_manager_variables()
 
 func swap_second_weapon_to_first_weapon_based_on_upgrade_level():
 	var second_weapon_upgrade_level = GameManager.get_second_weapon_upgrade_level()
