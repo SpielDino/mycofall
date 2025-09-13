@@ -44,7 +44,6 @@ func movement_animation(delta):
 	sneak_animation()
 	dodge_animation()
 	walking_animation()
-	reset_var_move()
 
 func toogle_sneak_animation():
 	if (
@@ -132,15 +131,14 @@ func walking_animation_controller():
 		else:
 			calc_right_direction_based_on_rotation()
 			var move_input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-			#if !controller_move and (move_input.x != 0 or move_input.y != 0):
-			if !controller_move:
+			if !controller_move and (move_input.x != 0 or move_input.y != 0):
 				state_machine_playback.travel("WalkingController")
 				controller_move = true
-			elif controller_move and (move_input.x == 0 or move_input.y == 0):
-				controller_move = false
 			self.set("parameters/StateMachine/WalkingController/blend_position", rel_vel_xz)
+			self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
 			controller_dodge_true()
-			
+			if kbm_move:
+				kbm_move = false
 		stop_rotation_during_dodge_false()
 
 func rotate_animation_based_on_look_direction():
@@ -153,9 +151,9 @@ func rotate_animation_based_on_look_direction():
 		if !kbm_move and (move_input.x != 0 or move_input.y != 0):
 			state_machine_playback.travel("Walking")
 			kbm_move = true
-		elif kbm_move and (move_input.x == 0 or move_input.y == 0):
-			kbm_move = false
 		self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
+		if controller_move:
+			controller_move = false
 
 func walking_animation():
 	if !GameManager.get_is_heavy_attacking() and !GameManager.get_is_dodging() and !GameManager.get_is_sneaking():
@@ -175,7 +173,7 @@ func stop_rotation_during_dodge_false():
 func controller_dodge_true():
 	if !controller_dodge:
 		controller_dodge = true
-	
+
 func controller_dodge_false():
 	if controller_dodge:
 		controller_dodge = false
@@ -183,7 +181,7 @@ func controller_dodge_false():
 func get_rel_vel():
 	rel_vel = player_controller.global_basis.inverse() * ((player_controller.velocity * Vector3(1,0,1)))
 	rel_vel_xz = Vector2(rel_vel.x, rel_vel.z)
-	
+
 func rotation_of_front_pointer():
 	var radians_y = front_pointer.global_transform.basis.get_euler().y
 	var degrees_y = rad_to_deg(radians_y)
@@ -218,9 +216,3 @@ func calc_right_direction_based_on_rotation():
 	#Looking East
 	elif rotation_front_pointer < -50 and rotation_front_pointer >= -130:
 		rel_vel_xz = Vector2(rel_vel.z, -rel_vel.x)
-
-func reset_var_move():
-	if kbm_move:
-		kbm_move = false
-	if controller_move:
-		controller_move = false

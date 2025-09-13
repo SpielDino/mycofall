@@ -55,6 +55,8 @@ var fix_aim_animation_during_walking_timer: float = max_fix_aim_animation_during
 var delay_reset_animations_timer: float = 0
 var delay_reset_animations: bool = false
 var max_delay_reset_animations_timer = 0.05
+var walking_bow_kbm: bool = false
+var walking_bow_controller: bool = false
 
 var use_block: bool = false
 
@@ -86,6 +88,8 @@ func attacks(delta):
 		match weapon_name:
 			sword_name:
 				sword_attack(delta)
+				if GameManager.get_second_weapon_name() == shield_name:
+					shield_heavy_attack(delta)
 			staff_name:
 				staff_attack(delta)
 			bow_name:
@@ -312,6 +316,7 @@ func bow_attack(delta):
 		and GameManager.get_is_attacking()
 		):
 		bow_attack_change_back_to_movement_animation()
+		delay_reset_bow_shot_animation()
 	elif (
 		Input.is_action_pressed("attack") 
 		and !GameManager.get_is_dodging()
@@ -410,6 +415,8 @@ func bow_attack_change_back_to_movement_animation():
 	fix_aim_animation_during_walking_timer = max_fix_aim_animation_during_walking_timer
 	delay_reset_animations_timer = max_delay_reset_animations_timer
 	delay_reset_animations = true
+	walking_bow_kbm = false
+	walking_bow_controller = false
 
 func delay_reset_bow_shot_animation():
 	animation_tree.set("parameters/BowAnimation/blend_amount", 0)
@@ -435,10 +442,14 @@ func aim_helper_active():
 		aim_helper.visible = true
 
 func walking_bow_and_hold_aim_with_kbm():
-	animation_tree.set("parameters/BowWalkingAnimation/blend_amount", 1)
-	walking_bow_state_machine_playback.travel("BowWalking")
+	if !walking_bow_kbm:
+		animation_tree.set("parameters/BowWalkingAnimation/blend_amount", 1)
+		walking_bow_state_machine_playback.travel("BowWalking")
+		walking_bow_kbm = true
 	rel_vel_xz = animation_tree.rel_vel_xz
 	animation_tree.set("parameters/StateMachine 4/BowWalking/blend_position", rel_vel_xz)
+	if walking_bow_controller:
+		walking_bow_controller = false
 
 func walking_bow_and_hold_aim_with_controller():
 	var look_input = Input.get_vector("look_left", "look_right", "look_forward", "look_backward")
@@ -449,10 +460,16 @@ func walking_bow_and_hold_aim_with_controller():
 	else:
 		animation_tree.set("parameters/BowWalkingAnimation/blend_amount", 1)
 		var move_input = Input.get_vector("move_left", "move_right", "move_forward", "move_backward")
-		if (move_input.x != 0 or move_input.y != 0):
+		rel_vel_xz = animation_tree.rel_vel_xz
+		animation_tree.set("parameters/StateMachine 4/BowWalking/blend_position", rel_vel_xz)
+		if (move_input.x != 0 or move_input.y != 0) and !walking_bow_controller:
 			walking_bow_state_machine_playback.travel("Bow Aim Forward")
-		else: 
+			walking_bow_controller = true
+		elif (move_input.x == 0 and move_input.y == 0) and walking_bow_controller: 
 			walking_bow_state_machine_playback.travel("Bow Aim Hold")
+			walking_bow_controller = false
+		if walking_bow_kbm:
+			walking_bow_kbm = false
 
 func bow_shotgun_animation():
 	animation_tree.set("parameters/BowAnimation/blend_amount", 1)
@@ -491,7 +508,7 @@ func block():
 			block_blend.filter_enabled = true
 		else:
 			block_blend.filter_enabled = false
-		use_block = true
+		#use_block = true
 		block_walking_animation()
 		if GameManager.get_first_weapon_name() == sword_name or GameManager.get_first_weapon_name() == staff_name:
 			if GameManager.get_first_weapon_name() == sword_name and GameManager.get_second_weapon_name() == shield_name:
@@ -504,8 +521,9 @@ func block():
 		block_change_back_to_movement_animation()
 
 func block_walking_animation():
-	animation_tree.set("parameters/WalkBlockAnimation/blend_amount", 1)
-	walking_block_state_machine_playback.travel("BlockWalking")
+	if !use_block:
+		animation_tree.set("parameters/WalkBlockAnimation/blend_amount", 1)
+		walking_block_state_machine_playback.travel("BlockWalking")
 	rel_vel_xz = animation_tree.rel_vel_xz
 	animation_tree.set("parameters/StateMachine 6/BlockWalking/blend_position", rel_vel_xz)
 
@@ -516,14 +534,22 @@ func block_change_back_to_movement_animation():
 	animation_tree.set("parameters/WalkBlockAnimation/blend_amount", 0)
 
 func right_block_animation():
-	animation_tree.set("parameters/BlockAnimation/blend_amount", 1)
-	block_state_machine_playback.travel("Block_R")
+	if !use_block:
+		animation_tree.set("parameters/BlockAnimation/blend_amount", 1)
+		block_state_machine_playback.travel("Block_R")
+		use_block = true
 
 func left_block_animation():
-	animation_tree.set("parameters/BlockAnimation/blend_amount", 1)
-	block_state_machine_playback.travel("Block_L")
+	if !use_block:
+		animation_tree.set("parameters/BlockAnimation/blend_amount", 1)
+		block_state_machine_playback.travel("Block_L")
+		use_block = true
 
 #--------------------SHIELD--------------------
+
+var heavy_attack_shield_animation_timer: float = 0
+var max_heavy_attack_shield_animation_timer: float = 1.1
+
 func shield_heavy_attack(delta):
 	if (
 		Input.is_action_pressed("heavy_attack")
@@ -531,8 +557,31 @@ func shield_heavy_attack(delta):
 		and !GameManager.get_is_sneaking()
 		and !GameManager.get_is_blocking()
 		and !GameManager.get_is_heavy_attacking()
+		and GameManager.get_first_weapon_name() == shield_name
+		):
+		animation_tree.set("parameters/ShieldAnimation/blend_amount", 1)
+		animation_tree.set("parameters/ShieldAnimationTimeSeek/seek_request", 0)
+		print("YUP")
+		GameManager.set_is_heavy_attacking(true)
+		heavy_attack_shield_animation_timer = max_heavy_attack_shield_animation_timer
+	elif (
+		Input.is_action_pressed("weapon_swap")
+		and GameManager.get_first_weapon_name() == sword_name
+		and GameManager.get_second_weapon_name() == shield_name
+		and !GameManager.get_is_dodging() 
+		and !GameManager.get_is_sneaking()
+		and !GameManager.get_is_blocking()
+		and !GameManager.get_is_heavy_attacking()
 		):
 		print("YUP")
-	
+	if heavy_attack_shield_animation_timer > 0:
+		heavy_attack_shield_animation_timer -= delta
+		if heavy_attack_shield_animation_timer <= 0:
+			GameManager.set_is_heavy_attacking(false)
+			animation_tree.set("parameters/ShieldAnimation/blend_amount", 0)
+			rel_vel_xz = animation_tree.rel_vel_xz
+			animation_tree.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
+			animation_tree.set("parameters/StateMachine/WalkingController/blend_position", rel_vel_xz)
+
 func shield_heavy_attack_animation():
 	pass
