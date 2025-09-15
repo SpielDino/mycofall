@@ -21,3 +21,12 @@ func _on_area_3d_area_entered(area: Area3D) -> void:
 		#audio_player.set_pitch_scale(rnd_pitch)
 		#audio_player.play(0)
 		hit = true
+
+func play_animations(check):
+	if !hit:
+		ani_player.stop()
+		if check:
+			ani_player.play("KnockDown")
+		else:
+			ani_player.play("GettingHit")
+		hit = true

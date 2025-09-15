@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://6j2eqyw3n43k"]
+[gd_scene load_steps=14 format=3 uid="uid://6j2eqyw3n43k"]
 
 [ext_resource type="Script" uid="uid://degru62j4rb7n" path="res://scripts/environment/training_dummy.gd" id="1_dacpj"]
 [ext_resource type="PackedScene" uid="uid://crhsy0a3aia10" path="res://assets/models/objects/training_dummy.blend" id="1_rye1t"]
@@ -76,9 +76,37 @@ tracks/1/keys = {
 "values": [Vector3(0, 0.0445378, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_klr8u"]
+resource_name = "KnockDown"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TrainingDummy:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, -1.5708), Vector3(0, 0, -1.5708), Vector3(0, 0, -1.5708), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TrainingDummy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.0445378, 0), Vector3(0, 0.0445378, 0), Vector3(0, 0.0445378, 0), Vector3(0, 0.0445378, 0), Vector3(0, 0.0445378, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nylhb"]
 _data = {
 &"GettingHit": SubResource("Animation_dacpj"),
+&"KnockDown": SubResource("Animation_klr8u"),
 &"RESET": SubResource("Animation_nylhb")
 }
 
@@ -133,5 +161,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.61803, 0)
 stream = SubResource("AudioStreamRandomizer_nylhb")
 pitch_scale = 0.5
 max_distance = 30.0
-
-[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]

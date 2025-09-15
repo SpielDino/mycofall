@@ -25,10 +25,8 @@ var dodge_strength_multiplier_shield: float
 var dodge_strength_multiplier_bow: float
 var dodge_strength_multiplier_staff: float
 
-var shotgun_push_back_duration: float = 0.2
-var shotgun_push_back_distance: float = 4
-
 # normal var
+#--------------------ETC--------------------
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var temprotation = 0
 var mouse_timer: float = 0
@@ -36,6 +34,12 @@ var player: Node3D
 var lock = false
 var sneak_toggle = false
 
+var sword_name = "Sword"
+var shield_name = "Shield"
+var staff_name = "Staff"
+var bow_name = "Bow"
+
+#--------------------DODGE--------------------
 var i_frame_timer: float
 var max_i_frame_timer: float
 var having_i_frames = false
@@ -43,8 +47,10 @@ var dodge_direction: Vector3 = Vector3.ZERO
 var dodge_timer: float = 0
 var is_dodging: bool = false
 
+#--------------------BLOCK--------------------
 var block_timer: float = 0
 
+#--------------------BOW--------------------
 var shotgun_push_back: bool = false
 var start_shotgun_push_back_timer: float = 0
 var max_start_shotgun_push_back_timer: float = 0.6
@@ -53,11 +59,20 @@ var shotgun_push_back_speed: float = 0
 var shotgun_push_back_timer: float = 0
 var finish_shotgun_push_back_timer: float = 0
 var max_finish_shotgun_push_back_timer: float = 0.5
+var shotgun_push_back_duration: float = 0.2
+var shotgun_push_back_distance: float = 4
 
-var sword_name = "Sword"
-var shield_name = "Shield"
-var staff_name = "Staff"
-var bow_name = "Bow"
+#--------------------SHIELD--------------------
+var heavy_shield_attack_direction
+var heavy_shield_attack_duration: float = 0.4
+var heavy_shield_attack_speed
+var heavy_shield_attack_timer: float = 0
+var heavy_shield_attack_distance: float = 4
+var heavy_shield_attack_timer_2: float = 0
+var heavy_shield_attack_timer_3: float = 0
+var max_heavy_shield_attack_timer: float = 0.24
+var max_heavy_shield_attack_timer_2: float = 0.32
+var hitting_with_shield: bool = false
 
 @onready var spring_arm = $CameraArm
 
@@ -90,12 +105,15 @@ func _physics_process(delta):
 	movement_control_logic(delta)
 
 func movement_control_logic(delta):
-	if !GameManager.get_is_heavy_attacking() and !is_dodging:
-		normal_movement_logic(delta)
-	elif GameManager.get_is_heavy_attacking() and !is_dodging:
-		during_heavy_attack_movement_logic(delta)
-	if is_dodging:
-		during_dodge_movement_logic(delta)
+	if !GameManager.get_is_knockdown():
+		if !GameManager.get_is_heavy_attacking() and !is_dodging:
+			normal_movement_logic(delta)
+		elif GameManager.get_is_heavy_attacking() and !is_dodging:
+			during_heavy_attack_movement_logic(delta)
+		if is_dodging:
+			during_dodge_movement_logic(delta)
+	else:
+		knockdown_movement_logic()
 
 func during_dodge_movement_logic(delta):
 	process_dodge(delta)
@@ -125,6 +143,19 @@ func during_heavy_attack_movement_logic(delta):
 			stop_movement()
 		shield_name:
 			during_shield_heavy_attack_logic(delta)
+
+func knockdown_movement_logic():
+	var vy = velocity.y
+	velocity = Vector3(0, vy, 0)
+	move_and_slide()
+	# Reset sneak
+	if sneak_toggle:
+		sneak_toggle = false
+		GameManager.set_is_sneaking(sneak_toggle)
+		player.set_sneaking(false)
+	if is_dodging:
+		is_dodging = false
+		GameManager.set_is_dodging(is_dodging)
 
 #--------------------BOW--------------------
 func during_bow_heavy_attack_logic(delta):
@@ -170,36 +201,52 @@ func calc_start_shotgun_push_back_timer(delta):
 		shotgun_push_back_direction = player_shape.global_transform.basis.z.normalized()
 
 #--------------------SHIELD--------------------
-var heavy_shield_attack_direction
-var heavy_shield_attack_duration: float = 0.4
-var heavy_shield_attack_speed
-var heavy_shield_attack_timer: float = 0
-var heavy_shield_attack_distance: float = 4
-var heavy_shield_attack_timer_2: float = 0
-var heavy_shield_attack_timer_3: float = 0
-
 func during_shield_heavy_attack_logic(delta):
-	if heavy_shield_attack_timer <= 0 and heavy_shield_attack_timer_2 <= 0 and heavy_shield_attack_timer_3 <= 0:
-		heavy_shield_attack_timer = 0.24
+	start_heavy_shield_attack_logic()
 	
+	begin_heavy_shield_attack_movement_logic(delta)
+	
+	if !hitting_with_shield:
+		move_heavy_shield_attack_movment_logic(delta)
+	else:
+		stop_movement()
+		calc_heavy_shield_attack_timer_2(delta)
+	
+	stop_heavy_shield_attack_movment_logic(delta)
+
+func start_heavy_shield_attack_logic():
+	if heavy_shield_attack_timer <= 0 and heavy_shield_attack_timer_2 <= 0 and heavy_shield_attack_timer_3 <= 0:
+		heavy_shield_attack_timer = max_heavy_shield_attack_timer
+		if hitting_with_shield:
+			hitting_with_shield = false
+
+func begin_heavy_shield_attack_movement_logic(delta):
 	if heavy_shield_attack_timer > 0:
 		rotate_player()
 		stop_movement()
-		heavy_shield_attack_timer -= delta
-		if heavy_shield_attack_timer <= 0:
-			heavy_shield_attack_timer_2 = 0.32
-			heavy_shield_attack_direction = -player_shape.global_transform.basis.z.normalized()
-	
+		calc_heavy_shield_attack_timer(delta)
+
+func calc_heavy_shield_attack_timer(delta):
+	heavy_shield_attack_timer -= delta
+	if heavy_shield_attack_timer <= 0:
+		heavy_shield_attack_timer_2 = max_heavy_shield_attack_timer_2
+		heavy_shield_attack_direction = -player_shape.global_transform.basis.z.normalized()
+
+func move_heavy_shield_attack_movment_logic(delta):
 	if heavy_shield_attack_timer_2 > 0:
 		var vy = velocity.y
 		velocity.y = 0
 		velocity = heavy_shield_attack_direction * heavy_shield_attack_speed
 		velocity.y = vy
 		move_and_slide()
-		heavy_shield_attack_timer_2 -= delta
-		if heavy_shield_attack_timer_2 <= 0:
-			heavy_shield_attack_timer_3 = 0.24
-	
+		calc_heavy_shield_attack_timer_2(delta)
+
+func calc_heavy_shield_attack_timer_2(delta):
+	heavy_shield_attack_timer_2 -= delta
+	if heavy_shield_attack_timer_2 <= 0:
+		heavy_shield_attack_timer_3 = max_heavy_shield_attack_timer
+
+func stop_heavy_shield_attack_movment_logic(delta):
 	if heavy_shield_attack_timer_3 > 0:
 		heavy_shield_attack_timer_3 -= delta
 		stop_movement()
@@ -240,7 +287,14 @@ func dodge_ability():
 	
 	is_dodging = true
 	GameManager.set_is_dodging(is_dodging)
-	dodge_timer = dodge_duration
+	
+	# While Aiming with the Bow and Dodging:
+	# the Dodge Animation bugs out a bit and this line prevents
+	# it by increasing the cooldown of the dodge by a small amount
+	if GameManager.get_is_attacking() and GameManager.get_first_weapon_name() == bow_name:
+		dodge_timer = dodge_duration + 0.05
+	else:
+		dodge_timer = dodge_duration
 	
 	player.set_stamina_regen_cooldown(no_stamina_after_dodge_time)
 	if player.is_detected:
@@ -390,3 +444,8 @@ func _switch_to_kbm():
 	if GameManager.get_controller_input_device() != false:
 		GameManager.set_controller_input_device(false)
 		print("Switched to keyboard/mouse")
+
+#--------------------SIGNAL SHIELD--------------------
+func _on_shield_logic_hitting_with_shield() -> void:
+	if !hitting_with_shield:
+		hitting_with_shield = true

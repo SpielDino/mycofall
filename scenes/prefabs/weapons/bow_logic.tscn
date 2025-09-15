@@ -1,6 +1,47 @@
-[gd_scene load_steps=2 format=3 uid="uid://b80wly3yp4bo1"]
+[gd_scene load_steps=6 format=3 uid="uid://b80wly3yp4bo1"]
 
 [ext_resource type="Script" uid="uid://bswpcuqtcb6gm" path="res://scripts/player/weapons/bow_logic.gd" id="1_x3twt"]
 
+[sub_resource type="Animation" id="Animation_7sm5m"]
+resource_name = "HeavyAttack"
+length = 0.8
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"shotgun_spawn_bullet"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dyyvn"]
+_data = {
+&"HeavyAttack": SubResource("Animation_7sm5m")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ei3l"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.227451)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7sm5m"]
+material = SubResource("StandardMaterial3D_6ei3l")
+size = Vector3(0.1, 0.1, 1)
+
 [node name="BowLogic" type="Node3D"]
 script = ExtResource("1_x3twt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dyyvn")
+}
+
+[node name="AimHelper" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129803, -3.16663)
+visible = false
+mesh = SubResource("BoxMesh_7sm5m")

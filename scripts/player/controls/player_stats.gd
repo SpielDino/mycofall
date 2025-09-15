@@ -3,6 +3,7 @@ extends Node3D
 signal health_changed
 signal stamina_changed
 signal mana_changed
+signal knockdown_signal
 
 @export_category("Actions")
 @export_subgroup("Walking")
@@ -17,7 +18,7 @@ signal mana_changed
 @export_subgroup("Dodge")
 @export var stamina_cost_per_dodge: int = 50
 @export var dodge_distance: float = 5.0     
-@export var dodge_duration: float = 0.625
+@export var dodge_duration: float = 0.65
 @export var no_stamina_after_dodge_time: float = 1
 @export var dodge_strength_multiplier_shield: float = 0.6
 @export var dodge_strength_multiplier_bow: float = 0.8
@@ -92,6 +93,7 @@ func _physics_process(delta):
 	resource_system(delta)
 	check_detection()
 	broken_block_tracker(delta)
+	test_knockdown_animation()
 
 func broken_block_tracker(delta):
 	if block_broken > 0:
@@ -182,10 +184,12 @@ func break_block():
 	block_broken = broken_block_duration
 	print("Block was broken from attack")
 
-func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifier):
+func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifier, knockdown_check):
 	if GameManager.get_having_i_frames():
 		pass
 	else:
+		if knockdown_check:
+			knockdown_signal.emit()
 		health_regen_delay = 2
 		if check_if_attack_was_blocked(attacker, block_cost_modifier):
 			if is_blockable:
@@ -234,3 +238,11 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Bush"):
 		is_in_hiding_area = false
 		#$Controller/PlayerAudio/BushEntedSFX.play()
+
+func test_knockdown_animation():
+	if !GameManager.get_first_weapon() and !GameManager.get_is_knockdown():
+		if Input.is_action_just_pressed("attack"):
+			knockdown_signal.emit()
+	elif GameManager.get_first_weapon() and !GameManager.get_is_knockdown():
+		if Input.is_action_just_pressed("weapon_swap"):
+			knockdown_signal.emit()

@@ -36,7 +36,8 @@ func _physics_process(delta: float) -> void:
 
 func update_animation(delta):
 	get_rel_vel()
-	movement_animation(delta)
+	if !GameManager.get_is_knockdown():
+		movement_animation(delta)
 
 func movement_animation(delta):
 	toogle_sneak_animation()
@@ -189,12 +190,13 @@ func rotation_of_front_pointer():
 	return rotation_front_pointer
 
 func play_wood_crystal_staff_animation():
-	if GameManager.get_first_weapon_name() == "Staff" and GameManager.get_first_weapon_upgrade_level() == 1:
+	if (
+		(GameManager.get_first_weapon_name() == "Staff" 
+		and GameManager.get_first_weapon_upgrade_level() == 1)
+		or (GameManager.get_second_weapon_name() == "Staff" 
+		and GameManager.get_second_weapon_upgrade_level() == 1)
+		):
 		self.set("parameters/CrystalStaffAnimation/blend_amount", 1)
-		self.set("parameters/MainOrBackCrystalStaffAnimation/blend_amount", 0)
-	elif GameManager.get_second_weapon_name() == "Staff" and GameManager.get_second_weapon_upgrade_level() == 1:
-		self.set("parameters/CrystalStaffAnimation/blend_amount", 1)
-		self.set("parameters/MainOrBackCrystalStaffAnimation/blend_amount", 1)
 	else:
 		self.set("parameters/CrystalStaffAnimation/blend_amount", 0)
 
@@ -216,3 +218,9 @@ func calc_right_direction_based_on_rotation():
 	#Looking East
 	elif rotation_front_pointer < -50 and rotation_front_pointer >= -130:
 		rel_vel_xz = Vector2(rel_vel.z, -rel_vel.x)
+
+func _on_player_knockdown_signal() -> void:
+	GameManager.set_is_knockdown(true)
+	state_machine_playback.travel("Fall down")
+	await get_tree().create_timer(2.09).timeout
+	GameManager.set_is_knockdown(false)

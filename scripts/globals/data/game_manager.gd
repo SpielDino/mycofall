@@ -23,6 +23,7 @@ var second_weapon_upgrade_level: int = 0
 var is_sword_hit: bool = false
 var is_heavy_attacking: bool = false
 var is_heavy_attack_shield_with_sword: bool = false
+var is_knockdown: bool = false
 
 func get_first_weapon():
 	return first_weapon
@@ -124,7 +125,13 @@ func get_is_sneaking():
 
 func set_is_sneaking(check):
 	is_sneaking = check
-	
+
+func get_is_knockdown():
+	return is_knockdown
+
+func set_is_knockdown(check):
+	is_knockdown = check
+
 func get_controller_input_device():
 	return controller_input_device
 	

@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://ciim6d5tpkux3"]
+
+[ext_resource type="Script" uid="uid://dsbkgfmyv6ow" path="res://scripts/player/weapons/shield_logic.gd" id="1_bytuy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bytuy"]
+size = Vector3(3.918, 4.4, 1)
+
+[sub_resource type="Animation" id="Animation_bytuy"]
+resource_name = "HeavyAttack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.56),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShieldHitBox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.24, 0.56),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_hjb4x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:monitoring")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShieldHitBox:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hjb4x"]
+_data = {
+&"HeavyAttack": SubResource("Animation_bytuy"),
+&"RESET": SubResource("Animation_hjb4x")
+}
+
+[node name="ShieldLogic" type="Area3D"]
+script = ExtResource("1_bytuy")
+
+[node name="ShieldHitBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_bytuy")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_hjb4x")
+}
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

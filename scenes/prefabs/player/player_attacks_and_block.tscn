@@ -1,16 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bj236prj2dub5"]
+[gd_scene load_steps=4 format=3 uid="uid://bj236prj2dub5"]
 
 [ext_resource type="Script" uid="uid://nfu8xws7lgli" path="res://scripts/player/controls/player_attack_and_block.gd" id="1_wmf21"]
 [ext_resource type="PackedScene" uid="uid://252l82i5f0jy" path="res://scenes/prefabs/weapons/staff_logic.tscn" id="2_odapa"]
 [ext_resource type="PackedScene" uid="uid://b80wly3yp4bo1" path="res://scenes/prefabs/weapons/bow_logic.tscn" id="3_3jody"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ei3l"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0.227451)
-
-[sub_resource type="BoxMesh" id="BoxMesh_hwqfs"]
-material = SubResource("StandardMaterial3D_6ei3l")
-size = Vector3(0.1, 0.1, 1)
 
 [node name="PlayerAttacksAndBlock" type="Node3D" node_paths=PackedStringArray("staff_bullet_spawn", "bow_bullet_spawn", "aim_helper")]
 script = ExtResource("1_wmf21")
@@ -22,9 +14,5 @@ aim_helper = NodePath("BowLogic/AimHelper")
 
 [node name="BowLogic" parent="." instance=ExtResource("3_3jody")]
 
-[node name="AimHelper" type="MeshInstance3D" parent="BowLogic"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.129803, -3.16663)
-visible = false
-mesh = SubResource("BoxMesh_hwqfs")
-
 [editable path="StaffLogic"]
+[editable path="BowLogic"]
