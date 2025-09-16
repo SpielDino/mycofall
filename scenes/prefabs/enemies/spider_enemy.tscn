@@ -12,7 +12,7 @@
 radius = 0.421529
 height = 2.64344
 
-[node name="SpiderEnemy" type="CharacterBody3D"]
+[node name="SpiderEnemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_w6tma")
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_fdvl8")]
@@ -93,16 +93,16 @@ bones/52/position = Vector3(-1.21981, 1.21152, -0.035471)
 bones/53/position = Vector3(-1.08068, 1.21152, -0.922925)
 
 [node name="pilzKopf" parent="Model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.99961, -0.00243974, -0.0278102, -0.0279091, -0.111028, -0.993425, -0.00066401, 0.993814, -0.111053, -0.196709, 0.227518, -0.580781)
+transform = Transform3D(0.99961, -0.00243974, -0.0278103, -0.0279092, -0.111029, -0.993425, -0.000664037, 0.993814, -0.111053, -0.196709, 0.227518, -0.580782)
 
 [node name="PilzPo" parent="Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.912274, -0.008557, -0.0221742, -0.0254707, -0.319194, -0.783067, -0.000605995, 0.534262, -0.468197, -0.207974, 1.51482, 0.627724)
+transform = Transform3D(0.912274, -0.00855701, -0.0221743, -0.0254708, -0.319194, -0.783067, -0.00060602, 0.534262, -0.468197, -0.207974, 1.51482, 0.627724)
 
 [node name="PiltzKörper_L" parent="Model/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.99961, -0.00243973, -0.0278102, -0.0279091, -0.111028, -0.993425, -0.00066401, 0.993814, -0.111052, 0.22682, 0.6003, -0.200952)
+transform = Transform3D(0.99961, -0.00243975, -0.0278103, -0.0279092, -0.111029, -0.993425, -0.000664032, 0.993814, -0.111053, 0.22682, 0.6003, -0.200952)
 
 [node name="PilzKörper_R" parent="Model/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.99961, -0.00243973, -0.0278102, -0.0279091, -0.111028, -0.993425, -0.00066401, 0.993814, -0.111052, -0.350232, 0.665948, -0.310878)
+transform = Transform3D(0.99961, -0.00243975, -0.0278103, -0.0279092, -0.111029, -0.993425, -0.000664032, 0.993814, -0.111053, -0.350233, 0.665948, -0.310878)
 
 [editable path="EnemySlowAttackComponent"]
 [editable path="Model"]

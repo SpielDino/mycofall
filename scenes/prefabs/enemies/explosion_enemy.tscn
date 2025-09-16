@@ -11,7 +11,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_i8y0w"]
 radius = 0.439949
 
-[node name="ExplosionEnemy" type="CharacterBody3D"]
+[node name="ExplosionEnemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_f8il8")
 
 [node name="DetectionComponent" parent="." instance=ExtResource("3_ry033")]
@@ -44,19 +44,19 @@ bones/10/position = Vector3(-0.000313184, 0.000343876, -2.24236e-07)
 bones/10/rotation = Quaternion(-0.00169747, 0.0015196, 0.996298, 0.0859368)
 
 [node name="BeinR" parent="Model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 2.16324e-07, 1.51581e-07, -1.09653e-07, 1, 0.0908615, 0.0432923, -0.00346248)
+transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 1.5672e-07, 1.51581e-07, -5.00479e-08, 1, 0.0908616, 0.0432918, -0.00346282)
 
 [node name="BeinL" parent="Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 2.16324e-07, 1.51581e-07, -1.09653e-07, 1, 0.0884127, 0.0395062, 8.9407e-08)
+transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 1.5672e-07, 1.51581e-07, -5.00479e-08, 1, 0.0884127, 0.0395059, 1.04308e-07)
 
 [node name="ArmL" parent="Model/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.245984, -0.517131, 0.819797, 0.791633, 0.595224, 0.137936, -0.559294, 0.615048, 0.555793, -0.185656, 0.00144224, 0.14766)
+transform = Transform3D(0.245984, -0.517131, 0.819797, 0.791632, 0.595224, 0.137937, -0.559294, 0.615048, 0.555793, -0.185656, 0.00144205, 0.147659)
 
 [node name="ArmR" parent="Model/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.234986, -0.527258, -0.816567, 0.70592, 0.670073, -0.229521, 0.668176, -0.522496, 0.529659, -0.182569, -0.0116516, -0.144376)
+transform = Transform3D(0.234986, -0.527258, -0.816566, 0.705919, 0.670073, -0.229521, 0.668176, -0.522496, 0.529659, -0.182569, -0.0116516, -0.144376)
 
 [node name="Hutshell" parent="Model/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.985223, -0.17125, -0.00312116, 0.171239, -0.985224, 0.00331978, -0.00364355, 0.00273625, 0.99999, -0.00102169, 0.000937998, -2.42967e-05)
+transform = Transform3D(-0.985223, -0.17125, -0.00312117, 0.17124, -0.985224, 0.00331978, -0.00364356, 0.00273626, 0.99999, -0.00102169, 0.000937998, -2.42967e-05)
 
 [node name="Körper" parent="Model/Armature/Skeleton3D" index="5"]
 transform = Transform3D(0.984811, 0.172972, -0.0150833, -0.172813, 0.98489, 0.0113288, 0.016815, -0.00855018, 0.999822, -0.00204655, -0.0116528, 0.000101157)

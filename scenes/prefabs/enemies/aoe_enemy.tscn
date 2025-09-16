@@ -11,7 +11,7 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s1ben"]
 radius = 0.8
 
-[node name="AoeEnemy" type="CharacterBody3D"]
+[node name="AoeEnemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_kuhmj")
 
 [node name="DetectionComponent" parent="." instance=ExtResource("1_4p2hn")]
