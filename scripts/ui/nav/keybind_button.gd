@@ -89,7 +89,7 @@ func rebind_action_key(event) -> void:
 	var new_key: String = OS.get_keycode_string(event.physical_keycode) if event is InputEventKey else "MOUSE%d" % event.button_index
 	#print("curretn: ", event)
 	for i: KeybindButton in get_tree().get_nodes_in_group("keybind_button"):
-		if i.action_name != null && (!self.action_name.contains("lock_direction") || !self.action_name.contains("block")) && i.action_name != self.action_name:
+		if i.action_name != null && !self.action_name.contains("block") && i.action_name != self.action_name:
 			print("ction ame: ", action_name)
 			print(i.press_key_label)
 			if i.press_key_label == null: 

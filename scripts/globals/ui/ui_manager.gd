@@ -28,7 +28,7 @@ const button_mappings: Dictionary[String, Dictionary] = {
 		"block": "LT",
 		"pause": "Menu",
 		"attack": "RT",
-		"weapon_swap": "Y",
+		"swap_weapon": "Y",
 		"sneak": "L3",
 		"dodge": "LB"
 	},
@@ -37,7 +37,7 @@ const button_mappings: Dictionary[String, Dictionary] = {
 		"block": "L2", 
 		"pause": "Start",
 		"attack": "R2",
-		"weapon_swap": "△",
+		"swap_weapon": "△",
 		"sneak": "L3",
 		"dodge": "L1"
 	},
@@ -46,7 +46,7 @@ const button_mappings: Dictionary[String, Dictionary] = {
 		"block": "ZL",
 		"menu": "+",
 		"attack": "ZR",
-		"weapon_swap": "X",
+		"swap_weapon": "X",
 		"sneak": "L3",
 		"dodge": "L"
 	},
@@ -55,7 +55,7 @@ const button_mappings: Dictionary[String, Dictionary] = {
 		"block": "LT",
 		"pause": "Menu",
 		"attack": "RT",
-		"weapon_swap": "Y",
+		"swap_weapon": "Y",
 		"sneak": "L3",
 		"dodge": "LB"
 	}

@@ -243,5 +243,5 @@ func test_knockdown_animation():
 		if Input.is_action_just_pressed("attack"):
 			knockdown_signal.emit()
 	elif GameManager.get_first_weapon() and !GameManager.get_is_knockdown():
-		if Input.is_action_just_pressed("weapon_swap"):
+		if Input.is_action_just_pressed("swap_weapon"):
 			knockdown_signal.emit()

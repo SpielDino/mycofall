@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bw0qfmu2hvgr6"]
+[gd_resource type="Theme" load_steps=16 format=3 uid="uid://bw0qfmu2hvgr6"]
 
 [ext_resource type="Texture2D" uid="uid://ne5i8ak3n5qe" path="res://assets/textures/ui_textures/menus/buttons/options_button/options_button.png" id="1_ommv0"]
 [ext_resource type="Texture2D" uid="uid://d2s20w1rc2w6r" path="res://assets/textures/ui_textures/menus/slider/slider_grabber.png" id="1_p2sdh"]
@@ -31,8 +31,6 @@ texture = ExtResource("3_hlffd")
 texture_margin_bottom = 80.0
 region_rect = Rect2(0, 0, 450, 80)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_mxsum"]
-
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mxsum"]
 content_margin_left = 22.0
 texture = ExtResource("1_ommv0")
@@ -62,7 +60,7 @@ HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_pvhw0")
 HSlider/styles/slider = SubResource("StyleBoxTexture_p6k85")
 OptionButton/constants/h_separation = 4
 OptionButton/constants/modulate_arrow = 1
-OptionButton/icons/icon = SubResource("ViewportTexture_mxsum")
+OptionButton/icons/icon = null
 OptionButton/styles/hover = SubResource("StyleBoxTexture_mxsum")
 OptionButton/styles/normal = SubResource("StyleBoxTexture_f8iaf")
 OptionButton/styles/pressed = SubResource("StyleBoxTexture_qa0qs")

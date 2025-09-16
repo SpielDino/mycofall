@@ -11,7 +11,7 @@ const SNEAK: String = "sneak"
 
 const ATTACK: String = "attack"
 const BLOCK: String = "block"
-const LOCK_DIRECTION: String = "lock_direction"
+const HEAVY_ATTACK: String = "heavy_attack"
 const SWAP_WEAPON: String = "swap_weapon"
 
 const INTERACT: String = "interact"
@@ -28,7 +28,7 @@ const PAUSE: String = "pause"
 
 @export var DEFAULT_ATTACK_KEY: InputEvent = InputEventMouseButton.new();
 @export var DEFAULT_BLOCK_KEY: InputEvent = InputEventMouseButton.new();
-@export var DEFAULT_LOCK_DIRECTION_KEY: InputEvent = InputEventMouseButton.new();
+@export var DEFAULT_HEAVY_ATTACK_KEY: InputEvent = InputEventMouseButton.new();
 @export var DEFAULT_SWAP_WEAPON_KEY: InputEvent = InputEventKey.new();
 
 @export var DEFAULT_INTERACT_KEY: InputEvent = InputEventKey.new();
@@ -44,7 +44,7 @@ var sneak_key = InputEventKey.new();
 
 var attack_key = InputEventMouseButton.new()
 var block_key = InputEventMouseButton.new();
-var lock_direction_key = InputEventMouseButton.new();
+var heavy_attack_key = InputEventMouseButton.new();
 var swap_weapon_key = InputEventKey.new();
 
 var interact_key = InputEventKey.new();

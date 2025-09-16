@@ -197,7 +197,7 @@
 #
 ## ----- Interacting -----
 #func swapping_weapons():
-	#if Input.is_action_just_pressed("weapon_swap") and !GameManager.get_is_attacking():
+	#if Input.is_action_just_pressed("swap_weapon") and !GameManager.get_is_attacking():
 		#if GameManager.get_weapon_in_hand() == true and GameManager.get_weapon_on_back() == true:
 			#if GameManager.get_first_weapon() == sword_name and GameManager.get_second_weapon() == shield_name:
 				#pass

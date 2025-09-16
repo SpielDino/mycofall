@@ -43,7 +43,7 @@ func create_keybinds_dictionary() -> Dictionary:
 		keybind_resource.SNEAK: keybind_resource.sneak_key,
 		keybind_resource.ATTACK: keybind_resource.attack_key,
 		keybind_resource.BLOCK: keybind_resource.block_key,
-		keybind_resource.LOCK_DIRECTION: keybind_resource.lock_direction_key,
+		keybind_resource.HEAVY_ATTACK: keybind_resource.heavy_attack_key,
 		keybind_resource.SWAP_WEAPON: keybind_resource.swap_weapon_key,
 		keybind_resource.INTERACT: keybind_resource.interact_key,
 		keybind_resource.PAUSE: keybind_resource.pause_key,
@@ -104,8 +104,8 @@ func get_keybind(action: String):
 				return keybind_resource.DEFAULT_ATTACK_KEY;
 			keybind_resource.BLOCK:
 				return keybind_resource.DEFAULT_BLOCK_KEY;
-			keybind_resource.LOCK_DIRECTION:
-				return keybind_resource.DEFAULT_LOCK_DIRECTION_KEY;
+			keybind_resource.HEAVY_ATTACK:
+				return keybind_resource.DEFAULT_HEAVY_ATTACK_KEY;
 			keybind_resource.SWAP_WEAPON:
 				return keybind_resource.DEFAULT_SWAP_WEAPON_KEY	;
 			keybind_resource.INTERACT:
@@ -131,8 +131,8 @@ func get_keybind(action: String):
 				return keybind_resource.attack_key;
 			keybind_resource.BLOCK:
 				return keybind_resource.block_key;
-			keybind_resource.LOCK_DIRECTION:
-				return keybind_resource.lock_direction_key;
+			keybind_resource.HEAVY_ATTACK:
+				return keybind_resource.heavy_attack_key;
 			keybind_resource.SWAP_WEAPON:
 				return keybind_resource.swap_weapon_key	;
 			keybind_resource.INTERACT:
@@ -179,8 +179,8 @@ func set_keybind(action: String, event) -> void:
 			keybind_resource.attack_key = event;
 		keybind_resource.BLOCK:
 			keybind_resource.block_key = event;
-		keybind_resource.LOCK_DIRECTION:
-			keybind_resource.lock_direction_key = event;
+		keybind_resource.HEAVY_ATTACK:
+			keybind_resource.heavy_attack_key = event;
 		keybind_resource.SWAP_WEAPON:
 			keybind_resource.swap_weapon_key = event;
 		keybind_resource.INTERACT:

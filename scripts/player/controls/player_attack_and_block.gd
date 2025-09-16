@@ -617,7 +617,7 @@ func shield_heavy_attack(delta):
 		):
 		shield_heavy_attack_animation()
 	elif (
-		Input.is_action_pressed("weapon_swap")
+		Input.is_action_pressed("swap_weapon")
 		and GameManager.get_first_weapon_name() == sword_name
 		and GameManager.get_second_weapon_name() == shield_name
 		and !GameManager.get_is_dodging() 

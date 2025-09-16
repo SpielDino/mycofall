@@ -74,7 +74,7 @@ func _on_interact_ray_cast_interacted_with_socket(hit_object: Variant) -> void:
 
 func swapping_weapons():
 	if (
-		Input.is_action_just_pressed("weapon_swap") 
+		Input.is_action_just_pressed("swap_weapon") 
 		and GameManager.get_is_attacking() == false 
 		and GameManager.get_is_dodging() == false 
 		and GameManager.get_is_blocking() == false

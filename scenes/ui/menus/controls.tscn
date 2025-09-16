@@ -197,7 +197,7 @@ action_name = "block"
 
 [node name="KeybindButton3" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow2" instance=ExtResource("7_60vt1")]
 layout_mode = 2
-action_name = "lock_direction"
+action_name = "heavy_attack"
 
 [node name="KeybindButton4" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows/keysRow2" instance=ExtResource("7_60vt1")]
 layout_mode = 2

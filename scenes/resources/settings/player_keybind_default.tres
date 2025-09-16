@@ -12,13 +12,15 @@ button_index = 2
 device = -1
 physical_keycode = 4194325
 
+[sub_resource type="InputEventKey" id="InputEventKey_lxd7a"]
+device = -1
+physical_keycode = 70
+unicode = 102
+
 [sub_resource type="InputEventKey" id="InputEventKey_pouwa"]
 device = -1
 physical_keycode = 69
 unicode = 101
-
-[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_lxd7a"]
-button_index = 2
 
 [sub_resource type="InputEventKey" id="InputEventKey_ur8r1"]
 device = -1
@@ -63,7 +65,7 @@ DEFAULT_DODGE_KEY = SubResource("InputEventKey_aiy15")
 DEFAULT_SNEAK_KEY = SubResource("InputEventKey_gduok")
 DEFAULT_ATTACK_KEY = SubResource("InputEventMouseButton_ur8r1")
 DEFAULT_BLOCK_KEY = SubResource("InputEventMouseButton_gduok")
-DEFAULT_LOCK_DIRECTION_KEY = SubResource("InputEventMouseButton_lxd7a")
+DEFAULT_HEAVY_ATTACK_KEY = SubResource("InputEventKey_lxd7a")
 DEFAULT_SWAP_WEAPON_KEY = SubResource("InputEventKey_la88w")
 DEFAULT_INTERACT_KEY = SubResource("InputEventKey_pouwa")
 DEFAULT_PAUSE_KEY = SubResource("InputEventKey_wwkmw")
