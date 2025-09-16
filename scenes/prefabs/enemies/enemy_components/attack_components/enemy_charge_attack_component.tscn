@@ -1,3 +1,30 @@
-[gd_scene format=3 uid="uid://ceh3efrojhnkb"]
+[gd_scene load_steps=4 format=3 uid="uid://ceh3efrojhnkb"]
+
+[ext_resource type="Script" uid="uid://dqr2722ml1ww7" path="res://scripts/enemies/attack_scripts/enemy_charge_attack.gd" id="1_pp20k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ge7hg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pp20k"]
+size = Vector3(1.70398, 0.53125, 0.742645)
 
 [node name="EnemyChargeAttackComponent" type="Node3D"]
+script = ExtResource("1_pp20k")
+
+[node name="AttackArea" type="Area3D" parent="."]
+transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_ge7hg")
+
+[node name="DamageArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54484, 0.493994, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43683, 0.165039, 0)
+shape = SubResource("BoxShape3D_pp20k")
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_entered"]
+[connection signal="area_exited" from="DamageArea" to="." method="_on_damage_area_exited"]
+[connection signal="body_entered" from="DamageArea" to="." method="_on_damage_area_body_entered"]

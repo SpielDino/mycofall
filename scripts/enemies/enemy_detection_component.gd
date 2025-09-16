@@ -1,13 +1,9 @@
 extends Node3D
 
-signal track_player
-signal stop_track_player
-signal search_player
-signal stop_seach_player
-
 @export_group("DetectionBehaviour")
 @export var hearing_range: float = 40
 @export var vision_range: float = 40
+@export var isTracking: bool = true
 
 @export_group("Ally communication")
 @export var last_known_location_duration: float = 5
@@ -15,7 +11,6 @@ signal stop_seach_player
 var player: Node3D
 var player_is_in_hearing_area: bool = false
 var player_is_in_vision_area: bool = false
-var isTracking: bool = false
 var knowns_players_current_location: bool = false
 var allies: Array = []
 var detected_player: bool = false
@@ -38,42 +33,46 @@ func _ready():
 	vision_node.scale = Vector3(vision_range, vision_range, vision_range)
 
 func _physics_process(delta):
-	if detect() and !detected_player:
-		track_player.emit()
-		detected_player = true
-	elif !detect() and detected_player:
-		stop_track_player.emit()
-		detected_player = false
+	if detect():
+		if enemy.state != enemy.States.ATTACK_TYPE_1 and enemy.state != enemy.States.ATTACK_TYPE_2:
+			enemy.state = enemy.States.MOVING 
+	elif !detect():
+		if enemy.state == enemy.States.MOVING:
+			enemy.state = enemy.States.NONE
 
 func search(delta):
 	if player_location_known_from_ally:
 		if tracking_duration == last_known_location_duration:
-			search_player.emit()
+			enemy.state = enemy.States.SEARCHING 
 		tracking_duration -= delta
 		if tracking_duration <= 0:
-			stop_seach_player.emit()
+			enemy.state = enemy.States.NONE 
 
 func detect():
 	if !isTracking:
+		detected_player = false
 		return false
 	if player_is_in_hearing_area:
-		if !player.isSneaking:
+		if !player.is_sneaking or detected_player:
 			ping_allies()
+			detected_player = true
 			return true
 	if player_is_in_vision_area:
 		if enemy.detect_player_raycast():
 			ping_allies()
+			detected_player = true
 			return true
+	detected_player = false
 	return false
 
-func get_pinged(player_location):
+func get_pinged():
 	player_location_known_from_ally = true
-	last_known_location = player_location
+	last_known_location = player.get_child(0).global_position
 	tracking_duration = last_known_location_duration
 
 func ping_allies():
 	for ally in allies:
-		ally.get_pinged(player.get_child(0).global_position)
+		ally.get_pinged()
 
 func _on_hearing_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):

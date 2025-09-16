@@ -1,0 +1,136 @@
+[gd_scene load_steps=17 format=3 uid="uid://wm0lvdyaywb4"]
+
+[ext_resource type="Script" uid="uid://b5jkib8s2pd2a" path="res://scripts/enemies/enemy_spider_bullet.gd" id="1_7gygm"]
+[ext_resource type="Texture2D" uid="uid://cbu02u0njv72o" path="res://assets/textures/Kenney Particles Transparent Background/smoke_07.png" id="2_x71jx"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_k711p"]
+radius = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_m4f65"]
+radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ycfru"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_x71jx")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_8jqip"]
+_data = [Vector2(0.0229008, 0.88764), 0.0, 0.0, 0, 0, Vector2(0.572519, 1), 0.0, 0.0, 0, 0, Vector2(0.763359, 0.955056), 0.0, 0.0, 0, 0, Vector2(0.992366, 0.820225), -1.19155, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_ycfru"]
+curve = SubResource("Curve_8jqip")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7w6p8"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -92.9
+angle_max = 114.3
+angular_velocity_min = -23.23
+angular_velocity_max = 45.71
+gravity = Vector3(0, 0, 0)
+scale_min = 0.9
+scale_curve = SubResource("CurveTexture_ycfru")
+hue_variation_min = -0.03
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="QuadMesh" id="QuadMesh_jkh2i"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7gygm"]
+load_path = "res://.godot/imported/smoke_07.png-57ecfa23642221ccb8e51d666762d58a.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x71jx"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_7gygm")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_gmy7f"]
+_data = [Vector2(0.0229008, 0.88764), 0.0, 0.0, 0, 0, Vector2(0.572519, 1), 0.0, 0.0, 0, 0, Vector2(0.763359, 0.955056), 0.0, 0.0, 0, 0, Vector2(0.992366, 0.820225), -1.19155, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_pfbv8"]
+curve = SubResource("Curve_gmy7f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nljm7"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+angle_min = -92.9
+angle_max = 114.3
+inherit_velocity_ratio = 1.0
+direction = Vector3(1, 1, 1)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 5.0
+angular_velocity_min = -23.23
+angular_velocity_max = 45.71
+gravity = Vector3(0, -3, 0)
+linear_accel_min = -3.0
+linear_accel_max = -3.0
+scale_min = 0.9
+scale_curve = SubResource("CurveTexture_pfbv8")
+hue_variation_min = -0.03
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="QuadMesh" id="QuadMesh_hr2nf"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_7gygm"]
+
+[node name="Bullet" type="CharacterBody3D" groups=["Bullet"]]
+top_level = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_7gygm")
+
+[node name="BulletShape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_k711p")
+
+[node name="HitArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+shape = SubResource("SphereShape3D_m4f65")
+
+[node name="Projectile" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040983, 0.00271535, -0.000202894)
+material_override = SubResource("StandardMaterial3D_ycfru")
+amount = 20
+lifetime = 0.35
+preprocess = 0.35
+process_material = SubResource("ParticleProcessMaterial_7w6p8")
+draw_pass_1 = SubResource("QuadMesh_jkh2i")
+
+[node name="Explosion" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0040983, 0.00271535, -0.000202894)
+material_override = SubResource("StandardMaterial3D_x71jx")
+emitting = false
+amount = 1000
+lifetime = 3.0
+one_shot = true
+preprocess = 0.35
+explosiveness = 1.0
+collision_base_size = 0.1
+process_material = SubResource("ParticleProcessMaterial_nljm7")
+draw_pass_1 = SubResource("QuadMesh_hr2nf")
+
+[node name="ExplosionRange" type="Area3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ExplosionRange"]
+shape = SubResource("SphereShape3D_7gygm")
+
+[connection signal="area_entered" from="HitArea" to="." method="_on_hit_area_area_entered"]
+[connection signal="body_entered" from="HitArea" to="." method="_on_hit_area_body_entered"]
+[connection signal="area_entered" from="ExplosionRange" to="." method="_on_explosion_range_area_entered"]
+[connection signal="area_exited" from="ExplosionRange" to="." method="_on_explosion_range_area_exited"]

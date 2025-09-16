@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba41x6dsesffj"]
+
+[ext_resource type="PackedScene" uid="uid://bwj6pug7ynn0w" path="res://assets/models/objects/boss_arena.blend" id="1_0kxlj"]
+[ext_resource type="PackedScene" uid="uid://drlemy28oey25" path="res://scenes/prefabs/enemies/boss_enemy.tscn" id="2_gxlpy"]
+[ext_resource type="Script" uid="uid://00uphphb8ycg" path="res://scripts/enemies/boss/boss_behaviour.gd" id="3_32f48"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gxlpy"]
+size = Vector3(11.9692, 11.5973, 1.91995)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_32f48"]
+size = Vector3(11.9692, 11.5973, 4.49997)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mbyuj"]
+size = Vector3(11.9692, 11.5973, 3.94542)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n1w4t"]
+size = Vector3(11.9692, 11.5973, 1.50497)
+
+[node name="BossArena" type="Node3D"]
+
+[node name="boss_arena" parent="." instance=ExtResource("1_0kxlj")]
+
+[node name="@StaticBody3D@24311" parent="boss_arena" index="1" groups=["World"]]
+
+[node name="CollisionShape3D" parent="boss_arena/@StaticBody3D@24311" index="0" groups=["World"]]
+
+[node name="Additional Colliders" type="StaticBody3D" parent="." groups=["World"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Additional Colliders" groups=["World"]]
+transform = Transform3D(0.992908, 0, -0.118889, 0, 1, 0, 0.118889, 0, 0.992908, 26.6777, 10.8944, 2.0939)
+shape = SubResource("BoxShape3D_gxlpy")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Additional Colliders" groups=["World"]]
+transform = Transform3D(0.285136, 0, -0.958487, 0, 1, 0, 0.958487, 0, 0.285136, -8.13139, 10.4238, -27.8074)
+shape = SubResource("BoxShape3D_32f48")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Additional Colliders" groups=["World"]]
+transform = Transform3D(-0.743203, 0, -0.669066, 0, 1, 0, 0.669066, 0, -0.743203, -24.4647, 10.4238, 20.1639)
+shape = SubResource("BoxShape3D_mbyuj")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Additional Colliders" groups=["World"]]
+transform = Transform3D(0.0482047, 0, 0.998838, 0, 1, 0, -0.998838, 0, 0.0482047, -2.47289, 10.8944, 27.4978)
+shape = SubResource("BoxShape3D_n1w4t")
+
+[node name="BossEnemy" parent="." instance=ExtResource("2_gxlpy")]
+transform = Transform3D(0.043166, 0, 0.999068, 0, 1, 0, -0.999068, 0, 0.043166, 0.184684, 8.50656, -2.10013)
+script = ExtResource("3_32f48")
+
+[node name="Spawnpoints" type="Node3D" parent="."]
+
+[node name="Movepoints" type="Node3D" parent="."]
+
+[editable path="boss_arena"]
+[editable path="BossEnemy"]
+[editable path="BossEnemy/Mesh"]

@@ -4,13 +4,14 @@ extends Node3D
 @export var acceleration: int = 5
 
 @export_group("Movement Behaviour")
-@export_enum("stand still", "move towards player", "keep set distance from player") var movement_type: String = "stand still"
+@export_enum("stand still", "move towards player", "keep set distance from player", "move between points") var movement_type: String = "stand still"
 @export var keep_distance: float = 5
 @export var has_patrol_route: bool = false
 @export var always_tracking: bool = false
 
 @export_group("Animation Variables")
 @export var walking_name: String = "Walking"
+@export var walking_animation_speed: float = 1
 @export var idle_name: String = "Idle"
 @export var warmup_animation_name: String = "Idle"
 @export var warmup_animation_time: float = 0
@@ -22,12 +23,13 @@ var move_time: float = 0
 var move_delay: float = 0.2 
 var warmup_timer: float = warmup_animation_time
 
-var patrol_counter: int = 0
+var move_counter: int = 0
 var next_patrol_point: Vector3
 var reached_patrol_target: bool
 
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
-@onready var patrol_locations: Array[Node] = $PatroleMarkers.get_children()
+@onready var patrol_locations: Array[Node] = $PatroleMarker.get_children()
+@onready var move_locations: Array[Node] = $MoveMarker.get_children()
 
 func _ready():
 	enemy = get_parent()
@@ -37,16 +39,13 @@ func _physics_process(delta):
 	play_movement_animations()
 	decide_movement_type(delta)
 	apply_gravity(delta)
-	enemy.move_and_slide()
 
 func move_towards_location(delta, location):
 	var direction = Vector3()
 	nav.target_position = location.global_position
-	
 	direction = (nav.get_next_path_position() - global_position).normalized()
 	enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
-	rotate_to_target(location)
-	
+	enemy.rotate_to_target(location)
 
 func keep_set_distance_from_player(delta):
 	var distance = global_position.distance_to(player.get_child(0).global_position)
@@ -57,36 +56,38 @@ func keep_set_distance_from_player(delta):
 		enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
 	else:
 		enemy.velocity = Vector3(0, enemy.velocity.y, 0)
-	rotate_to_target(player.get_child(0))
+	enemy.rotate_to_target(player.get_child(0))
 
-func patrol_between_set_locations(delta):
-	if global_position.distance_to(patrol_locations[patrol_counter].global_position) <= 0.5:
-		if patrol_counter+1 < patrol_locations.size():
-			patrol_counter += 1;
-			print(patrol_locations.size())
+func move_between_set_locations(delta, move_points):
+	if global_position.distance_to(move_points[move_counter].global_position) <= 1:
+		if move_counter+1 < move_points.size():
+			move_counter += 1;
 		else:
-			patrol_counter = 0
+			move_counter = 0
 	var direction = Vector3()
-	nav.target_position = patrol_locations[patrol_counter].global_position
+	nav.target_position = move_points[move_counter].global_position
 	direction = (nav.get_next_path_position() - global_position).normalized()
-	rotate_to_target(patrol_locations[patrol_counter])
+	enemy.rotate_to_target(move_points[move_counter])
 	enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
 	
 func stand_still():
-	null
+	enemy.rotate_to_target(player.get_child(0))
 
 func play_movement_animations():
 	if enemy.state == enemy.States.IDLE:
+		enemy.animation_player.speed_scale = 1
 		enemy.animation_player.play(idle_name)
 	if enemy.state == enemy.States.PATROLLING or enemy.state == enemy.States.SEARCHING or enemy.state == enemy.States.MOVING or always_tracking:
 		if warmup_timer <= 0:
+			enemy.animation_player.speed_scale = walking_animation_speed
 			enemy.animation_player.play(walking_name)
 		else: 
+			enemy.animation_player.speed_scale = 1
 			enemy.animation_player.play(warmup_animation_name)
 
 func decide_movement_type(delta):
 	if (enemy.state == enemy.States.NONE or enemy.state == enemy.States.PATROLLING) and has_patrol_route:
-		patrol_between_set_locations(delta)
+		move_between_set_locations(delta, patrol_locations)
 		enemy.state = enemy.States.PATROLLING
 		warmup_timer = warmup_animation_time
 		searching(delta)
@@ -95,6 +96,7 @@ func decide_movement_type(delta):
 		warmup_timer = warmup_animation_time
 		searching(delta)
 	if enemy.state == enemy.States.MOVING or always_tracking:
+		enemy.rotate_to_target(player.get_child(0))
 		if warmup_timer <= 0:
 			match movement_type:
 				"stand still":
@@ -103,6 +105,9 @@ func decide_movement_type(delta):
 					move_towards_location(delta, player.get_child(0))
 				"keep set distance from player":
 					keep_set_distance_from_player(delta)
+				"move between points":
+					move_between_set_locations(delta, move_locations)
+			enemy.move_and_slide()
 		else:
 			warmup_timer -= delta
 
@@ -125,11 +130,6 @@ func searching(delta):
 
 func apply_gravity(delta):
 	enemy.velocity.y += -enemy.gravity * delta
-
-func rotate_to_target(target):
-	var angleVector = target.global_position - global_position
-	var angle = atan2(angleVector.x, angleVector.z)
-	enemy.rotation.y = angle - PI/2
 
 func activate_tracking():
 	always_tracking = true

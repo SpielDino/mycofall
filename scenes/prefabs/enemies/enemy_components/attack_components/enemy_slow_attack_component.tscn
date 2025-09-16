@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://ddkwdun0iapae"]
+[gd_scene load_steps=3 format=3 uid="uid://ddkwdun0iapae"]
+
+[ext_resource type="Script" uid="uid://dl8wuectofj8p" path="res://scripts/enemies/attack_scripts/enemy_slow_attack.gd" id="1_cnuhi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_dd5d7"]
 
 [node name="EnemySlowAttackComponent" type="Node3D"]
+script = ExtResource("1_cnuhi")
+
+[node name="AttackArea" type="Area3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_dd5d7")
+
+[node name="BulletSpawnPoint" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862566, 1.89502, 0)
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]

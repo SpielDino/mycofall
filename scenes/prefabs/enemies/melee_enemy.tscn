@@ -18,6 +18,8 @@ script = ExtResource("1_fv56k")
 [node name="DetectionComponent" parent="." instance=ExtResource("2_li4h1")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("3_cph10")]
+speed = 3
+acceleration = 2
 
 [node name="ParticleComponent" parent="." instance=ExtResource("4_rtgbl")]
 

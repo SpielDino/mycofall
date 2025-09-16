@@ -48,10 +48,10 @@ extends CharacterBody3D
 @onready var health_bar = get_tree().current_scene.find_child("bossHealthMargin")
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var bulletScene: PackedScene = preload("res://Prefabs/enemies/enemy_bullet.tscn")
-var explosionEnemy: PackedScene = preload("res://Prefabs/enemies/enemy_explosion.tscn")
-var teleportSmoke: PackedScene = preload("res://Prefabs/Enemies/Boss_Teleport_Smoke.tscn")
-var win: PackedScene = preload("res://Prefabs/Asset Scenes/UI/win.tscn")
+var bulletScene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
+var explosionEnemy: PackedScene = preload("res://scenes/prefabs/enemies/explosion_enemy.tscn")
+var teleportSmoke: PackedScene = preload("res://scenes/prefabs/enemies/Boss_Teleport_Smoke.tscn")
+#var win: PackedScene = preload("res://Prefabs/Asset Scenes/UI/win.tscn")
 
 @onready var death_spores = GameManager.get_child_by_name(self, "DeathSpores")
 
@@ -304,8 +304,8 @@ func die(delta):
 	if deathTimer < 10:
 		deathTimer -= delta
 	if deathTimer >= 5 and deathTimer <= 9:
-		var win_scene = win.instantiate()
-		get_tree().current_scene.find_child("CanvasLayer").add_child(win_scene)
+		#var win_scene = win.instantiate()
+		#get_tree().current_scene.find_child("CanvasLayer").add_child(win_scene)
 		animationPlayer.stop()
 		animationPlayer.play("Die")
 		deathTimer = 3.9167

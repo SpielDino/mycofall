@@ -17,29 +17,15 @@ var player
 var state = States.NONE
 var deathTimer: float = 10
 
+@onready var model = $Model
 @onready var animation_player = $Model/AnimationPlayer
 
 func _ready():
-	set_connections()
 	player = GlobalPlayer.get_player()
 
 func _physics_process(delta):
 	if health <= 0:
 		die()
-
-func activate_movement():
-	if state != States.ATTACK_TYPE_1 or state != States.ATTACK_TYPE_2:
-		state = States.MOVING 
-
-func deactivate_movement():
-	if state == States.MOVING:
-		state = States.NONE
-
-func set_connections():
-	var children = get_children()
-	if 1: #TODO: Check if enemy has specific tpye of child #Detection Child
-		get_child(0).track_player.connect(activate_movement)
-		get_child(0).stop_track_player.connect(deactivate_movement)
 
 func die():
 	queue_free()
@@ -64,14 +50,45 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 	$AudioStreamPlayer3D.play()
 	if health <= 0 and deathTimer == 10:
 		deathTimer = 8
-		if type == "bow":
+		if type == "Bow":
 			PlayerActionTracker.bowKills += 1
-		if type == "staff":
+		if type == "Staff":
 			PlayerActionTracker.staffKills += 1
-		if type == "sword":
+		if type == "Sword":
 			PlayerActionTracker.meleeKills += 1
 	else:
 		if has_knockback:
 			var direction = -(global_position - player.global_position).normalized
 			velocity += direction * knockback_strenght
-		#TODO send signal to detection component
+		get_child(0).get_pinged()
+
+func slow_rotate_to_player():
+	var angle_vector = player.get_child(0).global_position - global_position 
+	var angle = limit_angle_in_degrees(atan2(angle_vector.x, angle_vector.z)  - PI/2)
+	var yRotation = limit_angle_in_degrees(rotation.y)
+	var angle_in_degrees = angle * 180 / PI
+	var rotation_in_degrees = yRotation * 180 / PI
+	
+	if angle_in_degrees + 180 < rotation_in_degrees:
+		rotation.y = lerp(yRotation, angle + 2*PI, 0.2)
+	elif rotation_in_degrees + 180 < angle_in_degrees:
+		rotation.y = lerp(yRotation + 2*PI, angle, 0.2)
+	elif abs(angle_in_degrees - rotation_in_degrees) > 2:
+		rotation.y = lerp(yRotation, angle, 0.2)
+	if abs(angle_in_degrees - rotation_in_degrees) < 2:
+		return true
+	return false
+
+func limit_angle_in_degrees(value: float):
+	if value > PI:
+		value -= 2*PI
+	if value < -PI:
+		value += 2*PI
+	if value > PI or value < -PI:
+		limit_angle_in_degrees(value)
+	return value
+
+func rotate_to_target(target):
+	var angleVector = target.global_position - global_position
+	var angle = atan2(angleVector.x, angleVector.z)
+	rotation.y = angle - PI/2

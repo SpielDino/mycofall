@@ -24,6 +24,8 @@ func _physics_process(delta):
 		attack_cooldown -= delta
 	elif attack_cooldown <= 0:
 		is_attacking = false
+		enemy.state = enemy.States.NONE
+	attack(delta)
 
 func attack(delta):
 	if !is_attacking:
@@ -32,28 +34,27 @@ func attack(delta):
 		is_attacking = true
 		enemy.state = enemy.States.ATTACK_TYPE_1
 	if is_attacking and enemy.deathTimer == 10:
+		enemy.animation_player.speed_scale = 1
 		enemy.animation_player.play("Bump")
 		if attack_cooldown <= 5.42 and attack_cooldown > 5:
+			#particles.restart()
+			#particles.emitting = true
+			attack_cooldown -= 5
 			if is_in_outer_attack_area:
-				#particles.restart()
-				#particles.emitting = true
-				player.takeDamage(attackDamage, self, true, 0)
-				attack_cooldown -= 5
+				player.take_damage(attackDamage, self, true, 0)
 
 func _on_inner_attack_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		var is_in_inner_attack_area: bool = true
+		is_in_inner_attack_area = true
 
 func _on_inner_attack_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		var is_in_inner_attack_area: bool = false
+		is_in_inner_attack_area = false
 
 func _on_outer_attack_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		var is_in_outer_attack_area: bool = true
+		is_in_outer_attack_area = true
 
 func _on_outer_attack_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		if is_in_outer_attack_area: 
-			enemy.state = enemy.States.NONE
-			var is_in_outer_attack_area: bool = false
+		is_in_outer_attack_area = false

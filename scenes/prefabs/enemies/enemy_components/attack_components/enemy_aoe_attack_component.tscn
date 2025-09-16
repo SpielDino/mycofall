@@ -1,3 +1,81 @@
-[gd_scene format=3 uid="uid://bive0d87jh7fb"]
+[gd_scene load_steps=12 format=3 uid="uid://bive0d87jh7fb"]
+
+[ext_resource type="Texture2D" uid="uid://cbu02u0njv72o" path="res://assets/textures/Kenney Particles Transparent Background/smoke_07.png" id="1_lce6w"]
+[ext_resource type="Script" uid="uid://di4kk2yp52pd8" path="res://scripts/enemies/attack_scripts/enemy_aoe_attack.gd" id="2_l036e"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l036e"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sshn5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l036e"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_lce6w")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_sshn5"]
+_data = [Vector2(0.625954, 0.41573), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_0h6ff"]
+curve = SubResource("Curve_sshn5")
+
+[sub_resource type="Curve" id="Curve_xtmmw"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 100), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lo5pd"]
+curve = SubResource("Curve_xtmmw")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sx8jb"]
+lifetime_randomness = 0.09
+angle_min = -92.9
+angle_max = 45.7
+spread = 180.0
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_lo5pd")
+scale_min = 5.0
+scale_max = 6.0
+color = Color(0.500111, 0.0539229, 0.539499, 1)
+alpha_curve = SubResource("CurveTexture_0h6ff")
+hue_variation_min = -0.17
+hue_variation_max = 0.03
+
+[sub_resource type="QuadMesh" id="QuadMesh_c7v8q"]
 
 [node name="EnemyAoeAttackComponent" type="Node3D"]
+script = ExtResource("2_l036e")
+
+[node name="AttackArea" type="Area3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_l036e")
+
+[node name="DamageArea" type="Area3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("SphereShape3D_sshn5")
+
+[node name="AttackParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.682657, -0.0140603, -0.0190515)
+material_override = SubResource("StandardMaterial3D_l036e")
+emitting = false
+amount = 100
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_sx8jb")
+draw_pass_1 = SubResource("QuadMesh_c7v8q")
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_entered"]
+[connection signal="area_exited" from="DamageArea" to="." method="_on_damage_area_exited"]

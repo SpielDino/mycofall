@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bms0j18pli3eq"
-path="res://.godot/imported/Roller2.blend-2c28f2890ddf3268461ebc34f0212058.scn"
+uid="uid://xafvmon1dwa4"
+path="res://.godot/imported/Roller.blend-96f6af279dba5d73df12af8b9d473479.scn"
 
 [deps]
 
-source_file="res://assets/models/enemies/explosion_enemy/Roller2.blend"
-dest_files=["res://.godot/imported/Roller2.blend-2c28f2890ddf3268461ebc34f0212058.scn"]
+source_file="res://assets/models/enemies/explosion_enemy/Roller.blend"
+dest_files=["res://.godot/imported/Roller.blend-96f6af279dba5d73df12af8b9d473479.scn"]
 
 [params]
 

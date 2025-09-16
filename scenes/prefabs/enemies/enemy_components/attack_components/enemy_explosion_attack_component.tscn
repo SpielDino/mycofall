@@ -1,3 +1,89 @@
-[gd_scene format=3 uid="uid://b8sxotknjgsqi"]
+[gd_scene load_steps=14 format=3 uid="uid://b8sxotknjgsqi"]
+
+[ext_resource type="Script" uid="uid://bykrapek4311s" path="res://scripts/enemies/attack_scripts/enemy_explosion_attack.gd" id="1_t5wyi"]
+[ext_resource type="Texture2D" uid="uid://8coueektucvq" path="res://assets/textures/Kenney Particles Transparent Background/fire_01.png" id="1_v4l7h"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oqio2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_v4l7h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t5wyi"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_v4l7h")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_qd7ot"]
+_data = [Vector2(0.305344, 0.685393), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="CurveTexture" id="CurveTexture_ksv8p"]
+curve = SubResource("Curve_qd7ot")
+
+[sub_resource type="Gradient" id="Gradient_mae46"]
+offsets = PackedFloat32Array(0, 0.0190476, 0.390476, 0.87619)
+colors = PackedColorArray(0.0804598, 0.0804598, 0.0804598, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_n1xrl"]
+gradient = SubResource("Gradient_mae46")
+
+[sub_resource type="Curve" id="Curve_pfjmh"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, -1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_52x3p"]
+curve = SubResource("Curve_pfjmh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r1cjc"]
+angle_min = -162.6
+angle_max = 320.0
+inherit_velocity_ratio = 5.0
+spread = 180.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 0, 0)
+damping_min = 4.0
+damping_max = 5.0
+color = Color(0.601631, 0.0603955, 0.635184, 1)
+color_ramp = SubResource("GradientTexture1D_n1xrl")
+alpha_curve = SubResource("CurveTexture_ksv8p")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("CurveTexture_52x3p")
+
+[sub_resource type="QuadMesh" id="QuadMesh_lernl"]
 
 [node name="EnemyExplosionAttackComponent" type="Node3D"]
+script = ExtResource("1_t5wyi")
+
+[node name="AttackArea" type="Area3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackArea"]
+shape = SubResource("SphereShape3D_oqio2")
+
+[node name="DamageArea" type="Area3D" parent="."]
+transform = Transform3D(3.5, 0, 0, 0, 3.5, 0, 0, 0, 3.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+shape = SubResource("SphereShape3D_v4l7h")
+
+[node name="Explosion" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_t5wyi")
+emitting = false
+amount = 1000
+one_shot = true
+explosiveness = 1.0
+randomness = 0.05
+process_material = SubResource("ParticleProcessMaterial_r1cjc")
+draw_pass_1 = SubResource("QuadMesh_lernl")
+
+[connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
+[connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]
+[connection signal="area_entered" from="DamageArea" to="." method="_on_damage_area_entered"]
+[connection signal="area_exited" from="DamageArea" to="." method="_on_damage_area_exited"]

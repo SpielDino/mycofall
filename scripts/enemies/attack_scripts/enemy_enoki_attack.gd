@@ -1,7 +1,7 @@
 extends Node3D
 
-@export_subgroup("Attack Stats")
-@export var bullet_speed: int = 1
+@export_group("Attack Stats")
+@export var bullet_speed: int = 10
 @export var bullet_damage: int = 10
 @export var bullet_lifetime: float = 5
 @export var attack_speed: float = 1/1.6667
@@ -16,7 +16,6 @@ var player
 
 var is_attacking = false
 var attack_cooldown: float = 0
-var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
 var got_attacked_time: float = 0
 var throw_timer: float = 0
 var punch_timer: float = 0
@@ -25,6 +24,8 @@ var idle_timer: float = 0
 var in_melee_range: bool = false
 var in_melee_damage_area: bool = false
 var ranged_attack_delay: float = 0.54
+
+var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
 
 @onready var bullet_spawn_point = $BulletSpawnPoint
 
@@ -35,18 +36,16 @@ func _ready():
 func _physics_process(delta):
 	if idle_timer >= 0:
 		idle_timer -= delta
+	if enemy.state == enemy.States.MOVING:
+		enemy.state = enemy.States.ATTACK_TYPE_1
 	if enemy.state == enemy.States.ATTACK_TYPE_1:
 		if idle_timer <= 0:
-			if !in_melee_range:
+			if !in_melee_range and punch_timer <= 0:
 				rangedAttack(delta)
-				rotateToPlayer()
+				enemy.rotate_to_target(player.get_child(0))
 			else: 
 				meleeAttack(delta)
-
-func rotateToPlayer():
-	var angle_vector = player.get_child(0).global_position  - enemy.global_position 
-	var angle = atan2(angle_vector.x, angle_vector.z)
-	enemy.rotation.y = angle - PI/2
+				throw_timer = 0
 
 func rangedAttack(delta):
 	ranged_attack_delay -= delta
@@ -63,47 +62,21 @@ func rangedAttack(delta):
 		attack_cooldown -= delta
 	if throw_timer >= 0:
 		throw_timer -= delta
-		enemy.animationPlayer.play("Throw")
-
-func slowRotateToPlayer(delta):
-	var angle_vector = player.get_child(0).global_position - enemy.global_position 
-	var angle = atan2(angle_vector.x, angle_vector.z)  - PI/2
-	var angle_in_degrees = angle * 180 / PI
-	var rotation_in_degrees = enemy.rotation_degrees.y
-	var yRotation = enemy.rotation.y
-	if angle_in_degrees < -360:
-		angle_in_degrees += 360
-		angle += 2*PI
-	if angle_in_degrees < 0:
-		angle_in_degrees += 360
-		angle += 2*PI
-	if rotation_in_degrees < -360:
-		rotation_in_degrees += 360
-		yRotation += 2*PI
-	if rotation_in_degrees < 0:
-		rotation_in_degrees += 360
-		yRotation += 2*PI
-	if angle_in_degrees + 180 < rotation_in_degrees:
-		enemy.rotation.y = lerp(yRotation, angle + 2*PI, 0.2)
-	elif rotation_in_degrees + 180 < angle_in_degrees:
-		enemy.rotation.y = lerp(yRotation + 2*PI, angle, 0.2)
-	elif abs(angle_in_degrees - rotation_in_degrees) > 5:
-		enemy.rotation.y = lerp(yRotation, angle, 0.2)
-	if abs(angle_in_degrees - rotation_in_degrees) < 5:
-		return true
-	return false
+		enemy.animation_player.speed_scale = 1
+		enemy.animation_player.play("Throw")
 
 func meleeAttack(delta):
 	if punch_timer <= 0:
-		if slowRotateToPlayer(delta):
+		if enemy.slow_rotate_to_player():
 			punch_timer = 12.0833
-			enemy.animationPlayer.pause()
+			enemy.animation_player.pause()
 	if punch_timer > 0: 
 		punch_timer -= delta
-		enemy.animationPlayer.play("Punch")
+		enemy.animation_player.speed_scale = 1
+		enemy.animation_player.play("Punch")
 	if punch_timer <= 11.0833 and punch_timer > 10:
 		if in_melee_damage_area:
-			player.takeDamage(melee_damage, enemy, true, 0)
+			player.take_damage(melee_damage, enemy, true, 0)
 		punch_timer -= 10
 
 func _on_melee_attack_range_entered(area: Area3D) -> void:

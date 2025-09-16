@@ -30,6 +30,11 @@ SaveManager="*res://scripts/globals/data/save_manager.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 
+[global_group]
+
+Enemy=""
+World=""
+
 [input]
 
 move_forward={

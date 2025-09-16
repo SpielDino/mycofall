@@ -5,7 +5,10 @@
 [node name="MovementComponent" type="Node3D"]
 script = ExtResource("1_ssoy4")
 
-[node name="PatroleMarkers" type="Node3D" parent="."]
+[node name="PatroleMarker" type="Node3D" parent="."]
+top_level = true
+
+[node name="MoveMarker" type="Node3D" parent="."]
 top_level = true
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

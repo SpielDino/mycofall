@@ -1,26 +1,34 @@
-[gd_scene load_steps=10 format=3 uid="uid://dc0qbknul7xa2"]
+[gd_scene load_steps=11 format=3 uid="uid://dc0qbknul7xa2"]
 
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_r1xi1"]
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="2_nd33r"]
 [ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="3_1ellk"]
 [ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_oy421"]
 [ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_nbj0t"]
-[ext_resource type="PackedScene" uid="uid://c2njctlmqd1bv" path="res://assets/models/enemies/charge_enemy/ram_enemy.blend" id="6_1ellk"]
+[ext_resource type="PackedScene" uid="uid://bn83tctnd56yc" path="res://assets/models/enemies/charge_enemy/ram_enemy.blend" id="6_1ellk"]
 [ext_resource type="PackedScene" uid="uid://ceh3efrojhnkb" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_charge_attack_component.tscn" id="6_oy421"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ellk"]
-radius = 0.195961
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oy421"]
 radius = 0.289812
 height = 1.11348
 
-[node name="ChargeEnemy" type="CharacterBody3D"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1ellk"]
+radius = 0.195961
+height = 1.60266
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oy421"]
+radius = 0.210181
+
+[node name="ChargeEnemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_r1xi1")
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_nd33r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71916, 0)
 
 [node name="MovementComponent" parent="." instance=ExtResource("3_1ellk")]
+movement_type = "move towards player"
+keep_distance = 6.0
+walking_name = "Walk"
 
 [node name="ParticleComponent" parent="." instance=ExtResource("4_oy421")]
 
@@ -28,28 +36,36 @@ script = ExtResource("1_r1xi1")
 
 [node name="EnemyChargeAttackComponent" parent="." instance=ExtResource("6_oy421")]
 
-[node name="Model" parent="." instance=ExtResource("6_1ellk")]
+[node name="Model" parent="." groups=["Enemy"] instance=ExtResource("6_1ellk")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/Armature_001" index="0"]
-bones/0/rotation = Quaternion(0.00907559, 0.999959, -6.85188e-10, -7.54948e-08)
-bones/1/rotation = Quaternion(-2.19869e-09, -1.50959e-07, -0.010695, 0.999943)
-bones/2/rotation = Quaternion(-3.39102e-10, -1.19204e-07, -0.0031078, 0.999995)
-bones/3/rotation = Quaternion(2.72294e-09, -1.19232e-07, 0.00471383, 0.999989)
-bones/4/rotation = Quaternion(0.997026, 1.89403e-22, -1.01393e-21, -0.0770647)
-bones/5/rotation = Quaternion(-0.0726639, 1.01557e-21, 2.17291e-22, 0.997356)
-bones/6/position = Vector3(0.0794334, -0.232655, -0.0190512)
-bones/7/rotation = Quaternion(0.997788, 1.61645e-10, 2.42639e-09, 0.0664722)
-bones/8/rotation = Quaternion(-0.0138481, -2.43154e-09, -3.36755e-11, 0.999904)
-bones/9/position = Vector3(-0.0794334, -0.244843, 0.0309056)
-bones/9/rotation = Quaternion(0.996666, 0, 0, 0.0815906)
+bones/0/rotation = Quaternion(4.41404e-10, 0.999983, 0.00584657, -7.54966e-08)
+bones/1/rotation = Quaternion(-0.0216197, -1.50662e-07, 5.78269e-09, 0.999766)
+bones/2/rotation = Quaternion(-0.00513429, -1.18978e-07, -2.97314e-09, 0.999987)
+bones/3/rotation = Quaternion(0.0137187, -1.19158e-07, -2.10429e-08, 0.999906)
+bones/7/rotation = Quaternion(1, 1.58294e-17, 2.43177e-09, -4.06131e-09)
+bones/8/rotation = Quaternion(-3.80379e-09, -2.43177e-09, 1.75949e-17, 1)
+bones/10/position = Vector3(7.10543e-15, 2.54406, 0.115312)
+bones/10/rotation = Quaternion(-5.91407e-09, 0.999823, 0.0188396, 3.13861e-07)
 
-[node name="HitboxBody" type="CollisionShape3D" parent="."]
+[node name="Hitbox" type="Node3D" parent="." groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00116181, 0.455929, 0)
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Hitbox" groups=["Enemy"]]
+transform = Transform3D(1, -3.72529e-09, 0, 3.72529e-09, 1, 0, 0, 0, 1, -0.0144061, -0.258319, 0)
+
+[node name="HitboxHead" type="CollisionShape3D" parent="Hitbox/RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0147105, 1.68764, 0)
+shape = SubResource("CapsuleShape3D_oy421")
+
+[node name="HitboxBody" type="CollisionShape3D" parent="Hitbox/RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989548, 0)
 shape = SubResource("CapsuleShape3D_1ellk")
 
-[node name="HitboxHead" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.17639, 0)
-shape = SubResource("CapsuleShape3D_oy421")
+[node name="HitboxFeet" type="CollisionShape3D" parent="." groups=["Enemy"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189564, 0)
+shape = SubResource("SphereShape3D_oy421")
 
+[editable path="EnemyChargeAttackComponent"]
 [editable path="Model"]

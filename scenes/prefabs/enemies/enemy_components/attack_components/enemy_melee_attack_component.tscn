@@ -4,7 +4,8 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3yrm7"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ftv80"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_dwuop"]
+size = Vector3(0.415268, 0.345703, 0.492691)
 
 [node name="EnemyMeleeAttackComponent" type="Node3D"]
 script = ExtResource("1_dwuop")
@@ -19,7 +20,8 @@ shape = SubResource("SphereShape3D_3yrm7")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OuterAttackArea"]
-shape = SubResource("SphereShape3D_ftv80")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.204979, 0.0078125, -0.00504303)
+shape = SubResource("BoxShape3D_dwuop")
 
 [connection signal="area_entered" from="InnerAttackArea" to="." method="_on_inner_attack_area_entered"]
 [connection signal="area_exited" from="InnerAttackArea" to="." method="_on_inner_attack_area_exited"]
