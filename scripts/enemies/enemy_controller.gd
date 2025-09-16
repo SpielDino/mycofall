@@ -47,7 +47,7 @@ func detect_player_raycast():
 
 func take_damage(damage: int, type: String, has_knockback: bool = false, knockback_strenght: float = 0):
 	health -= damage
-	$AudioStreamPlayer3D.play()
+	#$AudioStreamPlayer3D.play()
 	if health <= 0 and deathTimer == 10:
 		deathTimer = 8
 		if type == "Bow":

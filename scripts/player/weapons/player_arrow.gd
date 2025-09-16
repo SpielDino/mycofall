@@ -24,11 +24,12 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func attack(body):
 	extra_dmg = GameManager.get_bow_attack_timer()
-	if body.is_in_group("enemy"):
+	if body.is_in_group("Enemy"):
 		total_dmg = dmg * extra_dmg
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
-		DamageNumbers.display_number(total_dmg, dmg_position.global_position)
-		body.takeDamage(total_dmg)
+		if dmg_position:
+			DamageNumbers.display_number(total_dmg, dmg_position.global_position)
+		body.take_damage(total_dmg, "Bow")
 		# Normal or somewhat charged Bow Attack
 		if extra_dmg < 4:
 			queue_free()
@@ -40,7 +41,8 @@ func attack(body):
 		total_dmg = dmg * extra_dmg
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		body.play_animations(false)
-		DamageNumbers.display_number(total_dmg, dmg_position.global_position)
+		if dmg_position:
+			DamageNumbers.display_number(total_dmg, dmg_position.global_position)
 		# Normal or somewhat charged Bow Attack
 		if extra_dmg < 4:
 			queue_free()
