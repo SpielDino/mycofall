@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c83pj7nebfypc"]
+
+[ext_resource type="Script" uid="uid://koludp3bc147" path="res://scripts/environment/socket.gd" id="1_ps6im"]
+[ext_resource type="PackedScene" uid="uid://kr8gwhi5w6q2" path="res://placeholder/nikolai/Starting Area/Stabhalter.blend" id="2_bn3w1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3donx"]
+size = Vector3(1, 1.85593, 1)
+
+[node name="Socket" type="StaticBody3D"]
+script = ExtResource("1_ps6im")
+Weapon = "STAFF"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21654, 0)
+shape = SubResource("BoxShape3D_3donx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="WeaponSlot" type="Node3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0.0980617, 2.24467, -0.324161)
+
+[node name="Stabhalter" parent="." instance=ExtResource("2_bn3w1")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0.181157, 2.16376, 0)
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]
