@@ -1,6 +1,7 @@
 extends RayCast3D
 
 signal interacted_with_socket(hit_object)
+signal interacted_with_upgrade_item
 
 # Interacting
 @onready var prompt = $Prompt

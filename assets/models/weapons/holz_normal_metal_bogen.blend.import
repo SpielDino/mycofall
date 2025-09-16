@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://df4ar2weowmqo"
-path="res://.godot/imported/metal_bogen.blend-13380d0f61a2a5803e5befda3b25190d.scn"
+uid="uid://tbyfidbbhara"
+path="res://.godot/imported/holz_normal_metal_bogen.blend-d4d46644bba2a83d17cccce0fe9d99b1.scn"
 
 [deps]
 
-source_file="res://assets/models/weapons/metal_bogen.blend"
-dest_files=["res://.godot/imported/metal_bogen.blend-13380d0f61a2a5803e5befda3b25190d.scn"]
+source_file="res://assets/models/weapons/holz_normal_metal_bogen.blend"
+dest_files=["res://.godot/imported/holz_normal_metal_bogen.blend-d4d46644bba2a83d17cccce0fe9d99b1.scn"]
 
 [params]
 
@@ -32,7 +32,33 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"meshes": {
+"holz_normal_metal_bogen_NurbsPath": {
+"save_to_file/enabled": true
+}
+},
+"nodes": {
+"PATH:AnimationPlayer": {
+"import/skip_import": true
+},
+"PATH:Armature": {
+"import/skip_import": true
+},
+"PATH:Armature/Empty_001": {
+"import/skip_import": true
+},
+"PATH:Armature/NurbsPath": {
+"import/skip_import": true
+},
+"PATH:Armature/Skeleton3D": {
+"import/skip_import": true
+},
+"PATH:Empty": {
+"import/skip_import": true
+}
+}
+}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

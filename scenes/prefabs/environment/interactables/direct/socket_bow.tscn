@@ -1,15 +1,15 @@
 [gd_scene load_steps=2 format=3 uid="uid://uwo1kmloxop4"]
 
-[ext_resource type="PackedScene" uid="uid://f25f1yursyjn" path="res://assets/models/weapons/alt_bogen.blend" id="1_u3ueo"]
+[ext_resource type="PackedScene" uid="uid://tbyfidbbhara" path="res://assets/models/weapons/holz_normal_metal_bogen.blend" id="1_u3ueo"]
 
 [node name="Bow" type="Node3D"]
 
-[node name="alt_bogen" parent="." instance=ExtResource("1_u3ueo")]
+[node name="holz_normal_metal_bogen" parent="." instance=ExtResource("1_u3ueo")]
 
-[node name="Empty" parent="alt_bogen" index="0"]
+[node name="Bow" parent="holz_normal_metal_bogen/BowArmature/Skeleton3D" index="0"]
 visible = false
 
-[node name="Arrow" parent="alt_bogen" index="1"]
+[node name="MetallBogen" parent="holz_normal_metal_bogen/BowArmature/Skeleton3D" index="2"]
 visible = false
 
-[editable path="alt_bogen"]
+[editable path="holz_normal_metal_bogen"]

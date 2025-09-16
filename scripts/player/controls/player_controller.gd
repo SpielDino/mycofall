@@ -33,6 +33,7 @@ var mouse_timer: float = 0
 var player: Node3D
 var lock = false
 var sneak_toggle = false
+var is_heavy_attacking = false
 
 var sword_name = "Sword"
 var shield_name = "Shield"
@@ -145,17 +146,32 @@ func during_heavy_attack_movement_logic(delta):
 			during_shield_heavy_attack_logic(delta)
 
 func knockdown_movement_logic():
-	var vy = velocity.y
-	velocity = Vector3(0, vy, 0)
-	move_and_slide()
+	stop_movement()
 	# Reset sneak
 	if sneak_toggle:
 		sneak_toggle = false
 		GameManager.set_is_sneaking(sneak_toggle)
 		player.set_sneaking(false)
+	# Reset dodge
 	if is_dodging:
 		is_dodging = false
 		GameManager.set_is_dodging(is_dodging)
+	# Reset Heavy Attack Shield Movement
+	if is_heavy_attacking and GameManager.get_first_weapon_name() == shield_name:
+		heavy_shield_attack_timer = 0
+		heavy_shield_attack_timer_2 = 0
+		heavy_shield_attack_timer_3 = 0
+		is_heavy_attacking = false
+	# Reset Heavy Attack Bow Movement
+	if is_heavy_attacking and GameManager.get_first_weapon_name() == bow_name:
+		is_heavy_attacking = false
+		start_shotgun_push_back_timer = 0
+		shotgun_push_back = false
+		finish_shotgun_push_back_timer = 0
+	# Reset Block Logic
+	if player.is_blocking:
+		player.is_blocking = false
+		GameManager.set_is_blocking(false)
 
 #--------------------BOW--------------------
 func during_bow_heavy_attack_logic(delta):
@@ -166,6 +182,7 @@ func during_bow_heavy_attack_logic(delta):
 func start_shotgun_movement_logic(delta):
 	if start_shotgun_push_back_timer <= 0 and !shotgun_push_back and finish_shotgun_push_back_timer <= 0:
 		start_shotgun_push_back_timer = max_start_shotgun_push_back_timer
+		is_heavy_attacking = true
 	if start_shotgun_push_back_timer > 0 and !shotgun_push_back:
 		rotate_player()
 		stop_movement()
@@ -187,11 +204,15 @@ func finish_shotgun_movement_logic(delta):
 	if finish_shotgun_push_back_timer > 0:
 		finish_shotgun_push_back_timer -= delta
 		stop_movement()
+		if finish_shotgun_push_back_timer <= 0:
+			is_heavy_attacking = false
 
 #Just to make sure timers arent weird
 func reset_finish_shotgun_push_back_timer(delta):
 	if finish_shotgun_push_back_timer > 0:
 		finish_shotgun_push_back_timer -= delta
+		if finish_shotgun_push_back_timer <= 0:
+			is_heavy_attacking = false
 
 func calc_start_shotgun_push_back_timer(delta):
 	start_shotgun_push_back_timer -= delta
@@ -217,6 +238,7 @@ func during_shield_heavy_attack_logic(delta):
 func start_heavy_shield_attack_logic():
 	if heavy_shield_attack_timer <= 0 and heavy_shield_attack_timer_2 <= 0 and heavy_shield_attack_timer_3 <= 0:
 		heavy_shield_attack_timer = max_heavy_shield_attack_timer
+		is_heavy_attacking = true
 		if hitting_with_shield:
 			hitting_with_shield = false
 
@@ -250,11 +272,15 @@ func stop_heavy_shield_attack_movment_logic(delta):
 	if heavy_shield_attack_timer_3 > 0:
 		heavy_shield_attack_timer_3 -= delta
 		stop_movement()
+		if heavy_shield_attack_timer_3 <= 0:
+			is_heavy_attacking = false
 
 #Just to make sure timers arent weird
 func reset_heavy_shield_attack_timer(delta):
 	if heavy_shield_attack_timer_3 > 0:
 		heavy_shield_attack_timer_3 -= delta
+		if heavy_shield_attack_timer_3 <= 0:
+			is_heavy_attacking = false
 
 #--------------------DODGE--------------------
 func dodge_with_stamina():
@@ -423,7 +449,9 @@ func apply_gravity(delta):
 	velocity.y += -gravity * delta
 
 func stop_movement():
-	velocity = Vector3.ZERO
+	var vy = velocity.y
+	velocity = Vector3(0, vy, 0)
+	move_and_slide()
 
 #--------------------EXTRA--------------------
 func _input(event: InputEvent) -> void:

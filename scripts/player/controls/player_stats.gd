@@ -93,7 +93,6 @@ func _physics_process(delta):
 	resource_system(delta)
 	check_detection()
 	broken_block_tracker(delta)
-	test_knockdown_animation()
 
 func broken_block_tracker(delta):
 	if block_broken > 0:
@@ -184,7 +183,7 @@ func break_block():
 	block_broken = broken_block_duration
 	print("Block was broken from attack")
 
-func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifier, knockdown_check):
+func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifier, knockdown_check: bool = false):
 	if GameManager.get_having_i_frames():
 		pass
 	else:
