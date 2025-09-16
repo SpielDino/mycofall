@@ -16,7 +16,7 @@ func _on_body_entered(body: Node3D) -> void:
 	hitting_target_dummy(body)
 		
 func hitting_enemy(body):
-	if body.is_in_group("enemy") and !hit:
+	if body.is_in_group("Enemy") and !hit:
 		body.take_damage(50)
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		DamageNumbers.display_number(50, dmg_position.global_position)

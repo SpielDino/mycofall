@@ -4,6 +4,8 @@ extends Node3D
 # and player_stats scripts
 # Weapons also have their own logics and can be found in their scenes/scripts
 
+@export var lol: MeshInstance3D
+
 @export_category("Important Nodes")
 @export_subgroup("Logic Nodes")
 @export var animation_tree: AnimationTree

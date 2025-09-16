@@ -20,7 +20,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	attack(body)
 
 func attack(body):
-	if body.is_in_group("enemy"):
+	if body.is_in_group("Enemy"):
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		if dmg_position:
 			var pos = dmg_position.global_position
@@ -30,7 +30,7 @@ func attack(body):
 				randf_range(-0.3, 0.3)   # Z-axis offset
 			)
 			DamageNumbers.display_number(dmg, pos + offset)
-		body.takeDamage(dmg)
+		body.take_damage(dmg, "Bow", true, 1)
 		
 	elif body.is_in_group("target_dummy"):
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")

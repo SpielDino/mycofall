@@ -20,16 +20,18 @@ func moving(delta):
 		position += directions * speed * delta
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy"):
-		body.take_damage(dmg)
+	if body.is_in_group("Enemy"):
+		body.take_damage(dmg, "Staff")
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
-		DamageNumbers.display_number(dmg, dmg_position.global_position)
+		if dmg_position:
+			DamageNumbers.display_number(dmg, dmg_position.global_position)
 		queue_free()
 		#print("hit")
 	elif body.is_in_group("target_dummy"):
 		#print("dummy hit")
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
-		DamageNumbers.display_number(dmg, dmg_position.global_position)
+		if dmg_position:
+			DamageNumbers.display_number(dmg, dmg_position.global_position)
 		body.play_animations(false)
 		queue_free()
 	else:
@@ -43,7 +45,7 @@ func lifetime_of_bullet(delta):
 		#print("bullet despawned")
 
 func _on_detection_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy") and !tracking:
+	if body.is_in_group("Enemy") and !tracking:
 		enemy_position_for_tracking = body
 		tracking = true
 		#print(tracking)
@@ -51,5 +53,5 @@ func _on_detection_area_body_entered(body: Node3D) -> void:
 		#print("hallo enemy")
 
 func _on_detection_area_body_exited(body: Node3D) -> void:
-	if body.is_in_group("enemy") and tracking:
+	if body.is_in_group("Enemy") and tracking:
 		tracking = false

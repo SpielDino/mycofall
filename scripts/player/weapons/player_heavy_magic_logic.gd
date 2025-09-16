@@ -18,7 +18,7 @@ func start_tick_dmg():
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body not in overlapping_bodies:
-		if body.is_in_group("enemy") or body.is_in_group("target_dummy"):
+		if body.is_in_group("Enemy") or body.is_in_group("target_dummy"):
 			overlapping_bodies.append(body)
 			apply_contact_dmg(body)
 
@@ -35,21 +35,25 @@ func tick_dmg():
 
 func apply_tick_dmg():
 	for body in overlapping_bodies:
-		if body.is_in_group("enemy"):
-			body.take_damage(dmg)
+		if body.is_in_group("Enemy"):
+			body.take_damage(dmg, "Staff")
 			var dmg_position = body.get_node_or_null("DamageNumbersPosition")
-			DamageNumbers.display_number(dmg, dmg_position.global_position)
+			if dmg_position:
+				DamageNumbers.display_number(dmg, dmg_position.global_position)
 		if body.is_in_group("target_dummy"):
 			var dmg_position = body.get_node_or_null("DamageNumbersPosition")
-			DamageNumbers.display_number(dmg, dmg_position.global_position)
+			if dmg_position:
+				DamageNumbers.display_number(dmg, dmg_position.global_position)
 			body.play_animations(true)
 
 func apply_contact_dmg(body):
-	if body.is_in_group("enemy"):
-		body.take_damage(dmg)
+	if body.is_in_group("Enemy"):
+		body.take_damage(dmg, "Staff", true, 1)
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
-		DamageNumbers.display_number(dmg, dmg_position.global_position)
+		if dmg_position:
+			DamageNumbers.display_number(dmg, dmg_position.global_position)
 	if body.is_in_group("target_dummy"):
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
-		DamageNumbers.display_number(dmg, dmg_position.global_position)
+		if dmg_position:
+			DamageNumbers.display_number(dmg, dmg_position.global_position)
 		body.play_animations(true)

@@ -17,7 +17,7 @@ func _physics_process(delta: float) -> void:
 			timer = 0.0
 
 func _on_body_entered(body: Node3D) -> void:
-	if body.is_in_group("enemy"):
+	if body.is_in_group("Enemy"):
 		hitting_enemy(body)
 		hitting_with_shield.emit()
 	elif body.is_in_group("target_dummy"):
@@ -31,7 +31,7 @@ func hitting_enemy(body: Node3D) -> void:
 			is_heavy_dmg = true
 		else:
 			is_heavy_dmg = false
-		body.take_damage(heavy_dmg)
+		body.take_damage(heavy_dmg, "Sword")
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		if dmg_position:
 			DamageNumbers.display_number(heavy_dmg, dmg_position.global_position)

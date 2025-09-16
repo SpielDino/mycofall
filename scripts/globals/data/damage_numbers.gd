@@ -1,5 +1,7 @@
 extends Node3D
 
+@onready var font = preload("res://assets/fonts/Caudex-Bold.ttf")
+
 func display_number(value: int, position_of_number: Vector3):
 	var number = Label3D.new()
 	number.position = position_of_number
@@ -7,7 +9,7 @@ func display_number(value: int, position_of_number: Vector3):
 	number.billboard = BaseMaterial3D.BILLBOARD_ENABLED  # Makes it face the camera
 	number.top_level = true  # Prevents inheriting transforms
 	
-
+	number.font = font
 	number.font_size = 128
 	number.modulate = Color(1, 1, 1)  # white text
 	
