@@ -1,6 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dshareugcimk3"]
+[gd_scene load_steps=10 format=3 uid="uid://dshareugcimk3"]
 
 [ext_resource type="Theme" uid="uid://bw0qfmu2hvgr6" path="res://assets/ui_themes/buttons/menu_buttons.tres" id="1_2834b"]
+[ext_resource type="Script" uid="uid://dr5iadpxqxm5o" path="res://scripts/ui/menus/display.gd" id="1_tfcx3"]
+[ext_resource type="Texture2D" uid="uid://b8yp1lruwabt6" path="res://assets/textures/ui_textures/menus/menus_wooden_background.png" id="2_eqkeo"]
+[ext_resource type="Texture2D" uid="uid://ne5i8ak3n5qe" path="res://assets/textures/ui_textures/menus/buttons/options_button/options_button.png" id="4_eqkeo"]
+[ext_resource type="Texture2D" uid="uid://wr8unyn4ddya" path="res://assets/textures/ui_textures/menus/Keys/KeyButton.png" id="5_dsrot"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_31er2"]
 
@@ -17,6 +21,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tfcx3")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_eqkeo")
+expand_mode = 1
 
 [node name="displayMenuContainer" type="VBoxContainer" parent="."]
 process_mode = 3
@@ -35,7 +51,7 @@ size_flags_vertical = 3
 [node name="settingsMargin" type="MarginContainer" parent="displayMenuContainer/menuMargin"]
 custom_minimum_size = Vector2(1280, 720)
 layout_mode = 2
-theme_override_constants/margin_top = 50
+theme_override_constants/margin_top = 80
 
 [node name="settings" type="VBoxContainer" parent="displayMenuContainer/menuMargin/settingsMargin"]
 custom_minimum_size = Vector2(512, 0)
@@ -60,19 +76,36 @@ layout_mode = 2
 theme_override_constants/separation = 30
 
 [node name="resolution" type="HBoxContainer" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(1050, 0)
+custom_minimum_size = Vector2(1050, 10)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 146
 
-[node name="title" type="Label" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/resolution"]
+[node name="TextureRect" type="TextureRect" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/resolution"]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 2
+texture = ExtResource("4_eqkeo")
+
+[node name="MarginContainer" type="MarginContainer" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/resolution/TextureRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 350.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+
+[node name="title" type="Label" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/resolution/TextureRect/MarginContainer"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme = ExtResource("1_2834b")
 theme_override_font_sizes/font_size = 30
 text = "SETTING_RESOLUTION"
+vertical_alignment = 1
 
 [node name="seperator" type="Control" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/resolution"]
 layout_mode = 2
@@ -80,11 +113,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 
 [node name="options" type="OptionButton" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/resolution"]
-custom_minimum_size = Vector2(410, 0)
+custom_minimum_size = Vector2(450, 80)
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 size_flags_vertical = 4
+theme = ExtResource("1_2834b")
 theme_override_font_sizes/font_size = 30
+clip_text = true
+icon_alignment = 1
+vertical_icon_alignment = 0
 allow_reselect = true
 
 [node name="windowMode" type="HBoxContainer" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer"]
@@ -94,7 +131,23 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 146
 
-[node name="title" type="Label" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/windowMode"]
+[node name="TextureRect" type="TextureRect" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/windowMode"]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 2
+texture = ExtResource("4_eqkeo")
+
+[node name="MarginContainer" type="MarginContainer" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/windowMode/TextureRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 392.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+
+[node name="title" type="Label" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/windowMode/TextureRect/MarginContainer"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -106,10 +159,11 @@ text = "SETTING_WINDOW_MODE"
 layout_mode = 2
 
 [node name="options" type="OptionButton" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/windowMode"]
-custom_minimum_size = Vector2(410, 0)
+custom_minimum_size = Vector2(450, 80)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
+theme = ExtResource("1_2834b")
 theme_override_font_sizes/font_size = 30
 
 [node name="language" type="HBoxContainer" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer"]
@@ -119,7 +173,23 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/separation = 146
 
-[node name="title" type="Label" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/language"]
+[node name="TextureRect" type="TextureRect" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/language"]
+custom_minimum_size = Vector2(450, 80)
+layout_mode = 2
+texture = ExtResource("4_eqkeo")
+
+[node name="MarginContainer" type="MarginContainer" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/language/TextureRect"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_right = 350.0
+offset_bottom = 20.0
+grow_vertical = 2
+theme_override_constants/margin_left = 25
+
+[node name="title" type="Label" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/language/TextureRect/MarginContainer"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -131,10 +201,11 @@ text = "SETTING_LANGUAGE"
 layout_mode = 2
 
 [node name="options" type="OptionButton" parent="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/language"]
-custom_minimum_size = Vector2(410, 0)
+custom_minimum_size = Vector2(450, 80)
 layout_mode = 2
 size_flags_horizontal = 10
 size_flags_vertical = 4
+theme = ExtResource("1_2834b")
 theme_override_font_sizes/font_size = 30
 
 [node name="NinePatchRect" type="NinePatchRect" parent="displayMenuContainer/menuMargin"]
@@ -156,6 +227,7 @@ offset_right = 111.0
 offset_bottom = 33.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_bottom = 70
 
 [node name="buttons" type="VBoxContainer" parent="displayMenuContainer/menuMargin/NinePatchRect/buttonMargin"]
 layout_mode = 2
@@ -175,8 +247,27 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 expand_mode = 1
 
-[node name="back" type="Button" parent="displayMenuContainer/menuMargin/NinePatchRect/buttonMargin/buttons/buttonsBack"]
+[node name="TextureRect" type="TextureRect" parent="displayMenuContainer/menuMargin/NinePatchRect/buttonMargin/buttons/buttonsBack"]
+custom_minimum_size = Vector2(320, 180)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("5_dsrot")
+expand_mode = 1
+
+[node name="back" type="Button" parent="displayMenuContainer/menuMargin/NinePatchRect/buttonMargin/buttons/buttonsBack/TextureRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -187.0
+offset_top = -32.5
+offset_right = 187.0
+offset_bottom = 32.5
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("1_2834b")
@@ -194,3 +285,8 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 expand_mode = 1
+
+[connection signal="item_selected" from="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/resolution/options" to="." method="_on_resolution_selected"]
+[connection signal="item_selected" from="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/windowMode/options" to="." method="_on_window_mode_selected"]
+[connection signal="item_selected" from="displayMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/language/options" to="." method="_on_language_item_selected"]
+[connection signal="pressed" from="displayMenuContainer/menuMargin/NinePatchRect/buttonMargin/buttons/buttonsBack/TextureRect/back" to="." method="_on_back_pressed"]

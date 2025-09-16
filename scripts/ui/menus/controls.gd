@@ -13,7 +13,7 @@ var _base_path: String = "res://assets/textures/ui_textures/menus/Keys/"
 var _capturing_remap: bool = false;
 var _current_action_name: String;
 var _current_key: String;
-var _current_texture: TextureRect;
+var _current_label: Label
 
 @onready var controller_text = $MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer/Controller
 @onready var keyboard_text = $MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer/Keyboard
@@ -21,7 +21,6 @@ var _current_texture: TextureRect;
 @onready var controller_image = $MarginContainer/ControlsMenuContainer/MarginContainer/Controller/Inputs
 @onready var controller_label = $MarginContainer/ControlsMenuContainer/MarginContainer/Controller/Connect_Controller
 @onready var keyboard_menu = $MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard
-
 
 @onready var button_left = $MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer/ButtonLeft
 @onready var button_right = $MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer/ButtonRight
@@ -31,13 +30,7 @@ var _current_texture: TextureRect;
 
 func _ready() -> void:
 	set_process_unhandled_input(false)
-	#set_action_name()
-	#set_text_for_key()
 
-#func set_action_name() ->void:
-	#label
-#func load_keybinds() -> void:
-	#rebind_key(Setting)
 func _on_controls_opened() -> void:
 	_update_controller_controls();
 	
@@ -80,8 +73,8 @@ func _reveal_controller() -> void:
 func _on_key_remapping_pressed() -> void:
 	_capturing_remap = true;
 	var button = get_viewport().gui_get_focus_owner()
-	_current_texture = button.get_child(0)
-	_current_key = _current_texture.texture.resource_path.get_file().get_basename()
+	_current_label = button.get_child(0)
+	_current_key = _current_label.text
 	var parent_container = button.get_parent().get_parent();
 	var name_count = parent_container.get_path().get_name_count();
 	var action_name: String = parent_container.get_path().get_name(name_count - 1)
@@ -107,7 +100,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			current_event = input_event
 	rebind_key(_current_action_name, current_event)
 	var new_key = OS.get_keycode_string(event.physical_keycode)
-	_current_texture.texture = load(_base_path + new_key + ".png")
+	_current_label.text = new_key
 	SettingsDataContainer.set_keybind(_current_action_name, event)
 	_capturing_remap = false;
 	

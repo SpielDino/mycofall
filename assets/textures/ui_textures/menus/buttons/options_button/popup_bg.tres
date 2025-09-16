@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bbn0mw5itk0gi"]
+
+[ext_resource type="Texture2D" uid="uid://b73d2am47p4y8" path="res://assets/textures/ui_textures/menus/buttons/options_button/pop_up_menu.png" id="1_n0j2d"]
+
+[resource]
+texture = ExtResource("1_n0j2d")
+texture_margin_left = 20.0
+texture_margin_right = 20.0
+texture_margin_bottom = 20.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2

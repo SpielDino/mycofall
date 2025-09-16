@@ -1,0 +1,132 @@
+[gd_scene load_steps=9 format=3 uid="uid://byt6hxlbksy0i"]
+
+[ext_resource type="Script" uid="uid://y56anmv80gck" path="res://scripts/ui/menus/pause_menu.gd" id="1_hf471"]
+[ext_resource type="PackedScene" uid="uid://iu8ed2r4ttfo" path="res://scenes/ui/menus/controls.tscn" id="3_2f5f3"]
+[ext_resource type="SpriteFrames" uid="uid://cq3mw2nfrkhy1" path="res://assets/textures/ui_textures/menus/pause/pause_menu_sprite_frames.tres" id="3_a3xc8"]
+[ext_resource type="PackedScene" uid="uid://dshareugcimk3" path="res://scenes/ui/menus/display.tscn" id="5_2f5f3"]
+[ext_resource type="PackedScene" uid="uid://b4yec1hemrrk3" path="res://scenes/ui/menus/options.tscn" id="5_hf471"]
+[ext_resource type="Theme" uid="uid://bw0qfmu2hvgr6" path="res://assets/ui_themes/buttons/menu_buttons.tres" id="5_srbt0"]
+[ext_resource type="Theme" uid="uid://snlsj1gyjpyx" path="res://assets/ui_themes/bold_text.tres" id="6_tt2gu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sn3bg"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hf471")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = ExtResource("3_a3xc8")
+animation = &"close"
+centered = false
+
+[node name="PauseMenu" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(512, 256)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sn3bg")
+
+[node name="ButtonsMargin" type="MarginContainer" parent="CenterContainer/PauseMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Buttons" type="VBoxContainer" parent="CenterContainer/PauseMenu/ButtonsMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Resume" type="Button" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons" groups=["rich_button"]]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 2
+theme = ExtResource("5_srbt0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons/Resume"]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "BUTTON_RESUME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Button" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons" groups=["rich_button"]]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 2
+theme = ExtResource("5_srbt0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons/Options"]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "BUTTON_OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainMenu" type="Button" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons" groups=["rich_button"]]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 2
+theme = ExtResource("5_srbt0")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/PauseMenu/ButtonsMargin/Buttons/MainMenu"]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme = ExtResource("6_tt2gu")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "BUTTON_EXIT_TO_MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Controls" parent="." instance=ExtResource("3_2f5f3")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+
+[node name="Options" parent="." instance=ExtResource("5_hf471")]
+visible = false
+layout_mode = 1
+
+[node name="Display" parent="." instance=ExtResource("5_2f5f3")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="CenterContainer/PauseMenu/ButtonsMargin/Buttons/Options" to="." method="_on_options_pressed"]

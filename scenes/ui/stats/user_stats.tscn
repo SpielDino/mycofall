@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://b2rtleo5lquvb"]
+[gd_scene load_steps=12 format=3 uid="uid://b2rtleo5lquvb"]
 
 [ext_resource type="Script" uid="uid://djxvmnwkuufb1" path="res://scripts/ui/stats/stats.gd" id="1_gxikd"]
 [ext_resource type="Texture2D" uid="uid://c608pdyb20nhs" path="res://assets/textures/ui_textures/interface/stats/health/Health0000.png" id="2_bsfmg"]
 [ext_resource type="Texture2D" uid="uid://cgydcj02iin01" path="res://assets/textures/ui_textures/interface/stats/stamina/StaminaBerries0000.png" id="3_3faiv"]
 [ext_resource type="Texture2D" uid="uid://fcq8xur3nh5" path="res://assets/textures/ui_textures/interface/stats/mana/Mana0000.png" id="4_m0b6f"]
+[ext_resource type="Texture2D" uid="uid://hw6rxumfbxcg" path="res://assets/textures/ui_textures/interface/weapons/sword/MetalSword.png" id="5_3faiv"]
 [ext_resource type="Script" uid="uid://yc4ag12qhq02" path="res://scripts/ui/stats/branches/branches.gd" id="5_iotub"]
-[ext_resource type="Texture2D" uid="uid://b4cb8xdcnpau7" path="res://assets/textures/ui_textures/interface/stats/branches/weapon_two/BranchSecondWeapon0019.png" id="6_yn2md"]
+[ext_resource type="Texture2D" uid="uid://jbtku32idty8" path="res://assets/textures/ui_textures/interface/weapons/sword/WoodenSword.psd.png" id="6_3faiv"]
 [ext_resource type="Texture2D" uid="uid://dgda0rtm1hci8" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0020.png" id="7_nh88w"]
+[ext_resource type="Texture2D" uid="uid://cfn1sdtauh8fl" path="res://assets/textures/ui_textures/interface/stats/branches/weapon_two/BranchSecondWeapon0000.png" id="8_iotub"]
 [ext_resource type="Texture2D" uid="uid://c1kgdie7yosjt" path="res://assets/textures/ui_textures/interface/stats/branches/branch_two/branch_two0000.png" id="8_lq7ui"]
 [ext_resource type="Texture2D" uid="uid://bostptls3iaya" path="res://assets/textures/ui_textures/interface/stats/branches/branch_three/branch_three0000.png" id="9_12t6a"]
 
@@ -318,6 +320,51 @@ texture = ExtResource("4_m0b6f")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="weapons" type="MarginContainer" parent="main/VBoxContainer/stats"]
+custom_minimum_size = Vector2(250, 250)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="WeaponOne" type="MarginContainer" parent="main/VBoxContainer/stats/weapons"]
+custom_minimum_size = Vector2(130, 130)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_bottom = 55
+
+[node name="MarginContainer" type="MarginContainer" parent="main/VBoxContainer/stats/weapons/WeaponOne"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 38
+
+[node name="WeaponOne" type="TextureRect" parent="main/VBoxContainer/stats/weapons/WeaponOne/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("5_3faiv")
+expand_mode = 3
+
+[node name="WeaponTwo" type="MarginContainer" parent="main/VBoxContainer/stats/weapons"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = -30
+
+[node name="MarginContainer" type="MarginContainer" parent="main/VBoxContainer/stats/weapons/WeaponTwo"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 5
+
+[node name="WeaponTwo" type="TextureRect" parent="main/VBoxContainer/stats/weapons/WeaponTwo/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("6_3faiv")
+expand_mode = 3
+
 [node name="branches" type="MarginContainer" parent="main/VBoxContainer/stats"]
 custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
@@ -327,7 +374,7 @@ script = ExtResource("5_iotub")
 
 [node name="weapon_two" type="TextureRect" parent="main/VBoxContainer/stats/branches"]
 layout_mode = 2
-texture = ExtResource("6_yn2md")
+texture = ExtResource("8_iotub")
 expand_mode = 3
 
 [node name="branch_one_full" type="TextureRect" parent="main/VBoxContainer/stats/branches"]

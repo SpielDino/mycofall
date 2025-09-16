@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://bfcdyyj2p7d0q"
+
+[deps]
+
+files=["res://assets/localization/mycofall_translation.en.translation", "res://assets/localization/mycofall_translation.de.translation"]
+
+source_file="res://assets/localization/mycofall_translation.csv"
+dest_files=["res://assets/localization/mycofall_translation.en.translation", "res://assets/localization/mycofall_translation.de.translation"]
+
+[params]
+
+compress=true
+delimiter=0

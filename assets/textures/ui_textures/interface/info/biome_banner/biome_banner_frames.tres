@@ -1,0 +1,70 @@
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://by6ttxlxdc4c0"]
+
+[ext_resource type="Texture2D" uid="uid://77pkm41icmtd" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0000.png" id="1_v10n7"]
+[ext_resource type="Texture2D" uid="uid://b8qhm0bxydaqu" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0001.png" id="2_l0fql"]
+[ext_resource type="Texture2D" uid="uid://b1ceupqdbiurd" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0002.png" id="3_5q2d6"]
+[ext_resource type="Texture2D" uid="uid://bmdr1ckxekhe4" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0003.png" id="4_5glde"]
+[ext_resource type="Texture2D" uid="uid://dty34lvj8nqsn" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0004.png" id="5_vgurj"]
+[ext_resource type="Texture2D" uid="uid://blbt2fyjib24g" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0005.png" id="6_y0gso"]
+[ext_resource type="Texture2D" uid="uid://ci1dldq2r7fyk" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0006.png" id="7_lpuqc"]
+[ext_resource type="Texture2D" uid="uid://cxssv71lnjrxf" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0007.png" id="8_te8mc"]
+[ext_resource type="Texture2D" uid="uid://6vf3oeed4f2p" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0008.png" id="9_l6uw2"]
+[ext_resource type="Texture2D" uid="uid://bg73rsr18bhl7" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0009.png" id="10_3o4by"]
+[ext_resource type="Texture2D" uid="uid://c6drowpv1ae7j" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0010.png" id="11_lnab0"]
+[ext_resource type="Texture2D" uid="uid://dvro58x1b3pi8" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0011.png" id="12_x48oj"]
+[ext_resource type="Texture2D" uid="uid://b0q16g1lpi1q3" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0012.png" id="13_ygyym"]
+[ext_resource type="Texture2D" uid="uid://cyu2fdvomt5d0" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0013.png" id="14_e3npn"]
+[ext_resource type="Texture2D" uid="uid://bq1y0oyxxvp4e" path="res://assets/textures/ui_textures/interface/info/biome_banner/BiomeBanner0014.png" id="15_hx6ux"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_v10n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_l0fql")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_5q2d6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5glde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_vgurj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_y0gso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lpuqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_te8mc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_l6uw2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3o4by")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lnab0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_x48oj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ygyym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_e3npn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_hx6ux")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}]

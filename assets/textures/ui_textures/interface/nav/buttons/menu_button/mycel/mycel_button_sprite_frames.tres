@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://b0wy01s03g02s"]
+
+[ext_resource type="Texture2D" uid="uid://cd5lrfn707dyb" path="res://assets/textures/ui_textures/interface/nav/buttons/menu_button/mycel/mycel_button_hover0001.png" id="1_yalax"]
+[ext_resource type="Texture2D" uid="uid://6uwbf7bf146d" path="res://assets/textures/ui_textures/interface/nav/buttons/menu_button/mycel/mycel_button_hover0002.png" id="2_lvubl"]
+[ext_resource type="Texture2D" uid="uid://b0y8cksngfsaj" path="res://assets/textures/ui_textures/interface/nav/buttons/menu_button/mycel/mycel_button_hover0003.png" id="3_elpr0"]
+[ext_resource type="Texture2D" uid="uid://clta4e3ftd7s" path="res://assets/textures/ui_textures/interface/nav/buttons/menu_button/mycel/mycel_button_hover0004.png" id="4_qlvqj"]
+[ext_resource type="Texture2D" uid="uid://dbmf2orup3x1s" path="res://assets/textures/ui_textures/interface/nav/buttons/menu_button/mycel/mycel_button_hover0005.png" id="5_6lnwb"]
+[ext_resource type="Texture2D" uid="uid://lhbkr4glgxku" path="res://assets/textures/ui_textures/interface/nav/buttons/menu_button/mycel/mycel_button_hover0006.png" id="6_agbl6"]
+[ext_resource type="Texture2D" uid="uid://2x57uorqnyl1" path="res://assets/textures/ui_textures/interface/nav/buttons/menu_button/mycel/mycel_button_hover0007.png" id="7_nmit6"]
+[ext_resource type="Texture2D" uid="uid://bj2qbx1sf8820" path="res://assets/textures/ui_textures/interface/nav/buttons/menu_button/mycel/mycel_button_hover0008.png" id="8_yvlve"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_yalax")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lvubl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_elpr0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qlvqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6lnwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_agbl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_nmit6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yvlve")
+}],
+"loop": false,
+"name": &"default",
+"speed": 60.0
+}]
