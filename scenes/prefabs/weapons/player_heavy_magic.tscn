@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://4neaph14cse0"]
+
+[ext_resource type="Script" uid="uid://2ko7p5q2d4s0" path="res://scripts/player/weapons/player_heavy_magic_logic.gd" id="1_3pyyt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ab7ra"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3pyyt"]
+top_radius = 4.0
+bottom_radius = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxkfc"]
+transparency = 1
+albedo_color = Color(1, 0, 1, 0.431373)
+
+[node name="PlayerHeavyMagic" type="Node3D"]
+script = ExtResource("1_3pyyt")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+shape = SubResource("SphereShape3D_ab7ra")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.570186, 0)
+mesh = SubResource("CylinderMesh_3pyyt")
+surface_material_override/0 = SubResource("StandardMaterial3D_lxkfc")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

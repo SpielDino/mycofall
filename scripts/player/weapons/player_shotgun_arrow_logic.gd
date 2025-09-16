@@ -1,0 +1,49 @@
+extends Node3D
+
+@export var speed = 40.0
+@export var dmg = 20
+@export var lifetime = 5
+
+func _physics_process(delta: float) -> void:
+	moving(delta)
+	lifetime_of_bullet(delta)
+
+func moving(delta):
+		position += transform.basis * Vector3(0, 0, -speed) * delta
+
+func lifetime_of_bullet(delta):
+	lifetime -= delta
+	if lifetime < 0:
+		queue_free()
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	attack(body)
+
+func attack(body):
+	if body.is_in_group("enemy"):
+		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
+		if dmg_position:
+			var pos = dmg_position.global_position
+			var offset = Vector3(
+				randf_range(-0.3, 0.3),  # X-axis offset
+				randf_range(0.0, 0.6),   # Y-axis offset (usually up a bit)
+				randf_range(-0.3, 0.3)   # Z-axis offset
+			)
+			DamageNumbers.display_number(dmg, pos + offset)
+		body.takeDamage(dmg)
+		
+	elif body.is_in_group("target_dummy"):
+		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
+		if dmg_position:
+			var pos = dmg_position.global_position
+			var offset = Vector3(
+				randf_range(-0.3, 0.3),  # X-axis offset
+				randf_range(0.0, 0.6),   # Y-axis offset (usually up a bit)
+				randf_range(-0.3, 0.3)   # Z-axis offset
+			)
+			DamageNumbers.display_number(dmg, pos + offset)
+		body.play_animations(true)
+	elif body.is_in_group("weapon"):
+		pass
+	else:
+		queue_free()

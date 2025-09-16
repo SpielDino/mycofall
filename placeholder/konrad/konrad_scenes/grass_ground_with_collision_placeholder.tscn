@@ -1,16 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddq71sew02jx5"]
+[gd_scene load_steps=2 format=3 uid="uid://ddq71sew02jx5"]
 
 [ext_resource type="PackedScene" uid="uid://b2kmvc6nkdq05" path="res://placeholder/konrad/konrad_scenes/grass_ground_placeholder.tscn" id="1_wxdb6"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_cvnfm"]
-size = Vector3(49.9375, 0.500732, 50.8047)
-
 [node name="GrassGroundWithCollision" type="Node3D"]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.250366, 0)
-shape = SubResource("BoxShape3D_cvnfm")
-
 [node name="GrassGround" parent="." instance=ExtResource("1_wxdb6")]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.507365, 0)
+use_collision = true
+size = Vector3(50, 1, 50)
