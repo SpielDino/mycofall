@@ -51,11 +51,11 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 	if health <= 0 and deathTimer == 10:
 		deathTimer = 8
 		if type == "Bow":
-			PlayerActionTracker.bowKills += 1
+			PlayerActionTracker.bow_kills += 1
 		if type == "Staff":
-			PlayerActionTracker.staffKills += 1
+			PlayerActionTracker.staff_kills += 1
 		if type == "Sword":
-			PlayerActionTracker.meleeKills += 1
+			PlayerActionTracker.melee_kills += 1
 	else:
 		if has_knockback:
 			var direction = -(global_position - player.global_position).normalized

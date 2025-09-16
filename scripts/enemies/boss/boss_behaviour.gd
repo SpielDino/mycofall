@@ -105,15 +105,15 @@ func calculateAggression():
 		aggression += 0.2
 	if GameManager.get_first_weapon() == "Sword" or GameManager.get_second_weapon() == "Sword": #Sword Equipped
 		aggression -= 0.3
-	var rangedKills: float = PlayerActionTracker.staffKills + PlayerActionTracker.bowKills
-	var meleeKills: float = PlayerActionTracker.meleeKills
+	var rangedKills: float = PlayerActionTracker.staff_kills + PlayerActionTracker.bow_kills
+	var meleeKills: float = PlayerActionTracker.melee_kills
 	var totalKills: float = rangedKills + meleeKills
 	aggression += (rangedKills - meleeKills)/totalKills
 	aggression = clamp(aggression, -0.7, 0.7)
 
 func calculateBlocksAndDashes():
-	var attacksBlocked: float = PlayerActionTracker.attacksBlocked
-	var attacksDodged: float = PlayerActionTracker.timesDodgedInCombat
+	var attacksBlocked: float = PlayerActionTracker.attacks_blocked
+	var attacksDodged: float = PlayerActionTracker.times_dodged_in_combat
 	var totalDodgedAndBlocked: float = attacksBlocked + attacksDodged
 	attacksBlockedPercentage = attacksBlocked / totalDodgedAndBlocked
 	attacksDodgedPercentage = attacksDodged / totalDodgedAndBlocked

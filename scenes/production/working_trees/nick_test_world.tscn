@@ -1,9 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://b0pwu7fv5jhbi"]
+[gd_scene load_steps=13 format=3 uid="uid://b0pwu7fv5jhbi"]
 
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_l1uti"]
-[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://placeholder/konrad/trash/socket.tscn" id="2_lvr8l"]
-[ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://placeholder/konrad/trash/training_dummy.tscn" id="3_3upb4"]
-[ext_resource type="PackedScene" uid="uid://bnyfrlfrn4h4w" path="res://placeholder/konrad/konrad_scenes/player.tscn" id="4_xiprm"]
+[ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="1_x225k"]
+[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="2_lvr8l"]
+[ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="3_3upb4"]
 [ext_resource type="PackedScene" uid="uid://do5mufdhjo2pg" path="res://scenes/prefabs/enemies/melee_enemy.tscn" id="5_holw1"]
 [ext_resource type="PackedScene" uid="uid://dpb707vikystx" path="res://scenes/prefabs/enemies/enoki_enemy.tscn" id="6_sur7i"]
 [ext_resource type="PackedScene" uid="uid://bscovpt7jdhyu" path="res://scenes/prefabs/enemies/explosion_enemy.tscn" id="7_xsrf7"]
@@ -17,9 +17,10 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 
 [sub_resource type="Environment" id="Environment_r6cbd"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_holw1"]
-
 [node name="KonradTestWorld" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_x225k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1875, 3.57362, 15.5619)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 2.74091, 0)
@@ -76,30 +77,35 @@ Weapon = "SHIELD"
 [node name="training_dummy" parent="NavigationRegion3D/WorldEnvironment/World/Objects" groups=["World"] instance=ExtResource("3_3upb4")]
 transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -12.1868, 0.0217261, -3.97915)
 
-[node name="Player" parent="." instance=ExtResource("4_xiprm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.90475, 1.49418, 17.6167)
-rotation_type = "rotate based on second input"
-shield_radius_protection = 120.0
-
-[node name="RightWeaponHand" parent="Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.165291, -0.879337, 0.446592, 0.932135, -0.287216, -0.220528, 0.322187, 0.379832, 0.867135, -2.84966, 1.51509, 0.564782)
-
-[node name="LeftWeaponHand" parent="Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.165291, 0.879337, -0.446592, -0.932135, -0.287216, -0.220528, -0.322187, 0.379832, 0.867135, 2.84966, 1.51509, 0.564782)
-
-[node name="BackWeapon" parent="Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 0, 0, 0, 0.949272, -0.314457, 1.42109e-14, 0.314457, 0.949272, 3.55271e-15, 1, 0.194046)
-
-[node name="DetectionSignal" type="Area3D" parent="Player/Controller" index="3" groups=["Player"]]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player/Controller/DetectionSignal"]
-shape = SubResource("CapsuleShape3D_holw1")
-
 [node name="EnokiEnemy" parent="." instance=ExtResource("6_sur7i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7269, 0.000129372, -24.0251)
 
 [node name="ExplosionEnemy" parent="." instance=ExtResource("7_xsrf7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.0946, 0.381713, -10.1691)
+
+[node name="BeinR" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="0"]
+transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 1.5672e-07, 1.51581e-07, -5.00479e-08, 1, 0.0908616, 0.0432918, -0.00346282)
+
+[node name="BeinL" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 1.5672e-07, 1.51581e-07, -5.00479e-08, 1, 0.0884127, 0.0395059, 1.04308e-07)
+
+[node name="ArmL" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.245984, -0.517131, 0.819797, 0.791632, 0.595224, 0.137937, -0.559294, 0.615048, 0.555793, -0.185656, 0.00144205, 0.147659)
+
+[node name="ArmR" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.234986, -0.527258, -0.816566, 0.705919, 0.670073, -0.229521, 0.668176, -0.522496, 0.529659, -0.182569, -0.0116516, -0.144376)
+
+[node name="Hutshell" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="4"]
+transform = Transform3D(-0.985223, -0.17125, -0.00312117, 0.17124, -0.985224, 0.00331978, -0.00364356, 0.00273626, 0.99999, -0.00102169, 0.000937998, -2.42967e-05)
+
+[node name="Körper" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.984811, 0.172972, -0.0150833, -0.172813, 0.98489, 0.0113288, 0.016815, -0.00855018, 0.999822, -0.00204655, -0.0116528, 0.000101157)
+
+[node name="Hut" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="6"]
+transform = Transform3D(0.984811, 0.172972, -0.0150833, -0.172813, 0.98489, 0.0113288, 0.016815, -0.00855018, 0.999822, -1.62981e-09, 1.58325e-08, -5.3551e-09)
+
+[node name="Sphere_002" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="7"]
+transform = Transform3D(0.984811, 0.172972, -0.0150833, -0.172813, 0.98489, 0.0113288, 0.016815, -0.00855018, 0.999822, -0.10615, 0.0740856, -0.00244084)
 
 [node name="AoeEnemy" parent="." instance=ExtResource("8_bch81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.3405, 3.42852, -9.47149)
@@ -219,7 +225,7 @@ bones/52/position = Vector3(-1.21981, 0.213462, -0.035471)
 bones/53/position = Vector3(-1.08068, 0.213462, -0.922925)
 
 [node name="pilzKopf" parent="DecoyEnemy/Model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -0.000101255, -7.11489e-05, 0.000113629, 0.97902, 0.203762, 4.90276e-05, -0.203762, 0.97902, -0.176313, 0.0498832, 0.735145)
+transform = Transform3D(1, -0.00010125, -7.11532e-05, 0.000113625, 0.97902, 0.203762, 4.90319e-05, -0.203762, 0.97902, -0.176313, 0.0498832, 0.735145)
 
 [node name="PilzPo" parent="DecoyEnemy/Model/Armature/Skeleton3D" index="1"]
 transform = Transform3D(0.91263, -7.57122e-05, -2.07818e-05, 0.000103706, 0.607105, -0.201139, 4.47395e-05, 0.137176, 0.890189, -0.22432, 0.692206, -0.826907)
@@ -234,11 +240,6 @@ transform = Transform3D(1, -0.000101255, -7.11516e-05, 0.000113629, 0.97902, 0.2
 [editable path="MeleeEnemy/DetectionComponent"]
 [editable path="MeleeEnemy/EnemyMeleeAttackComponent"]
 [editable path="MeleeEnemy/Model"]
-[editable path="Player"]
-[editable path="Player/Controller/Model/NewPlayerModel"]
-[editable path="Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Sword"]
-[editable path="Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Staff"]
-[editable path="Player/Controller/Model/NewPlayerModel/Armature/Skeleton3D/RightWeaponHand/Bow"]
 [editable path="ExplosionEnemy"]
 [editable path="ExplosionEnemy/DetectionComponent"]
 [editable path="ExplosionEnemy/MovementComponent"]
