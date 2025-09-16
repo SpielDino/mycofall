@@ -1,26 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bf5e8uq1j5xfg"]
+[gd_scene load_steps=3 format=3 uid="uid://bf5e8uq1j5xfg"]
 
-[ext_resource type="Texture2D" uid="uid://b0mgedjvb02md" path="res://assets/textures/model_textures/grass_boden/grass_01_color_2k.png" id="1_ywd1f"]
-[ext_resource type="Texture2D" uid="uid://dqrr7cbop8pdq" path="res://assets/textures/model_textures/grass_boden/grass_01_ambient_occlusion_2k.png" id="2_14cy4"]
-[ext_resource type="Texture2D" uid="uid://cxb774dus402i" path="res://assets/textures/model_textures/grass_boden/grass_01_height_2k.png" id="3_5gwe8"]
-[ext_resource type="Texture2D" uid="uid://be4b3d1g5njg4" path="res://assets/textures/model_textures/grass_boden/grass_01_normal_gl_2k.png" id="4_mn30j"]
+[ext_resource type="Material" uid="uid://dp3mrytmy4xye" path="res://placeholder/nikolai/grass_ground.tres" id="1_c7qb6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mj7mv"]
 size = Vector2(10, 10)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t8o3n"]
-albedo_texture = ExtResource("1_ywd1f")
-normal_enabled = true
-normal_texture = ExtResource("4_mn30j")
-ao_enabled = true
-ao_light_affect = 1.0
-ao_texture = ExtResource("2_14cy4")
-heightmap_enabled = true
-heightmap_texture = ExtResource("3_5gwe8")
-uv1_scale = Vector3(4, 4, 4)
 
 [node name="GrassGround" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("PlaneMesh_mj7mv")
-surface_material_override/0 = SubResource("StandardMaterial3D_t8o3n")
+surface_material_override/0 = ExtResource("1_c7qb6")

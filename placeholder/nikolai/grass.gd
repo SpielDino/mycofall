@@ -1,4 +1,3 @@
-@tool
 extends MultiMeshInstance3D
 
 @export var player: Node3D

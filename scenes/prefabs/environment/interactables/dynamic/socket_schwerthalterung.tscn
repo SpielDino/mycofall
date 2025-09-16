@@ -1,0 +1,40 @@
+[gd_scene load_steps=7 format=3 uid="uid://lhj17p5n0syu"]
+
+[ext_resource type="Script" uid="uid://koludp3bc147" path="res://scripts/environment/socket.gd" id="1_dcd1t"]
+[ext_resource type="PackedScene" uid="uid://b4eqeggqw3sd5" path="res://placeholder/nikolai/Starting Area/Schwerthalterung.blend" id="2_op8fb"]
+[ext_resource type="PackedScene" uid="uid://cwk8r83h8sq2c" path="res://assets/models/weapons/holz_schwert.blend" id="3_x3fbr"]
+[ext_resource type="PackedScene" uid="uid://ltlkqs0sw0se" path="res://assets/models/weapons/alt_schwert.blend" id="4_b1uia"]
+[ext_resource type="PackedScene" uid="uid://bwtakav8ny5y6" path="res://assets/models/weapons/metal_schwert.blend" id="5_d6kgf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3donx"]
+size = Vector3(1, 1.85593, 1)
+
+[node name="Socket" type="StaticBody3D"]
+script = ExtResource("1_dcd1t")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.21654, 0)
+shape = SubResource("BoxShape3D_3donx")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="WeaponSlot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.965926, 0.258819, 0, -0.258819, -0.965926, -0.0750602, 1.60787, 0.347768)
+
+[node name="SchwertHalterung" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0)
+
+[node name="Schwerthalterung" parent="SchwertHalterung" instance=ExtResource("2_op8fb")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, 0, 0, 0)
+
+[node name="holz_schwert" parent="SchwertHalterung" instance=ExtResource("3_x3fbr")]
+transform = Transform3D(0.499241, -1.20364e-09, 0.0275361, -0.0275361, -1.49012e-08, 0.499241, 0, -0.5, -7.45058e-09, -0.0750602, 1.0095, -0.0802304)
+visible = false
+
+[node name="alt_schwert" parent="SchwertHalterung" instance=ExtResource("4_b1uia")]
+transform = Transform3D(0.49958, 8.95784e-10, -0.0204931, 0.0204932, -1.49012e-08, 0.49958, 0, -0.5, -2.23517e-08, 0.614325, 1.02034, -0.0659065)
+
+[node name="metal_schwert" parent="SchwertHalterung" instance=ExtResource("5_d6kgf")]
+transform = Transform3D(0.498499, 1.69196e-09, -0.0387075, 0.0387075, -1.49012e-08, 0.4985, -9.31323e-10, -0.5, -1.49012e-08, -0.53235, 1.10167, -0.0639641)
+
+[connection signal="interacted" from="." to="." method="_on_interacted"]

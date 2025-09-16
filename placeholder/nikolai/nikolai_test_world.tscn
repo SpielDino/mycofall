@@ -1,14 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://dpyftyxfrcpub"]
+[gd_scene load_steps=17 format=3 uid="uid://dpyftyxfrcpub"]
 
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="1_3m6n3"]
 [ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="2_2ajtq"]
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="3_ullxm"]
 [ext_resource type="Material" uid="uid://buwe41c4685gy" path="res://placeholder/nikolai/grassMaterial.tres" id="4_0tif6"]
+[ext_resource type="PackedScene" uid="uid://irrsqnnuxdnc" path="res://placeholder/nikolai/ground_normal_grass_(50x50).tscn" id="4_c5lhh"]
 [ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="4_k0sm5"]
 [ext_resource type="Script" uid="uid://0vq70cok7n80" path="res://placeholder/nikolai/grass.gd" id="5_0tif6"]
 [ext_resource type="ArrayMesh" uid="uid://crs55cs1f80g3" path="res://placeholder/nikolai/Grass_Bunch_Mesh.res" id="5_c5lhh"]
-[ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="5_vacs2"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="6_maw6l"]
+[ext_resource type="PackedScene" uid="uid://b26isw1yinffy" path="res://placeholder/nikolai/TreeStumpHouse.tscn" id="10_c5lhh"]
+[ext_resource type="PackedScene" uid="uid://dgnex5i27htbn" path="res://placeholder/nikolai/Bushtest2.tscn" id="11_72yyy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]
 panorama = ExtResource("1_3m6n3")
@@ -32,7 +34,7 @@ buffer = PackedFloat32Array(-0.528945, -0.170176, -0.788073, -15.8859, -0.28116,
 [node name="KonradTestWorld" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 2.74091, 0)
+transform = Transform3D(1, 0, 0, 0, 0.58201, 0.813182, 0, -0.813182, 0.58201, 0, 36.5586, 4.35277)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_axl6w")
@@ -40,11 +42,19 @@ script = ExtResource("2_2ajtq")
 
 [node name="World" type="Node3D" parent="WorldEnvironment"]
 
+[node name="TreeStumpHouse" parent="WorldEnvironment/World" instance=ExtResource("10_c5lhh")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+
 [node name="Ground" type="Node3D" parent="WorldEnvironment/World"]
 
+[node name="Ground Normal Grass (50x50)" parent="WorldEnvironment/World/Ground" instance=ExtResource("4_c5lhh")]
+
 [node name="GrassGroundWithCollision" parent="WorldEnvironment/World/Ground" instance=ExtResource("3_ullxm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0503063, 0)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/World/Ground/GrassGroundWithCollision"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106456, 0)
 mesh = SubResource("PlaneMesh_c5lhh")
 
 [node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="WorldEnvironment/World/Ground/GrassGroundWithCollision/MeshInstance3D" node_paths=PackedStringArray("player")]
@@ -55,6 +65,7 @@ script = ExtResource("5_0tif6")
 player = NodePath("../../../../../Player")
 
 [node name="Objects" type="Node3D" parent="WorldEnvironment/World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.07)
 
 [node name="Socket" parent="WorldEnvironment/World/Objects" instance=ExtResource("4_k0sm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.82087)
@@ -72,12 +83,6 @@ Weapon = "BOW"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.9796)
 Weapon = "SHIELD"
 
-[node name="training_dummy" parent="WorldEnvironment/World/Objects" instance=ExtResource("5_vacs2")]
-transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -12.1868, 0.0217261, -3.97915)
-
-[node name="training_dummy2" parent="WorldEnvironment/World/Objects" instance=ExtResource("5_vacs2")]
-transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -13.6722, 0.0217261, -3.97915)
-
 [node name="Socket5" parent="WorldEnvironment/World/Objects" instance=ExtResource("4_k0sm5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65454, 0, -12.9796)
 Weapon = "NOTHING"
@@ -85,3 +90,6 @@ Weapon = "NOTHING"
 [node name="Player" parent="WorldEnvironment" instance=ExtResource("6_maw6l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23659, 0)
 mana_per_second = 100.0
+
+[node name="Node3D" parent="." instance=ExtResource("11_72yyy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85666, 0.160233, 5.38334)
