@@ -58,7 +58,7 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 			PlayerActionTracker.melee_kills += 1
 	else:
 		if has_knockback:
-			var direction = -(global_position - player.global_position).normalized
+			var direction = - (global_position - player.global_position).normalized()
 			velocity += direction * knockback_strenght
 		get_child(0).get_pinged()
 
