@@ -1,14 +1,68 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://bw0qfmu2hvgr6"]
+[gd_resource type="Theme" load_steps=17 format=3 uid="uid://bw0qfmu2hvgr6"]
 
+[ext_resource type="Texture2D" uid="uid://ne5i8ak3n5qe" path="res://assets/textures/ui_textures/menus/buttons/options_button/options_button.png" id="1_ommv0"]
+[ext_resource type="Texture2D" uid="uid://d2s20w1rc2w6r" path="res://assets/textures/ui_textures/menus/slider/slider_grabber.png" id="1_p2sdh"]
 [ext_resource type="FontFile" uid="uid://vyhhxpu0v1jw" path="res://assets/fonts/Caudex-Bold.ttf" id="1_tftdb"]
+[ext_resource type="Texture2D" uid="uid://bgtge4m8y8xjd" path="res://assets/textures/ui_textures/menus/buttons/options_button/options_button_open.png" id="2_mxsum"]
+[ext_resource type="Texture2D" uid="uid://bincgxr2sgw7m" path="res://assets/textures/ui_textures/menus/slider/slider_fill.png" id="2_tbo8k"]
+[ext_resource type="Texture2D" uid="uid://bi48wrfpk37pt" path="res://assets/textures/ui_textures/menus/slider/slider_bg.png" id="3_hlffd"]
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tftdb"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ae5wv"]
+bg_color = Color(0, 0, 0, 0.0392157)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tftdb"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ommv0"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxsum"]
+bg_color = Color(0, 0, 0, 0.0784314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wv8ch"]
+texture = ExtResource("2_tbo8k")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pvhw0"]
+texture = ExtResource("2_tbo8k")
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p6k85"]
+texture = ExtResource("3_hlffd")
+texture_margin_bottom = 80.0
+region_rect = Rect2(0, 0, 450, 80)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_mxsum"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mxsum"]
+content_margin_left = 22.0
+texture = ExtResource("1_ommv0")
+modulate_color = Color(0.9, 0.9, 0.9, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8iaf"]
+content_margin_left = 22.0
+texture = ExtResource("1_ommv0")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_qa0qs"]
+content_margin_left = 22.0
+texture = ExtResource("2_mxsum")
 
 [resource]
 default_font = ExtResource("1_tftdb")
 default_font_size = 38
-Button/styles/hover = SubResource("StyleBoxTexture_tftdb")
-Button/styles/normal = SubResource("StyleBoxFlat_tftdb")
+Button/colors/font_color = Color(0, 0, 0, 1)
+Button/styles/focus = null
+Button/styles/hover = SubResource("StyleBoxFlat_ae5wv")
+Button/styles/normal = SubResource("StyleBoxFlat_ommv0")
+Button/styles/pressed = SubResource("StyleBoxFlat_mxsum")
+HSlider/icons/grabber = ExtResource("1_p2sdh")
+HSlider/icons/grabber_disabled = ExtResource("1_p2sdh")
+HSlider/icons/grabber_highlight = ExtResource("1_p2sdh")
+HSlider/styles/grabber_area = SubResource("StyleBoxTexture_wv8ch")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxTexture_pvhw0")
+HSlider/styles/slider = SubResource("StyleBoxTexture_p6k85")
+OptionButton/constants/h_separation = 4
+OptionButton/constants/modulate_arrow = 1
+OptionButton/icons/icon = SubResource("ViewportTexture_mxsum")
+OptionButton/styles/hover = SubResource("StyleBoxTexture_mxsum")
+OptionButton/styles/normal = SubResource("StyleBoxTexture_f8iaf")
+OptionButton/styles/pressed = SubResource("StyleBoxTexture_qa0qs")

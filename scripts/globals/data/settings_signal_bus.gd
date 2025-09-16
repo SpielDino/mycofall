@@ -31,13 +31,13 @@ func emit_on_language_selected(index: int) -> void:
 	on_language_selected.emit(index)
 	
 func emit_on_master_volume_set(value: float) -> void:
-	on_master_volume_set.emit()
+	on_master_volume_set.emit(value)
 	
 func emit_on_music_volume_set(value: float) -> void:
-	on_music_volume_set.emit()
+	on_music_volume_set.emit(value)
 	
 func emit_on_sfx_volume_set(value: float) -> void:
-	on_sfx_volume_set.emit()
+	on_sfx_volume_set.emit(value)
 
 func emit_on_voice_volume_set(value: float) -> void:
-	on_voice_volume_set.emit()
+	on_voice_volume_set.emit(value)

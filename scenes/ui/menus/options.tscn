@@ -1,7 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4yec1hemrrk3"]
+[gd_scene load_steps=9 format=3 uid="uid://b4yec1hemrrk3"]
 
 [ext_resource type="Script" uid="uid://dpukpmyugn3iq" path="res://scripts/ui/menus/options.gd" id="1_hfbhb"]
+[ext_resource type="SpriteFrames" uid="uid://bg61g0gswo5u" path="res://assets/textures/ui_textures/menus/options/options.tres" id="2_k6d2o"]
 [ext_resource type="Theme" uid="uid://bw0qfmu2hvgr6" path="res://assets/ui_themes/buttons/menu_buttons.tres" id="2_vt88a"]
+[ext_resource type="FontFile" uid="uid://vyhhxpu0v1jw" path="res://assets/fonts/Caudex-Bold.ttf" id="6_iayhs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iayhs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cle6"]
+bg_color = Color(0, 0, 0, 0.0392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2cglq"]
+bg_color = Color(0, 0, 0, 0.0784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3wban"]
+bg_color = Color(0, 0, 0, 0)
 
 [node name="Options" type="Control"]
 layout_mode = 3
@@ -13,6 +26,7 @@ grow_vertical = 2
 script = ExtResource("1_hfbhb")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -21,8 +35,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OptionsMenu" type="PanelContainer" parent="CenterContainer"]
-custom_minimum_size = Vector2(512, 256)
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_iayhs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CenterContainer/OptionsMenu"]
+scale = Vector2(0.75, 0.75)
+sprite_frames = ExtResource("2_k6d2o")
+animation = &"open"
+frame = 3
+centered = false
 
 [node name="ButtonsMargin" type="MarginContainer" parent="CenterContainer/OptionsMenu"]
 layout_mode = 2
@@ -31,22 +53,81 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_constants/separation = 0
 
-[node name="Display" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons"]
+[node name="Display" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons" groups=["button_rich"]]
+custom_minimum_size = Vector2(833, 150)
 layout_mode = 2
 theme = ExtResource("2_vt88a")
+theme_override_styles/hover = SubResource("StyleBoxFlat_5cle6")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2cglq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_3wban")
+
+[node name="Label" type="Label" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Display"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "BUTTON_DISPLAY"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Controls" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons"]
+[node name="Controls" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons" groups=["button_rich"]]
+custom_minimum_size = Vector2(833, 150)
 layout_mode = 2
 theme = ExtResource("2_vt88a")
+
+[node name="Label" type="Label" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "BUTTON_CONTROLS"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Back" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons"]
+[node name="Audio" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons" groups=["button_rich"]]
+custom_minimum_size = Vector2(833, 150)
 layout_mode = 2
 theme = ExtResource("2_vt88a")
+theme_override_fonts/font = ExtResource("6_iayhs")
+
+[node name="Label" type="Label" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "BUTTON_AUDIO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back" type="Button" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons" groups=["button_rich"]]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 2
+theme = ExtResource("2_vt88a")
+
+[node name="Label" type="Label" parent="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Back"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "BUTTON_BACK"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="pressed" from="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Display" to="." method="_on_display_pressed"]
 [connection signal="pressed" from="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Audio" to="." method="_on_sound_pressed"]
 [connection signal="pressed" from="CenterContainer/OptionsMenu/ButtonsMargin/Buttons/Back" to="." method="_on_back_pressed"]

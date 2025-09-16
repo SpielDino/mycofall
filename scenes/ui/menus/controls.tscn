@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://iu8ed2r4ttfo"]
+[gd_scene load_steps=15 format=3 uid="uid://iu8ed2r4ttfo"]
 
 [ext_resource type="Theme" uid="uid://snlsj1gyjpyx" path="res://assets/ui_themes/bold_text.tres" id="1_ffx26"]
 [ext_resource type="Script" uid="uid://ck3kmorf4pv8t" path="res://scripts/ui/menus/controls.gd" id="1_thn1f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bu8m3e0dovb0r" path="res://assets/textures/ui_textures/menus/buttons/ButtonArrowTextureRight.png" id="4_60vt1"]
 [ext_resource type="Texture2D" uid="uid://bi538ris6js2y" path="res://assets/textures/ui_textures/menus/buttons/ButtonArrowTextureRightHover.png" id="5_iggcd"]
 [ext_resource type="PackedScene" uid="uid://dv3lnhuc5p0rd" path="res://scenes/ui/nav/keybind_button.tscn" id="7_60vt1"]
+[ext_resource type="Texture2D" uid="uid://b8yp1lruwabt6" path="res://assets/textures/ui_textures/menus/menus_wooden_background.png" id="8_iggcd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g6ee7"]
 font_size = 40
@@ -37,20 +38,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("8_iggcd")
+expand_mode = 1
 
 [node name="ControlsMenuContainer" type="VBoxContainer" parent="MarginContainer"]
 process_mode = 3
 z_index = 3
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ControlsMenuContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_top = 50
+mouse_filter = 2
 
 [node name="Titles" type="VBoxContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 20
+mouse_filter = 2
+theme_override_constants/separation = 50
 
 [node name="Controls" type="Label" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Titles"]
 layout_mode = 2

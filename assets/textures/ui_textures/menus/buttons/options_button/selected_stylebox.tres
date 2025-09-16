@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://be6lajb3dd1nn"]
+
+[ext_resource type="Texture2D" uid="uid://bbu21anngjji1" path="res://assets/textures/ui_textures/menus/buttons/options_button/selector.png" id="1_usxsh"]
+
+[resource]
+content_margin_left = 30.0
+content_margin_top = 607.0
+content_margin_right = 776.0
+content_margin_bottom = 494.0
+texture = ExtResource("1_usxsh")
+texture_margin_top = 12.0
+texture_margin_bottom = 12.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
