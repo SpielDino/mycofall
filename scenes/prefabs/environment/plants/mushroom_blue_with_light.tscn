@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://d361qs2yjvhnn"]
+
+[ext_resource type="PackedScene" uid="uid://dfhyg2i1uatsl" path="res://assets/models/plants/mushroom_blue.blend" id="1_lq2li"]
+
+[node name="MushroomBlueWithLight" type="Node3D"]
+
+[node name="mushroom_blue" parent="." instance=ExtResource("1_lq2li")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0.7, 0.1)
+light_color = Color(0.0392157, 0.192157, 1, 1)
+light_energy = 3.0
+light_size = 1.0

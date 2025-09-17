@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhomudq6rby8h"]
+
+[ext_resource type="PackedScene" uid="uid://bl7bj5arbih3i" path="res://assets/models/objects/sign_low.blend" id="1_agx2u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gri7x"]
+size = Vector3(1.50586, 1.68945, 0.21582)
+
+[node name="Sign" type="Node3D"]
+
+[node name="sign_low" parent="." instance=ExtResource("1_agx2u")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.785693, 0.0404916)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_gri7x")

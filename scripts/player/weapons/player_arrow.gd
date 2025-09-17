@@ -42,7 +42,8 @@ func attack(body):
 	elif body.is_in_group("target_dummy"):
 		total_dmg = dmg * extra_dmg
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
-		body.play_animations(false)
+		if body.get_node_or_null("AnimationPlayer"):
+			body.play_animations(false)
 		if dmg_position:
 			DamageNumbers.display_number(total_dmg + upgrade_dmg, dmg_position.global_position)
 		# Normal or somewhat charged Bow Attack

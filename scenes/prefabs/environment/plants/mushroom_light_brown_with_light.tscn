@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://ctkubjmtiqs5r"]
+
+[ext_resource type="PackedScene" uid="uid://bajgyadyyn224" path="res://assets/models/plants/pilz_variation.blend" id="1_memh3"]
+
+[node name="MushroomLightBrownWithLight" type="Node3D"]
+
+[node name="pilz_variation" parent="." instance=ExtResource("1_memh3")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00603735, 0.1425, 0)
+light_color = Color(0.364706, 0.188235, 0, 1)
+light_energy = 2.0
+omni_range = 3.0

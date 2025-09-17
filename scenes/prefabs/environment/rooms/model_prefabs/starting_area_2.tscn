@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvn4l4oivuwns"]
+
+[ext_resource type="PackedScene" uid="uid://cq4t7cf0yykj3" path="res://placeholder/nikolai/StaringArea.blend" id="1_2403d"]
+
+[node name="StartingArea" type="Node3D"]
+
+[node name="StaringArea" parent="." instance=ExtResource("1_2403d")]
+
+[editable path="StaringArea"]

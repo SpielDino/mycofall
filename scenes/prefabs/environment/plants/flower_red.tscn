@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ohq5jrirh6j"]
+
+[ext_resource type="PackedScene" uid="uid://q5chibmnw4rb" path="res://assets/models/plants/blume_rot_low.blend" id="1_j3n8w"]
+
+[node name="FlowerRed" type="Node3D"]
+
+[node name="blume_rot_low" parent="." instance=ExtResource("1_j3n8w")]

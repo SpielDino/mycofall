@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ds3tkyhmy35y3"
-path="res://.godot/imported/rock_two_low.blend-4823715f9957b311d92faff4d40b33e0.scn"
+uid="uid://bcjd5s2bm5m5c"
+path="res://.godot/imported/steinhaufen_low_with_collision.blend-92026edba785ae48270e23d498467720.scn"
 
 [deps]
 
-source_file="res://assets/models/rocks/rock_two_low.blend"
-dest_files=["res://.godot/imported/rock_two_low.blend-4823715f9957b311d92faff4d40b33e0.scn"]
+source_file="res://assets/models/rocks/steinhaufen_low_with_collision.blend"
+dest_files=["res://.godot/imported/steinhaufen_low_with_collision.blend-92026edba785ae48270e23d498467720.scn"]
 
 [params]
 
@@ -32,16 +32,7 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Collision": {
-"import/skip_import": true
-},
-"PATH:Point": {
-"import/skip_import": true
-}
-}
-}
+_subresources={}
 blender/nodes/visible=0
 blender/nodes/active_collection_only=false
 blender/nodes/punctual_lights=true

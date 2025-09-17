@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c3c650unruhvy"]
+[gd_scene load_steps=18 format=3 uid="uid://c3c650unruhvy"]
 
 [ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="1_ch4m0"]
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="1_m28bg"]
@@ -7,6 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="3_h0rvv"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="5_ch4m0"]
 [ext_resource type="PackedScene" uid="uid://bq5qig7o50lrw" path="res://scenes/prefabs/environment/interactables/dynamic/upgrade_material.tscn" id="6_gexbg"]
+[ext_resource type="PackedScene" uid="uid://bohnf5vipujed" path="res://scenes/prefabs/environment/interactables/dynamic/bonfire.tscn" id="7_axl6w"]
+[ext_resource type="PackedScene" uid="uid://rddwidjpmb55" path="res://scenes/prefabs/environment/rooms/level_rooms/training_room.tscn" id="7_oxph1"]
+[ext_resource type="PackedScene" uid="uid://c4pocta6ava2v" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy_ranged_with_stand.tscn" id="8_edm6o"]
+[ext_resource type="PackedScene" uid="uid://dhomudq6rby8h" path="res://scenes/prefabs/environment/interactables/dynamic/sign.tscn" id="9_pumad"]
+[ext_resource type="PackedScene" uid="uid://d1yh026p2wrjl" path="res://scenes/prefabs/environment/plants/flower_blue.tscn" id="10_vasgb"]
+[ext_resource type="PackedScene" uid="uid://c0pijk8wufkjf" path="res://scenes/prefabs/environment/rocks/rock_with_collision.tscn" id="11_pjour"]
+[ext_resource type="PackedScene" uid="uid://ccukqp13cjs4k" path="res://scenes/prefabs/environment/rocks/stone_pile_with_collision.tscn" id="12_224vm"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]
 panorama = ExtResource("1_m28bg")
@@ -32,6 +39,7 @@ script = ExtResource("1_ch4m0")
 [node name="Ground" type="Node3D" parent="WorldEnvironment/World"]
 
 [node name="GrassGroundWithCollision" parent="WorldEnvironment/World/Ground" instance=ExtResource("1_vmj8w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0326524, 0)
 
 [node name="Objects" type="Node3D" parent="WorldEnvironment/World"]
 
@@ -69,6 +77,29 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8628, 0.979875, -11.4661)
 
 [node name="UpgradeMaterial3" parent="WorldEnvironment/World/Objects" instance=ExtResource("6_gexbg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7618, 0.979875, -11.4661)
+
+[node name="Bonfire" parent="WorldEnvironment/World/Objects" instance=ExtResource("7_axl6w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.36437, 0.0980916, -3.38523)
+
+[node name="TrainingDummyRangedStand" parent="WorldEnvironment/World/Objects" instance=ExtResource("8_edm6o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7622, 0, -0.170486)
+
+[node name="Sign" parent="WorldEnvironment/World/Objects" instance=ExtResource("9_pumad")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.16829, 0.849814, -8.41006)
+
+[node name="FlowerBlue" parent="WorldEnvironment/World/Objects" instance=ExtResource("10_vasgb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -7)
+
+[node name="RockWithCollision" parent="WorldEnvironment/World/Objects" instance=ExtResource("11_pjour")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10483, 0.400875, -7.44439)
+
+[node name="StonePile" parent="WorldEnvironment/World/Objects" instance=ExtResource("12_224vm")]
+transform = Transform3D(-0.997233, 0, -0.0743347, 0, 1, 0, 0.0743347, 0, -0.997233, -11.3821, 0.103938, -6.58363)
+
+[node name="TestRooms" type="Node3D" parent="WorldEnvironment/World"]
+
+[node name="TrainingRoom" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("7_oxph1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51916, 0, -6.50049)
 
 [node name="Player" parent="WorldEnvironment" instance=ExtResource("5_ch4m0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23659, 0)

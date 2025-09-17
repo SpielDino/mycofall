@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://buas8giycjnv3"]
+
+[ext_resource type="PackedScene" uid="uid://mat52uog4sa4" path="res://assets/models/rocks/rock_one_low.blend" id="1_ssjlj"]
+
+[node name="Rock" type="Node3D"]
+
+[node name="rock_one_low" parent="." instance=ExtResource("1_ssjlj")]

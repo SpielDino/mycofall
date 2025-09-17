@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ds3tkyhmy35y3"
-path="res://.godot/imported/rock_two_low.blend-4823715f9957b311d92faff4d40b33e0.scn"
+uid="uid://cx14oe3y64gqg"
+path="res://.godot/imported/rock_two_low_with_collision.blend-6295ef34ee4266a95e2d3bfb4be85959.scn"
 
 [deps]
 
-source_file="res://assets/models/rocks/rock_two_low.blend"
-dest_files=["res://.godot/imported/rock_two_low.blend-4823715f9957b311d92faff4d40b33e0.scn"]
+source_file="res://assets/models/rocks/rock_two_low_with_collision.blend"
+dest_files=["res://.godot/imported/rock_two_low_with_collision.blend-6295ef34ee4266a95e2d3bfb4be85959.scn"]
 
 [params]
 
@@ -34,9 +34,6 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Collision": {
-"import/skip_import": true
-},
 "PATH:Point": {
 "import/skip_import": true
 }

@@ -34,7 +34,8 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		if dmg_position:
 			DamageNumbers.display_number(dmg + upgrade_dmg, dmg_position.global_position)
-		body.play_animations(false)
+		if body.get_node_or_null("AnimationPlayer"):
+			body.play_animations(false)
 		queue_free()
 	else:
 		queue_free()

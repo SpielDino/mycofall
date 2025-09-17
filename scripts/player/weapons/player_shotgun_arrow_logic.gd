@@ -45,7 +45,8 @@ func attack(body):
 				randf_range(-0.3, 0.3)   # Z-axis offset
 			)
 			DamageNumbers.display_number(dmg + upgrade_dmg, pos + offset)
-		body.play_animations(true)
+		if body.get_node_or_null("AnimationPlayer"):
+			body.play_animations(true)
 	elif body.is_in_group("weapon"):
 		pass
 	else:

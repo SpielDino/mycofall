@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://0vq70cok7n80" path="res://placeholder/nikolai/grass.gd" id="5_0tif6"]
 [ext_resource type="ArrayMesh" uid="uid://crs55cs1f80g3" path="res://placeholder/nikolai/Grass_Bunch_Mesh.res" id="5_c5lhh"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="6_maw6l"]
-[ext_resource type="PackedScene" uid="uid://b26isw1yinffy" path="res://placeholder/nikolai/TreeStumpHouse.tscn" id="10_c5lhh"]
+[ext_resource type="PackedScene" uid="uid://b26isw1yinffy" path="res://scenes/prefabs/environment/rooms/model_prefabs/TreeStumpHouse.tscn" id="10_c5lhh"]
 [ext_resource type="PackedScene" uid="uid://dgnex5i27htbn" path="res://placeholder/nikolai/Bushtest2.tscn" id="11_72yyy"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]
@@ -48,6 +48,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [node name="Ground" type="Node3D" parent="WorldEnvironment/World"]
 
 [node name="Ground Normal Grass (50x50)" parent="WorldEnvironment/World/Ground" instance=ExtResource("4_c5lhh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0150986, 0)
 
 [node name="GrassGroundWithCollision" parent="WorldEnvironment/World/Ground" instance=ExtResource("3_ullxm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0503063, 0)

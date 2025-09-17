@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://sdy26vvq4yux"]
 
-[ext_resource type="PackedScene" uid="uid://cq4t7cf0yykj3" path="res://placeholder/nikolai/StaringArea.blend" id="1_vplab"]
-[ext_resource type="Script" uid="uid://36n8nb5ku5s2" path="res://placeholder/nikolai/door.gd" id="2_m8nky"]
+[ext_resource type="PackedScene" uid="uid://cq4t7cf0yykj3" path="res://placeholder/nikolai/StaringArea.blend" id="1_nff5f"]
+[ext_resource type="Script" uid="uid://36n8nb5ku5s2" path="res://placeholder/nikolai/door.gd" id="2_8hjkn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5i4iq"]
 size = Vector3(1, 7.59418, 7.96411)
@@ -9,11 +9,11 @@ size = Vector3(1, 7.59418, 7.96411)
 [sub_resource type="BoxShape3D" id="BoxShape3D_b64ow"]
 size = Vector3(6.828, 6.49359, 6.84766)
 
-[node name="StaringArea" instance=ExtResource("1_vplab")]
+[node name="StaringArea" instance=ExtResource("1_nff5f")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
 
 [node name="Door" parent="Start" index="0"]
-script = ExtResource("2_m8nky")
+script = ExtResource("2_8hjkn")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Start/Door" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74094, -3.48206)

@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b0qv5ltifbks8" path="res://scenes/prefabs/environment/objects/kessel.tscn" id="2_f2g8l"]
 [ext_resource type="ArrayMesh" uid="uid://c1vtlrfbbnbwk" path="res://placeholder/nikolai/Starting Area/Mesh/Ranken_Mesh.res" id="7_26ekt"]
 [ext_resource type="PackedScene" uid="uid://bkbmihcyno6ck" path="res://scenes/prefabs/environment/objects/berry_bag.tscn" id="9_26ekt"]
-[ext_resource type="PackedScene" uid="uid://sdy26vvq4yux" path="res://scenes/prefabs/environment/staring_area.tscn" id="9_bsp7m"]
+[ext_resource type="PackedScene" uid="uid://sdy26vvq4yux" path="res://scenes/prefabs/environment/rooms/model_prefabs/staring_area.tscn" id="9_bsp7m"]
 [ext_resource type="PackedScene" uid="uid://0nfw5mc4miwb" path="res://placeholder/nikolai/Starting Area/treasure_chest.blend" id="9_rovlm"]
 [ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="12_6vrq5"]
 [ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="13_h5lgc"]

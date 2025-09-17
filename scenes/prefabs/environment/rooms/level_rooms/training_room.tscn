@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=3 uid="uid://rddwidjpmb55"]
+
+[ext_resource type="PackedScene" uid="uid://cvn4l4oivuwns" path="res://scenes/prefabs/environment/rooms/model_prefabs/starting_area_2.tscn" id="1_pepvg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pepvg"]
+size = Vector3(1, 15, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vryqh"]
+size = Vector3(1, 15, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5rmiq"]
+size = Vector3(1, 15, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f6dbe"]
+size = Vector3(1, 10, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p65oq"]
+size = Vector3(1, 10, 8)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tywin"]
+size = Vector3(1, 10, 6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2nb2s"]
+size = Vector3(1, 10, 6)
+
+[node name="TrainingRoom" type="Node3D"]
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="StartingArea" parent="Walls" instance=ExtResource("1_pepvg")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="ExtraCollidersForBetterCamera" type="Node3D" parent="Walls"]
+
+[node name="BackWallColliderLeft" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
+transform = Transform3D(-0.461207, 0, -0.887293, 0, 1, 0, 0.887293, 0, -0.461207, -3.63474, 0, 11.5763)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderLeft"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+shape = SubResource("BoxShape3D_pepvg")
+
+[node name="BackWallColliderLeft2" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
+transform = Transform3D(-0.626862, 0, -0.77913, 0, 1, 0, 0.77913, 0, -0.626862, -9.74986, 0, 7.90088)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderLeft2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+shape = SubResource("BoxShape3D_vryqh")
+
+[node name="BackWallColliderMiddle" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
+transform = Transform3D(0.140625, 0, -0.990063, 0, 1, 0, 0.990063, 0, 0.140625, 2.95018, 0, 13.344)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderMiddle"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
+shape = SubResource("BoxShape3D_5rmiq")
+
+[node name="BackWallColliderRight" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
+transform = Transform3D(0.715229, 0, -0.69889, 0, 1, 0, 0.69889, 0, 0.715229, 6.097, 10, 10.505)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderRight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535196, 0, -0.921858)
+shape = SubResource("BoxShape3D_f6dbe")
+
+[node name="BackWallColliderRight2" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
+transform = Transform3D(0.914473, 0, -0.404647, 0, 1, 0, 0.404647, 0, 0.914473, 11.8979, 2.98371, 4.09818)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderRight2"]
+shape = SubResource("BoxShape3D_p65oq")
+
+[node name="BackWallColliderRight3" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
+transform = Transform3D(0.715229, 0, -0.69889, 0, 1, 0, 0.69889, 0, 0.715229, 7.59875, 2.96653, 10.3596)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderRight3"]
+shape = SubResource("BoxShape3D_f6dbe")
+
+[node name="BackWallColliderRight4" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
+transform = Transform3D(0.911375, 0, -0.411578, 0, 1, 0, 0.411578, 0, 0.911375, 11.0279, 10, 4.9607)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderRight4"]
+shape = SubResource("BoxShape3D_tywin")
+
+[node name="BackWallColliderRight5" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
+transform = Transform3D(0.999526, 0, -0.0308003, 0, 1, 0, 0.0308003, 0, 0.999526, 12.3488, 10, -0.373999)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderRight5"]
+shape = SubResource("BoxShape3D_2nb2s")
+
+[node name="Objects" type="Node3D" parent="."]

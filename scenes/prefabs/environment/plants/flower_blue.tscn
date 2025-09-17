@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1yh026p2wrjl"]
+
+[ext_resource type="PackedScene" uid="uid://63k5p2hgfhqq" path="res://assets/models/plants/blume_blau_low.blend" id="1_nbtqu"]
+
+[node name="FlowerBlue" type="Node3D"]
+
+[node name="blume_blau_low" parent="." instance=ExtResource("1_nbtqu")]

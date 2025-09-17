@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://tp0yu0ocu3ei"]
+
+[ext_resource type="PackedScene" uid="uid://cx14oe3y64gqg" path="res://assets/models/rocks/rock_two_low_with_collision.blend" id="1_hkj6k"]
+
+[node name="Rock2WithCollision" type="Node3D"]
+
+[node name="rock_two_low_with_collision" parent="." instance=ExtResource("1_hkj6k")]
