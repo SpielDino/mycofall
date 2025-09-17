@@ -587,7 +587,6 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-251.961, -96.2349)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")
 nodes/BlockAnimation/position = Vector2(2680, 360)
 nodes/BowAnimation/node = SubResource("AnimationNodeBlend2_6ei3l")

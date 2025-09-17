@@ -6,6 +6,7 @@ extends Node3D
 
 var extra_dmg
 var total_dmg
+var upgrade_dmg: int = 0
 
 func _physics_process(delta: float) -> void:
 	moving(delta)
@@ -24,12 +25,13 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 
 func attack(body):
 	extra_dmg = GameManager.get_bow_attack_timer()
+	get_upgrade_dmg()
 	if body.is_in_group("Enemy"):
 		total_dmg = dmg * extra_dmg
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		if dmg_position:
-			DamageNumbers.display_number(total_dmg, dmg_position.global_position)
-		body.take_damage(total_dmg, "Bow")
+			DamageNumbers.display_number(total_dmg + upgrade_dmg, dmg_position.global_position)
+		body.take_damage(total_dmg + upgrade_dmg, "Bow")
 		# Normal or somewhat charged Bow Attack
 		if extra_dmg < 4:
 			queue_free()
@@ -42,7 +44,7 @@ func attack(body):
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		body.play_animations(false)
 		if dmg_position:
-			DamageNumbers.display_number(total_dmg, dmg_position.global_position)
+			DamageNumbers.display_number(total_dmg + upgrade_dmg, dmg_position.global_position)
 		# Normal or somewhat charged Bow Attack
 		if extra_dmg < 4:
 			queue_free()
@@ -53,3 +55,17 @@ func attack(body):
 		pass
 	else:
 		queue_free()
+
+func get_upgrade_dmg():
+	if GameManager.get_first_weapon_name() == "Bow":
+		match GameManager.get_first_weapon_upgrade_level():
+			2:
+				upgrade_dmg = 10
+			3:
+				upgrade_dmg = 20
+	elif GameManager.get_second_weapon_name() == "Bow":
+		match GameManager.get_second_weapon_upgrade_level():
+			2:
+				upgrade_dmg = 10
+			3:
+				upgrade_dmg = 20

@@ -8,6 +8,7 @@ var hit_bodies := {}   # Dictionary or Set to remember which dummies/enemies are
 var timer := 0.0
 var heavy_dmg: int = 200
 var is_heavy_dmg: bool = false
+var upgrade_dmg: int = 0
 
 func _physics_process(delta: float) -> void:
 	if hit_bodies.size() > 0:
@@ -17,6 +18,7 @@ func _physics_process(delta: float) -> void:
 			timer = 0.0
 
 func _on_body_entered(body: Node3D) -> void:
+	get_upgrade_dmg()
 	if body.is_in_group("Enemy"):
 		hitting_enemy(body)
 		hitting_with_shield.emit()
@@ -31,10 +33,10 @@ func hitting_enemy(body: Node3D) -> void:
 			is_heavy_dmg = true
 		else:
 			is_heavy_dmg = false
-		body.take_damage(heavy_dmg, "Sword")
+		body.take_damage(heavy_dmg + upgrade_dmg, "Sword")
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		if dmg_position:
-			DamageNumbers.display_number(heavy_dmg, dmg_position.global_position)
+			DamageNumbers.display_number(heavy_dmg + upgrade_dmg, dmg_position.global_position)
 		hit_bodies[body] = true   # mark this body as hit
 
 func hitting_target_dummy(body: Node3D) -> void:
@@ -46,5 +48,12 @@ func hitting_target_dummy(body: Node3D) -> void:
 		body.play_animations(is_heavy_dmg)
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		if dmg_position:
-			DamageNumbers.display_number(heavy_dmg, dmg_position.global_position)
+			DamageNumbers.display_number(heavy_dmg + upgrade_dmg, dmg_position.global_position)
 		hit_bodies[body] = true
+
+func get_upgrade_dmg():
+	match GameManager.get_first_weapon_upgrade_level():
+		2:
+			upgrade_dmg = 10
+		3:
+			upgrade_dmg = 20
