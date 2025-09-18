@@ -6,7 +6,6 @@ extends CharacterBody3D
 @export var vel: Vector3 = Vector3(1,0,0)
 @export var explopsion_life_timer: float = 3
 
-var delayValue: float = 0
 var blockCostModifier: float = 0
 var has_hit = false
 var is_in_slow_area: bool = false
@@ -24,7 +23,6 @@ func setBlockCostModifier(value):
 	blockCostModifier = value
 
 func _physics_process(delta):
-
 	if has_hit:
 		explopsion_life_timer -= delta
 		if explopsion_life_timer >= 0:
@@ -42,7 +40,6 @@ func explosion():
 	has_hit = true
 	explosion_effect.restart()
 	explosion_effect.emitting = true
-	projectile_effect.emitting = false
 
 func slow_player():
 	if is_in_slow_area:

@@ -6,28 +6,35 @@ enum States {NONE, IDLE, ATTACK_TYPE_1, ATTACK_TYPE_2, MOVING, SEARCHING, PATROL
 @export_subgroup("Enemy Stats")
 @export var health: int = 300
 
-@export_subgroup("Attack Stats")
-@export var attackDamage: int = 10
-@export var attackSpeed: float = 1
-@export var attackDelay: float = 0
-
-var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+@export_group("Death Effect")
+@export var has_death_animation: bool = true
+@export var death_animation_name: String = "Die"
+@export var death_animation_time: float = 0
+@export var has_death_particles: bool = true
+@export var death_particles_time: float = 3
 
 var player
+
 var state = States.NONE
-var deathTimer: float = 10
+var died: bool = false
+var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var model = $Model
 @onready var animation_player = $Model/AnimationPlayer
+@onready var death_spores = $DeathSpores
 
 func _ready():
 	player = GlobalPlayer.get_player()
 
-func _physics_process(delta):
-	if health <= 0:
-		die()
-
 func die():
+	if has_death_animation:
+		animation_player.play("Die")
+	await get_tree().create_timer(death_animation_time).timeout
+	model.visible = false
+	if has_death_particles: 
+		death_spores.restart()
+		death_spores.emitting = true
+		await get_tree().create_timer(death_particles_time).timeout
 	queue_free()
 	
 func detect_player_raycast():
@@ -48,8 +55,9 @@ func detect_player_raycast():
 func take_damage(damage: int, type: String, has_knockback: bool = false, knockback_strenght: float = 0):
 	health -= damage
 	#$AudioStreamPlayer3D.play()
-	if health <= 0 and deathTimer == 10:
-		deathTimer = 8
+	if health <= 0 and !died:
+		died = true
+		die()
 		if type == "Bow":
 			PlayerActionTracker.bow_kills += 1
 		if type == "Staff":

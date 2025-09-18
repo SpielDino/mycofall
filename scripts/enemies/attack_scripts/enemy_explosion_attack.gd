@@ -7,9 +7,10 @@ extends Node
 
 var enemy
 var player
-var is_in_attack_area: bool = false
+
 var is_in_damage_area: bool = false
 var has_taken_damage: bool = false
+var started: bool = false
 
 @onready var paricles = $Explosion
 
@@ -18,16 +19,17 @@ func _ready():
 	enemy = get_parent()
 
 func _physics_process(delta):
-	attack(delta)
+	if enemy.state == enemy.States.MOVING and !started:
+		started = true
+		await get_tree().create_timer(lifetime).timeout
+		attack()
 
-func attack(delta):
-	if is_in_attack_area or attack_delay < 1:
-		attack_delay -= delta
-		if attack_delay <= 1:
-			enemy.state = enemy.States.ATTACK_TYPE_1
-			explode()
-		if attack_delay <= 0:
-			enemy.queue_free()
+func attack():
+	enemy.state = enemy.States.ATTACK_TYPE_1
+	explode()
+	var time_betweeen_explosion_and_queue_free: float = 1
+	await get_tree().create_timer(time_betweeen_explosion_and_queue_free).timeout
+	enemy.queue_free()
 
 func explode():
 	paricles.emitting = true
@@ -40,7 +42,7 @@ func explode():
 
 func _on_attack_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		is_in_attack_area = true
+		attack()
 
 func _on_damage_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):

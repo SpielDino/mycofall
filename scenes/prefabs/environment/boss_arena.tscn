@@ -1,8 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba41x6dsesffj"]
+[gd_scene load_steps=16 format=3 uid="uid://ba41x6dsesffj"]
 
 [ext_resource type="PackedScene" uid="uid://bwj6pug7ynn0w" path="res://assets/models/objects/boss_arena.blend" id="1_0kxlj"]
 [ext_resource type="PackedScene" uid="uid://drlemy28oey25" path="res://scenes/prefabs/enemies/boss_enemy.tscn" id="2_gxlpy"]
 [ext_resource type="Script" uid="uid://00uphphb8ycg" path="res://scripts/enemies/boss/boss_behaviour.gd" id="3_32f48"]
+[ext_resource type="PackedScene" uid="uid://bajgyadyyn224" path="res://assets/models/plants/pilz_variation.blend" id="4_mbyuj"]
+[ext_resource type="PackedScene" uid="uid://phgi17bg7mp" path="res://assets/models/trees/baum_ast_low.blend" id="5_n1w4t"]
+[ext_resource type="PackedScene" uid="uid://thunoyjj5mk2" path="res://scenes/prefabs/environment/miscellaneous/bag_deco_bundle.tscn" id="6_wc8xk"]
+[ext_resource type="PackedScene" uid="uid://cklu4kmm25cf8" path="res://placeholder/nikolai/Starting Area/Ranke.blend" id="6_y413d"]
+[ext_resource type="PackedScene" uid="uid://bpb4d1ltxhf3" path="res://placeholder/nikolai/Starting Area/Ranke1.blend" id="7_wc8xk"]
+[ext_resource type="PackedScene" uid="uid://dhc4r6htqfqwe" path="res://scenes/prefabs/environment/miscellaneous/berry_lamp.tscn" id="9_l07jc"]
+[ext_resource type="PackedScene" uid="uid://mat52uog4sa4" path="res://assets/models/rocks/rock_one_low.blend" id="10_v8346"]
+[ext_resource type="PackedScene" uid="uid://bt0pke3hlejyd" path="res://assets/models/rocks/steinhaufen_low.blend" id="11_12jc1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gxlpy"]
 size = Vector3(11.9692, 11.5973, 1.91995)
@@ -49,6 +57,72 @@ script = ExtResource("3_32f48")
 [node name="Spawnpoints" type="Node3D" parent="."]
 
 [node name="Movepoints" type="Node3D" parent="."]
+
+[node name="Decoration" type="Node3D" parent="."]
+
+[node name="pilz_variation" parent="Decoration" instance=ExtResource("4_mbyuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6162, 7.01607, 0.551618)
+
+[node name="pilz_variation2" parent="Decoration" instance=ExtResource("4_mbyuj")]
+transform = Transform3D(0.286335, -0.160605, -0.944573, 0.0465916, 0.987019, -0.153698, 0.956996, 0, 0.290101, 30.7128, 6.95546, 0.767343)
+
+[node name="pilz_variation3" parent="Decoration" instance=ExtResource("4_mbyuj")]
+transform = Transform3D(0.935709, -0.346163, -0.0679709, 0.352773, 0.918176, 0.180289, -2.56425e-09, -0.192676, 0.981262, 31.9541, 6.9982, -0.275805)
+
+[node name="baum_ast_low" parent="Decoration" instance=ExtResource("5_n1w4t")]
+transform = Transform3D(-0.949825, 0, 0.312782, 0, 1, 0, -0.312782, 0, -0.949825, -26.3881, 7.23388, 16.409)
+
+[node name="Bag Deco Bundle" parent="Decoration" instance=ExtResource("6_wc8xk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17495, 8.78619, 29.8862)
+
+[node name="Vines" type="Node3D" parent="Decoration"]
+
+[node name="Ranke" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(0.523822, 0, -0.851828, 0, 1, 0, 0.851828, 0, 0.523822, 18.7935, 5.41212, -24.1905)
+
+[node name="Ranke1" parent="Decoration/Vines" instance=ExtResource("7_wc8xk")]
+transform = Transform3D(-0.980765, -0.0814533, -0.177386, -7.53136e-09, 0.908771, -0.417296, 0.195193, -0.409269, -0.89129, -12.2554, 3.78541, -22.0206)
+
+[node name="Ranke2" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(0.201633, -0.381244, -0.902218, 0.39495, 0.874577, -0.281299, 0.896303, -0.299611, 0.326916, 27.2204, 5.41212, -18.5335)
+
+[node name="Ranke3" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(-0.148292, 0.501343, -0.852446, -0.793875, 0.453663, 0.404912, 0.589723, 0.73678, 0.330729, 22.2223, 14.8971, -21.371)
+
+[node name="Ranke4" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(0.818491, 0, -0.57452, 0, 1, 0, 0.57452, 0, 0.818491, 7.58376, 5.41212, -30.2361)
+
+[node name="Ranke5" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(0.660136, 0.603501, -0.447222, -0.670203, 0.742078, 0.0121193, 0.339188, 0.291729, 0.894341, 6.61436, 5.41212, -30.8191)
+
+[node name="Ranke6" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(-0.403322, -0.605524, 0.686056, -0.186489, 0.788397, 0.586218, -0.895854, 0.108493, -0.430901, 7.08391, 4.54491, 27.8368)
+
+[node name="Ranke7" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(-0.99675, -0.0797814, 0.0111628, -0.0765598, 0.98125, 0.176883, -0.0250652, 0.175453, -0.984169, -5.12254, 4.48415, 28.4076)
+
+[node name="Ranke8" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(-0.478426, -0.087646, 0.873744, -0.157874, 0.987379, 0.0125994, -0.86382, -0.131914, -0.486224, -20.9791, 4.48415, 24.1105)
+
+[node name="Lamps" type="Node3D" parent="Decoration"]
+
+[node name="BerryLamp" parent="Decoration/Lamps" instance=ExtResource("9_l07jc")]
+transform = Transform3D(0.761278, 0, -0.648426, 0, 1, 0, 0.648426, 0, 0.761278, -19.4967, 18.0307, 21.4679)
+
+[node name="BerryLamp2" parent="Decoration/Lamps" instance=ExtResource("9_l07jc")]
+transform = Transform3D(-0.983356, 0, 0.181687, 0, 1, 0, -0.181687, 0, -0.983356, 10.8801, 15.8961, -26.9736)
+
+[node name="BerryLamp3" parent="Decoration/Lamps" instance=ExtResource("9_l07jc")]
+transform = Transform3D(-0.841001, 0, -0.541033, 0, 1, 0, 0.541033, 0, -0.841001, -14.5342, 18.3045, -25.1638)
+
+[node name="BerryLamp4" parent="Decoration/Lamps" instance=ExtResource("9_l07jc")]
+transform = Transform3D(0.105657, 0, 0.994403, 0, 1, 0, -0.994403, 0, 0.105657, 29.4265, 20.3167, -2.57818)
+
+[node name="rock_one_low" parent="Decoration" instance=ExtResource("10_v8346")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3923, 7.18894, 5.30131)
+
+[node name="steinhaufen_low" parent="." instance=ExtResource("11_12jc1")]
+transform = Transform3D(-0.78903, 0, -0.614354, 0, 1, 0, 0.614354, 0, -0.78903, -11.7978, 7.23399, -29.872)
 
 [editable path="boss_arena"]
 [editable path="BossEnemy"]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://thunoyjj5mk2"]
+
+[ext_resource type="PackedScene" uid="uid://bfiaoxgew6ul5" path="res://placeholder/nikolai/Starting Area/Bag.blend" id="1_t01gb"]
+[ext_resource type="PackedScene" uid="uid://c5bio13knmcrs" path="res://assets/models/plants/mushroom.blend" id="2_8k468"]
+[ext_resource type="PackedScene" uid="uid://x1kj8i7ytkc1" path="res://assets/models/plants/grass.blend" id="3_g7m73"]
+[ext_resource type="PackedScene" uid="uid://ul7ynyufja53" path="res://assets/models/plants/bush_low.blend" id="4_gjhsg"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v8346"]
+size = Vector3(4.17725, 5.16342, 5.55396)
+
+[node name="Bag Deco Bundle" type="Node3D"]
+
+[node name="Bag2" parent="." instance=ExtResource("1_t01gb")]
+transform = Transform3D(1, -2.98023e-08, 2.98023e-08, -5.96046e-08, 1, 1.49012e-08, -2.98023e-08, -2.98023e-08, 1, -0.492726, -0.792662, 0.898302)
+
+[node name="Bag3" parent="." instance=ExtResource("1_t01gb")]
+transform = Transform3D(0.345757, -2.98023e-08, 0.938324, 1.49012e-08, 1, -2.98023e-08, -0.938324, -2.98023e-08, 0.345757, 1.50615, -1.16042, 1.02276)
+
+[node name="Bag4" parent="." instance=ExtResource("1_t01gb")]
+transform = Transform3D(0.791842, -0.187023, 0.581385, 0.229863, 0.973223, -3.72529e-08, -0.565817, 0.133639, 0.813629, 0.098264, -1.36814, -2.25901)
+
+[node name="Bag5" parent="." instance=ExtResource("1_t01gb")]
+transform = Transform3D(0.50504, -2.98023e-08, -0.863096, -3.72529e-09, 1, 2.98023e-08, 0.863096, -2.98023e-08, 0.50504, 0.524371, -1.15924, -0.551889)
+
+[node name="Bag6" parent="." instance=ExtResource("1_t01gb")]
+transform = Transform3D(0.896146, -2.98023e-08, -0.44376, -1.49012e-08, 1, 2.98023e-08, 0.44376, -2.98023e-08, 0.896146, -1.07043, -1.02731, -0.931936)
+
+[node name="mushroom" parent="." instance=ExtResource("2_8k468")]
+transform = Transform3D(0.19843, -1.49012e-08, 0.45894, 0, 0.5, 1.49012e-08, -0.45894, -1.49012e-08, 0.19843, 1.49231, -0.893615, 1.12001)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="mushroom"]
+transform = Transform3D(0.793719, -3.10552e-08, -1.83576, -5.47099e-08, 2, -2.36547e-08, 1.83576, 7.83645e-08, 0.793719, 2.7333, 1.37721, -2.93824)
+light_color = Color(1, 0, 1, 1)
+
+[node name="mushroom2" parent="." instance=ExtResource("2_8k468")]
+transform = Transform3D(1, -2.98023e-08, 2.98023e-08, -5.96046e-08, 1, 1.49012e-08, -2.98023e-08, -2.98023e-08, 1, -0.73853, -0.467967, 1.02894)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="mushroom2"]
+transform = Transform3D(1, 2.98023e-08, -2.98023e-08, 5.96046e-08, 1, -1.49012e-08, 2.98023e-08, 2.98023e-08, 1, 2.32551, -0.127807, 0.07127)
+light_color = Color(1, 0, 1, 1)
+
+[node name="mushroom3" parent="." instance=ExtResource("2_8k468")]
+transform = Transform3D(0.036123, -2.98023e-08, 0.799184, 0, 0.8, -2.98023e-08, -0.799184, 7.45058e-09, 0.0361229, 0.571719, -0.737496, -0.553679)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="mushroom3"]
+transform = Transform3D(0.0564421, 1.37323e-08, -1.24872, 4.65186e-08, 1.25, 2.10263e-09, 1.24872, 4.5993e-08, 0.0564421, -2.14087, 0.670979, -1.30892)
+light_color = Color(1, 0, 1, 1)
+
+[node name="grass" parent="." instance=ExtResource("3_g7m73")]
+transform = Transform3D(0.5, -1.49012e-08, 1.49012e-08, -2.98023e-08, 0.5, 7.45058e-09, -1.49012e-08, -1.49012e-08, 0.5, 0.0950463, -0.975122, -2.20784)
+
+[node name="bush_low" parent="." instance=ExtResource("4_gjhsg")]
+transform = Transform3D(0.5, -1.49012e-08, 1.49012e-08, -2.98023e-08, 0.5, 7.45058e-09, -1.49012e-08, -1.49012e-08, 0.5, -0.997655, -0.724173, -0.986635)
+
+[node name="Collision" type="StaticBody3D" parent="." groups=["World"]]
+transform = Transform3D(1, -2.98023e-08, 2.98023e-08, -5.96046e-08, 1, 1.49012e-08, -2.98023e-08, -2.98023e-08, 1, 0.246244, 0.681557, -0.677313)
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="Collision" groups=["World"]]
+transform = Transform3D(0.982044, 0, 0.18865, 0, 1, 0, -0.18865, 0, 0.982044, 0, 0, 0)
+shape = SubResource("BoxShape3D_v8346")

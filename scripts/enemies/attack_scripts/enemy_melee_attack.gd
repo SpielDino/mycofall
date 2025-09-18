@@ -33,7 +33,7 @@ func attack(delta):
 	if is_in_inner_attack_area:
 		is_attacking = true
 		enemy.state = enemy.States.ATTACK_TYPE_1
-	if is_attacking and enemy.deathTimer == 10:
+	if is_attacking and !enemy.died:
 		enemy.animation_player.speed_scale = 1
 		enemy.animation_player.play("Bump")
 		if attack_cooldown <= 5.42 and attack_cooldown > 5:

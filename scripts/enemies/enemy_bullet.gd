@@ -10,7 +10,6 @@ extends CharacterBody3D
 
 var isTracking: bool = false
 var trackingDelay: float = 0
-var delayValue: float = 0
 var blockCostModifier: float = 0
 
 func setParameter(playerInput: Node3D, damageInput: float, speedInput: float, trackingRadiusInput: float, trackingStrengthInput: float, velInput: Vector3, lifetimeInput: float):

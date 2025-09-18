@@ -14,12 +14,9 @@ extends Node3D
 var enemy
 var player
 
-var is_attacking = false
 var attack_cooldown: float = 0
-var got_attacked_time: float = 0
 var throw_timer: float = 0
 var punch_timer: float = 0
-
 var idle_timer: float = 0
 var in_melee_range: bool = false
 var in_melee_damage_area: bool = false
@@ -38,7 +35,7 @@ func _physics_process(delta):
 		idle_timer -= delta
 	if enemy.state == enemy.States.MOVING:
 		enemy.state = enemy.States.ATTACK_TYPE_1
-	if enemy.state == enemy.States.ATTACK_TYPE_1:
+	if enemy.state == enemy.States.ATTACK_TYPE_1 and !enemy.died:
 		if idle_timer <= 0:
 			if !in_melee_range and punch_timer <= 0:
 				rangedAttack(delta)

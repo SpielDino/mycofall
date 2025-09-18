@@ -8,7 +8,6 @@ var enemy
 var player
 
 var is_attacking = false
-var attack_cooldown: float = 0
 var temp_attack_delay: float = 0
 var is_in_attack_range: bool = false
 var is_in_damage_range: bool = false

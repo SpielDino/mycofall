@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://do5mufdhjo2pg"]
+[gd_scene load_steps=26 format=3 uid="uid://do5mufdhjo2pg"]
 
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_fv56k"]
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="2_li4h1"]
@@ -7,6 +7,111 @@
 [ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_touag"]
 [ext_resource type="PackedScene" uid="uid://887shgpmuhl5" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_melee_attack_component.tscn" id="6_rtgbl"]
 [ext_resource type="PackedScene" uid="uid://dl0b8wl8o6knn" path="res://assets/models/enemies/melee_enemy/purple_enemy.blend" id="7_rtgbl"]
+[ext_resource type="Texture2D" uid="uid://da0mciyn4k51j" path="res://assets/textures/Kenney Particles Transparent Background/smoke_05.png" id="8_touag"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfj6c"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_touag")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="Gradient" id="Gradient_rtgbl"]
+offsets = PackedFloat32Array(0, 0.489451, 0.767932, 1)
+colors = PackedColorArray(0.624, 0.72, 0, 0.537255, 0.857336, 0.841146, 0.221142, 0.890196, 0.911952, 0.9542, 0.360503, 0.94902, 1, 1, 1, 0.596078)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_touag"]
+gradient = SubResource("Gradient_rtgbl")
+
+[sub_resource type="Curve" id="Curve_cfj6c"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 13.0573), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cfj6c"]
+curve = SubResource("Curve_cfj6c")
+
+[sub_resource type="Curve" id="Curve_n7juc"]
+_limits = [-10.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 5.85987), 0.0, 0.0, 0, 0, Vector2(0.707224, -0.143312), -4.41427, -4.41427, 0, 0, Vector2(1, -1.17834), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_7dpk7"]
+curve = SubResource("Curve_n7juc")
+
+[sub_resource type="Curve" id="Curve_fromh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_n7juc"]
+curve = SubResource("Curve_fromh")
+
+[sub_resource type="Curve" id="Curve_76vjj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.500753), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m3lbr"]
+curve = SubResource("Curve_76vjj")
+
+[sub_resource type="Curve" id="Curve_i3ad4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fromh"]
+curve = SubResource("Curve_i3ad4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hwcop"]
+lifetime_randomness = 0.5
+emission_shape_scale = Vector3(2, 6, 2)
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = 1.07288e-05
+angle_max = 45.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = -2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.3
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+velocity_limit_curve = SubResource("CurveTexture_fromh")
+gravity = Vector3(0, -0.2, 0)
+radial_accel_min = 0.0999978
+radial_accel_max = 0.199998
+radial_accel_curve = SubResource("CurveTexture_7dpk7")
+tangential_accel_min = 0.399998
+tangential_accel_max = 0.999998
+damping_min = 0.2
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_cfj6c")
+scale_min = 0.3
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_n7juc")
+color = Color(0.623529, 0.721569, 0, 1)
+color_ramp = SubResource("GradientTexture1D_touag")
+turbulence_enabled = true
+turbulence_noise_strength = 12.88
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_noise_speed_random = 1.04
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_m3lbr")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wd7o6"]
+transparency = 1
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_otkfd"]
+material = SubResource("StandardMaterial3D_wd7o6")
+size = Vector2(1.5, 1.5)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rtgbl"]
 radius = 0.45
@@ -14,6 +119,8 @@ height = 1.8
 
 [node name="MeleeEnemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_fv56k")
+health = 200
+death_animation_time = 0.583
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_li4h1")]
 
@@ -28,24 +135,41 @@ acceleration = 2
 [node name="EnemyMeleeAttackComponent" parent="." instance=ExtResource("6_rtgbl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01829, 0)
 
-[node name="Hitbox" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.887902, 0)
-shape = SubResource("CapsuleShape3D_rtgbl")
-
 [node name="Model" parent="." instance=ExtResource("7_rtgbl")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/PurpleMushroomEnemy" index="1"]
-bones/0/rotation = Quaternion(-0.037557, -0.0863011, 0.0248375, 0.995251)
-bones/1/rotation = Quaternion(-0.0226767, 0.000990087, 0.00400233, 0.999734)
-bones/2/position = Vector3(0.177935, 0.104646, -0.0276735)
-bones/2/rotation = Quaternion(0.998863, -0.00827973, 0.00204817, -0.046912)
-bones/3/position = Vector3(0.339065, 0.536492, 0.0816328)
-bones/3/rotation = Quaternion(0.604054, 0.557515, 0.423895, 0.380274)
-bones/4/position = Vector3(-0.163061, 0.110433, -0.0280276)
-bones/4/rotation = Quaternion(0.998863, -0.00827973, 0.00204817, -0.046912)
-bones/5/position = Vector3(-0.324938, 0.512327, 0.109862)
-bones/5/rotation = Quaternion(0.445305, -0.67701, -0.28738, 0.51066)
+bones/0/position = Vector3(-0.00743639, 0.233125, -0.0884842)
+bones/0/rotation = Quaternion(-0.57323, 0, 0, 0.819394)
+bones/1/rotation = Quaternion(0.147701, 0, 0, 0.989032)
+bones/2/position = Vector3(0.17803, 0.107539, -0.0278504)
+bones/2/rotation = Quaternion(0.99876, 2.1764e-09, -4.36572e-08, 0.0497903)
+bones/3/position = Vector3(0.340993, 0.524888, 0.0954263)
+bones/3/rotation = Quaternion(0.736504, 0.485287, 0.208817, 0.422438)
+bones/4/position = Vector3(-0.163157, 0.107539, -0.0278507)
+bones/4/rotation = Quaternion(0.99876, 2.1764e-09, -4.36572e-08, 0.0497903)
+bones/5/position = Vector3(-0.326865, 0.523931, 0.0960684)
+bones/5/rotation = Quaternion(0.743157, -0.481827, -0.21652, 0.410707)
 
-[editable path="EnemyMeleeAttackComponent"]
+[node name="DeathSpores" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_cfj6c")
+emitting = false
+amount = 1000
+lifetime = 5.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+draw_order = 3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_hwcop")
+draw_pass_1 = SubResource("QuadMesh_otkfd")
+
+[node name="Hitbox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.887902, 0)
+shape = SubResource("CapsuleShape3D_rtgbl")
+
+[editable path="DetectionComponent"]
 [editable path="Model"]

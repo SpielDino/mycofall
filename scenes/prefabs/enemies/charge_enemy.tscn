@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dc0qbknul7xa2"]
+[gd_scene load_steps=28 format=3 uid="uid://dc0qbknul7xa2"]
 
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_r1xi1"]
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="2_nd33r"]
@@ -7,6 +7,113 @@
 [ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_nbj0t"]
 [ext_resource type="PackedScene" uid="uid://bn83tctnd56yc" path="res://assets/models/enemies/charge_enemy/ram_enemy.blend" id="6_1ellk"]
 [ext_resource type="PackedScene" uid="uid://ceh3efrojhnkb" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_charge_attack_component.tscn" id="6_oy421"]
+[ext_resource type="Texture2D" uid="uid://da0mciyn4k51j" path="res://assets/textures/Kenney Particles Transparent Background/smoke_05.png" id="8_nbj0t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67fxq"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_nbj0t")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="Gradient" id="Gradient_3m3ei"]
+offsets = PackedFloat32Array(0, 0.489451, 0.767932, 1)
+colors = PackedColorArray(0.624, 0.72, 0, 0.537255, 0.857336, 0.841146, 0.221142, 0.890196, 0.911952, 0.9542, 0.360503, 0.94902, 1, 1, 1, 0.596078)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_46afm"]
+gradient = SubResource("Gradient_3m3ei")
+
+[sub_resource type="Curve" id="Curve_pbx25"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 13.0573), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oh81h"]
+curve = SubResource("Curve_pbx25")
+
+[sub_resource type="Curve" id="Curve_pxp8e"]
+_limits = [-10.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 5.85987), 0.0, 0.0, 0, 0, Vector2(0.707224, -0.143312), -4.41427, -4.41427, 0, 0, Vector2(1, -1.17834), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_at62j"]
+curve = SubResource("Curve_pxp8e")
+
+[sub_resource type="Curve" id="Curve_jioty"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wpbiu"]
+curve = SubResource("Curve_jioty")
+
+[sub_resource type="Curve" id="Curve_p6c4y"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.500753), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e5l6d"]
+curve = SubResource("Curve_p6c4y")
+
+[sub_resource type="Curve" id="Curve_spa2r"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_u17nv"]
+curve = SubResource("Curve_spa2r")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_suju1"]
+lifetime_randomness = 0.5
+emission_shape_scale = Vector3(2, 6, 2)
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = 1.07288e-05
+angle_max = 45.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = -2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.3
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+velocity_limit_curve = SubResource("CurveTexture_u17nv")
+gravity = Vector3(0, -0.2, 0)
+radial_accel_min = 0.0999978
+radial_accel_max = 0.199998
+radial_accel_curve = SubResource("CurveTexture_at62j")
+tangential_accel_min = 0.399998
+tangential_accel_max = 0.999998
+damping_min = 0.2
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_oh81h")
+scale_min = 0.7
+scale_max = 1.5
+scale_curve = SubResource("CurveTexture_wpbiu")
+color = Color(0.623529, 0.721569, 0, 1)
+color_ramp = SubResource("GradientTexture1D_46afm")
+hue_variation_min = -0.02
+hue_variation_max = 0.02
+turbulence_enabled = true
+turbulence_noise_strength = 12.88
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_noise_speed_random = 1.04
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_e5l6d")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_20b8r"]
+transparency = 1
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_bh1xa"]
+material = SubResource("StandardMaterial3D_20b8r")
+size = Vector2(1.5, 1.5)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oy421"]
 radius = 0.289812
@@ -21,6 +128,8 @@ radius = 0.210181
 
 [node name="ChargeEnemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_r1xi1")
+health = 250
+has_death_animation = false
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_nd33r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71916, 0)
@@ -40,32 +149,42 @@ walking_name = "Walk"
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/Armature_001" index="0"]
-bones/0/rotation = Quaternion(4.41404e-10, 0.999983, 0.00584657, -7.54966e-08)
-bones/1/rotation = Quaternion(-0.0216197, -1.50662e-07, 5.78269e-09, 0.999766)
-bones/2/rotation = Quaternion(-0.00513429, -1.18978e-07, -2.97314e-09, 0.999987)
-bones/3/rotation = Quaternion(0.0137187, -1.19158e-07, -2.10429e-08, 0.999906)
+bones/0/rotation = Quaternion(-3.22599e-08, 0.904112, -0.427295, -6.82586e-08)
+bones/1/rotation = Quaternion(0.0651473, 8.19141e-05, 5.80346e-06, 0.997876)
+bones/2/rotation = Quaternion(0.0181964, 0.000114045, 5.3863e-06, 0.999834)
+bones/3/rotation = Quaternion(0.192747, -0.000185662, 4.10212e-05, 0.981248)
 bones/7/rotation = Quaternion(1, 1.58294e-17, 2.43177e-09, -4.06131e-09)
 bones/8/rotation = Quaternion(-3.80379e-09, -2.43177e-09, 1.75949e-17, 1)
-bones/10/position = Vector3(7.10543e-15, 2.54406, 0.115312)
-bones/10/rotation = Quaternion(-5.91407e-09, 0.999823, 0.0188396, 3.13861e-07)
+bones/10/position = Vector3(6.85752e-07, 1.34878, -2.54509)
+bones/10/rotation = Quaternion(1.35499e-07, 0.749947, -0.661498, -1.67545e-07)
 
-[node name="Hitbox" type="Node3D" parent="." groups=["Enemy"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00116181, 0.455929, 0)
+[node name="DeathSpores" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_67fxq")
+emitting = false
+amount = 1000
+lifetime = 5.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 0.95
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+draw_order = 3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_suju1")
+draw_pass_1 = SubResource("QuadMesh_bh1xa")
 
-[node name="RigidBody3D" type="RigidBody3D" parent="Hitbox" groups=["Enemy"]]
-transform = Transform3D(1, -3.72529e-09, 0, 3.72529e-09, 1, 0, 0, 0, 1, -0.0144061, -0.258319, 0)
-
-[node name="HitboxHead" type="CollisionShape3D" parent="Hitbox/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0147105, 1.68764, 0)
+[node name="HitboxHead" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, -3.72529e-09, 0, 3.72529e-09, 1, 0, 0, 0, 1, -0.0302784, 1.88525, 0)
 shape = SubResource("CapsuleShape3D_oy421")
 
-[node name="HitboxBody" type="CollisionShape3D" parent="Hitbox/RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989548, 0)
+[node name="HitboxBody" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, -3.72529e-09, 0, 3.72529e-09, 1, 0, 0, 0, 1, -0.0155679, 1.18716, 0)
 shape = SubResource("CapsuleShape3D_1ellk")
 
 [node name="HitboxFeet" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189564, 0)
 shape = SubResource("SphereShape3D_oy421")
 
-[editable path="EnemyChargeAttackComponent"]
+[editable path="DetectionComponent"]
 [editable path="Model"]

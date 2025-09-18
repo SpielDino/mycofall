@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3wuaxsi24trg"]
+[gd_scene load_steps=26 format=3 uid="uid://3wuaxsi24trg"]
 
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="1_4p2hn"]
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_kuhmj"]
@@ -7,12 +7,120 @@
 [ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="4_h0ss0"]
 [ext_resource type="PackedScene" uid="uid://bive0d87jh7fb" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_aoe_attack_component.tscn" id="5_4p2hn"]
 [ext_resource type="PackedScene" uid="uid://b0jpp6u3v4cii" path="res://assets/models/enemies/aoe_enemy/Burt3.blend" id="5_s1ben"]
+[ext_resource type="Texture2D" uid="uid://da0mciyn4k51j" path="res://assets/textures/Kenney Particles Transparent Background/smoke_05.png" id="8_myiyv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h0ss0"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("8_myiyv")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="Gradient" id="Gradient_4n26d"]
+offsets = PackedFloat32Array(0, 0.489451, 0.767932, 1)
+colors = PackedColorArray(0.624, 0.72, 0, 0.537255, 0.857336, 0.841146, 0.221142, 0.890196, 0.911952, 0.9542, 0.360503, 0.94902, 1, 1, 1, 0.596078)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sn4d3"]
+gradient = SubResource("Gradient_4n26d")
+
+[sub_resource type="Curve" id="Curve_xm4wq"]
+_limits = [0.0, 100.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 13.0573), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rik5w"]
+curve = SubResource("Curve_xm4wq")
+
+[sub_resource type="Curve" id="Curve_g5cst"]
+_limits = [-10.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 5.85987), 0.0, 0.0, 0, 0, Vector2(0.707224, -0.143312), -4.41427, -4.41427, 0, 0, Vector2(1, -1.17834), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_vit88"]
+curve = SubResource("Curve_g5cst")
+
+[sub_resource type="Curve" id="Curve_w7ewm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1fuf2"]
+curve = SubResource("Curve_w7ewm")
+
+[sub_resource type="Curve" id="Curve_ok8iq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.500753), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c0h01"]
+curve = SubResource("Curve_ok8iq")
+
+[sub_resource type="Curve" id="Curve_sjvft"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_dw52q"]
+curve = SubResource("Curve_sjvft")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ph3tr"]
+lifetime_randomness = 0.5
+emission_shape_scale = Vector3(2, 6, 2)
+emission_shape = 1
+emission_sphere_radius = 0.25
+angle_min = 1.07288e-05
+angle_max = 45.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = -2.0
+initial_velocity_max = 2.0
+angular_velocity_min = 30.0
+angular_velocity_max = 60.0
+orbit_velocity_min = 0.1
+orbit_velocity_max = 0.3
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+velocity_limit_curve = SubResource("CurveTexture_dw52q")
+gravity = Vector3(0, -0.2, 0)
+radial_accel_min = 0.0999978
+radial_accel_max = 0.199998
+radial_accel_curve = SubResource("CurveTexture_vit88")
+tangential_accel_min = 0.399998
+tangential_accel_max = 0.999998
+damping_min = 0.2
+damping_max = 1.0
+damping_curve = SubResource("CurveTexture_rik5w")
+scale_min = 0.3
+scale_max = 1.2
+scale_curve = SubResource("CurveTexture_1fuf2")
+color = Color(0.623529, 0.721569, 0, 1)
+color_ramp = SubResource("GradientTexture1D_sn4d3")
+turbulence_enabled = true
+turbulence_noise_strength = 12.88
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_noise_speed_random = 1.04
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+turbulence_influence_over_life = SubResource("CurveTexture_c0h01")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j57va"]
+transparency = 1
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ettwo"]
+material = SubResource("StandardMaterial3D_j57va")
+size = Vector2(1.5, 1.5)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_s1ben"]
 radius = 0.8
 
 [node name="AoeEnemy" type="CharacterBody3D" groups=["Enemy"]]
 script = ExtResource("1_kuhmj")
+health = 500
+death_animation_name = "Damage"
+death_animation_time = 0.83
 
 [node name="DetectionComponent" parent="." instance=ExtResource("1_4p2hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.08778, 0)
@@ -22,10 +130,6 @@ speed = 2
 acceleration = 2
 movement_type = "move towards player"
 walking_name = "Walk"
-
-[node name="NavigationAgent3D" parent="MovementComponent" index="2"]
-height = 2.0
-radius = 1.0
 
 [node name="ParticleComponent" parent="." instance=ExtResource("3_myiyv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16693, 0)
@@ -38,59 +142,75 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41388, 0)
 [node name="Model" parent="." instance=ExtResource("5_s1ben")]
 
 [node name="Skeleton3D" parent="Model/Armature" index="0"]
-bones/0/position = Vector3(-0.0766945, -0.0471563, -0.00248177)
-bones/0/rotation = Quaternion(-5.62728e-17, 1, 1.11803e-09, -7.54979e-08)
-bones/1/position = Vector3(-7.49473e-10, 1.35017, 2.81005e-11)
-bones/1/rotation = Quaternion(7.45355e-10, -8.38864e-26, 1.12546e-16, 1)
-bones/6/position = Vector3(-3.24443e-08, -0.0726898, 0.449915)
-bones/6/rotation = Quaternion(0.999997, 3.79851e-10, 7.10525e-15, -0.00251567)
-bones/8/position = Vector3(2.35027e-08, -0.0726898, -0.426152)
-bones/8/rotation = Quaternion(0.999997, 3.7986e-10, 2.13162e-14, -0.00251567)
-bones/11/rotation = Quaternion(-0.967393, 2.84048e-08, -7.73726e-08, 0.25328)
-bones/14/rotation = Quaternion(0.961084, 1.02114e-08, 1.81913e-08, 0.276258)
+bones/0/position = Vector3(-0.316792, -0.182211, -0.00248173)
+bones/0/rotation = Quaternion(-0.332667, 0.943044, 2.62137e-08, -7.09499e-08)
+bones/1/position = Vector3(-0.132086, 1.27355, -4.42736e-12)
+bones/1/rotation = Quaternion(6.67452e-10, -3.31755e-10, 0.445094, 0.895484)
+bones/6/position = Vector3(-0.163109, -0.0923012, 0.449915)
+bones/6/rotation = Quaternion(0.929488, -0.368844, 0.000927928, -0.00233829)
+bones/8/position = Vector3(-0.167629, -0.0959433, -0.426152)
+bones/8/rotation = Quaternion(0.928627, -0.371006, 0.000933367, -0.00233612)
+bones/11/rotation = Quaternion(-0.826925, 0.502041, -0.131443, 0.216503)
+bones/14/rotation = Quaternion(0.818476, -0.503764, -0.144804, 0.235266)
 
 [node name="Burt_head" parent="Model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, 5.62733e-17, 0, -5.62733e-17, 1, -7.4535e-10, 0, 7.4535e-10, 1, 0.0270495, 1.48622, 7.31088e-08)
+transform = Transform3D(0.970307, 0.241876, 3.81114e-09, -0.241876, 0.970307, 3.54469e-08, 4.8758e-09, -3.53162e-08, 1, -0.868042, 1.04501, 2.09315e-07)
 
 [node name="Eys" parent="Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(1, 5.62733e-17, 0, -5.62733e-17, 1, -7.4535e-10, 0, 7.4535e-10, 1, 0.650254, 1.73279, 0.00731646)
+transform = Transform3D(0.970307, 0.241876, 3.81114e-09, -0.241876, 0.970307, 3.54469e-08, 4.8758e-09, -3.53162e-08, 1, -0.203702, 1.13352, 0.00731659)
 
 [node name="Hat" parent="Model/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 5.62733e-17, 0, -5.62733e-17, 1, -7.4535e-10, 0, 7.4535e-10, 1, 0.130813, 1.48119, 7.31051e-08)
+transform = Transform3D(0.970307, 0.241876, 3.81114e-09, -0.241876, 0.970307, 3.54469e-08, 4.8758e-09, -3.53162e-08, 1, -0.768576, 1.01503, 2.09998e-07)
 
 [node name="BafallHut" parent="Model/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 5.62733e-17, 0, -5.62733e-17, 1, -7.4535e-10, 0, 7.4535e-10, 1, -0.0107317, 1.99549, 0.109385)
+transform = Transform3D(0.970307, 0.241876, 3.81114e-09, -0.241876, 0.970307, 3.54469e-08, 4.8758e-09, -3.53162e-08, 1, -0.781521, 1.5483, 0.109385)
 
 [node name="Burt_Leg_R" parent="Model/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.993175, 0.00285345, -0.116597, 0.0055699, 0.9974, 0.0718535, 0.116499, -0.0720126, 0.990577, -0.0664261, -0.0230662, -0.418582)
+transform = Transform3D(0.130127, -0.987664, -0.0871046, 0.984629, 0.139048, -0.105691, 0.116499, -0.0720124, 0.990577, -0.226342, -0.128351, -0.418582)
 
 [node name="Burt_Leg_L" parent="Model/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.999598, -0.00390977, 0.0280679, 0.00778942, 0.990194, -0.139478, -0.0272474, 0.13964, 0.989827, -0.0664262, -0.0230668, 0.418582)
+transform = Transform3D(0.12419, -0.982051, 0.141962, 0.991884, 0.126795, 0.00941619, -0.0272472, 0.139641, 0.989827, -0.220645, -0.128792, 0.418582)
 
 [node name="Burt_Leg_L_Beffal" parent="Model/Armature/Skeleton3D" index="6"]
-transform = Transform3D(0.999598, -0.00390977, 0.0280679, 0.00778942, 0.990194, -0.139478, -0.0272474, 0.13964, 0.989827, 0.126875, -0.318313, 0.544358)
+transform = Transform3D(0.12419, -0.982051, 0.141962, 0.991884, 0.126795, 0.00941619, -0.0272472, 0.139641, 0.989827, 0.0975282, 0.0238576, 0.544358)
 
 [node name="Burt_Arm_L" parent="Model/Armature/Skeleton3D" index="7"]
-transform = Transform3D(1, -3.2299e-08, -6.11781e-08, -3.76086e-08, 0.488427, -0.872605, 5.80654e-08, 0.872605, 0.488427, -0.127849, 1.23617, 0.573658)
+transform = Transform3D(-0.197432, -0.478813, 0.855429, 0.980317, -0.0964312, 0.172279, 4.93236e-07, 0.872605, 0.488427, -1.14809, 0.66682, 0.573658)
 
 [node name="Burt_Beffal_Arm_L" parent="Model/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, -3.2299e-08, -6.11781e-08, -3.76086e-08, 0.488427, -0.872605, 5.80654e-08, 0.872605, 0.488427, -0.0646546, 0.613476, 1.03281)
+transform = Transform3D(-0.197432, -0.478813, 0.855429, 0.980317, -0.0964312, 0.172279, 4.93236e-07, 0.872605, 0.488427, -0.55013, 0.851711, 1.03281)
 
 [node name="Burt_Arm_R" parent="Model/Armature/Skeleton3D" index="9"]
-transform = Transform3D(1, -8.75057e-08, -6.13998e-08, 9.84176e-08, 0.529443, 0.848345, -4.17273e-08, -0.848345, 0.529443, -0.127849, 1.22982, -0.56892)
+transform = Transform3D(-0.209366, -0.517709, -0.829544, 0.977837, -0.110847, -0.177615, 1.88304e-07, -0.848346, 0.529443, -1.14101, 0.667054, -0.56892)
 
 [node name="Burt_Beffal_Arm_R" parent="Model/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, -8.75057e-08, -6.13998e-08, 9.84176e-08, 0.529443, 0.848345, -4.17273e-08, -0.848345, 0.529443, -0.204667, 0.557059, -1.09776)
+transform = Transform3D(-0.209366, -0.517709, -0.829544, 0.977837, -0.110847, -0.177615, 1.88304e-07, -0.848346, 0.529443, -0.467083, 0.732791, -1.09776)
 
 [node name="Burt_Body" parent="Model/Armature/Skeleton3D" index="11"]
-transform = Transform3D(1, -1.12546e-16, 0, 1.12546e-16, 1, 6.21725e-15, 0, -6.21725e-15, 1, 7.45058e-09, 0.494698, 7.91624e-09)
+transform = Transform3D(0.778666, -0.627439, 3.22806e-08, 0.627439, 0.778666, -9.52356e-08, 3.46188e-08, 9.44107e-08, 1, -0.597054, 0.287834, 9.94187e-08)
 
 [node name="BeffalKörper" parent="Model/Armature/Skeleton3D" index="12"]
-transform = Transform3D(1, -1.12546e-16, 0, 1.12546e-16, 1, 6.21725e-15, 0, -6.21725e-15, 1, -0.202008, 0.439904, 0.195547)
+transform = Transform3D(0.778666, -0.627439, 3.22806e-08, 0.627439, 0.778666, -9.52356e-08, 3.46188e-08, 9.44107e-08, 1, -0.71997, 0.11842, 0.195547)
+
+[node name="DeathSpores" type="GPUParticles3D" parent="."]
+material_override = SubResource("StandardMaterial3D_h0ss0")
+emitting = false
+amount = 1000
+lifetime = 5.0
+one_shot = true
+speed_scale = 3.0
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+local_coords = true
+draw_order = 3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_ph3tr")
+draw_pass_1 = SubResource("QuadMesh_ettwo")
 
 [node name="Hitbox" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.135443, 0.999121, 0)
 shape = SubResource("CapsuleShape3D_s1ben")
 
-[editable path="MovementComponent"]
+[editable path="DetectionComponent"]
 [editable path="Model"]

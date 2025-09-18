@@ -7,7 +7,6 @@ extends Node3D
 @export_enum("stand still", "move towards player", "keep set distance from player", "move between points") var movement_type: String = "stand still"
 @export var keep_distance: float = 5
 @export var has_patrol_route: bool = false
-@export var always_tracking: bool = false
 
 @export_group("Animation Variables")
 @export var walking_name: String = "Walking"
@@ -18,11 +17,11 @@ extends Node3D
 
 var enemy
 var player
+
 var is_moving = false
 var move_time: float = 0
 var move_delay: float = 0.2 
 var warmup_timer: float = warmup_animation_time
-
 var move_counter: int = 0
 var next_patrol_point: Vector3
 var reached_patrol_target: bool
@@ -36,9 +35,10 @@ func _ready():
 	player = GlobalPlayer.get_player()
 
 func _physics_process(delta):
-	play_movement_animations()
-	decide_movement_type(delta)
-	apply_gravity(delta)
+	if !enemy.died:
+		play_movement_animations()
+		decide_movement_type(delta)
+		apply_gravity(delta)
 
 func move_towards_location(delta, location):
 	var direction = Vector3()
@@ -77,7 +77,7 @@ func play_movement_animations():
 	if enemy.state == enemy.States.IDLE:
 		enemy.animation_player.speed_scale = 1
 		enemy.animation_player.play(idle_name)
-	if enemy.state == enemy.States.PATROLLING or enemy.state == enemy.States.SEARCHING or enemy.state == enemy.States.MOVING or always_tracking:
+	if enemy.state == enemy.States.PATROLLING or enemy.state == enemy.States.SEARCHING or enemy.state == enemy.States.MOVING:
 		if warmup_timer <= 0:
 			enemy.animation_player.speed_scale = walking_animation_speed
 			enemy.animation_player.play(walking_name)
@@ -95,7 +95,7 @@ func decide_movement_type(delta):
 		enemy.state = enemy.States.IDLE
 		warmup_timer = warmup_animation_time
 		searching(delta)
-	if enemy.state == enemy.States.MOVING or always_tracking:
+	if enemy.state == enemy.States.MOVING:
 		enemy.rotate_to_target(player.get_child(0))
 		if warmup_timer <= 0:
 			match movement_type:
@@ -130,6 +130,3 @@ func searching(delta):
 
 func apply_gravity(delta):
 	enemy.velocity.y += -enemy.gravity * delta
-
-func activate_tracking():
-	always_tracking = true

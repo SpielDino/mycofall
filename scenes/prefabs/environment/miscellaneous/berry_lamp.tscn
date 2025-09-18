@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhc4r6htqfqwe"]
+
+[ext_resource type="PackedScene" uid="uid://3bdklyhwoaa6" path="res://placeholder/nikolai/Starting Area/Berry.blend" id="1_24w1p"]
+[ext_resource type="PackedScene" uid="uid://phgi17bg7mp" path="res://assets/models/trees/baum_ast_low.blend" id="2_4yp0l"]
+
+[node name="BerryLamp" type="Node3D"]
+transform = Transform3D(0.852658, 0, -0.522469, 0, 1, 0, 0.522469, 0, 0.852658, 0, 0, 0)
+
+[node name="Berry" parent="." instance=ExtResource("1_24w1p")]
+transform = Transform3D(-0.675976, 0, 0.736924, 0.00929877, -0.99992, 0.00852971, 0.736865, 0.0126184, 0.675922, 0, 0, 0)
+
+[node name="baum_ast_low" parent="." instance=ExtResource("2_4yp0l")]
+transform = Transform3D(0.0554903, 0, 0.998459, 0, 1, 0, -0.998459, 0, 0.0554903, -0.0600203, 2.58456, 1.72016)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 1, 0.0784314, 1)
+light_energy = 10.0
+spot_range = 20.0
+spot_angle = 20.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 1, 0, 1)
+light_energy = 3.0

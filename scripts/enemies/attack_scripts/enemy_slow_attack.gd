@@ -8,13 +8,9 @@ extends Node
 var enemy
 var player
 
-var is_attacking = false
 var attack_cooldown: float = 0
 var is_in_attack_area: bool = false
-var has_collided_with_body: bool = false
 var attack_timer: float = 0
-var player_position
-var direction
 var has_fired: bool = false
 
 var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_spider_bullet.tscn")
