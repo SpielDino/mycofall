@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://qww3ho4advs2"]
+
+[ext_resource type="PackedScene" uid="uid://bt0pke3hlejyd" path="res://assets/models/rocks/steinhaufen_low.blend" id="1_8b0j8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n5ypo"]
+size = Vector3(1.38303, 1, 1.474)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8b0j8"]
+size = Vector3(0.326767, 1.39258, 1.474)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6b6i"]
+size = Vector3(2.31426, 0.667603, 1.474)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t2tdg"]
+size = Vector3(1.33783, 0.714172, 1.474)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6nwfp"]
+size = Vector3(0.476807, 0.367996, 1.474)
+
+[node name="StonePile" type="Node3D"]
+
+[node name="steinhaufen_low" parent="." instance=ExtResource("1_8b0j8")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.957928, -0.287009, 0, 0.287009, 0.957928, 0, 0, 0, 1, 1.49941, 0.0507355, 0.00408936)
+shape = SubResource("BoxShape3D_n5ypo")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.17251, 0.0360871, 0.00408936)
+shape = SubResource("BoxShape3D_8b0j8")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17877, -0.326401, 0.00408936)
+shape = SubResource("BoxShape3D_p6b6i")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.893144, -0.449771, 0, 0.449771, 0.893144, 0, 0, 0, 1, -0.111575, -0.343851, 0.00408936)
+shape = SubResource("BoxShape3D_t2tdg")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.984211, -0.176999, 0, 0.176999, 0.984211, 0, 0, 0, 1, 0.582937, 0.134556, 0.00408936)
+shape = SubResource("BoxShape3D_6nwfp")

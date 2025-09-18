@@ -1,6 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://rddwidjpmb55"]
+[gd_scene load_steps=22 format=3 uid="uid://rddwidjpmb55"]
 
 [ext_resource type="PackedScene" uid="uid://cvn4l4oivuwns" path="res://scenes/prefabs/environment/rooms/model_prefabs/starting_area_2.tscn" id="1_pepvg"]
+[ext_resource type="PackedScene" uid="uid://qww3ho4advs2" path="res://scenes/prefabs/environment/rocks/with_collision/stone_pile_with_collision_2.tscn" id="2_f6dbe"]
+[ext_resource type="PackedScene" uid="uid://lhj17p5n0syu" path="res://scenes/prefabs/environment/interactables/dynamic/socket_schwerthalterung.tscn" id="3_2nb2s"]
+[ext_resource type="PackedScene" uid="uid://bvefhpw5uhi3r" path="res://scenes/prefabs/environment/plants/mushroom_purple_with_light.tscn" id="3_uvdn5"]
+[ext_resource type="PackedScene" uid="uid://irrsqnnuxdnc" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(50x50).tscn" id="3_vryqh"]
+[ext_resource type="PackedScene" uid="uid://c83pj7nebfypc" path="res://scenes/prefabs/environment/interactables/dynamic/socket_staffhalterung.tscn" id="4_3lini"]
+[ext_resource type="PackedScene" uid="uid://d361qs2yjvhnn" path="res://scenes/prefabs/environment/plants/mushroom_blue_with_light.tscn" id="4_o3r0n"]
+[ext_resource type="PackedScene" uid="uid://cydetofcrsgfm" path="res://scenes/prefabs/characters/old_man.tscn" id="4_p65oq"]
+[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="5_ue1ne"]
+[ext_resource type="PackedScene" uid="uid://drlryl3j1rb3a" path="res://scenes/prefabs/environment/objects/mushroom_lamp.tscn" id="6_3lini"]
+[ext_resource type="PackedScene" uid="uid://dd8f1sx3w8krs" path="res://scenes/prefabs/environment/objects/desk.tscn" id="6_ue1ne"]
+[ext_resource type="PackedScene" uid="uid://cvagnhdl4ttec" path="res://scenes/prefabs/environment/objects/kessel_with_light.tscn" id="10_bhn50"]
+[ext_resource type="PackedScene" uid="uid://dhc4r6htqfqwe" path="res://scenes/prefabs/environment/objects/berry_lamp.tscn" id="12_bhn50"]
+[ext_resource type="PackedScene" uid="uid://bcs1cag7dnqoc" path="res://scenes/prefabs/environment/interactables/dynamic/interactable_treasure_chest_with_collision.tscn" id="12_ktqp7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pepvg"]
 size = Vector3(1, 15, 10)
@@ -8,8 +21,8 @@ size = Vector3(1, 15, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vryqh"]
 size = Vector3(1, 15, 5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5rmiq"]
-size = Vector3(1, 15, 5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3lini"]
+size = Vector3(1, 15, 5.44043)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6dbe"]
 size = Vector3(1, 10, 8)
@@ -50,8 +63,8 @@ shape = SubResource("BoxShape3D_vryqh")
 transform = Transform3D(0.140625, 0, -0.990063, 0, 1, 0, 0.990063, 0, 0.140625, 2.95018, 0, 13.344)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderMiddle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
-shape = SubResource("BoxShape3D_5rmiq")
+transform = Transform3D(0.999996, 0, 4.47035e-08, 0, 1, 0, -4.47035e-08, 0, 0.999996, 0, 7.5, 0)
+shape = SubResource("BoxShape3D_3lini")
 
 [node name="BackWallColliderRight" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
 transform = Transform3D(0.715229, 0, -0.69889, 0, 1, 0, 0.69889, 0, 0.715229, 6.097, 10, 10.505)
@@ -85,3 +98,68 @@ transform = Transform3D(0.999526, 0, -0.0308003, 0, 1, 0, 0.0308003, 0, 0.999526
 shape = SubResource("BoxShape3D_2nb2s")
 
 [node name="Objects" type="Node3D" parent="."]
+
+[node name="StonePile2" parent="Objects" instance=ExtResource("2_f6dbe")]
+transform = Transform3D(-0.704052, 0, -0.710149, 0, 1, 0, 0.710149, 0, -0.704052, 4.35911, 0.20926, -4.31638)
+
+[node name="MushroomPurpleWithLight" parent="Objects/StonePile2" instance=ExtResource("3_uvdn5")]
+transform = Transform3D(0.161122, 0, -0.11849, 0, 0.2, 0, 0.11849, 0, 0.161122, 2.13772, -5.96046e-08, -1.01487)
+
+[node name="MushroomBlueWithLight" parent="Objects/StonePile2" instance=ExtResource("4_o3r0n")]
+transform = Transform3D(0.194132, 0, 0.0480931, 0, 0.2, 0, -0.0480931, 0, 0.194132, 2.15031, 0, 0.797853)
+
+[node name="Socket" parent="Objects" instance=ExtResource("3_2nb2s")]
+transform = Transform3D(-0.508651, 0, 0.860973, 0, 1, 0, -0.860973, 0, -0.508651, 9.92078, 0, -5.57447)
+
+[node name="Socket2" parent="Objects" instance=ExtResource("4_3lini")]
+transform = Transform3D(-0.654398, 0, 0.75615, 0, 1, 0, -0.75615, 0, -0.654398, 9.17234, -2.38419e-07, -8.13421)
+
+[node name="Socket3" parent="Objects" instance=ExtResource("5_ue1ne")]
+transform = Transform3D(0.562055, 0, -0.8271, 0, 1, 0, 0.8271, 0, 0.562055, 10.7382, 0, -3.24373)
+Weapon = "SHIELD"
+
+[node name="Socket4" parent="Objects" instance=ExtResource("4_3lini")]
+transform = Transform3D(-0.760304, 0, 0.649567, 0, 1, 0, -0.649567, 0, -0.760304, 7.42344, -0.472393, -9.81148)
+Weapon = "BOW"
+
+[node name="Desk" parent="Objects" instance=ExtResource("6_ue1ne")]
+transform = Transform3D(0.674444, 0, 0.738326, 0, 1, 0, -0.738326, 0, 0.674444, -5.02216, 0.604905, -1.56565)
+
+[node name="MushroomLamp" parent="Objects/Desk" instance=ExtResource("6_3lini")]
+transform = Transform3D(-0.538447, 0, -0.842659, 0, 1, 0, 0.842659, 0, -0.538447, 0.763873, 0.678319, -0.416694)
+
+[node name="CauldronWithLight" parent="Objects" instance=ExtResource("10_bhn50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83499, 0.176453, 2.00239)
+
+[node name="BerryLamp" parent="Objects" instance=ExtResource("12_bhn50")]
+transform = Transform3D(0.852658, 0, -0.522469, 0, 1, 0, 0.522469, 0, 0.852658, 8.66118, 14.4776, -6.48145)
+
+[node name="Berry" parent="Objects/BerryLamp" index="0"]
+visible = false
+
+[node name="baum_ast_low" parent="Objects/BerryLamp" index="1"]
+visible = false
+
+[node name="BerryLamp" parent="Objects/BerryLamp" instance=ExtResource("12_bhn50")]
+
+[node name="Berry" parent="Objects/BerryLamp/BerryLamp" index="0"]
+visible = false
+
+[node name="baum_ast_low" parent="Objects/BerryLamp/BerryLamp" index="1"]
+visible = false
+
+[node name="TreasureChestWithCollision2" parent="Objects" instance=ExtResource("12_ktqp7")]
+transform = Transform3D(0.736239, 0, -0.676722, 0, 1, 0, 0.676722, 0, 0.736239, -8.41751, 1.11739, -7.09118)
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="Ground Normal Grass (50x50)" parent="Ground" instance=ExtResource("3_vryqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0150986, 0)
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="OldMan" parent="NPCs" instance=ExtResource("4_p65oq")]
+transform = Transform3D(0.804966, 0, -0.593321, 0, 1, 0, 0.593321, 0, 0.804966, 3.02999, 1.73664, -2.96335)
+
+[editable path="Objects/BerryLamp"]
+[editable path="Objects/BerryLamp/BerryLamp"]

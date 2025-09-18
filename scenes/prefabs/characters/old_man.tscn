@@ -1,0 +1,58 @@
+[gd_scene load_steps=4 format=3 uid="uid://cydetofcrsgfm"]
+
+[ext_resource type="Script" uid="uid://cihsymq2q2yu4" path="res://scripts/characters/old_man.gd" id="1_a3l34"]
+[ext_resource type="PackedScene" uid="uid://iwj0s46fserh" path="res://assets/models/character/old_mushroom.blend" id="1_j55id"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j55id"]
+radius = 0.444382
+height = 1.59824
+
+[node name="OldMan" type="Node3D"]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("old_man_animation_player")]
+script = ExtResource("1_a3l34")
+old_man_animation_player = NodePath("old_mushroom/AnimationPlayer")
+prompt_message = "Talk"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0934248)
+shape = SubResource("CapsuleShape3D_j55id")
+
+[node name="old_mushroom" parent="CharacterBody3D" instance=ExtResource("1_j55id")]
+
+[node name="Skeleton3D" parent="CharacterBody3D/old_mushroom/metarig" index="0"]
+bones/0/position = Vector3(1.33227e-15, 0.194468, -0.0552)
+bones/0/rotation = Quaternion(0.0556839, 1.19024e-07, 6.63804e-09, 0.998448)
+bones/1/rotation = Quaternion(0.185012, 9.76996e-15, 4.41104e-08, 0.982736)
+bones/2/rotation = Quaternion(0.00869454, -1.9984e-15, 2.07294e-09, 0.999962)
+bones/3/rotation = Quaternion(-0.0902433, -1.18723e-07, -1.07578e-08, 0.99592)
+bones/4/position = Vector3(-6.25204e-15, 0.192579, -4.04217e-09)
+bones/4/rotation = Quaternion(-0.0763284, 1.18862e-07, -9.09905e-09, 0.997083)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(-0.142147, -1.17999e-07, -1.69452e-08, 0.989846)
+bones/7/rotation = Quaternion(-0.101896, 0.782592, -0.34682, 0.506837)
+bones/8/rotation = Quaternion(0.559992, -0.0652891, -0.0144713, 0.825795)
+bones/9/rotation = Quaternion(0.567362, 0.0107602, 0.127499, 0.813467)
+bones/10/rotation = Quaternion(-3.13469e-08, 0.696936, 0.717133, -3.0464e-08)
+bones/11/rotation = Quaternion(-0.605155, 0.345862, 0.356134, 0.622363)
+bones/12/rotation = Quaternion(0.31421, -0.428459, 0.313839, 0.786893)
+bones/13/rotation = Quaternion(0.378487, 0.0820785, 0.0221586, 0.921694)
+bones/14/rotation = Quaternion(0.455899, -0.00270536, -0.11542, 0.882512)
+bones/15/rotation = Quaternion(-3.13469e-08, 0.696936, 0.717133, -3.0464e-08)
+bones/16/rotation = Quaternion(0.0684361, 0.745926, 0.492785, -0.442802)
+bones/17/rotation = Quaternion(0.933903, -5.54014e-08, 8.77998e-08, 0.357527)
+bones/18/rotation = Quaternion(0.574613, 9.5321e-08, 5.18841e-08, 0.818425)
+bones/20/rotation = Quaternion(0.933903, -1.06795e-07, 1.16217e-07, 0.357527)
+bones/21/rotation = Quaternion(0.574613, -9.98068e-08, -8.51142e-08, 0.818425)
+bones/22/position = Vector3(-0.413353, 0.636403, 0.397129)
+bones/22/rotation = Quaternion(-0.00892299, 0.0467875, 0.00890992, 0.998825)
+bones/23/rotation = Quaternion(0.476662, 0.522296, -0.522296, -0.476662)
+bones/28/position = Vector3(0.394479, 0.332761, 0.190598)
+bones/29/position = Vector3(0.393215, 0.534878, -0.173038)
+
+[node name="AnimationPlayer" parent="CharacterBody3D/old_mushroom" index="2"]
+autoplay = "Idle"
+
+[connection signal="interacted" from="CharacterBody3D" to="CharacterBody3D" method="_on_interacted"]
+
+[editable path="CharacterBody3D/old_mushroom"]

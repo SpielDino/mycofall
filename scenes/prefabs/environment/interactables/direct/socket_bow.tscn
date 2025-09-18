@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://tbyfidbbhara" path="res://assets/models/weapons/holz_normal_metal_bogen.blend" id="1_u3ueo"]
 
 [node name="Bow" type="Node3D"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
 
 [node name="holz_normal_metal_bogen" parent="." instance=ExtResource("1_u3ueo")]
 

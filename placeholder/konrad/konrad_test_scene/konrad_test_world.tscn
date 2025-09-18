@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c3c650unruhvy"]
+[gd_scene load_steps=29 format=3 uid="uid://c3c650unruhvy"]
 
 [ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="1_ch4m0"]
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="1_m28bg"]
@@ -24,6 +24,7 @@
 [ext_resource type="PackedScene" uid="uid://bdahddfj55fxl" path="res://scenes/prefabs/environment/rocks/without_collision/crystal.tscn" id="20_717cu"]
 [ext_resource type="PackedScene" uid="uid://cqcrm8tk2okmd" path="res://scenes/prefabs/environment/objects/treasure_chest_with_simple_collision.tscn" id="21_wws0w"]
 [ext_resource type="PackedScene" uid="uid://dqw6awtiag0l6" path="res://scenes/prefabs/environment/walls/with_collision/stone_wall_with_collision.tscn" id="22_28r12"]
+[ext_resource type="PackedScene" uid="uid://cydetofcrsgfm" path="res://scenes/prefabs/characters/old_man.tscn" id="23_1taso"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]
 panorama = ExtResource("1_m28bg")
@@ -39,6 +40,11 @@ sky = SubResource("Sky_oxph1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 2.74091, 0)
+visible = false
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.58201, 0.813182, 0, -0.813182, 0.58201, -5.57129, 36.5586, -2.92292)
+visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_axl6w")
@@ -136,11 +142,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.792967, -15)
 [node name="StoneWall" parent="WorldEnvironment/World/Objects" instance=ExtResource("22_28r12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -13)
 
+[node name="OldMan" parent="WorldEnvironment/World/Objects" instance=ExtResource("23_1taso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0227, 4.4338, -9.63715)
+
 [node name="TestRooms" type="Node3D" parent="WorldEnvironment/World"]
 
 [node name="TrainingRoom" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("7_oxph1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51916, 0, -6.50049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6741, 0, -6.50049)
 
 [node name="Player" parent="WorldEnvironment" instance=ExtResource("5_ch4m0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23659, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.1042, 1.23659, -3.24882)
 mana_per_second = 100.0

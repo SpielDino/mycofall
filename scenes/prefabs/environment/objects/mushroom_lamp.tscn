@@ -19,4 +19,8 @@ transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_s2ejv")
 surface_material_override/1 = SubResource("StandardMaterial3D_56opc")
 
+[node name="OmniLight3D" type="OmniLight3D" parent="Pilzlampe2"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0.897179, 0.602345, 0)
+light_color = Color(1, 1, 0.588235, 1)
+
 [editable path="Pilzlampe2"]

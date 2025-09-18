@@ -1,6 +1,6 @@
 extends MultiMeshInstance3D
 
-@export var player: Node3D
+@onready var player: Node3D = GlobalPlayer.get_player()
 
 func _process(delta: float) -> void:
 	if material_override is ShaderMaterial:

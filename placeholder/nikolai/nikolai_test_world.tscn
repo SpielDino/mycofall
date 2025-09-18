@@ -58,12 +58,11 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106456, 0)
 mesh = SubResource("PlaneMesh_c5lhh")
 
-[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="WorldEnvironment/World/Ground/GrassGroundWithCollision/MeshInstance3D" node_paths=PackedStringArray("player")]
+[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="WorldEnvironment/World/Ground/GrassGroundWithCollision/MeshInstance3D"]
 material_override = ExtResource("4_0tif6")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_0tif6")
 script = ExtResource("5_0tif6")
-player = NodePath("../../../../../Player")
 
 [node name="Objects" type="Node3D" parent="WorldEnvironment/World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10.07)
@@ -94,3 +93,5 @@ mana_per_second = 100.0
 
 [node name="Node3D" parent="." instance=ExtResource("11_72yyy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.85666, 0.160233, 5.38334)
+
+[editable path="WorldEnvironment/World/Ground/Ground Normal Grass (50x50)"]
