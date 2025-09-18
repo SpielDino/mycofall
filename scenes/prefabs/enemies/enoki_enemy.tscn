@@ -278,7 +278,10 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_2b417")
 draw_pass_1 = SubResource("QuadMesh_ql2vf")
 
-[node name="Hitbox" type="CollisionShape3D" parent="."]
+[node name="DamageNumbersPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.550014, 4.48855, -0.243264)
+
+[node name="Hitbox" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45539, 0)
 shape = SubResource("CapsuleShape3D_5x2ut")
 

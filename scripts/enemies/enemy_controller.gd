@@ -18,6 +18,7 @@ var player
 var state = States.NONE
 var died: bool = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
+var is_active: bool = true
 
 @onready var model = $Model
 @onready var animation_player = $Model/AnimationPlayer

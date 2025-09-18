@@ -41,8 +41,8 @@ func explode():
 	has_taken_damage = true
 
 func _on_attack_area_entered(area: Area3D) -> void:
-	if area.is_in_group("Player"):
-		attack()
+	if area.is_in_group("Player") and enemy.state == enemy.States.MOVING:
+		attack() 
 
 func _on_damage_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):

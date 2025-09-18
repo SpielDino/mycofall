@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ba41x6dsesffj"]
+[gd_scene load_steps=19 format=3 uid="uid://ba41x6dsesffj"]
 
 [ext_resource type="PackedScene" uid="uid://bwj6pug7ynn0w" path="res://assets/models/objects/boss_arena.blend" id="1_0kxlj"]
 [ext_resource type="PackedScene" uid="uid://drlemy28oey25" path="res://scenes/prefabs/enemies/boss_enemy.tscn" id="2_gxlpy"]
@@ -8,9 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://thunoyjj5mk2" path="res://scenes/prefabs/environment/miscellaneous/bag_deco_bundle.tscn" id="6_wc8xk"]
 [ext_resource type="PackedScene" uid="uid://cklu4kmm25cf8" path="res://placeholder/nikolai/Starting Area/Ranke.blend" id="6_y413d"]
 [ext_resource type="PackedScene" uid="uid://bpb4d1ltxhf3" path="res://placeholder/nikolai/Starting Area/Ranke1.blend" id="7_wc8xk"]
+[ext_resource type="PackedScene" uid="uid://3bdklyhwoaa6" path="res://placeholder/nikolai/Starting Area/Berry.blend" id="8_r6pca"]
 [ext_resource type="PackedScene" uid="uid://dhc4r6htqfqwe" path="res://scenes/prefabs/environment/miscellaneous/berry_lamp.tscn" id="9_l07jc"]
 [ext_resource type="PackedScene" uid="uid://mat52uog4sa4" path="res://assets/models/rocks/rock_one_low.blend" id="10_v8346"]
 [ext_resource type="PackedScene" uid="uid://bt0pke3hlejyd" path="res://assets/models/rocks/steinhaufen_low.blend" id="11_12jc1"]
+[ext_resource type="PackedScene" uid="uid://bivaufkugvwii" path="res://assets/models/plants/bush_2_low.blend" id="12_12jc1"]
+[ext_resource type="PackedScene" uid="uid://b0d7bxagu5a7e" path="res://scenes/prefabs/environment/miscellaneous/glowshroom.tscn" id="13_l3crm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gxlpy"]
 size = Vector3(11.9692, 11.5973, 1.91995)
@@ -60,18 +63,6 @@ script = ExtResource("3_32f48")
 
 [node name="Decoration" type="Node3D" parent="."]
 
-[node name="pilz_variation" parent="Decoration" instance=ExtResource("4_mbyuj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6162, 7.01607, 0.551618)
-
-[node name="pilz_variation2" parent="Decoration" instance=ExtResource("4_mbyuj")]
-transform = Transform3D(0.286335, -0.160605, -0.944573, 0.0465916, 0.987019, -0.153698, 0.956996, 0, 0.290101, 30.7128, 6.95546, 0.767343)
-
-[node name="pilz_variation3" parent="Decoration" instance=ExtResource("4_mbyuj")]
-transform = Transform3D(0.935709, -0.346163, -0.0679709, 0.352773, 0.918176, 0.180289, -2.56425e-09, -0.192676, 0.981262, 31.9541, 6.9982, -0.275805)
-
-[node name="baum_ast_low" parent="Decoration" instance=ExtResource("5_n1w4t")]
-transform = Transform3D(-0.949825, 0, 0.312782, 0, 1, 0, -0.312782, 0, -0.949825, -26.3881, 7.23388, 16.409)
-
 [node name="Bag Deco Bundle" parent="Decoration" instance=ExtResource("6_wc8xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17495, 8.78619, 29.8862)
 
@@ -104,6 +95,12 @@ transform = Transform3D(-0.99675, -0.0797814, 0.0111628, -0.0765598, 0.98125, 0.
 [node name="Ranke8" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
 transform = Transform3D(-0.478426, -0.087646, 0.873744, -0.157874, 0.987379, 0.0125994, -0.86382, -0.131914, -0.486224, -20.9791, 4.48415, 24.1105)
 
+[node name="Ranke9" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(0.67077, 0.538146, -0.510359, -0.186489, 0.788397, 0.586218, 0.717837, -0.298042, 0.629192, 25.429, 4.53428, 8.18204)
+
+[node name="Ranke10" parent="Decoration/Vines" instance=ExtResource("6_y413d")]
+transform = Transform3D(0.391884, 0.00895968, -0.919972, -0.291007, 0.949819, -0.114711, 0.872779, 0.312672, 0.374825, -24.6322, 4.48415, 14.085)
+
 [node name="Lamps" type="Node3D" parent="Decoration"]
 
 [node name="BerryLamp" parent="Decoration/Lamps" instance=ExtResource("9_l07jc")]
@@ -118,12 +115,132 @@ transform = Transform3D(-0.841001, 0, -0.541033, 0, 1, 0, 0.541033, 0, -0.841001
 [node name="BerryLamp4" parent="Decoration/Lamps" instance=ExtResource("9_l07jc")]
 transform = Transform3D(0.105657, 0, 0.994403, 0, 1, 0, -0.994403, 0, 0.105657, 29.4265, 20.3167, -2.57818)
 
-[node name="rock_one_low" parent="Decoration" instance=ExtResource("10_v8346")]
+[node name="BerryLamp5" parent="Decoration/Lamps" instance=ExtResource("9_l07jc")]
+transform = Transform3D(0.721748, 0, 0.692156, 0, 1, 0, -0.692156, 0, 0.721748, 22.8694, 14.6101, 18.1755)
+
+[node name="BerryLamp6" parent="Decoration/Lamps" instance=ExtResource("9_l07jc")]
+transform = Transform3D(-0.0731864, 0, -0.997319, 0, 1, 0, 0.997319, 0, -0.0731864, -28.75, 18.0307, -3.85625)
+
+[node name="BigBerryLamp" type="Node3D" parent="Decoration/Lamps"]
+transform = Transform3D(1.52256, 0, -1.29685, 0, 2, 0, 1.29685, 0, 1.52256, -0.445859, 34.8933, -2.53884)
+
+[node name="Berry" parent="Decoration/Lamps/BigBerryLamp" instance=ExtResource("8_r6pca")]
+transform = Transform3D(-0.675976, 0, 0.736924, 0.00929877, -0.99992, 0.00852971, 0.736865, 0.0126184, 0.675922, 0, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Decoration/Lamps/BigBerryLamp"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+light_color = Color(1, 1, 0.0784314, 1)
+light_energy = 50.0
+light_indirect_energy = 5.0
+spot_range = 20.0
+spot_angle = 40.0
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decoration/Lamps/BigBerryLamp"]
+light_color = Color(1, 1, 0, 1)
+light_energy = 3.0
+
+[node name="Rocks" type="Node3D" parent="Decoration"]
+
+[node name="steinhaufen_low" parent="Decoration/Rocks" instance=ExtResource("11_12jc1")]
+transform = Transform3D(-0.78903, 0, -0.614354, 0, 1, 0, 0.614354, 0, -0.78903, -11.7978, 7.23399, -29.872)
+
+[node name="rock_one_low" parent="Decoration/Rocks" instance=ExtResource("10_v8346")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3923, 7.18894, 5.30131)
 
-[node name="steinhaufen_low" parent="." instance=ExtResource("11_12jc1")]
-transform = Transform3D(-0.78903, 0, -0.614354, 0, 1, 0, 0.614354, 0, -0.78903, -11.7978, 7.23399, -29.872)
+[node name="VineBush" type="Node3D" parent="Decoration"]
+
+[node name="Ranke11" parent="Decoration/VineBush" instance=ExtResource("6_y413d")]
+transform = Transform3D(-0.188195, -0.174389, -0.966526, -0.291007, 0.949819, -0.114711, 0.938029, 0.259678, -0.229501, -29.18, 4.48415, -2.29638)
+
+[node name="bush_2_low" parent="Decoration/VineBush" instance=ExtResource("12_12jc1")]
+transform = Transform3D(0.692735, 0.721192, 0, -0.721192, 0.692735, 0, 0, 0, 1, -31.9322, 18.3451, 2.50002)
+
+[node name="bush_2_low2" parent="Decoration/VineBush" instance=ExtResource("12_12jc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9322, 19.3725, 2.50002)
+
+[node name="bush_2_low3" parent="Decoration/VineBush" instance=ExtResource("12_12jc1")]
+transform = Transform3D(0.348567, 0.664543, 0.660971, -0.885572, 0.464502, 0, -0.307023, -0.585338, 0.750411, -30.8823, 12.4622, 2.50002)
+
+[node name="bush_2_low4" parent="Decoration/VineBush" instance=ExtResource("12_12jc1")]
+transform = Transform3D(0.28697, 0.613033, 0.736097, -0.90568, 0.423962, 0, -0.312077, -0.666668, 0.676876, -30.4232, 13.6726, 4.36206)
+
+[node name="bush_2_low5" parent="Decoration/VineBush" instance=ExtResource("12_12jc1")]
+transform = Transform3D(0.464193, 0.885734, 0, -0.885734, 0.464193, 0, 0, 0, 1, -31.9322, 18.6995, -1.24869)
+
+[node name="bush_2_low6" parent="Decoration/VineBush" instance=ExtResource("12_12jc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4521, 7.14634, -1.92849)
+
+[node name="bush_2_low7" parent="Decoration/VineBush" instance=ExtResource("12_12jc1")]
+transform = Transform3D(-0.654136, 0.692721, 0.303717, -0.727066, -0.686567, 0, 0.208522, -0.220822, 0.952762, -30.407, 21.7836, 2.73864)
+
+[node name="bush_2_low8" parent="Decoration/VineBush" instance=ExtResource("12_12jc1")]
+transform = Transform3D(-0.588167, 0.736785, 0.333478, -0.781521, -0.62388, 0, 0.20805, -0.26062, 0.942758, -30.5896, 20.4977, -1.8947)
+
+[node name="VineBush2" type="Node3D" parent="Decoration"]
+transform = Transform3D(-0.559497, 0, 0.828833, 0, 1, 0, -0.828833, 0, -0.559497, 0.669971, 0, -0.484114)
+
+[node name="Ranke11" parent="Decoration/VineBush2" instance=ExtResource("6_y413d")]
+transform = Transform3D(-0.188195, -0.174389, -0.966526, -0.291007, 0.949819, -0.114711, 0.938029, 0.259678, -0.229501, -29.18, 4.48415, -2.29638)
+
+[node name="bush_2_low" parent="Decoration/VineBush2" instance=ExtResource("12_12jc1")]
+transform = Transform3D(0.692735, 0.721192, 0, -0.721192, 0.692735, 0, 0, 0, 1, -31.9322, 18.3451, 2.50002)
+
+[node name="bush_2_low2" parent="Decoration/VineBush2" instance=ExtResource("12_12jc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9322, 19.3725, 2.50002)
+
+[node name="bush_2_low3" parent="Decoration/VineBush2" instance=ExtResource("12_12jc1")]
+transform = Transform3D(0.460887, 0.87868, -0.124519, -0.885572, 0.464502, 0, 0.0578395, 0.110271, 0.992218, -31.7854, 12.7987, -0.660632)
+
+[node name="bush_2_low4" parent="Decoration/VineBush2" instance=ExtResource("12_12jc1")]
+transform = Transform3D(0.415467, 0.887533, 0.19918, -0.90568, 0.423962, 2.19374e-08, -0.0844448, -0.180393, 0.979963, -30.4232, 13.6726, 4.36206)
+
+[node name="bush_2_low5" parent="Decoration/VineBush2" instance=ExtResource("12_12jc1")]
+transform = Transform3D(0.322351, 0.615082, -0.719558, -0.885734, 0.464193, 0, 0.334014, 0.637337, 0.694432, -31.9322, 18.6995, -1.24869)
+
+[node name="bush_2_low6" parent="Decoration/VineBush2" instance=ExtResource("12_12jc1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.4521, 7.14634, -1.92849)
+
+[node name="bush_2_low7" parent="Decoration/VineBush2" instance=ExtResource("12_12jc1")]
+transform = Transform3D(-0.677013, 0.716948, -0.166252, -0.727066, -0.686567, 0, -0.114144, 0.120877, 0.986083, -30.407, 21.7836, 2.73864)
+
+[node name="bush_2_low8" parent="Decoration/VineBush2" instance=ExtResource("12_12jc1")]
+transform = Transform3D(-0.32958, 0.412858, -0.849073, -0.78152, -0.623879, 0, -0.529719, 0.663568, 0.528275, -30.5896, 20.4977, -1.8947)
+
+[node name="Various" type="Node3D" parent="Decoration"]
+
+[node name="baum_ast_low" parent="Decoration/Various" instance=ExtResource("5_n1w4t")]
+transform = Transform3D(-0.949825, 0, 0.312782, 0, 1, 0, -0.312782, 0, -0.949825, -26.3881, 7.23388, 16.409)
+
+[node name="Mushrooms" type="Node3D" parent="Decoration"]
+
+[node name="pilz_variation" parent="Decoration/Mushrooms" instance=ExtResource("4_mbyuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6162, 7.01607, 0.551618)
+
+[node name="pilz_variation2" parent="Decoration/Mushrooms" instance=ExtResource("4_mbyuj")]
+transform = Transform3D(0.286335, -0.160605, -0.944573, 0.0465916, 0.987019, -0.153698, 0.956996, 0, 0.290101, 30.7128, 6.95546, 0.767343)
+
+[node name="pilz_variation3" parent="Decoration/Mushrooms" instance=ExtResource("4_mbyuj")]
+transform = Transform3D(0.935709, -0.346163, -0.0679709, 0.352773, 0.918176, 0.180289, -2.56425e-09, -0.192676, 0.981262, 31.9541, 6.9982, -0.275805)
+
+[node name="Glowshroom" parent="Decoration/Mushrooms" instance=ExtResource("13_l3crm")]
+transform = Transform3D(0.39686, -3.59647e-08, 0.917879, 0, 1, 3.91824e-08, -0.917879, -1.55499e-08, 0.39686, 17.6355, 6.65163, 24.9672)
+
+[node name="Glowshroom2" parent="Decoration/Mushrooms" instance=ExtResource("13_l3crm")]
+transform = Transform3D(-0.487629, -2.48497e-08, 0.634206, 0.0820452, 0.793277, 0.063083, -0.628877, 0.103493, -0.483531, 19.5857, 6.50266, 24.7097)
+
+[node name="Glowshroom3" parent="Decoration/Mushrooms" instance=ExtResource("13_l3crm")]
+transform = Transform3D(0.997418, -2.81371e-09, 0.0718106, -0.00906615, 0.991998, 0.125925, -0.071236, -0.126251, 0.989437, 16.6409, 6.79174, 26.5053)
+
+[node name="Glowshroom4" parent="Decoration/Mushrooms" instance=ExtResource("13_l3crm")]
+transform = Transform3D(0.229468, -0.0471566, 1.07477, 0.00984627, 1.09899, 0.0461172, -1.07575, -8.99938e-09, 0.229679, 14.3944, 6.50859, 26.8642)
+
+[node name="Glowshroom5" parent="Decoration/Mushrooms" instance=ExtResource("13_l3crm")]
+transform = Transform3D(0.905632, -0.31839, 1.40302, 0.321239, 1.66074, 0.169521, -1.40237, 0.174812, 0.944883, 5.06757, 6.49923, -30.6455)
+
+[node name="Glowshroom6" parent="Decoration/Mushrooms" instance=ExtResource("13_l3crm")]
+transform = Transform3D(-1.53022, -5.04588e-08, 1.28779, 0, 2, 7.83648e-08, -1.28779, 5.99578e-08, -1.53022, -5.17059, 6.49363, -30.1206)
 
 [editable path="boss_arena"]
 [editable path="BossEnemy"]
 [editable path="BossEnemy/Mesh"]
+[editable path="Decoration/Bag Deco Bundle"]

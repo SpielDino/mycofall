@@ -43,7 +43,7 @@ func attack(delta):
 			var vel: Vector3 = player.get_child(0).global_position - pos
 			var bullet = bullet_scene.instantiate()
 			bullet.setParameter(player, bullet_damage, bullet_speed, vel)
-			self.add_child(bullet)
+			get_tree().root.add_child(bullet)
 			bullet.global_position = pos
 			has_fired = true
 	if attack_timer <= 0:

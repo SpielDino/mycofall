@@ -149,14 +149,11 @@ walking_name = "Walk"
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/Armature_001" index="0"]
-bones/0/rotation = Quaternion(-3.22599e-08, 0.904112, -0.427295, -6.82586e-08)
-bones/1/rotation = Quaternion(0.0651473, 8.19141e-05, 5.80346e-06, 0.997876)
-bones/2/rotation = Quaternion(0.0181964, 0.000114045, 5.3863e-06, 0.999834)
-bones/3/rotation = Quaternion(0.192747, -0.000185662, 4.10212e-05, 0.981248)
+bones/1/rotation = Quaternion(-1.34893e-30, -1.50996e-07, -2.9441e-24, 1)
+bones/2/rotation = Quaternion(5.21358e-30, -1.19209e-07, 4.89923e-24, 1)
+bones/3/rotation = Quaternion(-2.02518e-30, -1.19209e-07, -1.95513e-24, 1)
 bones/7/rotation = Quaternion(1, 1.58294e-17, 2.43177e-09, -4.06131e-09)
 bones/8/rotation = Quaternion(-3.80379e-09, -2.43177e-09, 1.75949e-17, 1)
-bones/10/position = Vector3(6.85752e-07, 1.34878, -2.54509)
-bones/10/rotation = Quaternion(1.35499e-07, 0.749947, -0.661498, -1.67545e-07)
 
 [node name="DeathSpores" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_67fxq")
@@ -174,11 +171,14 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_suju1")
 draw_pass_1 = SubResource("QuadMesh_bh1xa")
 
-[node name="HitboxHead" type="CollisionShape3D" parent="."]
+[node name="DamageNumbersPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.201725, 2.81098, 0)
+
+[node name="HitboxHead" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, -3.72529e-09, 0, 3.72529e-09, 1, 0, 0, 0, 1, -0.0302784, 1.88525, 0)
 shape = SubResource("CapsuleShape3D_oy421")
 
-[node name="HitboxBody" type="CollisionShape3D" parent="."]
+[node name="HitboxBody" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, -3.72529e-09, 0, 3.72529e-09, 1, 0, 0, 0, 1, -0.0155679, 1.18716, 0)
 shape = SubResource("CapsuleShape3D_1ellk")
 

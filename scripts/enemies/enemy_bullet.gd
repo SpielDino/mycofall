@@ -6,7 +6,6 @@ extends CharacterBody3D
 @export_range(0,1) var trackingStrength: float = 0
 @export var player: Node3D
 @export var vel: Vector3 = Vector3(1,0,0)
-@export var lifetime: float = 5
 
 var isTracking: bool = false
 var trackingDelay: float = 0
@@ -19,7 +18,9 @@ func setParameter(playerInput: Node3D, damageInput: float, speedInput: float, tr
 	get_child(1).get_child(0).scale = Vector3(trackingRadiusInput, trackingRadiusInput, trackingRadiusInput)
 	trackingStrength = trackingStrengthInput
 	vel = velInput
-	lifetime = lifetimeInput
+	await get_tree().create_timer(lifetimeInput).timeout
+	queue_free()
+	
 
 func setTrackingDelay(delay):
 	trackingDelay = delay
@@ -30,9 +31,6 @@ func setBlockCostModifier(value):
 func _physics_process(delta):
 	move(delta)
 	move_and_slide()
-	lifetime -= delta
-	if lifetime < 0:
-		queue_free()
 
 func move(delta):
 	var tempTrackingStrength = trackingStrength/10
@@ -59,5 +57,5 @@ func _on_hit_area_area_entered(area: Area3D) -> void:
 		queue_free()
 
 func _on_hit_area_body_entered(body: Node3D) -> void:
-	if body.is_in_group("World"):
+	if !body.is_in_group("Enemy"):
 		queue_free()

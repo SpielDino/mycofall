@@ -120,7 +120,6 @@ radius = 0.439949
 script = ExtResource("1_f8il8")
 health = 50
 has_death_animation = false
-has_death_particles = false
 
 [node name="DetectionComponent" parent="." instance=ExtResource("3_ry033")]
 
@@ -191,11 +190,14 @@ transform_align = 1
 process_material = SubResource("ParticleProcessMaterial_6tu56")
 draw_pass_1 = SubResource("QuadMesh_xy6fb")
 
-[node name="Hitbox" type="CollisionShape3D" parent="."]
+[node name="DamageNumbersPosition" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.557621, 0.93362, 0)
+
+[node name="Hitbox" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0329404, 0)
 shape = SubResource("SphereShape3D_i8y0w")
 
-[node name="Hitbox2" type="CollisionShape3D" parent="."]
+[node name="Hitbox2" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.790477, 0)
 shape = SubResource("SphereShape3D_i8y0w")
 

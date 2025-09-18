@@ -13,7 +13,7 @@ var attack_cooldown: float = 0
 var is_in_inner_attack_area: bool = false
 var is_in_outer_attack_area: bool = false
 
-#@onready var particles = $root/AttackParticles #TODO implement later
+@onready var particles = $"../AttackParticles" #TODO implement later
 
 func _ready():
 	enemy = get_parent()
@@ -37,8 +37,8 @@ func attack(delta):
 		enemy.animation_player.speed_scale = 1
 		enemy.animation_player.play("Bump")
 		if attack_cooldown <= 5.42 and attack_cooldown > 5:
-			#particles.restart()
-			#particles.emitting = true
+			particles.restart()
+			particles.emitting = true
 			attack_cooldown -= 5
 			if is_in_outer_attack_area:
 				player.take_damage(attackDamage, self, true, 0)
