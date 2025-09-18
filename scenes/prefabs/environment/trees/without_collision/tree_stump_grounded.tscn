@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bswauhktbvc8q"]
+
+[ext_resource type="PackedScene" uid="uid://bputepsec17t1" path="res://assets/models/trees/baumstumpf.blend" id="2_suarb"]
+
+[node name="TreeStumpGrounded" type="Node3D"]
+
+[node name="Baumstumpf" parent="." instance=ExtResource("2_suarb")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)

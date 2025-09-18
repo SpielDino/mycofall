@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://buxr4b5vnjvg5"]
+
+[ext_resource type="PackedScene" uid="uid://1g4nrhosty3" path="res://assets/models/plants/blume_weiß_low.blend" id="1_v3kkm"]
+
+[node name="FlowerWhite" type="Node3D"]
+
+[node name="blume_weiß_low" parent="." instance=ExtResource("1_v3kkm")]

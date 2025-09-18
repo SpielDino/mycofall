@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccukqp13cjs4k"]
+
+[ext_resource type="PackedScene" uid="uid://bt0pke3hlejyd" path="res://assets/models/rocks/steinhaufen_low.blend" id="1_17sdo"]
+[ext_resource type="PackedScene" uid="uid://bcjd5s2bm5m5c" path="res://assets/models/rocks/steinhaufen_low_with_collision.blend" id="2_yd6fj"]
+
+[node name="StonePile" type="Node3D"]
+
+[node name="steinhaufen_low" parent="." instance=ExtResource("1_17sdo")]
+
+[node name="steinhaufen_low_with_collision" parent="." instance=ExtResource("2_yd6fj")]

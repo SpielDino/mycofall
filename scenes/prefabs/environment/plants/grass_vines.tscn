@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://r8m2pxdc34pt"]
+
+[ext_resource type="PackedScene" uid="uid://bh8a5a5w8ijd" path="res://assets/models/plants/grass_low.blend" id="1_hc2rl"]
+[ext_resource type="Texture2D" uid="uid://cfqpwohr4e31t" path="res://assets/textures/model_textures/grass_color_leaf.png" id="2_72gdh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8gmqu"]
+albedo_texture = ExtResource("2_72gdh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ct0q"]
+albedo_texture = ExtResource("2_72gdh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qttk"]
+albedo_texture = ExtResource("2_72gdh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w4p7s"]
+albedo_texture = ExtResource("2_72gdh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qu8f"]
+albedo_texture = ExtResource("2_72gdh")
+
+[node name="GrassVines" type="Node3D"]
+
+[node name="grass_low" parent="." instance=ExtResource("1_hc2rl")]
+
+[node name="Skeleton3D" parent="grass_low/Grass" index="0"]
+bones/0/rotation = Quaternion(0.104669, 0.0178178, 0.076306, 0.991415)
+bones/1/rotation = Quaternion(-0.0686006, -0.00558033, -0.21634, 0.973889)
+bones/2/rotation = Quaternion(-0.135563, -0.0233706, 0.273752, 0.951912)
+bones/3/rotation = Quaternion(0.109832, 0.00205012, -0.0739574, 0.991193)
+bones/4/rotation = Quaternion(-0.200323, 0.0125586, 0.220058, 0.954614)
+bones/5/rotation = Quaternion(0.100539, 0.0313037, -0.154673, 0.982338)
+bones/6/rotation = Quaternion(-0.0896591, 0.0206995, -0.056682, 0.994143)
+bones/7/rotation = Quaternion(0.129113, -0.00404699, 0.221291, 0.966615)
+bones/8/rotation = Quaternion(0.121059, -0.0301275, -0.246785, 0.961007)
+bones/9/rotation = Quaternion(-0.0679518, 0.0206922, -0.080402, 0.994228)
+bones/10/rotation = Quaternion(0.177761, 0.0138761, 0.215112, 0.960175)
+bones/11/rotation = Quaternion(0.00026744, 0.00640403, -0.0272744, 0.999607)
+bones/12/rotation = Quaternion(0.127821, 0.0157232, 0.0472675, 0.990545)
+bones/13/rotation = Quaternion(-0.13878, 0.000968914, -0.156704, 0.977846)
+bones/14/rotation = Quaternion(-0.060828, -0.0191848, 0.237949, 0.969181)
+
+[node name="Rankengras" parent="grass_low/Grass/Skeleton3D" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_8gmqu")
+
+[node name="Rankengras_002" parent="grass_low/Grass/Skeleton3D" index="1"]
+surface_material_override/1 = SubResource("StandardMaterial3D_6ct0q")
+
+[node name="Rankengras_003" parent="grass_low/Grass/Skeleton3D" index="2"]
+surface_material_override/1 = SubResource("StandardMaterial3D_3qttk")
+
+[node name="Rankengras_004" parent="grass_low/Grass/Skeleton3D" index="3"]
+surface_material_override/1 = SubResource("StandardMaterial3D_w4p7s")
+
+[node name="Rankengras_006" parent="grass_low/Grass/Skeleton3D" index="4"]
+surface_material_override/1 = SubResource("StandardMaterial3D_3qu8f")
+
+[editable path="grass_low"]

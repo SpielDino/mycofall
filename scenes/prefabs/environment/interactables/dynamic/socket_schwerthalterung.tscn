@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://lhj17p5n0syu"]
 
 [ext_resource type="Script" uid="uid://koludp3bc147" path="res://scripts/environment/socket.gd" id="1_dcd1t"]
-[ext_resource type="PackedScene" uid="uid://b4eqeggqw3sd5" path="res://placeholder/nikolai/Starting Area/Schwerthalterung.blend" id="2_op8fb"]
+[ext_resource type="PackedScene" uid="uid://b4eqeggqw3sd5" path="res://assets/models/objects/Schwerthalterung.blend" id="2_op8fb"]
 [ext_resource type="PackedScene" uid="uid://cwk8r83h8sq2c" path="res://assets/models/weapons/holz_schwert.blend" id="3_x3fbr"]
 [ext_resource type="PackedScene" uid="uid://ltlkqs0sw0se" path="res://assets/models/weapons/alt_schwert.blend" id="4_b1uia"]
 [ext_resource type="PackedScene" uid="uid://bwtakav8ny5y6" path="res://assets/models/weapons/metal_schwert.blend" id="5_d6kgf"]

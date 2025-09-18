@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqw6awtiag0l6"]
+
+[ext_resource type="PackedScene" uid="uid://dxe1qt7b4vx5l" path="res://assets/models/objects/mauer.blend" id="1_s3og7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s3og7"]
+size = Vector3(0.579102, 3.70459, 13.4312)
+
+[node name="StoneWallWithCollision" type="Node3D"]
+
+[node name="mauer" parent="." instance=ExtResource("1_s3og7")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 5.43442)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.59302, -0.129639)
+shape = SubResource("BoxShape3D_s3og7")

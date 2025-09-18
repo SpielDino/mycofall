@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfy70xrkdksip"]
+
+[ext_resource type="PackedScene" uid="uid://dxe1qt7b4vx5l" path="res://assets/models/objects/mauer.blend" id="1_5ysjv"]
+
+[node name="StoneWall" type="Node3D"]
+
+[node name="mauer" parent="." instance=ExtResource("1_5ysjv")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 5.43442)

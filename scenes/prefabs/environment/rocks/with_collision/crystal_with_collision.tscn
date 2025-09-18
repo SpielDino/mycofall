@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://bsetxsdes1dd0"]
+
+[ext_resource type="PackedScene" uid="uid://cpmwfv3xn0xv1" path="res://assets/models/rocks/Crystal.blend" id="1_5uijh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rrl6h"]
+size = Vector3(1, 1.1319, 0.714233)
+
+[node name="CrystalWithCollision" type="Node3D"]
+
+[node name="Crystal" parent="." instance=ExtResource("1_5uijh")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.20324, 0, -1.01919)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.505463, 0.0421753)
+shape = SubResource("BoxShape3D_rrl6h")
+
+[editable path="Crystal"]

@@ -1,11 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b0qv5ltifbks8"]
 
-[ext_resource type="PackedScene" uid="uid://bta36mefonb87" path="res://placeholder/nikolai/Starting Area/Kessel.blend" id="1_e1brq"]
+[ext_resource type="PackedScene" uid="uid://bta36mefonb87" path="res://assets/models/objects/Kessel.blend" id="1_e1brq"]
 [ext_resource type="PackedScene" uid="uid://clpalvmix3ckm" path="res://assets/models/objects/bonfire_low.blend" id="2_gejy2"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_e1brq"]
-height = 0.953003
-radius = 0.818848
 
 [sub_resource type="Curve" id="Curve_2lbsh"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.121085), 0.0, 0.0, 0, 0]
@@ -39,11 +35,11 @@ height = 0.2
 radial_segments = 8
 rings = 4
 
-[node name="Kessel" type="StaticBody3D"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e1brq"]
+height = 0.953003
+radius = 0.818848
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523499, 0)
-shape = SubResource("CylinderShape3D_e1brq")
+[node name="Cauldron" type="Node3D"]
 
 [node name="Kessel" parent="." instance=ExtResource("1_e1brq")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.564426, 0)
@@ -59,3 +55,9 @@ draw_pass_1 = SubResource("SphereMesh_egm7e")
 
 [node name="bonfire_low" parent="." instance=ExtResource("2_gejy2")]
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523499, 0)
+shape = SubResource("CylinderShape3D_e1brq")

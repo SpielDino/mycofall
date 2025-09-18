@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://7260ikyb5ykx"]
+
+[ext_resource type="PackedScene" uid="uid://f25n6eb645wq" path="res://assets/models/trees/baumstamm_stapel_low.blend" id="1_ih4k0"]
+
+[node name="TreeStapelCollision" type="Node3D"]
+
+[node name="baumstammStapel" parent="." instance=ExtResource("1_ih4k0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.449807)

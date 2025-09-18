@@ -587,7 +587,6 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-251.961, -96.2349)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")
 nodes/BlockAnimation/position = Vector2(2680, 360)
 nodes/BowAnimation/node = SubResource("AnimationNodeBlend2_6ei3l")
@@ -637,6 +636,7 @@ dodge_distance = 6.0
 camera_follow_speed = 0.08
 
 [node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator") groups=["Player"]]
+collision_mask = 3
 script = ExtResource("2_6ei3l")
 player_shape = NodePath("Model")
 dodge_indicator = NodePath("Model/DodgeIndicator")

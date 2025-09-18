@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://tp80vatrials"]
+
+[ext_resource type="PackedScene" uid="uid://bivaufkugvwii" path="res://assets/models/plants/bush_2_low.blend" id="1_pfobt"]
+
+[node name="Bush2" type="Node3D"]
+
+[node name="bush_2_low" parent="." instance=ExtResource("1_pfobt")]

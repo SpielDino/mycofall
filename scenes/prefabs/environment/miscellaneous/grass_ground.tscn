@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bf5e8uq1j5xfg"]
 
-[ext_resource type="Material" uid="uid://dp3mrytmy4xye" path="res://placeholder/nikolai/grass_ground.tres" id="1_c7qb6"]
+[ext_resource type="Material" uid="uid://dp3mrytmy4xye" path="res://assets/materials/grass_ground.tres" id="1_c7qb6"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_mj7mv"]
 size = Vector2(10, 10)

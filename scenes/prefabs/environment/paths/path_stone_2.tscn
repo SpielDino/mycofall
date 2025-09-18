@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://u2j321ukiyxi"]
+
+[ext_resource type="PackedScene" uid="uid://ln1dwn6abq76" path="res://assets/models/rocks/path_stone_2.blend" id="1_iccfe"]
+[ext_resource type="Texture2D" uid="uid://bnhr00a0bpduj" path="res://assets/models/rocks/textures/pathstone-3.png" id="2_c534g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkbvb"]
+albedo_texture = ExtResource("2_c534g")
+
+[node name="PathStone2" type="Node3D"]
+
+[node name="path_stone_2" parent="." instance=ExtResource("1_iccfe")]
+
+[node name="PathStone_001" parent="path_stone_2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mkbvb")
+
+[editable path="path_stone_2"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7h3kig7wimcn"]
+
+[ext_resource type="PackedScene" uid="uid://bajgyadyyn224" path="res://assets/models/plants/pilz_variation.blend" id="1_kdy1g"]
+
+[node name="MushroomLightBrown" type="Node3D"]
+
+[node name="pilz_variation" parent="." instance=ExtResource("1_kdy1g")]

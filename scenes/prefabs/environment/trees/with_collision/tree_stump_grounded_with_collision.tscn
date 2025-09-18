@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2wdtfy6icf4l"]
+
+[ext_resource type="PackedScene" uid="uid://bputepsec17t1" path="res://assets/models/trees/baumstumpf.blend" id="1_a5wnr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3donx"]
+size = Vector3(1, 0.649041, 1)
+
+[node name="TreeStumpGroundedWithCollision" type="Node3D"]
+
+[node name="Baumstumpf" parent="." instance=ExtResource("1_a5wnr")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.291858, 0)
+shape = SubResource("BoxShape3D_3donx")

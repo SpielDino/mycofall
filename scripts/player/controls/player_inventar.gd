@@ -58,6 +58,9 @@ var staff_name = "Staff"
 var bow_name = "Bow"
 var empty_weapon_name = ""
 
+func _ready() -> void:
+	GameManager.interacted_with_upgrade_item.connect(_upgrade_weapon)
+
 func _physics_process(delta: float) -> void:
 	swapping_weapons()
 
@@ -88,10 +91,14 @@ func swapping_weapons():
 			swap_second_weapon_to_first_weapon_based_on_upgrade_level()
 			swap_first_weapon_to_second_weapon_based_on_upgrade_level()
 			var first_weapon_name = GameManager.get_first_weapon_name()
+			var first_weapon_upgrade_level = GameManager.get_first_weapon_upgrade_level()
 			var second_weapon_name = GameManager.get_second_weapon_name()
+			var second_weapon_upgrade_level = GameManager.get_second_weapon_upgrade_level()
 			GameManager.set_first_weapon_name(second_weapon_name)
+			GameManager.set_first_weapon_upgrade_level(second_weapon_upgrade_level)
 			GameManager.weapons_updated()
 			GameManager.set_second_weapon_name(first_weapon_name)
+			GameManager.set_second_weapon_upgrade_level(first_weapon_upgrade_level)
 			GameManager.weapons_updated()
 			#debug_game_manager_variables()
 
@@ -368,6 +375,46 @@ func equip_second_weapon_as_first_weapon():
 			else:
 				back_wood_shield.visible = false
 				off_hand_wood_shield.visible = true
+
+func _upgrade_weapon():
+	var first_weapon_upgrade_level = GameManager.get_first_weapon_upgrade_level()
+	match GameManager.get_first_weapon_name():
+		sword_name:
+			match first_weapon_upgrade_level:
+				UPGRADE_LEVEL_WOOD_WEAPON:
+					main_hand_wood_sword.visible = false
+					main_hand_sword.visible = true
+				UPGRADE_LEVEL_WEAPON:
+					main_hand_sword.visible = false
+					main_hand_metal_sword.visible = true
+		staff_name:
+			match first_weapon_upgrade_level:
+				UPGRADE_LEVEL_WOOD_WEAPON:
+					main_hand_wood_staff.visible = false
+					main_hand_crystal_wood_staff.visible = false
+					main_hand_staff.visible = true
+				UPGRADE_LEVEL_WEAPON:
+					main_hand_staff.visible = false
+					main_hand_metal_staff.visible = true
+					main_hand_crystal_metal_staff.visible = true
+		bow_name:
+			match first_weapon_upgrade_level:
+				UPGRADE_LEVEL_WOOD_WEAPON:
+					off_hand_wood_bow.visible = false
+					off_hand_bow.visible = true
+				UPGRADE_LEVEL_WEAPON:
+					off_hand_bow.visible = false
+					off_hand_metal_bow.visible = true
+		shield_name:
+			match first_weapon_upgrade_level:
+				UPGRADE_LEVEL_WOOD_WEAPON:
+					off_hand_wood_shield.visible = false
+					off_hand_shield.visible = true
+				UPGRADE_LEVEL_WEAPON:
+					off_hand_shield.visible = false
+					off_hand_metal_shield.visible = true
+	GameManager.set_first_weapon_upgrade_level(first_weapon_upgrade_level + 1)
+
 
 func debug_game_manager_variables():
 	print("First Weapon")

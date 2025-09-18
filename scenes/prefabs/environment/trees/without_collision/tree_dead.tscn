@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b3ngd7bq53bhx"]
+
+[ext_resource type="PackedScene" uid="uid://bnfth61xgvgal" path="res://assets/models/trees/tree_low.blend" id="1_6y4fj"]
+
+[node name="TreeDead" type="Node3D"]
+
+[node name="tree" parent="." instance=ExtResource("1_6y4fj")]

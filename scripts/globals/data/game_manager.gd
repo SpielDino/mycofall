@@ -5,6 +5,7 @@ signal attacks
 signal blocks
 signal attack_loading_updated
 signal heavy_attack
+signal interacted_with_upgrade_item
 
 var first_weapon: bool = false
 var second_weapon: bool = false
@@ -167,3 +168,6 @@ func get_mouse_ground_position_fixed(object) -> Vector3:
 		return world_pos
 	
 	return object.global_position
+
+func use_signal_interacted_with_upgrade_item():
+	interacted_with_upgrade_item.emit()

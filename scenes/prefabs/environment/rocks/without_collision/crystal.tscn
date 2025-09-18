@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdahddfj55fxl"]
+
+[ext_resource type="PackedScene" uid="uid://cpmwfv3xn0xv1" path="res://assets/models/rocks/Crystal.blend" id="1_ut04n"]
+
+[node name="Crystal" type="Node3D"]
+
+[node name="Crystal" parent="." instance=ExtResource("1_ut04n")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.20324, 0, -1.01919)

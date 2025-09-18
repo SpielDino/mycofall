@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0pijk8wufkjf"]
+
+[ext_resource type="PackedScene" uid="uid://mat52uog4sa4" path="res://assets/models/rocks/rock_one_low.blend" id="1_ntjcg"]
+[ext_resource type="PackedScene" uid="uid://dwc72hraa112v" path="res://assets/models/rocks/rock_one_low_with_collision.blend" id="2_hr4nr"]
+
+[node name="RockWithCollision" type="Node3D"]
+
+[node name="rock_one_low" parent="." instance=ExtResource("1_ntjcg")]
+
+[node name="rock_one_low_with_collision" parent="." instance=ExtResource("2_hr4nr")]

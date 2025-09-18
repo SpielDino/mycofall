@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://drlryl3j1rb3a"]
+
+[ext_resource type="PackedScene" uid="uid://cqiqp4g6pngnl" path="res://assets/models/objects/Pilzlampe.blend" id="1_466hy"]
+[ext_resource type="Texture2D" uid="uid://dmco05ywh8g7p" path="res://assets/textures/model_textures/path_stone_color.png" id="2_kcm1u"]
+[ext_resource type="Texture2D" uid="uid://bcbtnh8mk474o" path="res://assets/textures/model_textures/fliegen_pilz.png" id="3_j13wg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2ejv"]
+albedo_texture = ExtResource("2_kcm1u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_56opc"]
+albedo_texture = ExtResource("3_j13wg")
+
+[node name="MushroomLamp" type="Node3D"]
+
+[node name="Pilzlampe2" parent="." instance=ExtResource("1_466hy")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Pilzlampe" parent="Pilzlampe2" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_s2ejv")
+surface_material_override/1 = SubResource("StandardMaterial3D_56opc")
+
+[editable path="Pilzlampe2"]

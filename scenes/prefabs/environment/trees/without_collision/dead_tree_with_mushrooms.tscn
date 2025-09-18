@@ -1,0 +1,48 @@
+[gd_scene load_steps=10 format=3 uid="uid://j3dh7kqhlnyg"]
+
+[ext_resource type="PackedScene" uid="uid://b6f8ex1bcm4ms" path="res://assets/models/tree_bundle/dead_tree_with_mushromms.blend" id="1_hh75r"]
+[ext_resource type="Texture2D" uid="uid://bcbtnh8mk474o" path="res://assets/textures/model_textures/fliegen_pilz.png" id="2_2ldns"]
+[ext_resource type="Texture2D" uid="uid://cfqpwohr4e31t" path="res://assets/textures/model_textures/grass_color_leaf.png" id="3_pamhy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hfnol"]
+albedo_texture = ExtResource("2_2ldns")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ni3af"]
+albedo_texture = ExtResource("3_pamhy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y8fjt"]
+albedo_texture = ExtResource("3_pamhy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4aowk"]
+albedo_texture = ExtResource("3_pamhy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h7bdr"]
+albedo_texture = ExtResource("3_pamhy")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eqpsi"]
+albedo_texture = ExtResource("3_pamhy")
+
+[node name="DeadTreeWithMushrooms" type="Node3D"]
+
+[node name="dead_tree_with_mushromms" parent="." instance=ExtResource("1_hh75r")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Icosphere_001" parent="dead_tree_with_mushromms/Armature_008/Skeleton3D" index="0"]
+surface_material_override/2 = SubResource("StandardMaterial3D_hfnol")
+
+[node name="Rankengras" parent="dead_tree_with_mushromms/Grass/Skeleton3D" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_ni3af")
+
+[node name="Rankengras_002" parent="dead_tree_with_mushromms/Grass/Skeleton3D" index="1"]
+surface_material_override/1 = SubResource("StandardMaterial3D_y8fjt")
+
+[node name="Rankengras_003" parent="dead_tree_with_mushromms/Grass/Skeleton3D" index="2"]
+surface_material_override/1 = SubResource("StandardMaterial3D_4aowk")
+
+[node name="Rankengras_004" parent="dead_tree_with_mushromms/Grass/Skeleton3D" index="3"]
+surface_material_override/1 = SubResource("StandardMaterial3D_h7bdr")
+
+[node name="Rankengras_006" parent="dead_tree_with_mushromms/Grass/Skeleton3D" index="4"]
+surface_material_override/1 = SubResource("StandardMaterial3D_eqpsi")
+
+[editable path="dead_tree_with_mushromms"]

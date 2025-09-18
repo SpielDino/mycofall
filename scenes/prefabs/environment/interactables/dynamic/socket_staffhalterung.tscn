@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c83pj7nebfypc"]
 
 [ext_resource type="Script" uid="uid://koludp3bc147" path="res://scripts/environment/socket.gd" id="1_ps6im"]
-[ext_resource type="PackedScene" uid="uid://kr8gwhi5w6q2" path="res://placeholder/nikolai/Starting Area/Stabhalter.blend" id="2_bn3w1"]
+[ext_resource type="PackedScene" uid="uid://kr8gwhi5w6q2" path="res://assets/models/objects/Stabhalter.blend" id="2_bn3w1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3donx"]
 size = Vector3(1, 1.85593, 1)

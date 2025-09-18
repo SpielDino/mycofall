@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://3y2knspcyotc"]
+
+[ext_resource type="PackedScene" uid="uid://cklu4kmm25cf8" path="res://assets/models/plants/Ranke.blend" id="1_ym0pw"]
+
+[node name="Vines" type="Node3D"]
+
+[node name="Ranke" parent="." instance=ExtResource("1_ym0pw")]
+
+[editable path="Ranke"]
