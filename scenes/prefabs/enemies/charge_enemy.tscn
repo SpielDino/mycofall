@@ -187,4 +187,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189564, 0)
 shape = SubResource("SphereShape3D_oy421")
 
 [editable path="DetectionComponent"]
+[editable path="MovementComponent"]
 [editable path="Model"]

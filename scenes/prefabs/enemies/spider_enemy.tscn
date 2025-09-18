@@ -230,4 +230,5 @@ transform = Transform3D(0.00799357, -0.999968, 0, 0.999968, 0.00799357, 0, 0, 0,
 shape = SubResource("CapsuleShape3D_fdvl8")
 
 [editable path="DetectionComponent"]
+[editable path="MovementComponent"]
 [editable path="Model"]

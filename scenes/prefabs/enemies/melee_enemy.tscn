@@ -206,4 +206,5 @@ process_material = SubResource("ParticleProcessMaterial_n7juc")
 draw_pass_1 = SubResource("QuadMesh_m3lbr")
 
 [editable path="DetectionComponent"]
+[editable path="MovementComponent"]
 [editable path="Model"]

@@ -20,7 +20,6 @@ func setParameter(playerInput: Node3D, damageInput: float, speedInput: float, tr
 	vel = velInput
 	await get_tree().create_timer(lifetimeInput).timeout
 	queue_free()
-	
 
 func setTrackingDelay(delay):
 	trackingDelay = delay

@@ -23,7 +23,7 @@ func _physics_process(delta):
 	attack(delta)
 
 func attack(delta):
-	if is_in_attack_range:
+	if is_in_attack_range and !enemy.died:
 		is_attacking = true
 		enemy.state = enemy.States.ATTACK_TYPE_1
 	if !is_attacking:

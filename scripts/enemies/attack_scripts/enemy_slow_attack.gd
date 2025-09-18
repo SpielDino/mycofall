@@ -24,7 +24,7 @@ func _ready():
 func _physics_process(delta):
 	if attack_cooldown > 0:
 		attack_cooldown -= delta
-	if is_in_attack_area and enemy.state == enemy.States.MOVING and attack_cooldown <= 0:
+	if is_in_attack_area and enemy.state == enemy.States.MOVING and attack_cooldown <= 0 and !enemy.died:
 		enemy.state = enemy.States.ATTACK_TYPE_1
 		attack_cooldown = 1/attack_speed
 		attack_timer = 1.6667

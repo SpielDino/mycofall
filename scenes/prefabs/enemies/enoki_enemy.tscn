@@ -286,4 +286,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.45539, 0)
 shape = SubResource("CapsuleShape3D_5x2ut")
 
 [editable path="DetectionComponent"]
+[editable path="MovementComponent"]
 [editable path="Model"]

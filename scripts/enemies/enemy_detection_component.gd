@@ -1,9 +1,7 @@
 extends Node3D
 
-@export_group("DetectionBehaviour")
-@export var hearing_range: float = 40
-@export var vision_range: float = 40
-@export var isTracking: bool = true
+@export_group("Detection Behaviour")
+@export var is_tracking: bool = true
 @export var always_tracking: bool = false
 
 @export_group("Ally communication")
@@ -22,15 +20,9 @@ var player_location_known_from_ally: bool = false
 var tracking_duration: float = 0
 var last_known_location: Vector3
 
-@onready var hearing_node = $HearingArea
-@onready var vision_node = $VisionArea
-
 func _ready():
 	enemy = get_parent()
 	player = GlobalPlayer.get_player()
-	
-	hearing_node.scale = Vector3(hearing_range, hearing_range, hearing_range)
-	vision_node.scale = Vector3(vision_range, vision_range, vision_range)
 
 func _physics_process(delta):
 	if detect() or always_tracking:
@@ -49,7 +41,10 @@ func search(delta):
 			enemy.state = enemy.States.NONE 
 
 func detect():
-	if !isTracking:
+	if always_tracking:
+		detected_player = true
+		return true
+	if !is_tracking:
 		detected_player = false
 		return false
 	if player_is_in_hearing_area:

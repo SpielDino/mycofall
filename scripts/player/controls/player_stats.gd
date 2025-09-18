@@ -169,7 +169,6 @@ func check_if_attack_was_blocked(attacker: Node3D, block_cost_modifier):
 		return false
 	if stamina < (blocking_stamina_cost * (1-block_cost_modifier)):
 		block_broken = broken_block_duration
-		print("Block was broken, stamina too low")
 		return false
 	PlayerActionTracker.attacks_blocked += 1
 	return true
@@ -181,7 +180,6 @@ func normalize_angle(angle: float):
 
 func break_block():
 	block_broken = broken_block_duration
-	print("Block was broken from attack")
 
 func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifier, knockdown_check: bool = false):
 	if GameManager.get_having_i_frames():
@@ -198,6 +196,7 @@ func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifie
 				health_changed.emit()
 				#$Controller/PlayerAudio/BlockedSFX.play()
 			else: 
+				health -= damage
 				break_block()
 		else:
 			health -= damage

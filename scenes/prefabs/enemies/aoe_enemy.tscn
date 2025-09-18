@@ -220,4 +220,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.135, 0.999, -0.2)
 shape = SubResource("CapsuleShape3D_s1ben")
 
 [editable path="DetectionComponent"]
+[editable path="MovementComponent"]
 [editable path="Model"]

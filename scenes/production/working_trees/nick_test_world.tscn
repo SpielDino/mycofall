@@ -82,30 +82,6 @@ health = 10
 [node name="ExplosionEnemy" parent="." instance=ExtResource("7_xsrf7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.0905, 0.979442, -14.4569)
 
-[node name="BeinR" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 1.5672e-07, 1.51581e-07, -5.00479e-08, 1, 0.0908616, 0.0432918, -0.00346282)
-
-[node name="BeinL" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 1.5672e-07, 1.51581e-07, -5.00479e-08, 1, 0.0884127, 0.0395059, 1.04308e-07)
-
-[node name="ArmL" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.245984, -0.517131, 0.819797, 0.791632, 0.595224, 0.137937, -0.559294, 0.615048, 0.555793, -0.185656, 0.00144205, 0.147659)
-
-[node name="ArmR" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.234986, -0.527258, -0.816566, 0.705919, 0.670073, -0.229521, 0.668176, -0.522496, 0.529659, -0.182569, -0.0116516, -0.144376)
-
-[node name="Hutshell" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.985223, -0.17125, -0.00312117, 0.17124, -0.985224, 0.00331978, -0.00364356, 0.00273626, 0.99999, -0.00102169, 0.000937998, -2.42967e-05)
-
-[node name="Körper" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.984811, 0.172972, -0.0150833, -0.172813, 0.98489, 0.0113288, 0.016815, -0.00855018, 0.999822, -0.00204655, -0.0116528, 0.000101157)
-
-[node name="Hut" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="6"]
-transform = Transform3D(0.984811, 0.172972, -0.0150833, -0.172813, 0.98489, 0.0113288, 0.016815, -0.00855018, 0.999822, -1.62981e-09, 1.58325e-08, -5.3551e-09)
-
-[node name="Sphere_002" parent="ExplosionEnemy/Model/Armature/Skeleton3D" index="7"]
-transform = Transform3D(0.984811, 0.172972, -0.0150833, -0.172813, 0.98489, 0.0113288, 0.016815, -0.00855018, 0.999822, -0.10615, 0.0740856, -0.00244084)
-
 [node name="AoeEnemy" parent="." instance=ExtResource("8_bch81")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2401, 3.42852, -15.4497)
 
@@ -159,7 +135,7 @@ transform = Transform3D(1, -1.12546e-16, 0, 1.12546e-16, 1, 6.21725e-15, 0, -6.2
 transform = Transform3D(1, -1.12546e-16, 0, 1.12546e-16, 1, 6.21725e-15, 0, -6.21725e-15, 1, -0.202008, 0.487061, 0.195547)
 
 [node name="ChargeEnemy" parent="." instance=ExtResource("9_luvqa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.649, 1.76618, -11.1515)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.7547, 1.76618, 16.9154)
 
 [node name="DecoyEnemy" parent="." instance=ExtResource("10_x225k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.79411, 1.06966, -21.4232)
@@ -237,10 +213,12 @@ transform = Transform3D(1, -0.000101255, -7.11516e-05, 0.000113629, 0.97902, 0.2
 
 [editable path="MeleeEnemy"]
 [editable path="MeleeEnemy/DetectionComponent"]
+[editable path="MeleeEnemy/MovementComponent"]
 [editable path="MeleeEnemy/EnemyMeleeAttackComponent"]
 [editable path="MeleeEnemy/Model"]
 [editable path="EnokiEnemy"]
 [editable path="EnokiEnemy/DetectionComponent"]
+[editable path="EnokiEnemy/MovementComponent"]
 [editable path="EnokiEnemy/Model"]
 [editable path="ExplosionEnemy"]
 [editable path="ExplosionEnemy/DetectionComponent"]
@@ -255,6 +233,7 @@ transform = Transform3D(1, -0.000101255, -7.11516e-05, 0.000113629, 0.97902, 0.2
 [editable path="AoeEnemy/Model"]
 [editable path="ChargeEnemy"]
 [editable path="ChargeEnemy/DetectionComponent"]
+[editable path="ChargeEnemy/MovementComponent"]
 [editable path="ChargeEnemy/EnemyChargeAttackComponent"]
 [editable path="ChargeEnemy/Model"]
 [editable path="DecoyEnemy"]
