@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://bq3jhkpi334fg"]
+
+[ext_resource type="PackedScene" uid="uid://bfiaoxgew6ul5" path="res://assets/models/objects/Bag.blend" id="1_w21wc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7ew1l"]
+height = 1.21759
+radius = 0.664551
+
+[node name="Bag" type="Node3D"]
+
+[node name="Bag2" parent="." instance=ExtResource("1_w21wc")]
+transform = Transform3D(0.669524, 0, 0, 0, 0.669524, 0, 0, 0, 0.669524, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0448303, 0)
+shape = SubResource("CylinderShape3D_7ew1l")

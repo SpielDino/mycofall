@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://sdy26vvq4yux"]
 
-[ext_resource type="PackedScene" uid="uid://cq4t7cf0yykj3" path="res://placeholder/nikolai/StaringArea.blend" id="1_nff5f"]
-[ext_resource type="Script" uid="uid://36n8nb5ku5s2" path="res://placeholder/nikolai/door.gd" id="2_8hjkn"]
+[ext_resource type="PackedScene" uid="uid://cq4t7cf0yykj3" path="res://assets/models/objects/StaringArea.blend" id="1_nff5f"]
+[ext_resource type="Script" uid="uid://36n8nb5ku5s2" path="res://scripts/environment/door.gd" id="2_8hjkn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5i4iq"]
 size = Vector3(1, 7.59418, 7.96411)

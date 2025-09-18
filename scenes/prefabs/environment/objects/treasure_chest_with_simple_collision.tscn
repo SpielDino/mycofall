@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqcrm8tk2okmd"]
+
+[ext_resource type="PackedScene" uid="uid://0nfw5mc4miwb" path="res://assets/models/objects/treasure_chest.blend" id="1_wr85j"]
+[ext_resource type="Material" uid="uid://kxh5naljd553" path="res://assets/materials/wood_material.tres" id="2_oxg7r"]
+[ext_resource type="Texture2D" uid="uid://dmco05ywh8g7p" path="res://assets/textures/model_textures/path_stone_color.png" id="3_xt1yo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fod0g"]
+albedo_texture = ExtResource("3_xt1yo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4xmv"]
+albedo_texture = ExtResource("3_xt1yo")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnpi7"]
+size = Vector3(0.994751, 1.2301, 2.19629)
+
+[node name="TreasureChestWithSimpleCollision" type="Node3D"]
+
+[node name="treasure_chest" parent="." instance=ExtResource("1_wr85j")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+
+[node name="unter" parent="treasure_chest" index="0"]
+surface_material_override/0 = ExtResource("2_oxg7r")
+surface_material_override/1 = ExtResource("2_oxg7r")
+surface_material_override/2 = SubResource("StandardMaterial3D_fod0g")
+
+[node name="Ober" parent="treasure_chest" index="1"]
+transform = Transform3D(1.2898, -0.0117507, 0, 0.0099647, 1.52097, 0, 0, 0, -0.31872, -1.28189, -0.495022, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_j4xmv")
+surface_material_override/2 = ExtResource("2_oxg7r")
+surface_material_override/3 = ExtResource("2_oxg7r")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0164185, -0.156616, 0)
+shape = SubResource("BoxShape3D_qnpi7")
+
+[editable path="treasure_chest"]

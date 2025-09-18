@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbwrw3p0v82mr"]
+
+[ext_resource type="PackedScene" uid="uid://d12dhy357mtpn" path="res://assets/models/tree_bundle/tree_bundle_four.blend" id="1_8u3md"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3axkd"]
+size = Vector3(4.97852, 6.89252, 5.03345)
+
+[node name="TreeBundleFourWithCollision" type="Node3D"]
+
+[node name="tree_bundle_four" parent="." instance=ExtResource("1_8u3md")]
+
+[node name="TreeAmature_003" parent="tree_bundle_four" index="1"]
+visible = false
+
+[node name="Skeleton3D" parent="tree_bundle_four/TreeAmature_003" index="0"]
+visible = false
+
+[node name="Tree_001" parent="tree_bundle_four/TreeAmature_003/Skeleton3D" index="0"]
+visible = false
+
+[node name="TreeAmature_001" parent="tree_bundle_four" index="3"]
+visible = false
+
+[node name="Skeleton3D" parent="tree_bundle_four/TreeAmature_001" index="0"]
+visible = false
+
+[node name="Tree_003" parent="tree_bundle_four/TreeAmature_001/Skeleton3D" index="0"]
+visible = false
+
+[node name="RockOne" parent="tree_bundle_four" index="5"]
+visible = false
+
+[node name="RockOne_001" parent="tree_bundle_four" index="6"]
+visible = false
+
+[node name="Pilze" parent="tree_bundle_four/BaumStamm" index="0"]
+visible = false
+
+[node name="Skeleton3D" parent="tree_bundle_four/BaumStamm/Pilze" index="0"]
+visible = false
+
+[node name="Head" parent="tree_bundle_four/BaumStamm/Pilze/Skeleton3D" index="0"]
+visible = false
+
+[node name="Pilze_001" parent="tree_bundle_four/BaumStamm" index="1"]
+visible = false
+
+[node name="Skeleton3D" parent="tree_bundle_four/BaumStamm/Pilze_001" index="0"]
+visible = false
+
+[node name="Head_001" parent="tree_bundle_four/BaumStamm/Pilze_001/Skeleton3D" index="0"]
+visible = false
+
+[node name="Pilze_002" parent="tree_bundle_four/BaumStamm" index="2"]
+visible = false
+
+[node name="Skeleton3D" parent="tree_bundle_four/BaumStamm/Pilze_002" index="0"]
+visible = false
+
+[node name="Head_002" parent="tree_bundle_four/BaumStamm/Pilze_002/Skeleton3D" index="0"]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.569031, 3.15671, 0)
+shape = SubResource("BoxShape3D_3axkd")
+
+[editable path="tree_bundle_four"]

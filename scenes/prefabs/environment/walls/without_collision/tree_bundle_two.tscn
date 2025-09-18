@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://r5tbjd6fl3mq"]
+
+[ext_resource type="PackedScene" uid="uid://rpncl5nhsvi0" path="res://assets/models/tree_bundle/tree_bundle_two.blend" id="1_gim3p"]
+
+[node name="TreeBundleTwo" type="Node3D"]
+
+[node name="tree_bundle_two" parent="." instance=ExtResource("1_gim3p")]

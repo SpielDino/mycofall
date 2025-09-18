@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgikfjkv3aab7"]
+
+[ext_resource type="PackedScene" uid="uid://bsdihb6eyvc6w" path="res://assets/models/tree_bundle/baumstamm_low_mit_pilzen.blend" id="1_vg4sx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uhdhj"]
+size = Vector3(4.9082, 0.948242, 0.93335)
+
+[node name="TreeStumpWithMushroomsWithCollision" type="Node3D"]
+
+[node name="baumstamm_low_mit_pilzen" parent="." instance=ExtResource("1_vg4sx")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00976563)
+shape = SubResource("BoxShape3D_uhdhj")

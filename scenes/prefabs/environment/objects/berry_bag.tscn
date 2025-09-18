@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bkbmihcyno6ck"]
 
-[ext_resource type="PackedScene" uid="uid://c25372da4dhhe" path="res://placeholder/nikolai/Starting Area/BerryBag.blend" id="1_tetlf"]
-[ext_resource type="ArrayMesh" uid="uid://bts5e6ixcsc42" path="res://placeholder/nikolai/Starting Area/Mesh/BerryMesh.res" id="2_ngsw8"]
-[ext_resource type="PackedScene" uid="uid://3bdklyhwoaa6" path="res://placeholder/nikolai/Starting Area/Berry.blend" id="3_hb7n1"]
+[ext_resource type="PackedScene" uid="uid://c25372da4dhhe" path="res://assets/models/objects/BerryBag.blend" id="1_tetlf"]
+[ext_resource type="ArrayMesh" uid="uid://bts5e6ixcsc42" path="res://assets/textures/model_textures/Mesh/BerryMesh.res" id="2_ngsw8"]
+[ext_resource type="PackedScene" uid="uid://cha8r72kvhors" path="res://assets/models/objects/Berry.blend" id="3_hb7n1"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hrmpy"]
 size = Vector2(0.5, 0.5)
@@ -17,7 +17,7 @@ buffer = PackedFloat32Array(0.126622, -0.00440965, -0.111528, 0.225743, -0.08362
 height = 1.21759
 radius = 0.664551
 
-[node name="Berry_Bag" type="StaticBody3D"]
+[node name="BerryBag" type="Node3D"]
 
 [node name="BerryBag" parent="." instance=ExtResource("1_tetlf")]
 transform = Transform3D(0.669524, 0, 0, 0, 0.669524, 0, 0, 0, 0.669524, 0, 0, 0)
@@ -54,6 +54,8 @@ transform = Transform3D(8.26269e-05, -0.00360809, -0.0787423, -0.0521789, -0.059
 [node name="Berry7" parent="BerryBag/FloorBerry" instance=ExtResource("3_hb7n1")]
 transform = Transform3D(-0.049745, 0.0390265, -0.0470717, -0.035298, -0.067878, -0.018974, -0.0499285, 0.00910466, 0.0603127, -0.80275, -0.848773, 0.637631)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0448303, 0)
 shape = SubResource("CylinderShape3D_tau64")

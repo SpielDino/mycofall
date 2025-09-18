@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmsrsjs2gnxps"]
+
+[ext_resource type="PackedScene" uid="uid://bsdihb6eyvc6w" path="res://assets/models/tree_bundle/baumstamm_low_mit_pilzen.blend" id="1_fog10"]
+
+[node name="TreeStumpWithMushrooms" type="Node3D"]
+
+[node name="baumstamm_low_mit_pilzen" parent="." instance=ExtResource("1_fog10")]

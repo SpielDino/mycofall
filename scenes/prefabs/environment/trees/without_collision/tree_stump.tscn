@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyie3w5c4tep6"]
+
+[ext_resource type="PackedScene" uid="uid://dq13fr4irp30" path="res://assets/models/trees/baumstamm_low.blend" id="1_dui3s"]
+
+[node name="TreeStump" type="Node3D"]
+
+[node name="baumstamm_low" parent="." instance=ExtResource("1_dui3s")]

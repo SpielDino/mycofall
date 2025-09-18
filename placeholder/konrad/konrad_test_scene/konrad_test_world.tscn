@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c3c650unruhvy"]
+[gd_scene load_steps=28 format=3 uid="uid://c3c650unruhvy"]
 
 [ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="1_ch4m0"]
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="1_m28bg"]
@@ -7,13 +7,23 @@
 [ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="3_h0rvv"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="5_ch4m0"]
 [ext_resource type="PackedScene" uid="uid://bq5qig7o50lrw" path="res://scenes/prefabs/environment/interactables/dynamic/upgrade_material.tscn" id="6_gexbg"]
-[ext_resource type="PackedScene" uid="uid://bohnf5vipujed" path="res://scenes/prefabs/environment/interactables/dynamic/bonfire.tscn" id="7_axl6w"]
+[ext_resource type="PackedScene" uid="uid://bohnf5vipujed" path="res://scenes/prefabs/environment/objects/bonfire.tscn" id="7_axl6w"]
 [ext_resource type="PackedScene" uid="uid://rddwidjpmb55" path="res://scenes/prefabs/environment/rooms/level_rooms/training_room.tscn" id="7_oxph1"]
 [ext_resource type="PackedScene" uid="uid://c4pocta6ava2v" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy_ranged_with_stand.tscn" id="8_edm6o"]
 [ext_resource type="PackedScene" uid="uid://dhomudq6rby8h" path="res://scenes/prefabs/environment/interactables/dynamic/sign.tscn" id="9_pumad"]
 [ext_resource type="PackedScene" uid="uid://d1yh026p2wrjl" path="res://scenes/prefabs/environment/plants/flower_blue.tscn" id="10_vasgb"]
-[ext_resource type="PackedScene" uid="uid://c0pijk8wufkjf" path="res://scenes/prefabs/environment/rocks/rock_with_collision.tscn" id="11_pjour"]
-[ext_resource type="PackedScene" uid="uid://ccukqp13cjs4k" path="res://scenes/prefabs/environment/rocks/stone_pile_with_collision.tscn" id="12_224vm"]
+[ext_resource type="PackedScene" uid="uid://c0pijk8wufkjf" path="res://scenes/prefabs/environment/rocks/with_collision/rock_with_collision.tscn" id="11_pjour"]
+[ext_resource type="PackedScene" uid="uid://ccukqp13cjs4k" path="res://scenes/prefabs/environment/rocks/with_collision/stone_pile_with_collision.tscn" id="12_224vm"]
+[ext_resource type="PackedScene" uid="uid://j3dh7kqhlnyg" path="res://scenes/prefabs/environment/trees/without_collision/dead_tree_with_mushrooms.tscn" id="13_2unhs"]
+[ext_resource type="PackedScene" uid="uid://bev37dbih18kg" path="res://scenes/prefabs/environment/objects/berry.tscn" id="16_h7ppi"]
+[ext_resource type="PackedScene" uid="uid://bq3jhkpi334fg" path="res://scenes/prefabs/environment/objects/bag.tscn" id="17_717cu"]
+[ext_resource type="PackedScene" uid="uid://bkbmihcyno6ck" path="res://scenes/prefabs/environment/objects/berry_bag.tscn" id="18_2ewk1"]
+[ext_resource type="PackedScene" uid="uid://b0qv5ltifbks8" path="res://scenes/prefabs/environment/objects/kessel.tscn" id="19_1pyxr"]
+[ext_resource type="PackedScene" uid="uid://dd8f1sx3w8krs" path="res://scenes/prefabs/environment/objects/desk.tscn" id="19_2ewk1"]
+[ext_resource type="PackedScene" uid="uid://drlryl3j1rb3a" path="res://scenes/prefabs/environment/objects/mushroom_lamp.tscn" id="20_1pyxr"]
+[ext_resource type="PackedScene" uid="uid://bdahddfj55fxl" path="res://scenes/prefabs/environment/rocks/without_collision/crystal.tscn" id="20_717cu"]
+[ext_resource type="PackedScene" uid="uid://cqcrm8tk2okmd" path="res://scenes/prefabs/environment/objects/treasure_chest_with_simple_collision.tscn" id="21_wws0w"]
+[ext_resource type="PackedScene" uid="uid://dqw6awtiag0l6" path="res://scenes/prefabs/environment/walls/with_collision/stone_wall_with_collision.tscn" id="22_28r12"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]
 panorama = ExtResource("1_m28bg")
@@ -88,13 +98,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7622, 0, -0.170486)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.16829, 0.849814, -8.41006)
 
 [node name="FlowerBlue" parent="WorldEnvironment/World/Objects" instance=ExtResource("10_vasgb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, -7)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10, 0, -7)
 
 [node name="RockWithCollision" parent="WorldEnvironment/World/Objects" instance=ExtResource("11_pjour")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10483, 0.400875, -7.44439)
 
 [node name="StonePile" parent="WorldEnvironment/World/Objects" instance=ExtResource("12_224vm")]
 transform = Transform3D(-0.997233, 0, -0.0743347, 0, 1, 0, 0.0743347, 0, -0.997233, -11.3821, 0.103938, -6.58363)
+
+[node name="Test" parent="WorldEnvironment/World/Objects" instance=ExtResource("13_2unhs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2449, 0.24604, -22.0309)
+
+[node name="Berry" parent="WorldEnvironment/World/Objects" instance=ExtResource("16_h7ppi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.74707, 2, -13.6091)
+
+[node name="Bag" parent="WorldEnvironment/World/Objects" instance=ExtResource("17_717cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -15)
+
+[node name="BerryBag" parent="WorldEnvironment/World/Objects" instance=ExtResource("18_2ewk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -14)
+
+[node name="Cauldron" parent="WorldEnvironment/World/Objects" instance=ExtResource("19_1pyxr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -14)
+
+[node name="Crystal" parent="WorldEnvironment/World/Objects" instance=ExtResource("20_717cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6815, 0.0677832, -13.2635)
+
+[node name="Desk" parent="WorldEnvironment/World/Objects" instance=ExtResource("19_2ewk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.706, 0.629157, -15.7927)
+
+[node name="MushroomLamp" parent="WorldEnvironment/World/Objects" instance=ExtResource("20_1pyxr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2018, 0.253476, -13.1538)
+
+[node name="TreasureChestWithSimpleCollision" parent="WorldEnvironment/World/Objects" instance=ExtResource("21_wws0w")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.792967, -15)
+
+[node name="StoneWall" parent="WorldEnvironment/World/Objects" instance=ExtResource("22_28r12")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -13)
 
 [node name="TestRooms" type="Node3D" parent="WorldEnvironment/World"]
 

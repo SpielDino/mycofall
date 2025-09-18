@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1ucv3fccyj6b"]
+
+[ext_resource type="PackedScene" uid="uid://phgi17bg7mp" path="res://assets/models/trees/baum_ast_low.blend" id="1_w45d2"]
+
+[node name="TreeBranchWithCollision" type="Node3D"]
+
+[node name="baumast" parent="." instance=ExtResource("1_w45d2")]

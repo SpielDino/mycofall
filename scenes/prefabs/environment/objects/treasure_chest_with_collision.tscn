@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxugndi1oh2hs"]
+
+[ext_resource type="PackedScene" uid="uid://0nfw5mc4miwb" path="res://assets/models/objects/treasure_chest.blend" id="1_r2ibx"]
+[ext_resource type="Material" uid="uid://kxh5naljd553" path="res://assets/materials/wood_material.tres" id="2_qfqjt"]
+[ext_resource type="Texture2D" uid="uid://dmco05ywh8g7p" path="res://assets/textures/model_textures/path_stone_color.png" id="3_jghm3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fod0g"]
+albedo_texture = ExtResource("3_jghm3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j4xmv"]
+albedo_texture = ExtResource("3_jghm3")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r2ibx"]
+size = Vector3(2.21454, 1.06158, 19.9768)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qnpi7"]
+size = Vector3(0.994751, 0.65753, 0.221192)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qfqjt"]
+size = Vector3(0.994751, 0.65753, 0.221192)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jghm3"]
+size = Vector3(0.15564, 0.65753, 1.875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0cfxy"]
+size = Vector3(0.15564, 0.65753, 1.875)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i7yry"]
+size = Vector3(0.789063, 0.0978082, 1.875)
+
+[node name="TreasureChestWithCollision" type="Node3D"]
+
+[node name="treasure_chest" parent="." instance=ExtResource("1_r2ibx")]
+transform = Transform3D(0.35, 0, 0, 0, 0.35, 0, 0, 0, 0.35, 0, 0, 0)
+
+[node name="unter" parent="treasure_chest" index="0"]
+surface_material_override/0 = ExtResource("2_qfqjt")
+surface_material_override/1 = ExtResource("2_qfqjt")
+surface_material_override/2 = SubResource("StandardMaterial3D_fod0g")
+
+[node name="Ober" parent="treasure_chest" index="1"]
+transform = Transform3D(1.2898, -0.0117507, 0, 0.00996471, 1.52097, 0, 0, 0, -0.31872, -1.28189, -0.495022, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_j4xmv")
+surface_material_override/2 = ExtResource("2_qfqjt")
+surface_material_override/3 = ExtResource("2_qfqjt")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="treasure_chest/Ober" index="0"]
+transform = Transform3D(1, 9.31323e-10, 0, 0, 1, 0, 0, 0, 1, 1.07924, -0.00707069, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="treasure_chest/Ober/StaticBody3D"]
+transform = Transform3D(1, -5.58794e-09, 0, 0, 1, 0, 0, 0, 1, -0.0445862, 0.6539, 0)
+shape = SubResource("BoxShape3D_r2ibx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0164185, -0.442901, 0.987549)
+shape = SubResource("BoxShape3D_qnpi7")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0164185, -0.442901, -1.0107)
+shape = SubResource("BoxShape3D_qfqjt")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.431734, -0.442901, -0.00563034)
+shape = SubResource("BoxShape3D_jghm3")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4039, -0.442901, -0.00563034)
+shape = SubResource("BoxShape3D_0cfxy")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000941336, -0.722762, -0.00563034)
+shape = SubResource("BoxShape3D_i7yry")
+
+[editable path="treasure_chest"]
