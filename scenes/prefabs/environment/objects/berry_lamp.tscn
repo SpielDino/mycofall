@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhc4r6htqfqwe"]
 
-[ext_resource type="PackedScene" uid="uid://3bdklyhwoaa6" path="res://placeholder/nikolai/Starting Area/Berry.blend" id="1_24w1p"]
+[ext_resource type="PackedScene" uid="uid://cha8r72kvhors" path="res://assets/models/objects/Berry.blend" id="1_24w1p"]
 [ext_resource type="PackedScene" uid="uid://phgi17bg7mp" path="res://assets/models/trees/baum_ast_low.blend" id="2_4yp0l"]
 
 [node name="BerryLamp" type="Node3D"]
