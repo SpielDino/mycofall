@@ -53,6 +53,9 @@ bones/29/position = Vector3(0.393215, 0.534878, -0.173038)
 [node name="AnimationPlayer" parent="CharacterBody3D/old_mushroom" index="2"]
 autoplay = "Idle"
 
+[node name="TextPosition" type="Node3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28133, 0)
+
 [connection signal="interacted" from="CharacterBody3D" to="CharacterBody3D" method="_on_interacted"]
 
 [editable path="CharacterBody3D/old_mushroom"]

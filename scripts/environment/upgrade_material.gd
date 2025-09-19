@@ -21,13 +21,13 @@ func upgrade_first_weapon():
 func can_upgrade_weapon():
 	GameManager.use_signal_interacted_with_upgrade_item()
 	if text_position:
-		DamageNumbers.display_text("Weapon upgraded", text_position.global_position)
+		DamageNumbers.display_text("Weapon upgraded", text_position.global_position, 0.5)
 	queue_free()
 
 func cant_upgrade_weapon_cause_no_first_weapon():
 	if text_position:
-		DamageNumbers.display_text("No Weapon to upgrade", text_position.global_position)
+		DamageNumbers.display_text("No Weapon to upgrade", text_position.global_position, 0.5)
 
 func cant_upgrade_weapon_cause_first_weapon_is_fully_upgraded():
 	if text_position:
-		DamageNumbers.display_text("Current weapon already fully upgraded", text_position.global_position)
+		DamageNumbers.display_text("Current weapon already fully upgraded", text_position.global_position, 0.5)

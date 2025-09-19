@@ -1,8 +1,9 @@
-[gd_scene load_steps=29 format=3 uid="uid://c3c650unruhvy"]
+[gd_scene load_steps=32 format=3 uid="uid://c3c650unruhvy"]
 
 [ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="1_ch4m0"]
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="1_m28bg"]
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_vmj8w"]
+[ext_resource type="Script" uid="uid://cdy7132mqn2xn" path="res://scripts/environment/directional_light_3d_control.gd" id="1_vrntw"]
 [ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="2_w1y6w"]
 [ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="3_h0rvv"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="5_ch4m0"]
@@ -25,6 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://cqcrm8tk2okmd" path="res://scenes/prefabs/environment/objects/treasure_chest_with_simple_collision.tscn" id="21_wws0w"]
 [ext_resource type="PackedScene" uid="uid://dqw6awtiag0l6" path="res://scenes/prefabs/environment/walls/with_collision/stone_wall_with_collision.tscn" id="22_28r12"]
 [ext_resource type="PackedScene" uid="uid://cydetofcrsgfm" path="res://scenes/prefabs/characters/old_man.tscn" id="23_1taso"]
+[ext_resource type="PackedScene" uid="uid://ciw227ay5vtu5" path="res://scenes/prefabs/environment/rooms/level_rooms/beginning_room_1.tscn" id="26_246no"]
+[ext_resource type="PackedScene" uid="uid://j3cv2ft8m4lb" path="res://scenes/prefabs/environment/rooms/level_rooms/beginning_room_2.tscn" id="27_t2tcw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]
 panorama = ExtResource("1_m28bg")
@@ -44,7 +47,8 @@ visible = false
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.58201, 0.813182, 0, -0.813182, 0.58201, -5.57129, 36.5586, -2.92292)
-visible = false
+shadow_enabled = true
+script = ExtResource("1_vrntw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_axl6w")
@@ -150,6 +154,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0227, 4.4338, -9.63715)
 [node name="TrainingRoom" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("7_oxph1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6741, 0, -6.50049)
 
+[node name="BeginningRoom1" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("26_246no")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.688, 0, -43.7206)
+
+[node name="BeginningRoom2" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("27_t2tcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6891, 0, -68.6825)
+
 [node name="Player" parent="WorldEnvironment" instance=ExtResource("5_ch4m0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.1042, 1.23659, -3.24882)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4673, 1.11122, -50.5312)
 mana_per_second = 100.0
