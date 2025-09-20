@@ -89,7 +89,7 @@ signal boss_died
 func _ready():
 	calculateAggression()
 	calculateBlocksAndDashes()
-	player = GlobalPlayer.getPlayer()
+	player = GlobalPlayer.get_player()
 
 func _physics_process(delta: float):
 	die(delta)
@@ -99,11 +99,11 @@ func _physics_process(delta: float):
 
 func calculateAggression():
 	aggression = baseAggressionLevel
-	if GameManager.get_first_weapon() == "Bow" or GameManager.get_second_weapon() == "Bow": #Bow Equipped
+	if GameManager.get_first_weapon_name() == "Bow" or GameManager.get_second_weapon_name() == "Bow": #Bow Equipped
 		aggression += 0.3
-	if GameManager.get_first_weapon() == "Staff" or GameManager.get_second_weapon() == "Staff": #Staff Equipped
+	if GameManager.get_first_weapon_name() == "Staff" or GameManager.get_second_weapon_name() == "Staff": #Staff Equipped
 		aggression += 0.2
-	if GameManager.get_first_weapon() == "Sword" or GameManager.get_second_weapon() == "Sword": #Sword Equipped
+	if GameManager.get_first_weapon_name() == "Sword" or GameManager.get_second_weapon_name() == "Sword": #Sword Equipped
 		aggression -= 0.3
 	var rangedKills: float = PlayerActionTracker.staff_kills + PlayerActionTracker.bow_kills
 	var meleeKills: float = PlayerActionTracker.melee_kills
@@ -124,7 +124,7 @@ func activateBoss():
 	calculateAggression()
 	calculateBlocksAndDashes()
 	active = true
-	health_bar.visible = true
+	#health_bar.visible = true
 
 func actionManager(delta):
 	var playerPosition = player.get_child(0).global_position
@@ -221,7 +221,7 @@ func move_towards_target(delta, targetPoint):
 		animationPlayer.play("Running")
 		if !walkingSound.playing:
 			walkingSound.pitch_scale = 0.6
-			walkingSound.play()
+			#walkingSound.play()
 		return false
 	else:
 		velocity = Vector3(0, velocity.y, 0)
@@ -243,11 +243,11 @@ func explosionAttackAction(delta, playerPosition):
 	if abs(actionTime - (100 - 2.11)) <= 1:
 		explosionMiniEnemiesAttack()
 		actionTime = 50
-		launcherSound1.play(0.52)
+		#launcherSound1.play(0.52)
 	elif abs(actionTime - (50 - 1.55)) <= 1:
 		explosionMiniEnemiesAttack()
 		actionTime = 0.9
-		launcherSound2.play(0.52)
+		#launcherSound2.play(0.52)
 	elif actionTime <= 0:
 		animationPlayer.stop()
 		actionType = actionTypes.NONE
@@ -261,7 +261,7 @@ func rangedAttackAction(delta, playerPosition):
 		animationPlayer.play("Squish")
 	if abs(actionTime - (100 - 3.5)) <= 1:
 		sporeRangedAttack()
-		squishSound.play()
+		#squishSound.play()
 		actionTime = 0.65
 	elif actionTime <= 0:
 		animationPlayer.stop()
@@ -273,7 +273,7 @@ func sporeAreaAttackAction(delta):
 		actionTime = 100
 	if abs(actionTime - (100 - 3.5)) <= 1:
 		actionTime = 0.65
-		squishSound.play()
+		#squishSound.play()
 		sporeParticles.emitting = true
 		sporeTime = 10
 	elif actionTime <= 0:
@@ -290,7 +290,7 @@ func chargeAttackAction(delta):
 		chargeAttack()
 		if !walkingSound.playing:
 			walkingSound.pitch_scale = 1
-			walkingSound.play()
+			#walkingSound.play()
 	if chargeHit and actionTime >= 51:
 		animationPlayer.play("Smash_After_Rush")
 		actionTime = 50
@@ -309,8 +309,6 @@ func die(delta):
 		animationPlayer.stop()
 		animationPlayer.play("Die")
 		deathTimer = 3.9167
-		
-
 
 func spearAttackAction(delta, playerPosition):
 	if actionTime >= 151:
@@ -385,47 +383,50 @@ func explosionMiniEnemiesAttack():
 func spearMeleeAttack(delta):
 	spearTimeKeeper += delta
 	if spearTimeKeeper >= 0.64 and spearTimeKeeper <= 0.73:
-		spearSound.play()
+		#spearSound.play()
 		if comboArea1:
-			player.takeDamage(spearDamage, self, true, 0.5)
+			player.take_damage(spearDamage, self, true, 0.5)
 			comboArea1 = false
 	elif spearTimeKeeper >= 1.12 and spearTimeKeeper <= 1.16:
-		spearSound.play()
+		#spearSound.play()
 		if comboArea2:
-			player.takeDamage(spearDamage, self, true, 0.5)
+			player.take_damage(spearDamage, self, true, 0.5)
 			comboArea2 = false
 	elif spearTimeKeeper >= 1.7 and spearTimeKeeper <= 2.1:
-		spearSound.play()
+		#spearSound.play()
 		if comboArea3:
-			player.takeDamage(spearDamage, self, true, 0.5)
+			player.take_damage(spearDamage, self, true, 0.5)
 			comboArea3 = false
 
 func sporeAreaAttack(delta):
 	areaAttackCooldown -= delta
 	if areaAttackCooldown <= 0:
 		if playerInSporeArea:
-			player.takeDamage(sporeAreaDamage, self, false, 0)
+			player.take_damage(sporeAreaDamage, self, false, 0)
 		areaAttackCooldown = damageInterval
 
 func apply_gravity(delta):
 	velocity.y += -gravity * delta
 
-func takeDamage(damage: int, type: String):
+func take_damage(damage: int, type: String, has_knockback: bool = false, knockback_strenght: float = 0):
 	health -= damage
-	if health <= 0 and deathTimer == 10:
-		deathTimer = 8
 	health_changed.emit()
-		
+	if health <= 0:
+		deathTimer = 8
+	else:
+		if has_knockback:
+			var direction = (global_position - player.get_child(0).global_position).normalized()
+			velocity += direction * knockback_strenght
 
 func _on_detection_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
 		detectedPlayer = true
-		player.addDetectingEnemy([self])
+		player.add_detecting_enemy([self])
 
 func _on_detection_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
 		detectedPlayer = false
-		player.removeDetectingEnemy([self])
+		player.add_detecting_enemy([self])
 
 func _on_spore_damage_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
@@ -434,7 +435,6 @@ func _on_spore_damage_area_entered(area: Area3D) -> void:
 func _on_spore_damage_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
 		playerInSporeArea = false
-
 
 func _on_charge_attack_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
@@ -471,6 +471,6 @@ func _on_spear_combo_3_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
 		comboArea3 = false
 
-func _on_boss_erea_entered(area: Area3D) -> void:
+func _on_boss_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
 		activateBoss()

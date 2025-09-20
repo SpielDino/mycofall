@@ -1,7 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://tp80vatrials"]
+[gd_scene load_steps=3 format=3 uid="uid://tp80vatrials"]
 
 [ext_resource type="PackedScene" uid="uid://bivaufkugvwii" path="res://assets/models/plants/bush_2_low.blend" id="1_pfobt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pfobt"]
+radius = 0.829365
 
 [node name="Bush2" type="Node3D"]
 
 [node name="bush_2_low" parent="." instance=ExtResource("1_pfobt")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_pfobt")

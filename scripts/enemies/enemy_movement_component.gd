@@ -42,7 +42,10 @@ func _physics_process(delta):
 
 func move_towards_location(delta, location):
 	var direction = Vector3()
-	nav.target_position = location.global_position
+	if type_string(typeof(location)) == "Vector3":
+		nav.target_position = location
+	else:
+		nav.target_position = location.global_position
 	direction = (nav.get_next_path_position() - global_position).normalized()
 	enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
 	enemy.rotate_to_target(location)
@@ -72,12 +75,13 @@ func move_between_set_locations(delta, move_points):
 	
 func stand_still():
 	enemy.rotate_to_target(player.get_child(0))
+	enemy.velocity = Vector3(0, enemy.velocity.y, 0)
 
 func play_movement_animations():
-	if enemy.state == enemy.States.IDLE:
+	if enemy.state == enemy.States.IDLE or (enemy.state != enemy.States.ATTACK_TYPE_1 and movement_type == "stand still"):
 		enemy.animation_player.speed_scale = 1
 		enemy.animation_player.play(idle_name)
-	if enemy.state == enemy.States.PATROLLING or enemy.state == enemy.States.SEARCHING or enemy.state == enemy.States.MOVING:
+	if (enemy.state == enemy.States.PATROLLING or enemy.state == enemy.States.SEARCHING or enemy.state == enemy.States.MOVING) and movement_type != "stand still":
 		if warmup_timer <= 0:
 			enemy.animation_player.speed_scale = walking_animation_speed
 			enemy.animation_player.play(walking_name)
@@ -91,12 +95,11 @@ func decide_movement_type(delta):
 		enemy.state = enemy.States.PATROLLING
 		warmup_timer = warmup_animation_time
 		searching(delta)
-	if enemy.state == enemy.States.NONE and !has_patrol_route:
+	if (enemy.state == enemy.States.NONE or enemy.state == enemy.States.IDLE) and !has_patrol_route:
 		enemy.state = enemy.States.IDLE
 		warmup_timer = warmup_animation_time
 		searching(delta)
 	if enemy.state == enemy.States.MOVING:
-		enemy.rotate_to_target(player.get_child(0))
 		if warmup_timer <= 0:
 			match movement_type:
 				"stand still":
@@ -112,7 +115,7 @@ func decide_movement_type(delta):
 			warmup_timer -= delta
 
 func searching(delta):
-	var detection_component = enemy.get_node("DetectionComponent")
+	var detection_component = enemy.get_child(0)
 	if detection_component.player_location_known_from_ally:
 		if detection_component.tracking_duration <= 0:
 			enemy.state = enemy.States.NONE

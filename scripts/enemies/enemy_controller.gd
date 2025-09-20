@@ -42,7 +42,7 @@ func detect_player_raycast():
 	var space_state = get_world_3d().direct_space_state
 	var origin = global_position
 	var end = player.get_child(0).global_position 
-	var query = PhysicsRayQueryParameters3D.create(origin, end, 3, [self])
+	var query = PhysicsRayQueryParameters3D.create(origin, end, 7, [self])
 
 	var result = space_state.intersect_ray(query)
 	#Might need some adustment, crashes if the raycast never hits a collider
@@ -98,6 +98,10 @@ func limit_angle_in_degrees(value: float):
 	return value
 
 func rotate_to_target(target):
-	var angleVector = target.global_position - global_position
+	var angleVector
+	if type_string(typeof(target)) == "Vector3":
+		angleVector = target - global_position
+	else:
+		angleVector = target.global_position - global_position
 	var angle = atan2(angleVector.x, angleVector.z)
 	rotation.y = angle - PI/2

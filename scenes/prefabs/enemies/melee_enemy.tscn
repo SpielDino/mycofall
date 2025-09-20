@@ -149,6 +149,7 @@ death_animation_time = 0.583
 [node name="MovementComponent" parent="." instance=ExtResource("3_cph10")]
 speed = 3
 acceleration = 2
+movement_type = "move towards player"
 
 [node name="ParticleComponent" parent="." instance=ExtResource("4_rtgbl")]
 
