@@ -11,7 +11,7 @@ var isTracking: bool = false
 var trackingDelay: float = 0
 var blockCostModifier: float = 0
 
-func setParameter(playerInput: Node3D, damageInput: float, speedInput: float, trackingRadiusInput: float, trackingStrengthInput: float, velInput: Vector3, lifetimeInput: float):
+func set_parameter(playerInput: Node3D, damageInput: float, speedInput: float, trackingRadiusInput: float, trackingStrengthInput: float, velInput: Vector3, lifetimeInput: float):
 	player = playerInput
 	damage = damageInput
 	speed = speedInput
@@ -21,10 +21,10 @@ func setParameter(playerInput: Node3D, damageInput: float, speedInput: float, tr
 	await get_tree().create_timer(lifetimeInput).timeout
 	queue_free()
 
-func setTrackingDelay(delay):
+func set_tracking_delay(delay):
 	trackingDelay = delay
 
-func setBlockCostModifier(value):
+func set_block_cost_modifier(value):
 	blockCostModifier = value
 
 func _physics_process(delta):

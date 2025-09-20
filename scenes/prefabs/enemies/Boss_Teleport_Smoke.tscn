@@ -1,15 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://bksprg76yohvv"]
+[gd_scene load_steps=11 format=3 uid="uid://bksprg76yohvv"]
 
-[sub_resource type="Resource" id="Resource_8fyci"]
-metadata/__load_path__ = "res://Scripts/Enemy Scripts/TeleportSmoke.gd"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_gorya"]
+[ext_resource type="Texture2D" uid="uid://cbu02u0njv72o" path="res://assets/textures/Kenney Particles Transparent Background/smoke_07.png" id="1_g5yja"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_equ68"]
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("CompressedTexture2D_gorya")
+albedo_texture = ExtResource("1_g5yja")
 billboard_mode = 1
 billboard_keep_scale = true
 
@@ -56,7 +53,6 @@ hue_variation_max = 0.15
 [sub_resource type="QuadMesh" id="QuadMesh_1t2ff"]
 
 [node name="Node3D" type="Node3D"]
-script = SubResource("Resource_8fyci")
 
 [node name="Teleport Smoke" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28698, 0.0270147, 0.0169544)

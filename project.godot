@@ -28,9 +28,6 @@ SaveManager="*res://scripts/globals/data/save_manager.gd"
 
 [display]
 
-window/size/viewport_width=2560
-window/size/viewport_height=1440
-window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [global_group]
@@ -38,6 +35,7 @@ window/stretch/mode="canvas_items"
 Enemy=""
 World=""
 window/stretch/mode="canvas_items"
+Bush=""
 
 [input]
 
@@ -150,5 +148,7 @@ locale/translations=PackedStringArray("res://assets/localization/mycofall_transl
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
 textures/decals/filter=1
 textures/light_projectors/filter=1
