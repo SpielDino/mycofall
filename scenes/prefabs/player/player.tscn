@@ -636,7 +636,6 @@ dodge_distance = 6.0
 camera_follow_speed = 0.08
 
 [node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator") groups=["Player"]]
-collision_mask = 3
 script = ExtResource("2_6ei3l")
 player_shape = NodePath("Model")
 dodge_indicator = NodePath("Model/DodgeIndicator")
@@ -874,8 +873,18 @@ ray_position = NodePath("../../StaffAimRayCast3D")
 [node name="BowLogic" parent="Controller/Model/PlayerAttacksAndBlock" index="1" node_paths=PackedStringArray("ray_position")]
 ray_position = NodePath("../../BowAimRayCast3D")
 
-[node name="InteractRayCast" parent="Controller/Model" instance=ExtResource("7_fkjak")]
+[node name="InteractRayCast" parent="Controller/Model" node_paths=PackedStringArray("ray_cast_helper", "ray_cast_helper_2") instance=ExtResource("7_fkjak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.239533)
+ray_cast_helper = NodePath("RayCast3D2")
+ray_cast_helper_2 = NodePath("RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="Controller/Model/InteractRayCast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
+target_position = Vector3(0, 0, -1)
+
+[node name="RayCast3D2" type="RayCast3D" parent="Controller/Model/InteractRayCast"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
+target_position = Vector3(0, 0, -1)
 
 [node name="PlayerInventar" type="Node3D" parent="Controller/Model" node_paths=PackedStringArray("main_hand_wood_sword", "main_hand_sword", "main_hand_metal_sword", "main_hand_wood_staff", "main_hand_crystal_wood_staff", "main_hand_staff", "main_hand_metal_staff", "main_hand_crystal_metal_staff", "off_hand_wood_bow", "off_hand_bow", "off_hand_metal_bow", "off_hand_wood_shield", "off_hand_shield", "off_hand_metal_shield", "back_wood_sword", "back_sword", "back_metal_sword", "back_wood_staff", "back_crystal_wood_staff", "back_staff", "back_metal_staff", "back_crystal_metal_staff", "back_wood_bow", "back_bow", "back_metal_bow", "back_wood_shield", "back_shield", "back_metal_shield")]
 script = ExtResource("8_gsaf8")
@@ -920,6 +929,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7)
 shape = SubResource("CapsuleShape3D_ffkv0")
 
 [node name="DebugUI" type="Control" parent="." node_paths=PackedStringArray("controller", "input", "xyz", "speed", "sneaking", "in_detection_area", "in_hiding_area", "detected", "hidden", "health", "stamina", "mana")]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0

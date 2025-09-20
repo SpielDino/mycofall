@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8tfy3yg4ajbx"]
+
+[ext_resource type="Script" uid="uid://df23xbr11y5ea" path="res://scripts/environment/light_trigger.gd" id="1_cxcg2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_oc64w"]
+size = Vector3(3, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxcg2"]
+size = Vector3(3, 1, 1)
+
+[node name="LightTrigger" type="Node3D"]
+script = ExtResource("1_cxcg2")
+
+[node name="LightOffTriggerBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightOffTriggerBox"]
+shape = SubResource("BoxShape3D_oc64w")
+
+[node name="LightOnTriggerBox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LightOnTriggerBox"]
+shape = SubResource("BoxShape3D_cxcg2")
+
+[connection signal="body_entered" from="LightOffTriggerBox" to="." method="_on_light_off_trigger_box_body_entered"]
+[connection signal="body_entered" from="LightOnTriggerBox" to="." method="_on_light_on_trigger_box_body_entered"]

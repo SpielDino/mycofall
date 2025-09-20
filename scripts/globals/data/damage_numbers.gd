@@ -29,7 +29,7 @@ func display_number(value: int, position_of_number: Vector3):
 	await tween.finished
 	number.queue_free()
 
-func display_text(value: String, position_of_text: Vector3):
+func display_text(value: String, position_of_text: Vector3, message_time: float):
 	var number = Label3D.new()
 	number.position = position_of_text
 	number.text = value
@@ -51,7 +51,7 @@ func display_text(value: String, position_of_text: Vector3):
 	).set_ease(Tween.EASE_OUT)
 	tween.tween_property(
 		number, "scale", Vector3.ZERO, 0.3
-	).set_delay(0.5)
+	).set_delay(message_time)
 	
 	await tween.finished
 	number.queue_free()

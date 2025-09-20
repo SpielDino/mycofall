@@ -1,0 +1,68 @@
+[gd_scene load_steps=9 format=3 uid="uid://cvagnhdl4ttec"]
+
+[ext_resource type="PackedScene" uid="uid://bta36mefonb87" path="res://assets/models/objects/Kessel.blend" id="1_melxv"]
+[ext_resource type="PackedScene" uid="uid://clpalvmix3ckm" path="res://assets/models/objects/bonfire_low.blend" id="2_ci83m"]
+
+[sub_resource type="Curve" id="Curve_2lbsh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.121085), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_g1lh4"]
+curve = SubResource("Curve_2lbsh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hvnti"]
+emission_shape = 1
+emission_sphere_radius = 0.75
+initial_velocity_max = 2.0
+gravity = Vector3(0, 9.8, 0)
+scale_min = 0.5
+scale_over_velocity_max = 1.0
+alpha_curve = SubResource("CurveTexture_g1lh4")
+turbulence_enabled = true
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.149
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 0.100001
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygljy"]
+transparency = 1
+albedo_color = Color(0.439216, 1, 0.160784, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_egm7e"]
+material = SubResource("StandardMaterial3D_ygljy")
+radius = 0.1
+height = 0.2
+radial_segments = 8
+rings = 4
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_e1brq"]
+height = 0.953003
+radius = 0.818848
+
+[node name="CauldronWithLight" type="Node3D"]
+
+[node name="Kessel" parent="." instance=ExtResource("1_melxv")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0, 0.564426, 0)
+
+[node name="BlubberEffect" type="GPUParticles3D" parent="Kessel"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.458293, 0)
+cast_shadow = 0
+lifetime = 0.5
+speed_scale = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_hvnti")
+draw_pass_1 = SubResource("SphereMesh_egm7e")
+
+[node name="bonfire_low" parent="." instance=ExtResource("2_ci83m")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523499, 0)
+shape = SubResource("CylinderShape3D_e1brq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.674143, 0)
+light_color = Color(1, 0.541176, 0, 1)
+light_energy = 2.0

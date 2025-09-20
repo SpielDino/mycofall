@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://clom6qr3exs03"]
+
+[ext_resource type="PackedScene" uid="uid://vxecx0afhm6h" path="res://assets/models/trees/baum.blend" id="1_pj68a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cj8ef"]
+size = Vector3(2.26369, 2.47028, 2.24126)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pj68a"]
+size = Vector3(0.515625, 2.03931, 0.493103)
+
+[node name="TreeRound" type="Node3D"]
+
+[node name="Baum" parent="." instance=ExtResource("1_pj68a")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0558853, 3.07859, 0.100658)
+shape = SubResource("BoxShape3D_cj8ef")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.974976, -0.011322)
+shape = SubResource("BoxShape3D_pj68a")

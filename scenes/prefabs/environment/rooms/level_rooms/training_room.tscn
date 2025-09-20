@@ -1,6 +1,57 @@
-[gd_scene load_steps=9 format=3 uid="uid://rddwidjpmb55"]
+[gd_scene load_steps=61 format=3 uid="uid://rddwidjpmb55"]
 
 [ext_resource type="PackedScene" uid="uid://cvn4l4oivuwns" path="res://scenes/prefabs/environment/rooms/model_prefabs/starting_area_2.tscn" id="1_pepvg"]
+[ext_resource type="PackedScene" uid="uid://ch7852bgh1nco" path="res://scenes/prefabs/environment/interactables/dynamic/door_logic.tscn" id="2_c4ghi"]
+[ext_resource type="PackedScene" uid="uid://qww3ho4advs2" path="res://scenes/prefabs/environment/rocks/with_collision/stone_pile_with_collision_2.tscn" id="2_f6dbe"]
+[ext_resource type="PackedScene" uid="uid://dy8uch7ak3cvu" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_six_with_collision.tscn" id="3_2gi3g"]
+[ext_resource type="PackedScene" uid="uid://lhj17p5n0syu" path="res://scenes/prefabs/environment/interactables/dynamic/socket_schwerthalterung.tscn" id="3_2nb2s"]
+[ext_resource type="PackedScene" uid="uid://bvefhpw5uhi3r" path="res://scenes/prefabs/environment/plants/mushroom_purple_with_light.tscn" id="3_uvdn5"]
+[ext_resource type="PackedScene" uid="uid://irrsqnnuxdnc" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(50x50).tscn" id="3_vryqh"]
+[ext_resource type="PackedScene" uid="uid://c83pj7nebfypc" path="res://scenes/prefabs/environment/interactables/dynamic/socket_staffhalterung.tscn" id="4_3lini"]
+[ext_resource type="PackedScene" uid="uid://d361qs2yjvhnn" path="res://scenes/prefabs/environment/plants/mushroom_blue_with_light.tscn" id="4_o3r0n"]
+[ext_resource type="PackedScene" uid="uid://cydetofcrsgfm" path="res://scenes/prefabs/characters/old_man.tscn" id="4_p65oq"]
+[ext_resource type="PackedScene" uid="uid://iduptgj62v6v" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_one_with_collision.tscn" id="4_qtab7"]
+[ext_resource type="PackedScene" uid="uid://bj1nqcrxdbdgp" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_two_with_collision.tscn" id="5_stlep"]
+[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="5_ue1ne"]
+[ext_resource type="PackedScene" uid="uid://drlryl3j1rb3a" path="res://scenes/prefabs/environment/objects/mushroom_lamp.tscn" id="6_3lini"]
+[ext_resource type="PackedScene" uid="uid://dd8f1sx3w8krs" path="res://scenes/prefabs/environment/objects/desk.tscn" id="6_ue1ne"]
+[ext_resource type="PackedScene" uid="uid://cpx3u2deriiy3" path="res://scenes/prefabs/environment/trees/without_collision/tree_round.tscn" id="6_yvfjt"]
+[ext_resource type="PackedScene" uid="uid://c12m07ttwv2qk" path="res://scenes/prefabs/environment/walls/with_collision/stone_wall_4_with_collision.tscn" id="7_3cj2b"]
+[ext_resource type="PackedScene" uid="uid://cuch557bq4858" path="res://scenes/prefabs/environment/trees/with_collision/tree_stump_with_collision.tscn" id="7_iqfpi"]
+[ext_resource type="PackedScene" uid="uid://bev37dbih18kg" path="res://scenes/prefabs/environment/objects/berry.tscn" id="7_ynkto"]
+[ext_resource type="PackedScene" uid="uid://tp0yu0ocu3ei" path="res://scenes/prefabs/environment/rocks/with_collision/rock_2_with_collision.tscn" id="8_61bao"]
+[ext_resource type="Material" uid="uid://ceao68kawkbet" path="res://assets/materials/wall_material.tres" id="8_p6jjn"]
+[ext_resource type="PackedScene" uid="uid://bkbmihcyno6ck" path="res://scenes/prefabs/environment/objects/berry_bag.tscn" id="8_trpn0"]
+[ext_resource type="PackedScene" uid="uid://d2wdtfy6icf4l" path="res://scenes/prefabs/environment/trees/with_collision/tree_stump_grounded_with_collision.tscn" id="9_c4ghi"]
+[ext_resource type="PackedScene" uid="uid://cvagnhdl4ttec" path="res://scenes/prefabs/environment/objects/kessel_with_light.tscn" id="10_bhn50"]
+[ext_resource type="PackedScene" uid="uid://thunoyjj5mk2" path="res://scenes/prefabs/environment/objects/bag_deco_bundle.tscn" id="11_xqs01"]
+[ext_resource type="PackedScene" uid="uid://bq3jhkpi334fg" path="res://scenes/prefabs/environment/objects/bag.tscn" id="12_37b71"]
+[ext_resource type="PackedScene" uid="uid://dhc4r6htqfqwe" path="res://scenes/prefabs/environment/objects/berry_lamp.tscn" id="12_bhn50"]
+[ext_resource type="PackedScene" uid="uid://bcs1cag7dnqoc" path="res://scenes/prefabs/environment/interactables/dynamic/interactable_treasure_chest_with_collision.tscn" id="12_ktqp7"]
+[ext_resource type="PackedScene" uid="uid://bdahddfj55fxl" path="res://scenes/prefabs/environment/rocks/without_collision/crystal.tscn" id="13_3bex1"]
+[ext_resource type="PackedScene" uid="uid://6pxhvquwlt5f" path="res://scenes/prefabs/environment/rocks/with_collision/crystal_with_collision_with_light.tscn" id="13_6t4gn"]
+[ext_resource type="Material" uid="uid://cmerehp85l2ud" path="res://assets/materials/crystal_purple_material.tres" id="14_8kbie"]
+[ext_resource type="Material" uid="uid://c7wlvu6g0tv04" path="res://assets/materials/crystal_pink_material.tres" id="15_1cvyq"]
+[ext_resource type="PackedScene" uid="uid://c0pijk8wufkjf" path="res://scenes/prefabs/environment/rocks/with_collision/rock_with_collision.tscn" id="16_42gc2"]
+[ext_resource type="Material" uid="uid://bnxbyi8d5rfvm" path="res://assets/materials/crystal_green_material.tres" id="21_6t4gn"]
+[ext_resource type="Material" uid="uid://c4bb8ytlacr48" path="res://assets/materials/crystal_red_material.tres" id="22_6t4gn"]
+[ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="23_37b71"]
+[ext_resource type="PackedScene" uid="uid://c4pocta6ava2v" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy_ranged_with_stand.tscn" id="24_6t4gn"]
+[ext_resource type="PackedScene" uid="uid://dr236ywic0sbu" path="res://scenes/prefabs/environment/objects/treasure_chest_without_collision.tscn" id="24_iskkw"]
+[ext_resource type="PackedScene" uid="uid://bohnf5vipujed" path="res://scenes/prefabs/environment/objects/bonfire.tscn" id="24_xvlki"]
+[ext_resource type="PackedScene" uid="uid://ck3clysisij5u" path="res://scenes/prefabs/environment/plants/bush.tscn" id="27_6udwl"]
+[ext_resource type="PackedScene" uid="uid://tp80vatrials" path="res://scenes/prefabs/environment/plants/bush_2.tscn" id="28_iskkw"]
+[ext_resource type="PackedScene" uid="uid://vgmqlsmm5ncg" path="res://scenes/prefabs/environment/rooms/model_prefabs/vines_training_room.tscn" id="30_0vlvo"]
+[ext_resource type="PackedScene" uid="uid://d3vy3wko2xarm" path="res://scenes/prefabs/environment/plants/mushroom_blue.tscn" id="31_j1x3v"]
+[ext_resource type="PackedScene" uid="uid://3y2knspcyotc" path="res://scenes/prefabs/environment/plants/vines.tscn" id="31_pquue"]
+[ext_resource type="PackedScene" uid="uid://c1514mtv0ddc5" path="res://scenes/prefabs/environment/plants/mushroom_red.tscn" id="32_41yq1"]
+[ext_resource type="PackedScene" uid="uid://hqaj3n4ij4o0" path="res://scenes/prefabs/environment/plants/bush_test.tscn" id="32_xl1d7"]
+[ext_resource type="PackedScene" uid="uid://61mbqgs2mjvg" path="res://scenes/prefabs/environment/plants/mushroom_yellow.tscn" id="33_n0xdn"]
+[ext_resource type="PackedScene" uid="uid://cgjm04fx7b74y" path="res://scenes/prefabs/environment/trees/with_collision/tree_branch_with_collision.tscn" id="37_2xfrt"]
+[ext_resource type="PackedScene" uid="uid://dlw4t4s33kwh1" path="res://scenes/prefabs/environment/plants/monstera_bush.tscn" id="38_c4ghi"]
+[ext_resource type="PackedScene" uid="uid://dans3fwnb4x2f" path="res://scenes/prefabs/environment/plants/flower_pink.tscn" id="45_yvfjt"]
+[ext_resource type="PackedScene" uid="uid://d1yh026p2wrjl" path="res://scenes/prefabs/environment/plants/flower_blue.tscn" id="46_wene3"]
+[ext_resource type="PackedScene" uid="uid://ohq5jrirh6j" path="res://scenes/prefabs/environment/plants/flower_red.tscn" id="47_3cj2b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pepvg"]
 size = Vector3(1, 15, 10)
@@ -8,8 +59,8 @@ size = Vector3(1, 15, 10)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vryqh"]
 size = Vector3(1, 15, 5)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_5rmiq"]
-size = Vector3(1, 15, 5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_3lini"]
+size = Vector3(1, 15, 5.44043)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_f6dbe"]
 size = Vector3(1, 10, 8)
@@ -23,12 +74,19 @@ size = Vector3(1, 10, 6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_2nb2s"]
 size = Vector3(1, 10, 6)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_2gi3g"]
+size = Vector3(1, 6.8, 0.601563)
+
 [node name="TrainingRoom" type="Node3D"]
 
 [node name="Walls" type="Node3D" parent="."]
 
 [node name="StartingArea" parent="Walls" instance=ExtResource("1_pepvg")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="DoorStaticBody3D" parent="Walls/StartingArea/StaringArea/Start/Door" index="1" node_paths=PackedStringArray("animation_player") instance=ExtResource("2_c4ghi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0141544, 1.48199, -3.46286)
+animation_player = NodePath("../../../AnimationPlayer")
 
 [node name="ExtraCollidersForBetterCamera" type="Node3D" parent="Walls"]
 
@@ -50,8 +108,8 @@ shape = SubResource("BoxShape3D_vryqh")
 transform = Transform3D(0.140625, 0, -0.990063, 0, 1, 0, 0.990063, 0, 0.140625, 2.95018, 0, 13.344)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderMiddle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, 0)
-shape = SubResource("BoxShape3D_5rmiq")
+transform = Transform3D(0.999996, 0, 4.47035e-08, 0, 1, 0, -4.47035e-08, 0, 0.999996, 0, 7.5, 0)
+shape = SubResource("BoxShape3D_3lini")
 
 [node name="BackWallColliderRight" type="StaticBody3D" parent="Walls/ExtraCollidersForBetterCamera"]
 transform = Transform3D(0.715229, 0, -0.69889, 0, 1, 0, 0.69889, 0, 0.715229, 6.097, 10, 10.505)
@@ -84,4 +142,529 @@ transform = Transform3D(0.999526, 0, -0.0308003, 0, 1, 0, 0.0308003, 0, 0.999526
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/ExtraCollidersForBetterCamera/BackWallColliderRight5"]
 shape = SubResource("BoxShape3D_2nb2s")
 
+[node name="TreeWalls" type="Node3D" parent="Walls"]
+
+[node name="TreeBundleSixWithCollision" parent="Walls/TreeWalls" instance=ExtResource("3_2gi3g")]
+transform = Transform3D(-0.798586, 0, -1.83365, 0, 2, 0, 1.83365, 0, -0.798586, 10.9139, 0.352275, -14.4342)
+
+[node name="TreeBundleOneWithCollision" parent="Walls/TreeWalls" instance=ExtResource("4_qtab7")]
+transform = Transform3D(1.78873e-08, 0, -1.5, 0, 1.5, 0, 1.5, 0, 1.78873e-08, 10.9107, 0.386107, -22.1553)
+
+[node name="TreeBundleTwoWithCollision" parent="Walls/TreeWalls" instance=ExtResource("5_stlep")]
+transform = Transform3D(-0.968459, 0, 1.74988, 0, 2, 0, -1.74988, 0, -0.968459, -9.56841, 0.102225, -15.4954)
+
+[node name="Baum" parent="Walls/TreeWalls/TreeBundleTwoWithCollision/tree_bundle_two/BaumArmature/Skeleton3D" index="0"]
+visible = false
+
+[node name="TreeRound" parent="Walls/TreeWalls/TreeBundleTwoWithCollision/StaticBody3D" index="1" instance=ExtResource("6_yvfjt")]
+transform = Transform3D(0.821756, 0, 1.82338, 0, 2, 0, -1.82338, 0, 0.821756, -1.99952, 4.76837e-07, 1.32927)
+
+[node name="Icosphere_004" parent="Walls/TreeWalls/TreeBundleTwoWithCollision/StaticBody3D/TreeRound/Baum" index="1"]
+visible = false
+
+[node name="Icosphere" parent="Walls/TreeWalls/TreeBundleTwoWithCollision/StaticBody3D/TreeRound/Baum" index="2"]
+visible = false
+
+[node name="ExtraCollider" type="Node3D" parent="Walls/TreeWalls/TreeBundleTwoWithCollision"]
+transform = Transform3D(0.889297, 0, 0.457331, 0, 1, 0, -0.457331, 0, 0.889297, -2.62935, 3.22774, 2.15182)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Walls/TreeWalls/TreeBundleTwoWithCollision/ExtraCollider"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls/TreeWalls/TreeBundleTwoWithCollision/ExtraCollider/StaticBody3D"]
+transform = Transform3D(1, 0, 4.47035e-07, 0, 1, 0, -4.47035e-07, 0, 1, 0, 0, 0.199219)
+shape = SubResource("BoxShape3D_2gi3g")
+
+[node name="TreeBundleSixWithCollision2" parent="Walls/TreeWalls" instance=ExtResource("3_2gi3g")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -11.5824, 0, -25.5155)
+
+[node name="StoneWallFourWithCollision" parent="Walls" instance=ExtResource("7_3cj2b")]
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 0.642578, -0.0904689, -25.0255)
+
+[node name="Cube" parent="Walls/StoneWallFourWithCollision/mauer" index="0"]
+surface_material_override/0 = ExtResource("8_p6jjn")
+
+[node name="Vines2" parent="Walls/StoneWallFourWithCollision" instance=ExtResource("31_pquue")]
+transform = Transform3D(-0.0491269, -9.41279e-09, -0.29595, -0.212433, 0.208875, 0.0352632, 0.206056, 0.215339, -0.0342047, -0.34553, 0, 1.92551)
+
+[node name="Vines" parent="Walls/StoneWallFourWithCollision" instance=ExtResource("31_pquue")]
+transform = Transform3D(-0.0327513, 0, -0.1973, 0, 0.2, 0, 0.1973, 0, -0.0327513, -0.271729, 0, -4.21381)
+
+[node name="Vines3" parent="Walls/StoneWallFourWithCollision" instance=ExtResource("31_pquue")]
+transform = Transform3D(0.047455, -0.0332119, 0.191429, -0.19413, -0.000142675, 0.0480998, -0.00785086, -0.197223, -0.0322709, -0.204958, 2.99168, 1.50006)
+
 [node name="Objects" type="Node3D" parent="."]
+
+[node name="Static" type="Node3D" parent="Objects"]
+
+[node name="Desk" parent="Objects/Static" instance=ExtResource("6_ue1ne")]
+transform = Transform3D(0.674444, 0, 0.738326, 0, 1, 0, -0.738326, 0, 0.674444, -5.02216, 0.604905, -1.56565)
+
+[node name="MushroomLamp" parent="Objects/Static/Desk" instance=ExtResource("6_3lini")]
+transform = Transform3D(-0.538447, 0, -0.842659, 0, 1, 0, 0.842659, 0, -0.538447, 0.763873, 0.678319, -0.416694)
+
+[node name="Berry" parent="Objects/Static/Desk" instance=ExtResource("7_ynkto")]
+transform = Transform3D(0.788673, 0.583834, 0.192701, -0.583536, 0.612135, 0.533645, 0.193601, -0.533319, 0.823462, -0.457596, 0.631443, 0.114747)
+
+[node name="Berry2" parent="Objects/Static/Desk" instance=ExtResource("7_ynkto")]
+transform = Transform3D(0.809333, 0, -0.885991, 0, 1.2, 0, 0.885991, 0, 0.809333, -0.69011, 0.699817, -0.12831)
+
+[node name="BerryBag" parent="Objects/Static/Desk" instance=ExtResource("8_trpn0")]
+transform = Transform3D(0.674444, 0, -0.738326, 0, 1, 0, 0.738326, 0, 0.674444, -2.12444, 0.342076, 0.274277)
+
+[node name="Crystal" parent="Objects/Static/Desk" instance=ExtResource("13_3bex1")]
+transform = Transform3D(0.0625103, -0.298683, -0.396083, -0.258475, 0.321133, -0.282957, 0.423419, 0.24013, -0.114256, 0.297158, 0.432086, 0.367313)
+
+[node name="Cube_003" parent="Objects/Static/Desk/Crystal/Crystal" index="0"]
+surface_material_override/0 = ExtResource("21_6t4gn")
+
+[node name="Crystal2" parent="Objects/Static/Desk" instance=ExtResource("13_3bex1")]
+transform = Transform3D(-0.499044, 0, -0.0309075, 0, 0.5, 0, 0.0309076, 0, -0.499044, 0.388202, 0.432085, 0.363148)
+
+[node name="Cube_003" parent="Objects/Static/Desk/Crystal2/Crystal" index="0"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -0.838062, 0.844492, 7.03922)
+surface_material_override/0 = ExtResource("15_1cvyq")
+
+[node name="TreeStumpGroundedWithCollision" parent="Objects/Static/Desk" instance=ExtResource("9_c4ghi")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, -0.0572107, -0.543141, 1.62704)
+
+[node name="CauldronWithLight" parent="Objects/Static" instance=ExtResource("10_bhn50")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83499, 0.176453, 2.00239)
+
+[node name="TreeStumpWithCollision" parent="Objects/Static/CauldronWithLight" instance=ExtResource("7_iqfpi")]
+transform = Transform3D(0.778528, 0, 0.62761, 0, 1, 0, -0.62761, 0, 0.778528, 1.90272, -0.138012, 2.00348)
+
+[node name="Rock2WithCollision" parent="Objects/Static/CauldronWithLight" instance=ExtResource("8_61bao")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.53752, -0.590387, -1.10626)
+
+[node name="BerryLamp" parent="Objects/Static" instance=ExtResource("12_bhn50")]
+transform = Transform3D(0.852658, 0, -0.522469, 0, 1, 0, 0.522469, 0, 0.852658, 8.66118, 14.4776, -6.48145)
+
+[node name="Berry" parent="Objects/Static/BerryLamp" index="0"]
+visible = false
+
+[node name="baum_ast_low" parent="Objects/Static/BerryLamp" index="1"]
+visible = false
+
+[node name="BerryLamp" parent="Objects/Static/BerryLamp" instance=ExtResource("12_bhn50")]
+
+[node name="Berry" parent="Objects/Static/BerryLamp/BerryLamp" index="0"]
+visible = false
+
+[node name="baum_ast_low" parent="Objects/Static/BerryLamp/BerryLamp" index="1"]
+visible = false
+
+[node name="Bag Deco Bundle" parent="Objects/Static" instance=ExtResource("11_xqs01")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0906, 1.65602, 2.8345)
+
+[node name="Bag" parent="Objects/Static/Bag Deco Bundle" instance=ExtResource("12_37b71")]
+transform = Transform3D(-0.801076, 0, 0.598562, 0, 1, 0, -0.598562, 0, -0.801076, 1.79302, -0.95286, -1.43426)
+
+[node name="Berry" parent="Objects/Static/Bag Deco Bundle/Bag" instance=ExtResource("7_ynkto")]
+transform = Transform3D(0.696065, 0.591637, -0.406767, -0.591637, 0.151675, -0.791808, -0.406767, 0.791808, 0.45561, 0.233649, 0.313806, -0.287829)
+
+[node name="BerryBag" parent="Objects/Static/Bag Deco Bundle" instance=ExtResource("8_trpn0")]
+transform = Transform3D(-0.838195, 0, 0.545371, 0, 1, 0, -0.545371, 0, -0.838195, 2.26966, -0.803883, -0.366515)
+
+[node name="CrystalWithCollision2" parent="Objects/Static" instance=ExtResource("13_6t4gn")]
+transform = Transform3D(1.71661, 0, -1.02627, 0, 2, 0, 1.02627, 0, 1.71661, -9.90555, 0.107594, -5.61467)
+
+[node name="Cube_003" parent="Objects/Static/CrystalWithCollision2/Crystal" index="0"]
+surface_material_override/0 = ExtResource("14_8kbie")
+
+[node name="CrystalWithCollision3" parent="Objects/Static" instance=ExtResource("13_6t4gn")]
+transform = Transform3D(0.858307, 0, -0.513137, 0, 1, 0, 0.513137, 0, 0.858307, -10.6518, 0.601891, -4.38222)
+
+[node name="Cube_003" parent="Objects/Static/CrystalWithCollision3/Crystal" index="0"]
+surface_material_override/0 = ExtResource("22_6t4gn")
+
+[node name="RockWithCollision" parent="Objects/Static/CrystalWithCollision3" instance=ExtResource("16_42gc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.476374, 0)
+
+[node name="CrystalWithCollisionWithLight" parent="Objects/Static" instance=ExtResource("13_6t4gn")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.90532, 0, -4.89107)
+
+[node name="Cube_003" parent="Objects/Static/CrystalWithCollisionWithLight/Crystal" index="0"]
+surface_material_override/0 = ExtResource("15_1cvyq")
+
+[node name="Bonfire" parent="Objects/Static" instance=ExtResource("24_xvlki")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.11626, 0.249538, -20.3376)
+
+[node name="RockWithCollision" parent="Objects/Static/Bonfire" instance=ExtResource("16_42gc2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.66498, -0.433317, -1.85871)
+
+[node name="Interactions" type="Node3D" parent="Objects"]
+
+[node name="Socket" parent="Objects/Interactions" instance=ExtResource("3_2nb2s")]
+transform = Transform3D(-0.508651, 0, 0.860973, 0, 1, 0, -0.860973, 0, -0.508651, 9.92078, 0, -5.57447)
+
+[node name="Socket2" parent="Objects/Interactions" instance=ExtResource("4_3lini")]
+transform = Transform3D(-0.654398, 0, 0.75615, 0, 1, 0, -0.75615, 0, -0.654398, 9.17234, -2.38419e-07, -8.13421)
+
+[node name="Socket3" parent="Objects/Interactions" instance=ExtResource("5_ue1ne")]
+transform = Transform3D(0.562055, 0, -0.8271, 0, 1, 0, 0.8271, 0, 0.562055, 10.7382, 0, -3.24373)
+Weapon = "SHIELD"
+
+[node name="Socket4" parent="Objects/Interactions" instance=ExtResource("4_3lini")]
+transform = Transform3D(-0.760304, 0, 0.649567, 0, 1, 0, -0.649567, 0, -0.760304, 7.42344, -0.472393, -9.81148)
+Weapon = "BOW"
+
+[node name="InteractableTreasureChestWithCollision" parent="Objects/Interactions" instance=ExtResource("12_ktqp7")]
+transform = Transform3D(0.736239, 0, -0.676722, 0, 1, 0, 0.676722, 0, 0.736239, -8.41751, 1.33617, -7.09118)
+
+[node name="OmniLight3D" parent="Objects/Interactions/InteractableTreasureChestWithCollision" index="1"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0.0475587, 0.0276737)
+
+[node name="Crystal" parent="Objects/Interactions/InteractableTreasureChestWithCollision" instance=ExtResource("13_3bex1")]
+transform = Transform3D(0.5, 0, -1.49012e-08, 0, 0.5, 0, 1.49012e-08, 0, 0.5, 0.0991201, -0.678701, 0.413527)
+
+[node name="Cube_003" parent="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal/Crystal" index="0"]
+surface_material_override/0 = ExtResource("14_8kbie")
+
+[node name="Crystal2" parent="Objects/Interactions/InteractableTreasureChestWithCollision" instance=ExtResource("13_3bex1")]
+transform = Transform3D(-0.183344, 0, -0.675563, 0, 0.7, 0, 0.675563, 0, -0.183344, -0.00980759, -0.678701, 0.105529)
+
+[node name="Cube_003" parent="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal2/Crystal" index="0"]
+surface_material_override/0 = ExtResource("15_1cvyq")
+
+[node name="Crystal3" parent="Objects/Interactions/InteractableTreasureChestWithCollision" instance=ExtResource("13_3bex1")]
+transform = Transform3D(-0.599659, 0, -0.0202174, 0, 0.6, 0, 0.0202174, 0, -0.599659, 0.00616646, -0.734181, -0.435626)
+
+[node name="Cube_003" parent="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal3/Crystal" index="0"]
+surface_material_override/0 = ExtResource("21_6t4gn")
+
+[node name="Crystal4" parent="Objects/Interactions/InteractableTreasureChestWithCollision" instance=ExtResource("13_3bex1")]
+transform = Transform3D(-0.296301, 0, -0.0469666, 0, 0.3, 0, 0.0469666, 0, -0.296301, -0.0966492, -0.577946, -0.103334)
+
+[node name="Cube_003" parent="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal4/Crystal" index="0"]
+surface_material_override/0 = ExtResource("14_8kbie")
+
+[node name="Crystal5" parent="Objects/Interactions/InteractableTreasureChestWithCollision" instance=ExtResource("13_3bex1")]
+transform = Transform3D(0.0430401, 0, 0.397678, 0, 0.4, 0, -0.397678, 0, 0.0430401, -0.1404, -0.64968, -0.674818)
+
+[node name="Cube_003" parent="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal5/Crystal" index="0"]
+surface_material_override/0 = ExtResource("15_1cvyq")
+
+[node name="Crystal6" parent="Objects/Interactions/InteractableTreasureChestWithCollision" instance=ExtResource("13_3bex1")]
+transform = Transform3D(-0.148154, 0, -0.684142, 0, 0.7, 0, 0.684142, 0, -0.148154, -0.0771627, -0.594614, 0.648527)
+
+[node name="Cube_003" parent="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal6/Crystal" index="0"]
+surface_material_override/0 = ExtResource("22_6t4gn")
+
+[node name="TreasureChestWithSimpleCollision" parent="Objects/Interactions" instance=ExtResource("24_iskkw")]
+transform = Transform3D(0.736097, 5.91744e-08, 0.676876, 0, -1, 8.74228e-08, 0.676876, -6.43517e-08, -0.736097, -8.40266, -0.188583, -7.07907)
+
+[node name="training_dummy" parent="Objects/Interactions" instance=ExtResource("23_37b71")]
+transform = Transform3D(0.110185, 0, 0.993911, 0, 1, 0, -0.993911, 0, 0.110185, 5.98625, -4.76837e-07, -4.69861)
+
+[node name="TrainingDummyRangedStand" parent="Objects/Interactions" instance=ExtResource("24_6t4gn")]
+transform = Transform3D(1.17726, 0, 0.929545, 0, 1.5, 0, -0.929545, 0, 1.17726, -5.8149, -2.38419e-07, -9.75621)
+
+[node name="Nature" type="Node3D" parent="Objects"]
+
+[node name="Bush" parent="Objects/Nature" instance=ExtResource("27_6udwl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.56274, -1.59979, -9.449)
+
+[node name="Bush2" parent="Objects/Nature" instance=ExtResource("28_iskkw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2375, 0.337362, -5.52972)
+
+[node name="VinesTrainingRoom" parent="Objects/Nature" instance=ExtResource("30_0vlvo")]
+transform = Transform3D(9.5399e-09, 0, -0.8, 0, 0.8, 0, 0.8, 0, 9.5399e-09, 0, 0.140304, 0)
+
+[node name="RankenPlane2" parent="Objects/Nature/VinesTrainingRoom" index="1"]
+visible = false
+
+[node name="Vines" parent="Objects/Nature/VinesTrainingRoom" instance=ExtResource("31_pquue")]
+transform = Transform3D(1, 0, -2.66454e-15, 0, 1, 0, 2.66454e-15, 0, 1, -13.5675, -3.61084, -6.03371)
+
+[node name="Vines2" parent="Objects/Nature/VinesTrainingRoom" instance=ExtResource("31_pquue")]
+transform = Transform3D(1, -8.74228e-08, -8.74228e-08, -8.74228e-08, -1, 0, -8.74228e-08, 7.64274e-15, -1, -11.2584, 12.5961, 10.3373)
+
+[node name="Vines3" parent="Objects/Nature/VinesTrainingRoom" instance=ExtResource("31_pquue")]
+transform = Transform3D(-0.442855, 2.02926e-08, 0.23212, 1.38672e-16, -0.5, 4.37114e-08, 0.23212, 3.87156e-08, 0.442855, -7.09561, 8.72, 13.1072)
+
+[node name="Vines4" parent="Objects/Nature/VinesTrainingRoom" instance=ExtResource("31_pquue")]
+transform = Transform3D(0.161093, 0, -0.118529, 0, 0.2, 0, 0.118529, 0, 0.161093, -13.2993, 2.34825, 6.81117)
+
+[node name="Vines4" parent="Objects/Nature/VinesTrainingRoom/Vines4" instance=ExtResource("31_pquue")]
+transform = Transform3D(1, -4.90897e-09, 1.05727e-09, 4.90897e-09, 0.911339, -0.411658, 1.05728e-09, 0.411658, 0.911339, 3.0151e-08, -2.49633, -2.52841)
+
+[node name="Vines5" parent="Objects/Nature/VinesTrainingRoom/Vines4" instance=ExtResource("31_pquue")]
+transform = Transform3D(0.817099, 0.107878, 0.566314, -0.0886644, 0.994164, -0.0614514, -0.569638, 1.28643e-09, 0.821896, -2.86066e-08, -8.56062, 2.3989)
+
+[node name="Vines5" parent="Objects/Nature/VinesTrainingRoom" instance=ExtResource("31_pquue")]
+transform = Transform3D(-0.3, 2.62268e-08, 0, -2.62268e-08, -0.3, 0, 0, 2.64698e-23, 0.3, -12.1945, 6.61587, 7.82552)
+
+[node name="Vines4" parent="Objects/Nature/VinesTrainingRoom/Vines5" instance=ExtResource("31_pquue")]
+transform = Transform3D(1, -4.90897e-09, 1.05727e-09, 4.90897e-09, 0.911339, -0.411658, 1.05728e-09, 0.411658, 0.911339, 3.0151e-08, -2.49633, -2.52841)
+
+[node name="Vines5" parent="Objects/Nature/VinesTrainingRoom/Vines5" instance=ExtResource("31_pquue")]
+transform = Transform3D(0.817099, 0.107878, 0.566314, -0.0886644, 0.994164, -0.0614514, -0.569638, 1.28643e-09, 0.821896, -2.86066e-08, -8.56062, 2.3989)
+
+[node name="Vines6" parent="Objects/Nature/VinesTrainingRoom" instance=ExtResource("31_pquue")]
+transform = Transform3D(0.411994, 0, -0.283304, 0, 0.5, 0, 0.283304, 0, 0.411994, -0.669953, 1.61883, -15.9299)
+
+[node name="Vines4" parent="Objects/Nature/VinesTrainingRoom/Vines6" instance=ExtResource("31_pquue")]
+transform = Transform3D(1, -4.90897e-09, 1.05727e-09, 4.90897e-09, 0.911339, -0.411658, 1.05728e-09, 0.411658, 0.911339, 3.0151e-08, -2.49633, -2.52841)
+
+[node name="Vines5" parent="Objects/Nature/VinesTrainingRoom/Vines6" instance=ExtResource("31_pquue")]
+transform = Transform3D(0.817099, 0.107878, 0.566314, -0.0886644, 0.994164, -0.0614514, -0.569638, 1.28643e-09, 0.821896, -2.86066e-08, -8.56062, 2.3989)
+
+[node name="StonePile2" parent="Objects/Nature" instance=ExtResource("2_f6dbe")]
+transform = Transform3D(-0.541341, 0, -0.840803, 0, 1, 0, 0.840803, 0, -0.541341, 4.3957, 0.20926, -1.12148)
+
+[node name="MushroomPurpleWithLight" parent="Objects/Nature/StonePile2" instance=ExtResource("3_uvdn5")]
+transform = Transform3D(0.161122, 0, -0.11849, 0, 0.2, 0, 0.11849, 0, 0.161122, 2.13772, -5.96046e-08, -1.01487)
+
+[node name="MushroomBlue" parent="Objects/Nature" instance=ExtResource("31_j1x3v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.58562, 0.0934494, -12.0697)
+
+[node name="MushroomRed" parent="Objects/Nature/MushroomBlue" instance=ExtResource("32_41yq1")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 1.29021, 0.389053)
+
+[node name="MushroomYellow" parent="Objects/Nature/MushroomBlue" instance=ExtResource("33_n0xdn")]
+transform = Transform3D(0.373048, 0, 0.707697, 0, 0.8, 0, -0.707697, 0, 0.373048, 0, 1.20656, 0.241027)
+
+[node name="Skeleton3D" parent="Objects/Nature/MushroomBlue/MushroomYellow/pilz/Pilze" index="0"]
+bones/0/rotation = Quaternion(0.0273, 0.00105263, 0.0274217, 0.999251)
+bones/0/scale = Vector3(0.975615, 0.975615, 0.975615)
+bones/1/rotation = Quaternion(0.00594872, -0.00748581, 0.0189609, 0.999775)
+bones/1/scale = Vector3(0.97391, 0.97391, 0.97391)
+bones/2/rotation = Quaternion(0.0098364, -0.0127517, 0.00864972, 0.999833)
+bones/2/scale = Vector3(0.95948, 0.95948, 0.95948)
+bones/3/rotation = Quaternion(0.0058612, -0.00751504, 0.0139754, 0.999857)
+bones/3/scale = Vector3(0.95948, 0.95948, 0.95948)
+bones/4/rotation = Quaternion(0.010003, -0.012698, 0.014154, 0.999769)
+bones/4/scale = Vector3(0.975615, 0.975615, 0.975615)
+
+[node name="AnimationPlayer" parent="Objects/Nature/MushroomBlue/MushroomYellow/pilz" index="1"]
+autoplay = "Idle"
+
+[node name="MushroomBlueWithLight" parent="Objects/Nature/MushroomBlue" instance=ExtResource("4_o3r0n")]
+transform = Transform3D(-0.102526, 0, -0.171723, 0, 0.2, 0, 0.171723, 0, -0.102526, -0.348026, 0.115811, 0.116353)
+
+[node name="TreeBranchWithCollision" parent="Objects/Nature" instance=ExtResource("37_2xfrt")]
+transform = Transform3D(-4.27597e-08, -0.978227, 0.207536, 1, -4.37114e-08, 0, 9.07169e-09, 0.207536, 0.978227, 2.39446, 1.49459, -1.03233)
+
+[node name="MonsteraBush" parent="Objects/Nature/TreeBranchWithCollision" instance=ExtResource("38_c4ghi")]
+transform = Transform3D(-2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0, 0.5, 1.15637, 0, 0)
+
+[node name="Skeleton3D" parent="Objects/Nature/TreeBranchWithCollision/MonsteraBush/monstera_bush_low/Monstera" index="0"]
+bones/0/position = Vector3(6.40713e-05, 3.93688e-07, 3.61672e-05)
+bones/0/rotation = Quaternion(-0.0921693, -0.651567, -0.542543, 0.522123)
+bones/1/rotation = Quaternion(-0.157194, -8.70033e-06, -0.0874066, 0.983692)
+bones/2/position = Vector3(5.99748e-05, 2.03308e-06, -5.76562e-05)
+bones/2/rotation = Quaternion(-0.489569, -0.301798, -0.251299, 0.778517)
+bones/3/rotation = Quaternion(-0.178868, -1.84046e-06, -0.0187524, 0.983694)
+bones/4/position = Vector3(-5.96413e-05, 8.98801e-06, -5.64036e-05)
+bones/4/rotation = Quaternion(-0.489569, 0.301798, 0.251299, 0.778517)
+bones/5/rotation = Quaternion(-0.178868, 1.84046e-06, 0.0187524, 0.983694)
+bones/6/position = Vector3(-6.35546e-05, 8.14567e-06, 4.0312e-05)
+bones/6/rotation = Quaternion(-0.0921693, 0.651567, 0.542543, 0.522123)
+bones/7/rotation = Quaternion(-0.157194, 8.70033e-06, 0.0874066, 0.983692)
+bones/8/position = Vector3(0.0208674, 0.354178, 0.000869176)
+bones/8/rotation = Quaternion(-0.441977, 0.103363, 0.088215, 0.886674)
+bones/9/rotation = Quaternion(-0.239596, -4.35642e-06, 0.0191941, 0.970683)
+bones/10/position = Vector3(0.0209111, 0.354176, 0.00080869)
+bones/10/rotation = Quaternion(-0.164986, 0.490427, 0.41832, 0.746505)
+bones/11/rotation = Quaternion(-0.197049, 5.00146e-05, 0.139097, 0.970476)
+bones/12/position = Vector3(0.0208189, 0.354183, 0.000842575)
+bones/12/rotation = Quaternion(0.33448, -0.356466, -0.304415, 0.817549)
+bones/13/rotation = Quaternion(0.0980697, -6.3785e-05, -0.219001, 0.970784)
+bones/14/position = Vector3(0.0207862, 0.354183, 0.000830311)
+bones/14/rotation = Quaternion(-0.285221, -0.411802, -0.351862, 0.790735)
+bones/15/rotation = Quaternion(-0.218958, -3.51421e-05, -0.0952007, 0.971079)
+bones/16/position = Vector3(0.0207239, 0.354183, 0.000851353)
+bones/16/rotation = Quaternion(-0.0565783, -0.465717, -0.34549, 0.812738)
+bones/17/rotation = Quaternion(-0.166256, -7.71467e-05, -0.204438, 0.964658)
+bones/18/position = Vector3(0.0207945, 0.354176, 0.000944288)
+bones/18/rotation = Quaternion(-0.332482, -0.14685, -0.10894, 0.925215)
+bones/19/rotation = Quaternion(-0.260046, -1.57562e-05, -0.0417546, 0.964693)
+bones/20/position = Vector3(0.0209617, 0.354168, 0.000890891)
+bones/20/rotation = Quaternion(-0.235312, 0.349123, 0.258995, 0.869289)
+bones/21/rotation = Quaternion(-0.237034, 4.32802e-05, 0.114887, 0.964684)
+bones/22/position = Vector3(0.0209289, 0.354173, 0.000883096)
+bones/22/rotation = Quaternion(0.226987, 0.360297, 0.267285, 0.86442)
+bones/23/rotation = Quaternion(0.0802442, 9.4751e-05, 0.251349, 0.964565)
+
+[node name="AnimationPlayer" parent="Objects/Nature/TreeBranchWithCollision/MonsteraBush/monstera_bush_low" index="1"]
+autoplay = "Rascheln"
+speed_scale = 0.4
+
+[node name="Bag" parent="Objects/Nature/TreeBranchWithCollision" instance=ExtResource("12_37b71")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.946792, -0.0103083, 0.155112)
+
+[node name="TreeBranchWithCollision2" parent="Objects/Nature" instance=ExtResource("37_2xfrt")]
+transform = Transform3D(-5.24537e-08, -1.2, 0, 1.2, -5.24537e-08, 0, 0, 0, 1.2, -10.8973, 1.12365, -1.93637)
+
+[node name="MonsteraBush" parent="Objects/Nature/TreeBranchWithCollision2" instance=ExtResource("38_c4ghi")]
+transform = Transform3D(-2.18557e-08, 0.5, 0, -0.5, -2.18557e-08, 0, 0, 0, 0.5, 1.15637, 0, 0)
+
+[node name="Skeleton3D" parent="Objects/Nature/TreeBranchWithCollision2/MonsteraBush/monstera_bush_low/Monstera" index="0"]
+bones/0/position = Vector3(6.40713e-05, 3.93688e-07, 3.61672e-05)
+bones/0/rotation = Quaternion(-0.0921693, -0.651567, -0.542543, 0.522123)
+bones/1/rotation = Quaternion(-0.157194, -8.70033e-06, -0.0874066, 0.983692)
+bones/2/position = Vector3(5.99748e-05, 2.03308e-06, -5.76562e-05)
+bones/2/rotation = Quaternion(-0.489569, -0.301798, -0.251299, 0.778517)
+bones/3/rotation = Quaternion(-0.178868, -1.84046e-06, -0.0187524, 0.983694)
+bones/4/position = Vector3(-5.96413e-05, 8.98801e-06, -5.64036e-05)
+bones/4/rotation = Quaternion(-0.489569, 0.301798, 0.251299, 0.778517)
+bones/5/rotation = Quaternion(-0.178868, 1.84046e-06, 0.0187524, 0.983694)
+bones/6/position = Vector3(-6.35546e-05, 8.14567e-06, 4.0312e-05)
+bones/6/rotation = Quaternion(-0.0921693, 0.651567, 0.542543, 0.522123)
+bones/7/rotation = Quaternion(-0.157194, 8.70033e-06, 0.0874066, 0.983692)
+bones/8/position = Vector3(0.0208674, 0.354178, 0.000869176)
+bones/8/rotation = Quaternion(-0.441977, 0.103363, 0.088215, 0.886674)
+bones/9/rotation = Quaternion(-0.239596, -4.35642e-06, 0.0191941, 0.970683)
+bones/10/position = Vector3(0.0209111, 0.354176, 0.00080869)
+bones/10/rotation = Quaternion(-0.164986, 0.490427, 0.41832, 0.746505)
+bones/11/rotation = Quaternion(-0.197049, 5.00146e-05, 0.139097, 0.970476)
+bones/12/position = Vector3(0.0208189, 0.354183, 0.000842575)
+bones/12/rotation = Quaternion(0.33448, -0.356466, -0.304415, 0.817549)
+bones/13/rotation = Quaternion(0.0980697, -6.3785e-05, -0.219001, 0.970784)
+bones/14/position = Vector3(0.0207862, 0.354183, 0.000830311)
+bones/14/rotation = Quaternion(-0.285221, -0.411802, -0.351862, 0.790735)
+bones/15/rotation = Quaternion(-0.218958, -3.51421e-05, -0.0952007, 0.971079)
+bones/16/position = Vector3(0.0207239, 0.354183, 0.000851353)
+bones/16/rotation = Quaternion(-0.0565783, -0.465717, -0.34549, 0.812738)
+bones/17/rotation = Quaternion(-0.166256, -7.71467e-05, -0.204438, 0.964658)
+bones/18/position = Vector3(0.0207945, 0.354176, 0.000944288)
+bones/18/rotation = Quaternion(-0.332482, -0.14685, -0.10894, 0.925215)
+bones/19/rotation = Quaternion(-0.260046, -1.57562e-05, -0.0417546, 0.964693)
+bones/20/position = Vector3(0.0209617, 0.354168, 0.000890891)
+bones/20/rotation = Quaternion(-0.235312, 0.349123, 0.258995, 0.869289)
+bones/21/rotation = Quaternion(-0.237034, 4.32802e-05, 0.114887, 0.964684)
+bones/22/position = Vector3(0.0209289, 0.354173, 0.000883096)
+bones/22/rotation = Quaternion(0.226987, 0.360297, 0.267285, 0.86442)
+bones/23/rotation = Quaternion(0.0802442, 9.4751e-05, 0.251349, 0.964565)
+
+[node name="AnimationPlayer" parent="Objects/Nature/TreeBranchWithCollision2/MonsteraBush/monstera_bush_low" index="1"]
+autoplay = "Rascheln"
+speed_scale = 0.2
+
+[node name="Bag" parent="Objects/Nature/TreeBranchWithCollision2" instance=ExtResource("12_37b71")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -0.946792, -0.0103083, 0.155112)
+
+[node name="Berry" parent="Objects/Nature/TreeBranchWithCollision2" instance=ExtResource("7_ynkto")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 1.12782, -0.185616, 0.122818)
+
+[node name="Berry2" parent="Objects/Nature/TreeBranchWithCollision2" instance=ExtResource("7_ynkto")]
+transform = Transform3D(3.49315e-08, 1, -2.62769e-08, 0.799139, -4.37114e-08, -0.601146, -0.601146, -5.92119e-15, -0.799139, 1.12782, 0.0730953, 0.316248)
+
+[node name="Berry3" parent="Objects/Nature/TreeBranchWithCollision2" instance=ExtResource("7_ynkto")]
+transform = Transform3D(3.94068e-08, 1, -1.89153e-08, 0.901523, -4.37114e-08, -0.432731, -0.432731, -2.96059e-15, -0.901523, 1.12782, 0.00145245, -0.18214)
+
+[node name="MushroomYellow" parent="Objects/Nature" instance=ExtResource("33_n0xdn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5303, -0.0388151, -2.18123)
+
+[node name="Skeleton3D" parent="Objects/Nature/MushroomYellow/pilz/Pilze" index="0"]
+bones/0/rotation = Quaternion(0.0273165, 0.000628127, 0.011885, 0.999556)
+bones/0/scale = Vector3(0.938525, 0.938525, 0.938525)
+bones/1/rotation = Quaternion(0.00577272, -0.00755962, 0.00637093, 0.999934)
+bones/1/scale = Vector3(0.942661, 0.942661, 0.942661)
+bones/2/rotation = Quaternion(0.00985271, -0.0127458, 0.00924676, 0.999828)
+bones/2/scale = Vector3(0.96111, 0.96111, 0.96111)
+bones/3/rotation = Quaternion(0.00587083, -0.00751155, 0.0145724, 0.999848)
+bones/3/scale = Vector3(0.96111, 0.96111, 0.96111)
+bones/4/rotation = Quaternion(0.00965775, -0.0128502, -0.00139928, 0.99987)
+bones/4/scale = Vector3(0.938525, 0.938525, 0.938525)
+
+[node name="AnimationPlayer" parent="Objects/Nature/MushroomYellow/pilz" index="1"]
+autoplay = "Idle"
+speed_scale = 0.5
+
+[node name="MushroomYellow2" parent="Objects/Nature" instance=ExtResource("33_n0xdn")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 7.86305, 0.014999, -23.5533)
+
+[node name="Skeleton3D" parent="Objects/Nature/MushroomYellow2/pilz/Pilze" index="0"]
+bones/0/rotation = Quaternion(0.0273027, 0.00100343, 0.0256209, 0.999298)
+bones/0/scale = Vector3(0.969916, 0.969916, 0.969916)
+bones/1/rotation = Quaternion(0.00590156, -0.00750056, 0.0164453, 0.999819)
+bones/1/scale = Vector3(0.966284, 0.966284, 0.966284)
+bones/2/rotation = Quaternion(0.00973191, -0.0127985, 0.00386316, 0.999863)
+bones/2/scale = Vector3(0.948202, 0.948202, 0.948202)
+bones/3/rotation = Quaternion(0.0057995, -0.0075431, 0.00918906, 0.999913)
+bones/3/scale = Vector3(0.948202, 0.948202, 0.948202)
+bones/4/rotation = Quaternion(0.00994241, -0.0127156, 0.0123518, 0.999793)
+bones/4/scale = Vector3(0.969917, 0.969916, 0.969916)
+
+[node name="AnimationPlayer" parent="Objects/Nature/MushroomYellow2/pilz" index="1"]
+autoplay = "Idle"
+speed_scale = 0.5
+
+[node name="BushTest" parent="Objects/Nature" instance=ExtResource("32_xl1d7")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.88374, 0.501618, -6.84713)
+
+[node name="BushTest3" parent="Objects/Nature" instance=ExtResource("32_xl1d7")]
+transform = Transform3D(-0.73719, 0, 1.85918, 0, 2, 0, -1.85918, 0, -0.73719, -2.86062, 0.723355, -20.425)
+
+[node name="FlowerPink" parent="Objects/Nature" instance=ExtResource("45_yvfjt")]
+transform = Transform3D(1.18611, 0, -0.918222, 0, 1.5, 0, 0.918222, 0, 1.18611, -0.555493, 0.244074, -18.8404)
+
+[node name="FlowerBlue" parent="Objects/Nature" instance=ExtResource("46_wene3")]
+transform = Transform3D(1.58149, 0, -1.2243, 0, 2, 0, 1.2243, 0, 1.58149, -1.33738, 0.102378, -22.9782)
+
+[node name="FlowerRed" parent="Objects/Nature" instance=ExtResource("47_3cj2b")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, -1.6009, 0.15444, -17.7828)
+
+[node name="Path" type="Node3D" parent="Objects"]
+
+[node name="Ground" type="Node3D" parent="."]
+
+[node name="Ground Normal Grass (50x50)" parent="Ground" instance=ExtResource("3_vryqh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0150986, 0)
+
+[node name="NPCs" type="Node3D" parent="."]
+
+[node name="OldMan" parent="NPCs" instance=ExtResource("4_p65oq")]
+transform = Transform3D(0.839487, 0, -0.54338, 0, 1, 0, 0.54338, 0, 0.839487, 5.01715, 1.19579, -1.91075)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 10, 0)
+spot_range = 20.0
+spot_attenuation = 0.5
+
+[editable path="Walls/StartingArea"]
+[editable path="Walls/StartingArea/StaringArea"]
+[editable path="Walls/StartingArea/StaringArea/Start/Door/DoorStaticBody3D"]
+[editable path="Walls/TreeWalls/TreeBundleTwoWithCollision"]
+[editable path="Walls/TreeWalls/TreeBundleTwoWithCollision/tree_bundle_two"]
+[editable path="Walls/TreeWalls/TreeBundleTwoWithCollision/StaticBody3D/TreeRound"]
+[editable path="Walls/TreeWalls/TreeBundleTwoWithCollision/StaticBody3D/TreeRound/Baum"]
+[editable path="Walls/StoneWallFourWithCollision"]
+[editable path="Objects/Static/Desk/Crystal"]
+[editable path="Objects/Static/Desk/Crystal/Crystal"]
+[editable path="Objects/Static/Desk/Crystal2"]
+[editable path="Objects/Static/Desk/Crystal2/Crystal"]
+[editable path="Objects/Static/BerryLamp"]
+[editable path="Objects/Static/BerryLamp/BerryLamp"]
+[editable path="Objects/Static/CrystalWithCollision2"]
+[editable path="Objects/Static/CrystalWithCollision2/Crystal"]
+[editable path="Objects/Static/CrystalWithCollision3"]
+[editable path="Objects/Static/CrystalWithCollision3/Crystal"]
+[editable path="Objects/Static/CrystalWithCollisionWithLight"]
+[editable path="Objects/Static/CrystalWithCollisionWithLight/Crystal"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/treasure_chest"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal/Crystal"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal2"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal2/Crystal"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal3"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal3/Crystal"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal4"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal4/Crystal"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal5"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal5/Crystal"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal6"]
+[editable path="Objects/Interactions/InteractableTreasureChestWithCollision/Crystal6/Crystal"]
+[editable path="Objects/Nature/VinesTrainingRoom"]
+[editable path="Objects/Nature/MushroomBlue/MushroomYellow"]
+[editable path="Objects/Nature/MushroomBlue/MushroomYellow/pilz"]
+[editable path="Objects/Nature/TreeBranchWithCollision/MonsteraBush"]
+[editable path="Objects/Nature/TreeBranchWithCollision/MonsteraBush/monstera_bush_low"]
+[editable path="Objects/Nature/TreeBranchWithCollision2/MonsteraBush"]
+[editable path="Objects/Nature/TreeBranchWithCollision2/MonsteraBush/monstera_bush_low"]
+[editable path="Objects/Nature/MushroomYellow"]
+[editable path="Objects/Nature/MushroomYellow/pilz"]
+[editable path="Objects/Nature/MushroomYellow2"]
+[editable path="Objects/Nature/MushroomYellow2/pilz"]

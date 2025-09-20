@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnlu7mjuuo1pp"]
+
+[ext_resource type="Texture2D" uid="uid://dxq1jtyll6a5j" path="res://assets/textures/environment_textures/Test.PNG" id="1_t66kj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5ig65"]
+size = Vector2(30, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1pyk5"]
+albedo_texture = ExtResource("1_t66kj")
+
+[node name="BackgroundTest" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_5ig65")
+surface_material_override/0 = SubResource("StandardMaterial3D_1pyk5")

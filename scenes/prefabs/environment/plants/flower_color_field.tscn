@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjudijvc3lbgf"]
+
+[ext_resource type="PackedScene" uid="uid://d1yh026p2wrjl" path="res://scenes/prefabs/environment/plants/flower_blue.tscn" id="1_ck227"]
+[ext_resource type="PackedScene" uid="uid://dans3fwnb4x2f" path="res://scenes/prefabs/environment/plants/flower_pink.tscn" id="2_jwppw"]
+[ext_resource type="PackedScene" uid="uid://ohq5jrirh6j" path="res://scenes/prefabs/environment/plants/flower_red.tscn" id="3_bq2sd"]
+[ext_resource type="PackedScene" uid="uid://buxr4b5vnjvg5" path="res://scenes/prefabs/environment/plants/flower_white.tscn" id="4_7wkwq"]
+
+[node name="FlowerColorField" type="Node3D"]
+
+[node name="FlowerBlue2" parent="." instance=ExtResource("1_ck227")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.941563, -0.317938, 0.0455594)
+
+[node name="FlowerPink4" parent="." instance=ExtResource("2_jwppw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00367677, -0.317938, -0.86331)
+
+[node name="FlowerRed" parent="." instance=ExtResource("3_bq2sd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.07066, -0.317938, 0.47741)
+
+[node name="FlowerWhite" parent="." instance=ExtResource("4_7wkwq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00209296, -0.317938, 0.363319)

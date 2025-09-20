@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://c3c650unruhvy"]
+[gd_scene load_steps=36 format=3 uid="uid://c3c650unruhvy"]
 
 [ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="1_ch4m0"]
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="1_m28bg"]
 [ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="1_vmj8w"]
+[ext_resource type="Script" uid="uid://cdy7132mqn2xn" path="res://scripts/environment/directional_light_3d_control.gd" id="1_vrntw"]
 [ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="2_w1y6w"]
 [ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="3_h0rvv"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="5_ch4m0"]
@@ -24,6 +25,13 @@
 [ext_resource type="PackedScene" uid="uid://bdahddfj55fxl" path="res://scenes/prefabs/environment/rocks/without_collision/crystal.tscn" id="20_717cu"]
 [ext_resource type="PackedScene" uid="uid://cqcrm8tk2okmd" path="res://scenes/prefabs/environment/objects/treasure_chest_with_simple_collision.tscn" id="21_wws0w"]
 [ext_resource type="PackedScene" uid="uid://dqw6awtiag0l6" path="res://scenes/prefabs/environment/walls/with_collision/stone_wall_with_collision.tscn" id="22_28r12"]
+[ext_resource type="PackedScene" uid="uid://cydetofcrsgfm" path="res://scenes/prefabs/characters/old_man.tscn" id="23_1taso"]
+[ext_resource type="PackedScene" uid="uid://qww3ho4advs2" path="res://scenes/prefabs/environment/rocks/with_collision/stone_pile_with_collision_2.tscn" id="25_u8kkp"]
+[ext_resource type="PackedScene" uid="uid://ciw227ay5vtu5" path="res://scenes/prefabs/environment/rooms/level_rooms/beginning_room_1.tscn" id="26_246no"]
+[ext_resource type="PackedScene" uid="uid://j3cv2ft8m4lb" path="res://scenes/prefabs/environment/rooms/level_rooms/beginning_room_2.tscn" id="27_t2tcw"]
+[ext_resource type="PackedScene" uid="uid://dx5l41uvhtrju" path="res://scenes/prefabs/environment/rooms/level_rooms/beginning_room_3.tscn" id="28_xp5wv"]
+[ext_resource type="PackedScene" uid="uid://bnlu7mjuuo1pp" path="res://scenes/prefabs/environment/rooms/model_prefabs/background_test.tscn" id="29_s2jpd"]
+[ext_resource type="PackedScene" uid="uid://b6yhasy6o2r4x" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(25x25).tscn" id="30_xymiw"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_gexbg"]
 panorama = ExtResource("1_m28bg")
@@ -39,6 +47,12 @@ sky = SubResource("Sky_oxph1")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 2.74091, 0)
+visible = false
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.58201, 0.813182, 0, -0.813182, 0.58201, -5.57129, 36.5586, -2.92292)
+shadow_enabled = true
+script = ExtResource("1_vrntw")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_axl6w")
@@ -104,7 +118,7 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10, 0, -7)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10483, 0.400875, -7.44439)
 
 [node name="StonePile" parent="WorldEnvironment/World/Objects" instance=ExtResource("12_224vm")]
-transform = Transform3D(-0.997233, 0, -0.0743347, 0, 1, 0, 0.0743347, 0, -0.997233, -11.3821, 0.103938, -6.58363)
+transform = Transform3D(-0.997233, 0, -0.0743347, 0, 1, 0, 0.0743347, 0, -0.997233, -2.00362, 0.286451, -3.03816)
 
 [node name="Test" parent="WorldEnvironment/World/Objects" instance=ExtResource("13_2unhs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2449, 0.24604, -22.0309)
@@ -136,11 +150,104 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.792967, -15)
 [node name="StoneWall" parent="WorldEnvironment/World/Objects" instance=ExtResource("22_28r12")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -13)
 
+[node name="OldMan" parent="WorldEnvironment/World/Objects" instance=ExtResource("23_1taso")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0227, 4.4338, -9.63715)
+
+[node name="StonePile2" parent="WorldEnvironment/World/Objects" instance=ExtResource("25_u8kkp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.69171, 0.358366, -0.561275)
+
 [node name="TestRooms" type="Node3D" parent="WorldEnvironment/World"]
 
 [node name="TrainingRoom" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("7_oxph1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.51916, 0, -6.50049)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6741, 0, -6.50049)
+
+[node name="BeginningRoom1" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("26_246no")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.688, 0, -43.7206)
+
+[node name="BeginningRoom2" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("27_t2tcw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6891, 0, -68.6825)
+
+[node name="BeginningRoom3" parent="WorldEnvironment/World/TestRooms" instance=ExtResource("28_xp5wv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.5182, 0, -106.141)
+
+[node name="TestBackgrounds" type="Node3D" parent="WorldEnvironment/World"]
+
+[node name="BackgroundTest2" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("29_s2jpd")]
+transform = Transform3D(0.920505, -0.384795, -0.0678498, 0, 0.173648, -0.984808, 0.390731, 0.90652, 0.159844, -36.6748, 7.23891, -90.4586)
+
+[node name="BackgroundTest" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("29_s2jpd")]
+transform = Transform3D(-4.37114e-08, 0.984808, 0.173648, 0, 0.173648, -0.984808, -1, -4.30473e-08, -7.59041e-09, -108, 7.239, -100.752)
+
+[node name="BackgroundTest6" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("29_s2jpd")]
+transform = Transform3D(1, 0, 0, 0, 0.173648, -0.984808, 0, 0.984808, 0.173648, -100.335, 7.239, -142.914)
+
+[node name="BackgroundTest7" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("29_s2jpd")]
+transform = Transform3D(-4.37114e-08, 0.984808, 0.173648, 0, 0.173648, -0.984808, -1, -4.30473e-08, -7.59041e-09, -108, 7.239, -130.564)
+
+[node name="Ground Normal Grass (25x25)" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("30_xymiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5296, 9.53674e-07, -93.4099)
+
+[node name="BackgroundTest3" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("29_s2jpd")]
+transform = Transform3D(-4.81607e-09, -0.984808, -0.173648, -6.85829e-09, 0.173648, -0.984808, 1, -3.55198e-09, -7.59039e-09, -26.1027, 7.23891, -72.3209)
+
+[node name="BackgroundTest4" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("29_s2jpd")]
+transform = Transform3D(2.82041e-08, -0.984808, -0.173648, -1.26806e-08, 0.173648, -0.984808, 1, 2.99776e-08, -7.59039e-09, -26.0524, 7.23891, -42.4021)
+
+[node name="Ground Normal Grass (25x25)2" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("30_xymiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.2, -18.0535, 9.53674e-07, -56.8293)
+
+[node name="BackgroundTest5" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("29_s2jpd")]
+transform = Transform3D(-4.37114e-08, 0.984808, 0.173648, 0, 0.173648, -0.984808, -1, -4.30473e-08, -7.5904e-09, -57.7963, 7.23891, -38.3279)
+
+[node name="Ground Normal Grass (25x25)3" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("30_xymiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.2119, 9.53674e-07, -43.957)
+
+[node name="Ground Normal Grass (25x25)4" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("30_xymiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.4126, 9.53674e-07, -68.419)
+
+[node name="Ground Normal Grass (25x25)5" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("30_xymiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5, -114.642, 9.53674e-07, -111.005)
+
+[node name="Ground Normal Grass (25x25)6" parent="WorldEnvironment/World/TestBackgrounds" instance=ExtResource("30_xymiw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3987, 9.53674e-07, -143.46)
 
 [node name="Player" parent="WorldEnvironment" instance=ExtResource("5_ch4m0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.23659, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1806, 1.11122, -78.8513)
 mana_per_second = 100.0
+
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavInclusion/NavigationRegion3D/Nature/TreeRound6"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavInclusion/NavigationRegion3D/Nature/TreeRound6/Baum"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavInclusion/NavigationRegion3D/Objects/StoneWallTwoWithCollision2"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavInclusion/NavigationRegion3D/Objects/StoneWallTwoWithCollision"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavInclusion/NavigationRegion3D/Objects/StoneWallTwoWithCollision/FlowerRed2"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavInclusion/NavigationRegion3D/Objects/StoneWallTwoWithCollision/FlowerRed"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleOne2"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleOne2/tree_bundle_one"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleOne3"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleOne3/tree_bundle_one"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleThree/MushroomBlueWithLight"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleThree/MushroomBlueWithLight/mushroom_blue"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleThree/MushroomPurpleWithLight"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleThree/MushroomPurpleWithLight/mushroom"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleOne5"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleOne5/tree_bundle_one"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleTwo3"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Walls/TreeBundleTwo3/tree_bundle_two"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Objects/StoneWallTwo"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Objects/StoneWallTwo2"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Objects/StoneWallTwo3"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/MushroomBlueWithLight"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/MushroomBlueWithLight/mushroom_blue"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/MonsteraBush"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/MonsteraBush/monstera_bush_low"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded/MushroomPurpleWithLight"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded/MushroomPurpleWithLight/mushroom"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded2/MushroomYellow"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded2/MushroomYellow/pilz"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded2/MushroomYellow2"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded2/MushroomYellow2/pilz"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded6/MushroomYellow"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded6/MushroomYellow/pilz"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded6/MushroomYellow2"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavExclusion/Nature/Other/TreeStumpGrounded6/MushroomYellow2/pilz"]
