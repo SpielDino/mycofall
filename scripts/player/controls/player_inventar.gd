@@ -414,6 +414,7 @@ func _upgrade_weapon():
 					off_hand_shield.visible = false
 					off_hand_metal_shield.visible = true
 	GameManager.set_first_weapon_upgrade_level(first_weapon_upgrade_level + 1)
+	GameManager.weapons_updated()
 
 
 func debug_game_manager_variables():

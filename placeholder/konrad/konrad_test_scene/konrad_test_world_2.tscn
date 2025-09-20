@@ -1,0 +1,215 @@
+[gd_scene load_steps=34 format=3 uid="uid://c0m2h5ooy2ac"]
+
+[ext_resource type="Script" uid="uid://cdy7132mqn2xn" path="res://scripts/environment/directional_light_3d_control.gd" id="1_lgsf2"]
+[ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="3_h47kn"]
+[ext_resource type="PackedScene" uid="uid://ddq71sew02jx5" path="res://placeholder/konrad/konrad_scenes/grass_ground_with_collision_placeholder.tscn" id="4_hmv8b"]
+[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="5_vroig"]
+[ext_resource type="PackedScene" uid="uid://6j2eqyw3n43k" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy.tscn" id="6_4latt"]
+[ext_resource type="PackedScene" uid="uid://bq5qig7o50lrw" path="res://scenes/prefabs/environment/interactables/dynamic/upgrade_material.tscn" id="7_qm3qk"]
+[ext_resource type="PackedScene" uid="uid://bohnf5vipujed" path="res://scenes/prefabs/environment/objects/bonfire.tscn" id="8_u1iic"]
+[ext_resource type="PackedScene" uid="uid://c4pocta6ava2v" path="res://scenes/prefabs/environment/interactables/dynamic/training_dummy_ranged_with_stand.tscn" id="9_iq4bk"]
+[ext_resource type="PackedScene" uid="uid://dhomudq6rby8h" path="res://scenes/prefabs/environment/interactables/dynamic/sign.tscn" id="10_ygvmp"]
+[ext_resource type="PackedScene" uid="uid://d1yh026p2wrjl" path="res://scenes/prefabs/environment/plants/flower_blue.tscn" id="11_omn2v"]
+[ext_resource type="PackedScene" uid="uid://c0pijk8wufkjf" path="res://scenes/prefabs/environment/rocks/with_collision/rock_with_collision.tscn" id="12_t20xg"]
+[ext_resource type="PackedScene" uid="uid://ccukqp13cjs4k" path="res://scenes/prefabs/environment/rocks/with_collision/stone_pile_with_collision.tscn" id="13_t7xgm"]
+[ext_resource type="PackedScene" uid="uid://j3dh7kqhlnyg" path="res://scenes/prefabs/environment/trees/without_collision/dead_tree_with_mushrooms.tscn" id="14_ht5n8"]
+[ext_resource type="PackedScene" uid="uid://bev37dbih18kg" path="res://scenes/prefabs/environment/objects/berry.tscn" id="15_rrr6c"]
+[ext_resource type="PackedScene" uid="uid://bq3jhkpi334fg" path="res://scenes/prefabs/environment/objects/bag.tscn" id="16_73rmd"]
+[ext_resource type="PackedScene" uid="uid://bkbmihcyno6ck" path="res://scenes/prefabs/environment/objects/berry_bag.tscn" id="17_bsx6h"]
+[ext_resource type="PackedScene" uid="uid://b0qv5ltifbks8" path="res://scenes/prefabs/environment/objects/kessel.tscn" id="18_odb31"]
+[ext_resource type="PackedScene" uid="uid://bdahddfj55fxl" path="res://scenes/prefabs/environment/rocks/without_collision/crystal.tscn" id="19_8r2of"]
+[ext_resource type="PackedScene" uid="uid://dd8f1sx3w8krs" path="res://scenes/prefabs/environment/objects/desk.tscn" id="20_qe6kq"]
+[ext_resource type="PackedScene" uid="uid://drlryl3j1rb3a" path="res://scenes/prefabs/environment/objects/mushroom_lamp.tscn" id="21_8ou0i"]
+[ext_resource type="PackedScene" uid="uid://cqcrm8tk2okmd" path="res://scenes/prefabs/environment/objects/treasure_chest_with_simple_collision.tscn" id="22_ve5gu"]
+[ext_resource type="PackedScene" uid="uid://dqw6awtiag0l6" path="res://scenes/prefabs/environment/walls/with_collision/stone_wall_with_collision.tscn" id="23_kq2xd"]
+[ext_resource type="PackedScene" uid="uid://cydetofcrsgfm" path="res://scenes/prefabs/characters/old_man.tscn" id="24_ymrgh"]
+[ext_resource type="PackedScene" uid="uid://rddwidjpmb55" path="res://scenes/prefabs/environment/rooms/level_rooms/training_room.tscn" id="25_07v57"]
+[ext_resource type="PackedScene" uid="uid://ciw227ay5vtu5" path="res://scenes/prefabs/environment/rooms/level_rooms/beginning_room_1.tscn" id="26_jpalm"]
+[ext_resource type="PackedScene" uid="uid://j3cv2ft8m4lb" path="res://scenes/prefabs/environment/rooms/level_rooms/beginning_room_2.tscn" id="27_xlw2s"]
+[ext_resource type="PackedScene" uid="uid://dx5l41uvhtrju" path="res://scenes/prefabs/environment/rooms/level_rooms/beginning_room_3.tscn" id="28_dwpag"]
+[ext_resource type="PackedScene" uid="uid://bnlu7mjuuo1pp" path="res://scenes/prefabs/environment/rooms/model_prefabs/background_test.tscn" id="29_rjya8"]
+[ext_resource type="PackedScene" uid="uid://b6yhasy6o2r4x" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(25x25).tscn" id="30_2irjd"]
+[ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="31_7al5h"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dmv1"]
+sky_top_color = Color(0.101961, 0.305882, 0.294118, 1)
+sky_horizon_color = Color(0, 0.490196, 0.321569, 1)
+ground_bottom_color = Color(0.0666667, 0.231373, 0.223529, 1)
+ground_horizon_color = Color(0.0784314, 0.509804, 0.329412, 1)
+
+[sub_resource type="Sky" id="Sky_lgsf2"]
+sky_material = SubResource("ProceduralSkyMaterial_7dmv1")
+
+[sub_resource type="Environment" id="Environment_ao8dw"]
+background_mode = 2
+sky = SubResource("Sky_lgsf2")
+
+[node name="KonradTestWorld" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 2.74091, 0)
+visible = false
+
+[node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.58201, 0.813182, 0, -0.813182, 0.58201, -5.57129, 36.5586, -2.92292)
+light_color = Color(0.356863, 0.611765, 0.584314, 1)
+shadow_enabled = true
+script = ExtResource("1_lgsf2")
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ao8dw")
+script = ExtResource("3_h47kn")
+
+[node name="World" type="Node3D" parent="WorldEnvironment2"]
+
+[node name="Ground" type="Node3D" parent="WorldEnvironment2/World"]
+
+[node name="GrassGroundWithCollision" parent="WorldEnvironment2/World/Ground" instance=ExtResource("4_hmv8b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0326524, 0)
+
+[node name="Objects" type="Node3D" parent="WorldEnvironment2/World"]
+
+[node name="Socket" parent="WorldEnvironment2/World/Objects" instance=ExtResource("5_vroig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -7.82087)
+prompt_message = "TAKE ME"
+
+[node name="Socket2" parent="WorldEnvironment2/World/Objects" instance=ExtResource("5_vroig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.45436, 0, -7.55674)
+Weapon = "STAFF"
+
+[node name="Socket3" parent="WorldEnvironment2/World/Objects" instance=ExtResource("5_vroig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.66799, 0, -8.01067)
+Weapon = "BOW"
+
+[node name="Socket4" parent="WorldEnvironment2/World/Objects" instance=ExtResource("5_vroig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.9796)
+Weapon = "SHIELD"
+
+[node name="training_dummy" parent="WorldEnvironment2/World/Objects" instance=ExtResource("6_4latt")]
+transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -12.1868, 0.0217261, -3.97915)
+
+[node name="training_dummy2" parent="WorldEnvironment2/World/Objects" instance=ExtResource("6_4latt")]
+transform = Transform3D(-0.734014, 0, 0.679134, 0, 1, 0, -0.679134, 0, -0.734014, -13.6722, 0.0217261, -3.97915)
+
+[node name="Socket5" parent="WorldEnvironment2/World/Objects" instance=ExtResource("5_vroig")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.65454, 0, -12.9796)
+Weapon = "NOTHING"
+
+[node name="UpgradeMaterial" parent="WorldEnvironment2/World/Objects" instance=ExtResource("7_qm3qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4986, 0.979875, -11.4661)
+
+[node name="UpgradeMaterial2" parent="WorldEnvironment2/World/Objects" instance=ExtResource("7_qm3qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8628, 0.979875, -11.4661)
+
+[node name="UpgradeMaterial3" parent="WorldEnvironment2/World/Objects" instance=ExtResource("7_qm3qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7618, 0.979875, -11.4661)
+
+[node name="Bonfire" parent="WorldEnvironment2/World/Objects" instance=ExtResource("8_u1iic")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.36437, 0.0980916, -3.38523)
+
+[node name="TrainingDummyRangedStand" parent="WorldEnvironment2/World/Objects" instance=ExtResource("9_iq4bk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7622, 0, -0.170486)
+
+[node name="Sign" parent="WorldEnvironment2/World/Objects" instance=ExtResource("10_ygvmp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.16829, 0.849814, -8.41006)
+
+[node name="FlowerBlue" parent="WorldEnvironment2/World/Objects" instance=ExtResource("11_omn2v")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -10, 0, -7)
+
+[node name="RockWithCollision" parent="WorldEnvironment2/World/Objects" instance=ExtResource("12_t20xg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.10483, 0.400875, -7.44439)
+
+[node name="StonePile" parent="WorldEnvironment2/World/Objects" instance=ExtResource("13_t7xgm")]
+transform = Transform3D(-0.997233, 0, -0.0743347, 0, 1, 0, 0.0743347, 0, -0.997233, -11.3821, 0.103938, -6.58363)
+
+[node name="Test" parent="WorldEnvironment2/World/Objects" instance=ExtResource("14_ht5n8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.2449, 0.24604, -22.0309)
+
+[node name="Berry" parent="WorldEnvironment2/World/Objects" instance=ExtResource("15_rrr6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.74707, 2, -13.6091)
+
+[node name="Bag" parent="WorldEnvironment2/World/Objects" instance=ExtResource("16_73rmd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 1, -15)
+
+[node name="BerryBag" parent="WorldEnvironment2/World/Objects" instance=ExtResource("17_bsx6h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, -14)
+
+[node name="Cauldron" parent="WorldEnvironment2/World/Objects" instance=ExtResource("18_odb31")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, -14)
+
+[node name="Crystal" parent="WorldEnvironment2/World/Objects" instance=ExtResource("19_8r2of")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.6815, 0.0677832, -13.2635)
+
+[node name="Desk" parent="WorldEnvironment2/World/Objects" instance=ExtResource("20_qe6kq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.706, 0.629157, -15.7927)
+
+[node name="MushroomLamp" parent="WorldEnvironment2/World/Objects" instance=ExtResource("21_8ou0i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2018, 0.253476, -13.1538)
+
+[node name="TreasureChestWithSimpleCollision" parent="WorldEnvironment2/World/Objects" instance=ExtResource("22_ve5gu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0.792967, -15)
+
+[node name="StoneWall" parent="WorldEnvironment2/World/Objects" instance=ExtResource("23_kq2xd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 0, -13)
+
+[node name="OldMan" parent="WorldEnvironment2/World/Objects" instance=ExtResource("24_ymrgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0227, 4.4338, -9.63715)
+
+[node name="TestRooms" type="Node3D" parent="WorldEnvironment2/World"]
+
+[node name="TrainingRoom" parent="WorldEnvironment2/World/TestRooms" instance=ExtResource("25_07v57")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6741, 0, -6.50049)
+
+[node name="BeginningRoom1" parent="WorldEnvironment2/World/TestRooms" instance=ExtResource("26_jpalm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.688, 0, -43.7206)
+
+[node name="BeginningRoom2" parent="WorldEnvironment2/World/TestRooms" instance=ExtResource("27_xlw2s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.6891, 0, -68.6825)
+
+[node name="BeginningRoom3" parent="WorldEnvironment2/World/TestRooms" instance=ExtResource("28_dwpag")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.5182, 0, -106.141)
+
+[node name="TestBackgrounds" type="Node3D" parent="WorldEnvironment2/World"]
+
+[node name="BackgroundTest2" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("29_rjya8")]
+transform = Transform3D(0.920505, -0.384795, -0.0678498, 0, 0.173648, -0.984808, 0.390731, 0.90652, 0.159844, -36.6748, 7.23891, -90.4586)
+
+[node name="BackgroundTest" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("29_rjya8")]
+transform = Transform3D(-4.37114e-08, 0.984808, 0.173648, 0, 0.173648, -0.984808, -1, -4.30473e-08, -7.59041e-09, -108, 7.239, -100.752)
+
+[node name="BackgroundTest6" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("29_rjya8")]
+transform = Transform3D(1, 0, 0, 0, 0.173648, -0.984808, 0, 0.984808, 0.173648, -100.335, 7.239, -142.914)
+
+[node name="BackgroundTest7" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("29_rjya8")]
+transform = Transform3D(-4.37114e-08, 0.984808, 0.173648, 0, 0.173648, -0.984808, -1, -4.30473e-08, -7.59041e-09, -108, 7.239, -130.564)
+
+[node name="Ground Normal Grass (25x25)" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("30_2irjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.5296, 9.53674e-07, -93.4099)
+
+[node name="BackgroundTest3" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("29_rjya8")]
+transform = Transform3D(-4.81607e-09, -0.984808, -0.173648, -6.85829e-09, 0.173648, -0.984808, 1, -3.55198e-09, -7.59039e-09, -26.1027, 7.23891, -72.3209)
+
+[node name="BackgroundTest4" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("29_rjya8")]
+transform = Transform3D(2.82041e-08, -0.984808, -0.173648, -1.26806e-08, 0.173648, -0.984808, 1, 2.99776e-08, -7.59039e-09, -26.0524, 7.23891, -42.4021)
+
+[node name="Ground Normal Grass (25x25)2" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("30_2irjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.2, -18.0535, 9.53674e-07, -56.8293)
+
+[node name="BackgroundTest5" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("29_rjya8")]
+transform = Transform3D(-4.37114e-08, 0.984808, 0.173648, 0, 0.173648, -0.984808, -1, -4.30473e-08, -7.5904e-09, -57.7963, 7.23891, -38.3279)
+
+[node name="Ground Normal Grass (25x25)3" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("30_2irjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -67.2119, 9.53674e-07, -43.957)
+
+[node name="Ground Normal Grass (25x25)4" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("30_2irjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.4126, 9.53674e-07, -68.419)
+
+[node name="Ground Normal Grass (25x25)5" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("30_2irjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 2.5, -114.642, 9.53674e-07, -111.005)
+
+[node name="Ground Normal Grass (25x25)6" parent="WorldEnvironment2/World/TestBackgrounds" instance=ExtResource("30_2irjd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3987, 9.53674e-07, -143.46)
+
+[node name="Player" parent="WorldEnvironment2" instance=ExtResource("31_7al5h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.726, 1.11122, -87.3382)
+mana_per_second = 100.0

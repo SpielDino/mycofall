@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://b42a4p3d8jak0"]
+
+[ext_resource type="PackedScene" uid="uid://buxr4b5vnjvg5" path="res://scenes/prefabs/environment/plants/flower_white.tscn" id="1_66f4d"]
+[ext_resource type="PackedScene" uid="uid://3y2knspcyotc" path="res://scenes/prefabs/environment/plants/vines.tscn" id="2_k1u1r"]
+
+[node name="FlowerWhiteField" type="Node3D"]
+
+[node name="FlowerWhite" parent="." instance=ExtResource("1_66f4d")]
+transform = Transform3D(0.599897, 1.07065e-07, -0.0111102, -1.08097e-07, 0.6, -5.47122e-08, 0.0111102, 5.67044e-08, 0.599897, 0.23929, 0.417258, 0.0047985)
+
+[node name="FlowerWhite2" parent="." instance=ExtResource("1_66f4d")]
+transform = Transform3D(0.478234, 2.86027e-08, 0.362342, -3.58853e-08, 0.6, -7.10543e-15, -0.362342, -2.16713e-08, 0.478234, -0.0207475, 0.599195, -0.176518)
+
+[node name="FlowerWhite3" parent="." instance=ExtResource("1_66f4d")]
+transform = Transform3D(0.478234, 2.86027e-08, 0.362342, -3.58853e-08, 0.6, -7.10543e-15, -0.362342, -2.16713e-08, 0.478234, -0.448387, 0.539845, 0.0249147)
+
+[node name="FlowerWhite4" parent="." instance=ExtResource("1_66f4d")]
+transform = Transform3D(0.127603, 7.64497e-08, 0.586274, -1.08097e-07, 0.6, -5.47122e-08, -0.586274, -9.39881e-08, 0.127603, 0.000444449, 0.495756, 0.384581)
+
+[node name="Vines" parent="." instance=ExtResource("2_k1u1r")]
+transform = Transform3D(0.0785738, -5.04867e-09, 0.0618559, -1.50996e-08, -0.2, 1.50996e-08, 0.0618559, -4.24086e-08, -0.0785738, 0.271004, 0.446431, -0.00194438)
+
+[node name="Blätter" parent="Vines/Ranke" index="1"]
+visible = false
+
+[node name="Vines2" parent="." instance=ExtResource("2_k1u1r")]
+transform = Transform3D(0.1, 0, 0, 0, -0.2, 1.50996e-08, 0, -3.01992e-08, -0.1, 0, 0.628368, -0.201433)
+
+[node name="Blätter" parent="Vines2/Ranke" index="1"]
+visible = false
+
+[node name="Vines3" parent="." instance=ExtResource("2_k1u1r")]
+transform = Transform3D(0.1, 0, 0, 0, -0.2, 1.50996e-08, 0, -3.01992e-08, -0.1, -0.42764, 0.569017, 0)
+
+[node name="Blätter" parent="Vines3/Ranke" index="1"]
+visible = false
+
+[node name="Vines4" parent="." instance=ExtResource("2_k1u1r")]
+transform = Transform3D(0.0759601, -4.25805e-08, -0.065039, -1.50996e-08, -0.2, 1.50996e-08, -0.065039, -3.29807e-09, -0.0759601, 0, 0.524929, 0.352162)
+
+[node name="Blätter" parent="Vines4/Ranke" index="1"]
+visible = false
+
+[editable path="Vines"]
+[editable path="Vines/Ranke"]
+[editable path="Vines2"]
+[editable path="Vines2/Ranke"]
+[editable path="Vines3"]
+[editable path="Vines3/Ranke"]
+[editable path="Vines4"]
+[editable path="Vines4/Ranke"]

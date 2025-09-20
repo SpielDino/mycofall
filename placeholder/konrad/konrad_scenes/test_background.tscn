@@ -1,0 +1,356 @@
+[gd_scene load_steps=14 format=3 uid="uid://b68oleoms3a8q"]
+
+[ext_resource type="PackedScene" uid="uid://da4i11iqjs82l" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_one.tscn" id="1_w3lpi"]
+[ext_resource type="PackedScene" uid="uid://b8riowugyprr2" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_six.tscn" id="2_4tfd1"]
+[ext_resource type="PackedScene" uid="uid://r5tbjd6fl3mq" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_two.tscn" id="3_ioyfj"]
+[ext_resource type="PackedScene" uid="uid://b48lceocfnhu8" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_three.tscn" id="4_6apx5"]
+[ext_resource type="PackedScene" uid="uid://cedruge5ll1fu" path="res://scenes/prefabs/environment/plants/mushroom_red_with_light.tscn" id="5_0461j"]
+[ext_resource type="PackedScene" uid="uid://b7h3kig7wimcn" path="res://scenes/prefabs/environment/plants/mushroom_light_brown.tscn" id="6_lbx4t"]
+[ext_resource type="PackedScene" uid="uid://d361qs2yjvhnn" path="res://scenes/prefabs/environment/plants/mushroom_blue_with_light.tscn" id="7_gdnqx"]
+[ext_resource type="PackedScene" uid="uid://bvefhpw5uhi3r" path="res://scenes/prefabs/environment/plants/mushroom_purple_with_light.tscn" id="8_j1e4s"]
+[ext_resource type="PackedScene" uid="uid://dvfsxcnan4qpw" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_four.tscn" id="9_jj4u1"]
+[ext_resource type="PackedScene" uid="uid://irrsqnnuxdnc" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(50x50).tscn" id="10_cg53m"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w3lpi"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_4tfd1"]
+sky_material = SubResource("ProceduralSkyMaterial_w3lpi")
+
+[sub_resource type="Environment" id="Environment_ioyfj"]
+background_mode = 2
+sky = SubResource("Sky_4tfd1")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ioyfj")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Walls2" type="Node3D" parent="."]
+transform = Transform3D(0.948135, 0, 0.317867, 0, 1, 0, -0.317867, 0, 0.948135, -16.5519, 0, 7.61005)
+
+[node name="TreeBundleOne" parent="Walls2" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21.3878, 0, -27.2362)
+
+[node name="TreeBundleSix" parent="Walls2" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.8156, 0, 31.037)
+
+[node name="TreeBundleTwo" parent="Walls2" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, 24.2665, 0, 7.67358)
+
+[node name="TreeBundleSix2" parent="Walls2" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 25.7212, 0, -3.46997)
+
+[node name="TreeBundleSix3" parent="Walls2" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 23.3307, 0, -16.1311)
+
+[node name="TreeBundleOne2" parent="Walls2" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -28.9949, 0, 20.2297)
+
+[node name="tree_bundle_one" parent="Walls2/TreeBundleOne2" index="0"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 1.83586, 0, -9.04175)
+
+[node name="TreeBundleSix4" parent="Walls2" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -28.7561, 0, 6.80069)
+
+[node name="TreeBundleOne3" parent="Walls2" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.0623, 0, -6.99877)
+
+[node name="tree_bundle_one" parent="Walls2/TreeBundleOne3" index="0"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 3.55709, 0, -5.24187)
+
+[node name="TreeBundleTwo2" parent="Walls2" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, -27.5465, 0, -15.9715)
+
+[node name="TreeBundleThree" parent="Walls2" instance=ExtResource("4_6apx5")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 11.6823, 0, -29.7158)
+
+[node name="MushroomRedWithLight" parent="Walls2/TreeBundleThree" instance=ExtResource("5_0461j")]
+transform = Transform3D(-0.138159, 0, -0.375383, 0, 0.4, 0, 0.375383, 0, -0.138159, 2.11412, 0, 1.49066)
+
+[node name="MushroomLightBrown" parent="Walls2/TreeBundleThree" instance=ExtResource("6_lbx4t")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.96665, 0.0927609, 2.82064)
+
+[node name="MushroomLightBrown" parent="Walls2/TreeBundleThree/MushroomLightBrown" instance=ExtResource("6_lbx4t")]
+transform = Transform3D(0.155077, 0, -0.368715, 0, 0.4, 0, 0.368715, 0, 0.155077, 0.157944, 0, 0.650274)
+
+[node name="MushroomBlueWithLight" parent="Walls2/TreeBundleThree" instance=ExtResource("7_gdnqx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.63019, 0, 3.13697)
+
+[node name="MushroomPurpleWithLight" parent="Walls2/TreeBundleThree" instance=ExtResource("8_j1e4s")]
+transform = Transform3D(-0.0820925, 0.0239553, 0.180795, 0.0499746, 0.193633, -0.00296466, -0.175395, 0.043959, -0.0854648, -2.5821, 0.261153, 1.78665)
+
+[node name="TreeBundleSix5" parent="Walls2" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(-2.12132, 0, 2.12132, 0, 3, 0, -2.12132, 0, -2.12132, -25.0527, 0, -30.5295)
+
+[node name="TreeBundleOne4" parent="Walls2" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, -11.8, 0, -29.9606)
+
+[node name="TreeBundleFour" parent="Walls2" instance=ExtResource("9_jj4u1")]
+transform = Transform3D(-0.738909, 0, 1.30538, 0, 1.5, 0, -1.30538, 0, -0.738909, 5.65389, 0, 4.1793)
+
+[node name="TreeBundleOne5" parent="Walls2" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 14.5478, -9.53674e-07, 5.66857)
+
+[node name="TreeBundleTwo3" parent="Walls2" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(0.942794, 0, -1.76384, 0, 2, 0, 1.76384, 0, 0.942794, -16.83, 0.00715595, -6.51152)
+
+[node name="tree_bundle_two" parent="Walls2/TreeBundleTwo3" index="0"]
+visible = false
+
+[node name="Walls" type="Node3D" parent="."]
+
+[node name="TreeBundleOne" parent="Walls" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21.3878, 0, -27.2362)
+
+[node name="TreeBundleSix" parent="Walls" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.8156, 0, 31.037)
+
+[node name="TreeBundleTwo" parent="Walls" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, 24.2665, 0, 7.67358)
+
+[node name="TreeBundleSix2" parent="Walls" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 25.7212, 0, -3.46997)
+
+[node name="TreeBundleSix3" parent="Walls" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 23.3307, 0, -16.1311)
+
+[node name="TreeBundleOne2" parent="Walls" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -28.9949, 0, 20.2297)
+
+[node name="tree_bundle_one" parent="Walls/TreeBundleOne2" index="0"]
+transform = Transform3D(0.999411, 0, 0.0343064, 0, 1, 0, -0.0343064, 0, 0.999411, 0, 0, 0)
+
+[node name="TreeBundleSix4" parent="Walls" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -28.7561, 0, 6.80069)
+
+[node name="BaumArmature_001" parent="Walls/TreeBundleSix4/tree_bundle_six" index="1"]
+visible = false
+
+[node name="TreeBundleOne3" parent="Walls" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.0623, 0, -6.99877)
+
+[node name="TreeBundleTwo2" parent="Walls" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, -27.5465, 0, -15.9715)
+
+[node name="TreeBundleThree" parent="Walls" instance=ExtResource("4_6apx5")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 11.6823, 0, -29.7158)
+
+[node name="MushroomRedWithLight" parent="Walls/TreeBundleThree" instance=ExtResource("5_0461j")]
+transform = Transform3D(-0.138159, 0, -0.375383, 0, 0.4, 0, 0.375383, 0, -0.138159, 2.11412, 0, 1.49066)
+
+[node name="MushroomLightBrown" parent="Walls/TreeBundleThree" instance=ExtResource("6_lbx4t")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.96665, 0.0927609, 2.82064)
+
+[node name="MushroomLightBrown" parent="Walls/TreeBundleThree/MushroomLightBrown" instance=ExtResource("6_lbx4t")]
+transform = Transform3D(0.155077, 0, -0.368715, 0, 0.4, 0, 0.368715, 0, 0.155077, 0.157944, 0, 0.650274)
+
+[node name="MushroomBlueWithLight" parent="Walls/TreeBundleThree" instance=ExtResource("7_gdnqx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.63019, 0, 3.13697)
+
+[node name="MushroomPurpleWithLight" parent="Walls/TreeBundleThree" instance=ExtResource("8_j1e4s")]
+transform = Transform3D(-0.0820925, 0.0239553, 0.180795, 0.0499746, 0.193633, -0.00296466, -0.175395, 0.043959, -0.0854648, -2.5821, 0.261153, 1.78665)
+
+[node name="TreeBundleSix5" parent="Walls" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(-2.12132, 0, 2.12132, 0, 3, 0, -2.12132, 0, -2.12132, -25.0527, 0, -30.5295)
+
+[node name="TreeBundleOne4" parent="Walls" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, -11.8, 0, -29.9606)
+
+[node name="TreeBundleFour" parent="Walls" instance=ExtResource("9_jj4u1")]
+transform = Transform3D(-0.738909, 0, 1.30538, 0, 1.5, 0, -1.30538, 0, -0.738909, 5.65389, 0, 4.1793)
+
+[node name="TreeBundleOne5" parent="Walls" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 14.5478, -9.53674e-07, 5.66857)
+
+[node name="TreeBundleTwo3" parent="Walls" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(0.942794, 0, -1.76384, 0, 2, 0, 1.76384, 0, 0.942794, -16.83, 0.00715595, -6.51152)
+
+[node name="Ground Normal Grass (50x50)" parent="." instance=ExtResource("10_cg53m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5976, 0, 0)
+
+[node name="NomalGrass" parent="Ground Normal Grass (50x50)/StaticBody3D/MeshInstance3D" index="0"]
+script = null
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.19606, 0.019883, 0.98039, -0.00163997, 0.9998, -0.0199487, -0.980591, 0.00230333, 0.196054, -14.4994, 4.58561, 7.9123)
+
+[node name="Ground Normal Grass (50x50)2" parent="." instance=ExtResource("10_cg53m")]
+transform = Transform3D(0.669456, 1.88463, 0, -1.88463, 0.669456, 0, 0, 0, 2, -49.4474, 15.0628, 0)
+
+[node name="NomalGrass" parent="Ground Normal Grass (50x50)2/StaticBody3D/MeshInstance3D" index="0"]
+script = null
+
+[node name="Walls3" type="Node3D" parent="."]
+transform = Transform3D(0.948135, 0, 0.317867, 0, 1, 0, -0.317867, 0, 0.948135, -16.5519, 8.22897, 10.1804)
+
+[node name="TreeBundleOne" parent="Walls3" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21.3878, 0, -27.2362)
+
+[node name="TreeBundleSix" parent="Walls3" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.8156, 0, 31.037)
+
+[node name="TreeBundleTwo" parent="Walls3" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, 24.2665, 0, 7.67358)
+
+[node name="TreeBundleSix2" parent="Walls3" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 25.7212, 0, -3.46997)
+
+[node name="TreeBundleSix3" parent="Walls3" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 23.3307, 0, -16.1311)
+
+[node name="TreeBundleOne2" parent="Walls3" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -28.9949, 0, 20.2297)
+
+[node name="tree_bundle_one" parent="Walls3/TreeBundleOne2" index="0"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 1.83586, 0, -9.04175)
+
+[node name="TreeBundleSix4" parent="Walls3" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -28.7561, 0, 6.80069)
+
+[node name="TreeBundleOne3" parent="Walls3" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.0623, 0, -6.99877)
+
+[node name="tree_bundle_one" parent="Walls3/TreeBundleOne3" index="0"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 3.55709, 0, -5.24187)
+
+[node name="TreeBundleTwo2" parent="Walls3" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, -27.5465, 0, -15.9715)
+
+[node name="TreeBundleThree" parent="Walls3" instance=ExtResource("4_6apx5")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 11.6823, 0, -29.7158)
+
+[node name="MushroomRedWithLight" parent="Walls3/TreeBundleThree" instance=ExtResource("5_0461j")]
+transform = Transform3D(-0.138159, 0, -0.375383, 0, 0.4, 0, 0.375383, 0, -0.138159, 2.11412, 0, 1.49066)
+
+[node name="MushroomLightBrown" parent="Walls3/TreeBundleThree" instance=ExtResource("6_lbx4t")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.96665, 0.0927609, 2.82064)
+
+[node name="MushroomLightBrown" parent="Walls3/TreeBundleThree/MushroomLightBrown" instance=ExtResource("6_lbx4t")]
+transform = Transform3D(0.155077, 0, -0.368715, 0, 0.4, 0, 0.368715, 0, 0.155077, 0.157944, 0, 0.650274)
+
+[node name="MushroomBlueWithLight" parent="Walls3/TreeBundleThree" instance=ExtResource("7_gdnqx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.63019, 0, 3.13697)
+
+[node name="MushroomPurpleWithLight" parent="Walls3/TreeBundleThree" instance=ExtResource("8_j1e4s")]
+transform = Transform3D(-0.0820925, 0.0239553, 0.180795, 0.0499746, 0.193633, -0.00296466, -0.175395, 0.043959, -0.0854648, -2.5821, 0.261153, 1.78665)
+
+[node name="TreeBundleSix5" parent="Walls3" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(-2.12132, 0, 2.12132, 0, 3, 0, -2.12132, 0, -2.12132, -25.0527, 0, -30.5295)
+
+[node name="TreeBundleOne4" parent="Walls3" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, -11.8, 0, -29.9606)
+
+[node name="TreeBundleOne5" parent="Walls3" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 14.5478, -9.53674e-07, 5.66857)
+
+[node name="TreeBundleTwo3" parent="Walls3" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(0.942794, 0, -1.76384, 0, 2, 0, 1.76384, 0, 0.942794, -16.83, 0.00715595, -6.51152)
+
+[node name="tree_bundle_two" parent="Walls3/TreeBundleTwo3" index="0"]
+visible = false
+
+[node name="Walls4" type="Node3D" parent="."]
+transform = Transform3D(0.948135, 0, 0.317867, 0, 1, 0, -0.317867, 0, 0.948135, -16.5519, 8.22897, 1.57319)
+
+[node name="TreeBundleOne" parent="Walls4" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21.3878, 0, -27.2362)
+
+[node name="TreeBundleSix" parent="Walls4" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -17.8156, 0, 31.037)
+
+[node name="TreeBundleTwo" parent="Walls4" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, 24.2665, 0, 7.67358)
+
+[node name="TreeBundleSix2" parent="Walls4" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 25.7212, 0, -3.46997)
+
+[node name="TreeBundleSix3" parent="Walls4" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(-2.5, 0, -3.77489e-07, 0, 2.5, 0, 3.77489e-07, 0, -2.5, 23.3307, 0, -16.1311)
+
+[node name="TreeBundleOne2" parent="Walls4" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -28.9949, 0, 20.2297)
+
+[node name="tree_bundle_one" parent="Walls4/TreeBundleOne2" index="0"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 1.83586, 0, -9.04175)
+
+[node name="TreeBundleSix4" parent="Walls4" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(3.57746e-08, 0, -3, 0, 3, 0, 3, 0, 3.57746e-08, -28.7561, 0, 6.80069)
+
+[node name="TreeBundleOne3" parent="Walls4" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -27.0623, 0, -6.99877)
+
+[node name="tree_bundle_one" parent="Walls4/TreeBundleOne3" index="0"]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 3.55709, 0, -5.24187)
+
+[node name="TreeBundleTwo2" parent="Walls4" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(-2.5, 0, -2.18557e-07, 0, 2.5, 0, 2.18557e-07, 0, -2.5, -27.5465, 0, -15.9715)
+
+[node name="TreeBundleThree" parent="Walls4" instance=ExtResource("4_6apx5")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 11.6823, 0, -29.7158)
+
+[node name="MushroomRedWithLight" parent="Walls4/TreeBundleThree" instance=ExtResource("5_0461j")]
+transform = Transform3D(-0.138159, 0, -0.375383, 0, 0.4, 0, 0.375383, 0, -0.138159, 2.11412, 0, 1.49066)
+
+[node name="MushroomLightBrown" parent="Walls4/TreeBundleThree" instance=ExtResource("6_lbx4t")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 2.96665, 0.0927609, 2.82064)
+
+[node name="MushroomLightBrown" parent="Walls4/TreeBundleThree/MushroomLightBrown" instance=ExtResource("6_lbx4t")]
+transform = Transform3D(0.155077, 0, -0.368715, 0, 0.4, 0, 0.368715, 0, 0.155077, 0.157944, 0, 0.650274)
+
+[node name="MushroomBlueWithLight" parent="Walls4/TreeBundleThree" instance=ExtResource("7_gdnqx")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 2.63019, 0, 3.13697)
+
+[node name="MushroomPurpleWithLight" parent="Walls4/TreeBundleThree" instance=ExtResource("8_j1e4s")]
+transform = Transform3D(-0.0820925, 0.0239553, 0.180795, 0.0499746, 0.193633, -0.00296466, -0.175395, 0.043959, -0.0854648, -2.5821, 0.261153, 1.78665)
+
+[node name="TreeBundleSix5" parent="Walls4" instance=ExtResource("2_4tfd1")]
+transform = Transform3D(-2.12132, 0, 2.12132, 0, 3, 0, -2.12132, 0, -2.12132, -25.0527, 0, -30.5295)
+
+[node name="TreeBundleOne4" parent="Walls4" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2.38498e-08, 0, -2, 0, 2, 0, 2, 0, 2.38498e-08, -11.8, 0, -29.9606)
+
+[node name="TreeBundleOne5" parent="Walls4" instance=ExtResource("1_w3lpi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 14.5478, -9.53674e-07, 5.66857)
+
+[node name="TreeBundleTwo3" parent="Walls4" instance=ExtResource("3_ioyfj")]
+transform = Transform3D(0.942794, 0, -1.76384, 0, 2, 0, 1.76384, 0, 0.942794, -16.83, 0.00715595, -6.51152)
+
+[node name="tree_bundle_two" parent="Walls4/TreeBundleTwo3" index="0"]
+visible = false
+
+[editable path="Walls2/TreeBundleOne2"]
+[editable path="Walls2/TreeBundleOne3"]
+[editable path="Walls2/TreeBundleThree/MushroomBlueWithLight"]
+[editable path="Walls2/TreeBundleThree/MushroomPurpleWithLight"]
+[editable path="Walls2/TreeBundleOne5"]
+[editable path="Walls2/TreeBundleTwo3"]
+[editable path="Walls/TreeBundleOne2"]
+[editable path="Walls/TreeBundleSix4"]
+[editable path="Walls/TreeBundleSix4/tree_bundle_six"]
+[editable path="Walls/TreeBundleOne3"]
+[editable path="Walls/TreeBundleThree/MushroomBlueWithLight"]
+[editable path="Walls/TreeBundleThree/MushroomPurpleWithLight"]
+[editable path="Walls/TreeBundleOne5"]
+[editable path="Walls/TreeBundleTwo3"]
+[editable path="Ground Normal Grass (50x50)"]
+[editable path="Ground Normal Grass (50x50)2"]
+[editable path="Walls3/TreeBundleOne2"]
+[editable path="Walls3/TreeBundleOne3"]
+[editable path="Walls3/TreeBundleThree/MushroomBlueWithLight"]
+[editable path="Walls3/TreeBundleThree/MushroomPurpleWithLight"]
+[editable path="Walls3/TreeBundleOne5"]
+[editable path="Walls3/TreeBundleTwo3"]
+[editable path="Walls4/TreeBundleOne2"]
+[editable path="Walls4/TreeBundleOne3"]
+[editable path="Walls4/TreeBundleThree/MushroomBlueWithLight"]
+[editable path="Walls4/TreeBundleThree/MushroomPurpleWithLight"]
+[editable path="Walls4/TreeBundleOne5"]
+[editable path="Walls4/TreeBundleTwo3"]

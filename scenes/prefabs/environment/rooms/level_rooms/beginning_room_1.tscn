@@ -12,13 +12,13 @@
 [ext_resource type="PackedScene" uid="uid://tp0yu0ocu3ei" path="res://scenes/prefabs/environment/rocks/with_collision/rock_2_with_collision.tscn" id="7_7obyy"]
 [ext_resource type="PackedScene" uid="uid://np6runyid0tf" path="res://scenes/prefabs/environment/plants/mushroom_purple.tscn" id="7_fs8hu"]
 [ext_resource type="PackedScene" uid="uid://d2wdtfy6icf4l" path="res://scenes/prefabs/environment/trees/with_collision/tree_stump_grounded_with_collision.tscn" id="9_4fbkh"]
-[ext_resource type="PackedScene" uid="uid://hqaj3n4ij4o0" path="res://scenes/prefabs/environment/plants/bush_test.tscn" id="10_fs8hu"]
 [ext_resource type="PackedScene" uid="uid://d1yh026p2wrjl" path="res://scenes/prefabs/environment/plants/flower_blue.tscn" id="12_g65rr"]
 [ext_resource type="PackedScene" uid="uid://dans3fwnb4x2f" path="res://scenes/prefabs/environment/plants/flower_pink.tscn" id="13_2k5ok"]
 [ext_resource type="Material" uid="uid://b6loa8c4jdds4" path="res://assets/materials/grass_vines_material.tres" id="13_5f1hi"]
 [ext_resource type="Material" uid="uid://bnxbyi8d5rfvm" path="res://assets/materials/crystal_green_material.tres" id="13_7obyy"]
 [ext_resource type="PackedScene" uid="uid://ohq5jrirh6j" path="res://scenes/prefabs/environment/plants/flower_red.tscn" id="14_5f1hi"]
-[ext_resource type="PackedScene" uid="uid://b42a4p3d8jak0" path="res://scenes/prefabs/environment/plants/flower_field.tscn" id="19_5s2jk"]
+[ext_resource type="PackedScene" uid="uid://b42a4p3d8jak0" path="res://scenes/prefabs/environment/plants/flower_white_field.tscn" id="19_5s2jk"]
+[ext_resource type="PackedScene" uid="uid://dgnex5i27htbn" path="res://scenes/prefabs/environment/plants/bush_test_2.tscn" id="19_lpqit"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3xci"]
 size = Vector3(2, 15, 30.6641)
@@ -57,8 +57,24 @@ shape = SubResource("BoxShape3D_xoaox")
 [node name="MushroomBlue" parent="NavInclusion/Objects/Nature" instance=ExtResource("6_84n1p")]
 transform = Transform3D(0.156862, 0, -0.18611, 0, 0.4, 0, 0.124074, 0, 0.235293, 4.73722, 0.169366, -4.06486)
 
+[node name="Skeleton3D" parent="NavInclusion/Objects/Nature/MushroomBlue/mushroom_blue/PilzBlau" index="0"]
+bones/0/scale = Vector3(1, 0.832719, 1)
+bones/1/scale = Vector3(0.880538, 0.880538, 0.880538)
+
+[node name="AnimationPlayer" parent="NavInclusion/Objects/Nature/MushroomBlue/mushroom_blue" index="1"]
+autoplay = "Idle"
+speed_scale = 0.4
+
 [node name="MushroomPurple" parent="NavInclusion/Objects/Nature" instance=ExtResource("7_fs8hu")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 4.96764, 0.169366, -2.68404)
+
+[node name="Skeleton3D" parent="NavInclusion/Objects/Nature/MushroomPurple/mushroom/Armature" index="0"]
+bones/0/scale = Vector3(1, 0.999069, 1)
+bones/1/scale = Vector3(0.9997, 0.9997, 0.9997)
+
+[node name="AnimationPlayer" parent="NavInclusion/Objects/Nature/MushroomPurple/mushroom" index="1"]
+autoplay = "Idle"
+speed_scale = 0.6
 
 [node name="MushroomLightBrown" parent="NavInclusion/Objects/Nature" instance=ExtResource("6_0qdth")]
 transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1, 5.57793, 0.0115648, -3.51063)
@@ -106,15 +122,6 @@ transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, 
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -2.94948, 0, 7.34155)
 visible = false
 
-[node name="BushTest" parent="NavExclusion/Objects" instance=ExtResource("10_fs8hu")]
-transform = Transform3D(-3, 0, -1.57361e-07, 0, 1.2, 0, 2.62268e-07, 0, -1.8, 3.51116, 0.811299, 2.60097)
-
-[node name="BushTest2" parent="NavExclusion/Objects" instance=ExtResource("10_fs8hu")]
-transform = Transform3D(-2.24016, 0, 1.19725, 0, 1.2, 0, -1.99542, 0, -1.3441, 0.819657, 0.811299, 1.81133)
-
-[node name="BushTest3" parent="NavExclusion/Objects" instance=ExtResource("10_fs8hu")]
-transform = Transform3D(-0.492442, 0, 1.93843, 0, 2, 0, -1.93843, 0, -0.492442, -0.320418, 0.527342, -0.765958)
-
 [node name="FlowerBlue" parent="NavExclusion/Objects" instance=ExtResource("12_g65rr")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 3.96573, 0.105264, -10.3984)
 
@@ -134,21 +141,21 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.16701, 0.138848, -9.17103)
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -3.83395, 0.552083, -9.23067)
 
 [node name="Skeleton3D" parent="NavExclusion/Objects/GrassVines/grass_low/Grass" index="0"]
-bones/0/rotation = Quaternion(0.10426, 0.0188433, 0.0811187, 0.991057)
-bones/1/rotation = Quaternion(-0.070415, -0.0025281, -0.201565, 0.976937)
-bones/2/rotation = Quaternion(-0.138211, -0.0246492, 0.322634, 0.936054)
-bones/3/rotation = Quaternion(0.108142, 0.00781256, -0.0163354, 0.993971)
-bones/4/rotation = Quaternion(-0.203559, 0.0132285, 0.239372, 0.949258)
-bones/5/rotation = Quaternion(0.0922008, 0.0274301, -0.0778717, 0.992312)
-bones/6/rotation = Quaternion(-0.0878938, 0.020661, -0.0747256, 0.993108)
-bones/7/rotation = Quaternion(0.129958, -0.00432749, 0.213135, 0.968331)
-bones/8/rotation = Quaternion(0.12299, -0.039298, -0.280812, 0.951038)
-bones/9/rotation = Quaternion(-0.0713559, 0.0214157, -0.0460572, 0.996157)
-bones/10/rotation = Quaternion(0.173674, 0.0179315, 0.247992, 0.952899)
-bones/11/rotation = Quaternion(-0.00326152, 0.0225941, 0.0270618, 0.999373)
-bones/12/rotation = Quaternion(0.129753, 0.00856952, 0.0175068, 0.991355)
-bones/13/rotation = Quaternion(-0.138346, -0.000507184, -0.163774, 0.976749)
-bones/14/rotation = Quaternion(-0.0550081, -0.0152735, 0.134058, 0.989328)
+bones/0/rotation = Quaternion(0.104669, 0.0178178, 0.076306, 0.991415)
+bones/1/rotation = Quaternion(-0.0686006, -0.00558033, -0.21634, 0.973889)
+bones/2/rotation = Quaternion(-0.135563, -0.0233706, 0.273752, 0.951912)
+bones/3/rotation = Quaternion(0.109832, 0.00205012, -0.0739574, 0.991193)
+bones/4/rotation = Quaternion(-0.200323, 0.0125586, 0.220058, 0.954614)
+bones/5/rotation = Quaternion(0.100539, 0.0313037, -0.154673, 0.982338)
+bones/6/rotation = Quaternion(-0.0896591, 0.0206995, -0.056682, 0.994143)
+bones/7/rotation = Quaternion(0.129113, -0.00404699, 0.221291, 0.966615)
+bones/8/rotation = Quaternion(0.121059, -0.0301275, -0.246785, 0.961007)
+bones/9/rotation = Quaternion(-0.0679518, 0.0206922, -0.080402, 0.994228)
+bones/10/rotation = Quaternion(0.177761, 0.0138761, 0.215112, 0.960175)
+bones/11/rotation = Quaternion(0.00026744, 0.00640403, -0.0272744, 0.999607)
+bones/12/rotation = Quaternion(0.127821, 0.0157232, 0.0472675, 0.990545)
+bones/13/rotation = Quaternion(-0.13878, 0.000968914, -0.156704, 0.977846)
+bones/14/rotation = Quaternion(-0.060828, -0.0191848, 0.237949, 0.969181)
 
 [node name="Rankengras" parent="NavExclusion/Objects/GrassVines/grass_low/Grass/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("13_7obyy")
@@ -177,7 +184,20 @@ speed_scale = 0.4
 [node name="FlowerField" parent="NavExclusion/Objects" instance=ExtResource("19_5s2jk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.80589, 0.215909, 5.76508)
 
+[node name="BushTestTwo" parent="NavExclusion/Objects" instance=ExtResource("19_lpqit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.715541, -0.569093, -0.607509)
+
+[node name="BushTestTwo2" parent="NavExclusion/Objects" instance=ExtResource("19_lpqit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.93937, -0.569093, 0.279099)
+
+[node name="BushTestTwo3" parent="NavExclusion/Objects" instance=ExtResource("19_lpqit")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.37759, -0.569093, 0.917421)
+
 [node name="Enemies" type="Node3D" parent="."]
 
+[editable path="NavInclusion/Objects/Nature/MushroomBlue"]
+[editable path="NavInclusion/Objects/Nature/MushroomBlue/mushroom_blue"]
+[editable path="NavInclusion/Objects/Nature/MushroomPurple"]
+[editable path="NavInclusion/Objects/Nature/MushroomPurple/mushroom"]
 [editable path="NavExclusion/Objects/GrassVines"]
 [editable path="NavExclusion/Objects/GrassVines/grass_low"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://j3cv2ft8m4lb"]
+[gd_scene load_steps=46 format=3 uid="uid://j3cv2ft8m4lb"]
 
 [ext_resource type="PackedScene" uid="uid://b6yhasy6o2r4x" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(25x25).tscn" id="1_pbbwn"]
 [ext_resource type="PackedScene" uid="uid://da4i11iqjs82l" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_one.tscn" id="2_0jpa1"]
@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c1514mtv0ddc5" path="res://scenes/prefabs/environment/plants/mushroom_red.tscn" id="14_gb2v6"]
 [ext_resource type="PackedScene" uid="uid://b7h3kig7wimcn" path="res://scenes/prefabs/environment/plants/mushroom_light_brown.tscn" id="15_bheyf"]
 [ext_resource type="PackedScene" uid="uid://cv3s8xfjdlmmi" path="res://scenes/prefabs/environment/paths/path_stone_1.tscn" id="16_ajsmu"]
-[ext_resource type="PackedScene" uid="uid://b42a4p3d8jak0" path="res://scenes/prefabs/environment/plants/flower_field.tscn" id="17_au4tv"]
+[ext_resource type="PackedScene" uid="uid://b42a4p3d8jak0" path="res://scenes/prefabs/environment/plants/flower_white_field.tscn" id="17_au4tv"]
 [ext_resource type="PackedScene" uid="uid://u2j321ukiyxi" path="res://scenes/prefabs/environment/paths/path_stone_2.tscn" id="17_ht8do"]
 [ext_resource type="PackedScene" uid="uid://dans3fwnb4x2f" path="res://scenes/prefabs/environment/plants/flower_pink.tscn" id="18_o3t51"]
 [ext_resource type="PackedScene" uid="uid://b3j8fscvpwntk" path="res://scenes/prefabs/environment/paths/path_stone_3.tscn" id="18_peyob"]
@@ -31,9 +31,13 @@
 [ext_resource type="PackedScene" uid="uid://6h50f6kbk2fb" path="res://scenes/prefabs/environment/paths/path_stone_7.tscn" id="22_h1xuf"]
 [ext_resource type="PackedScene" uid="uid://cncuky028jmy3" path="res://scenes/prefabs/environment/paths/path_stone_8.tscn" id="23_1ierg"]
 [ext_resource type="PackedScene" uid="uid://yujgamw80shm" path="res://scenes/prefabs/environment/paths/path_stone_5.tscn" id="24_asp8f"]
+[ext_resource type="PackedScene" uid="uid://bjudijvc3lbgf" path="res://scenes/prefabs/environment/plants/flower_color_field.tscn" id="25_m2us6"]
 [ext_resource type="PackedScene" uid="uid://ghsrcre0sadf" path="res://scenes/prefabs/environment/paths/path_stone_4.tscn" id="25_vv6e6"]
+[ext_resource type="PackedScene" uid="uid://d3vy3wko2xarm" path="res://scenes/prefabs/environment/plants/mushroom_blue.tscn" id="26_3cfod"]
+[ext_resource type="PackedScene" uid="uid://np6runyid0tf" path="res://scenes/prefabs/environment/plants/mushroom_purple.tscn" id="27_kt6o2"]
 [ext_resource type="PackedScene" uid="uid://cqu8q20sg8ve1" path="res://scenes/prefabs/environment/walls/with_collision/stone_wall_2_with_collision.tscn" id="31_i0r2j"]
 [ext_resource type="Material" uid="uid://ceao68kawkbet" path="res://assets/materials/wall_material.tres" id="32_wyc8m"]
+[ext_resource type="PackedScene" uid="uid://cde3akejtkq8a" path="res://scenes/prefabs/environment/paths/path_stone_10.tscn" id="35_x1ain"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jpa1"]
 size = Vector3(28.2955, 15, 1.95634)
@@ -47,8 +51,14 @@ size = Vector3(24.7571, 15, 1.95634)
 [sub_resource type="BoxShape3D" id="BoxShape3D_e0q7f"]
 size = Vector3(2, 15, 23.3619)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_co61a"]
+size = Vector3(4.71191, 8.87402, 7.06083)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_m2us6"]
 size = Vector3(0.579102, 1.2412, 2.23104)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kt6o2"]
+size = Vector3(1.89624, 1.9054, 1.64844)
 
 [node name="BeginningRoom2" type="Node3D"]
 
@@ -63,6 +73,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.174941, 0)
 
 [node name="Ground Normal Grass (25x25)2" parent="NavInclusion/Ground" instance=ExtResource("1_pbbwn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.9794, 0, 0)
+
+[node name="NomalGrass" parent="NavInclusion/Ground/Ground Normal Grass (25x25)2/StaticBody3D/MeshInstance3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.08, 0)
 
 [node name="Walls" type="Node3D" parent="NavInclusion"]
 
@@ -84,6 +97,10 @@ shape = SubResource("BoxShape3D_kf7qj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.1707, 6.94304, -2.18985)
 shape = SubResource("BoxShape3D_e0q7f")
 
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="NavInclusion/Walls/WallStaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.0902, 10.006, -10.3404)
+shape = SubResource("BoxShape3D_co61a")
+
 [node name="Objects" type="Node3D" parent="NavInclusion"]
 
 [node name="RockWithCollision" parent="NavInclusion/Objects" instance=ExtResource("2_fihx0")]
@@ -104,8 +121,36 @@ transform = Transform3D(0.0573317, 0, 0.191607, 0, 0.2, 0, -0.191607, 0, 0.05733
 [node name="FlowerRed2" parent="NavInclusion/Objects/StoneWallTwoWithCollision" instance=ExtResource("7_x1ain")]
 transform = Transform3D(0.892578, 0, 0.450893, 0, 1, 0, -0.450893, 0, 0.892578, 0.106708, 1.99859, -1.99917)
 
+[node name="Skeleton3D" parent="NavInclusion/Objects/StoneWallTwoWithCollision/FlowerRed2/blume_rot_low/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.518454, -0.28005, -0.227441, 0.775273)
+bones/1/rotation = Quaternion(-0.223135, 0.000269789, -0.0245061, 0.974479)
+bones/2/rotation = Quaternion(-0.533253, 0.280276, 0.236859, 0.762224)
+bones/3/rotation = Quaternion(-0.197177, -0.000135818, 0.0123351, 0.98029)
+bones/4/rotation = Quaternion(-0.0252208, 0.624927, 0.533837, 0.569076)
+bones/5/rotation = Quaternion(-0.143564, -0.00122475, 0.111245, 0.983368)
+bones/6/rotation = Quaternion(0.0564448, -0.632025, -0.550638, 0.542362)
+bones/7/rotation = Quaternion(-0.116668, 0.00124208, -0.112819, 0.986742)
+
+[node name="AnimationPlayer" parent="NavInclusion/Objects/StoneWallTwoWithCollision/FlowerRed2/blume_rot_low" index="2"]
+autoplay = "Rascheln"
+speed_scale = 0.5
+
 [node name="FlowerRed" parent="NavInclusion/Objects/StoneWallTwoWithCollision" instance=ExtResource("7_x1ain")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0832844, 2.01332, -1.40993)
+
+[node name="Skeleton3D" parent="NavInclusion/Objects/StoneWallTwoWithCollision/FlowerRed/blume_rot_low/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.511072, -0.282196, -0.224772, 0.780159)
+bones/1/rotation = Quaternion(-0.212577, 4.60667e-06, -0.0245075, 0.976837)
+bones/2/rotation = Quaternion(-0.525994, 0.282511, 0.234187, 0.767251)
+bones/3/rotation = Quaternion(-0.186558, -2.3374e-06, 0.0123358, 0.982367)
+bones/4/rotation = Quaternion(-0.0198178, 0.629967, 0.527881, 0.56929)
+bones/5/rotation = Quaternion(-0.132914, -2.09514e-05, 0.111252, 0.984864)
+bones/6/rotation = Quaternion(0.0615905, -0.637223, -0.544614, 0.541802)
+bones/7/rotation = Quaternion(-0.105984, 2.12641e-05, -0.112825, 0.987946)
+
+[node name="AnimationPlayer" parent="NavInclusion/Objects/StoneWallTwoWithCollision/FlowerRed/blume_rot_low" index="2"]
+autoplay = "Rascheln"
+speed_scale = 0.3
 
 [node name="StoneWallTwoWithCollision2" parent="NavInclusion/Objects" instance=ExtResource("31_i0r2j")]
 transform = Transform3D(-0.38766, 0, 0.921802, 0, 1, 0, -0.921802, 0, -0.38766, -5.80289, -2.06091, 8.06984)
@@ -124,6 +169,15 @@ transform = Transform3D(0.732899, 0, -0.680337, 0, 1, 0, 0.680337, 0, 0.732899, 
 
 [node name="TreeRound" parent="NavInclusion/Nature" instance=ExtResource("5_o3t51")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.2557, -0.00382268, -2.58586)
+
+[node name="TreeRound2" parent="NavInclusion/Nature" instance=ExtResource("5_o3t51")]
+transform = Transform3D(1.51381, 0, 2.59005, 0, 3, 0, -2.59005, 0, 1.51381, -16.0084, 0, -5.88416)
+
+[node name="TreeRound3" parent="NavInclusion/Nature" instance=ExtResource("5_o3t51")]
+transform = Transform3D(1.44981, 0, -1.65471, 0, 2.2, 0, 1.65471, 0, 1.44981, -26.665, -9.53674e-07, 2.99147)
+
+[node name="TreeRound4" parent="NavInclusion/Nature" instance=ExtResource("5_o3t51")]
+transform = Transform3D(2.65421, 0, -1.39828, 0, 3, 0, 1.39828, 0, 2.65421, -28.7011, 0, -10.0285)
 
 [node name="NavExclusion" type="Node3D" parent="."]
 
@@ -147,6 +201,14 @@ transform = Transform3D(2.5, 0, 0, 0, 2.2, 0, 0, 0, 2, 1.99024, 0, -16.4385)
 [node name="Armature" parent="NavExclusion/Walls/TreeBundleOne2/tree_bundle_one" index="5"]
 visible = false
 
+[node name="Skeleton3D" parent="NavExclusion/Walls/TreeBundleOne2/tree_bundle_one/Armature_001" index="0"]
+bones/0/scale = Vector3(1, 0.824032, 1)
+bones/1/scale = Vector3(0.919094, 0.919094, 0.919094)
+
+[node name="AnimationPlayer" parent="NavExclusion/Walls/TreeBundleOne2/tree_bundle_one" index="7"]
+autoplay = "Idle_002"
+speed_scale = 0.3
+
 [node name="TreeBundleSix3" parent="NavExclusion/Walls" instance=ExtResource("3_6uxa0")]
 transform = Transform3D(-3, 0, -2.62268e-07, 0, 3, 0, 2.62268e-07, 0, -3, -9.63583, 0, -18.1066)
 
@@ -163,16 +225,190 @@ transform = Transform3D(-1.61653, 0, -1.17763, 0, 2, 0, 1.17763, 0, -1.61653, 7.
 
 [node name="Nature" type="Node3D" parent="NavExclusion"]
 
-[node name="BushTest2" parent="NavExclusion/Nature" instance=ExtResource("5_euxol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.3627, -1.12366, -8.22774)
+[node name="SneakBushes" type="Node3D" parent="NavExclusion/Nature"]
 
-[node name="BushTest3" parent="NavExclusion/Nature" instance=ExtResource("5_euxol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.8051, -0.767501, -6.84656)
+[node name="BushTestTwo" parent="NavExclusion/Nature/SneakBushes" instance=ExtResource("5_euxol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34802, -1.36185, -7.90756)
 
-[node name="MushroomYellowWithLight" parent="NavExclusion/Nature" instance=ExtResource("8_e0q7f")]
+[node name="BushTest2" parent="NavExclusion/Nature/SneakBushes/BushTestTwo" instance=ExtResource("5_euxol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01468, 0.23819, -0.32018)
+
+[node name="BushTest3" parent="NavExclusion/Nature/SneakBushes/BushTestTwo" instance=ExtResource("5_euxol")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45708, 0.594349, 1.061)
+
+[node name="BushTestTwo2" parent="NavExclusion/Nature/SneakBushes" instance=ExtResource("5_euxol")]
+transform = Transform3D(0.273103, 0, 0.961985, 0, 1, 0, -0.961985, 0, 0.273103, -0.13011, -0.892043, -1.67167)
+
+[node name="BushTestTwo3" parent="NavExclusion/Nature/SneakBushes/BushTestTwo2" instance=ExtResource("5_euxol")]
+transform = Transform3D(-0.54499, 0, 0.838442, 0, 1, 0, -0.838442, 0, -0.54499, 0.00395262, 0, 1.31482)
+
+[node name="BushTestTwo4" parent="NavExclusion/Nature/SneakBushes/BushTestTwo2" instance=ExtResource("5_euxol")]
+transform = Transform3D(0.953153, 0, -0.302486, 0, 1, 0, 0.302486, 0, 0.953153, 0.246975, 0, 2.66352)
+
+[node name="BushTestTwo5" parent="NavExclusion/Nature/SneakBushes/BushTestTwo2" instance=ExtResource("5_euxol")]
+transform = Transform3D(0.273103, 0, -0.961985, 0, 1, 0, 0.961985, 0, 0.273103, 1.49397, 0.046686, 1.65752)
+
+[node name="BushTestTwo7" parent="NavExclusion/Nature/SneakBushes" instance=ExtResource("5_euxol")]
+transform = Transform3D(0.989599, 0, -0.143855, 0, 1, 0, 0.143855, 0, 0.989599, -15.4683, -0.7, 1.29759)
+
+[node name="BushTestTwo" parent="NavExclusion/Nature/SneakBushes/BushTestTwo7" instance=ExtResource("5_euxol")]
+transform = Transform3D(-0.961122, 0, -0.276124, 0, 1, 0, 0.276124, 0, -0.961122, -0.725725, 0, 1.461)
+
+[node name="BushTestTwo2" parent="NavExclusion/Nature/SneakBushes/BushTestTwo7" instance=ExtResource("5_euxol")]
+transform = Transform3D(-0.283597, 0, 0.958944, 0, 1, 0, -0.958944, 0, -0.283597, -1.31025, 0, 2.79263)
+
+[node name="BushTestTwo6" parent="NavExclusion/Nature/SneakBushes/BushTestTwo7" instance=ExtResource("5_euxol")]
+transform = Transform3D(-0.278304, 0, 0.960493, 0, 1, 0, -0.960493, 0, -0.278304, 0.640035, 0, -1.17274)
+
+[node name="BushTestTwo8" parent="NavExclusion/Nature/SneakBushes" instance=ExtResource("5_euxol")]
+transform = Transform3D(0.900349, 0, 0.435168, 0, 1, 0, -0.435168, 0, 0.900349, -28.2152, -0.699999, -3.50137)
+
+[node name="BushTestTwo" parent="NavExclusion/Nature/SneakBushes/BushTestTwo8" instance=ExtResource("5_euxol")]
+transform = Transform3D(-0.961122, 0, -0.276124, 0, 1, 0, 0.276124, 0, -0.961122, -0.725725, 0, 1.461)
+
+[node name="BushTestTwo2" parent="NavExclusion/Nature/SneakBushes/BushTestTwo8" instance=ExtResource("5_euxol")]
+transform = Transform3D(-0.283597, 0, 0.958944, 0, 1, 0, -0.958944, 0, -0.283597, -1.31025, 0, 2.79263)
+
+[node name="BushTestTwo6" parent="NavExclusion/Nature/SneakBushes/BushTestTwo8" instance=ExtResource("5_euxol")]
+transform = Transform3D(-0.278304, 0, 0.960493, 0, 1, 0, -0.960493, 0, -0.278304, 0.640035, 0, -1.17274)
+
+[node name="Other" type="Node3D" parent="NavExclusion/Nature"]
+
+[node name="TreeBranchWithCollision" parent="NavExclusion/Nature/Other" instance=ExtResource("9_c8jaq")]
+transform = Transform3D(0.522841, 0, -0.85243, 0, 1, 0, 0.85243, 0, 0.522841, -35.8686, 0.33205, -1.54263)
+
+[node name="TreeStumpGrounded" parent="NavExclusion/Nature/Other" instance=ExtResource("10_l00c2")]
+transform = Transform3D(0.825577, 0, -0.56429, 0, 1, 0, 0.56429, 0, 0.825577, -35.3057, 0.0548289, -2.21374)
+
+[node name="MushroomPurpleWithLight" parent="NavExclusion/Nature/Other" instance=ExtResource("11_l00c2")]
+transform = Transform3D(-0.353634, 0, -0.186931, 0, 0.4, 0, 0.186931, 0, -0.353634, 3.97066, -0.0349781, -14.0261)
+
+[node name="MushroomYellow" parent="NavExclusion/Nature/Other" instance=ExtResource("13_mco0t")]
+transform = Transform3D(0.789095, 0, -0.614271, 0, 1, 0, 0.614271, 0, 0.789095, -6.25852, 0.232867, -12.1454)
+
+[node name="Skeleton3D" parent="NavExclusion/Nature/Other/MushroomYellow/pilz/Pilze" index="0"]
+bones/0/rotation = Quaternion(0.027289, -0.000363407, -0.0243941, 0.99933)
+bones/0/scale = Vector3(0.968127, 0.968127, 0.968127)
+bones/1/rotation = Quaternion(0.00632198, -0.00779342, -0.033407, 0.999391)
+bones/1/scale = Vector3(0.971422, 0.971422, 0.971422)
+bones/2/rotation = Quaternion(0.0106496, -0.0132327, -0.0393482, 0.999081)
+bones/2/scale = Vector3(0.975281, 0.975281, 0.975281)
+bones/3/rotation = Quaternion(0.00634408, -0.00779716, -0.034042, 0.99937)
+bones/3/scale = Vector3(0.975281, 0.97528, 0.975281)
+bones/4/rotation = Quaternion(0.0105518, -0.0132154, -0.037655, 0.999148)
+bones/4/scale = Vector3(0.968127, 0.968127, 0.968127)
+
+[node name="AnimationPlayer" parent="NavExclusion/Nature/Other/MushroomYellow/pilz" index="1"]
+autoplay = "Idle"
+speed_scale = 0.5
+
+[node name="MushroomRed" parent="NavExclusion/Nature/Other" instance=ExtResource("14_gb2v6")]
+transform = Transform3D(0.240484, 0, -1.37919, 0, 1.4, 0, 1.37919, 0, 0.240484, -2.88695, 0.0641755, -15.9616)
+
+[node name="MushroomLightBrown" parent="NavExclusion/Nature/Other" instance=ExtResource("15_bheyf")]
+transform = Transform3D(0.294941, 0, -0.955516, 0, 1, 0, 0.955516, 0, 0.294941, -4.61796, 0.231902, -12.2804)
+
+[node name="FlowerField" parent="NavExclusion/Nature/Other" instance=ExtResource("17_au4tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03741, 0, 2.82905)
+
+[node name="FlowerField2" parent="NavExclusion/Nature/Other" instance=ExtResource("17_au4tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.84867, -4.76837e-07, -1.82092)
+
+[node name="FlowerField3" parent="NavExclusion/Nature/Other" instance=ExtResource("17_au4tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60652, 0, 2.42682)
+
+[node name="FlowerField4" parent="NavExclusion/Nature/Other" instance=ExtResource("17_au4tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34264, -0.308919, 6.0564)
+
+[node name="FlowerPink" parent="NavExclusion/Nature/Other" instance=ExtResource("18_o3t51")]
+transform = Transform3D(0.867791, 0, -0.496929, 0, 1, 0, 0.496929, 0, 0.867791, -4.4685, 0.0405996, 1.92746)
+
+[node name="FlowerPink2" parent="NavExclusion/Nature/Other" instance=ExtResource("18_o3t51")]
+transform = Transform3D(0.450262, 0, -0.217403, 0, 0.5, 0, 0.217403, 0, 0.450262, -3.96634, 0.0913065, 1.31196)
+
+[node name="FlowerPink3" parent="NavExclusion/Nature/Other" instance=ExtResource("18_o3t51")]
+transform = Transform3D(0.789581, 0, -0.128691, 0, 0.8, 0, 0.128691, 0, 0.789581, -4.5192, 0.0421253, 1.02339)
+
+[node name="FlowerBlue" parent="NavExclusion/Nature/Other" instance=ExtResource("20_iagml")]
+transform = Transform3D(1, 0, 0, 0, 0.823027, -0.568002, 0, 0.568002, 0.823027, -1.61748, 0.649832, -1.79393)
+
+[node name="Skeleton3D" parent="NavExclusion/Nature/Other/FlowerBlue/blume_blau_low/blumenblätter" index="0"]
+bones/0/rotation = Quaternion(-0.515458, -0.280925, -0.226358, 0.777268)
+bones/1/rotation = Quaternion(-0.215017, 6.5848e-05, -0.0245074, 0.976303)
+bones/2/rotation = Quaternion(-0.530307, 0.281188, 0.235775, 0.764276)
+bones/3/rotation = Quaternion(-0.189012, -3.31643e-05, 0.0123358, 0.981897)
+bones/4/rotation = Quaternion(-0.0230242, 0.626983, 0.531421, 0.569169)
+bones/5/rotation = Quaternion(-0.135375, -0.000298917, 0.111252, 0.984529)
+bones/6/rotation = Quaternion(0.0585377, -0.634145, -0.548194, 0.54214)
+bones/7/rotation = Quaternion(-0.108452, 0.000303185, -0.112825, 0.987678)
+
+[node name="AnimationPlayer" parent="NavExclusion/Nature/Other/FlowerBlue/blume_blau_low" index="2"]
+autoplay = "Rascheln"
+speed_scale = 0.4
+
+[node name="FlowerWhiteField" parent="NavExclusion/Nature/Other" instance=ExtResource("17_au4tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.598, 7.15256e-07, 3.91895)
+
+[node name="FlowerColorField" parent="NavExclusion/Nature/Other" instance=ExtResource("25_m2us6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.44811, 0.321072, -5.22928)
+
+[node name="FlowerWhiteField2" parent="NavExclusion/Nature/Other" instance=ExtResource("17_au4tv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.7297, 0.367938, -2.7125)
+
+[node name="FlowerColorField2" parent="NavExclusion/Nature/Other" instance=ExtResource("25_m2us6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8305, 0.438056, -10.0302)
+
+[node name="MushroomBlue" parent="NavExclusion/Nature/Other" instance=ExtResource("26_3cfod")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, -29.0861, 0.0783508, 3.69348)
+
+[node name="Skeleton3D" parent="NavExclusion/Nature/Other/MushroomBlue/mushroom_blue/PilzBlau" index="0"]
+bones/0/scale = Vector3(1, 0.824032, 1)
+bones/1/scale = Vector3(0.919094, 0.919094, 0.919094)
+
+[node name="AnimationPlayer" parent="NavExclusion/Nature/Other/MushroomBlue/mushroom_blue" index="1"]
+autoplay = "Idle"
+speed_scale = 0.4
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavExclusion/Nature/Other/MushroomBlue"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavExclusion/Nature/Other/MushroomBlue/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172001, 0.452698, 0.144836)
+shape = SubResource("BoxShape3D_kt6o2")
+
+[node name="MushroomYellow2" parent="NavExclusion/Nature/Other" instance=ExtResource("13_mco0t")]
+transform = Transform3D(0.472182, 0, 0.881501, 0, 1, 0, -0.881501, 0, 0.472182, -27.0705, 0.232868, 4.2855)
+
+[node name="Skeleton3D" parent="NavExclusion/Nature/Other/MushroomYellow2/pilz/Pilze" index="0"]
+bones/0/rotation = Quaternion(0.0272904, -0.000344591, -0.0237058, 0.999346)
+bones/0/scale = Vector3(0.966113, 0.966113, 0.966113)
+bones/1/rotation = Quaternion(0.0062159, -0.00777433, -0.0301614, 0.999496)
+bones/1/scale = Vector3(0.961941, 0.961941, 0.961941)
+bones/2/rotation = Quaternion(0.0100599, -0.0131107, -0.0274106, 0.999488)
+bones/2/scale = Vector3(0.94346, 0.94346, 0.94346)
+bones/3/rotation = Quaternion(0.00599465, -0.00772684, -0.0220951, 0.999708)
+bones/3/scale = Vector3(0.94346, 0.94346, 0.94346)
+bones/4/rotation = Quaternion(0.0105135, -0.0132083, -0.0369675, 0.999174)
+bones/4/scale = Vector3(0.966114, 0.966114, 0.966114)
+
+[node name="AnimationPlayer" parent="NavExclusion/Nature/Other/MushroomYellow2/pilz" index="1"]
+autoplay = "Idle"
+speed_scale = 0.6
+
+[node name="MushroomPurple" parent="NavExclusion/Nature/Other" instance=ExtResource("27_kt6o2")]
+transform = Transform3D(-0.358236, 0, 0.348808, 0, 0.5, 0, -0.348808, 0, -0.358236, -28.7151, 0.078351, -8.57478)
+
+[node name="Skeleton3D" parent="NavExclusion/Nature/Other/MushroomPurple/mushroom/Armature" index="0"]
+bones/0/scale = Vector3(1, 0.999069, 1)
+bones/1/scale = Vector3(0.9997, 0.9997, 0.9997)
+
+[node name="AnimationPlayer" parent="NavExclusion/Nature/Other/MushroomPurple/mushroom" index="1"]
+autoplay = "Idle"
+speed_scale = 0.5
+
+[node name="MushroomYellowWithLight" parent="NavExclusion/Nature/Other" instance=ExtResource("8_e0q7f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15472, 0.0508307, 3.47038)
 
-[node name="Skeleton3D" parent="NavExclusion/Nature/MushroomYellowWithLight/pilz/Pilze" index="0"]
+[node name="Skeleton3D" parent="NavExclusion/Nature/Other/MushroomYellowWithLight/pilz/Pilze" index="0"]
 bones/0/rotation = Quaternion(0.027306, 0.000937664, 0.0232138, 0.999357)
 bones/0/scale = Vector3(0.962993, 0.962993, 0.962993)
 bones/1/rotation = Quaternion(0.00590621, -0.00749904, 0.0167051, 0.999815)
@@ -184,108 +420,91 @@ bones/3/scale = Vector3(0.975796, 0.975796, 0.975796)
 bones/4/rotation = Quaternion(0.00987154, -0.0127391, 0.009943, 0.999821)
 bones/4/scale = Vector3(0.962993, 0.962993, 0.962993)
 
-[node name="AnimationPlayer" parent="NavExclusion/Nature/MushroomYellowWithLight/pilz" index="1"]
+[node name="AnimationPlayer" parent="NavExclusion/Nature/Other/MushroomYellowWithLight/pilz" index="1"]
 autoplay = "Idle"
 speed_scale = 0.6
 
-[node name="BushTestTwo" parent="NavExclusion/Nature" instance=ExtResource("5_euxol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.34802, -1.36185, -7.90756)
-
-[node name="TreeBranchWithCollision" parent="NavExclusion/Nature" instance=ExtResource("9_c8jaq")]
-transform = Transform3D(0.522841, 0, -0.85243, 0, 1, 0, 0.85243, 0, 0.522841, -35.8686, 0.33205, -1.54263)
-
-[node name="TreeStumpGrounded" parent="NavExclusion/Nature" instance=ExtResource("10_l00c2")]
-transform = Transform3D(0.825577, 0, -0.56429, 0, 1, 0, 0.56429, 0, 0.825577, -35.3057, 0.0548289, -2.21374)
-
-[node name="MushroomPurpleWithLight" parent="NavExclusion/Nature" instance=ExtResource("11_l00c2")]
-transform = Transform3D(-0.353634, 0, -0.186931, 0, 0.4, 0, 0.186931, 0, -0.353634, 3.97066, -0.0349781, -14.0261)
-
-[node name="MushroomYellow" parent="NavExclusion/Nature" instance=ExtResource("13_mco0t")]
-transform = Transform3D(0.789095, 0, -0.614271, 0, 1, 0, 0.614271, 0, 0.789095, -6.25852, 0.232867, -12.1454)
-
-[node name="MushroomRed" parent="NavExclusion/Nature" instance=ExtResource("14_gb2v6")]
-transform = Transform3D(0.240484, 0, -1.37919, 0, 1.4, 0, 1.37919, 0, 0.240484, -2.88695, 0.0641755, -15.9616)
-
-[node name="MushroomLightBrown" parent="NavExclusion/Nature" instance=ExtResource("15_bheyf")]
-transform = Transform3D(0.294941, 0, -0.955516, 0, 1, 0, 0.955516, 0, 0.294941, -4.61796, 0.231902, -12.2804)
-
-[node name="FlowerField" parent="NavExclusion/Nature" instance=ExtResource("17_au4tv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.03741, 0, 2.82905)
-
-[node name="FlowerField2" parent="NavExclusion/Nature" instance=ExtResource("17_au4tv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.84867, -4.76837e-07, -1.82092)
-
-[node name="FlowerField3" parent="NavExclusion/Nature" instance=ExtResource("17_au4tv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60652, 0, 2.42682)
-
-[node name="FlowerField4" parent="NavExclusion/Nature" instance=ExtResource("17_au4tv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.34264, -0.308919, 6.0564)
-
-[node name="FlowerPink" parent="NavExclusion/Nature" instance=ExtResource("18_o3t51")]
-transform = Transform3D(0.867791, 0, -0.496929, 0, 1, 0, 0.496929, 0, 0.867791, -4.4685, 0.0405996, 1.92746)
-
-[node name="FlowerPink2" parent="NavExclusion/Nature" instance=ExtResource("18_o3t51")]
-transform = Transform3D(0.450262, 0, -0.217403, 0, 0.5, 0, 0.217403, 0, 0.450262, -3.96634, 0.0913065, 1.31196)
-
-[node name="FlowerPink3" parent="NavExclusion/Nature" instance=ExtResource("18_o3t51")]
-transform = Transform3D(0.789581, 0, -0.128691, 0, 0.8, 0, 0.128691, 0, 0.789581, -4.5192, 0.0421253, 1.02339)
-
-[node name="FlowerBlue" parent="NavExclusion/Nature" instance=ExtResource("20_iagml")]
-transform = Transform3D(1, 0, 0, 0, 0.823027, -0.568002, 0, 0.568002, 0.823027, -1.61748, 0.649832, -1.79393)
-
-[node name="BushTestTwo2" parent="NavExclusion/Nature" instance=ExtResource("5_euxol")]
-transform = Transform3D(0.273103, 0, 0.961985, 0, 1, 0, -0.961985, 0, 0.273103, -0.13011, -0.892043, -1.67167)
-
-[node name="BushTestTwo3" parent="NavExclusion/Nature" instance=ExtResource("5_euxol")]
-transform = Transform3D(-0.955407, 0, -0.295291, 0, 1, 0, 0.295291, 0, -0.955407, 1.13581, -0.892043, -1.31639)
-
-[node name="BushTestTwo4" parent="NavExclusion/Nature" instance=ExtResource("5_euxol")]
-transform = Transform3D(0.551296, 0, 0.834309, 0, 1, 0, -0.834309, 0, 0.551296, 2.49961, -0.892043, -1.18184)
-
-[node name="BushTestTwo5" parent="NavExclusion/Nature" instance=ExtResource("5_euxol")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87241, -0.845357, -2.65617)
-
 [node name="Path" type="Node3D" parent="NavExclusion"]
 
-[node name="PathStone1" parent="NavExclusion/Path" instance=ExtResource("16_ajsmu")]
+[node name="Path1" type="Node3D" parent="NavExclusion/Path"]
+
+[node name="PathStone1" parent="NavExclusion/Path/Path1" instance=ExtResource("16_ajsmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.37354, 0, 3.08643)
 
-[node name="PathStone2" parent="NavExclusion/Path" instance=ExtResource("17_ht8do")]
+[node name="PathStone2" parent="NavExclusion/Path/Path1" instance=ExtResource("17_ht8do")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.04336, 0, 1.37957)
 
-[node name="PathStone3" parent="NavExclusion/Path" instance=ExtResource("18_peyob")]
+[node name="PathStone3" parent="NavExclusion/Path/Path1" instance=ExtResource("18_peyob")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.91746, 0, 4.53106)
 
-[node name="PathStone6" parent="NavExclusion/Path" instance=ExtResource("19_1ierg")]
+[node name="PathStone6" parent="NavExclusion/Path/Path1" instance=ExtResource("19_1ierg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.21363, 0, 0.322999)
 
-[node name="PathStone9" parent="NavExclusion/Path" instance=ExtResource("20_asp8f")]
+[node name="PathStone9" parent="NavExclusion/Path/Path1" instance=ExtResource("20_asp8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.25929, 0, 0.287109)
 
-[node name="PathStone11" parent="NavExclusion/Path" instance=ExtResource("21_vv6e6")]
+[node name="PathStone11" parent="NavExclusion/Path/Path1" instance=ExtResource("21_vv6e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94288, 0, 1.36377)
 
-[node name="PathStone7" parent="NavExclusion/Path" instance=ExtResource("22_h1xuf")]
+[node name="PathStone7" parent="NavExclusion/Path/Path1" instance=ExtResource("22_h1xuf")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -5.00206, 0, 3.48625)
 
-[node name="PathStone8" parent="NavExclusion/Path" instance=ExtResource("23_1ierg")]
+[node name="PathStone8" parent="NavExclusion/Path/Path1" instance=ExtResource("23_1ierg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8123, 0, 0.322999)
 
-[node name="PathStone5" parent="NavExclusion/Path" instance=ExtResource("24_asp8f")]
+[node name="PathStone5" parent="NavExclusion/Path/Path1" instance=ExtResource("24_asp8f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63075, 0, 7.6922)
 
-[node name="PathStone4" parent="NavExclusion/Path" instance=ExtResource("25_vv6e6")]
+[node name="PathStone4" parent="NavExclusion/Path/Path1" instance=ExtResource("25_vv6e6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89931, 0, 5.61879)
 
-[node name="PathStone10" parent="NavExclusion/Path" instance=ExtResource("16_ajsmu")]
+[node name="PathStone10" parent="NavExclusion/Path/Path1" instance=ExtResource("16_ajsmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0896, 0, -0.107666)
 
+[node name="Path2" type="Node3D" parent="NavExclusion/Path"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.6846, 0, 0)
+
+[node name="PathStone5" parent="NavExclusion/Path/Path2" instance=ExtResource("24_asp8f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.741871, 0, -2.70782)
+
+[node name="PathStone7" parent="NavExclusion/Path/Path2" instance=ExtResource("22_h1xuf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.741871, 0, -7.30742)
+
+[node name="PathStone10" parent="NavExclusion/Path/Path2" instance=ExtResource("35_x1ain")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.15599, 0, -0.704776)
+
+[node name="PathStone4" parent="NavExclusion/Path/Path2" instance=ExtResource("25_vv6e6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.51019, 0, 0.34931)
+
+[node name="PathStone1" parent="NavExclusion/Path/Path2" instance=ExtResource("16_ajsmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50942, 0, -0.302861)
+
+[node name="PathStone2" parent="NavExclusion/Path/Path2" instance=ExtResource("16_ajsmu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.432657, 0, -4.11026)
+
 [editable path="NavInclusion/Ground/Ground Normal Grass (25x25)"]
+[editable path="NavInclusion/Ground/Ground Normal Grass (25x25)2"]
 [editable path="NavInclusion/Objects/StoneWallTwoWithCollision"]
+[editable path="NavInclusion/Objects/StoneWallTwoWithCollision/FlowerRed2"]
+[editable path="NavInclusion/Objects/StoneWallTwoWithCollision/FlowerRed2/blume_rot_low"]
+[editable path="NavInclusion/Objects/StoneWallTwoWithCollision/FlowerRed"]
+[editable path="NavInclusion/Objects/StoneWallTwoWithCollision/FlowerRed/blume_rot_low"]
 [editable path="NavInclusion/Objects/StoneWallTwoWithCollision2"]
 [editable path="NavExclusion/Walls/TreeBundleOne"]
 [editable path="NavExclusion/Walls/TreeBundleOne/tree_bundle_one"]
 [editable path="NavExclusion/Walls/TreeBundleOne2"]
 [editable path="NavExclusion/Walls/TreeBundleOne2/tree_bundle_one"]
-[editable path="NavExclusion/Nature/MushroomYellowWithLight"]
-[editable path="NavExclusion/Nature/MushroomYellowWithLight/pilz"]
+[editable path="NavExclusion/Nature/Other/MushroomYellow"]
+[editable path="NavExclusion/Nature/Other/MushroomYellow/pilz"]
+[editable path="NavExclusion/Nature/Other/MushroomLightBrown"]
+[editable path="NavExclusion/Nature/Other/MushroomLightBrown/pilz_variation"]
+[editable path="NavExclusion/Nature/Other/FlowerBlue"]
+[editable path="NavExclusion/Nature/Other/FlowerBlue/blume_blau_low"]
+[editable path="NavExclusion/Nature/Other/MushroomBlue"]
+[editable path="NavExclusion/Nature/Other/MushroomBlue/mushroom_blue"]
+[editable path="NavExclusion/Nature/Other/MushroomYellow2"]
+[editable path="NavExclusion/Nature/Other/MushroomYellow2/pilz"]
+[editable path="NavExclusion/Nature/Other/MushroomPurple"]
+[editable path="NavExclusion/Nature/Other/MushroomPurple/mushroom"]
+[editable path="NavExclusion/Nature/Other/MushroomYellowWithLight"]
+[editable path="NavExclusion/Nature/Other/MushroomYellowWithLight/pilz"]

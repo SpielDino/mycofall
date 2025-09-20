@@ -636,7 +636,6 @@ dodge_distance = 6.0
 camera_follow_speed = 0.08
 
 [node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator") groups=["Player"]]
-collision_mask = 3
 script = ExtResource("2_6ei3l")
 player_shape = NodePath("Model")
 dodge_indicator = NodePath("Model/DodgeIndicator")
