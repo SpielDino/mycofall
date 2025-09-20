@@ -62,7 +62,7 @@ func detect():
 		detected_player = true
 		return true
 	if player_is_in_hearing_area:
-		if !player.is_sneaking or detected_player:
+		if !player.is_sneaking:
 			ping_allies()
 			detected_player = true
 			last_saw_player = 0

@@ -3,8 +3,8 @@ extends CharacterBody3D
 @export_category("Stats")
 
 @export_subgroup("Boss Settings")
-@export var baseAggressionLevel: float = 0
-@export var movePoints: Array[Node3D]
+@export var base_aggression_level: float = 0
+@export var move_points: Array[Node3D]
 
 @export_subgroup("Enemy Stats")
 @export var health: float = 1000
@@ -13,92 +13,87 @@ extends CharacterBody3D
 
 @export_category("Attacks")
 @export_subgroup("Ranged Spore Attack")
-@export var bulletSpeed: float = 7
-@export var bulletDamage: float = 5
-@export var bulletLifetime: float = 120
-@export var attackSpeed: float = 1
-@export_range(0, 1) var homingStrength: float = 1
-@export var homingRange: float = 500
+@export var bullet_speed: float = 7
+@export var bullet_damage: float = 5
+@export var bullet_lifetime: float = 120
+@export_range(0, 1) var homing_strength: float = 1
+@export var homing_range: float = 500
 
 @export_subgroup("Area Spore Attack")
-@export var sporeArea: float = 1
-@export var damageInterval: float = 0.2
-@export var sporeAreaDamage: float = 5
-@export var sporeActiveSlowdown: float = 2.0
+@export var damage_interval: float = 0.2
+@export var spore_area_damage: float = 5
 
 @export_subgroup("ChargeAttack")
-@export var chargeAttackDamage: float = 50
+@export var charge_attack_damage: float = 50
 
 @export_subgroup("SpearAttack")
-@export var spearDamage: float = 25
+@export var spear_damage: float = 25
 
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
-@onready var sporeSpawnPoints = $SporeSpawnPoints
-@onready var sporeDamageArea = $SporeDamageArea
-@onready var ExplosionEnemySpawnPoint = $ExplosionEnemySpawnPoint
-@onready var animationPlayer = $Mesh/AnimationPlayer
-@onready var sporeParticles = $AreaDamageParticles
-@onready var chargeCollision = $ChargeCollision
-@onready var launcherSound1 = $Sounds/LauncherSound1
-@onready var launcherSound2 = $Sounds/LauncherSound2
-@onready var squishSound = $Sounds/SquishSound
-@onready var spearSound = $Sounds/SpearSound
-@onready var walkingSound = $Sounds/WalkingSound
+@onready var spore_spawn_points = $SporeSpawnPoints
+@onready var explosion_enemy_spawn_point = $ExplosionEnemySpawnPoint
+@onready var animation_player = $Mesh/AnimationPlayer
+@onready var spore_particles = $AreaDamageParticles
+@onready var charge_collision = $ChargeCollision
+@onready var launcher_sound_1 = $Sounds/LauncherSound1
+@onready var launcher_sound_2 = $Sounds/LauncherSound2
+@onready var squish_sound = $Sounds/SquishSound
+@onready var spear_sound = $Sounds/SpearSound
+@onready var walking_sound = $Sounds/WalkingSound
+@onready var explosion_enemy_drop_points = $ExplosionsEnemySpawnpoints.get_children()
 
 @onready var health_bar = get_tree().current_scene.find_child("bossHealthMargin")
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
-var bulletScene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
-var explosionEnemy: PackedScene = preload("res://scenes/prefabs/enemies/explosion_enemy.tscn")
-var teleportSmoke: PackedScene = preload("res://scenes/prefabs/enemies/Boss_Teleport_Smoke.tscn")
+var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
+var explosion_enemy: PackedScene = preload("res://scenes/prefabs/enemies/explosion_enemy.tscn")
+var teleport_smoke: PackedScene = preload("res://scenes/prefabs/enemies/Boss_Teleport_Smoke.tscn")
 #var win: PackedScene = preload("res://Prefabs/Asset Scenes/UI/win.tscn")
 
 @onready var death_spores = GameManager.get_child_by_name(self, "DeathSpores")
 
 var aggression: float = 0
-var attacksBlockedPercentage: float = 0
-var attacksDodgedPercentage: float = 0
+var attacks_blocked_percentage: float = 0
+var attacks_dodged_percentage: float = 0
 var player
-var detectedPlayer: bool = false
-var playerInSporeArea: bool = false
+var detected_player: bool = false
+var player_in_spore_area: bool = false
 var rng = RandomNumberGenerator.new()
-var areaAttackCooldown: float = 0
-var isAttacking: bool = false
+var area_attack_cooldown: float = 0
 var active: bool = false
-var sporeTime: float = 0
-var chargeAttackOnGoing: bool = false
-var inChargeAttackArea: bool = false
-var chargeHit: bool = false
-var directionToPlayer: Vector3
+var spore_time: float = 0
+var charge_attack_on_going: bool = false
+var in_charge_attack_area: bool = false
+var charge_hit: bool = false
+var direction_to_player: Vector3
 var target
-var comboArea1: bool = false
-var comboArea2: bool = false
-var comboArea3: bool = false
-var spearTimeKeeper: float = 0
-var teleportTimer: float = 0
+var combo_area_1: bool = false
+var combo_area_2: bool = false
+var combo_area_3: bool = false
+var spear_time_keeper: float = 0
 var destination: Vector3
-var deathTimer: float = 10
+var death_timer: float = 10
 
-enum actionTypes {NONE, EXPLOSION_ATTACK, RANGED_ATTACK, CHARGE_ATTACK, POISON_CLOUD_ATTACK, SPEAR_ATTACK}
-var actionType = actionTypes.NONE
-var actionTime: float = 0
+enum action_types {NONE, EXPLOSION_ATTACK, RANGED_ATTACK, CHARGE_ATTACK, POISON_CLOUD_ATTACK, SPEAR_ATTACK}
+var action_type = action_types.NONE
+var action_time: float = 0
 
 signal health_changed
 signal boss_died
 
 func _ready():
-	calculateAggression()
-	calculateBlocksAndDashes()
+	calculate_aggression()
+	calculate_blocks_and_dashes()
 	player = GlobalPlayer.get_player()
 
 func _physics_process(delta: float):
 	die(delta)
 	apply_gravity(delta)
-	if active and deathTimer == 10:
-		actionManager(delta)
+	if active and death_timer == 10:
+		action_manager(delta)
 
-func calculateAggression():
-	aggression = baseAggressionLevel
+func calculate_aggression():
+	aggression = base_aggression_level
 	if GameManager.get_first_weapon_name() == "Bow" or GameManager.get_second_weapon_name() == "Bow": #Bow Equipped
 		aggression += 0.3
 	if GameManager.get_first_weapon_name() == "Staff" or GameManager.get_second_weapon_name() == "Staff": #Staff Equipped
@@ -111,46 +106,46 @@ func calculateAggression():
 	aggression += (rangedKills - meleeKills)/totalKills
 	aggression = clamp(aggression, -0.7, 0.7)
 
-func calculateBlocksAndDashes():
+func calculate_blocks_and_dashes():
 	var attacksBlocked: float = PlayerActionTracker.attacks_blocked
 	var attacksDodged: float = PlayerActionTracker.times_dodged_in_combat
 	var totalDodgedAndBlocked: float = attacksBlocked + attacksDodged
-	attacksBlockedPercentage = attacksBlocked / totalDodgedAndBlocked
-	attacksDodgedPercentage = attacksDodged / totalDodgedAndBlocked
-	attacksBlockedPercentage = clamp(attacksBlockedPercentage, 0.3, 0.7)
-	attacksDodgedPercentage = clamp(attacksDodgedPercentage, 0.3, 0.7)
+	attacks_blocked_percentage = attacksBlocked / totalDodgedAndBlocked
+	attacks_blocked_percentage = attacksDodged / totalDodgedAndBlocked
+	attacks_blocked_percentage = clamp(attacks_blocked_percentage, 0.3, 0.7)
+	attacks_blocked_percentage = clamp(attacks_blocked_percentage, 0.3, 0.7)
 
-func activateBoss():
-	calculateAggression()
-	calculateBlocksAndDashes()
+func activate_boss():
+	calculate_aggression()
+	calculate_blocks_and_dashes()
 	active = true
 	#health_bar.visible = true
 
-func actionManager(delta):
+func action_manager(delta):
 	var playerPosition = player.get_child(0).global_position
-	if actionTime > 0:
-		actionTime -= delta
-	if sporeTime > 0:
-		sporeTime -= delta
-	determineNextAction()
+	if action_time > 0:
+		action_time -= delta
+	if spore_time > 0:
+		spore_time -= delta
+	determine_next_action()
 	
-	if actionType == actionTypes.EXPLOSION_ATTACK:
-		explosionAttackAction(delta, playerPosition)
-	if actionType == actionTypes.CHARGE_ATTACK:
-		chargeAttackAction(delta)
-	if actionType == actionTypes.RANGED_ATTACK:
-		rangedAttackAction(delta, playerPosition)
-	if actionType == actionTypes.POISON_CLOUD_ATTACK:
-		sporeAreaAttackAction(delta)
-	if actionType == actionTypes.SPEAR_ATTACK:
-		spearAttackAction(delta, playerPosition)
+	if action_type == action_types.EXPLOSION_ATTACK:
+		explosion_attack_action(delta, playerPosition)
+	if action_type == action_types.CHARGE_ATTACK:
+		charge_attack_action(delta)
+	if action_type == action_types.RANGED_ATTACK:
+		ranged_attack_action(delta, playerPosition)
+	if action_type == action_types.POISON_CLOUD_ATTACK:
+		spore_area_attack_action(delta)
+	if action_type == action_types.SPEAR_ATTACK:
+		spear_attack_action(delta, playerPosition)
 		
-	ongoingSporeAreaAction(delta)
+	ongoing_spore_area_action(delta)
 	apply_gravity(delta)
 	move_and_slide()
 
-func determineNextAction():
-	if actionType == actionTypes.NONE:
+func determine_next_action():
+	if action_type == action_types.NONE:
 		var ranged: bool = false
 		var blockable: bool = false
 		var randomAgressionValue: float = rng.randf_range(0.0, 1.0)
@@ -158,261 +153,272 @@ func determineNextAction():
 		var AreaAttackChance: float = rng.randf_range(0.0, 1.0)
 		
 		
-		if AreaAttackChance < aggression and sporeTime <= 0:
-			actionType = actionTypes.POISON_CLOUD_ATTACK
-			actionTime = 200
+		if AreaAttackChance < aggression and spore_time <= 0:
+			action_type = action_types.POISON_CLOUD_ATTACK
+			action_time = 200
 		elif randomAgressionValue > aggression:
-			if randomBlockValue > attacksBlockedPercentage:
-				actionType = actionTypes.EXPLOSION_ATTACK #Unblockalbe and Ranged
+			if randomBlockValue > attacks_blocked_percentage:
+				action_type = action_types.EXPLOSION_ATTACK #Unblockalbe and Ranged
 				target = return_furthest_point_from_player()
-				actionTime = 200
+				action_time = 200
 			else:
-				actionType = actionTypes.RANGED_ATTACK #Blockalbe and Ranged
+				action_type = action_types.RANGED_ATTACK #Blockalbe and Ranged
 				target = return_closest_point()
-				actionTime = 200
+				action_time = 200
 		else:
-			if randomBlockValue > attacksBlockedPercentage:
-				actionType = actionTypes.CHARGE_ATTACK #Unblockalbe and Melee
+			if randomBlockValue > attacks_blocked_percentage:
+				action_type = action_types.CHARGE_ATTACK #Unblockalbe and Melee
 				target = return_closest_point()
-				actionTime = 200
+				action_time = 200
 			else:
-				actionType = actionTypes.SPEAR_ATTACK #Blockalbe and Melee
+				action_type = action_types.SPEAR_ATTACK #Blockalbe and Melee
 				target = return_furthest_point_from_player()
-				actionTime = 200
+				action_time = 200
 
 #Boss Actions
 #Movement
-func reachedTarget(targetPoint):
+func reached_target(targetPoint):
 	if global_position.distance_to(Vector3(targetPoint.x, global_position.y, targetPoint.z)) <= 2:
 		return true
 	return false
 
 func return_closest_point():
 	var closestPoint: Vector3
-	if global_position.distance_to(movePoints[0].global_position) >= 5:
-		closestPoint = movePoints[0].global_position
+	if global_position.distance_to(move_points[0].global_position) >= 5:
+		closestPoint = move_points[0].global_position
 	else: 
-		closestPoint = movePoints[1].global_position
-	for point in movePoints:
+		closestPoint = move_points[1].global_position
+	for point in move_points:
 		if self.global_position.distance_to(point.global_position) < self.global_position.distance_to(closestPoint) and global_position.distance_to(point.global_position) >= 5:
 			closestPoint = point.global_position
 	return closestPoint
 
 func return_furthest_point_from_player():
 	var furthestPoint: Vector3
-	if global_position.distance_to(movePoints[0].global_position) >= 5:
-		furthestPoint = movePoints[0].global_position
+	if global_position.distance_to(move_points[0].global_position) >= 5:
+		furthestPoint = move_points[0].global_position
 	else: 
-		furthestPoint = movePoints[1].global_position
-	for point in movePoints:
+		furthestPoint = move_points[1].global_position
+	for point in move_points:
 		if player.get_child(0).global_position.distance_to(point.global_position) > player.get_child(0).global_position.distance_to(furthestPoint) and global_position.distance_to(point.global_position) >= 5:
 			furthestPoint = point.global_position
 	return furthestPoint
 
 
 func move_towards_target(delta, targetPoint):
-	if !reachedTarget(targetPoint):
+	if !reached_target(targetPoint):
 		var direction = Vector3()
 		nav.target_position = Vector3(targetPoint.x, self.global_position.y, targetPoint.z)
 		
 		direction = (nav.get_next_path_position() - global_position).normalized()
 		velocity = velocity.lerp(direction * speed, acceleration * delta)
-		rotateToTarget(targetPoint)
-		animationPlayer.play("Running")
-		if !walkingSound.playing:
-			walkingSound.pitch_scale = 0.6
+		rotate_to_target(targetPoint)
+		animation_player.play("Running")
+		#if !walkingSound.playing:
+		#	walkingSound.pitch_scale = 0.6
 			#walkingSound.play()
 		return false
 	else:
 		velocity = Vector3(0, velocity.y, 0)
 		return true
 
-func rotateToTarget(targetPoint):
+func rotate_to_target(targetPoint):
 	var angleVector = targetPoint - global_position
 	var angle = atan2(angleVector.x, angleVector.z)
 	rotation.y = angle - PI/2
 
 #Full Attack Actions
-func explosionAttackAction(delta, playerPosition):
-	if actionTime > 101:
+func explosion_attack_action(delta, playerPosition):
+	if action_time > 101:
 		if move_towards_target(delta, target):
-			actionTime = 100
+			action_time = 100
 	else:
-		rotateToTarget(playerPosition)
-		animationPlayer.play("Fire_bombs")
-	if abs(actionTime - (100 - 2.11)) <= 1:
-		explosionMiniEnemiesAttack()
-		actionTime = 50
-		#launcherSound1.play(0.52)
-	elif abs(actionTime - (50 - 1.55)) <= 1:
-		explosionMiniEnemiesAttack()
-		actionTime = 0.9
-		#launcherSound2.play(0.52)
-	elif actionTime <= 0:
-		animationPlayer.stop()
-		actionType = actionTypes.NONE
+		rotate_to_target(playerPosition)
+		animation_player.play("Fire_bombs")
+	if abs(action_time - (100 - 2.11)) <= 1:
+		explosion_mini_enemies_attack()
+		action_time = 50
+		#launcher_sound_1.play(0.52)
+	elif abs(action_time - (50 - 1.55)) <= 1:
+		explosion_mini_enemies_attack()
+		action_time = 0.9
+		#launcher_sound_2.play(0.52)
+	elif action_time <= 0:
+		animation_player.stop()
+		action_type = action_types.NONE
 
-func rangedAttackAction(delta, playerPosition):
-	if actionTime > 101:
+func ranged_attack_action(delta, playerPosition):
+	if action_time > 101:
 		if move_towards_target(delta, target):
-			actionTime = 100
+			action_time = 100
 	else:
-		rotateToTarget(playerPosition)
-		animationPlayer.play("Squish")
-	if abs(actionTime - (100 - 3.5)) <= 1:
-		sporeRangedAttack()
+		rotate_to_target(playerPosition)
+		animation_player.play("Squish")
+	if abs(action_time - (100 - 3.5)) <= 1:
+		spore_ranged_attack()
 		#squishSound.play()
-		actionTime = 0.65
-	elif actionTime <= 0:
-		animationPlayer.stop()
-		actionType = actionTypes.NONE
+		action_time = 0.65
+	elif action_time <= 0:
+		animation_player.stop()
+		action_type = action_types.NONE
 
-func sporeAreaAttackAction(delta):
-	if actionTime > 101:
-		animationPlayer.play("Squish" )
-		actionTime = 100
-	if abs(actionTime - (100 - 3.5)) <= 1:
-		actionTime = 0.65
+func spore_area_attack_action(delta):
+	if action_time > 101:
+		animation_player.play("Squish" )
+		action_time = 100
+	if abs(action_time - (100 - 3.5)) <= 1:
+		action_time = 0.65
 		#squishSound.play()
-		sporeParticles.emitting = true
-		sporeTime = 10
-	elif actionTime <= 0:
-		animationPlayer.stop()
-		actionType = actionTypes.NONE
+		spore_particles.emitting = true
+		spore_time = 10
+	elif action_time <= 0:
+		animation_player.stop()
+		action_type = action_types.NONE
 
-func chargeAttackAction(delta):
-	if actionTime > 101:
+func charge_attack_action(delta):
+	if action_time > 101:
 		if move_towards_target(delta, target):
-			actionTime = 100
-	elif actionTime > 51:
-		chargeCollision.disabled = false
-		animationPlayer.play("Rush")
-		chargeAttack()
-		if !walkingSound.playing:
-			walkingSound.pitch_scale = 1
+			action_time = 100
+	elif action_time > 51:
+		charge_collision.disabled = false
+		animation_player.play("Rush")
+		charge_attack()
+		#if !walkingSound.playing:
+		#	walkingSound.pitch_scale = 1
 			#walkingSound.play()
-	if chargeHit and actionTime >= 51:
-		animationPlayer.play("Smash_After_Rush")
-		actionTime = 50
-	if abs(actionTime - (50 - 1.5)) <= 1:
-		actionTime = 0
-		chargeHit = false
-		chargeCollision.disabled = true
-		actionType = actionTypes.NONE
+	if charge_hit and action_time >= 51:
+		animation_player.play("Smash_After_Rush")
+		action_time = 50
+	if abs(action_time - (50 - 1.5)) <= 1:
+		action_time = 0
+		charge_hit = false
+		charge_collision.disabled = true
+		action_type = action_types.NONE
 
 func die(delta):
-	if deathTimer < 10:
-		deathTimer -= delta
-	if deathTimer >= 5 and deathTimer <= 9:
+	if death_timer < 10:
+		death_timer -= delta
+	if death_timer >= 5 and death_timer <= 9:
 		#var win_scene = win.instantiate()
 		#get_tree().current_scene.find_child("CanvasLayer").add_child(win_scene)
-		animationPlayer.stop()
-		animationPlayer.play("Die")
-		deathTimer = 3.9167
+		animation_player.stop()
+		animation_player.play("Die")
+		death_timer = 3.9167
 
-func spearAttackAction(delta, playerPosition):
-	if actionTime >= 151:
+func spear_attack_action(delta, playerPosition):
+	if action_time >= 151:
 		if global_position.distance_to(playerPosition) >= 10:
-			rotateToTarget(playerPosition)
-			var smoke = teleportSmoke.instantiate()
+			rotate_to_target(playerPosition)
+			var smoke = teleport_smoke.instantiate()
 			self.add_child(smoke)
 			smoke.global_position = self.global_position
 			smoke.get_child(0).emitting = true
 			
 			destination = playerPosition - Vector3(playerPosition - global_position).normalized() * 2.5
 			
-			var smoke2 = teleportSmoke.instantiate()
+			var smoke2 = teleport_smoke.instantiate()
 			self.add_child(smoke2)
 			smoke2.global_position = destination
 			smoke2.get_child(0).emitting = true
-			actionTime = 100
+			action_time = 100
 		else:
 			if move_towards_target(delta, playerPosition):
-				actionTime = 100
-	elif abs(actionTime - (100 - 2)) <= 1:
+				action_time = 100
+	elif abs(action_time - (100 - 2)) <= 1:
 		if global_position.distance_to(playerPosition) >= 10:
 			global_position = destination
-		animationPlayer.play("Attack_Combo")
-		actionTime = 50
-	if actionTime <= 50 and actionTime >= 50 - 2.75:
-		spearMeleeAttack(delta)
-	elif actionTime <= 50 - 2:
-		actionTime = 0
-		spearTimeKeeper = 0
-		actionType = actionTypes.NONE
+		animation_player.play("Attack_Combo")
+		action_time = 50
+	if action_time <= 50 and action_time >= 50 - 2.75:
+		spear_melee_attack(delta)
+	elif action_time <= 50 - 2:
+		action_time = 0
+		spear_time_keeper = 0
+		action_type = action_types.NONE
 
-func ongoingSporeAreaAction(delta):
-	if sporeTime > 0:
-		sporeAreaAttack(delta)
+func ongoing_spore_area_action(delta):
+	if spore_time > 0:
+		spore_area_attack(delta)
 	else:
-		sporeParticles.emitting = false
+		spore_particles.emitting = false
 
 #Attacks
-func sporeRangedAttack():
-	for sporeSpawnPoint in sporeSpawnPoints.get_children():
+func spore_ranged_attack():
+	for spore_spawn_point in spore_spawn_points.get_children():
 		var randomTrackingDelay = rng.randf_range(0.1, 0.2)
-		var pos: Vector3 = sporeSpawnPoint.global_position
+		var pos: Vector3 = spore_spawn_point.global_position
 		var vel: Vector3 = pos - global_position
-		var bullet = bulletScene.instantiate()
-		bullet.setParameter(player, bulletDamage, bulletSpeed, homingRange, homingStrength, vel, bulletLifetime)
-		bullet.setTrackingDelay(randomTrackingDelay)
-		bullet.setBlockCostModifier(0.5)
+		var bullet = bullet_scene.instantiate()
+		bullet.set_parameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
+		bullet.set_tracking_delay(randomTrackingDelay)
+		bullet.set_block_cost_modifier(0.5)
 		self.add_child(bullet)
 		bullet.global_position = pos
 
 
-func chargeAttack():
-	if !chargeAttackOnGoing:
+func charge_attack():
+	if !charge_attack_on_going:
 		var playerPosition: Vector3 = player.get_child(0).global_position
-		directionToPlayer = (playerPosition - global_position).normalized()
-		rotateToTarget(playerPosition)
-		chargeAttackOnGoing = true
-	velocity = directionToPlayer * 10
-	if inChargeAttackArea:
-		player.takeDamage(chargeAttackDamage, self, false, 0)
-		inChargeAttackArea = false
-	if chargeHit:
-		chargeAttackOnGoing = false
+		direction_to_player = (playerPosition - global_position).normalized()
+		rotate_to_target(playerPosition)
+		charge_attack_on_going = true
+	velocity = direction_to_player * 10
+	if in_charge_attack_area:
+		player.take_damage(charge_attack_damage, self, false, 0)
+		in_charge_attack_area = false
+	if charge_hit:
+		charge_attack_on_going = false
 
-func explosionMiniEnemiesAttack():
-	var tempExplosionEnemy = explosionEnemy.instantiate()
-	self.add_child(tempExplosionEnemy)
-	tempExplosionEnemy.global_position = ExplosionEnemySpawnPoint.global_position
+func explosion_mini_enemies_attack():
+	var temp_explosion_enemy = explosion_enemy.instantiate()
+	self.add_child(temp_explosion_enemy)
+	temp_explosion_enemy.get_child(0).is_tracking = false
+	temp_explosion_enemy.global_position = explosion_enemy_spawn_point.global_position
+	temp_explosion_enemy.velocity = Vector3(0, 20, 0)
+	await get_tree().create_timer(3).timeout
+	temp_explosion_enemy.velocity = Vector3(0, 0, 0)
+	var rnd_x = rng.randf_range(-20.0, 20.0)
+	var rnd_z = rng.randf_range(-20.0, 20.0)
+	temp_explosion_enemy.global_position = Vector3(explosion_enemy_drop_points.global_position.x + rnd_x, explosion_enemy_drop_points.global_position.y + 30, explosion_enemy_drop_points.global_position.z + rnd_z)
+	await get_tree().create_timer(2.5).timeout
+	temp_explosion_enemy.get_child(0).is_tracking = true
+	temp_explosion_enemy.get_child(0).activate_tracking()
 
-
-func spearMeleeAttack(delta):
-	spearTimeKeeper += delta
-	if spearTimeKeeper >= 0.64 and spearTimeKeeper <= 0.73:
+func spear_melee_attack(delta):
+	spear_time_keeper += delta
+	if spear_time_keeper >= 0.64 and spear_time_keeper <= 0.73:
 		#spearSound.play()
-		if comboArea1:
-			player.take_damage(spearDamage, self, true, 0.5)
-			comboArea1 = false
-	elif spearTimeKeeper >= 1.12 and spearTimeKeeper <= 1.16:
+		if combo_area_1:
+			player.take_damage(spear_damage, self, true, 0.5)
+			combo_area_1 = false
+	elif spear_time_keeper >= 1.12 and spear_time_keeper <= 1.16:
 		#spearSound.play()
-		if comboArea2:
-			player.take_damage(spearDamage, self, true, 0.5)
-			comboArea2 = false
-	elif spearTimeKeeper >= 1.7 and spearTimeKeeper <= 2.1:
+		if combo_area_2:
+			player.take_damage(spear_damage, self, true, 0.5)
+			combo_area_2 = false
+	elif spear_time_keeper >= 1.7 and spear_time_keeper <= 2.1:
 		#spearSound.play()
-		if comboArea3:
-			player.take_damage(spearDamage, self, true, 0.5)
-			comboArea3 = false
+		if combo_area_3:
+			player.take_damage(spear_damage, self, true, 0.5)
+			combo_area_3 = false
 
-func sporeAreaAttack(delta):
-	areaAttackCooldown -= delta
-	if areaAttackCooldown <= 0:
-		if playerInSporeArea:
-			player.take_damage(sporeAreaDamage, self, false, 0)
-		areaAttackCooldown = damageInterval
+func spore_area_attack(delta):
+	area_attack_cooldown -= delta
+	if area_attack_cooldown <= 0:
+		if player_in_spore_area:
+			player.take_damage(spore_area_damage, self, false, 0)
+		area_attack_cooldown = damage_interval
 
 func apply_gravity(delta):
 	velocity.y += -gravity * delta
 
 func take_damage(damage: int, type: String, has_knockback: bool = false, knockback_strenght: float = 0):
+	if !active:
+		activate_boss()
 	health -= damage
 	health_changed.emit()
 	if health <= 0:
-		deathTimer = 8
+		death_timer = 8
 	else:
 		if has_knockback:
 			var direction = (global_position - player.get_child(0).global_position).normalized()
@@ -420,57 +426,55 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 
 func _on_detection_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		detectedPlayer = true
+		detected_player = true
 		player.add_detecting_enemy([self])
 
 func _on_detection_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		detectedPlayer = false
+		detected_player = false
 		player.add_detecting_enemy([self])
 
 func _on_spore_damage_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		playerInSporeArea = true
+		player_in_spore_area = true
 
 func _on_spore_damage_area_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		playerInSporeArea = false
+		player_in_spore_area = false
 
 func _on_charge_attack_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		inChargeAttackArea = true
-		print("Hit Player")
-		chargeHit = true
+		in_charge_attack_area = true
+		charge_hit = true
 
 func _on_charge_attack_body_entered(body: Node3D) -> void:
 	if body.is_in_group("World"):
-		print("Hit")
-		chargeHit = true
+		charge_hit = true
 
 func _on_spear_combo_1_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		comboArea1 = true
+		combo_area_1 = true
 
 func _on_spear_combo_2_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		comboArea2 = true
+		combo_area_2 = true
 	
 func _on_spear_combo_3_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		comboArea3 = true
+		combo_area_3 = true
 
 func _on_spear_combo_1_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		comboArea1 = false
+		combo_area_1 = false
 
 func _on_spear_combo_2_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		comboArea2 = false
+		combo_area_2 = false
 
 func _on_spear_combo_3_exited(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		comboArea3 = false
+		combo_area_3 = false
 
 func _on_boss_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
-		activateBoss()
+		activate_boss()

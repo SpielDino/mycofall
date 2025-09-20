@@ -51,7 +51,7 @@ func rangedAttack(delta):
 		var vel: Vector3 = player.get_child(0).global_position - pos
 		var bullet = bullet_scene.instantiate()
 		get_tree().root.add_child(bullet)
-		bullet.setParameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
+		bullet.set_parameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
 		bullet.global_position = pos
 		attack_cooldown = 1.0/attack_speed
 		throw_timer = 1.6667

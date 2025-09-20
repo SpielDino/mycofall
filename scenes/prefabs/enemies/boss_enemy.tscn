@@ -364,6 +364,9 @@ volume_db = -24.0
 max_db = 0.0
 pitch_scale = 0.6
 
+[node name="ExplosionsEnemySpawnpoints" type="Node3D" parent="."]
+top_level = true
+
 [connection signal="area_entered" from="DetectionArea" to="." method="_on_detection_area_entered"]
 [connection signal="area_exited" from="DetectionArea" to="." method="_on_detection_area_exited"]
 [connection signal="area_entered" from="ChargeAttackArea" to="." method="_on_charge_attack_area_entered"]

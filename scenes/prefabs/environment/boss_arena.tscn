@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ba41x6dsesffj"]
+[gd_scene load_steps=28 format=3 uid="uid://ba41x6dsesffj"]
 
 [ext_resource type="PackedScene" uid="uid://bwj6pug7ynn0w" path="res://assets/models/objects/boss_arena.blend" id="1_0kxlj"]
 [ext_resource type="PackedScene" uid="uid://drlemy28oey25" path="res://scenes/prefabs/enemies/boss_enemy.tscn" id="2_gxlpy"]
@@ -11,9 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://cha8r72kvhors" path="res://assets/models/objects/Berry.blend" id="8_r6pca"]
 [ext_resource type="PackedScene" uid="uid://dhc4r6htqfqwe" path="res://scenes/prefabs/environment/objects/berry_lamp.tscn" id="9_l07jc"]
 [ext_resource type="PackedScene" uid="uid://mat52uog4sa4" path="res://assets/models/rocks/rock_one_low.blend" id="10_v8346"]
-[ext_resource type="PackedScene" uid="uid://bt0pke3hlejyd" path="res://assets/models/rocks/steinhaufen_low.blend" id="11_12jc1"]
 [ext_resource type="PackedScene" uid="uid://bivaufkugvwii" path="res://assets/models/plants/bush_2_low.blend" id="12_12jc1"]
 [ext_resource type="PackedScene" uid="uid://b0d7bxagu5a7e" path="res://scenes/prefabs/environment/objects/glowshroom.tscn" id="13_l3crm"]
+[ext_resource type="PackedScene" uid="uid://irrsqnnuxdnc" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(50x50).tscn" id="15_skl3o"]
+[ext_resource type="PackedScene" uid="uid://d2wdtfy6icf4l" path="res://scenes/prefabs/environment/trees/with_collision/tree_stump_grounded_with_collision.tscn" id="16_erwl8"]
+[ext_resource type="PackedScene" uid="uid://bykohmkmljjsa" path="res://scenes/prefabs/environment/trees/with_collision/tree_dead_with_collision.tscn" id="17_fno32"]
+[ext_resource type="PackedScene" uid="uid://dgikfjkv3aab7" path="res://scenes/prefabs/environment/trees/with_collision/tree_stump_with_mushrooms_with_collision.tscn" id="18_nyoj0"]
+[ext_resource type="PackedScene" uid="uid://wnycorje8dkh" path="res://scenes/prefabs/environment/trees/with_collision/tree_stapel_with_collision.tscn" id="19_6phi0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r6pca"]
 height = 11.7969
@@ -46,13 +50,9 @@ radius = 32.4268
 
 [node name="BossArena" type="Node3D"]
 
-[node name="BossEnemy" parent="." node_paths=PackedStringArray("movePoints") instance=ExtResource("2_gxlpy")]
+[node name="BossEnemy" parent="." instance=ExtResource("2_gxlpy")]
 transform = Transform3D(0.0645323, 0, -0.997916, 0, 1, 0, 0.997916, 0, 0.0645323, 0.184684, 8.50656, 2.25241)
 script = ExtResource("3_32f48")
-movePoints = [NodePath("../Movepoints")]
-
-[node name="Spawnpoints" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="Movepoints" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
@@ -146,9 +146,6 @@ light_color = Color(1, 1, 0, 1)
 light_energy = 3.0
 
 [node name="Rocks" type="Node3D" parent="Decoration"]
-
-[node name="steinhaufen_low" parent="Decoration/Rocks" instance=ExtResource("11_12jc1")]
-transform = Transform3D(-0.78903, 0, -0.614354, 0, 1, 0, 0.614354, 0, -0.78903, -11.7978, 7.23399, -29.872)
 
 [node name="rock_one_low" parent="Decoration/Rocks" instance=ExtResource("10_v8346")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.3923, 7.18894, 5.30131)
@@ -408,6 +405,318 @@ shape = SubResource("CylinderShape3D_skl3o")
 
 [node name="Bag Deco Bundle" parent="NavigationRegion3D" instance=ExtResource("6_wc8xk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17495, 8.78619, 29.8862)
+
+[node name="Ground" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.14688, 0)
+
+[node name="Ground Normal Grass (50x50)2" parent="Ground" instance=ExtResource("15_skl3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 0)
+
+[node name="Ground Normal Grass (50x50)3" parent="Ground" instance=ExtResource("15_skl3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 0)
+
+[node name="Ground Normal Grass (50x50)4" parent="Ground" instance=ExtResource("15_skl3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
+
+[node name="Ground Normal Grass (50x50)5" parent="Ground" instance=ExtResource("15_skl3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -50)
+
+[node name="Ground Normal Grass (50x50)6" parent="Ground" instance=ExtResource("15_skl3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, 50)
+
+[node name="Ground Normal Grass (50x50)7" parent="Ground" instance=ExtResource("15_skl3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50, 0, -50)
+
+[node name="Ground Normal Grass (50x50)8" parent="Ground" instance=ExtResource("15_skl3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, -50)
+
+[node name="Ground Normal Grass (50x50)9" parent="Ground" instance=ExtResource("15_skl3o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50, 0, 50)
+
+[node name="Oudsite Decor" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.14688, 0)
+
+[node name="TreeStumps" type="Node3D" parent="Oudsite Decor"]
+
+[node name="TreeStumpGroundedWithCollision" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, 35)
+
+[node name="TreeStumpGroundedWithCollision2" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.159, 3.8147e-06, 33.2875)
+
+[node name="TreeStumpGroundedWithCollision3" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.979628, 0, 0.200821, 0, 1, 0, -0.200821, 0, 0.979628, 40.8154, 0, 37.2317)
+
+[node name="TreeStumpGroundedWithCollision4" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.979628, 0, 0.200821, 0, 1, 0, -0.200821, 0, 0.979628, 36.1336, 0, 38.1915)
+
+[node name="TreeStumpGroundedWithCollision5" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.669714, 0, -0.742619, 0, 1, 0, 0.742619, 0, 0.669714, 44.8642, 7.62939e-06, 28.6675)
+
+[node name="TreeStumpGroundedWithCollision6" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.669714, 0, -0.742619, 0, 1, 0, 0.742619, 0, 0.669714, 38.7149, 3.8147e-06, 24.4917)
+
+[node name="TreeStumpGroundedWithCollision7" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.805204, 0, -0.592997, 0, 1, 0, 0.592997, 0, 0.805204, 40.8743, 3.8147e-06, 32.0994)
+
+[node name="TreeStumpGroundedWithCollision8" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.805204, 0, -0.592997, 0, 1, 0, 0.592997, 0, 0.805204, 36.4978, 3.8147e-06, 29.2459)
+
+[node name="TreeStumpGroundedWithCollision9" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.937118, 0, -0.349014, 0, 1, 0, 0.349014, 0, 0.937118, 48.2583, 0, 35.2289)
+
+[node name="TreeStumpGroundedWithCollision10" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.937118, 0, -0.349014, 0, 1, 0, 0.349014, 0, 0.937118, 45.2565, 3.8147e-06, 32.2835)
+
+[node name="TreeStumpGroundedWithCollision11" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.988116, 0, -0.15371, 0, 1, 0, 0.15371, 0, 0.988116, 50.1178, 0, 38.3028)
+
+[node name="TreeStumpGroundedWithCollision12" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.988116, 0, -0.15371, 0, 1, 0, 0.15371, 0, 0.988116, 45.3954, 0, 37.5682)
+
+[node name="TreeStumpGroundedWithCollision13" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.368417, 0, -0.929661, 0, 1, 0, 0.929661, 0, 0.368417, 56.901, 7.62939e-06, 31.6903)
+
+[node name="TreeStumpGroundedWithCollision14" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.368417, 0, -0.929661, 0, 1, 0, 0.929661, 0, 0.368417, 52.5957, 3.8147e-06, 25.6309)
+
+[node name="TreeStumpGroundedWithCollision15" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.547607, 0, -0.836736, 0, 1, 0, 0.836736, 0, 0.547607, 51.9642, 3.8147e-06, 33.5138)
+
+[node name="TreeStumpGroundedWithCollision16" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.547607, 0, -0.836736, 0, 1, 0, 0.836736, 0, 0.547607, 48.8588, 3.8147e-06, 29.3123)
+
+[node name="TreeStumpGroundedWithCollision17" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.4173, 0, 45.9049)
+
+[node name="TreeStumpGroundedWithCollision18" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5763, 3.8147e-06, 44.1924)
+
+[node name="TreeStumpGroundedWithCollision19" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.979628, 0, 0.200821, 0, 1, 0, -0.200821, 0, 0.979628, 43.2328, 0, 48.1366)
+
+[node name="TreeStumpGroundedWithCollision20" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.979628, 0, 0.200821, 0, 1, 0, -0.200821, 0, 0.979628, 38.551, 0, 49.0964)
+
+[node name="TreeStumpGroundedWithCollision21" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.669714, 0, -0.742619, 0, 1, 0, 0.742619, 0, 0.669714, 47.2815, 7.62939e-06, 39.5724)
+
+[node name="TreeStumpGroundedWithCollision22" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.669714, 0, -0.742619, 0, 1, 0, 0.742619, 0, 0.669714, 41.1322, 3.8147e-06, 35.3966)
+
+[node name="TreeStumpGroundedWithCollision23" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.805204, 0, -0.592997, 0, 1, 0, 0.592997, 0, 0.805204, 43.2916, 3.8147e-06, 43.0043)
+
+[node name="TreeStumpGroundedWithCollision24" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.805204, 0, -0.592997, 0, 1, 0, 0.592997, 0, 0.805204, 38.9152, 3.8147e-06, 40.1508)
+
+[node name="TreeStumpGroundedWithCollision25" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.937118, 0, -0.349014, 0, 1, 0, 0.349014, 0, 0.937118, 50.6756, 0, 46.1337)
+
+[node name="TreeStumpGroundedWithCollision26" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.937118, 0, -0.349014, 0, 1, 0, 0.349014, 0, 0.937118, 47.6738, 3.8147e-06, 43.1883)
+
+[node name="TreeStumpGroundedWithCollision27" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.988116, 0, -0.15371, 0, 1, 0, 0.15371, 0, 0.988116, 52.5351, 0, 49.2077)
+
+[node name="TreeStumpGroundedWithCollision28" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.988116, 0, -0.15371, 0, 1, 0, 0.15371, 0, 0.988116, 55.3432, 0.181194, 52.2396)
+
+[node name="TreeStumpGroundedWithCollision29" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.368417, 0, -0.929661, 0, 1, 0, 0.929661, 0, 0.368417, 59.3183, 7.62939e-06, 42.5951)
+
+[node name="TreeStumpGroundedWithCollision30" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.368417, 0, -0.929661, 0, 1, 0, 0.929661, 0, 0.368417, 55.0131, 3.8147e-06, 36.5357)
+
+[node name="TreeStumpGroundedWithCollision31" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.547607, 0, -0.836736, 0, 1, 0, 0.836736, 0, 0.547607, 54.3815, 3.8147e-06, 44.4187)
+
+[node name="TreeStumpGroundedWithCollision32" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.547607, 0, -0.836736, 0, 1, 0, 0.836736, 0, 0.547607, 51.2762, 3.8147e-06, 40.2172)
+
+[node name="TreeStumpGroundedWithCollision33" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9121, 0, 55.0779)
+
+[node name="TreeStumpGroundedWithCollision34" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.071, 3.8147e-06, 53.3654)
+
+[node name="TreeStumpGroundedWithCollision35" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.979628, 0, 0.200821, 0, 1, 0, -0.200821, 0, 0.979628, 36.7275, 0, 57.3096)
+
+[node name="TreeStumpGroundedWithCollision36" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.979628, 0, 0.200821, 0, 1, 0, -0.200821, 0, 0.979628, 32.0457, 0, 58.2694)
+
+[node name="TreeStumpGroundedWithCollision37" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.669714, 0, -0.742619, 0, 1, 0, 0.742619, 0, 0.669714, 31.8022, -2.63324, 43.3315)
+
+[node name="TreeStumpGroundedWithCollision38" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.669714, 0, -0.742619, 0, 1, 0, 0.742619, 0, 0.669714, 33.1492, -3.8147e-06, 44.8622)
+
+[node name="TreeStumpGroundedWithCollision39" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.805204, 0, -0.592997, 0, 1, 0, 0.592997, 0, 0.805204, 36.7864, 3.8147e-06, 52.1773)
+
+[node name="TreeStumpGroundedWithCollision40" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.805204, 0, -0.592997, 0, 1, 0, 0.592997, 0, 0.805204, 32.4099, 3.8147e-06, 49.3238)
+
+[node name="TreeStumpGroundedWithCollision41" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.937118, 0, -0.349014, 0, 1, 0, 0.349014, 0, 0.937118, 44.1704, 0, 55.3068)
+
+[node name="TreeStumpGroundedWithCollision42" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.937118, 0, -0.349014, 0, 1, 0, 0.349014, 0, 0.937118, 41.1685, 3.8147e-06, 52.3614)
+
+[node name="TreeStumpGroundedWithCollision43" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.988116, 0, -0.15371, 0, 1, 0, 0.15371, 0, 0.988116, 46.0299, 0, 58.3807)
+
+[node name="TreeStumpGroundedWithCollision44" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.988116, 0, -0.15371, 0, 1, 0, 0.15371, 0, 0.988116, 41.3075, 0, 57.6461)
+
+[node name="TreeStumpGroundedWithCollision45" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.368417, 0, -0.929661, 0, 1, 0, 0.929661, 0, 0.368417, 52.813, 7.62939e-06, 51.7682)
+
+[node name="TreeStumpGroundedWithCollision46" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.368417, 0, -0.929661, 0, 1, 0, 0.929661, 0, 0.368417, 56.0605, 3.8147e-06, 40.6955)
+
+[node name="TreeStumpGroundedWithCollision47" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.547607, 0, -0.836736, 0, 1, 0, 0.836736, 0, 0.547607, 47.8763, 3.8147e-06, 53.5917)
+
+[node name="TreeStumpGroundedWithCollision48" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.547607, 0, -0.836736, 0, 1, 0, 0.836736, 0, 0.547607, 46.3116, 0.039093, 49.7286)
+
+[node name="TreeStumpGroundedWithCollision49" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.3294, 0, 65.9828)
+
+[node name="TreeStumpGroundedWithCollision50" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.4884, 3.8147e-06, 64.2703)
+
+[node name="TreeStumpGroundedWithCollision51" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.979628, 0, 0.200821, 0, 1, 0, -0.200821, 0, 0.979628, 39.1449, 0, 68.2145)
+
+[node name="TreeStumpGroundedWithCollision52" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.979628, 0, 0.200821, 0, 1, 0, -0.200821, 0, 0.979628, 34.4631, 0, 69.1743)
+
+[node name="TreeStumpGroundedWithCollision53" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.669714, 0, -0.742619, 0, 1, 0, 0.742619, 0, 0.669714, 43.1936, 7.62939e-06, 59.6503)
+
+[node name="TreeStumpGroundedWithCollision54" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.669714, 0, -0.742619, 0, 1, 0, 0.742619, 0, 0.669714, 37.0443, 3.8147e-06, 55.4745)
+
+[node name="TreeStumpGroundedWithCollision55" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.805204, 0, -0.592997, 0, 1, 0, 0.592997, 0, 0.805204, 39.2037, 3.8147e-06, 63.0822)
+
+[node name="TreeStumpGroundedWithCollision56" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.805204, 0, -0.592997, 0, 1, 0, 0.592997, 0, 0.805204, 34.8273, 3.8147e-06, 60.2287)
+
+[node name="TreeStumpGroundedWithCollision57" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.937118, 0, -0.349014, 0, 1, 0, 0.349014, 0, 0.937118, 46.5877, 0, 66.2116)
+
+[node name="TreeStumpGroundedWithCollision58" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.937118, 0, -0.349014, 0, 1, 0, 0.349014, 0, 0.937118, 43.5859, 3.8147e-06, 63.2662)
+
+[node name="TreeStumpGroundedWithCollision59" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.988116, 0, -0.15371, 0, 1, 0, 0.15371, 0, 0.988116, 48.4472, 0, 69.2856)
+
+[node name="TreeStumpGroundedWithCollision60" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.988116, 0, -0.15371, 0, 1, 0, 0.15371, 0, 0.988116, 43.7248, 0, 68.551)
+
+[node name="TreeStumpGroundedWithCollision61" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.368417, 0, -0.929661, 0, 1, 0, 0.929661, 0, 0.368417, 55.2304, 7.62939e-06, 62.673)
+
+[node name="TreeStumpGroundedWithCollision62" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.368417, 0, -0.929661, 0, 1, 0, 0.929661, 0, 0.368417, 50.9252, 3.8147e-06, 56.6136)
+
+[node name="TreeStumpGroundedWithCollision63" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.547607, 0, -0.836736, 0, 1, 0, 0.836736, 0, 0.547607, 50.2936, 3.8147e-06, 64.4966)
+
+[node name="TreeStumpGroundedWithCollision64" parent="Oudsite Decor/TreeStumps" instance=ExtResource("16_erwl8")]
+transform = Transform3D(0.547607, 0, -0.836736, 0, 1, 0, 0.836736, 0, 0.547607, 47.1883, 3.8147e-06, 60.2951)
+
+[node name="Trees" type="Node3D" parent="Oudsite Decor"]
+
+[node name="TreeDeadWithCollision" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(1.98773, 0, 0.221238, 0, 2, 0, -0.221238, 0, 1.98773, 7.06443, 0.31345, 40.1091)
+
+[node name="TreeDeadWithCollision2" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(0.649321, 0, 1.89166, 0, 2, 0, -1.89166, 0, 0.649321, -8.91519, 0.31345, 40.0977)
+
+[node name="TreeDeadWithCollision3" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(1.98773, 0, 0.221238, 0, 2, 0, -0.221238, 0, 1.98773, 7.06443, 0.31345, 47.5175)
+
+[node name="TreeDeadWithCollision4" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(0.649321, 0, 1.89166, 0, 2, 0, -1.89166, 0, 0.649321, -8.91519, 0.31345, 47.5061)
+
+[node name="TreeDeadWithCollision5" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(1.98773, 0, 0.221238, 0, 2, 0, -0.221238, 0, 1.98773, 7.06443, 0.31345, 54.7937)
+
+[node name="TreeDeadWithCollision6" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(0.649321, 0, 1.89166, 0, 2, 0, -1.89166, 0, 0.649321, -8.91519, 0.31345, 54.7823)
+
+[node name="TreeDeadWithCollision7" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(1.98773, 0, 0.221238, 0, 2, 0, -0.221238, 0, 1.98773, 7.06443, 0.31345, 61.9858)
+
+[node name="TreeDeadWithCollision8" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(0.649321, 0, 1.89166, 0, 2, 0, -1.89166, 0, 0.649321, -8.91519, 0.31345, 61.9743)
+
+[node name="TreeDeadWithCollision9" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(1.98773, 0, 0.221238, 0, 2, 0, -0.221238, 0, 1.98773, 7.06443, 0.31345, 68.0577)
+
+[node name="TreeDeadWithCollision10" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(0.649321, 0, 1.89166, 0, 2, 0, -1.89166, 0, 0.649321, -8.91519, 0.31345, 68.0463)
+
+[node name="TreeDeadWithCollision11" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(-0.676359, 0, 1.88216, 0, 2, 0, -1.88216, 0, -0.676359, -15.1944, 0.31345, 64.2542)
+
+[node name="TreeDeadWithCollision12" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(1.41308, 0, 1.41535, 0, 2, 0, -1.41535, 0, 1.41308, -16.0589, 0.31345, 70.11)
+
+[node name="TreeDeadWithCollision13" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(1.77807, 0, -0.915686, 0, 2, 0, 0.915686, 0, 1.77807, 13.3137, 0.31345, 69.9898)
+
+[node name="TreeDeadWithCollision14" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(1.97276, 0, -0.328959, 0, 2, 0, 0.328959, 0, 1.97276, 13.1517, 0.31345, 63.5798)
+
+[node name="TreeDeadWithCollision15" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(-1.30293, 0, -1.51736, 0, 2, 0, 1.51736, 0, -1.30293, 12.4193, 0.31345, 58.3374)
+
+[node name="TreeDeadWithCollision16" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(-1.30293, 0, -1.51736, 0, 2, 0, 1.51736, 0, -1.30293, 12.6179, 0.31345, 51.6833)
+
+[node name="TreeDeadWithCollision17" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(0.485232, 0, 1.94024, 0, 2, 0, -1.94024, 0, 0.485232, 12.4035, 0.31345, 43.6738)
+
+[node name="TreeDeadWithCollision18" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(-1.61664, 0, 1.17749, 0, 2, 0, -1.17749, 0, -1.61664, -14.9849, 0.31345, 57.8114)
+
+[node name="TreeDeadWithCollision19" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(2, 0, -0.000349343, 0, 2, 0, 0.000349343, 0, 2, -14.6624, 0.31345, 50.8789)
+
+[node name="TreeDeadWithCollision20" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(-0.676359, 0, 1.88216, 0, 2, 0, -1.88216, 0, -0.676359, -13.5523, 0.31345, 45.3683)
+
+[node name="TreeDeadWithCollision21" parent="Oudsite Decor/Trees" instance=ExtResource("17_fno32")]
+transform = Transform3D(-0.676359, 0, 1.88216, 0, 2, 0, -1.88216, 0, -0.676359, -15.2371, 0.313454, 38.8849)
+
+[node name="Others" type="Node3D" parent="Oudsite Decor"]
+
+[node name="TreeStumpWithMushroomsWithCollision" parent="Oudsite Decor/Others" instance=ExtResource("18_nyoj0")]
+transform = Transform3D(0.526852, 0, -0.849957, 0, 1, 0, 0.849957, 0, 0.526852, 17.5697, 0.530941, 36.0445)
+
+[node name="TreeStapelCollision" parent="Oudsite Decor/Others" instance=ExtResource("19_6phi0")]
+transform = Transform3D(0.902871, 0, 0.429912, 0, 1, 0, -0.429912, 0, 0.902871, 22.1817, 0.713464, 30.5238)
+
+[node name="TreeStapelCollision2" parent="Oudsite Decor/Others" instance=ExtResource("19_6phi0")]
+transform = Transform3D(0.522126, 0, -0.852868, 0, 1, 0, 0.852868, 0, 0.522126, 29.0431, 0.713464, 40.7641)
+
+[node name="TreeStapelCollision3" parent="Oudsite Decor/Others" instance=ExtResource("19_6phi0")]
+transform = Transform3D(0.0287241, 0, -0.999587, 0, 1, 0, 0.999587, 0, 0.0287241, 27.0479, 0.713464, 47.9432)
+
+[node name="TreeStapelCollision4" parent="Oudsite Decor/Others" instance=ExtResource("19_6phi0")]
+transform = Transform3D(0.424231, 0, -0.905554, 0, 1, 0, 0.905554, 0, 0.424231, 27.4153, 0.713464, 56.2137)
+
+[node name="TreeStapelCollision5" parent="Oudsite Decor/Others" instance=ExtResource("19_6phi0")]
+transform = Transform3D(-0.441193, 0, -0.897412, 0, 1, 0, 0.897412, 0, -0.441193, 29.0697, 0.713464, 62.8363)
+
+[node name="TreeStapelCollision6" parent="Oudsite Decor/Others" instance=ExtResource("19_6phi0")]
+transform = Transform3D(0.797057, 0, -0.603904, 0, 1, 0, 0.603904, 0, 0.797057, 29.9365, 0.713464, 68.7694)
 
 [connection signal="area_entered" from="BossArea" to="BossEnemy" method="_on_boss_area_entered"]
 

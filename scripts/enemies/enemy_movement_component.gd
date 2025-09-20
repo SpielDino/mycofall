@@ -69,6 +69,7 @@ func move_between_set_locations(delta, move_points):
 			move_counter = 0
 	var direction = Vector3()
 	nav.target_position = move_points[move_counter].global_position
+	print(move_points[move_counter].global_position)
 	direction = (nav.get_next_path_position() - global_position).normalized()
 	enemy.rotate_to_target(move_points[move_counter])
 	enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
@@ -95,6 +96,7 @@ func decide_movement_type(delta):
 		enemy.state = enemy.States.PATROLLING
 		warmup_timer = warmup_animation_time
 		searching(delta)
+		enemy.move_and_slide()
 	if (enemy.state == enemy.States.NONE or enemy.state == enemy.States.IDLE) and !has_patrol_route:
 		enemy.state = enemy.States.IDLE
 		warmup_timer = warmup_animation_time
