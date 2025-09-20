@@ -1,0 +1,467 @@
+[gd_scene load_steps=36 format=3 uid="uid://b8ikqpa2bdlcy"]
+
+[ext_resource type="Script" uid="uid://ds0upq80xu32l" path="res://scripts/ui/title_screen.gd" id="1_aqpy5"]
+[ext_resource type="Shader" uid="uid://ifle8h5kjraq" path="res://scripts/shader/title_screen/wind_sway_shader.gdshader" id="2_to824"]
+[ext_resource type="Shader" uid="uid://ceg5q314qu6jy" path="res://scripts/shader/title_screen/main_screen_wind.gdshader" id="2_w8uqo"]
+[ext_resource type="Texture2D" uid="uid://b3ogxvwpvhsxa" path="res://assets/textures/ui_textures/title_screen/top_left.png" id="3_1oiph"]
+[ext_resource type="Texture2D" uid="uid://dm0kawpglloy8" path="res://assets/textures/ui_textures/title_screen/TitleScreenFull.png" id="3_a4ium"]
+[ext_resource type="Texture2D" uid="uid://b6ieuewu8673g" path="res://assets/textures/ui_textures/title_screen/top_left_below.png" id="4_5p4sa"]
+[ext_resource type="Script" uid="uid://bi70i37xbtgce" path="res://scripts/shader/title_screen/pixel_mold_pipeline.gd" id="4_jqmgk"]
+[ext_resource type="Texture2D" uid="uid://cwecbos80vify" path="res://assets/textures/ui_textures/title_screen/TopRight.png" id="5_tqags"]
+[ext_resource type="Texture2D" uid="uid://7yakml63rm1r" path="res://assets/textures/ui_textures/title_screen/RightMiddleTop.png" id="6_to824"]
+[ext_resource type="Texture2D" uid="uid://dud7r1eqsp1kb" path="res://assets/textures/ui_textures/title_screen/RightMiddle.png" id="7_y77df"]
+[ext_resource type="Texture2D" uid="uid://db80lba30ppuo" path="res://assets/textures/ui_textures/title_screen/LeftMiddle.png" id="8_jqmgk"]
+[ext_resource type="Texture2D" uid="uid://d2dub2mv5d26d" path="res://assets/textures/ui_textures/title_screen/LeftMiddleMiddle.png" id="9_una1u"]
+[ext_resource type="Texture2D" uid="uid://4x57aga8omgi" path="res://assets/textures/ui_textures/title_screen/LeftBottoMAbove.png" id="10_rtmth"]
+[ext_resource type="Texture2D" uid="uid://bmg5kw14acj7f" path="res://assets/textures/ui_textures/title_screen/LeftBottomRightRight.png" id="11_7avnr"]
+[ext_resource type="Texture2D" uid="uid://rkxow2hvynfm" path="res://assets/textures/ui_textures/title_screen/LeftBotOMRight.png" id="12_5c0cl"]
+[ext_resource type="Texture2D" uid="uid://jadn0pbq475n" path="res://assets/textures/ui_textures/title_screen/BottomLeft.png" id="13_ytagk"]
+[ext_resource type="Texture2D" uid="uid://ljpojy6wh01i" path="res://assets/textures/ui_textures/title_screen/BottomRightpng.png" id="15_tqags"]
+[ext_resource type="Theme" uid="uid://bw0qfmu2hvgr6" path="res://assets/ui_themes/buttons/menu_buttons.tres" id="18_una1u"]
+[ext_resource type="Theme" uid="uid://snlsj1gyjpyx" path="res://assets/ui_themes/bold_text.tres" id="19_rtmth"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uq7ri"]
+shader = ExtResource("2_to824")
+shader_parameter/band_density = 5.89
+shader_parameter/band_width = 14.48
+shader_parameter/band_soft = 0.05
+shader_parameter/band_speed = 0.35
+shader_parameter/curve_amp = 0.06
+shader_parameter/curve_freq_y = 5.0
+shader_parameter/undulate_amp_px = 2.16
+shader_parameter/undulate_speed = 0.9
+shader_parameter/undulate_freq_y = 0.815
+shader_parameter/mask_center_uv = Vector2(0.6, 0.5)
+shader_parameter/mask_radii_uv = Vector2(0.35, 0.28)
+shader_parameter/mask_soft = 0.25
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_tex_mix = 1.0
+shader_parameter/sweep_speed = 0.35
+shader_parameter/front_width = 0.35
+shader_parameter/front_soft = 0.18
+shader_parameter/seed = 17.4
+
+[sub_resource type="Animation" id="Animation_aqpy5"]
+resource_name = "IntroCutscene"
+length = 40.0
+step = 0.0166667
+
+[sub_resource type="Animation" id="Animation_w8uqo"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4ium"]
+_data = {
+&"IntroCutscene": SubResource("Animation_aqpy5"),
+&"RESET": SubResource("Animation_w8uqo")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5p4sa"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 5.0
+shader_parameter/sway_speed = 0.905
+shader_parameter/gust_amp = 0.485
+shader_parameter/gust_speed = 0.18
+shader_parameter/stiffness_pow = 1.6
+shader_parameter/vertical_lift = 0.12
+shader_parameter/flutter_amp_px = 2.2
+shader_parameter/flutter_speed = 5.0
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_to824"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 3.37
+shader_parameter/sway_speed = 0.785
+shader_parameter/gust_amp = 0.685
+shader_parameter/gust_speed = 0.46
+shader_parameter/stiffness_pow = 1.765
+shader_parameter/vertical_lift = 0.12
+shader_parameter/flutter_amp_px = 2.2
+shader_parameter/flutter_speed = 5.0
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.925, 0.645)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y77df"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 5.23
+shader_parameter/sway_speed = 0.91
+shader_parameter/gust_amp = 0.68
+shader_parameter/gust_speed = 0.425
+shader_parameter/stiffness_pow = 1.6
+shader_parameter/vertical_lift = 0.28
+shader_parameter/flutter_amp_px = 2.005
+shader_parameter/flutter_speed = 5.13
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqmgk"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 6.38
+shader_parameter/sway_speed = 0.8
+shader_parameter/gust_amp = 0.6
+shader_parameter/gust_speed = 0.26
+shader_parameter/stiffness_pow = 1.685
+shader_parameter/vertical_lift = 0.275
+shader_parameter/flutter_amp_px = 1.96
+shader_parameter/flutter_speed = 5.68
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_una1u"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 5.485
+shader_parameter/sway_speed = 0.94
+shader_parameter/gust_amp = 0.74
+shader_parameter/gust_speed = 0.415
+shader_parameter/stiffness_pow = 2.275
+shader_parameter/vertical_lift = 0.28
+shader_parameter/flutter_amp_px = 2.135
+shader_parameter/flutter_speed = 2.555
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rtmth"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 5.0
+shader_parameter/sway_speed = 0.8
+shader_parameter/gust_amp = 0.6
+shader_parameter/gust_speed = 0.22
+shader_parameter/stiffness_pow = 1.6
+shader_parameter/vertical_lift = 0.18
+shader_parameter/flutter_amp_px = 2.2
+shader_parameter/flutter_speed = 5.065
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7avnr"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 4.94
+shader_parameter/sway_speed = 0.855
+shader_parameter/gust_amp = 0.69
+shader_parameter/gust_speed = 0.115
+shader_parameter/stiffness_pow = 1.6
+shader_parameter/vertical_lift = 0.155
+shader_parameter/flutter_amp_px = 2.37
+shader_parameter/flutter_speed = 4.95
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.045
+shader_parameter/seed = 0.375
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5c0cl"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 5.095
+shader_parameter/sway_speed = 0.7
+shader_parameter/gust_amp = 0.65
+shader_parameter/gust_speed = 0.18
+shader_parameter/stiffness_pow = 1.6
+shader_parameter/vertical_lift = 0.12
+shader_parameter/flutter_amp_px = 2.2
+shader_parameter/flutter_speed = 5.0
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ytagk"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 14.0
+shader_parameter/sway_speed = 0.8
+shader_parameter/gust_amp = 0.6
+shader_parameter/gust_speed = 0.18
+shader_parameter/stiffness_pow = 1.6
+shader_parameter/vertical_lift = 0.12
+shader_parameter/flutter_amp_px = 2.2
+shader_parameter/flutter_speed = 5.0
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qo84g"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 14.0
+shader_parameter/sway_speed = 0.8
+shader_parameter/gust_amp = 0.6
+shader_parameter/gust_speed = 0.18
+shader_parameter/stiffness_pow = 1.6
+shader_parameter/vertical_lift = 0.12
+shader_parameter/flutter_amp_px = 2.2
+shader_parameter/flutter_speed = 5.0
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nccv4"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 4.64
+shader_parameter/sway_speed = 0.8
+shader_parameter/gust_amp = 0.6
+shader_parameter/gust_speed = 0.26
+shader_parameter/stiffness_pow = 1.68
+shader_parameter/vertical_lift = 0.23
+shader_parameter/flutter_amp_px = 2.26
+shader_parameter/flutter_speed = 5.0
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4kkmg"]
+shader = ExtResource("2_w8uqo")
+shader_parameter/wind_dir = Vector2(1, 0)
+shader_parameter/sway_amp_px = 4.885
+shader_parameter/sway_speed = 0.89
+shader_parameter/gust_amp = 0.67
+shader_parameter/gust_speed = 0.25
+shader_parameter/stiffness_pow = 1.65
+shader_parameter/vertical_lift = 0.125
+shader_parameter/flutter_amp_px = 2.12
+shader_parameter/flutter_speed = 5.775
+shader_parameter/noise_tiling = Vector2(1.5, 2)
+shader_parameter/noise_scroll = Vector2(0.06, 0)
+shader_parameter/use_mask_tex = false
+shader_parameter/mask_mix = 1.0
+shader_parameter/seed = 0.0
+shader_parameter/pivot_uv = Vector2(0.5, 1)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aqpy5")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_uq7ri")
+position = Vector2(-9, -7)
+scale = Vector2(1.01, 1.01)
+texture = ExtResource("3_a4ium")
+centered = false
+
+[node name="TitleAnimation" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("4_jqmgk")
+
+[node name="Title" type="Sprite2D" parent="MarginContainer/TitleAnimation"]
+position = Vector2(-639, 187)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_a4ium")
+}
+
+[node name="movingParts" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TopLeft" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_5p4sa")
+position = Vector2(191.75, 141)
+scale = Vector2(1.06375, 1.03226)
+texture = ExtResource("3_1oiph")
+
+[node name="TopLeftBelow" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_to824")
+position = Vector2(258.5, 434.5)
+scale = Vector2(1.05607, 1.018)
+texture = ExtResource("4_5p4sa")
+
+[node name="TopRight" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_y77df")
+position = Vector2(2340.5, 153)
+scale = Vector2(1.04222, 1)
+texture = ExtResource("5_tqags")
+
+[node name="RightMiddleTop" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_jqmgk")
+position = Vector2(2278.5, 387)
+scale = Vector2(1.03818, 1.03125)
+texture = ExtResource("6_to824")
+
+[node name="RightMiddle" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_una1u")
+position = Vector2(2352.5, 731.5)
+scale = Vector2(1.0375, 1.03095)
+texture = ExtResource("7_y77df")
+
+[node name="LeftMiddle" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_rtmth")
+position = Vector2(225, 685)
+scale = Vector2(1.07826, 1.02703)
+texture = ExtResource("8_jqmgk")
+
+[node name="LeftMiddleMiddle" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_7avnr")
+position = Vector2(119, 906.5)
+scale = Vector2(1.07451, 1.045)
+texture = ExtResource("9_una1u")
+
+[node name="LeftBottoMAbove" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_5c0cl")
+position = Vector2(165.5, 1101)
+scale = Vector2(1.01429, 1)
+texture = ExtResource("10_rtmth")
+
+[node name="LeftBottomRightRight" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_ytagk")
+position = Vector2(665, 1344)
+scale = Vector2(1.02703, 1)
+texture = ExtResource("11_7avnr")
+
+[node name="LeftBotOmRight" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_qo84g")
+position = Vector2(420.5, 1284)
+scale = Vector2(1.05897, 1)
+texture = ExtResource("12_5c0cl")
+
+[node name="BottomLeft" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_nccv4")
+position = Vector2(222, 1324)
+scale = Vector2(1.03478, 1.05)
+texture = ExtResource("13_ytagk")
+
+[node name="BottomRightpng" type="Sprite2D" parent="movingParts"]
+material = SubResource("ShaderMaterial_4kkmg")
+position = Vector2(2318, 1205)
+scale = Vector2(1.016, 1.008)
+texture = ExtResource("15_tqags")
+
+[node name="ButtonsMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -416.5
+offset_top = -458.0
+offset_right = 416.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Buttons" type="VBoxContainer" parent="ButtonsMargin"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Start" type="Button" parent="ButtonsMargin/Buttons" groups=["rich_button"]]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 2
+theme = ExtResource("18_una1u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ButtonsMargin/Buttons/Start"]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "BUTTON_START"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="Button" parent="ButtonsMargin/Buttons" groups=["rich_button"]]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 2
+theme = ExtResource("18_una1u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ButtonsMargin/Buttons/Options"]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "BUTTON_OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ExitGame" type="Button" parent="ButtonsMargin/Buttons" groups=["rich_button"]]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 2
+theme = ExtResource("18_una1u")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ButtonsMargin/Buttons/ExitGame"]
+custom_minimum_size = Vector2(833, 150)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme = ExtResource("19_rtmth")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "BUTTON_EXIT_GAME"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="ButtonsMargin/Buttons/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="ButtonsMargin/Buttons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ButtonsMargin/Buttons/ExitGame" to="." method="_on_exit_game_pressed"]

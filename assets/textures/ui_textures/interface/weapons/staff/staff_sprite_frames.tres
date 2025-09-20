@@ -1,0 +1,950 @@
+[gd_resource type="SpriteFrames" load_steps=226 format=3 uid="uid://dtey15h8tinhv"]
+
+[ext_resource type="Texture2D" uid="uid://co8l7txwbk1vl" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0000.png" id="1_uex47"]
+[ext_resource type="Texture2D" uid="uid://bdwnlpuk3u02i" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0001.png" id="2_51j1f"]
+[ext_resource type="Texture2D" uid="uid://dfwwh0mlcv0ar" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0002.png" id="3_4ohnq"]
+[ext_resource type="Texture2D" uid="uid://wf5r3j4m234o" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0003.png" id="4_8dbah"]
+[ext_resource type="Texture2D" uid="uid://bfdpwhe5q27wj" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0004.png" id="5_tas5s"]
+[ext_resource type="Texture2D" uid="uid://de6oi4qme7rtq" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0005.png" id="6_1s41q"]
+[ext_resource type="Texture2D" uid="uid://cb00ejw1tsplt" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0006.png" id="7_l6ecq"]
+[ext_resource type="Texture2D" uid="uid://d13e8nrelt8ib" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0007.png" id="8_fterv"]
+[ext_resource type="Texture2D" uid="uid://dgeb68i53qult" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0008.png" id="9_4bew8"]
+[ext_resource type="Texture2D" uid="uid://d0jhqhdayd8fn" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0009.png" id="10_doxyo"]
+[ext_resource type="Texture2D" uid="uid://b4h2i5gsw2eir" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0010.png" id="11_qopua"]
+[ext_resource type="Texture2D" uid="uid://vcv8pa8ebtsa" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0011.png" id="12_pcie3"]
+[ext_resource type="Texture2D" uid="uid://b7qcjpca8gw3" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0012.png" id="13_mthtf"]
+[ext_resource type="Texture2D" uid="uid://fhdmdfxh0cw6" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0013.png" id="14_w7yll"]
+[ext_resource type="Texture2D" uid="uid://bbdvr6twyqqcx" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0014.png" id="15_gsgbm"]
+[ext_resource type="Texture2D" uid="uid://js5q6utos4ym" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0015.png" id="16_dkyvb"]
+[ext_resource type="Texture2D" uid="uid://cocuv1rduxtgy" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0016.png" id="17_j8he3"]
+[ext_resource type="Texture2D" uid="uid://bx0arqo5k7kni" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0017.png" id="18_l41ss"]
+[ext_resource type="Texture2D" uid="uid://d05y3f0xgjw2s" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0018.png" id="19_p7u3g"]
+[ext_resource type="Texture2D" uid="uid://dc8bjkvymc7n1" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/metal/MetalStaffBasicAttack0019.png" id="20_17cmw"]
+[ext_resource type="Texture2D" uid="uid://d4k3ghugsiea5" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0000.png" id="21_5b6l2"]
+[ext_resource type="Texture2D" uid="uid://jca6vg8np1kq" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0001.png" id="22_pgweq"]
+[ext_resource type="Texture2D" uid="uid://dhqju5d6ijupr" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0002.png" id="23_dftgi"]
+[ext_resource type="Texture2D" uid="uid://bitay50gr58o4" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0003.png" id="24_w7tkm"]
+[ext_resource type="Texture2D" uid="uid://b3wqp2w5srtku" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0004.png" id="25_4jcqf"]
+[ext_resource type="Texture2D" uid="uid://cygrwkx3bqg1w" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0005.png" id="26_ifxdp"]
+[ext_resource type="Texture2D" uid="uid://53geyk7cc57g" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0006.png" id="27_8jp7m"]
+[ext_resource type="Texture2D" uid="uid://dibp3rijch1nf" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0007.png" id="28_nitor"]
+[ext_resource type="Texture2D" uid="uid://df7fs32c7xoyq" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0008.png" id="29_slrhf"]
+[ext_resource type="Texture2D" uid="uid://b8qqw62gqpq6p" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0009.png" id="30_lyj2v"]
+[ext_resource type="Texture2D" uid="uid://bu2vnwffo0dti" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0010.png" id="31_hx54v"]
+[ext_resource type="Texture2D" uid="uid://b5v0oer8f7ci6" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0011.png" id="32_dq0s6"]
+[ext_resource type="Texture2D" uid="uid://c181b63ja08p6" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0012.png" id="33_xv6t2"]
+[ext_resource type="Texture2D" uid="uid://dcrwad8k734e8" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0013.png" id="34_ejee5"]
+[ext_resource type="Texture2D" uid="uid://d5lkvweebqi2" path="res://assets/textures/ui_textures/interface/weapons/staff/block/metal/metal_staff_block0014.png" id="35_xar2e"]
+[ext_resource type="Texture2D" uid="uid://dxsc2abnabinp" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0000.png" id="36_0w0do"]
+[ext_resource type="Texture2D" uid="uid://cdiu5uo306j0x" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0001.png" id="37_rgi4n"]
+[ext_resource type="Texture2D" uid="uid://1fvwj4t202t2" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0002.png" id="38_godgd"]
+[ext_resource type="Texture2D" uid="uid://fsb10gm4o3px" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0003.png" id="39_t5ygk"]
+[ext_resource type="Texture2D" uid="uid://c7b62ljdltxls" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0004.png" id="40_v77k3"]
+[ext_resource type="Texture2D" uid="uid://nwb0vsrnccxi" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0005.png" id="41_t0jed"]
+[ext_resource type="Texture2D" uid="uid://dqbgxgqwrfv0c" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0006.png" id="42_da7it"]
+[ext_resource type="Texture2D" uid="uid://b4u2rvvfk2sbc" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0007.png" id="43_hqrvu"]
+[ext_resource type="Texture2D" uid="uid://cemgujlfyo37h" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0008.png" id="44_a47bt"]
+[ext_resource type="Texture2D" uid="uid://b7ks1hwq2tqnx" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0009.png" id="45_utujl"]
+[ext_resource type="Texture2D" uid="uid://c1fs75c0p2kb4" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0010.png" id="46_exhyj"]
+[ext_resource type="Texture2D" uid="uid://csiligr36ipbo" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0011.png" id="47_85yu7"]
+[ext_resource type="Texture2D" uid="uid://6jd4mu8bkn7t" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0012.png" id="48_ixgqv"]
+[ext_resource type="Texture2D" uid="uid://b57fqe7alj5d0" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0013.png" id="49_hy2p5"]
+[ext_resource type="Texture2D" uid="uid://cc7j1s8t0ftog" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0014.png" id="50_08h0j"]
+[ext_resource type="Texture2D" uid="uid://6tgatb4nlsy5" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0015.png" id="51_a8uho"]
+[ext_resource type="Texture2D" uid="uid://dyyi8m61pw3sw" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0016.png" id="52_ux23m"]
+[ext_resource type="Texture2D" uid="uid://bjfoaqeouqt50" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0017.png" id="53_tw5cf"]
+[ext_resource type="Texture2D" uid="uid://cgwpfrbua03xd" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0018.png" id="54_jbrey"]
+[ext_resource type="Texture2D" uid="uid://vbiagvrbo4pq" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0019.png" id="55_yo4ej"]
+[ext_resource type="Texture2D" uid="uid://cjyj2s6ooi7fj" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0020.png" id="56_2r87v"]
+[ext_resource type="Texture2D" uid="uid://b1l8xgura47m0" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0021.png" id="57_jwlmd"]
+[ext_resource type="Texture2D" uid="uid://ctwhsjtqjg2da" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0022.png" id="58_in4av"]
+[ext_resource type="Texture2D" uid="uid://cnivb6e0p6vh3" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0023.png" id="59_ldfro"]
+[ext_resource type="Texture2D" uid="uid://dxqwfdq0alhc3" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0024.png" id="60_wjsgy"]
+[ext_resource type="Texture2D" uid="uid://dm8bq4ps1shx7" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0025.png" id="61_8g0mi"]
+[ext_resource type="Texture2D" uid="uid://bmhafhxdesgdt" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0026.png" id="62_wc700"]
+[ext_resource type="Texture2D" uid="uid://dxe2i82gcnoc6" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0027.png" id="63_m87tx"]
+[ext_resource type="Texture2D" uid="uid://ghqmp4qafwu3" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0028.png" id="64_vfr1p"]
+[ext_resource type="Texture2D" uid="uid://dxnxyfilh0mc8" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0029.png" id="65_6g7w7"]
+[ext_resource type="Texture2D" uid="uid://cx6g4daebanas" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0030.png" id="66_yjoum"]
+[ext_resource type="Texture2D" uid="uid://cjlu5jgqslpng" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0031.png" id="67_njvl6"]
+[ext_resource type="Texture2D" uid="uid://hnwftegm51ic" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0032.png" id="68_jmx42"]
+[ext_resource type="Texture2D" uid="uid://bbtnbx3dyyyff" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0033.png" id="69_mnpb4"]
+[ext_resource type="Texture2D" uid="uid://ia5h3bfiof25" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0034.png" id="70_1elia"]
+[ext_resource type="Texture2D" uid="uid://djfcn4gnjvqa7" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0035.png" id="71_s0ntk"]
+[ext_resource type="Texture2D" uid="uid://xvsw3kv711kd" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0036.png" id="72_od508"]
+[ext_resource type="Texture2D" uid="uid://btiinpqoop1jh" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0037.png" id="73_jd1bo"]
+[ext_resource type="Texture2D" uid="uid://d3ayutea38d2f" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0038.png" id="74_4fpnw"]
+[ext_resource type="Texture2D" uid="uid://dkxpfsiioqw5k" path="res://assets/textures/ui_textures/interface/weapons/staff/special/metal/MetalStaffSpecialAttack0039.png" id="75_cc77p"]
+[ext_resource type="Texture2D" uid="uid://dbe5kmorauirl" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0000.png" id="76_2010d"]
+[ext_resource type="Texture2D" uid="uid://oc8m7dx3p28f" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0001.png" id="77_8dm7u"]
+[ext_resource type="Texture2D" uid="uid://dpjo3vmyeud7h" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0002.png" id="78_odt14"]
+[ext_resource type="Texture2D" uid="uid://cjfsrq0hhplc4" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0003.png" id="79_g15qf"]
+[ext_resource type="Texture2D" uid="uid://isgbp53x1qmo" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0004.png" id="80_gf55t"]
+[ext_resource type="Texture2D" uid="uid://b3aglbsjlllm" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0005.png" id="81_v8en7"]
+[ext_resource type="Texture2D" uid="uid://2pnexx5mlf05" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0006.png" id="82_emlah"]
+[ext_resource type="Texture2D" uid="uid://1nsb42iiuge2" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0007.png" id="83_5kb2a"]
+[ext_resource type="Texture2D" uid="uid://b51fisp7rjxd2" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0008.png" id="84_ijqr3"]
+[ext_resource type="Texture2D" uid="uid://b8wc74ph77n8o" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0009.png" id="85_wt1yl"]
+[ext_resource type="Texture2D" uid="uid://bi1pc1mdj8e4v" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0010.png" id="86_me5jg"]
+[ext_resource type="Texture2D" uid="uid://cysa2a4udkgmg" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0011.png" id="87_0ttux"]
+[ext_resource type="Texture2D" uid="uid://b8cpuc6eo0wp5" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0012.png" id="88_t8sg5"]
+[ext_resource type="Texture2D" uid="uid://d8edjlg80qim" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0013.png" id="89_3xs3j"]
+[ext_resource type="Texture2D" uid="uid://cg4bxqrhuh5dw" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0014.png" id="90_tdp2r"]
+[ext_resource type="Texture2D" uid="uid://dp0t8i13yrll6" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0015.png" id="91_itrey"]
+[ext_resource type="Texture2D" uid="uid://cnsjwscm16ctc" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0016.png" id="92_s00qq"]
+[ext_resource type="Texture2D" uid="uid://dkx3bb2icf8lj" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0017.png" id="93_msfq4"]
+[ext_resource type="Texture2D" uid="uid://bgnr3bqvb7u32" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0018.png" id="94_nmjxv"]
+[ext_resource type="Texture2D" uid="uid://dl0prmyexhpm2" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/normal/NormalStaffBasicAttack0019.png" id="95_vi8lp"]
+[ext_resource type="Texture2D" uid="uid://becqdee623qam" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0000.png" id="96_td6yw"]
+[ext_resource type="Texture2D" uid="uid://blrg1wn8udvwi" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0001.png" id="97_qnnqd"]
+[ext_resource type="Texture2D" uid="uid://d37gixxr4yvod" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0002.png" id="98_8xsrg"]
+[ext_resource type="Texture2D" uid="uid://bh1o2165pj42w" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0003.png" id="99_nc5lo"]
+[ext_resource type="Texture2D" uid="uid://cvijibwd0kv0" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0004.png" id="100_fbi4t"]
+[ext_resource type="Texture2D" uid="uid://jark0xvqriq3" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0005.png" id="101_mubws"]
+[ext_resource type="Texture2D" uid="uid://defo536slrhxl" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0006.png" id="102_qdj15"]
+[ext_resource type="Texture2D" uid="uid://cnm7rq42aw0uq" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0007.png" id="103_5leeb"]
+[ext_resource type="Texture2D" uid="uid://lcba73r2knjf" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0008.png" id="104_uyi46"]
+[ext_resource type="Texture2D" uid="uid://x83w7u0ioaan" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0009.png" id="105_4lg3e"]
+[ext_resource type="Texture2D" uid="uid://wcrdbyqbwahu" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0010.png" id="106_4tdd3"]
+[ext_resource type="Texture2D" uid="uid://cvyemb2yh4b0p" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0011.png" id="107_kmtah"]
+[ext_resource type="Texture2D" uid="uid://b0amvfrsliksv" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0012.png" id="108_sfs2j"]
+[ext_resource type="Texture2D" uid="uid://tmf6pjc4k2y2" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0013.png" id="109_5hkdr"]
+[ext_resource type="Texture2D" uid="uid://bjj5icsok2ywd" path="res://assets/textures/ui_textures/interface/weapons/staff/block/normal/normal_staff_block0014.png" id="110_titd0"]
+[ext_resource type="Texture2D" uid="uid://clig4gxqtjdkk" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0000.png" id="111_iu5de"]
+[ext_resource type="Texture2D" uid="uid://cumt0ljf0k3j6" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0001.png" id="112_jnfrc"]
+[ext_resource type="Texture2D" uid="uid://ctlwow04hetxi" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0002.png" id="113_lghar"]
+[ext_resource type="Texture2D" uid="uid://dgip428j68trs" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0003.png" id="114_d4828"]
+[ext_resource type="Texture2D" uid="uid://ndoku8bp6spk" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0004.png" id="115_k8ilf"]
+[ext_resource type="Texture2D" uid="uid://c5ui0twmafgp2" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0005.png" id="116_cp17q"]
+[ext_resource type="Texture2D" uid="uid://ccgw35igbdtlb" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0006.png" id="117_s0exu"]
+[ext_resource type="Texture2D" uid="uid://bcaurn8ptwv11" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0007.png" id="118_j4dv1"]
+[ext_resource type="Texture2D" uid="uid://dvslvql3l2ek2" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0008.png" id="119_vwdg7"]
+[ext_resource type="Texture2D" uid="uid://cof47dnr4d0xt" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0009.png" id="120_yrlp5"]
+[ext_resource type="Texture2D" uid="uid://b3k4dtrhwwed7" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0010.png" id="121_fe5c0"]
+[ext_resource type="Texture2D" uid="uid://dpoyqs6otwt0b" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0011.png" id="122_gw5jk"]
+[ext_resource type="Texture2D" uid="uid://dk4rklcqh34c7" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0012.png" id="123_vvsq0"]
+[ext_resource type="Texture2D" uid="uid://cnmnhtsvn5owq" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0013.png" id="124_2honm"]
+[ext_resource type="Texture2D" uid="uid://peey7ocyi6qk" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0014.png" id="125_ppd84"]
+[ext_resource type="Texture2D" uid="uid://b86lrrugn05vp" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0015.png" id="126_4ydfm"]
+[ext_resource type="Texture2D" uid="uid://mx5mdqif01bs" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0016.png" id="127_4ag4e"]
+[ext_resource type="Texture2D" uid="uid://cxsfakgs331xl" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0017.png" id="128_nbo2f"]
+[ext_resource type="Texture2D" uid="uid://dxltpa2fpgada" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0018.png" id="129_6okjq"]
+[ext_resource type="Texture2D" uid="uid://dmojsun87b6c1" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0019.png" id="130_nnoxc"]
+[ext_resource type="Texture2D" uid="uid://bfhfpug3ru78l" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0020.png" id="131_61f6c"]
+[ext_resource type="Texture2D" uid="uid://18hlscqxoyhh" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0021.png" id="132_xe0fv"]
+[ext_resource type="Texture2D" uid="uid://bwb73tw0dg1m2" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0022.png" id="133_4s78t"]
+[ext_resource type="Texture2D" uid="uid://t7dna8ptlx1r" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0023.png" id="134_ru10k"]
+[ext_resource type="Texture2D" uid="uid://dn00qb2xci257" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0024.png" id="135_qp0bo"]
+[ext_resource type="Texture2D" uid="uid://dgriisg1glgcx" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0025.png" id="136_u2meq"]
+[ext_resource type="Texture2D" uid="uid://3kc2dywm4h6u" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0026.png" id="137_kimht"]
+[ext_resource type="Texture2D" uid="uid://df31wes2uhq5e" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0027.png" id="138_hl064"]
+[ext_resource type="Texture2D" uid="uid://dababyjyc3paj" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0028.png" id="139_4ggph"]
+[ext_resource type="Texture2D" uid="uid://cukj8t0xctwm7" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0029.png" id="140_abvt6"]
+[ext_resource type="Texture2D" uid="uid://b6of8qi6qdtnp" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0030.png" id="141_sbuvc"]
+[ext_resource type="Texture2D" uid="uid://c1sriyjgvxiic" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0031.png" id="142_wmigv"]
+[ext_resource type="Texture2D" uid="uid://cuwwubae5mocq" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0032.png" id="143_o6cx3"]
+[ext_resource type="Texture2D" uid="uid://cxlf5kn0s4r7h" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0033.png" id="144_lrc5q"]
+[ext_resource type="Texture2D" uid="uid://bnst1qsfal266" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0034.png" id="145_rebkb"]
+[ext_resource type="Texture2D" uid="uid://kwhy5gqhqhcn" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0035.png" id="146_amd1a"]
+[ext_resource type="Texture2D" uid="uid://cdxajg52uugvo" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0036.png" id="147_w4q1w"]
+[ext_resource type="Texture2D" uid="uid://dhfe7bsxvdppr" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0037.png" id="148_wllkp"]
+[ext_resource type="Texture2D" uid="uid://cps2funaf3vuo" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0038.png" id="149_padf3"]
+[ext_resource type="Texture2D" uid="uid://bnlcp7jmtae8f" path="res://assets/textures/ui_textures/interface/weapons/staff/special/normal/NormalStaffSpecialAttack0039.png" id="150_4ma6f"]
+[ext_resource type="Texture2D" uid="uid://bulpodkmlx0hp" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0000.png" id="151_uliff"]
+[ext_resource type="Texture2D" uid="uid://b40dbe0sbk5w8" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0001.png" id="152_6ddj5"]
+[ext_resource type="Texture2D" uid="uid://cpj1wtldxmcqj" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0002.png" id="153_c67x5"]
+[ext_resource type="Texture2D" uid="uid://btoqvy8vum85q" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0003.png" id="154_uiq41"]
+[ext_resource type="Texture2D" uid="uid://u3lvgwvyq00h" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0004.png" id="155_6murv"]
+[ext_resource type="Texture2D" uid="uid://ypin58b7muuu" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0005.png" id="156_q0etd"]
+[ext_resource type="Texture2D" uid="uid://cuo1cnu0254u3" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0006.png" id="157_3fs8j"]
+[ext_resource type="Texture2D" uid="uid://cyci0xg7ao0vh" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0007.png" id="158_lkqa2"]
+[ext_resource type="Texture2D" uid="uid://dpnf1q8uwwg3u" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0008.png" id="159_iq24f"]
+[ext_resource type="Texture2D" uid="uid://dtjnkb5u37x6y" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0009.png" id="160_omdfv"]
+[ext_resource type="Texture2D" uid="uid://csdyf14xlj5pg" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0010.png" id="161_60ivf"]
+[ext_resource type="Texture2D" uid="uid://bscapb5mwmjum" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0011.png" id="162_gi2s5"]
+[ext_resource type="Texture2D" uid="uid://bepi5mx71dipu" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0012.png" id="163_xhot5"]
+[ext_resource type="Texture2D" uid="uid://ce3ls14n7ffhf" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0013.png" id="164_eh7yp"]
+[ext_resource type="Texture2D" uid="uid://drdb7uk2da7t5" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0014.png" id="165_mcydg"]
+[ext_resource type="Texture2D" uid="uid://wbcdc4mr3pnm" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0015.png" id="166_nrv3r"]
+[ext_resource type="Texture2D" uid="uid://bydyty1570esj" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0016.png" id="167_x1dbm"]
+[ext_resource type="Texture2D" uid="uid://cd462q4s3mkog" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0017.png" id="168_7v6xb"]
+[ext_resource type="Texture2D" uid="uid://dbklfh8pcshwa" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0018.png" id="169_lsdo4"]
+[ext_resource type="Texture2D" uid="uid://bjpi78aa67o47" path="res://assets/textures/ui_textures/interface/weapons/staff/attack/wooden/WoodenStaffBasicAttack0019.png" id="170_367ob"]
+[ext_resource type="Texture2D" uid="uid://cy5up0c26c5ny" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0000.png" id="171_36367"]
+[ext_resource type="Texture2D" uid="uid://bw8u2303eu4eb" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0001.png" id="172_d6e7p"]
+[ext_resource type="Texture2D" uid="uid://cd1rlgsixke3q" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0002.png" id="173_dcx7v"]
+[ext_resource type="Texture2D" uid="uid://bcorgbak7rn6u" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0003.png" id="174_0dnn3"]
+[ext_resource type="Texture2D" uid="uid://dqfcb2ajm75l5" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0004.png" id="175_d7te3"]
+[ext_resource type="Texture2D" uid="uid://ppp3hqxg4pbf" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0005.png" id="176_lnqw8"]
+[ext_resource type="Texture2D" uid="uid://bwaaymlg5twon" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0006.png" id="177_0iigs"]
+[ext_resource type="Texture2D" uid="uid://dyywlaenwmdn6" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0007.png" id="178_u5xp5"]
+[ext_resource type="Texture2D" uid="uid://cd0uqmbt06ywm" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0008.png" id="179_g17wb"]
+[ext_resource type="Texture2D" uid="uid://dw5l6v4r6bgnm" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0009.png" id="180_kakpk"]
+[ext_resource type="Texture2D" uid="uid://xhtb5yvwgkwx" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0010.png" id="181_xy85x"]
+[ext_resource type="Texture2D" uid="uid://pxa0oh2lbpsd" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0011.png" id="182_f12j2"]
+[ext_resource type="Texture2D" uid="uid://bhot4bb88suj7" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0012.png" id="183_vi40w"]
+[ext_resource type="Texture2D" uid="uid://8weg0k5phs4k" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0013.png" id="184_qxm6o"]
+[ext_resource type="Texture2D" uid="uid://dng1xpc3dk27y" path="res://assets/textures/ui_textures/interface/weapons/staff/block/wooden/wooden_staff_block0014.png" id="185_rg834"]
+[ext_resource type="Texture2D" uid="uid://beos4qdi0heqk" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0000.png" id="186_4hbnw"]
+[ext_resource type="Texture2D" uid="uid://mh1v8uloolup" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0001.png" id="187_5fgrs"]
+[ext_resource type="Texture2D" uid="uid://fbcp1oj40aw5" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0002.png" id="188_xkev3"]
+[ext_resource type="Texture2D" uid="uid://c64508cu7daqn" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0003.png" id="189_500ac"]
+[ext_resource type="Texture2D" uid="uid://ddlefojows5ux" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0004.png" id="190_8w07b"]
+[ext_resource type="Texture2D" uid="uid://b3nskc61n4x10" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0005.png" id="191_ohvqd"]
+[ext_resource type="Texture2D" uid="uid://2nuv6tiv0u44" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0006.png" id="192_p252m"]
+[ext_resource type="Texture2D" uid="uid://b2svc2lfn14to" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0007.png" id="193_fqvqi"]
+[ext_resource type="Texture2D" uid="uid://osws7w7ds06i" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0008.png" id="194_kkv5k"]
+[ext_resource type="Texture2D" uid="uid://dkmprrojnef3s" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0009.png" id="195_ljxkd"]
+[ext_resource type="Texture2D" uid="uid://xki8hojxx64t" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0010.png" id="196_wkwao"]
+[ext_resource type="Texture2D" uid="uid://dd0odftl047gm" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0011.png" id="197_bqyf8"]
+[ext_resource type="Texture2D" uid="uid://5upkgafe4nay" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0012.png" id="198_f8yy2"]
+[ext_resource type="Texture2D" uid="uid://vwuwm74g35fc" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0013.png" id="199_38kan"]
+[ext_resource type="Texture2D" uid="uid://d24ccmhfxfyxs" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0014.png" id="200_1gjmd"]
+[ext_resource type="Texture2D" uid="uid://cf2cks5pp3y0y" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0015.png" id="201_kjal4"]
+[ext_resource type="Texture2D" uid="uid://bcrj54125023r" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0016.png" id="202_a3kx8"]
+[ext_resource type="Texture2D" uid="uid://cx344sqfmylku" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0017.png" id="203_3t04l"]
+[ext_resource type="Texture2D" uid="uid://df1txohtqrqs8" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0018.png" id="204_oetwb"]
+[ext_resource type="Texture2D" uid="uid://cdd3s2rqtggkk" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0019.png" id="205_bt38j"]
+[ext_resource type="Texture2D" uid="uid://qkn3fdjo5315" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0020.png" id="206_siu56"]
+[ext_resource type="Texture2D" uid="uid://bnl3kmxt7gsc3" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0021.png" id="207_kyg3x"]
+[ext_resource type="Texture2D" uid="uid://cv3tamqwu7uys" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0022.png" id="208_ucvlk"]
+[ext_resource type="Texture2D" uid="uid://h7p5m1vgweo1" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0023.png" id="209_5w84q"]
+[ext_resource type="Texture2D" uid="uid://c412e1k1i34ky" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0024.png" id="210_wlvth"]
+[ext_resource type="Texture2D" uid="uid://cbs2fvprit7ni" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0025.png" id="211_k06yn"]
+[ext_resource type="Texture2D" uid="uid://b7an6ie1bymbm" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0026.png" id="212_4sfly"]
+[ext_resource type="Texture2D" uid="uid://b2ng4p3iv5jp0" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0027.png" id="213_g4gwr"]
+[ext_resource type="Texture2D" uid="uid://vpeftqgdaa47" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0028.png" id="214_j0w5u"]
+[ext_resource type="Texture2D" uid="uid://de7ehntl6ge5g" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0029.png" id="215_n3ljx"]
+[ext_resource type="Texture2D" uid="uid://bu8kgdukw3itj" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0030.png" id="216_r0d4d"]
+[ext_resource type="Texture2D" uid="uid://jbbavdwa6d7a" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0031.png" id="217_l16ij"]
+[ext_resource type="Texture2D" uid="uid://c5k5rvojtrtww" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0032.png" id="218_jcd20"]
+[ext_resource type="Texture2D" uid="uid://8xgmwi73rvgk" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0033.png" id="219_1ue7r"]
+[ext_resource type="Texture2D" uid="uid://bgx4qgagapi2t" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0034.png" id="220_iux8i"]
+[ext_resource type="Texture2D" uid="uid://dmq5ln3nsfli6" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0035.png" id="221_54jc3"]
+[ext_resource type="Texture2D" uid="uid://dxrn5je5libg7" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0036.png" id="222_aumb1"]
+[ext_resource type="Texture2D" uid="uid://cq6cxwsfixrs1" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0037.png" id="223_xxdnl"]
+[ext_resource type="Texture2D" uid="uid://b6i6tn6v5u6k" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0038.png" id="224_konbg"]
+[ext_resource type="Texture2D" uid="uid://dcr0lo83oukym" path="res://assets/textures/ui_textures/interface/weapons/staff/special/wooden/WoodenStaffSpecialAttack0039.png" id="225_jtyhr"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uex47")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_51j1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4ohnq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8dbah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tas5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1s41q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_l6ecq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fterv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_4bew8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_doxyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_qopua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_pcie3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_mthtf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_w7yll")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_gsgbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_dkyvb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_j8he3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_l41ss")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_p7u3g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_17cmw")
+}],
+"loop": true,
+"name": &"metal_staff_attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_5b6l2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_pgweq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_dftgi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_w7tkm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_4jcqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ifxdp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_8jp7m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_nitor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_slrhf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_lyj2v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hx54v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_dq0s6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_xv6t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_ejee5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_xar2e")
+}],
+"loop": true,
+"name": &"metal_staff_block",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_0w0do")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_rgi4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_godgd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_t5ygk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_v77k3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_t0jed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_da7it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_hqrvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_a47bt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_utujl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_exhyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_85yu7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_ixgqv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_hy2p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_08h0j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_a8uho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_ux23m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_tw5cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_jbrey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_yo4ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_2r87v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_jwlmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_in4av")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_ldfro")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_wjsgy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_8g0mi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_wc700")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_m87tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_vfr1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_6g7w7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_yjoum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_njvl6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_jmx42")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_mnpb4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_1elia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_s0ntk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_od508")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_jd1bo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_4fpnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_cc77p")
+}],
+"loop": true,
+"name": &"metal_staff_special",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("76_2010d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_8dm7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_odt14")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_g15qf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_gf55t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_v8en7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_emlah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_5kb2a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_ijqr3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_wt1yl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_me5jg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_0ttux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_t8sg5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_3xs3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_tdp2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_itrey")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_s00qq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_msfq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_nmjxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_vi8lp")
+}],
+"loop": true,
+"name": &"normal_staff_attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("96_td6yw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_qnnqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_8xsrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_nc5lo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_fbi4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_mubws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_qdj15")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_5leeb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_uyi46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_4lg3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_4tdd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_kmtah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_sfs2j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_5hkdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_titd0")
+}],
+"loop": true,
+"name": &"normal_staff_block",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("111_iu5de")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_jnfrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_lghar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_d4828")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_k8ilf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_cp17q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_s0exu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_j4dv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_vwdg7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_yrlp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_fe5c0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_gw5jk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_vvsq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_2honm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_ppd84")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_4ydfm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_4ag4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_nbo2f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_6okjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_nnoxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_61f6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_xe0fv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_4s78t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_ru10k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_qp0bo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_u2meq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_kimht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_hl064")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_4ggph")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_abvt6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_sbuvc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_wmigv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_o6cx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_lrc5q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_rebkb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_amd1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_w4q1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_wllkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_padf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_4ma6f")
+}],
+"loop": true,
+"name": &"normal_staff_special",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("151_uliff")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_6ddj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_c67x5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_uiq41")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_6murv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_q0etd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_3fs8j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_lkqa2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_iq24f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_omdfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_60ivf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_gi2s5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_xhot5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_eh7yp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_mcydg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_nrv3r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_x1dbm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_7v6xb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_lsdo4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_367ob")
+}],
+"loop": true,
+"name": &"wooden_staff_attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("171_36367")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_d6e7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_dcx7v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_0dnn3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_d7te3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_lnqw8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_0iigs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_u5xp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_g17wb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_kakpk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_xy85x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_f12j2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_vi40w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("184_qxm6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_rg834")
+}],
+"loop": true,
+"name": &"wooden_staff_block",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("186_4hbnw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_5fgrs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_xkev3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_500ac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_8w07b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_ohvqd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_p252m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_fqvqi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_kkv5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_ljxkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("196_wkwao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_bqyf8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_f8yy2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_38kan")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_1gjmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_kjal4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_a3kx8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_3t04l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_oetwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_bt38j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_siu56")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_kyg3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("208_ucvlk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("209_5w84q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("210_wlvth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("211_k06yn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("212_4sfly")
+}, {
+"duration": 1.0,
+"texture": ExtResource("213_g4gwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("214_j0w5u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("215_n3ljx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("216_r0d4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("217_l16ij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("218_jcd20")
+}, {
+"duration": 1.0,
+"texture": ExtResource("219_1ue7r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("220_iux8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("221_54jc3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("222_aumb1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("223_xxdnl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("224_konbg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("225_jtyhr")
+}],
+"loop": true,
+"name": &"wooden_staff_special",
+"speed": 30.0
+}]

@@ -38,9 +38,10 @@ func _ready() -> void:
 	for button: Button in get_tree().get_nodes_in_group("rich_button"):
 		button.mouse_entered.connect(_on_hover.bind(button.get_child(0)))
 		button.mouse_exited.connect(_on_unhover.bind(button.get_child(0)))
-	
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause") && !pause_menu.visible && !pause_anim.is_playing():
+
+func _input(event) -> void:
+	if event.is_action_pressed("pause") && !pause_menu.visible && !pause_anim.is_playing():
+		get_tree().paused = true
 		buttons.visible = true
 		var blend_in = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		blend_in.tween_property(self, "modulate:a", 1, 0.5)
@@ -49,8 +50,10 @@ func _process(delta: float) -> void:
 		pause_anim.play("open")
 		await pause_anim.animation_finished
 		show_labels(1)
-	elif Input.is_action_just_pressed("pause") && !pause_anim.is_playing():
+	elif event.is_action_pressed("pause") && !pause_anim.is_playing():
 		_on_resume_pressed()
+		get_tree().paused = false
+	
 
 func show_labels(target_modulate: int) -> void:
 	var tween_labels: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)

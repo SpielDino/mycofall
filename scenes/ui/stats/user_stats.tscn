@@ -1,12 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2rtleo5lquvb"]
+[gd_scene load_steps=10 format=3 uid="uid://b2rtleo5lquvb"]
 
 [ext_resource type="Script" uid="uid://djxvmnwkuufb1" path="res://scripts/ui/stats/stats.gd" id="1_gxikd"]
 [ext_resource type="Texture2D" uid="uid://c608pdyb20nhs" path="res://assets/textures/ui_textures/interface/stats/health/Health0000.png" id="2_bsfmg"]
 [ext_resource type="Texture2D" uid="uid://cgydcj02iin01" path="res://assets/textures/ui_textures/interface/stats/stamina/StaminaBerries0000.png" id="3_3faiv"]
 [ext_resource type="Texture2D" uid="uid://fcq8xur3nh5" path="res://assets/textures/ui_textures/interface/stats/mana/Mana0000.png" id="4_m0b6f"]
-[ext_resource type="Texture2D" uid="uid://hw6rxumfbxcg" path="res://assets/textures/ui_textures/interface/weapons/sword/MetalSword.png" id="5_3faiv"]
 [ext_resource type="Script" uid="uid://yc4ag12qhq02" path="res://scripts/ui/stats/branches/branches.gd" id="5_iotub"]
-[ext_resource type="Texture2D" uid="uid://jbtku32idty8" path="res://assets/textures/ui_textures/interface/weapons/sword/WoodenSword.psd.png" id="6_3faiv"]
 [ext_resource type="Texture2D" uid="uid://dgda0rtm1hci8" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0020.png" id="7_nh88w"]
 [ext_resource type="Texture2D" uid="uid://cfn1sdtauh8fl" path="res://assets/textures/ui_textures/interface/stats/branches/weapon_two/BranchSecondWeapon0000.png" id="8_iotub"]
 [ext_resource type="Texture2D" uid="uid://c1kgdie7yosjt" path="res://assets/textures/ui_textures/interface/stats/branches/branch_two/branch_two0000.png" id="8_lq7ui"]
@@ -343,7 +341,6 @@ theme_override_constants/margin_left = 38
 
 [node name="WeaponOne" type="TextureRect" parent="main/VBoxContainer/stats/weapons/WeaponOne/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("5_3faiv")
 expand_mode = 3
 
 [node name="WeaponTwo" type="MarginContainer" parent="main/VBoxContainer/stats/weapons"]
@@ -362,7 +359,6 @@ theme_override_constants/margin_left = 5
 
 [node name="WeaponTwo" type="TextureRect" parent="main/VBoxContainer/stats/weapons/WeaponTwo/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("6_3faiv")
 expand_mode = 3
 
 [node name="branches" type="MarginContainer" parent="main/VBoxContainer/stats"]
@@ -391,68 +387,3 @@ expand_mode = 3
 layout_mode = 2
 texture = ExtResource("9_12t6a")
 expand_mode = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="main/VBoxContainer"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="VBoxContainer" type="VBoxContainer" parent="main/VBoxContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Menu"
-
-[node name="Button2" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Stamina"
-
-[node name="Button3" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Mana"
-
-[node name="Button4" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "WeaponTwo"
-
-[node name="Button5" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "DamagePlayerOne"
-
-[node name="Button6" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "DamagePlayerFive"
-
-[node name="Button8" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Stamina -1"
-
-[node name="Button9" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Mana -1"
-
-[node name="Button7" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "HealPlayerFive"
-
-[node name="Button10" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Stamina +1"
-
-[node name="Button11" type="Button" parent="main/VBoxContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Mana +1"
-
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button" to="main/VBoxContainer/stats/branches" method="_on_menu_toggle"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button2" to="main/VBoxContainer/stats/branches" method="_on_stamina_toggle"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button3" to="main/VBoxContainer/stats/branches" method="_on_mana_toggle"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button4" to="main/VBoxContainer/stats/branches" method="_on_weapon_two_toggle"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button5" to="main/VBoxContainer/stats" method="_on_payer_damaged_one"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button6" to="main/VBoxContainer/stats" method="_on_payer_damaged_five"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button8" to="main/VBoxContainer/stats" method="_on_player_stamina_damaged_five"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button9" to="main/VBoxContainer/stats" method="_on_player_mana_damaged_five"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button7" to="main/VBoxContainer/stats" method="_on_payer_heal"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button10" to="main/VBoxContainer/stats" method="_on_player_stamina_regain"]
-[connection signal="pressed" from="main/VBoxContainer/MarginContainer/VBoxContainer/Button11" to="main/VBoxContainer/stats" method="_on_player_mana_regain"]

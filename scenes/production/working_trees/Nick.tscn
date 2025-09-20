@@ -11,6 +11,15 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Nick" type="Node3D"]
 
+[node name="MeleeEnemy_MovementComponent_PatroleMarkers#Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.42933, 0, 0)
+
+[node name="MeleeEnemy_MovementComponent_PatroleMarkers#Node3D2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3312, 0, 0)
+
+[node name="MeleeEnemy_MovementComponent_PatroleMarkers#Node3D3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.0983)
+
 [node name="MeleeEnemy_MovementComponent_Patrole Markers#Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.45855, 0.317945, 0)
 
@@ -35,15 +44,6 @@ speed = 4
 acceleration = 3
 has_patrol_route = true
 
-[node name="Node3D" type="Node3D" parent="MeleeEnemy/MovementComponent/PatroleMarkers" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.42933, 0, 0)
-
-[node name="Node3D2" type="Node3D" parent="MeleeEnemy/MovementComponent/PatroleMarkers" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3312, 0, 0)
-
-[node name="Node3D3" type="Node3D" parent="MeleeEnemy/MovementComponent/PatroleMarkers" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -16.0983)
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_td44f")
 
@@ -56,8 +56,11 @@ size = Vector3(36.4339, 0.131958, 31.0115)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72402, 0.0318675, 1.96075)
 
 [editable path="MeleeEnemy"]
+[editable path="MeleeEnemy/DetectionComponent"]
 [editable path="MeleeEnemy/MovementComponent"]
 [editable path="MeleeEnemy/EnemyMeleeAttackComponent"]
 [editable path="MeleeEnemy/Model"]
 [editable path="EnokiEnemy"]
+[editable path="EnokiEnemy/DetectionComponent"]
+[editable path="EnokiEnemy/MovementComponent"]
 [editable path="EnokiEnemy/Model"]

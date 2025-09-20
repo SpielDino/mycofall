@@ -7,6 +7,8 @@ signal attack_loading_updated
 signal heavy_attack
 signal interacted_with_upgrade_item
 
+var game_controller: GameController
+
 var first_weapon: bool = false
 var second_weapon: bool = false
 var first_weapon_name: String = ""
