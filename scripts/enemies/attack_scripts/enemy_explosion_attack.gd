@@ -23,7 +23,8 @@ func _physics_process(delta):
 	if enemy.state == enemy.States.MOVING and !started:
 		started = true
 		await get_tree().create_timer(lifetime).timeout
-		attack()
+		if !enemy.died:
+			attack()
 
 func attack():
 	enemy.state = enemy.States.ATTACK_TYPE_1
@@ -43,7 +44,8 @@ func explode():
 
 func _on_attack_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player") and enemy.state == enemy.States.MOVING:
-		attack() 
+		if !enemy.died:
+			attack()
 
 func _on_damage_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):

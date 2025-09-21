@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://drlemy28oey25"]
+[gd_scene load_steps=55 format=3 uid="uid://drlemy28oey25"]
 
 [ext_resource type="Texture2D" uid="uid://cbu02u0njv72o" path="res://assets/textures/Kenney Particles Transparent Background/smoke_07.png" id="1_qtpyy"]
 [ext_resource type="PackedScene" uid="uid://tlo6yqcgkttg" path="res://assets/models/enemies/boss/Boss.blend" id="2_swc6t"]
@@ -17,6 +17,7 @@
 [ext_resource type="AudioStream" uid="uid://bp4tym1afa621" path="res://assets/sounds/Enemy/BossSound/BossGestöhne/BossSound_2.wav" id="12_5ctdw"]
 [ext_resource type="AudioStream" uid="uid://cia1ey6poj3br" path="res://assets/sounds/Enemy/BossSound/BossGestöhne/BossSound_3.wav" id="13_1187o"]
 [ext_resource type="AudioStream" uid="uid://dsr8ritj675qu" path="res://assets/sounds/Enemy/BossSound/BossGestöhne/BossSound_4.wav" id="14_fciw0"]
+[ext_resource type="AudioStream" uid="uid://crfakpokgsgjs" path="res://assets/sounds/Enemy/BossSound/PoisonAttack/PoisonAttack_1.wav" id="18_amqbu"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_dp8bq"]
 
@@ -293,7 +294,7 @@ process_material = SubResource("ParticleProcessMaterial_ti2x5")
 draw_pass_1 = SubResource("QuadMesh_3twt1")
 
 [node name="ExplosionEnemySpawnPoint" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24533, 1.48503, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.24533, 1.83251, 0)
 
 [node name="DamageNumbersPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57163, 3.40632, 0)
@@ -393,13 +394,17 @@ stream = SubResource("AudioStreamRandomizer_tbb04")
 
 [node name="WalkingSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_v4xao")
-volume_db = -24.0
+volume_db = -10.0
 max_db = 0.0
 pitch_scale = 0.6
 
-[node name="RandomSounds" type="AudioStreamPlayer3D" parent="Sounds"]
+[node name="RandomSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_amqbu")
 volume_db = -6.0
+
+[node name="PoisonSound" type="AudioStreamPlayer3D" parent="Sounds"]
+stream = ExtResource("18_amqbu")
+volume_db = -15.0
 
 [node name="ExplosionsEnemySpawnpoints" type="Node3D" parent="."]
 top_level = true

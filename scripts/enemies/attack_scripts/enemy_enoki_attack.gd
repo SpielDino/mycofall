@@ -50,6 +50,7 @@ func ranged_attack():
 	enemy.animation_player.speed_scale = 1
 	enemy.animation_player.play("Throw")
 	await get_tree().create_timer(0.54).timeout
+	ranged_sound.play()
 	var pos: Vector3 = bullet_spawn_point.global_position 
 	var vel: Vector3 = player.get_child(0).global_position - pos
 	var bullet = bullet_scene.instantiate()
