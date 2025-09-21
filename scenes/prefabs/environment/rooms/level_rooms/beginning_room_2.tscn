@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://j3cv2ft8m4lb"]
+[gd_scene load_steps=49 format=3 uid="uid://j3cv2ft8m4lb"]
 
 [ext_resource type="PackedScene" uid="uid://b6yhasy6o2r4x" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(25x25).tscn" id="1_pbbwn"]
 [ext_resource type="PackedScene" uid="uid://da4i11iqjs82l" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_one.tscn" id="2_0jpa1"]
@@ -38,6 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://cqu8q20sg8ve1" path="res://scenes/prefabs/environment/walls/with_collision/stone_wall_2_with_collision.tscn" id="31_i0r2j"]
 [ext_resource type="Material" uid="uid://ceao68kawkbet" path="res://assets/materials/wall_material.tres" id="32_wyc8m"]
 [ext_resource type="PackedScene" uid="uid://cde3akejtkq8a" path="res://scenes/prefabs/environment/paths/path_stone_10.tscn" id="35_x1ain"]
+[ext_resource type="PackedScene" uid="uid://bnlu7mjuuo1pp" path="res://scenes/prefabs/environment/rooms/model_prefabs/background_test.tscn" id="39_co61a"]
+[ext_resource type="PackedScene" uid="uid://cn53573tmy3y" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass(8x_25)without_collision.tscn" id="40_exi71"]
+[ext_resource type="PackedScene" uid="uid://i8u6e01t1fe" path="res://scenes/prefabs/environment/rocks/without_collision/rock_2.tscn" id="41_6iveo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0jpa1"]
 size = Vector3(28.2955, 15, 1.95634)
@@ -481,6 +484,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.50942, 0, -0.302861)
 
 [node name="PathStone2" parent="NavExclusion/Path/Path2" instance=ExtResource("16_ajsmu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.432657, 0, -4.11026)
+
+[node name="Backgrounds" type="Node3D" parent="NavExclusion"]
+
+[node name="BackgroundTest" parent="NavExclusion/Backgrounds" instance=ExtResource("39_co61a")]
+transform = Transform3D(1.19249e-08, -0.984808, -0.173648, 0, 0.173648, -0.984808, 1, 1.17437e-08, 2.07073e-09, 21.1494, 7, -2.4175)
+
+[node name="GroundNormalGrass(8x25)withoutCollision" parent="NavExclusion/Backgrounds" instance=ExtResource("40_exi71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4883, 0, 0)
+
+[node name="GroundNormalGrass(8x25)withoutCollision2" parent="NavExclusion/Backgrounds" instance=ExtResource("40_exi71")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.585, 0, -16.4572)
+
+[node name="BackgroundTest2" parent="NavExclusion/Backgrounds" instance=ExtResource("39_co61a")]
+transform = Transform3D(1, 0, 0, 0, 0.173648, -0.984808, 0, 0.984808, 0.173648, 10.2467, 7, -21.269)
+
+[node name="GroundNormalGrass(8x25)withoutCollision3" parent="NavExclusion/Backgrounds" instance=ExtResource("40_exi71")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4584, 0, 0)
+
+[node name="Rock2" parent="NavExclusion/Backgrounds" instance=ExtResource("41_6iveo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -44.4883, 0.414662, -1.61752)
 
 [editable path="NavInclusion/Ground/Ground Normal Grass (25x25)"]
 [editable path="NavInclusion/Ground/Ground Normal Grass (25x25)2"]

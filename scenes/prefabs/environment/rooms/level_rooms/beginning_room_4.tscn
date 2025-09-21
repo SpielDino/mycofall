@@ -1,0 +1,110 @@
+[gd_scene load_steps=14 format=3 uid="uid://dpqfi6d6v85i8"]
+
+[ext_resource type="PackedScene" uid="uid://b6yhasy6o2r4x" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(25x25).tscn" id="1_44ne1"]
+[ext_resource type="PackedScene" uid="uid://dfjerosmyefla" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass(8x_25)with_collision.tscn" id="2_4n5pl"]
+[ext_resource type="PackedScene" uid="uid://bykohmkmljjsa" path="res://scenes/prefabs/environment/trees/with_collision/tree_dead_with_collision.tscn" id="6_palia"]
+[ext_resource type="PackedScene" uid="uid://7260ikyb5ykx" path="res://scenes/prefabs/environment/trees/without_collision/tree_stapel.tscn" id="7_5w1tt"]
+[ext_resource type="PackedScene" uid="uid://tp0yu0ocu3ei" path="res://scenes/prefabs/environment/rocks/with_collision/rock_2_with_collision.tscn" id="7_p24b7"]
+[ext_resource type="PackedScene" uid="uid://cpx3u2deriiy3" path="res://scenes/prefabs/environment/trees/without_collision/tree_round.tscn" id="8_18saj"]
+[ext_resource type="PackedScene" uid="uid://da4i11iqjs82l" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_one.tscn" id="8_hkmmi"]
+[ext_resource type="PackedScene" uid="uid://b8riowugyprr2" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_six.tscn" id="9_6ibqg"]
+[ext_resource type="PackedScene" uid="uid://r5tbjd6fl3mq" path="res://scenes/prefabs/environment/walls/without_collision/tree_bundle_two.tscn" id="10_fvklo"]
+[ext_resource type="PackedScene" uid="uid://bnlu7mjuuo1pp" path="res://scenes/prefabs/environment/rooms/model_prefabs/background_test.tscn" id="20_b14r8"]
+[ext_resource type="PackedScene" uid="uid://di4tjv52v7pof" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass(2x_25)without_collision.tscn" id="21_fr8c0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d3xci"]
+size = Vector3(2, 15, 30.6641)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xoaox"]
+size = Vector3(2, 15, 30.3652)
+
+[node name="BeginningRoom4" type="Node3D"]
+
+[node name="NavInclusion" type="Node3D" parent="."]
+
+[node name="Ground" type="Node3D" parent="NavInclusion"]
+
+[node name="Ground Normal Grass (25x25)" parent="NavInclusion/Ground" instance=ExtResource("1_44ne1")]
+
+[node name="GroundNormalGrass(8x25)withoutCollision" parent="NavInclusion/Ground" instance=ExtResource("2_4n5pl")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -16.5)
+
+[node name="Walls" type="Node3D" parent="NavInclusion"]
+
+[node name="WallStaticBody3D" type="StaticBody3D" parent="NavInclusion/Walls"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1941)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavInclusion/Walls/WallStaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.41616, 6.94304, 10.3411)
+shape = SubResource("BoxShape3D_d3xci")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="NavInclusion/Walls/WallStaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37618, 6.94304, 10.4905)
+shape = SubResource("BoxShape3D_xoaox")
+
+[node name="Objects" type="Node3D" parent="NavInclusion"]
+
+[node name="Nature" type="Node3D" parent="NavInclusion/Objects"]
+
+[node name="TreeDeadWithCollision" parent="NavInclusion/Objects/Nature" instance=ExtResource("6_palia")]
+transform = Transform3D(0.207774, 0, 1.48554, 0, 1.5, 0, -1.48554, 0, 0.207774, -3.58663, 0.0500002, 6.36785)
+
+[node name="Rock2WithCollision" parent="NavInclusion/Objects" instance=ExtResource("7_p24b7")]
+transform = Transform3D(1.93145, 0, -0.519122, 0, 2, 0, 0.519122, 0, 1.93145, 6.39714, 0.424174, 10.5723)
+
+[node name="NavExclusion" type="Node3D" parent="."]
+
+[node name="Walls" type="Node3D" parent="NavExclusion"]
+
+[node name="TreeBundleOne" parent="NavExclusion/Walls" instance=ExtResource("8_hkmmi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.5214, 0, 3.58037)
+
+[node name="TreeBundleSix" parent="NavExclusion/Walls" instance=ExtResource("9_6ibqg")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 11.2825, 0, 8.25609)
+
+[node name="TreeBundleTwo" parent="NavExclusion/Walls" instance=ExtResource("10_fvklo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -12.3429, 0, -5.48389)
+
+[node name="TreeBundleOne2" parent="NavExclusion/Walls" instance=ExtResource("8_hkmmi")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.8084, 0, -2.66201)
+
+[node name="TreeBundleTwo2" parent="NavExclusion/Walls" instance=ExtResource("10_fvklo")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.0177, 0, -11.7038)
+
+[node name="TreeBundleSix2" parent="NavExclusion/Walls" instance=ExtResource("9_6ibqg")]
+transform = Transform3D(-1.5, 0, -2.26494e-07, 0, 1.5, 0, 2.26494e-07, 0, -1.5, -12.328, 0, -13.0525)
+
+[node name="BaumArmature_005" parent="NavExclusion/Walls/TreeBundleSix2/tree_bundle_six" index="5"]
+transform = Transform3D(0.55404, 0, -1.39393, 0, 1.5, 0, 1.39393, 0, 0.55404, -1.45, 1.76048, 1.35)
+
+[node name="BaumArmature_006" parent="NavExclusion/Walls/TreeBundleSix2/tree_bundle_six" index="6"]
+transform = Transform3D(1.94558, 0, -2.28357, 0, 3, 0, 2.28357, 0, 1.94558, -1.1, 4.09829, -0.33)
+
+[node name="Objects" type="Node3D" parent="NavExclusion"]
+
+[node name="Nature" type="Node3D" parent="NavExclusion/Objects"]
+
+[node name="TreeStapelCollision" parent="NavExclusion/Objects/Nature" instance=ExtResource("7_5w1tt")]
+transform = Transform3D(0.871762, 0, -0.48993, 0, 1, 0, 0.48993, 0, 0.871762, -11.3086, 0, 8.46555)
+
+[node name="TreeRound" parent="NavExclusion/Objects/Nature" instance=ExtResource("8_18saj")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -15.9811, -0.122629, 9.04532)
+
+[node name="Background" type="Node3D" parent="NavExclusion"]
+
+[node name="BackgroundTest" parent="NavExclusion/Background" instance=ExtResource("20_b14r8")]
+transform = Transform3D(-4.37114e-08, 0.984808, 0.173648, 0, 0.173648, -0.984808, -1, -4.30473e-08, -7.5904e-09, -17.5865, 7, -5.86948)
+
+[node name="GroundNormalGrass(2x25)withoutCollision" parent="NavExclusion/Background" instance=ExtResource("21_fr8c0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.4782, 0, 0)
+
+[node name="BackgroundTest2" parent="NavExclusion/Background" instance=ExtResource("20_b14r8")]
+transform = Transform3D(1.19249e-08, -0.984808, -0.173648, 0, 0.173648, -0.984808, 1, 1.17437e-08, 2.07073e-09, 15.633, 7, 2.47597)
+
+[node name="GroundNormalGrass(2x25)withoutCollision2" parent="NavExclusion/Background" instance=ExtResource("21_fr8c0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4791, 0, 0)
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[editable path="NavExclusion/Walls/TreeBundleSix2"]
+[editable path="NavExclusion/Walls/TreeBundleSix2/tree_bundle_six"]
