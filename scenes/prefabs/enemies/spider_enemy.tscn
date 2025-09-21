@@ -122,6 +122,7 @@ script = ExtResource("1_w6tma")
 health = 100
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_fdvl8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.310109, 0)
 
 [node name="HearingArea" parent="DetectionComponent" index="0"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)

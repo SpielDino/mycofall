@@ -53,6 +53,8 @@ func move_towards_location(delta, location):
 	enemy.rotate_to_target(location)
 
 func move_between_set_locations(delta, move_points):
+	if move_counter >= move_points.size():
+		move_counter = 0
 	if global_position.distance_to(move_points[move_counter].global_position) <= 1:
 		if move_counter + 1 < move_points.size():
 			move_counter += 1;
@@ -60,9 +62,8 @@ func move_between_set_locations(delta, move_points):
 			move_counter = 0
 	var direction = Vector3()
 	nav.target_position = move_points[move_counter].global_position
-	print(move_points[move_counter].global_position)
 	direction = (nav.get_next_path_position() - global_position).normalized()
-	if enemy.slow_rotate_to_target(move_points[move_counter]):
+	if enemy.slow_rotate_to_target(nav.get_next_path_position()):
 		enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
 	else:
 		enemy.velocity = enemy.velocity.lerp(Vector3(0,enemy.velocity.y,0), acceleration * delta * 10)
@@ -98,7 +99,6 @@ func decide_movement_type(delta):
 		warmup_timer = warmup_animation_time
 		searching(delta)
 	if enemy.state == enemy.States.MOVING:
-		move_counter = 0
 		if warmup_timer <= 0:
 			match movement_type:
 				"stand still":

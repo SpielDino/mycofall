@@ -72,7 +72,11 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 		get_child(0).get_pinged()
 
 func slow_rotate_to_target(target):
-	var angle_vector = target.global_position - global_position 
+	var angle_vector
+	if type_string(typeof(target)) == "Vector3":
+		angle_vector = target- global_position 
+	else:
+		angle_vector = target.global_position - global_position 
 	var angle = limit_angle_in_degrees(atan2(angle_vector.x, angle_vector.z)  - PI/2)
 	var yRotation = limit_angle_in_degrees(rotation.y)
 	var angle_in_degrees = angle * 180 / PI

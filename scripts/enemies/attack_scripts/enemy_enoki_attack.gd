@@ -14,10 +14,7 @@ extends Node3D
 var enemy
 var player
 
-var attack_cooldown: float = 0
-var throw_timer: float = 0
-var punch_timer: float = 0
-var idle_timer: float = 0
+var is_in_attack: bool = false
 var in_melee_range: bool = false
 var in_melee_damage_area: bool = false
 var ranged_attack_delay: float = 0.54
@@ -31,50 +28,45 @@ func _ready():
 	enemy = get_parent()
 
 func _physics_process(delta):
-	if idle_timer >= 0:
-		idle_timer -= delta
 	if enemy.state == enemy.States.MOVING:
 		enemy.state = enemy.States.ATTACK_TYPE_1
+	if !is_in_attack:
+		attack_logic()
+
+func attack_logic():
 	if enemy.state == enemy.States.ATTACK_TYPE_1 and !enemy.died:
-		if idle_timer <= 0:
-			if !in_melee_range and punch_timer <= 0:
-				rangedAttack(delta)
-				enemy.rotate_to_target(player.get_child(0))
-			else: 
-				meleeAttack(delta)
-				throw_timer = 0
-
-func rangedAttack(delta):
-	ranged_attack_delay -= delta
-	if attack_cooldown <= 0 and enemy.detect_player_raycast() and ranged_attack_delay <= 0:
-		var pos: Vector3 = bullet_spawn_point.global_position 
-		var vel: Vector3 = player.get_child(0).global_position - pos
-		var bullet = bullet_scene.instantiate()
-		get_tree().root.add_child(bullet)
-		bullet.set_parameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
-		bullet.global_position = pos
-		attack_cooldown = 1.0/attack_speed
-		throw_timer = 1.6667
-	if(attack_cooldown >= 0): 
-		attack_cooldown -= delta
-	if throw_timer >= 0:
-		throw_timer -= delta
-		enemy.animation_player.speed_scale = 1
-		enemy.animation_player.play("Throw")
-
-func meleeAttack(delta):
-	if punch_timer <= 0:
+		enemy.animation_player.pause()
 		if enemy.slow_rotate_to_target(player.get_child(0)):
-			punch_timer = 12.0833
-			enemy.animation_player.pause()
-	if punch_timer > 0: 
-		punch_timer -= delta
-		enemy.animation_player.speed_scale = 1
-		enemy.animation_player.play("Punch")
-	if punch_timer <= 11.0833 and punch_timer > 10:
-		if in_melee_damage_area:
-			player.take_damage(melee_damage, enemy, true, 0)
-		punch_timer -= 10
+			if in_melee_range:
+				melee_attack()
+			elif enemy.detect_player_raycast(): 
+				ranged_attack()
+
+func ranged_attack():
+	is_in_attack = true
+	enemy.animation_player.speed_scale = 1
+	enemy.animation_player.play("Throw")
+	await get_tree().create_timer(0.54).timeout
+	var pos: Vector3 = bullet_spawn_point.global_position 
+	var vel: Vector3 = player.get_child(0).global_position - pos
+	var bullet = bullet_scene.instantiate()
+	get_tree().root.add_child(bullet)
+	bullet.set_parameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
+	bullet.global_position = pos
+	await get_tree().create_timer(1.6667 - 0.54).timeout
+	enemy.state = enemy.States.NONE
+	is_in_attack = false
+
+func melee_attack():
+	is_in_attack = true
+	enemy.animation_player.speed_scale = 1
+	enemy.animation_player.play("Punch")
+	await get_tree().create_timer(1).timeout
+	if in_melee_damage_area:
+		player.take_damage(melee_damage, enemy, true, 0)
+	await get_tree().create_timer(2.0833 - 1).timeout
+	enemy.state = enemy.States.NONE
+	is_in_attack = false
 
 func _on_melee_attack_range_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
