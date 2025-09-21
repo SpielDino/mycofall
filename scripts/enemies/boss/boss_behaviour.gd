@@ -40,6 +40,8 @@ extends CharacterBody3D
 @onready var squish_sound = $Sounds/SquishSound
 @onready var spear_sound = $Sounds/SpearSound
 @onready var walking_sound = $Sounds/WalkingSound
+@onready var random_sound = $Sounds/RandomSound
+@onready var poison_sound = $Sounds/PoisonSound
 @onready var explosion_enemy_drop_points = $ExplosionsEnemySpawnpoints
 
 @onready var health_bar = get_tree().current_scene.find_child("bossHealthMargin")
@@ -277,6 +279,7 @@ func spore_area_attack_action(delta):
 		spore_time = 10
 	elif action_time <= 0:
 		animation_player.stop()
+		poison_sound.play()
 		action_type = action_types.NONE
 
 func charge_attack_action(delta):
@@ -374,15 +377,21 @@ func charge_attack():
 
 func explosion_mini_enemies_attack():
 	var temp_explosion_enemy: Node3D = explosion_enemy.instantiate()
-	self.add_child(temp_explosion_enemy)
+	GlobalPlayer.get_world().add_child(temp_explosion_enemy)
 	temp_explosion_enemy.get_child(0).is_tracking = false
+	temp_explosion_enemy.get_child(1).return_to_idle_point = false
+	temp_explosion_enemy.get_child(2).lifetime = 8
+	temp_explosion_enemy.state = temp_explosion_enemy.States.ATTACK_TYPE_2
 	temp_explosion_enemy.global_position = explosion_enemy_spawn_point.global_position
-	temp_explosion_enemy.velocity = Vector3(0, 20, 0)
+	temp_explosion_enemy.velocity = Vector3(0, 30, 0)
 	await get_tree().create_timer(3).timeout
 	temp_explosion_enemy.velocity = Vector3(0, 0, 0)
-	var rnd_x = rng.randf_range(-20.0, 20.0)
-	var rnd_z = rng.randf_range(-20.0, 20.0)
+	var rnd_x = rng.randf_range(-10.0, 10.0)
+	var rnd_z = rng.randf_range(-10.0, 10.0)
 	temp_explosion_enemy.global_position = Vector3(explosion_enemy_drop_points.global_position.x + rnd_x, explosion_enemy_drop_points.global_position.y + 30, explosion_enemy_drop_points.global_position.z + rnd_z)
+	temp_explosion_enemy.velocity = Vector3(0, -50, 0)
+	temp_explosion_enemy.state = temp_explosion_enemy.States.IDLE
+	print(temp_explosion_enemy.velocity)
 	await get_tree().create_timer(2.5).timeout
 	temp_explosion_enemy.get_child(0).is_tracking = true
 	temp_explosion_enemy.get_child(0).activate_tracking()

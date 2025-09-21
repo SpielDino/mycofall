@@ -1,10 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://887shgpmuhl5"]
+[gd_scene load_steps=10 format=3 uid="uid://887shgpmuhl5"]
 
 [ext_resource type="Script" uid="uid://sou7bpovajxg" path="res://scripts/enemies/attack_scripts/enemy_melee_attack.gd" id="1_dwuop"]
 [ext_resource type="Texture2D" uid="uid://bvh4cxocd5ab8" path="res://assets/textures/Kenney Particles Transparent Background/dirt_01.png" id="2_3yrm7"]
-[ext_resource type="AudioStream" uid="uid://tbuvwkehgov6" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_1.wav" id="3_6cam2"]
-[ext_resource type="AudioStream" uid="uid://cccpcyuqsvc8h" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_2.wav" id="4_la8sh"]
-[ext_resource type="AudioStream" uid="uid://c1fp3u6e5saak" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_3.wav" id="5_pdcva"]
+[ext_resource type="AudioStream" uid="uid://cscy0capku4h0" path="res://assets/sounds/Enemy/PinkMushroom/PinkMushroomAttack.mp3" id="3_ftv80"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3yrm7"]
 
@@ -33,10 +31,10 @@ color = Color(0.8, 0.470588, 0.976471, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_6cam2"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yn35t"]
-streams_count = 3
-stream_0/stream = ExtResource("3_6cam2")
-stream_1/stream = ExtResource("4_la8sh")
-stream_2/stream = ExtResource("5_pdcva")
+random_pitch = 1.2
+random_volume_offset_db = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("3_ftv80")
 
 [node name="EnemyMeleeAttackComponent" type="Node3D"]
 script = ExtResource("1_dwuop")

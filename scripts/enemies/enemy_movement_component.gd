@@ -28,6 +28,7 @@ var move_counter: int = 0
 var next_patrol_point: Vector3
 var reached_patrol_target: bool
 var start_idle_point: Vector3
+var return_to_idle_point: bool = true
 
 var patrol_positions: Array[Vector3]
 var move_positions: Array[Vector3]
@@ -122,7 +123,7 @@ func decide_movement_type(delta):
 		enemy.state = enemy.States.PATROLLING
 		warmup_timer = warmup_animation_time
 	if (enemy.state == enemy.States.NONE or enemy.state == enemy.States.IDLE or enemy.state == enemy.States.RETURNING) and !has_patrol_route:
-		if global_position.distance_to(start_idle_point) > 1:
+		if global_position.distance_to(start_idle_point) > 1 and return_to_idle_point:
 			enemy.state = enemy.States.RETURNING
 			move_towards_location(delta, start_idle_point, speed)
 		else:
