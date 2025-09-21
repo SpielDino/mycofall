@@ -1,6 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ceh3efrojhnkb"]
+[gd_scene load_steps=7 format=3 uid="uid://ceh3efrojhnkb"]
 
 [ext_resource type="Script" uid="uid://dqr2722ml1ww7" path="res://scripts/enemies/attack_scripts/enemy_charge_attack.gd" id="1_pp20k"]
+[ext_resource type="AudioStream" uid="uid://l6kfyebv8c6x" path="res://assets/sounds/Enemy/Ram Gegner/Ram gegner laufen.wav" id="2_j6m86"]
+[ext_resource type="AudioStream" uid="uid://bqoepupjld3ru" path="res://assets/sounds/Enemy/Ram Gegner/Ram Gegner attack hits player.wav" id="3_2sari"]
+[ext_resource type="AudioStream" uid="uid://cntd22ofpbaft" path="res://assets/sounds/Enemy/Ram Gegner/Ram gegner sounds.wav" id="4_fgtwo"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ge7hg"]
 
@@ -22,6 +25,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54484, 0.493994, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.43683, 0.165039, 0)
 shape = SubResource("BoxShape3D_pp20k")
+
+[node name="RunningSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_j6m86")
+
+[node name="HitSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_2sari")
+
+[node name="TalkingSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_fgtwo")
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]

@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-enum States {NONE, IDLE, ATTACK_TYPE_1, ATTACK_TYPE_2, MOVING, SEARCHING, PATROLLING}
+enum States {NONE, IDLE, ATTACK_TYPE_1, ATTACK_TYPE_2, MOVING, SEARCHING, PATROLLING, RETURNING}
 
 @export_category("Stats")
 @export_subgroup("Enemy Stats")
@@ -12,6 +12,7 @@ enum States {NONE, IDLE, ATTACK_TYPE_1, ATTACK_TYPE_2, MOVING, SEARCHING, PATROL
 @export var death_animation_time: float = 0
 @export var has_death_particles: bool = true
 @export var death_particles_time: float = 3
+@export var hitboxes: Array[Node]
 
 var player
 
@@ -24,10 +25,16 @@ var is_active: bool = true
 @onready var animation_player = $Model/AnimationPlayer
 @onready var death_spores = $DeathSpores
 
+@onready var death_sound = $DeathSound
+@onready var damage_sound = $DamageSound
+
 func _ready():
 	player = GlobalPlayer.get_player()
 
 func die():
+	death_sound.play()
+	for hitbox in hitboxes:
+		hitbox.queue_free()
 	if has_death_animation:
 		animation_player.play("Die")
 	await get_tree().create_timer(death_animation_time).timeout
@@ -55,8 +62,8 @@ func detect_player_raycast():
 
 func take_damage(damage: int, type: String, has_knockback: bool = false, knockback_strenght: float = 0):
 	health -= damage
-	#$AudioStreamPlayer3D.play()
-	if health <= 0 and !died:
+	damage_sound.play()
+	if health <= 0:
 		died = true
 		die()
 		if type == "Bow":
@@ -65,6 +72,7 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 			PlayerActionTracker.staff_kills += 1
 		if type == "Sword":
 			PlayerActionTracker.melee_kills += 1
+			print("Test")
 	else:
 		if has_knockback:
 			var direction = (global_position - player.get_child(0).global_position).normalized()

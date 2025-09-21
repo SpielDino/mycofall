@@ -14,6 +14,7 @@ var is_in_damage_range: bool = false
 var attacked: bool = false
 
 @onready var particles = $AttackParticles
+@onready var attack_sound = $AttackSound
 
 func _ready():
 	enemy = get_parent()
@@ -29,11 +30,13 @@ func attack(delta):
 	if !is_attacking:
 		temp_attack_delay = attack_delay
 	if is_attacking:
+		enemy.velocity = Vector3(0, 0, 0)
 		if temp_attack_delay > 0:
 			enemy.animation_player.speed_scale = 1
 			enemy.animation_player.play("attack")
 			temp_attack_delay -= delta
 		if temp_attack_delay <= 1.333 and !attacked:
+			attack_sound.play()
 			attacked = true
 			particles.restart()
 			particles.emitting = true

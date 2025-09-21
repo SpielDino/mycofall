@@ -16,6 +16,7 @@ var has_fired: bool = false
 var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_spider_bullet.tscn")
 
 @onready var bullet_spawn_point = $BulletSpawnPoint
+@onready var attack_sound = $AttackSound
 
 func _ready():
 	enemy = get_parent()
@@ -36,9 +37,11 @@ func _physics_process(delta):
 		attack_timer -= delta
 
 func attack(delta):
+	enemy.velocity = Vector3(0, enemy.velocity.y, 0)
 	enemy.animation_player.play("Attack")
 	if attack_timer <= 1.6667 - 0.45:
 		if !has_fired:
+			attack_sound.play()
 			var pos: Vector3 = bullet_spawn_point.global_position 
 			var vel: Vector3 = player.get_child(0).global_position - pos
 			var bullet = bullet_scene.instantiate()

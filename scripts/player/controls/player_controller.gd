@@ -31,9 +31,10 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var temprotation = 0
 var mouse_timer: float = 0
 var player: Node3D
-var lock = false
-var sneak_toggle = false
-var is_heavy_attacking = false
+var lock: bool = false
+var sneak_toggle: bool = false
+var is_slowed: bool = false
+var is_heavy_attacking: bool = false
 
 var sword_name = "Sword"
 var shield_name = "Shield"
@@ -427,6 +428,8 @@ func get_move_input(delta):
 		player_speed = player_speed / player.sneak_speed_modifier
 	if GameManager.get_first_weapon_name() == bow_name and GameManager.get_is_attacking():
 		player_speed = player_speed / player.sneak_speed_modifier
+	if is_slowed:
+		player_speed = player_speed / 2 #Slow Modifier
 	velocity = lerp(velocity, direction * player_speed, acceleration * delta)
 	velocity.y = vy
 	if abs(input.x) < 0.01:

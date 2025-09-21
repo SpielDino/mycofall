@@ -50,9 +50,10 @@ radius = 32.4268
 
 [node name="BossArena" type="Node3D"]
 
-[node name="BossEnemy" parent="." instance=ExtResource("2_gxlpy")]
+[node name="BossEnemy" parent="." node_paths=PackedStringArray("move_points") instance=ExtResource("2_gxlpy")]
 transform = Transform3D(0.0645323, 0, -0.997916, 0, 1, 0, 0.997916, 0, 0.0645323, 0.184684, 8.50656, 2.25241)
 script = ExtResource("3_32f48")
+move_points = [NodePath("../Movepoints")]
 
 [node name="Movepoints" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)

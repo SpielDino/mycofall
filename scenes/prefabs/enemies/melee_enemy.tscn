@@ -1,14 +1,15 @@
-[gd_scene load_steps=30 format=3 uid="uid://do5mufdhjo2pg"]
+[gd_scene load_steps=28 format=3 uid="uid://do5mufdhjo2pg"]
 
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_fv56k"]
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="2_li4h1"]
 [ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="3_cph10"]
-[ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_rtgbl"]
-[ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_touag"]
+[ext_resource type="AudioStream" uid="uid://4t4r8nlpv6k2" path="res://assets/sounds/Enemy/PinkMushroom/PinkMushroomSteps/Purple enemy walk.wav" id="4_fromh"]
+[ext_resource type="AudioStream" uid="uid://cfsb0ig0vcoie" path="res://assets/sounds/Enemy/PinkMushroom/PinkMushroomSteps/Purple enemy run.wav" id="5_wd7o6"]
 [ext_resource type="PackedScene" uid="uid://887shgpmuhl5" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_melee_attack_component.tscn" id="6_rtgbl"]
 [ext_resource type="PackedScene" uid="uid://dl0b8wl8o6knn" path="res://assets/models/enemies/melee_enemy/purple_enemy.blend" id="7_rtgbl"]
 [ext_resource type="Texture2D" uid="uid://da0mciyn4k51j" path="res://assets/textures/Kenney Particles Transparent Background/smoke_05.png" id="8_touag"]
-[ext_resource type="Texture2D" uid="uid://bvh4cxocd5ab8" path="res://assets/textures/Kenney Particles Transparent Background/dirt_01.png" id="9_cfj6c"]
+[ext_resource type="AudioStream" uid="uid://o8dwe8rm7x1i" path="res://assets/sounds/Enemy/Spider/Spider Death.wav" id="10_n7juc"]
+[ext_resource type="AudioStream" uid="uid://v1ctgdeawip3" path="res://assets/sounds/Battle/SwordAttack/Sword Hit Universal.wav" id="11_n7juc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cfj6c"]
 transparency = 1
@@ -118,31 +119,11 @@ size = Vector2(1.5, 1.5)
 radius = 0.45
 height = 1.8
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7dpk7"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("9_cfj6c")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n7juc"]
-emission_shape = 1
-emission_sphere_radius = 0.2
-angle_min = -162.6
-angle_max = 114.3
-inherit_velocity_ratio = 1.0
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.5
-scale_max = 0.6
-color = Color(0.8, 0.470588, 0.976471, 1)
-
-[sub_resource type="QuadMesh" id="QuadMesh_m3lbr"]
-
-[node name="MeleeEnemy" type="CharacterBody3D" groups=["Enemy"]]
+[node name="MeleeEnemy" type="CharacterBody3D" node_paths=PackedStringArray("hitboxes") groups=["Enemy"]]
 script = ExtResource("1_fv56k")
 health = 200
 death_animation_time = 0.583
+hitboxes = [NodePath("Hitbox")]
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_li4h1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13949, 0)
@@ -157,9 +138,13 @@ attack_walking_speedscale = 1.3
 [node name="NavigationAgent3D" parent="MovementComponent" index="2"]
 radius = 1.0
 
-[node name="ParticleComponent" parent="." instance=ExtResource("4_rtgbl")]
+[node name="WalkingSounds" parent="MovementComponent" index="3"]
+stream = ExtResource("4_fromh")
+volume_db = -20.0
 
-[node name="SoundComponent" parent="." instance=ExtResource("5_touag")]
+[node name="RunningSounds" parent="MovementComponent" index="4"]
+stream = ExtResource("5_wd7o6")
+volume_db = -20.0
 
 [node name="EnemyMeleeAttackComponent" parent="." instance=ExtResource("6_rtgbl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01829, 0)
@@ -198,19 +183,18 @@ draw_pass_1 = SubResource("QuadMesh_otkfd")
 [node name="DamageNumbersPosition" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.433749, 1.86919, 0)
 
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_n7juc")
+volume_db = -2.0
+pitch_scale = 0.8
+
+[node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("11_n7juc")
+volume_db = -2.0
+
 [node name="Hitbox" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.887902, 0)
 shape = SubResource("CapsuleShape3D_rtgbl")
-
-[node name="AttackParticles" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.826796, 0.210455, 0)
-material_override = SubResource("StandardMaterial3D_7dpk7")
-emitting = false
-amount = 5
-one_shot = true
-explosiveness = 1.0
-process_material = SubResource("ParticleProcessMaterial_n7juc")
-draw_pass_1 = SubResource("QuadMesh_m3lbr")
 
 [editable path="DetectionComponent"]
 [editable path="MovementComponent"]

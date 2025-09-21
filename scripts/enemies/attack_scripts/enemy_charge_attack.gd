@@ -17,6 +17,11 @@ var has_hit_player: bool = false
 var is_in_attack: bool = false
 var is_in_attack_area: bool = false
 
+@onready var running_sound = $RunningSound
+@onready var hit_sound = $HitSound
+@onready var talking_sound = $TalkingSound
+
+
 func _ready():
 	enemy = get_parent()
 	player = GlobalPlayer.get_player()
@@ -32,6 +37,7 @@ func _physics_process(delta):
 		charge_movement(-direction, retreat_speed)
 
 func ram_start():
+	enemy.velocity = Vector3(0, enemy.velocity.y, 0)
 	is_in_attack = true
 	has_hit_player = false
 	enemy.state = enemy.States.ATTACK_TYPE_1
@@ -45,14 +51,20 @@ func ram_start():
 	charging()
 
 func charging():
+	running_sound.play()
+	talking_sound.play()
 	enemy.animation_player.play("rammAtack")
 	await get_tree().create_timer(5).timeout #Charge duration without hitting anything
 	if is_charging:
 		ram_stop()
 
 func ram_stop():
+	enemy.velocity = Vector3(0, enemy.velocity.y, 0)
+	running_sound.stop()
+	talking_sound.stop()
 	is_charging = false
 	enemy.animation_player.play("RamStop")
+	hit_sound.play()
 	await get_tree().create_timer(1.6667).timeout #RamStop animation duration
 	is_retreating = true
 	is_in_attack = false
@@ -64,7 +76,6 @@ func ram_stop():
 func charge_movement(move_direction, speed):
 	var move_vector: Vector3 = move_direction * speed
 	enemy.velocity = Vector3(move_vector.x, enemy.velocity.y, move_vector.z)
-	enemy.move_and_slide()
 
 func _on_attack_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player"):
