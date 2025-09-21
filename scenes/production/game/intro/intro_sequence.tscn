@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://b5evg8uvivypg"]
+[gd_scene load_steps=54 format=3 uid="uid://b5evg8uvivypg"]
 
 [ext_resource type="Script" uid="uid://jfsi7yjkejnu" path="res://scenes/production/game/intro/intro_sequence.gd" id="1_lrqtx"]
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="2_246qq"]
@@ -44,6 +44,7 @@
 [ext_resource type="PackedScene" uid="uid://bnlu7mjuuo1pp" path="res://scenes/prefabs/environment/rooms/model_prefabs/background_test.tscn" id="41_d0iy5"]
 [ext_resource type="PackedScene" uid="uid://iduptgj62v6v" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_one_with_collision.tscn" id="42_lrqtx"]
 [ext_resource type="PackedScene" uid="uid://bj1nqcrxdbdgp" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_two_with_collision.tscn" id="43_uwky1"]
+[ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="45_uwky1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6rpqk"]
 panorama = ExtResource("2_246qq")
@@ -79,7 +80,7 @@ script = ExtResource("1_lrqtx")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 32.8943, 16.5461)
-visible = false
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3xftp")
@@ -1905,6 +1906,9 @@ transform = Transform3D(1.93757, 0, -0.495791, 0, 2, 0, 0.495791, 0, 1.93757, -7
 
 [node name="TreeBundleTwoWithCollision2" parent="." instance=ExtResource("43_uwky1")]
 transform = Transform3D(1.71347, 0, -1.03151, 0, 2, 0, 1.03151, 0, 1.71347, -60.9926, -0.00840735, -63.5197)
+
+[node name="Player" parent="." instance=ExtResource("45_uwky1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 58)
 
 [connection signal="body_entered" from="IntroAreaThree/Area3D" to="IntroAreaThree/Area3D" method="_on_body_entered"]
 

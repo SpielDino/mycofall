@@ -4,6 +4,9 @@ extends Node3D
 @export var dmg = 20
 @export var lifetime = 5
 
+@export_subgroup("Arrow Hit")
+@export var arrow_hit_audio: AudioStreamPlayer3D
+
 var upgrade_dmg: int = 0
 
 func _physics_process(delta: float) -> void:
@@ -34,6 +37,7 @@ func attack(body):
 			)
 			DamageNumbers.display_number(dmg + upgrade_dmg, pos + offset)
 		body.take_damage(dmg + upgrade_dmg, "Bow", true, 1)
+		arrow_hit_audio.play()
 		
 	elif body.is_in_group("target_dummy"):
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
@@ -47,6 +51,7 @@ func attack(body):
 			DamageNumbers.display_number(dmg + upgrade_dmg, pos + offset)
 		if body.get_node_or_null("AnimationPlayer"):
 			body.play_animations(true)
+		arrow_hit_audio.play()
 	elif body.is_in_group("weapon"):
 		pass
 	else:

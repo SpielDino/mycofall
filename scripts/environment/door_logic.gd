@@ -42,7 +42,7 @@ func _on_interacted(body: Variant) -> void:
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player") and can_interact:
-		print("true")
+		#print("true")
 		can_interact = false
 		one_time_use = true
 		door_open = false

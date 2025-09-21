@@ -3,6 +3,12 @@ extends Node3D
 @export var mana_cost_per_attack: int = 60
 @export var ray_position: RayCast3D
 
+@export_category("Sound")
+@export_subgroup("Staff Attack")
+@export var staff_attack_audio: AudioStreamPlayer3D
+@export_subgroup("Staff Heavy Attack")
+@export var staff_heavy_attack_audio: AudioStreamPlayer3D
+
 @onready var player: Node3D = GlobalPlayer.get_player()
 @onready var world = GlobalPlayer.get_world()
 
@@ -17,13 +23,17 @@ func spawn_bullet():
 	world.add_child(bullet_instance)
 
 func magic_attack():
-	if player.mana >= mana_cost_per_attack:
-		player.reduce_mana(mana_cost_per_attack)
+	#if player.mana >= mana_cost_per_attack:
+		#player.reduce_mana(mana_cost_per_attack)
 		#print("-" + str(mana_cost_per_attack))
 		spawn_bullet()
+		staff_attack_audio.play()
+	#else:
+		#empty_mana_audio.play()
 
 func heavy_magic_attack():
 	var heavy_magic_instance = heavy_magic_scene.instantiate()
 	var spawn_position = self.global_position
 	heavy_magic_instance.position = spawn_position
 	world.add_child(heavy_magic_instance)
+	staff_heavy_attack_audio.play()

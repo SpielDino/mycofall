@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dmujiv60ryeqv" path="res://scripts/player/weapons/sword_logic.gd" id="1_rwby0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gsaf8"]
-size = Vector3(3.18188, 1, 4.10059)
+size = Vector3(3.18188, 1.49609, 4.10059)
 
 [sub_resource type="Animation" id="Animation_p82o6"]
 resource_name = "Attack1"
@@ -115,6 +115,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.22),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_heavy_attack_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_5e3sv"]

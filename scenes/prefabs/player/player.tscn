@@ -1,4 +1,4 @@
-[gd_scene load_steps=146 format=3 uid="uid://bogdwn2kqo3lf"]
+[gd_scene load_steps=211 format=3 uid="uid://bogdwn2kqo3lf"]
 
 [ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://scripts/player/controls/player_stats.gd" id="1_6jgwm"]
 [ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://scripts/player/controls/player_controller.gd" id="2_6ei3l"]
@@ -9,8 +9,53 @@
 [ext_resource type="PackedScene" uid="uid://bj236prj2dub5" path="res://scenes/prefabs/player/player_attacks_and_block.tscn" id="6_vo6tk"]
 [ext_resource type="PackedScene" uid="uid://bcsdrurxlfd0" path="res://scenes/prefabs/player/player_interact_ray_cast.tscn" id="7_fkjak"]
 [ext_resource type="Script" uid="uid://bw4negw6nu0l4" path="res://scripts/player/controls/player_inventar.gd" id="8_gsaf8"]
+[ext_resource type="AudioStream" uid="uid://8hgntc03wwc7" path="res://assets/sounds/Player/Walking/PlayerWalking_1.wav" id="10_lqpcr"]
 [ext_resource type="Script" uid="uid://dh48lt5m6cfd1" path="res://scripts/ui/stats/debug_ui.gd" id="10_s6yju"]
 [ext_resource type="Script" uid="uid://1to362nbgwp6" path="res://scripts/player/controls/camera_controller.gd" id="11_7kenn"]
+[ext_resource type="AudioStream" uid="uid://du82dcqt5r6n" path="res://assets/sounds/Player/Walking/PlayerWalking_2.wav" id="11_awash"]
+[ext_resource type="AudioStream" uid="uid://b6y7savxqax04" path="res://assets/sounds/Player/Walking/PlayerWalking_3.wav" id="12_2wxvc"]
+[ext_resource type="AudioStream" uid="uid://cwd1setyixvl5" path="res://assets/sounds/Player/Walking/PlayerWalking_4.wav" id="13_rpfui"]
+[ext_resource type="AudioStream" uid="uid://dlq2vcebcgg1d" path="res://assets/sounds/Player/Walking/PlayerWalking_5.wav" id="14_1jkk8"]
+[ext_resource type="AudioStream" uid="uid://d3jsthwqni64i" path="res://assets/sounds/Player/Walking/PlayerWalking_6.wav" id="15_onub3"]
+[ext_resource type="AudioStream" uid="uid://bentvsoqpbw8d" path="res://assets/sounds/Player/Dodge/Player Dodgeroll without armor.wav" id="16_awash"]
+[ext_resource type="AudioStream" uid="uid://des1jodpue36g" path="res://assets/sounds/Battle/Shield/Shieldblock/Shieldblock_1.wav" id="17_1jkk8"]
+[ext_resource type="AudioStream" uid="uid://uu4cy45ldsem" path="res://assets/sounds/Battle/Shield/Shieldblock/Shieldblock_2.wav" id="18_onub3"]
+[ext_resource type="AudioStream" uid="uid://b72nc2d4sskpi" path="res://assets/sounds/Battle/Shield/Shieldblock/Shieldblock_3.wav" id="19_wur7f"]
+[ext_resource type="AudioStream" uid="uid://mt75vqdg2rks" path="res://assets/sounds/Player/EmptyMana/EmptyMana_1.wav" id="20_b0tsj"]
+[ext_resource type="AudioStream" uid="uid://f82wb62t7841" path="res://assets/sounds/Player/EmptyMana/EmptyMana_2.wav" id="21_gjedr"]
+[ext_resource type="AudioStream" uid="uid://b7te1jmjbd18v" path="res://assets/sounds/Player/EmptyMana/EmptyMana_3.wav" id="22_yug8t"]
+[ext_resource type="AudioStream" uid="uid://daqjyf25ttdv1" path="res://assets/sounds/Player/OutOfStamina/OutOfStamina_1.wav" id="23_5ex3v"]
+[ext_resource type="AudioStream" uid="uid://dg4vh8cbfdv26" path="res://assets/sounds/Battle/MagicWand/MagicWandAttack/MagicWandAttack_1.wav" id="24_2c6wt"]
+[ext_resource type="AudioStream" uid="uid://cphin1mwcwkg0" path="res://assets/sounds/Player/OutOfStamina/OutOfStamina_2.wav" id="24_mgh2n"]
+[ext_resource type="AudioStream" uid="uid://crgtdxqkiqk26" path="res://assets/sounds/Player/OutOfStamina/OutOfStamina_3.wav" id="25_bi5op"]
+[ext_resource type="AudioStream" uid="uid://p80av2k7meyn" path="res://assets/sounds/Battle/MagicWand/MagicWandAttack/MagicWandAttack_2.wav" id="25_i6wen"]
+[ext_resource type="AudioStream" uid="uid://dw0ml55sru346" path="res://assets/sounds/Player/OutOfStamina/OutOfStamina_4.wav" id="26_jyri1"]
+[ext_resource type="AudioStream" uid="uid://c5qdey2rbnvrc" path="res://assets/sounds/Battle/MagicWand/MagicWandAttack/MagicWandAttack_3.wav" id="26_wasl4"]
+[ext_resource type="AudioStream" uid="uid://bchmamye7lsol" path="res://assets/sounds/Battle/MagicWand/Magic AOE/Magic AOE.wav" id="27_i6wen"]
+[ext_resource type="AudioStream" uid="uid://nefjxxll47wh" path="res://assets/sounds/Player/Interaction/Interaction.wav" id="27_mgh2n"]
+[ext_resource type="AudioStream" uid="uid://d0qnl1dk5e864" path="res://assets/sounds/Battle/BowAndArrow/BowLoading/BowLoading_1.wav" id="28_7623s"]
+[ext_resource type="AudioStream" uid="uid://c7djgq8scrqni" path="res://assets/sounds/Player/BushCollision/BushCollision_1.wav" id="28_l1qes"]
+[ext_resource type="AudioStream" uid="uid://der8mihpqcy3e" path="res://assets/sounds/Player/BushCollision/BushCollision_2.wav" id="29_243gj"]
+[ext_resource type="AudioStream" uid="uid://cqbtqxqbotffq" path="res://assets/sounds/Battle/BowAndArrow/BowLoading/BowLoading_2.wav" id="29_ecvx1"]
+[ext_resource type="AudioStream" uid="uid://bklef8gshnlxe" path="res://assets/sounds/Player/BushCollision/BushCollision_3.wav" id="30_4cl40"]
+[ext_resource type="AudioStream" uid="uid://c4ta4s40qb7h8" path="res://assets/sounds/Battle/BowAndArrow/BowLoading/BowLoading_3.wav" id="30_cpov5"]
+[ext_resource type="AudioStream" uid="uid://cch7vbdka4pi7" path="res://assets/sounds/Battle/Shield/Shield Bash/Shield Bash.wav" id="31_243gj"]
+[ext_resource type="AudioStream" uid="uid://c1nnndnn47ge8" path="res://assets/sounds/Battle/Shield/Shieldbreak/Shieldbreak_1.wav" id="31_ujqfb"]
+[ext_resource type="AudioStream" uid="uid://dnki1fumdv8ww" path="res://assets/sounds/Battle/BowAndArrow/ArrowReleasedFromBow/Arrow_1.wav" id="31_xhhgy"]
+[ext_resource type="AudioStream" uid="uid://bji4o2vsiv4vq" path="res://assets/sounds/Battle/Shield/Shieldbreak/Shieldbreak_2.wav" id="32_ijlhm"]
+[ext_resource type="AudioStream" uid="uid://l8nlauskfm3d" path="res://assets/sounds/Battle/BowAndArrow/ArrowReleasedFromBow/Arrow_2.wav" id="32_y3mg7"]
+[ext_resource type="AudioStream" uid="uid://doboui6nuhk1j" path="res://assets/sounds/Battle/BowAndArrow/ArrowReleasedFromBow/Arrow_3.wav" id="33_1ub0x"]
+[ext_resource type="AudioStream" uid="uid://b2704hk72lvno" path="res://assets/sounds/Battle/Shield/Shieldbreak/Shieldbreak_3.wav" id="33_8v3de"]
+[ext_resource type="AudioStream" uid="uid://b42ovtpg0u0mi" path="res://assets/sounds/Battle/BowAndArrow/BowUltimate/Bow_Ultimate.wav" id="34_y3mg7"]
+[ext_resource type="AudioStream" uid="uid://ktxuthisojae" path="res://assets/sounds/Player/Dodge/Dodge_1.wav" id="35_ijlhm"]
+[ext_resource type="AudioStream" uid="uid://cdui217idcna8" path="res://assets/sounds/Player/Dodge/Dodge_2.wav" id="36_8d42v"]
+[ext_resource type="AudioStream" uid="uid://bstaf1xuxhu8g" path="res://assets/sounds/Player/Dodge/Dodge_3.wav" id="37_xjua4"]
+[ext_resource type="AudioStream" uid="uid://b1j7mx7fpea7j" path="res://assets/sounds/Battle/SwordAttack/SwordAttack_1.wav" id="38_xjua4"]
+[ext_resource type="AudioStream" uid="uid://chqii5ra0pg3u" path="res://assets/sounds/Battle/SwordAttack/SwordAttack_2.wav" id="39_riuv8"]
+[ext_resource type="AudioStream" uid="uid://ckrwsxhysgh8s" path="res://assets/sounds/Battle/SwordAttack/SwordAttack_3.wav" id="40_dwdbd"]
+[ext_resource type="AudioStream" uid="uid://dkbgk1dc56jhp" path="res://assets/sounds/Battle/SwordAttack/Heavy Sword Attack.wav" id="41_0odb5"]
+[ext_resource type="AudioStream" uid="uid://cl0r21wfbeq8n" path="res://assets/sounds/mixkit-sweet-kitty-meow-93.wav" id="53_1ub0x"]
+[ext_resource type="AudioStream" uid="uid://dblqxlu7wv8jx" path="res://assets/sounds/Player/SwapWeapon/Weappon switch sound(1).wav" id="54_dcmvg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cxhtl"]
 
@@ -579,7 +624,7 @@ states/Walking/position = Vector2(435, 189)
 states/WalkingController/node = SubResource("AnimationNodeBlendSpace2D_awash")
 states/WalkingController/position = Vector2(288, 279)
 transitions = ["Walking", "Sneaking", SubResource("AnimationNodeStateMachineTransition_6iyn6"), "Sneaking", "Walking", SubResource("AnimationNodeStateMachineTransition_0fad3"), "Walking", "Dodge", SubResource("AnimationNodeStateMachineTransition_s6yju"), "Dodge", "Walking", SubResource("AnimationNodeStateMachineTransition_7kenn"), "Sneaking", "DodgeSneak", SubResource("AnimationNodeStateMachineTransition_omwr7"), "DodgeSneak", "Sneaking", SubResource("AnimationNodeStateMachineTransition_lmbuf"), "Walking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_2wxvc"), "WalkingController", "Walking", SubResource("AnimationNodeStateMachineTransition_rpfui"), "WalkingController", "Sneaking", SubResource("AnimationNodeStateMachineTransition_1jkk8"), "Sneaking", "WalkingController", SubResource("AnimationNodeStateMachineTransition_onub3"), "WalkingController", "DodgeController", SubResource("AnimationNodeStateMachineTransition_wur7f"), "DodgeController", "WalkingController", SubResource("AnimationNodeStateMachineTransition_b0tsj"), "Fall down", "Stand Up", SubResource("AnimationNodeStateMachineTransition_5ex3v"), "Walking", "Fall down", SubResource("AnimationNodeStateMachineTransition_mgh2n"), "Sneaking", "Fall down", SubResource("AnimationNodeStateMachineTransition_bi5op"), "WalkingController", "Fall down", SubResource("AnimationNodeStateMachineTransition_jyri1"), "Stand Up", "Walking", SubResource("AnimationNodeStateMachineTransition_l1qes"), "Dodge", "Fall down", SubResource("AnimationNodeStateMachineTransition_243gj"), "DodgeSneak", "Fall down", SubResource("AnimationNodeStateMachineTransition_4cl40"), "DodgeController", "Fall down", SubResource("AnimationNodeStateMachineTransition_wgl2p")]
-graph_offset = Vector2(202, 33.857)
+graph_offset = Vector2(34, 145.857)
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_4a4dk"]
 filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R", "Charackter/Skeleton3D:ArmPol.L", "Charackter/Skeleton3D:ArmPol.R", "Charackter/Skeleton3D:Bone", "Charackter/Skeleton3D:Bone.001", "Charackter/Skeleton3D:Bone.002", "Charackter/Skeleton3D:Bone.004", "Charackter/Skeleton3D:Bone.005", "Charackter/Skeleton3D:Bone.006", "Charackter/Skeleton3D:Bone.007", "Charackter/Skeleton3D:Bone.008", "Charackter/Skeleton3D:Bone.009", "Charackter/Skeleton3D:Bone.013", "Charackter/Skeleton3D:Bone.014", "Charackter/Skeleton3D:Bone.015", "Charackter/Skeleton3D:Bone.016", "Charackter/Skeleton3D:Bone.017", "Charackter/Skeleton3D:Bone.018", "Charackter/Skeleton3D:Cone", "Charackter/Skeleton3D:Cone.001", "Charackter/Skeleton3D:IK.L", "Charackter/Skeleton3D:IK.R", "Charackter/Skeleton3D:Main", "Charackter/Skeleton3D:String", "Charackter/Skeleton3D:forearm.L", "Charackter/Skeleton3D:forearm.R", "Charackter/Skeleton3D:hand.L", "Charackter/Skeleton3D:hand.R", "Charackter/Skeleton3D:shoulder.L", "Charackter/Skeleton3D:shoulder.R", "Charackter/Skeleton3D:spine", "Charackter/Skeleton3D:spine.001", "Charackter/Skeleton3D:spine.002", "Charackter/Skeleton3D:spine.003", "Charackter/Skeleton3D:upper_arm.L", "Charackter/Skeleton3D:upper_arm.R"]
@@ -587,6 +632,7 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
+graph_offset = Vector2(-634.102, -313.92)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")
 nodes/BlockAnimation/position = Vector2(2680, 360)
 nodes/BowAnimation/node = SubResource("AnimationNodeBlend2_6ei3l")
@@ -626,21 +672,143 @@ nodes/WalkBlockAnimation/position = Vector2(2140, 320)
 nodes/output/position = Vector2(3480, 640)
 node_connections = [&"BlockAnimation", 0, &"WalkBlockAnimation", &"BlockAnimation", 1, &"StateMachine 7", &"BowAnimation", 0, &"BowWalkingAnimation", &"BowAnimation", 1, &"StateMachine 5", &"BowWalkingAnimation", 0, &"StaffAnimation", &"BowWalkingAnimation", 1, &"StateMachine 4", &"CrystalStaffAnimation", 0, &"SwordAnimation", &"CrystalStaffAnimation", 1, &"MainHandCrystalStaffAnimation", &"ShieldAnimation", 0, &"BlockAnimation", &"ShieldAnimation", 1, &"ShieldAnimationTimeSeek", &"ShieldAnimationTimeSeek", 0, &"ShieldHeavyAttack", &"StaffAnimation", 0, &"CrystalStaffAnimation", &"StaffAnimation", 1, &"StateMachine 3", &"SwordAnimation", 0, &"StateMachine", &"SwordAnimation", 1, &"StateMachine 2", &"WalkBlockAnimation", 0, &"BowAnimation", &"WalkBlockAnimation", 1, &"StateMachine 6", &"output", 0, &"ShieldAnimation"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_riuv8"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("38_xjua4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dwdbd"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("39_riuv8")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_0odb5"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("40_dwdbd")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_tore6"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("41_0odb5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8d42v"]
+streams_count = 1
+stream_0/stream = ExtResource("31_243gj")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8v3de"]
+streams_count = 3
+stream_0/stream = ExtResource("35_ijlhm")
+stream_1/stream = ExtResource("36_8d42v")
+stream_2/stream = ExtResource("37_xjua4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b0tsj"]
+streams_count = 3
+stream_0/stream = ExtResource("17_1jkk8")
+stream_1/stream = ExtResource("18_onub3")
+stream_2/stream = ExtResource("19_wur7f")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4cl40"]
+random_pitch = 2.0
+streams_count = 3
+stream_0/stream = ExtResource("31_ujqfb")
+stream_1/stream = ExtResource("32_ijlhm")
+stream_2/stream = ExtResource("33_8v3de")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_x4qbu"]
+streams_count = 3
+stream_0/stream = ExtResource("24_2c6wt")
+stream_1/stream = ExtResource("25_i6wen")
+stream_2/stream = ExtResource("26_wasl4")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wasl4"]
+random_pitch = 1.5
+streams_count = 1
+stream_0/stream = ExtResource("27_i6wen")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_xhhgy"]
+streams_count = 3
+stream_0/stream = ExtResource("28_7623s")
+stream_1/stream = ExtResource("29_ecvx1")
+stream_2/stream = ExtResource("30_cpov5")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dcmvg"]
+streams_count = 3
+stream_0/stream = ExtResource("31_xhhgy")
+stream_1/stream = ExtResource("32_y3mg7")
+stream_2/stream = ExtResource("33_1ub0x")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1ub0x"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("34_y3mg7")
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jj1be"]
+streams_count = 6
+stream_0/stream = ExtResource("10_lqpcr")
+stream_1/stream = ExtResource("11_awash")
+stream_2/stream = ExtResource("12_2wxvc")
+stream_3/stream = ExtResource("13_rpfui")
+stream_4/stream = ExtResource("14_1jkk8")
+stream_5/stream = ExtResource("15_onub3")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2wxvc"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("16_awash")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wgl2p"]
+streams_count = 3
+stream_0/stream = ExtResource("28_l1qes")
+stream_1/stream = ExtResource("29_243gj")
+stream_2/stream = ExtResource("30_4cl40")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_yd7pj"]
+streams_count = 3
+stream_0/stream = ExtResource("20_b0tsj")
+stream_1/stream = ExtResource("21_gjedr")
+stream_2/stream = ExtResource("22_yug8t")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l1qes"]
+streams_count = 4
+stream_0/stream = ExtResource("23_5ex3v")
+stream_1/stream = ExtResource("24_mgh2n")
+stream_2/stream = ExtResource("25_bi5op")
+stream_3/stream = ExtResource("26_jyri1")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bi5op"]
+random_pitch = 2.0
+streams_count = 1
+stream_0/stream = ExtResource("27_mgh2n")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y3mg7"]
+streams_count = 1
+stream_0/stream = ExtResource("53_1ub0x")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2xa5s"]
+streams_count = 1
+stream_0/stream = ExtResource("54_dcmvg")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ffkv0"]
 
-[node name="Player" type="Node3D" groups=["Player"]]
+[node name="Player" type="Node3D" node_paths=PackedStringArray("take_damage_audio", "block_audio", "block_break_audio", "empty_mana_audio", "bush_collision_audio") groups=["Player"]]
 script = ExtResource("1_6jgwm")
 speed = 5.0
 rotation_type = "rotate based on second input"
 dodge_distance = 6.0
+shield_radius_protection = 120.0
 camera_follow_speed = 0.08
+take_damage_audio = NodePath("Controller/Model/Audio/StatsEtcAudio/TakeDamageAudioStreamPlayer3D")
+block_audio = NodePath("Controller/Model/Audio/AttackBlockAudio/BlockAudio/BlockAudioStreamPlayer3D")
+block_break_audio = NodePath("Controller/Model/Audio/AttackBlockAudio/BlockAudio/ShieldBreakAudioStreamPlayer3D")
+empty_mana_audio = NodePath("Controller/Model/Audio/StatsEtcAudio/EmptyManaAudioStreamPlayer3D")
+bush_collision_audio = NodePath("Controller/Model/Audio/MovementAudio/BushCollisionAudioStreamPlayer3D")
 
-[node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator") groups=["Player"]]
+[node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator", "empty_stamina_audio") groups=["Player"]]
 script = ExtResource("2_6ei3l")
 player_shape = NodePath("Model")
 dodge_indicator = NodePath("Model/DodgeIndicator")
+empty_stamina_audio = NodePath("Model/Audio/StatsEtcAudio/EmpytStaminaAudioStreamPlayer3D")
 
 [node name="Model" type="CollisionShape3D" parent="Controller" groups=["Player"]]
 shape = SubResource("CapsuleShape3D_cxhtl")
@@ -663,7 +831,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.15368, 0)
 visible = false
 mesh = SubResource("CapsuleMesh_gm3ih")
 
-[node name="AnimationTree" type="AnimationTree" parent="Controller/Model" node_paths=PackedStringArray("player_controller", "front_pointer", "player_shape")]
+[node name="AnimationTree" type="AnimationTree" parent="Controller/Model" node_paths=PackedStringArray("player_controller", "front_pointer", "player_shape", "walking_audio", "dodge_audio")]
 root_node = NodePath("../new_player_model")
 tree_root = SubResource("AnimationNodeBlendTree_evqxc")
 anim_player = NodePath("../new_player_model/AnimationPlayer")
@@ -685,6 +853,8 @@ script = ExtResource("4_6iyn6")
 player_controller = NodePath("../..")
 front_pointer = NodePath("../FrontPointer")
 player_shape = NodePath("..")
+walking_audio = NodePath("../Audio/MovementAudio/WalkingAudioStreamPlayer3D")
+dodge_audio = NodePath("../Audio/MovementAudio/DodgeAudioStreamPlayer3D")
 
 [node name="new_player_model" parent="Controller/Model" instance=ExtResource("5_6iyn6")]
 transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, -1, 0)
@@ -698,7 +868,8 @@ transform = Transform3D(0.264934, 0.201462, -0.942986, -0.75035, 0.657282, -0.07
 [node name="LeftMetalShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/LeftMetalShield" index="0"]
 visible = false
 
-[node name="ShieldLogic" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/LeftMetalShield/LeftMetalShield" index="0" instance=ExtResource("5_jj1be")]
+[node name="ShieldLogic" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/LeftMetalShield/LeftMetalShield" index="0" node_paths=PackedStringArray("shield_bash_audio") instance=ExtResource("5_jj1be")]
+shield_bash_audio = NodePath("../../../../../../Audio/AttackBlockAudio/ShieldAudio/ShieldBashAudioStreamPlayer3D")
 
 [node name="LeftShield" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="2"]
 transform = Transform3D(0.0423466, -0.269089, -0.962184, -0.829231, 0.527722, -0.184081, 0.5573, 0.805667, -0.200789, 1.16232, 1.90414, 0.0279492)
@@ -733,7 +904,8 @@ transform = Transform3D(-0.0659792, 0.844566, -0.53137, 0.938552, -0.128272, -0.
 [node name="RightMetalSword" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightMetalSword" index="0"]
 visible = false
 
-[node name="SwordLogic" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword" index="0" instance=ExtResource("5_fkjak")]
+[node name="SwordLogic" parent="Controller/Model/new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword" index="0" node_paths=PackedStringArray("sword_heavy_attack_audio") instance=ExtResource("5_fkjak")]
+sword_heavy_attack_audio = NodePath("../../../../../../Audio/AttackBlockAudio/SwordAudio/SwordHeavyAttackAudioStreamPlayer3D")
 
 [node name="RightStaff" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="8"]
 transform = Transform3D(0.0915242, -0.799755, -0.593308, -0.980229, 0.0326054, -0.195161, 0.175426, 0.59944, -0.780959, -1.05253, 1.41099, -0.0109155)
@@ -861,24 +1033,34 @@ visible = false
 [node name="LeftWoodBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="32"]
 visible = false
 
-[node name="PlayerAttacksAndBlock" parent="Controller/Model" node_paths=PackedStringArray("lol", "animation_tree", "player_controller", "sword_hit_box", "shield_hix_box", "bow_charged_indicator") instance=ExtResource("6_vo6tk")]
+[node name="PlayerAttacksAndBlock" parent="Controller/Model" node_paths=PackedStringArray("lol", "animation_tree", "player_controller", "sword_hit_box", "shield_hix_box", "bow_charged_indicator", "shield_bash_dash_audio", "sword_attack_1_audio", "sword_attack_2_audio", "sword_attack_3_audio", "bow_aim_audio", "bow_shot_audio") instance=ExtResource("6_vo6tk")]
 lol = NodePath("../new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword")
 animation_tree = NodePath("../AnimationTree")
 player_controller = NodePath("../..")
 sword_hit_box = NodePath("../new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword/SwordLogic")
 shield_hix_box = NodePath("../new_player_model/Charackter/Skeleton3D/LeftMetalShield/LeftMetalShield/ShieldLogic")
 bow_charged_indicator = NodePath("../DodgeIndicator")
+shield_bash_dash_audio = NodePath("../Audio/AttackBlockAudio/ShieldAudio/ShieldBashDashAudioStreamPlayer3D")
+sword_attack_1_audio = NodePath("../Audio/AttackBlockAudio/SwordAudio/SwordAttackOneAudioStreamPlayer3D")
+sword_attack_2_audio = NodePath("../Audio/AttackBlockAudio/SwordAudio/SwordAttackTwoAudioStreamPlayer3D")
+sword_attack_3_audio = NodePath("../Audio/AttackBlockAudio/SwordAudio/SwordAttackThreeAudioStreamPlayer3D")
+bow_aim_audio = NodePath("../Audio/AttackBlockAudio/BowAudio/BowLoadingAudioStreamPlayer3D")
+bow_shot_audio = NodePath("../Audio/AttackBlockAudio/BowAudio/BowShotAudioStreamPlayer3D")
 
-[node name="StaffLogic" parent="Controller/Model/PlayerAttacksAndBlock" index="0" node_paths=PackedStringArray("ray_position")]
+[node name="StaffLogic" parent="Controller/Model/PlayerAttacksAndBlock" index="0" node_paths=PackedStringArray("ray_position", "staff_attack_audio", "staff_heavy_attack_audio")]
 ray_position = NodePath("../../StaffAimRayCast3D")
+staff_attack_audio = NodePath("../../Audio/AttackBlockAudio/StaffAudio/StaffAttackAudioStreamPlayer3D")
+staff_heavy_attack_audio = NodePath("../../Audio/AttackBlockAudio/StaffAudio/StaffHeavyAttackAudioStreamPlayer3D")
 
-[node name="BowLogic" parent="Controller/Model/PlayerAttacksAndBlock" index="1" node_paths=PackedStringArray("ray_position")]
+[node name="BowLogic" parent="Controller/Model/PlayerAttacksAndBlock" index="1" node_paths=PackedStringArray("ray_position", "bow_shotgun_audio")]
 ray_position = NodePath("../../BowAimRayCast3D")
+bow_shotgun_audio = NodePath("../../Audio/AttackBlockAudio/BowAudio/BowHeavyAttackAudioStreamPlayer3D")
 
-[node name="InteractRayCast" parent="Controller/Model" node_paths=PackedStringArray("ray_cast_helper", "ray_cast_helper_2") instance=ExtResource("7_fkjak")]
+[node name="InteractRayCast" parent="Controller/Model" node_paths=PackedStringArray("ray_cast_helper", "ray_cast_helper_2", "interaction_audio") instance=ExtResource("7_fkjak")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.239533)
 ray_cast_helper = NodePath("RayCast3D2")
 ray_cast_helper_2 = NodePath("RayCast3D")
+interaction_audio = NodePath("../Audio/StatsEtcAudio/InteractionAudioStreamPlayer3D")
 
 [node name="RayCast3D" type="RayCast3D" parent="Controller/Model/InteractRayCast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
@@ -888,7 +1070,7 @@ target_position = Vector3(0, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.7, 0)
 target_position = Vector3(0, 0, -1)
 
-[node name="PlayerInventar" type="Node3D" parent="Controller/Model" node_paths=PackedStringArray("main_hand_wood_sword", "main_hand_sword", "main_hand_metal_sword", "main_hand_wood_staff", "main_hand_crystal_wood_staff", "main_hand_staff", "main_hand_metal_staff", "main_hand_crystal_metal_staff", "off_hand_wood_bow", "off_hand_bow", "off_hand_metal_bow", "off_hand_wood_shield", "off_hand_shield", "off_hand_metal_shield", "back_wood_sword", "back_sword", "back_metal_sword", "back_wood_staff", "back_crystal_wood_staff", "back_staff", "back_metal_staff", "back_crystal_metal_staff", "back_wood_bow", "back_bow", "back_metal_bow", "back_wood_shield", "back_shield", "back_metal_shield")]
+[node name="PlayerInventar" type="Node3D" parent="Controller/Model" node_paths=PackedStringArray("main_hand_wood_sword", "main_hand_sword", "main_hand_metal_sword", "main_hand_wood_staff", "main_hand_crystal_wood_staff", "main_hand_staff", "main_hand_metal_staff", "main_hand_crystal_metal_staff", "off_hand_wood_bow", "off_hand_bow", "off_hand_metal_bow", "off_hand_wood_shield", "off_hand_shield", "off_hand_metal_shield", "back_wood_sword", "back_sword", "back_metal_sword", "back_wood_staff", "back_crystal_wood_staff", "back_staff", "back_metal_staff", "back_crystal_metal_staff", "back_wood_bow", "back_bow", "back_metal_bow", "back_wood_shield", "back_shield", "back_metal_shield", "swap_audio")]
 script = ExtResource("8_gsaf8")
 main_hand_wood_sword = NodePath("../new_player_model/Charackter/Skeleton3D/RightWoodSword/RightWoodSword")
 main_hand_sword = NodePath("../new_player_model/Charackter/Skeleton3D/RightSword/RightSword")
@@ -918,9 +1100,109 @@ back_metal_bow = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalBo
 back_wood_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackWoodShild/BackWoodShild")
 back_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackShild/BackShild")
 back_metal_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalShield/BackMetalShield")
+swap_audio = NodePath("../Audio/StatsEtcAudio/SwapWeaponAudioStreamPlayer3D")
 
-[node name="WalkingAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model"]
+[node name="Audio" type="Node3D" parent="Controller/Model"]
+
+[node name="AttackBlockAudio" type="Node3D" parent="Controller/Model/Audio"]
+
+[node name="SwordAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
+
+[node name="SwordAttackOneAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/SwordAudio"]
+stream = SubResource("AudioStreamRandomizer_riuv8")
+volume_db = -15.0
+
+[node name="SwordAttackTwoAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/SwordAudio"]
+stream = SubResource("AudioStreamRandomizer_dwdbd")
+volume_db = -15.0
+
+[node name="SwordAttackThreeAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/SwordAudio"]
+stream = SubResource("AudioStreamRandomizer_0odb5")
+volume_db = -15.0
+
+[node name="SwordHeavyAttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/SwordAudio"]
+stream = SubResource("AudioStreamRandomizer_tore6")
+volume_db = -15.0
+
+[node name="ShieldAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
+
+[node name="ShieldBashAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/ShieldAudio"]
+stream = SubResource("AudioStreamRandomizer_8d42v")
+volume_db = -10.0
+
+[node name="ShieldBashDashAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/ShieldAudio"]
+stream = SubResource("AudioStreamRandomizer_8v3de")
+volume_db = -12.0
+
+[node name="BlockAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
+
+[node name="BlockAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BlockAudio"]
+stream = SubResource("AudioStreamRandomizer_b0tsj")
+volume_db = -20.0
+
+[node name="ShieldBreakAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BlockAudio"]
+stream = SubResource("AudioStreamRandomizer_4cl40")
+volume_db = -10.0
+
+[node name="StaffAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
+
+[node name="StaffAttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/StaffAudio"]
+stream = SubResource("AudioStreamRandomizer_x4qbu")
+volume_db = -10.0
+
+[node name="StaffHeavyAttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/StaffAudio"]
+stream = SubResource("AudioStreamRandomizer_wasl4")
+volume_db = -10.0
+
+[node name="BowAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
+
+[node name="BowLoadingAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BowAudio"]
+stream = SubResource("AudioStreamRandomizer_xhhgy")
+volume_db = -10.0
+
+[node name="BowShotAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BowAudio"]
+stream = SubResource("AudioStreamRandomizer_dcmvg")
+volume_db = -5.0
+
+[node name="BowHeavyAttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BowAudio"]
+stream = SubResource("AudioStreamRandomizer_1ub0x")
+volume_db = -5.0
+
+[node name="MovementAudio" type="Node3D" parent="Controller/Model/Audio"]
+
+[node name="WalkingAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/MovementAudio"]
 stream = SubResource("AudioStreamRandomizer_jj1be")
+volume_db = -15.0
+
+[node name="DodgeAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/MovementAudio"]
+stream = SubResource("AudioStreamRandomizer_2wxvc")
+volume_db = 2.0
+
+[node name="BushCollisionAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/MovementAudio"]
+stream = SubResource("AudioStreamRandomizer_wgl2p")
+volume_db = -10.0
+
+[node name="StatsEtcAudio" type="Node3D" parent="Controller/Model/Audio"]
+
+[node name="EmptyManaAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
+stream = SubResource("AudioStreamRandomizer_yd7pj")
+volume_db = -15.0
+
+[node name="EmpytStaminaAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
+stream = SubResource("AudioStreamRandomizer_l1qes")
+volume_db = -15.0
+
+[node name="InteractionAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
+stream = SubResource("AudioStreamRandomizer_bi5op")
+volume_db = -5.0
+
+[node name="TakeDamageAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
+stream = SubResource("AudioStreamRandomizer_y3mg7")
+volume_db = -20.0
+
+[node name="SwapWeaponAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
+stream = SubResource("AudioStreamRandomizer_2xa5s")
+volume_db = -5.0
 
 [node name="CameraArm" type="SpringArm3D" parent="Controller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
@@ -934,7 +1216,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7)
 shape = SubResource("CapsuleShape3D_ffkv0")
 
 [node name="DebugUI" type="Control" parent="." node_paths=PackedStringArray("controller", "input", "xyz", "speed", "sneaking", "in_detection_area", "in_hiding_area", "detected", "hidden", "health", "stamina", "mana")]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0
@@ -1166,6 +1447,7 @@ script = ExtResource("11_7kenn")
 
 [connection signal="knockdown_signal" from="." to="Controller/Model/AnimationTree" method="_on_player_knockdown_signal"]
 [connection signal="hitting_with_shield" from="Controller/Model/new_player_model/Charackter/Skeleton3D/LeftMetalShield/LeftMetalShield/ShieldLogic" to="Controller" method="_on_shield_logic_hitting_with_shield"]
+[connection signal="hitting_with_shield" from="Controller/Model/new_player_model/Charackter/Skeleton3D/LeftMetalShield/LeftMetalShield/ShieldLogic" to="Controller/Model/PlayerAttacksAndBlock" method="_on_shield_logic_hitting_with_shield"]
 [connection signal="interacted_with_socket" from="Controller/Model/InteractRayCast" to="Controller/Model/PlayerInventar" method="_on_interact_ray_cast_interacted_with_socket"]
 [connection signal="area_entered" from="Controller/Area3D" to="." method="_on_area_3d_area_entered"]
 [connection signal="area_exited" from="Controller/Area3D" to="." method="_on_area_3d_area_exited"]

@@ -27,6 +27,21 @@ extends Node3D
 @export_subgroup("Shield")
 @export var max_cooldown_heavy_attack_shield: float = 1
 
+@export_category("Sound")
+@export_subgroup("Shield Bash")
+@export var shield_bash_dash_audio: AudioStreamPlayer3D
+@export_subgroup("Sword Attack 1")
+@export var sword_attack_1_audio: AudioStreamPlayer3D
+@export_subgroup("Sword Attack 2")
+@export var sword_attack_2_audio: AudioStreamPlayer3D
+@export_subgroup("Sword Attack 3")
+@export var sword_attack_3_audio: AudioStreamPlayer3D
+@export_subgroup("Bow Loading Aim")
+@export var bow_aim_audio: AudioStreamPlayer3D
+@export_subgroup("Bow Shot")
+@export var bow_shot_audio: AudioStreamPlayer3D
+
+
 var min_reset_animation_number: float = 0
 var reset_animation_timer: float = 0
 
@@ -175,6 +190,7 @@ func sword_attack_1():
 		reset_animation_timer = max_sword_animation_timer_sword_attack_1_and_2
 		combo_timer = max_combo_timer_sword_attack_1
 		combo_number = 1
+		sword_attack_1_audio.play()
 
 func sword_attack_2():
 	if combo_number == 1 and combo_timer <= 0:
@@ -184,6 +200,7 @@ func sword_attack_2():
 		reset_animation_timer = max_sword_animation_timer_sword_attack_1_and_2
 		combo_timer = max_combo_timer_sword_attack_2
 		combo_number = 2
+		sword_attack_2_audio.play()
 
 func sword_attack_3():
 	if combo_number == 2 and combo_timer <= 0:
@@ -193,6 +210,7 @@ func sword_attack_3():
 		reset_animation_timer = max_sword_animation_timer_sword_attack_3
 		combo_timer = max_combo_timer_sword_attack_3
 		combo_number = 3
+		sword_attack_3_audio.play()
 
 func sword_heavy_attack():
 	GameManager.set_is_heavy_attacking(true)
@@ -265,7 +283,7 @@ func staff_attack(delta):
 		and !GameManager.get_is_heavy_attacking()
 		#and !GameManager.get_is_attacking()
 		and reset_animation_timer <= 0
-		and player.mana >= mana_cost_per_attack
+		and player.reduce_mana(mana_cost_per_attack) # <<<<<< also reduces mana
 		):
 		staff_attack_animation()
 	elif (
@@ -419,6 +437,7 @@ func bow_aim_animation():
 		bow_aim_timer = max_bow_aim_timer
 		animation_tree.set("parameters/BowAnimation/blend_amount", 1)
 		bow_state_machine_playback.travel("Bow Aim")
+		bow_aim_audio.play()
 	elif bow_aim_timer <= 0 and GameManager.get_is_attacking():
 		animation_tree.set("parameters/BowAnimation/blend_amount", 0)
 
@@ -432,6 +451,7 @@ func bow_shot_animation():
 	calc_dmg_for_arrow(bow_hold_timer_for_dmg)
 	GameManager.set_bow_attack_timer(bow_dmg)
 	bow_bullet_spawn.spawn_bullet()
+	bow_shot_audio.play()
 
 func calc_bow_timers(delta):
 	if bow_aim_timer > 0:
@@ -535,6 +555,7 @@ func bow_shotgun_animation():
 	heavy_attack_bow_animation_timer = max_heavy_attack_bow_animation_timer
 	bow_bullet_spawn.get_child(0).stop()
 	bow_bullet_spawn.get_child(0).play("HeavyAttack")
+	bow_aim_audio.play()
 
 func heavy_bow_attack_change_back_to_movement_animation():
 	rel_vel_xz = animation_tree.rel_vel_xz
@@ -641,6 +662,8 @@ func shield_heavy_attack_animation():
 	GameManager.set_is_heavy_attacking(true)
 	GameManager.set_is_attacking(true)
 	heavy_attack_shield_animation_timer = max_heavy_attack_shield_animation_timer
+	await get_tree().create_timer(0.2).timeout
+	shield_bash_dash_audio.play()
 
 func calc_heavy_attack_shield_animation_timer(delta):
 	if heavy_attack_shield_animation_timer > 0:
@@ -732,3 +755,8 @@ func knockdown_reset_attack_and_heavy_attack_bow_animation():
 		bow_bullet_spawn.get_child(0).stop()
 		GameManager.set_is_heavy_attacking(false)
 		cooldown_heavy_attack_bow_timer = max_cooldown_heavy_attack_bow
+
+func _on_shield_logic_hitting_with_shield() -> void:
+	print(shield_bash_dash_audio.playing)
+	if shield_bash_dash_audio.playing:
+		shield_bash_dash_audio.stop()

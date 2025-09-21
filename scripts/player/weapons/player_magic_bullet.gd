@@ -4,6 +4,8 @@ extends Node3D
 @export var dmg = 50
 @export var lifetime = 5
 
+@export var magic_hit_audio: AudioStreamPlayer3D
+
 var enemy_position_for_tracking
 var tracking = false
 var directions
@@ -31,6 +33,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		if dmg_position:
 			DamageNumbers.display_number(dmg + upgrade_dmg, dmg_position.global_position)
+		magic_hit_audio.play()
+		self.get_node_or_null("Hitbox").queue_free()
+		self.get_node_or_null("GPUParticles3D").queue_free()
+		self.get_node_or_null("GPUParticles3D2").queue_free()
+		await get_tree().create_timer(0.43).timeout
 		queue_free()
 		#print("hit")
 	elif body.is_in_group("target_dummy"):
@@ -40,6 +47,11 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			DamageNumbers.display_number(dmg + upgrade_dmg, dmg_position.global_position)
 		if body.get_node_or_null("AnimationPlayer"):
 			body.play_animations(false)
+		magic_hit_audio.play()
+		self.get_node_or_null("Hitbox").queue_free()
+		self.get_node_or_null("GPUParticles3D").queue_free()
+		self.get_node_or_null("GPUParticles3D2").queue_free()
+		await get_tree().create_timer(0.43).timeout
 		queue_free()
 	else:
 		queue_free()

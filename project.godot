@@ -148,7 +148,5 @@ locale/translations=PackedStringArray("res://assets/localization/mycofall_transl
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 textures/decals/filter=1
 textures/light_projectors/filter=1
