@@ -1,14 +1,5 @@
 shader_type canvas_item;
 
-/* --------------------------------------------------------------------
-   Advanced 2D Wind (Godot 4.4)
-   - Layered sway + gust pulses
-   - Optional grayscale stiffness mask (mask_tex)
-   - High‑frequency leaf flutter (noise_tex)
-   - Per‑instance variation via seed
-   - Bottom‑anchored bend using UV.y and pivot_uv
-   -------------------------------------------------------------------- */
-
 uniform vec2 wind_dir = vec2(1.0, 0.0);   // Direction the wind pushes (will be normalized)
 uniform float sway_amp_px = 5.0;         // Max bend in pixels at the very top (base sway)
 uniform float sway_speed = 0.8;           // Base sway speed (Hz-like)
@@ -21,7 +12,6 @@ uniform float vertical_lift = 0.12;       // Small upward pull proportional to b
 uniform float flutter_amp_px = 2.2;       // Pixel amplitude for micro flutter
 uniform float flutter_speed = 5.0;        // Speed of micro flutter
 
-// Optional masks/textures
 uniform sampler2D noise_tex : source_color; // 0..1 noise; set a NoiseTexture2D or similar
 uniform vec2 noise_tiling = vec2(1.5, 2.0);
 uniform vec2 noise_scroll = vec2(0.06, 0.0);
@@ -36,10 +26,7 @@ uniform float seed = 0.0;                   // Give different values per instanc
 // Bend pivot (UV space). Bottom center of sprite by default.
 uniform vec2 pivot_uv = vec2(0.5, 1.0);
 
-// Utility: sample noise in [-1, 1]
 float n01(vec2 p) {
-    // If noise_tex isn’t set, fall back to a cheap trig noise
-    // (keeps shader functional without a texture)
     if (textureSize(noise_tex, 0).x == 0) {
         return sin(p.x) * cos(p.y);
     }
@@ -47,7 +34,6 @@ float n01(vec2 p) {
 }
 
 void vertex() {
-    // Normalize direction and compute per‑vertex “height” mask
     vec2 dir = normalize(wind_dir);
     float height_mask = clamp(1.0 - UV.y, 0.0, 1.0); // top moves, base stiff
     if (use_mask_tex) {

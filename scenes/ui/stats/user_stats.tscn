@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bostptls3iaya" path="res://assets/textures/ui_textures/interface/stats/branches/branch_three/branch_three0000.png" id="9_12t6a"]
 
 [node name="UserStats" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

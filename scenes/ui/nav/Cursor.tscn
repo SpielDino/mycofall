@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c1fh1hirq3uks" path="res://assets/textures/ui_textures/interface/nav/CursorSpores.png" id="3_6o35i"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
 layer = 128
 
 [node name="Cursor" type="Sprite2D" parent="."]

@@ -16,25 +16,24 @@ func _ready() -> void:
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	tween.parallel().tween_property(blend_screen, "modulate:a", 0.0, 1.5)
 
-func change_multiple_scenes(scene_3d: String, scene_gui: String, blend: bool = false, delete_3d: bool = true, delete_gui: bool = true, keep_running_3d: bool = false, keep_running_gui: bool = false):
+func change_multiple_scenes(scenes_3d: Array[String], scenes_gui: Array[String], blend: bool = false, delete_3d: bool = true, delete_gui: bool = true, keep_running_3d: bool = false, keep_running_gui: bool = false):
 	if blend:
-		print("gay")
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(blend_screen, "modulate:a", 1.0, 1.5)
 		await get_tree().create_timer(3).timeout
-	await change_3d_scene(scene_3d, delete_3d, keep_running_3d)
-	await change_gui_scene(scene_gui, delete_gui, keep_running_gui)
+	for scene in scenes_3d:
+		await change_3d_scene(scene, delete_3d, keep_running_3d)
+	for scene in scenes_gui:
+		await change_gui_scene(scene, delete_gui, keep_running_gui)
 	if blend:
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(blend_screen, "modulate:a", 0.0, 1.5)
 
 func change_3d_scene(new_scene: String, delete: bool = true, keep_running: bool = false, blend: bool = false) -> bool:
 	if blend:
-		print("gay")
 		var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 		tween.tween_property(blend_screen, "modulate:a", 1.0, 1.5)
 		await get_tree().create_timer(3).timeout
-	print("gay2")
 	if current_3d_scene != null:
 		if delete:
 			current_3d_scene.queue_free();

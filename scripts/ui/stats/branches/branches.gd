@@ -16,10 +16,10 @@ var branch_three_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets
 var weapon_one_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/stats/branches/weapon_two/weapon_two.tres");
 var weapon_two_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/stats/branches/weapon_two/weapon_two.tres");
 
-var sword_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/weapons/sword/sword_sprite_frames.tres")
-var bow_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/weapons/bow/bow_sprite_frames.tres")
-var staff_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/weapons/staff/staff_sprite_frames.tres")
-var shield_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/weapons/shield/shield_sprite_frames.tres")
+var sword_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/weapons/sword/sword.tres")
+var bow_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/weapons/bow/bow.tres")
+var staff_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/weapons/staff/staff.tres")
+var shield_sprite_frames: SpriteFrames = ResourceLoader.load("res://assets/textures/ui_textures/interface/weapons/shield/shield.tres")
 		
 # stat actives (does the player have a mana weapon, ...)
 var _is_menu: bool = false;
@@ -91,7 +91,7 @@ var _animations : Dictionary[String, Dictionary] = {
 			"timer": 0.0,
 			"active_index": -1
 		},
-	"sword_sprite_frames":
+	"sword":
 		{
 			"fps": 30,
 			"is_shrinking": false,
@@ -99,7 +99,7 @@ var _animations : Dictionary[String, Dictionary] = {
 			"timer": 0.0,
 			"active_index": -1
 		},
-	"bow_sprite_frames":
+	"bow":
 		{
 			"fps": 30,
 			"is_shrinking": false,
@@ -107,7 +107,7 @@ var _animations : Dictionary[String, Dictionary] = {
 			"timer": 0.0,
 			"active_index": -1
 		},
-	"staff_sprite_frames":
+	"staff":
 		{
 			"fps": 30,
 			"is_shrinking": false,
@@ -115,7 +115,7 @@ var _animations : Dictionary[String, Dictionary] = {
 			"timer": 0.0,
 			"active_index": -1
 		},
-	"shield_sprite_frames":
+	"shield":
 		{
 			"fps": 30,
 			"is_shrinking": false,
@@ -148,6 +148,7 @@ func _ready() -> void:
 	#ui.toggle_menu.connect(_on_menu_toggle
 	#player.toggle_stamina.connect(_on_stamina_toggle)
 	#player.toggle_mana.connect(_on_mana_toggle)
+
 
 func match_upgrade_level() -> String:
 	match GameManager.get_first_weapon_upgrade_level():
@@ -238,6 +239,7 @@ func _input(event) -> void:
 		
 		
 func _process(delta: float) -> void:		
+	print(weapon_slot_one.texture)
 	if len(_active_animations) <= 0:
 		return
 	
