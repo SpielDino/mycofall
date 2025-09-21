@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dpb707vikystx"]
+[gd_scene load_steps=36 format=3 uid="uid://dpb707vikystx"]
 
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="1_3quey"]
 [ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="2_5dd6s"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://br57tc42i7wf" path="res://assets/models/enemies/enoki_enemy/Enoki_Enemy.blend" id="7_5dd6s"]
 [ext_resource type="Texture2D" uid="uid://btdwlxvsr1gas" path="res://assets/models/enemies/enoki_enemy/enoki-texture.png" id="8_5x2ut"]
 [ext_resource type="Texture2D" uid="uid://da0mciyn4k51j" path="res://assets/textures/Kenney Particles Transparent Background/smoke_05.png" id="9_smu6q"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_smu6q"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_smu6q"]
 albedo_texture = ExtResource("8_5x2ut")
@@ -148,6 +150,12 @@ health = 150
 death_animation_time = 1.7
 
 [node name="DetectionComponent" parent="." instance=ExtResource("1_3quey")]
+
+[node name="VisionArea" parent="DetectionComponent" index="1"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="CollisionShape3D" parent="DetectionComponent/VisionArea" index="0"]
+shape = SubResource("SphereShape3D_smu6q")
 
 [node name="MovementComponent" parent="." instance=ExtResource("2_5dd6s")]
 walking_name = "Idle"

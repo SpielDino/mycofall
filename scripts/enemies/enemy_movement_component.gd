@@ -71,8 +71,10 @@ func move_between_set_locations(delta, move_points):
 	nav.target_position = move_points[move_counter].global_position
 	print(move_points[move_counter].global_position)
 	direction = (nav.get_next_path_position() - global_position).normalized()
-	enemy.rotate_to_target(move_points[move_counter])
-	enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
+	if enemy.slow_rotate_to_target(move_points[move_counter]):
+		enemy.velocity = enemy.velocity.lerp(direction * speed, acceleration * delta)
+	else:
+		enemy.velocity = enemy.velocity.lerp(Vector3(0,enemy.velocity.y,0), acceleration * delta * 10)
 	
 func stand_still():
 	enemy.rotate_to_target(player.get_child(0))
