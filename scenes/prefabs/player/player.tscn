@@ -1,4 +1,4 @@
-[gd_scene load_steps=145 format=3 uid="uid://bogdwn2kqo3lf"]
+[gd_scene load_steps=146 format=3 uid="uid://bogdwn2kqo3lf"]
 
 [ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://scripts/player/controls/player_stats.gd" id="1_6jgwm"]
 [ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://scripts/player/controls/player_controller.gd" id="2_6ei3l"]
@@ -626,6 +626,8 @@ nodes/WalkBlockAnimation/position = Vector2(2140, 320)
 nodes/output/position = Vector2(3480, 640)
 node_connections = [&"BlockAnimation", 0, &"WalkBlockAnimation", &"BlockAnimation", 1, &"StateMachine 7", &"BowAnimation", 0, &"BowWalkingAnimation", &"BowAnimation", 1, &"StateMachine 5", &"BowWalkingAnimation", 0, &"StaffAnimation", &"BowWalkingAnimation", 1, &"StateMachine 4", &"CrystalStaffAnimation", 0, &"SwordAnimation", &"CrystalStaffAnimation", 1, &"MainHandCrystalStaffAnimation", &"ShieldAnimation", 0, &"BlockAnimation", &"ShieldAnimation", 1, &"ShieldAnimationTimeSeek", &"ShieldAnimationTimeSeek", 0, &"ShieldHeavyAttack", &"StaffAnimation", 0, &"CrystalStaffAnimation", &"StaffAnimation", 1, &"StateMachine 3", &"SwordAnimation", 0, &"StateMachine", &"SwordAnimation", 1, &"StateMachine 2", &"WalkBlockAnimation", 0, &"BowAnimation", &"WalkBlockAnimation", 1, &"StateMachine 6", &"output", 0, &"ShieldAnimation"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jj1be"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ffkv0"]
 
 [node name="Player" type="Node3D" groups=["Player"]]
@@ -916,6 +918,9 @@ back_metal_bow = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalBo
 back_wood_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackWoodShild/BackWoodShild")
 back_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackShild/BackShild")
 back_metal_shield = NodePath("../new_player_model/Charackter/Skeleton3D/BackMetalShield/BackMetalShield")
+
+[node name="WalkingAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model"]
+stream = SubResource("AudioStreamRandomizer_jj1be")
 
 [node name="CameraArm" type="SpringArm3D" parent="Controller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)

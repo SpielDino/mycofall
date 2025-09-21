@@ -1,0 +1,39 @@
+[gd_scene load_steps=10 format=3 uid="uid://ds42sdqu22h03"]
+
+[ext_resource type="Script" uid="uid://cdy7132mqn2xn" path="res://scripts/environment/directional_light_3d_control.gd" id="1_5d0c0"]
+[ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="2_cdxhm"]
+[ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="3_2fvt2"]
+[ext_resource type="PackedScene" uid="uid://brb2hhdmmhq14" path="res://scenes/prefabs/environment/rooms/level_rooms/combined_beginning_room.tscn" id="4_cod14"]
+[ext_resource type="PackedScene" uid="uid://rddwidjpmb55" path="res://scenes/prefabs/environment/rooms/level_rooms/training_room.tscn" id="5_mt2xv"]
+[ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="6_cdxhm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1efyb"]
+panorama = ExtResource("2_cdxhm")
+
+[sub_resource type="Sky" id="Sky_oxph1"]
+sky_material = SubResource("PanoramaSkyMaterial_1efyb")
+
+[sub_resource type="Environment" id="Environment_oo071"]
+background_mode = 2
+sky = SubResource("Sky_oxph1")
+
+[node name="KonradTestWorld3" type="Node3D"]
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.58201, 0.813182, 0, -0.813182, 0.58201, -5.57129, 36.5586, -2.92292)
+visible = false
+shadow_enabled = true
+script = ExtResource("1_5d0c0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_oo071")
+script = ExtResource("3_2fvt2")
+
+[node name="CombonedBeginningRoom" parent="WorldEnvironment" instance=ExtResource("4_cod14")]
+
+[node name="TrainingRoom" parent="WorldEnvironment" instance=ExtResource("5_mt2xv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1577, 0, 99.9007)
+
+[node name="Player" parent="WorldEnvironment" instance=ExtResource("6_cdxhm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2819, 1.34735, 105.318)
+mana_per_second = 50.0

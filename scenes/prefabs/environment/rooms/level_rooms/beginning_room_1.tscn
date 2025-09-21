@@ -22,10 +22,10 @@
 [ext_resource type="PackedScene" uid="uid://bnlu7mjuuo1pp" path="res://scenes/prefabs/environment/rooms/model_prefabs/background_test.tscn" id="20_lpqit"]
 [ext_resource type="PackedScene" uid="uid://di4tjv52v7pof" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass(2x_25)without_collision.tscn" id="21_e4m4r"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_d3xci"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rl0g3"]
 size = Vector3(2, 15, 30.6641)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_xoaox"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_asf1o"]
 size = Vector3(2, 15, 30.3652)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84n1p"]
@@ -46,11 +46,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.1941)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavInclusion/Walls/WallStaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.64606, 6.94304, 10.3411)
-shape = SubResource("BoxShape3D_d3xci")
+shape = SubResource("BoxShape3D_rl0g3")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="NavInclusion/Walls/WallStaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.37618, 6.94304, 10.4905)
-shape = SubResource("BoxShape3D_xoaox")
+shape = SubResource("BoxShape3D_asf1o")
 
 [node name="Objects" type="Node3D" parent="NavInclusion"]
 

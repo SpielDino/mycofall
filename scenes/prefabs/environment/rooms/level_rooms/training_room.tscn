@@ -177,20 +177,37 @@ shape = SubResource("BoxShape3D_2gi3g")
 [node name="TreeBundleSixWithCollision2" parent="Walls/TreeWalls" instance=ExtResource("3_2gi3g")]
 transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -11.5824, 0, -25.5155)
 
+[node name="Vines" parent="Walls" instance=ExtResource("31_pquue")]
+transform = Transform3D(0.174494, 0, -0.17903, 0, 0.25, 0, 0.17903, 0, 0.174494, -4.7922, 0, -24.6085)
+
+[node name="Vines2" parent="Walls" instance=ExtResource("31_pquue")]
+transform = Transform3D(0.16427, 0.114085, 0, -0.114085, 0.16427, 0, 0, 0, 0.2, 3.29093, 0.528717, -24.7312)
+
+[node name="Vines3" parent="Walls" instance=ExtResource("31_pquue")]
+transform = Transform3D(-0.0896049, 0.178804, 0, -0.178804, -0.0896049, 0, 0, 0, 0.2, -0.0305724, 4.04994, -24.5742)
+
+[node name="FlowerRed" parent="Walls" instance=ExtResource("47_3cj2b")]
+transform = Transform3D(1, 0, 0, 0, 0.928479, -0.371384, 0, 0.371384, 0.928479, -0.0028863, 4.10995, -24.5965)
+
+[node name="Skeleton3D" parent="Walls/FlowerRed/blume_rot_low/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.543271, -0.272543, -0.236384, 0.75809)
+bones/1/rotation = Quaternion(-0.232746, 0.000511758, -0.0245022, 0.972229)
+bones/2/rotation = Quaternion(-0.557639, 0.272464, 0.245804, 0.744568)
+bones/3/rotation = Quaternion(-0.206845, -0.000257587, 0.0123331, 0.978296)
+bones/4/rotation = Quaternion(-0.0436228, 0.607325, 0.55378, 0.567962)
+bones/5/rotation = Quaternion(-0.153262, -0.00232264, 0.111228, 0.981903)
+bones/6/rotation = Quaternion(0.0388644, -0.613875, -0.570802, 0.543905)
+bones/7/rotation = Quaternion(-0.126406, 0.00235605, -0.112801, 0.985542)
+
+[node name="AnimationPlayer" parent="Walls/FlowerRed/blume_rot_low" index="2"]
+autoplay = "Rascheln"
+speed_scale = 0.4
+
 [node name="StoneWallFourWithCollision" parent="Walls" instance=ExtResource("7_3cj2b")]
-transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 0.642578, -0.0904689, -25.0255)
+transform = Transform3D(-5.24537e-08, 0, 1.2, 0, 1.2, 0, -1.2, 0, -5.24537e-08, 0.084358, 0, -24.909)
 
 [node name="Cube" parent="Walls/StoneWallFourWithCollision/mauer" index="0"]
 surface_material_override/0 = ExtResource("8_p6jjn")
-
-[node name="Vines2" parent="Walls/StoneWallFourWithCollision" instance=ExtResource("31_pquue")]
-transform = Transform3D(-0.0491269, -9.41279e-09, -0.29595, -0.212433, 0.208875, 0.0352632, 0.206056, 0.215339, -0.0342047, -0.34553, 0, 1.92551)
-
-[node name="Vines" parent="Walls/StoneWallFourWithCollision" instance=ExtResource("31_pquue")]
-transform = Transform3D(-0.0327513, 0, -0.1973, 0, 0.2, 0, 0.1973, 0, -0.0327513, -0.271729, 0, -4.21381)
-
-[node name="Vines3" parent="Walls/StoneWallFourWithCollision" instance=ExtResource("31_pquue")]
-transform = Transform3D(0.047455, -0.0332119, 0.191429, -0.19413, -0.000142675, 0.0480998, -0.00785086, -0.197223, -0.0322709, -0.204958, 2.99168, 1.50006)
 
 [node name="Objects" type="Node3D" parent="."]
 
@@ -594,9 +611,6 @@ speed_scale = 0.5
 [node name="BushTest" parent="Objects/Nature" instance=ExtResource("32_xl1d7")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.88374, 0.501618, -6.84713)
 
-[node name="BushTest3" parent="Objects/Nature" instance=ExtResource("32_xl1d7")]
-transform = Transform3D(-0.73719, 0, 1.85918, 0, 2, 0, -1.85918, 0, -0.73719, -2.86062, 0.723355, -20.425)
-
 [node name="FlowerPink" parent="Objects/Nature" instance=ExtResource("45_yvfjt")]
 transform = Transform3D(1.18611, 0, -0.918222, 0, 1.5, 0, 0.918222, 0, 1.18611, -0.555493, 0.244074, -18.8404)
 
@@ -630,6 +644,8 @@ spot_attenuation = 0.5
 [editable path="Walls/TreeWalls/TreeBundleTwoWithCollision/tree_bundle_two"]
 [editable path="Walls/TreeWalls/TreeBundleTwoWithCollision/StaticBody3D/TreeRound"]
 [editable path="Walls/TreeWalls/TreeBundleTwoWithCollision/StaticBody3D/TreeRound/Baum"]
+[editable path="Walls/FlowerRed"]
+[editable path="Walls/FlowerRed/blume_rot_low"]
 [editable path="Walls/StoneWallFourWithCollision"]
 [editable path="Objects/Static/Desk/Crystal"]
 [editable path="Objects/Static/Desk/Crystal/Crystal"]

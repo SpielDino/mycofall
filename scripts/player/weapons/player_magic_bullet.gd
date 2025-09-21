@@ -17,7 +17,11 @@ func moving(delta):
 	if !tracking:
 		position += transform.basis * Vector3(0, 0, -speed) * delta
 	elif tracking:
-		directions = (enemy_position_for_tracking.global_position - global_position).normalized()
+		#directions = (enemy_position_for_tracking.global_position - global_position).normalized()
+		#position += directions * speed * delta
+		directions = (enemy_position_for_tracking.global_position - global_position)
+		directions.y += 0.5  # Apply offset in Y
+		directions = directions.normalized()
 		position += directions * speed * delta
 
 func _on_area_3d_body_entered(body: Node3D) -> void:

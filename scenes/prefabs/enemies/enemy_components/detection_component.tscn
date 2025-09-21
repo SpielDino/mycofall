@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bsyqwria6dtbe" path="res://scripts/enemies/enemy_detection_component.gd" id="1_hpkyx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7e06y"]
+radius = 0.498743
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_hpkyx"]
 points = PackedVector3Array(0, 0, 0, 4, 0.75, 0.75, 4, -0.75, 0.75, 4, -0.75, -0.75, 4, 0.75, -0.75)
