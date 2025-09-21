@@ -138,6 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71916, 0)
 movement_type = "move towards player"
 keep_distance = 6.0
 walking_name = "Walk"
+attack_walking_name = "Walk"
 
 [node name="ParticleComponent" parent="." instance=ExtResource("4_oy421")]
 

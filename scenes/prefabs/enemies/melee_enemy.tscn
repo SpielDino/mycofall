@@ -145,11 +145,17 @@ health = 200
 death_animation_time = 0.583
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_li4h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.13949, 0)
 
 [node name="MovementComponent" parent="." instance=ExtResource("3_cph10")]
 speed = 3
 acceleration = 2
 movement_type = "move towards player"
+attack_walking_name = "Running"
+attack_walking_speedscale = 1.3
+
+[node name="NavigationAgent3D" parent="MovementComponent" index="2"]
+radius = 1.0
 
 [node name="ParticleComponent" parent="." instance=ExtResource("4_rtgbl")]
 
