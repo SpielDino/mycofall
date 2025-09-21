@@ -34,7 +34,6 @@ func _process(delta: float) -> void:
 		_on_back_pressed()
 		
 func _on_options_pressed() -> void:
-	print("changed")
 	if self.visible == true:
 		buttons.visible = true
 		options_anim.play("open")
