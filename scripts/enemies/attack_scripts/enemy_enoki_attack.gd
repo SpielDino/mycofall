@@ -64,7 +64,7 @@ func rangedAttack(delta):
 
 func meleeAttack(delta):
 	if punch_timer <= 0:
-		if enemy.slow_rotate_to_player():
+		if enemy.slow_rotate_to_target(player.get_child(0)):
 			punch_timer = 12.0833
 			enemy.animation_player.pause()
 	if punch_timer > 0: 
