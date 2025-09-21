@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://db3vn2728wkiy"
+path="res://.godot/imported/Old Guy Mumble.wav-2ad8dc8ded8e247291f077a02b5b99bd.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Old Guy/Old Guy Mumble.wav"
+dest_files=["res://.godot/imported/Old Guy Mumble.wav-2ad8dc8ded8e247291f077a02b5b99bd.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

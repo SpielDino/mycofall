@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cntd22ofpbaft"
+path="res://.godot/imported/Ram gegner sounds.wav-b438f9cec1f4942a7079fc63e04410b0.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Enemy/Ram Gegner/Ram gegner sounds.wav"
+dest_files=["res://.godot/imported/Ram gegner sounds.wav-b438f9cec1f4942a7079fc63e04410b0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

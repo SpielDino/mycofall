@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cch7vbdka4pi7"
+path="res://.godot/imported/Shield Bash.wav-6eb765eab2b36e6d126978c3c0f655d9.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Battle/Shield/Shield Bash/Shield Bash.wav"
+dest_files=["res://.godot/imported/Shield Bash.wav-6eb765eab2b36e6d126978c3c0f655d9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

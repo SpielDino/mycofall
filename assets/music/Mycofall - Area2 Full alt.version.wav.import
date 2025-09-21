@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://vaofdqeeu25b"
+path="res://.godot/imported/Mycofall - Area2 Full alt.version.wav-0407dfe91f8ffc04438d92ca2e1497f9.sample"
+
+[deps]
+
+source_file="res://assets/music/Mycofall - Area2 Full alt.version.wav"
+dest_files=["res://.godot/imported/Mycofall - Area2 Full alt.version.wav-0407dfe91f8ffc04438d92ca2e1497f9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

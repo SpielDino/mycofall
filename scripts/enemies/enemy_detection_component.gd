@@ -80,7 +80,6 @@ func get_pinged():
 	player_location_known_from_ally = true
 	last_known_location = player.get_child(0).global_position
 	tracking_duration = last_known_location_duration
-	print("pinged")
 
 func ping_allies():
 	for ally in allies:

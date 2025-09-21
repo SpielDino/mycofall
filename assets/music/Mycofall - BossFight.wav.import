@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ccx87wr613p5d"
+path="res://.godot/imported/Mycofall - BossFight.wav-7e3ea2e1c9f1d7c369f421056e1a57a1.sample"
+
+[deps]
+
+source_file="res://assets/music/Mycofall - BossFight.wav"
+dest_files=["res://.godot/imported/Mycofall - BossFight.wav-7e3ea2e1c9f1d7c369f421056e1a57a1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

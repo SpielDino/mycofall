@@ -22,6 +22,8 @@ var ranged_attack_delay: float = 0.54
 var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
 
 @onready var bullet_spawn_point = $BulletSpawnPoint
+@onready var melee_sound = $MeleeSound
+@onready var ranged_sound = $RangedSound
 
 func _ready():
 	player = GlobalPlayer.get_player()
@@ -32,6 +34,7 @@ func _physics_process(delta):
 		enemy.state = enemy.States.ATTACK_TYPE_1
 	if !is_in_attack:
 		attack_logic()
+	enemy.velocity = Vector3(0, enemy.velocity.y, 0)
 
 func attack_logic():
 	if enemy.state == enemy.States.ATTACK_TYPE_1 and !enemy.died:
@@ -62,6 +65,7 @@ func melee_attack():
 	enemy.animation_player.speed_scale = 1
 	enemy.animation_player.play("Punch")
 	await get_tree().create_timer(1).timeout
+	melee_sound.play()
 	if in_melee_damage_area:
 		player.take_damage(melee_damage, enemy, true, 0)
 	await get_tree().create_timer(2.0833 - 1).timeout

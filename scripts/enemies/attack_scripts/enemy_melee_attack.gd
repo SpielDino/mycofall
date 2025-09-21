@@ -13,7 +13,9 @@ var attack_cooldown: float = 0
 var is_in_inner_attack_area: bool = false
 var is_in_outer_attack_area: bool = false
 
-@onready var particles = $"../AttackParticles" #TODO implement later
+@onready var particles = $AttackParticles
+@onready var attack_sound = $AttackSound
+
 
 func _ready():
 	enemy = get_parent()
@@ -34,9 +36,11 @@ func attack(delta):
 		is_attacking = true
 		enemy.state = enemy.States.ATTACK_TYPE_1
 	if is_attacking and !enemy.died:
+		enemy.velocity = Vector3(0, enemy.velocity.y, 0)
 		enemy.animation_player.speed_scale = 1
 		enemy.animation_player.play("Bump")
 		if attack_cooldown <= 5.42 and attack_cooldown > 5:
+			attack_sound.play()
 			particles.restart()
 			particles.emitting = true
 			attack_cooldown -= 5

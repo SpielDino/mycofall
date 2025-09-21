@@ -13,6 +13,7 @@ var has_taken_damage: bool = false
 var started: bool = false
 
 @onready var paricles = $Explosion
+@onready var explosion_sound = $ExplosionSound
 
 func _ready():
 	player = GlobalPlayer.get_player()
@@ -34,7 +35,7 @@ func attack():
 func explode():
 	paricles.emitting = true
 	enemy.model.visible = false
-	#$ExplosionAudio.play()
+	explosion_sound.play()
 	enemy.velocity = Vector3(0, 0, 0)
 	if !has_taken_damage and is_in_damage_area:
 		player.take_damage(attack_damage, self, false, 0)

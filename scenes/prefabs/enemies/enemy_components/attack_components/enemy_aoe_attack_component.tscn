@@ -1,7 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bive0d87jh7fb"]
+[gd_scene load_steps=16 format=3 uid="uid://bive0d87jh7fb"]
 
 [ext_resource type="Texture2D" uid="uid://cbu02u0njv72o" path="res://assets/textures/Kenney Particles Transparent Background/smoke_07.png" id="1_lce6w"]
 [ext_resource type="Script" uid="uid://di4kk2yp52pd8" path="res://scripts/enemies/attack_scripts/enemy_aoe_attack.gd" id="2_l036e"]
+[ext_resource type="AudioStream" uid="uid://tbuvwkehgov6" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_1.wav" id="3_sx8jb"]
+[ext_resource type="AudioStream" uid="uid://cccpcyuqsvc8h" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_2.wav" id="4_c7v8q"]
+[ext_resource type="AudioStream" uid="uid://c1fp3u6e5saak" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_3.wav" id="5_36sxt"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l036e"]
 
@@ -49,6 +52,12 @@ hue_variation_max = 0.03
 
 [sub_resource type="QuadMesh" id="QuadMesh_c7v8q"]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_53rf1"]
+streams_count = 3
+stream_0/stream = ExtResource("3_sx8jb")
+stream_1/stream = ExtResource("4_c7v8q")
+stream_2/stream = ExtResource("5_36sxt")
+
 [node name="EnemyAoeAttackComponent" type="Node3D"]
 script = ExtResource("2_l036e")
 
@@ -74,6 +83,11 @@ one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_sx8jb")
 draw_pass_1 = SubResource("QuadMesh_c7v8q")
+
+[node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_53rf1")
+volume_db = 8.0
+pitch_scale = 0.7
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]

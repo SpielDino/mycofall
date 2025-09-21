@@ -1,13 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://dc0qbknul7xa2"]
+[gd_scene load_steps=29 format=3 uid="uid://dc0qbknul7xa2"]
 
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_r1xi1"]
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="2_nd33r"]
 [ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="3_1ellk"]
-[ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_oy421"]
-[ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_nbj0t"]
+[ext_resource type="AudioStream" uid="uid://b5v6gsp3t43g3" path="res://assets/sounds/Enemy/Ram Gegner/Ram gegner gehen.wav" id="4_46afm"]
 [ext_resource type="PackedScene" uid="uid://bn83tctnd56yc" path="res://assets/models/enemies/charge_enemy/ram_enemy.blend" id="6_1ellk"]
 [ext_resource type="PackedScene" uid="uid://ceh3efrojhnkb" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_charge_attack_component.tscn" id="6_oy421"]
 [ext_resource type="Texture2D" uid="uid://da0mciyn4k51j" path="res://assets/textures/Kenney Particles Transparent Background/smoke_05.png" id="8_nbj0t"]
+[ext_resource type="AudioStream" uid="uid://o8dwe8rm7x1i" path="res://assets/sounds/Enemy/Spider/Spider Death.wav" id="9_3m3ei"]
+[ext_resource type="AudioStream" uid="uid://v1ctgdeawip3" path="res://assets/sounds/Battle/SwordAttack/Sword Hit Universal.wav" id="10_46afm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_67fxq"]
 transparency = 1
@@ -126,10 +127,11 @@ height = 1.60266
 [sub_resource type="SphereShape3D" id="SphereShape3D_oy421"]
 radius = 0.210181
 
-[node name="ChargeEnemy" type="CharacterBody3D" groups=["Enemy"]]
+[node name="ChargeEnemy" type="CharacterBody3D" node_paths=PackedStringArray("hitboxes") groups=["Enemy"]]
 script = ExtResource("1_r1xi1")
 health = 250
 has_death_animation = false
+hitboxes = [NodePath("HitboxHead"), NodePath("HitboxBody"), NodePath("HitboxFeet")]
 
 [node name="DetectionComponent" parent="." instance=ExtResource("2_nd33r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71916, 0)
@@ -140,9 +142,11 @@ keep_distance = 6.0
 walking_name = "Walk"
 attack_walking_name = "Walk"
 
-[node name="ParticleComponent" parent="." instance=ExtResource("4_oy421")]
+[node name="WalkingSounds" parent="MovementComponent" index="3"]
+stream = ExtResource("4_46afm")
 
-[node name="SoundComponent" parent="." instance=ExtResource("5_nbj0t")]
+[node name="RunningSounds" parent="MovementComponent" index="4"]
+stream = ExtResource("4_46afm")
 
 [node name="EnemyChargeAttackComponent" parent="." instance=ExtResource("6_oy421")]
 
@@ -186,6 +190,15 @@ shape = SubResource("CapsuleShape3D_1ellk")
 [node name="HitboxFeet" type="CollisionShape3D" parent="." groups=["Enemy"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.189564, 0)
 shape = SubResource("SphereShape3D_oy421")
+
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_3m3ei")
+volume_db = -2.0
+pitch_scale = 0.8
+
+[node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_46afm")
+volume_db = -2.0
 
 [editable path="DetectionComponent"]
 [editable path="MovementComponent"]

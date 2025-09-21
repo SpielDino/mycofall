@@ -12,6 +12,7 @@ var is_in_slow_area: bool = false
 
 @onready var explosion_effect = $Explosion
 @onready var projectile_effect = $Projectile
+@onready var explosion_sound = $ExplosionSound
 
 func setParameter(playerInput: Node3D, damageInput: float, speedInput: float, velInput: Vector3):
 	player = playerInput
@@ -28,6 +29,7 @@ func _physics_process(delta):
 		if explopsion_life_timer >= 0:
 			slow_player()
 		else:
+			player.get_child(0).is_slowed = false
 			queue_free()
 	else:
 		move(delta)
@@ -38,12 +40,14 @@ func move(delta):
 
 func explosion():
 	has_hit = true
+	explosion_sound.play()
 	explosion_effect.restart()
 	explosion_effect.emitting = true
 
 func slow_player():
+	player.get_child(0).is_slowed = false
 	if is_in_slow_area:
-		print("Slowed") #TODO Slow player somehow
+		player.get_child(0).is_slowed = true
 
 func _on_hit_area_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Player") and !has_hit:

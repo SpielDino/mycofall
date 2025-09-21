@@ -40,7 +40,7 @@ extends CharacterBody3D
 @onready var squish_sound = $Sounds/SquishSound
 @onready var spear_sound = $Sounds/SpearSound
 @onready var walking_sound = $Sounds/WalkingSound
-@onready var explosion_enemy_drop_points = $ExplosionsEnemySpawnpoints.get_children()
+@onready var explosion_enemy_drop_points = $ExplosionsEnemySpawnpoints
 
 @onready var health_bar = get_tree().current_scene.find_child("bossHealthMargin")
 
@@ -105,15 +105,19 @@ func calculate_aggression():
 	var totalKills: float = rangedKills + meleeKills
 	aggression += (rangedKills - meleeKills)/totalKills
 	aggression = clamp(aggression, -0.7, 0.7)
+	print(aggression)
 
 func calculate_blocks_and_dashes():
 	var attacksBlocked: float = PlayerActionTracker.attacks_blocked
 	var attacksDodged: float = PlayerActionTracker.times_dodged_in_combat
 	var totalDodgedAndBlocked: float = attacksBlocked + attacksDodged
 	attacks_blocked_percentage = attacksBlocked / totalDodgedAndBlocked
-	attacks_blocked_percentage = attacksDodged / totalDodgedAndBlocked
+	attacks_dodged_percentage = attacksDodged / totalDodgedAndBlocked
 	attacks_blocked_percentage = clamp(attacks_blocked_percentage, 0.3, 0.7)
-	attacks_blocked_percentage = clamp(attacks_blocked_percentage, 0.3, 0.7)
+	attacks_dodged_percentage = clamp(attacks_blocked_percentage, 0.3, 0.7)
+	print(attacks_blocked_percentage)
+	print(attacks_dodged_percentage)
+	
 
 func activate_boss():
 	calculate_aggression()
@@ -214,9 +218,9 @@ func move_towards_target(delta, targetPoint):
 		velocity = velocity.lerp(direction * speed, acceleration * delta)
 		rotate_to_target(targetPoint)
 		animation_player.play("Running")
-		#if !walkingSound.playing:
-		#	walkingSound.pitch_scale = 0.6
-			#walkingSound.play()
+		if !walking_sound.playing:
+			walking_sound.pitch_scale = 0.6
+			walking_sound.play()
 		return false
 	else:
 		velocity = Vector3(0, velocity.y, 0)
@@ -238,11 +242,11 @@ func explosion_attack_action(delta, playerPosition):
 	if abs(action_time - (100 - 2.11)) <= 1:
 		explosion_mini_enemies_attack()
 		action_time = 50
-		#launcher_sound_1.play(0.52)
+		launcher_sound_1.play(0.52)
 	elif abs(action_time - (50 - 1.55)) <= 1:
 		explosion_mini_enemies_attack()
 		action_time = 0.9
-		#launcher_sound_2.play(0.52)
+		launcher_sound_2.play(0.52)
 	elif action_time <= 0:
 		animation_player.stop()
 		action_type = action_types.NONE
@@ -256,7 +260,7 @@ func ranged_attack_action(delta, playerPosition):
 		animation_player.play("Squish")
 	if abs(action_time - (100 - 3.5)) <= 1:
 		spore_ranged_attack()
-		#squishSound.play()
+		squish_sound.play()
 		action_time = 0.65
 	elif action_time <= 0:
 		animation_player.stop()
@@ -268,7 +272,7 @@ func spore_area_attack_action(delta):
 		action_time = 100
 	if abs(action_time - (100 - 3.5)) <= 1:
 		action_time = 0.65
-		#squishSound.play()
+		squish_sound.play()
 		spore_particles.emitting = true
 		spore_time = 10
 	elif action_time <= 0:
@@ -283,9 +287,9 @@ func charge_attack_action(delta):
 		charge_collision.disabled = false
 		animation_player.play("Rush")
 		charge_attack()
-		#if !walkingSound.playing:
-		#	walkingSound.pitch_scale = 1
-			#walkingSound.play()
+		if !walking_sound.playing:
+			walking_sound.pitch_scale = 1
+			walking_sound.play()
 	if charge_hit and action_time >= 51:
 		animation_player.play("Smash_After_Rush")
 		action_time = 50
@@ -349,12 +353,11 @@ func spore_ranged_attack():
 		var pos: Vector3 = spore_spawn_point.global_position
 		var vel: Vector3 = pos - global_position
 		var bullet = bullet_scene.instantiate()
+		self.add_child(bullet)
 		bullet.set_parameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
 		bullet.set_tracking_delay(randomTrackingDelay)
 		bullet.set_block_cost_modifier(0.5)
-		self.add_child(bullet)
 		bullet.global_position = pos
-
 
 func charge_attack():
 	if !charge_attack_on_going:
@@ -370,7 +373,7 @@ func charge_attack():
 		charge_attack_on_going = false
 
 func explosion_mini_enemies_attack():
-	var temp_explosion_enemy = explosion_enemy.instantiate()
+	var temp_explosion_enemy: Node3D = explosion_enemy.instantiate()
 	self.add_child(temp_explosion_enemy)
 	temp_explosion_enemy.get_child(0).is_tracking = false
 	temp_explosion_enemy.global_position = explosion_enemy_spawn_point.global_position
@@ -387,17 +390,17 @@ func explosion_mini_enemies_attack():
 func spear_melee_attack(delta):
 	spear_time_keeper += delta
 	if spear_time_keeper >= 0.64 and spear_time_keeper <= 0.73:
-		#spearSound.play()
+		spear_sound.play()
 		if combo_area_1:
 			player.take_damage(spear_damage, self, true, 0.5)
 			combo_area_1 = false
 	elif spear_time_keeper >= 1.12 and spear_time_keeper <= 1.16:
-		#spearSound.play()
+		spear_sound.play()
 		if combo_area_2:
 			player.take_damage(spear_damage, self, true, 0.5)
 			combo_area_2 = false
 	elif spear_time_keeper >= 1.7 and spear_time_keeper <= 2.1:
-		#spearSound.play()
+		spear_sound.play()
 		if combo_area_3:
 			player.take_damage(spear_damage, self, true, 0.5)
 			combo_area_3 = false

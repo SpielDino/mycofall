@@ -1,13 +1,14 @@
-[gd_scene load_steps=26 format=3 uid="uid://bscovpt7jdhyu"]
+[gd_scene load_steps=27 format=3 uid="uid://bscovpt7jdhyu"]
 
 [ext_resource type="Script" uid="uid://dr20k3k3q5qny" path="res://scripts/enemies/enemy_controller.gd" id="1_f8il8"]
 [ext_resource type="PackedScene" uid="uid://6hcs42nnksvl" path="res://scenes/prefabs/enemies/enemy_components/detection_component.tscn" id="3_ry033"]
 [ext_resource type="PackedScene" uid="uid://cdxl0np8yyjxx" path="res://scenes/prefabs/enemies/enemy_components/movement_component.tscn" id="3_wfkd4"]
-[ext_resource type="PackedScene" uid="uid://d2jqw6mwra55l" path="res://scenes/prefabs/enemies/enemy_components/particle_component.tscn" id="4_y4dku"]
-[ext_resource type="PackedScene" uid="uid://0yr3wenqdvad" path="res://scenes/prefabs/enemies/enemy_components/sound_component.tscn" id="5_i8y0w"]
+[ext_resource type="AudioStream" uid="uid://cb3nqapq6m8sp" path="res://assets/sounds/Enemy/Roller/RollerAttack/RollerAttack_1.wav" id="4_h6co1"]
 [ext_resource type="PackedScene" uid="uid://b8sxotknjgsqi" path="res://scenes/prefabs/enemies/enemy_components/attack_components/enemy_explosion_attack_component.tscn" id="6_y4dku"]
 [ext_resource type="PackedScene" uid="uid://xafvmon1dwa4" path="res://assets/models/enemies/explosion_enemy/Roller.blend" id="7_y4dku"]
 [ext_resource type="Texture2D" uid="uid://da0mciyn4k51j" path="res://assets/textures/Kenney Particles Transparent Background/smoke_05.png" id="8_i8y0w"]
+[ext_resource type="AudioStream" uid="uid://o8dwe8rm7x1i" path="res://assets/sounds/Enemy/Spider/Spider Death.wav" id="9_binnp"]
+[ext_resource type="AudioStream" uid="uid://v1ctgdeawip3" path="res://assets/sounds/Battle/SwordAttack/Sword Hit Universal.wav" id="10_h6co1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7mljc"]
 transparency = 1
@@ -116,10 +117,11 @@ size = Vector2(1.5, 1.5)
 [sub_resource type="SphereShape3D" id="SphereShape3D_i8y0w"]
 radius = 0.439949
 
-[node name="ExplosionEnemy" type="CharacterBody3D" groups=["Enemy"]]
+[node name="ExplosionEnemy" type="CharacterBody3D" node_paths=PackedStringArray("hitboxes") groups=["Enemy"]]
 script = ExtResource("1_f8il8")
 health = 50
 has_death_animation = false
+hitboxes = [NodePath("Hitbox"), NodePath("Hitbox2")]
 
 [node name="DetectionComponent" parent="." instance=ExtResource("3_ry033")]
 
@@ -130,9 +132,11 @@ attack_walking_name = "Ball roll"
 warmup_animation_name = "Transform2ball"
 warmup_animation_time = 1.5
 
-[node name="ParticleComponent" parent="." instance=ExtResource("4_y4dku")]
+[node name="WalkingSounds" parent="MovementComponent" index="3"]
+stream = ExtResource("4_h6co1")
 
-[node name="SoundComponent" parent="." instance=ExtResource("5_i8y0w")]
+[node name="RunningSounds" parent="MovementComponent" index="4"]
+stream = ExtResource("4_h6co1")
 
 [node name="EnemyExplosionAttackComponent" parent="." instance=ExtResource("6_y4dku")]
 
@@ -152,19 +156,19 @@ bones/10/position = Vector3(-0.000313184, 0.000343876, -2.24236e-07)
 bones/10/rotation = Quaternion(-0.00169747, 0.0015196, 0.996298, 0.0859368)
 
 [node name="BeinR" parent="Model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 1.5672e-07, 1.51581e-07, -5.00479e-08, 1, 0.0908616, 0.0432918, -0.00346282)
+transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 2.16324e-07, 1.51581e-07, -1.09653e-07, 1, 0.0908615, 0.0432923, -0.00346248)
 
 [node name="BeinL" parent="Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 1.5672e-07, 1.51581e-07, -5.00479e-08, 1, 0.0884127, 0.0395059, 1.04308e-07)
+transform = Transform3D(0.839663, 0.543108, -1.50143e-07, -0.543107, 0.839663, 2.16324e-07, 1.51581e-07, -1.09653e-07, 1, 0.0884127, 0.0395062, 8.9407e-08)
 
 [node name="ArmL" parent="Model/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.245984, -0.517131, 0.819797, 0.791632, 0.595224, 0.137937, -0.559294, 0.615048, 0.555793, -0.185656, 0.00144205, 0.147659)
+transform = Transform3D(0.245984, -0.517131, 0.819797, 0.791633, 0.595224, 0.137936, -0.559294, 0.615048, 0.555793, -0.185656, 0.00144224, 0.14766)
 
 [node name="ArmR" parent="Model/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.234986, -0.527258, -0.816566, 0.705919, 0.670073, -0.229521, 0.668176, -0.522496, 0.529659, -0.182569, -0.0116516, -0.144376)
+transform = Transform3D(0.234986, -0.527258, -0.816567, 0.70592, 0.670073, -0.229521, 0.668176, -0.522496, 0.529659, -0.182569, -0.0116516, -0.144376)
 
 [node name="Hutshell" parent="Model/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.985223, -0.17125, -0.00312117, 0.17124, -0.985224, 0.00331978, -0.00364356, 0.00273626, 0.99999, -0.00102169, 0.000937998, -2.42967e-05)
+transform = Transform3D(-0.985223, -0.17125, -0.00312116, 0.171239, -0.985224, 0.00331978, -0.00364355, 0.00273625, 0.99999, -0.00102169, 0.000937998, -2.42967e-05)
 
 [node name="Körper" parent="Model/Armature/Skeleton3D" index="5"]
 transform = Transform3D(0.984811, 0.172972, -0.0150833, -0.172813, 0.98489, 0.0113288, 0.016815, -0.00855018, 0.999822, -0.00204655, -0.0116528, 0.000101157)
@@ -202,7 +206,15 @@ shape = SubResource("SphereShape3D_i8y0w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.790477, 0)
 shape = SubResource("SphereShape3D_i8y0w")
 
+[node name="DeathSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("9_binnp")
+volume_db = -2.0
+pitch_scale = 0.8
+
+[node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("10_h6co1")
+volume_db = -2.0
+
 [editable path="DetectionComponent"]
 [editable path="MovementComponent"]
-[editable path="SoundComponent"]
 [editable path="Model"]
