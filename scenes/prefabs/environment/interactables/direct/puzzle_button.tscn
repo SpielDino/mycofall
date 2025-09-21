@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlefj521fe4a8"]
+
+[ext_resource type="PackedScene" uid="uid://d2wdtfy6icf4l" path="res://scenes/prefabs/environment/trees/with_collision/tree_stump_grounded_with_collision.tscn" id="1_8647o"]
+[ext_resource type="Script" uid="uid://nuuhs6eq7g0h" path="res://scenes/prefabs/environment/objects/boss_puzzle_interact.gd" id="2_twavy"]
+[ext_resource type="PackedScene" uid="uid://drlryl3j1rb3a" path="res://scenes/prefabs/environment/objects/mushroom_lamp.tscn" id="3_3yoxy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_v1fqg"]
+
+[node name="PuzzleButton" type="Node3D"]
+
+[node name="TextPosition" type="Node3D" parent="."]
+
+[node name="TreeStumpGroundedWithCollision" parent="TextPosition" instance=ExtResource("1_8647o")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." node_paths=PackedStringArray("text_position")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.568665, 0)
+script = ExtResource("2_twavy")
+text_position = NodePath("../TextPosition")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_v1fqg")
+
+[node name="MushroomLamp" parent="." instance=ExtResource("3_3yoxy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.47721, 0)

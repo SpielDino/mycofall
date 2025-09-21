@@ -1,6 +1,6 @@
 [gd_scene load_steps=53 format=3 uid="uid://b5evg8uvivypg"]
 
-[ext_resource type="Script" uid="uid://jfsi7yjkejnu" path="res://scenes/production/game/intro/intro_sequence.gd" id="1_lrqtx"]
+[ext_resource type="Script" uid="uid://jfsi7yjkejnu" path="res://scripts/environment/intro_sequence.gd" id="1_lrqtx"]
 [ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="2_246qq"]
 [ext_resource type="PackedScene" uid="uid://dgnex5i27htbn" path="res://scenes/prefabs/environment/plants/bush_test_2.tscn" id="3_3xftp"]
 [ext_resource type="PackedScene" uid="uid://irrsqnnuxdnc" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(50x50).tscn" id="3_uwky1"]
@@ -39,7 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://bhdss3bvga6se" path="res://scenes/prefabs/environment/paths/path_stone_6.tscn" id="37_wotig"]
 [ext_resource type="PackedScene" uid="uid://bh8xfdbf0ubt0" path="res://scenes/prefabs/environment/paths/path_stone_9.tscn" id="38_mlvln"]
 [ext_resource type="PackedScene" uid="uid://cv3s8xfjdlmmi" path="res://scenes/prefabs/environment/paths/path_stone_1.tscn" id="39_liyu2"]
-[ext_resource type="Script" uid="uid://cie64r5ma8hcy" path="res://scenes/production/game/intro/detect_player_tutorial.gd" id="40_lrqtx"]
+[ext_resource type="Script" uid="uid://cie64r5ma8hcy" path="res://scripts/environment/detect_player_tutorial.gd" id="40_lrqtx"]
 [ext_resource type="PackedScene" uid="uid://6v40u6l4orm5" path="res://scenes/prefabs/environment/paths/path_stone_11.tscn" id="40_nucsg"]
 [ext_resource type="PackedScene" uid="uid://bnlu7mjuuo1pp" path="res://scenes/prefabs/environment/rooms/model_prefabs/background_test.tscn" id="41_d0iy5"]
 [ext_resource type="PackedScene" uid="uid://iduptgj62v6v" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_one_with_collision.tscn" id="42_lrqtx"]

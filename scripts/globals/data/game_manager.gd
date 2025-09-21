@@ -28,6 +28,15 @@ var is_heavy_attacking: bool = false
 var is_heavy_attack_shield_with_sword: bool = false
 var is_knockdown: bool = false
 
+var boss_puzzle_solved: bool = false;
+
+func get_boss_puzzle() -> bool:
+	return boss_puzzle_solved
+	
+func set_boss_puzzle() -> void:
+	if PlayerActionTracker.bow_kills + PlayerActionTracker.melee_kills + PlayerActionTracker.staff_kills > 100:
+		boss_puzzle_solved = true;
+	
 func get_first_weapon():
 	return first_weapon
 
