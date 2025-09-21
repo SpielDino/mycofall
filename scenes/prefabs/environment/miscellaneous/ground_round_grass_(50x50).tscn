@@ -1,11 +1,25 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyarqa6bt81h4"]
+[gd_scene load_steps=11 format=3 uid="uid://dyarqa6bt81h4"]
 
-[ext_resource type="Material" uid="uid://dp3mrytmy4xye" path="res://assets/materials/grass_ground.tres" id="1_pmk43"]
+[ext_resource type="Texture2D" uid="uid://b0mgedjvb02md" path="res://assets/textures/model_textures/grass_boden/grass_01_color_2k.png" id="1_umtv1"]
 [ext_resource type="Material" uid="uid://buwe41c4685gy" path="res://assets/materials/grassMaterial.tres" id="2_d432p"]
+[ext_resource type="Texture2D" uid="uid://dqrr7cbop8pdq" path="res://assets/textures/model_textures/grass_boden/grass_01_ambient_occlusion_2k.png" id="2_lqwwg"]
+[ext_resource type="Texture2D" uid="uid://cxb774dus402i" path="res://assets/textures/model_textures/grass_boden/grass_01_height_2k.png" id="3_g8m85"]
 [ext_resource type="ArrayMesh" uid="uid://bu32rjfh83ukn" path="res://assets/textures/model_textures/Mesh/Grass_Round_Bunch_Mesh.res" id="3_u2ku1"]
+[ext_resource type="Texture2D" uid="uid://be4b3d1g5njg4" path="res://assets/textures/model_textures/grass_boden/grass_01_normal_gl_2k.png" id="4_onxs5"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_aympb"]
-material = ExtResource("1_pmk43")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggute"]
+albedo_texture = ExtResource("1_umtv1")
+normal_enabled = true
+normal_texture = ExtResource("4_onxs5")
+ao_enabled = true
+ao_light_affect = 1.0
+ao_texture = ExtResource("2_lqwwg")
+heightmap_enabled = true
+heightmap_texture = ExtResource("3_g8m85")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cac7g"]
+material = SubResource("StandardMaterial3D_ggute")
 size = Vector2(50, 50)
 
 [sub_resource type="MultiMesh" id="MultiMesh_pmk43"]
@@ -22,7 +36,7 @@ size = Vector3(50, 0.1, 50)
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("PlaneMesh_aympb")
+mesh = SubResource("PlaneMesh_cac7g")
 skeleton = NodePath("../..")
 
 [node name="GrassRound" type="MultiMeshInstance3D" parent="StaticBody3D/MeshInstance3D"]
