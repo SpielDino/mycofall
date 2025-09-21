@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://2edw7nm615hb"]
+
+[ext_resource type="PackedScene" uid="uid://bivcvlhbxo3nm" path="res://assets/models/rocks/CurvedRock.blend" id="1_3xcgb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3xcgb"]
+size = Vector3(0.516113, 0.525452, 0.631424)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tk0kx"]
+size = Vector3(0.604607, 0.566162, 0.631348)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o452g"]
+size = Vector3(0.482422, 0.71875, 0.540863)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_miotm"]
+size = Vector3(0.606941, 0.530823, 0.839355)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lhbvo"]
+size = Vector3(0.494507, 0.690308, 0.54834)
+
+[node name="RoundedRock" type="Node3D"]
+
+[node name="CurvedRock" parent="." instance=ExtResource("1_3xcgb")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CurvedRock"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CurvedRock/StaticBody3D"]
+transform = Transform3D(-3.09086e-08, -0.707107, -0.707107, 1, -4.37114e-08, 0, -3.09086e-08, -0.707107, 0.707107, -0.683045, 0.0388184, 0.691711)
+shape = SubResource("BoxShape3D_3xcgb")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="CurvedRock/StaticBody3D"]
+transform = Transform3D(0.430338, 0, 0.902668, 0, 1, 0, -0.902668, 0, 0.430338, -0.305663, 0.0648193, 0.966441)
+shape = SubResource("BoxShape3D_tk0kx")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="CurvedRock/StaticBody3D"]
+transform = Transform3D(-0.258482, 0, -0.966016, 0, 1, 0, 0.966016, 0, -0.258482, 0.0715956, -0.140625, 1.16926)
+shape = SubResource("BoxShape3D_o452g")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="CurvedRock/StaticBody3D"]
+transform = Transform3D(0.90063, 0, 0.434587, 0, 1, 0, -0.434587, 0, 0.90063, -0.941122, 0.0765076, 0.293023)
+shape = SubResource("BoxShape3D_miotm")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="CurvedRock/StaticBody3D"]
+transform = Transform3D(0.43531, 0, -0.900281, 0, 1, 0, 0.900281, 0, 0.43531, -1.15983, -0.154846, -0.199296)
+shape = SubResource("BoxShape3D_lhbvo")
+
+[editable path="CurvedRock"]

@@ -32,6 +32,7 @@ func _ready():
 	player = GlobalPlayer.get_player()
 
 func die():
+	GameManager.set_boss_puzzle()
 	death_sound.play()
 	for hitbox in hitboxes:
 		hitbox.queue_free()
@@ -72,7 +73,6 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 			PlayerActionTracker.staff_kills += 1
 		if type == "Sword":
 			PlayerActionTracker.melee_kills += 1
-			print("Test")
 	else:
 		if has_knockback:
 			var direction = (global_position - player.get_child(0).global_position).normalized()
