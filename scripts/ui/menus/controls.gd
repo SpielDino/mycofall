@@ -13,7 +13,7 @@ var _base_path: String = "res://assets/textures/ui_textures/menus/Keys/"
 var _capturing_remap: bool = false;
 var _current_action_name: String;
 var _current_key: String;
-var _current_label: Label
+var _current_label: Label;
 
 @onready var controller_text = $MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer/Controller
 @onready var keyboard_text = $MarginContainer/ControlsMenuContainer/MarginContainer/Titles/HBoxContainer/Keyboard
