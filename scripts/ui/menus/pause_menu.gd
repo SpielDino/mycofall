@@ -41,6 +41,7 @@ func _ready() -> void:
 
 func _input(event) -> void:
 	if event.is_action_pressed("pause") && !pause_menu.visible && !pause_anim.is_playing():
+		print("pause is not visible")
 		get_tree().paused = true
 		buttons.visible = true
 		var blend_in = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)

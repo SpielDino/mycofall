@@ -3,11 +3,12 @@
 importer="glsl"
 type="RDShaderFile"
 uid="uid://cl1hkwdev7g3o"
-valid=false
+path="res://.godot/imported/pixel_mold_dijkstra_compute.glsl-f5406c451a845f347b02c3f258ad9e59.res"
 
 [deps]
 
 source_file="res://scripts/shader/title_screen/pixel_mold_dijkstra_compute.glsl"
+dest_files=["res://.godot/imported/pixel_mold_dijkstra_compute.glsl-f5406c451a845f347b02c3f258ad9e59.res"]
 
 [params]
 
