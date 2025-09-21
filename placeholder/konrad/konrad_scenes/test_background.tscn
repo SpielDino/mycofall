@@ -176,17 +176,11 @@ transform = Transform3D(0.942794, 0, -1.76384, 0, 2, 0, 1.76384, 0, 0.942794, -1
 [node name="Ground Normal Grass (50x50)" parent="." instance=ExtResource("10_cg53m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5976, 0, 0)
 
-[node name="NomalGrass" parent="Ground Normal Grass (50x50)/StaticBody3D/MeshInstance3D" index="0"]
-script = null
-
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.19606, 0.019883, 0.98039, -0.00163997, 0.9998, -0.0199487, -0.980591, 0.00230333, 0.196054, -14.4994, 4.58561, 7.9123)
 
 [node name="Ground Normal Grass (50x50)2" parent="." instance=ExtResource("10_cg53m")]
 transform = Transform3D(0.669456, 1.88463, 0, -1.88463, 0.669456, 0, 0, 0, 2, -49.4474, 15.0628, 0)
-
-[node name="NomalGrass" parent="Ground Normal Grass (50x50)2/StaticBody3D/MeshInstance3D" index="0"]
-script = null
 
 [node name="Walls3" type="Node3D" parent="."]
 transform = Transform3D(0.948135, 0, 0.317867, 0, 1, 0, -0.317867, 0, 0.948135, -16.5519, 8.22897, 10.1804)

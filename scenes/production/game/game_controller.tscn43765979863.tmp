@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdv85b7walhv5"]
+
+[ext_resource type="Script" uid="uid://bocxvsqa6he6" path="res://scripts/globals/data/game_controller.gd" id="1_3d1pe"]
+[ext_resource type="PackedScene" uid="uid://b8ikqpa2bdlcy" path="res://scenes/ui/title_screen.tscn" id="2_d5f0b"]
+[ext_resource type="PackedScene" uid="uid://bt1oul08n6tr" path="res://scenes/ui/nav/Cursor.tscn" id="3_d5f0b"]
+
+[node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "gui")]
+script = ExtResource("1_3d1pe")
+world_3d = NodePath("World3D")
+gui = NodePath("GUI")
+
+[node name="World3D" type="Node3D" parent="."]
+
+[node name="GUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TitleScreen" parent="GUI" instance=ExtResource("2_d5f0b")]
+layout_mode = 1
+
+[node name="Cursor" parent="GUI" instance=ExtResource("3_d5f0b")]
+layer = 127
+
+[node name="Bending" type="CanvasLayer" parent="GUI"]
+layer = 128
+
+[node name="BlendScreen" type="ColorRect" parent="GUI/Bending"]
+top_level = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)

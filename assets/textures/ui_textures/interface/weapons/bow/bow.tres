@@ -1,0 +1,394 @@
+[gd_resource type="SpriteFrames" load_steps=87 format=3 uid="uid://by2ot111brvl5"]
+
+[ext_resource type="Texture2D" uid="uid://c4cff33xuf14o" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/metal/metal_bow_basic_attack0000.png" id="1_6r56x"]
+[ext_resource type="Texture2D" uid="uid://d08jt7b3fyx57" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/metal/metal_bow_basic_attack0001.png" id="2_5kgt5"]
+[ext_resource type="Texture2D" uid="uid://37311bxtn2qa" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/metal/metal_bow_basic_attack0002.png" id="3_lures"]
+[ext_resource type="Texture2D" uid="uid://dfvx6w3qbpasu" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/metal/metal_bow_basic_attack0003.png" id="4_ibqhe"]
+[ext_resource type="Texture2D" uid="uid://dkv3jdpmemk5j" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/metal/metal_bow_basic_attack0004.png" id="5_s0r4w"]
+[ext_resource type="Texture2D" uid="uid://l4udbd6c4ruw" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/metal/metal_bow_basic_attack0005.png" id="6_0j8du"]
+[ext_resource type="Texture2D" uid="uid://cqoabspbt2krg" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0000.png" id="7_aqxrj"]
+[ext_resource type="Texture2D" uid="uid://kdi1dm0vlfqt" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0001.png" id="8_x5kix"]
+[ext_resource type="Texture2D" uid="uid://j7rhk6wxgp0" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0002.png" id="9_eui04"]
+[ext_resource type="Texture2D" uid="uid://bppyo3vm4mk5e" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0003.png" id="10_ppr0o"]
+[ext_resource type="Texture2D" uid="uid://b40lsag5wnqid" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0004.png" id="11_sqmhh"]
+[ext_resource type="Texture2D" uid="uid://bfpkg6i6uu7ek" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0005.png" id="12_4bihh"]
+[ext_resource type="Texture2D" uid="uid://c5mbm0na71rrx" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0006.png" id="13_qxd75"]
+[ext_resource type="Texture2D" uid="uid://cmtrehlme6yxa" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0007.png" id="14_ptays"]
+[ext_resource type="Texture2D" uid="uid://bavfuqcxeow1y" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0008.png" id="15_08aml"]
+[ext_resource type="Texture2D" uid="uid://cpg0kqr7u74ap" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0009.png" id="16_7w4jh"]
+[ext_resource type="Texture2D" uid="uid://dygcktdheqsn7" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0010.png" id="17_rfv35"]
+[ext_resource type="Texture2D" uid="uid://0r2gma4x4yge" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0011.png" id="18_7luae"]
+[ext_resource type="Texture2D" uid="uid://bfbaenikxv8wn" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0012.png" id="19_lhiuy"]
+[ext_resource type="Texture2D" uid="uid://c4q27bw8ak1um" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0013.png" id="20_2e1an"]
+[ext_resource type="Texture2D" uid="uid://cjvljil7dfvxd" path="res://assets/textures/ui_textures/interface/weapons/bow/block/metal/MetalBowBlock0014.png" id="21_8thn3"]
+[ext_resource type="Texture2D" uid="uid://bbmin4p5jaamp" path="res://assets/textures/ui_textures/interface/weapons/bow/special/metal/metal_bow_special_attack0000.png" id="22_qu3sa"]
+[ext_resource type="Texture2D" uid="uid://cegpuapafe8pl" path="res://assets/textures/ui_textures/interface/weapons/bow/special/metal/metal_bow_special_attack0001.png" id="23_n12bj"]
+[ext_resource type="Texture2D" uid="uid://bai8vu6bipx0c" path="res://assets/textures/ui_textures/interface/weapons/bow/special/metal/metal_bow_special_attack0002.png" id="24_cnp5b"]
+[ext_resource type="Texture2D" uid="uid://82xdpvhsoge1" path="res://assets/textures/ui_textures/interface/weapons/bow/special/metal/metal_bow_special_attack0003.png" id="25_rcljn"]
+[ext_resource type="Texture2D" uid="uid://bu88w87tlg0kj" path="res://assets/textures/ui_textures/interface/weapons/bow/special/metal/metal_bow_special_attack0004.png" id="26_850mt"]
+[ext_resource type="Texture2D" uid="uid://coppcy7uswskr" path="res://assets/textures/ui_textures/interface/weapons/bow/special/metal/metal_bow_special_attack0005.png" id="27_kx25e"]
+[ext_resource type="Texture2D" uid="uid://ch1a1d3xmcep5" path="res://assets/textures/ui_textures/interface/weapons/bow/special/metal/metal_bow_special_attack0006.png" id="28_joj5v"]
+[ext_resource type="Texture2D" uid="uid://b65dbojpmk5r4" path="res://assets/textures/ui_textures/interface/weapons/bow/special/metal/metal_bow_special_attack0007.png" id="29_ipih8"]
+[ext_resource type="Texture2D" uid="uid://dwfpehiq37uun" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/normal/normal_bow_basic_attack0000.png" id="30_4bxij"]
+[ext_resource type="Texture2D" uid="uid://2feshh7wm8rd" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/normal/normal_bow_basic_attack0001.png" id="31_w6eq1"]
+[ext_resource type="Texture2D" uid="uid://duvakvabu03qw" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/normal/normal_bow_basic_attack0002.png" id="32_fu8vn"]
+[ext_resource type="Texture2D" uid="uid://do1aqrfsb4o3h" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/normal/normal_bow_basic_attack0003.png" id="33_brday"]
+[ext_resource type="Texture2D" uid="uid://bqhhypjlri1ql" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/normal/normal_bow_basic_attack0004.png" id="34_jjfyj"]
+[ext_resource type="Texture2D" uid="uid://cuf7n33hc5uri" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/normal/normal_bow_basic_attack0005.png" id="35_jbyv6"]
+[ext_resource type="Texture2D" uid="uid://dvuylhxns0yxw" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0000.png" id="36_lqhh6"]
+[ext_resource type="Texture2D" uid="uid://dv2d2alo1okyc" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0001.png" id="37_yfaq5"]
+[ext_resource type="Texture2D" uid="uid://lhr1ak0xpkmw" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0002.png" id="38_bsm0f"]
+[ext_resource type="Texture2D" uid="uid://6cypcuxg01ts" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0003.png" id="39_j4kho"]
+[ext_resource type="Texture2D" uid="uid://jeaey1p7hxs5" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0004.png" id="40_wfsj5"]
+[ext_resource type="Texture2D" uid="uid://eg3621ob4xti" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0005.png" id="41_mu5em"]
+[ext_resource type="Texture2D" uid="uid://b5k0jvhvb4a0g" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0006.png" id="42_qf1xg"]
+[ext_resource type="Texture2D" uid="uid://boh35jkepnx2k" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0007.png" id="43_w0p6d"]
+[ext_resource type="Texture2D" uid="uid://bofvxlyrs8yno" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0008.png" id="44_jm2wj"]
+[ext_resource type="Texture2D" uid="uid://dihb01apaxkkh" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0009.png" id="45_scusc"]
+[ext_resource type="Texture2D" uid="uid://vpjifdktnw21" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0010.png" id="46_pl1tk"]
+[ext_resource type="Texture2D" uid="uid://ccl8deq3gxbr1" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0011.png" id="47_xbxqf"]
+[ext_resource type="Texture2D" uid="uid://cys7e23df3ujy" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0012.png" id="48_hl6gg"]
+[ext_resource type="Texture2D" uid="uid://c758q3ifaadve" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0013.png" id="49_fc26n"]
+[ext_resource type="Texture2D" uid="uid://dj5qy4megcwig" path="res://assets/textures/ui_textures/interface/weapons/bow/block/normal/normal_bow_block0014.png" id="50_ka4ac"]
+[ext_resource type="Texture2D" uid="uid://dtd5erfug4g82" path="res://assets/textures/ui_textures/interface/weapons/bow/special/normal/normal_bow_special_attack0000.png" id="51_so43j"]
+[ext_resource type="Texture2D" uid="uid://yxeoducuutj3" path="res://assets/textures/ui_textures/interface/weapons/bow/special/normal/normal_bow_special_attack0001.png" id="52_57trq"]
+[ext_resource type="Texture2D" uid="uid://mh7byvmajljg" path="res://assets/textures/ui_textures/interface/weapons/bow/special/normal/normal_bow_special_attack0002.png" id="53_er8oh"]
+[ext_resource type="Texture2D" uid="uid://d23klabfmvwvo" path="res://assets/textures/ui_textures/interface/weapons/bow/special/normal/normal_bow_special_attack0003.png" id="54_586it"]
+[ext_resource type="Texture2D" uid="uid://bdyh6j4e3jqpg" path="res://assets/textures/ui_textures/interface/weapons/bow/special/normal/normal_bow_special_attack0004.png" id="55_l23rb"]
+[ext_resource type="Texture2D" uid="uid://4f2t1wesa77q" path="res://assets/textures/ui_textures/interface/weapons/bow/special/normal/normal_bow_special_attack0005.png" id="56_squm4"]
+[ext_resource type="Texture2D" uid="uid://gcnrdyjp70s7" path="res://assets/textures/ui_textures/interface/weapons/bow/special/normal/normal_bow_special_attack0006.png" id="57_3s7nm"]
+[ext_resource type="Texture2D" uid="uid://32l1yp0f3riq" path="res://assets/textures/ui_textures/interface/weapons/bow/special/normal/normal_bow_special_attack0007.png" id="58_58ski"]
+[ext_resource type="Texture2D" uid="uid://cpemtmk8qp35r" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/wooden/wooden_bow_basic_attack0000.png" id="59_f38p1"]
+[ext_resource type="Texture2D" uid="uid://bld4uutu82cy7" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/wooden/wooden_bow_basic_attack0001.png" id="60_y06l0"]
+[ext_resource type="Texture2D" uid="uid://dijuidbcxi7wk" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/wooden/wooden_bow_basic_attack0002.png" id="61_q2ncg"]
+[ext_resource type="Texture2D" uid="uid://br7o5e7w1lqy1" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/wooden/wooden_bow_basic_attack0003.png" id="62_amxw6"]
+[ext_resource type="Texture2D" uid="uid://wqbk82n41vxn" path="res://assets/textures/ui_textures/interface/weapons/bow/attack/wooden/wooden_bow_basic_attack0004.png" id="63_kgm8o"]
+[ext_resource type="Texture2D" uid="uid://ccn7dyomlnwlh" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0000.png" id="64_2yx0t"]
+[ext_resource type="Texture2D" uid="uid://fpmmotg5ilot" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0001.png" id="65_appvk"]
+[ext_resource type="Texture2D" uid="uid://dyp0jh1ve5eia" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0002.png" id="66_yhn3v"]
+[ext_resource type="Texture2D" uid="uid://do2leipgqgwxk" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0003.png" id="67_l6m6c"]
+[ext_resource type="Texture2D" uid="uid://c7vdisumj2lu" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0004.png" id="68_40yn8"]
+[ext_resource type="Texture2D" uid="uid://dka3sayg6hy26" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0005.png" id="69_4q0eb"]
+[ext_resource type="Texture2D" uid="uid://ctrb4l87vuinu" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0006.png" id="70_8au7t"]
+[ext_resource type="Texture2D" uid="uid://xpwriqm7g0gx" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0007.png" id="71_6ru4d"]
+[ext_resource type="Texture2D" uid="uid://bwp1gyrnx7ikl" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0008.png" id="72_s6t1q"]
+[ext_resource type="Texture2D" uid="uid://dw2w0lew6juss" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0009.png" id="73_2g7ar"]
+[ext_resource type="Texture2D" uid="uid://rie87oweshv8" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0010.png" id="74_pj63l"]
+[ext_resource type="Texture2D" uid="uid://b6vm4v13ttoir" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0011.png" id="75_x37ah"]
+[ext_resource type="Texture2D" uid="uid://dytn0fru5cm3g" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0012.png" id="76_sie3k"]
+[ext_resource type="Texture2D" uid="uid://bke7cabwcs1aa" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0013.png" id="77_j2rmy"]
+[ext_resource type="Texture2D" uid="uid://bwfctuegq5ght" path="res://assets/textures/ui_textures/interface/weapons/bow/block/wooden/WoodenBowBlock0014.png" id="78_jq0gu"]
+[ext_resource type="Texture2D" uid="uid://cjvohcl6afe6r" path="res://assets/textures/ui_textures/interface/weapons/bow/special/wooden/wooden_bow_special_attack0000.png" id="79_l0432"]
+[ext_resource type="Texture2D" uid="uid://rlm3ilcq73n0" path="res://assets/textures/ui_textures/interface/weapons/bow/special/wooden/wooden_bow_special_attack0001.png" id="80_sgdwh"]
+[ext_resource type="Texture2D" uid="uid://dsfcl3j8jxjwv" path="res://assets/textures/ui_textures/interface/weapons/bow/special/wooden/wooden_bow_special_attack0002.png" id="81_d6w6l"]
+[ext_resource type="Texture2D" uid="uid://bkufx88bv3l8l" path="res://assets/textures/ui_textures/interface/weapons/bow/special/wooden/wooden_bow_special_attack0003.png" id="82_m5468"]
+[ext_resource type="Texture2D" uid="uid://csajv6q7ipnqe" path="res://assets/textures/ui_textures/interface/weapons/bow/special/wooden/wooden_bow_special_attack0004.png" id="83_61mk5"]
+[ext_resource type="Texture2D" uid="uid://c1bhwed57g86v" path="res://assets/textures/ui_textures/interface/weapons/bow/special/wooden/wooden_bow_special_attack0005.png" id="84_hcrg8"]
+[ext_resource type="Texture2D" uid="uid://btrwa2f21673q" path="res://assets/textures/ui_textures/interface/weapons/bow/special/wooden/wooden_bow_special_attack0006.png" id="85_vvhup"]
+[ext_resource type="Texture2D" uid="uid://b6jfl1uvxps0g" path="res://assets/textures/ui_textures/interface/weapons/bow/special/wooden/wooden_bow_special_attack0007.png" id="86_wce4i"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6r56x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5kgt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lures")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ibqhe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s0r4w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_0j8du")
+}],
+"loop": true,
+"name": &"metal_bow_attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_aqxrj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_x5kix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_eui04")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ppr0o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_sqmhh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_4bihh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_qxd75")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ptays")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_08aml")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_7w4jh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_rfv35")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_7luae")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_lhiuy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_2e1an")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_8thn3")
+}],
+"loop": true,
+"name": &"metal_bow_block",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_qu3sa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_n12bj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_cnp5b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_rcljn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_850mt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_kx25e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_joj5v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_ipih8")
+}],
+"loop": true,
+"name": &"metal_bow_special",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("30_4bxij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_w6eq1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_fu8vn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_brday")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_jjfyj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_jbyv6")
+}],
+"loop": true,
+"name": &"normal_bow_attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("36_lqhh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_yfaq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_bsm0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_j4kho")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_wfsj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_mu5em")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_qf1xg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_w0p6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_jm2wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_scusc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_pl1tk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_xbxqf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_hl6gg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_fc26n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_ka4ac")
+}],
+"loop": true,
+"name": &"normal_bow_block",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("51_so43j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_57trq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_er8oh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_586it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_l23rb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_squm4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_3s7nm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_58ski")
+}],
+"loop": true,
+"name": &"normal_bow_special",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("59_f38p1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_y06l0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_q2ncg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_amxw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_kgm8o")
+}],
+"loop": true,
+"name": &"wooden_bow_attack",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("64_2yx0t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_appvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_yhn3v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_l6m6c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_40yn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_4q0eb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_8au7t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_6ru4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_s6t1q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_2g7ar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_pj63l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_x37ah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_sie3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_j2rmy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_jq0gu")
+}],
+"loop": true,
+"name": &"wooden_bow_block",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("79_l0432")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_sgdwh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_d6w6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_m5468")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_61mk5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_hcrg8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_vvhup")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_wce4i")
+}],
+"loop": true,
+"name": &"wooden_bow_special",
+"speed": 30.0
+}]

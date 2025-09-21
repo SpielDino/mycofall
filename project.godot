@@ -28,7 +28,9 @@ SaveManager="*res://scripts/globals/data/save_manager.gd"
 
 [display]
 
-window/stretch/mode="canvas_items"
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
 
 [global_group]
 
@@ -148,7 +150,5 @@ locale/translations=PackedStringArray("res://assets/localization/mycofall_transl
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
 textures/decals/filter=1
 textures/light_projectors/filter=1

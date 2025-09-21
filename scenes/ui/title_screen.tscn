@@ -291,7 +291,7 @@ grow_vertical = 2
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer"]
 material = SubResource("ShaderMaterial_uq7ri")
 position = Vector2(-9, -7)
-scale = Vector2(1.01, 1.01)
+scale = Vector2(0.76, 0.76)
 texture = ExtResource("3_a4ium")
 centered = false
 
@@ -314,74 +314,74 @@ offset_bottom = 40.0
 
 [node name="TopLeft" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_5p4sa")
-position = Vector2(191.75, 141)
-scale = Vector2(1.06375, 1.03226)
+position = Vector2(149, 101)
+scale = Vector2(0.76, 0.737)
 texture = ExtResource("3_1oiph")
 
 [node name="TopLeftBelow" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_to824")
-position = Vector2(258.5, 434.5)
-scale = Vector2(1.05607, 1.018)
+position = Vector2(188.85, 326.188)
+scale = Vector2(0.766916, 0.77125)
 texture = ExtResource("4_5p4sa")
 
 [node name="TopRight" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_y77df")
-position = Vector2(2340.5, 153)
-scale = Vector2(1.04222, 1)
+position = Vector2(1757, 110)
+scale = Vector2(0.76, 0.729)
 texture = ExtResource("5_tqags")
 
 [node name="RightMiddleTop" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_jqmgk")
-position = Vector2(2278.5, 387)
-scale = Vector2(1.03818, 1.03125)
+position = Vector2(1718, 286)
+scale = Vector2(0.76, 0.755)
 texture = ExtResource("6_to824")
 
 [node name="RightMiddle" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_una1u")
-position = Vector2(2352.5, 731.5)
-scale = Vector2(1.0375, 1.03095)
+position = Vector2(1771, 550)
+scale = Vector2(0.76, 0.755)
 texture = ExtResource("7_y77df")
 
 [node name="LeftMiddle" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_rtmth")
-position = Vector2(225, 685)
-scale = Vector2(1.07826, 1.02703)
+position = Vector2(165.55, 509.265)
+scale = Vector2(0.784565, 0.733703)
 texture = ExtResource("8_jqmgk")
 
 [node name="LeftMiddleMiddle" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_7avnr")
-position = Vector2(119, 906.5)
-scale = Vector2(1.07451, 1.045)
+position = Vector2(90, 678)
+scale = Vector2(0.772157, 0.7745)
 texture = ExtResource("9_una1u")
 
 [node name="LeftBottoMAbove" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_5c0cl")
-position = Vector2(165.5, 1101)
-scale = Vector2(1.01429, 1)
+position = Vector2(120, 829)
+scale = Vector2(0.76, 0.75)
 texture = ExtResource("10_rtmth")
 
 [node name="LeftBottomRightRight" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_ytagk")
-position = Vector2(665, 1344)
-scale = Vector2(1.02703, 1)
+position = Vector2(503, 1011)
+scale = Vector2(0.76, 0.74)
 texture = ExtResource("11_7avnr")
 
 [node name="LeftBotOmRight" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_qo84g")
-position = Vector2(420.5, 1284)
-scale = Vector2(1.05897, 1)
+position = Vector2(309, 964)
+scale = Vector2(0.76, 0.718)
 texture = ExtResource("12_5c0cl")
 
 [node name="BottomLeft" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_nccv4")
-position = Vector2(222, 1324)
-scale = Vector2(1.03478, 1.05)
+position = Vector2(167, 990)
+scale = Vector2(0.76, 0.771)
 texture = ExtResource("13_ytagk")
 
 [node name="BottomRightpng" type="Sprite2D" parent="movingParts"]
 material = SubResource("ShaderMaterial_4kkmg")
-position = Vector2(2318, 1205)
-scale = Vector2(1.016, 1.008)
+position = Vector2(1740, 909)
+scale = Vector2(0.76, 0.754)
 texture = ExtResource("15_tqags")
 
 [node name="ButtonsMargin" type="MarginContainer" parent="."]

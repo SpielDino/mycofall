@@ -1,7 +1,7 @@
 class_name DefaultSettingsResource
 extends Resource
 
-const DEFAULT_WINDOW_MODE_INDEX: int = 0;
+const DEFAULT_WINDOW_MODE_INDEX: int = 1;
 const DEFAULT_RESOLUTION_INDEX: int = 1;
 const DEFAULT_LANGUAGE_COUNTRY_CODE: int = 0;
 const DEFAULT_MASTER_VOLUME: float = 1.0;

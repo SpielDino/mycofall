@@ -15,6 +15,13 @@ buffer = PackedFloat32Array(0.225541, -0.0507855, -0.245702, 0.0926734, -0.21401
 [node name="bush_2_low" parent="." instance=ExtResource("1_kdx6c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01586, 0)
 
+[node name="Skeleton3D" parent="bush_2_low/Bush" index="0"]
+bones/1/rotation = Quaternion(0.00160814, 4.53354e-08, 0.000949309, 0.999998)
+bones/2/rotation = Quaternion(0.00317902, -0.000447471, 0.718994, 0.695009)
+bones/3/rotation = Quaternion(-0.00236605, 0.000434068, -0.695005, 0.719001)
+bones/4/rotation = Quaternion(-0.704274, 0.0100811, 0.0134251, 0.70973)
+bones/5/rotation = Quaternion(0.709773, -0.01016, 0.00774747, 0.704315)
+
 [node name="Unterbusch" parent="bush_2_low/Bush/Skeleton3D" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.389358, 0)
 

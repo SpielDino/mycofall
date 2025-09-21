@@ -215,6 +215,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.3987, 9.53674e-07, -143.4
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -65.1806, 1.11122, -78.8513)
 mana_per_second = 100.0
 
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom1"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom1/NavInclusion/Objects/Nature/MushroomBlue"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom1/NavInclusion/Objects/Nature/MushroomBlue/mushroom_blue"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom1/NavInclusion/Objects/Nature/MushroomPurple"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom1/NavInclusion/Objects/Nature/MushroomPurple/mushroom"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom1/NavExclusion/Objects/GrassVines"]
+[editable path="WorldEnvironment/World/TestRooms/BeginningRoom1/NavExclusion/Objects/GrassVines/grass_low"]
 [editable path="WorldEnvironment/World/TestRooms/BeginningRoom3"]
 [editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavInclusion/NavigationRegion3D/Nature/TreeRound6"]
 [editable path="WorldEnvironment/World/TestRooms/BeginningRoom3/NavInclusion/NavigationRegion3D/Nature/TreeRound6/Baum"]
