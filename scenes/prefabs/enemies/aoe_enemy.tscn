@@ -130,6 +130,7 @@ speed = 2
 acceleration = 2
 movement_type = "move towards player"
 walking_name = "Walk"
+attack_walking_name = "Walk"
 
 [node name="ParticleComponent" parent="." instance=ExtResource("3_myiyv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.16693, 0)

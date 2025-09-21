@@ -159,6 +159,7 @@ shape = SubResource("SphereShape3D_smu6q")
 
 [node name="MovementComponent" parent="." instance=ExtResource("2_5dd6s")]
 walking_name = "Idle"
+attack_walking_name = "Idle"
 
 [node name="ParticleComponent" parent="." instance=ExtResource("3_5x2ut")]
 

@@ -130,6 +130,7 @@ transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
 acceleration = 4
 movement_type = "move between points"
 walking_name = "betterWalk"
+attack_walking_name = "betterWalk"
 idle_name = "Idel"
 warmup_animation_name = "Idel"
 

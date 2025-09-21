@@ -126,6 +126,7 @@ has_death_animation = false
 [node name="MovementComponent" parent="." instance=ExtResource("3_wfkd4")]
 movement_type = "move towards player"
 walking_name = "Ball roll"
+attack_walking_name = "Ball roll"
 warmup_animation_name = "Transform2ball"
 warmup_animation_time = 1.5
 
