@@ -66,6 +66,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28133, 0)
 stream = SubResource("AudioStreamRandomizer_spm2h")
 volume_db = -10.0
 pitch_scale = 2.0
+max_distance = 20.0
 
 [connection signal="interacted" from="CharacterBody3D" to="CharacterBody3D" method="_on_interacted"]
 

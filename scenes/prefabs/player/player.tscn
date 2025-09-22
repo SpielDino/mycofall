@@ -1,4 +1,4 @@
-[gd_scene load_steps=211 format=3 uid="uid://bogdwn2kqo3lf"]
+[gd_scene load_steps=213 format=3 uid="uid://bogdwn2kqo3lf"]
 
 [ext_resource type="Script" uid="uid://d0m4cjemid43r" path="res://scripts/player/controls/player_stats.gd" id="1_6jgwm"]
 [ext_resource type="Script" uid="uid://c3yttnplmith5" path="res://scripts/player/controls/player_controller.gd" id="2_6ei3l"]
@@ -54,8 +54,10 @@
 [ext_resource type="AudioStream" uid="uid://chqii5ra0pg3u" path="res://assets/sounds/Battle/SwordAttack/SwordAttack_2.wav" id="39_riuv8"]
 [ext_resource type="AudioStream" uid="uid://ckrwsxhysgh8s" path="res://assets/sounds/Battle/SwordAttack/SwordAttack_3.wav" id="40_dwdbd"]
 [ext_resource type="AudioStream" uid="uid://dkbgk1dc56jhp" path="res://assets/sounds/Battle/SwordAttack/Heavy Sword Attack.wav" id="41_0odb5"]
-[ext_resource type="AudioStream" uid="uid://cl0r21wfbeq8n" path="res://assets/sounds/mixkit-sweet-kitty-meow-93.wav" id="53_1ub0x"]
+[ext_resource type="AudioStream" uid="uid://tbuvwkehgov6" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_1.wav" id="53_b1uhf"]
+[ext_resource type="AudioStream" uid="uid://cccpcyuqsvc8h" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_2.wav" id="54_csryx"]
 [ext_resource type="AudioStream" uid="uid://dblqxlu7wv8jx" path="res://assets/sounds/Player/SwapWeapon/Weappon switch sound(1).wav" id="54_dcmvg"]
+[ext_resource type="AudioStream" uid="uid://c1fp3u6e5saak" path="res://assets/sounds/Player/Damage_Taken/Damage_Taken_3.wav" id="55_lks50"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cxhtl"]
 
@@ -782,8 +784,10 @@ streams_count = 1
 stream_0/stream = ExtResource("27_mgh2n")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_y3mg7"]
-streams_count = 1
-stream_0/stream = ExtResource("53_1ub0x")
+streams_count = 3
+stream_0/stream = ExtResource("53_b1uhf")
+stream_1/stream = ExtResource("54_csryx")
+stream_2/stream = ExtResource("55_lks50")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2xa5s"]
 streams_count = 1
@@ -1111,99 +1115,120 @@ swap_audio = NodePath("../Audio/StatsEtcAudio/SwapWeaponAudioStreamPlayer3D")
 [node name="SwordAttackOneAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/SwordAudio"]
 stream = SubResource("AudioStreamRandomizer_riuv8")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="SwordAttackTwoAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/SwordAudio"]
 stream = SubResource("AudioStreamRandomizer_dwdbd")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="SwordAttackThreeAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/SwordAudio"]
 stream = SubResource("AudioStreamRandomizer_0odb5")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="SwordHeavyAttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/SwordAudio"]
 stream = SubResource("AudioStreamRandomizer_tore6")
 volume_db = -15.0
 pitch_scale = 0.9
+bus = &"SFX"
 
 [node name="ShieldAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
 
 [node name="ShieldBashAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/ShieldAudio"]
 stream = SubResource("AudioStreamRandomizer_8d42v")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="ShieldBashDashAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/ShieldAudio"]
 stream = SubResource("AudioStreamRandomizer_8v3de")
 volume_db = -12.0
+bus = &"SFX"
 
 [node name="BlockAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
 
 [node name="BlockAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BlockAudio"]
 stream = SubResource("AudioStreamRandomizer_b0tsj")
 volume_db = -20.0
+bus = &"SFX"
 
 [node name="ShieldBreakAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BlockAudio"]
 stream = SubResource("AudioStreamRandomizer_4cl40")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="StaffAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
 
 [node name="StaffAttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/StaffAudio"]
 stream = SubResource("AudioStreamRandomizer_x4qbu")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="StaffHeavyAttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/StaffAudio"]
 stream = SubResource("AudioStreamRandomizer_wasl4")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="BowAudio" type="Node3D" parent="Controller/Model/Audio/AttackBlockAudio"]
 
 [node name="BowLoadingAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BowAudio"]
 stream = SubResource("AudioStreamRandomizer_xhhgy")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="BowShotAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BowAudio"]
 stream = SubResource("AudioStreamRandomizer_dcmvg")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="BowHeavyAttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/AttackBlockAudio/BowAudio"]
 stream = SubResource("AudioStreamRandomizer_1ub0x")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="MovementAudio" type="Node3D" parent="Controller/Model/Audio"]
 
 [node name="WalkingAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/MovementAudio"]
 stream = SubResource("AudioStreamRandomizer_jj1be")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="DodgeAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/MovementAudio"]
 stream = SubResource("AudioStreamRandomizer_2wxvc")
 volume_db = 2.0
+bus = &"SFX"
 
 [node name="BushCollisionAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/MovementAudio"]
 stream = SubResource("AudioStreamRandomizer_wgl2p")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="StatsEtcAudio" type="Node3D" parent="Controller/Model/Audio"]
 
 [node name="EmptyManaAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
 stream = SubResource("AudioStreamRandomizer_yd7pj")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="EmpytStaminaAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
 stream = SubResource("AudioStreamRandomizer_l1qes")
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="InteractionAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
 stream = SubResource("AudioStreamRandomizer_bi5op")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="TakeDamageAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
 stream = SubResource("AudioStreamRandomizer_y3mg7")
-volume_db = -20.0
+volume_db = -10.0
+bus = &"SFX"
 
 [node name="SwapWeaponAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Controller/Model/Audio/StatsEtcAudio"]
 stream = SubResource("AudioStreamRandomizer_2xa5s")
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="CameraArm" type="SpringArm3D" parent="Controller"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
