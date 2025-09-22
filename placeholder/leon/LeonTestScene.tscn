@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cfqc72lxixaes"]
+[gd_scene load_steps=90 format=3 uid="uid://cfqc72lxixaes"]
 
 [ext_resource type="PackedScene" uid="uid://bj1nqcrxdbdgp" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_two_with_collision.tscn" id="2_14qku"]
 [ext_resource type="PackedScene" uid="uid://tp0yu0ocu3ei" path="res://scenes/prefabs/environment/rocks/with_collision/rock_2_with_collision.tscn" id="2_khw52"]
@@ -75,6 +75,7 @@
 [ext_resource type="PackedScene" uid="uid://3y2knspcyotc" path="res://scenes/prefabs/environment/plants/vines.tscn" id="64_f6lim"]
 [ext_resource type="PackedScene" uid="uid://b1ucv3fccyj6b" path="res://scenes/prefabs/environment/trees/without_collision/tree_branch.tscn" id="65_h7d6d"]
 [ext_resource type="PackedScene" uid="uid://qww3ho4advs2" path="res://scenes/prefabs/environment/rocks/with_collision/stone_pile_with_collision_2.tscn" id="71_7juf7"]
+[ext_resource type="PackedScene" uid="uid://2edw7nm615hb" path="res://scenes/prefabs/environment/rocks/with_collision/rounded_rock.tscn" id="76_h7d6d"]
 
 [sub_resource type="Environment" id="Environment_26034"]
 
@@ -130,7 +131,7 @@ transform = Transform3D(0.119253, 0, -0.992864, 0, 1, 0, 0.992864, 0, 0.119253, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.082572, -0.171955, 0.0305746)
 navigation_mesh = SubResource("NavigationMesh_f6lim")
 
-[node name="Area1" type="Node" parent="NavigationRegion3D"]
+[node name="Area1" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Environment" type="Node3D" parent="NavigationRegion3D/Area1"]
 
@@ -601,7 +602,7 @@ transform = Transform3D(0.104945, 0, -0.994478, 0, 1, 0, 0.994478, 0, 0.104945, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.48513, -0.0748722, -26.2377)
 
 [node name="GroundNormalGrass(8x25)withoutCollision4" parent="NavigationRegion3D/Area1/Environment" instance=ExtResource("58_h7d6d")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.742, 0, -37)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.742, 0, -36.8065)
 
 [node name="Ground" type="Node3D" parent="NavigationRegion3D/Area1"]
 
@@ -614,7 +615,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -12.5,
 [node name="GroundNormalGrass(8x25)withoutCollision3" parent="NavigationRegion3D/Area1/Ground" instance=ExtResource("58_h7d6d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.7416, 0, -28.8516)
 
-[node name="Area2" type="Node" parent="NavigationRegion3D"]
+[node name="Area2" type="Node3D" parent="NavigationRegion3D"]
 
 [node name="Environment" type="Node3D" parent="NavigationRegion3D/Area2"]
 
@@ -931,7 +932,52 @@ shape = SubResource("BoxShape3D_sq328")
 [node name="Ground Normal Grass (50x50)" parent="NavigationRegion3D/Area2/Ground" instance=ExtResource("44_hjljr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 
-[node name="NoNavigationRegionObjects" type="Node" parent="."]
+[node name="Ground Normal Grass (50x50)2" parent="NavigationRegion3D/Area2/Ground" instance=ExtResource("44_hjljr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 100)
+
+[node name="TreeBundleTwoWithCollision" parent="NavigationRegion3D/Area2" instance=ExtResource("2_14qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.9824, 0.114327, 78.2254)
+
+[node name="TreeBundleTwoWithCollision2" parent="NavigationRegion3D/Area2" instance=ExtResource("2_14qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.7187, 0.0530234, 83.2655)
+
+[node name="TreeBundleThreeWithCollision" parent="NavigationRegion3D/Area2" instance=ExtResource("11_nmlxi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.0685, 0.240317, 88.4522)
+
+[node name="StoneWallTwoWithCollision" parent="NavigationRegion3D/Area2" instance=ExtResource("6_4uhcm")]
+transform = Transform3D(0.785717, 0, 0.618587, 0, 1, 0, -0.618587, 0, 0.785717, -9.2357, 0.4505, 91.8905)
+
+[node name="TreeBundleSixWithCollision" parent="NavigationRegion3D/Area2" instance=ExtResource("3_sr1fi")]
+transform = Transform3D(0.742151, 0, -0.670232, 0, 1, 0, 0.670232, 0, 0.742151, -6.25995, 0.221955, 96.3736)
+
+[node name="TreeBundleTwoWithCollision3" parent="NavigationRegion3D/Area2" instance=ExtResource("2_14qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.6962, 0.0594176, 77.8364)
+
+[node name="TreeBundleOneWithCollision" parent="NavigationRegion3D/Area2" instance=ExtResource("4_iyqor")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0449, 0.169967, 90.2112)
+
+[node name="TreeBundleOneWithCollision2" parent="NavigationRegion3D/Area2" instance=ExtResource("4_iyqor")]
+transform = Transform3D(-0.701357, 0, -0.71281, 0, 1, 0, 0.71281, 0, -0.701357, 17.8017, 0.00908819, 91.3947)
+
+[node name="TreeBundleTwoWithCollision4" parent="NavigationRegion3D/Area2" instance=ExtResource("2_14qku")]
+transform = Transform3D(0.992258, 0, -0.12419, 0, 1, 0, 0.12419, 0, 0.992258, 13.5734, 0.0584464, 92.0518)
+
+[node name="TreeBundleTwoWithCollision5" parent="NavigationRegion3D/Area2" instance=ExtResource("2_14qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.116, 0.141086, 90.569)
+
+[node name="TreeBundleSixWithCollision2" parent="NavigationRegion3D/Area2" instance=ExtResource("3_sr1fi")]
+transform = Transform3D(0.00647512, 0, 0.999979, 0, 1, 0, -0.999979, 0, 0.00647512, 6.87466, 0.0349273, 90.7131)
+
+[node name="TreeBundleFiveWithCollision" parent="NavigationRegion3D/Area2" instance=ExtResource("5_pclq0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.75007, 0.126897, 94.8274)
+
+[node name="TreeBundleSixWithCollision3" parent="NavigationRegion3D/Area2" instance=ExtResource("3_sr1fi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2312, 0.0793804, 96.5665)
+
+[node name="TreeBundleTwoWithCollision6" parent="NavigationRegion3D/Area2" instance=ExtResource("2_14qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.128, 0.100209, 91.9758)
+
+[node name="NoNavigationRegionObjects" type="Node3D" parent="."]
 
 [node name="Enemies" type="Node3D" parent="NoNavigationRegionObjects"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.92933, -0.0687003, -10.6601)
@@ -1147,6 +1193,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.15277, 0.920475, 41.6047)
 [node name="Bush27" parent="NoNavigationRegionObjects/Bushes" instance=ExtResource("21_7juf7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.43166, 0.978812, 40.0925)
 
+[node name="Bush28" parent="NoNavigationRegionObjects/Bushes" instance=ExtResource("20_sq328")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.7487, -0.774593, 86.0705)
+
+[node name="Bush29" parent="NoNavigationRegionObjects/Bushes" instance=ExtResource("21_7juf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.627521, 0.32655, 89.2455)
+
+[node name="Bush30" parent="NoNavigationRegionObjects/Bushes" instance=ExtResource("21_7juf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61837, 0.0245419, 89.4307)
+
+[node name="BushTest5" parent="NoNavigationRegionObjects/Bushes" instance=ExtResource("50_7juf7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.61603, 0.55197, 84.1274)
+
 [node name="PathStones" type="Node3D" parent="NoNavigationRegionObjects"]
 
 [node name="PathStone1" parent="NoNavigationRegionObjects/PathStones" instance=ExtResource("24_ltlsn")]
@@ -1336,6 +1394,39 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.13509, 2.98585, 20.8442)
 
 [node name="FlowerPink3" parent="NoNavigationRegionObjects/Deko" instance=ExtResource("41_eguj5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.29344, 3.21948, 30.7149)
+
+[node name="FlowerBlue3" parent="NoNavigationRegionObjects/Deko" instance=ExtResource("43_8x3hl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.41904, 0.00817657, 77.8831)
+
+[node name="FlowerPink4" parent="NoNavigationRegionObjects/Deko" instance=ExtResource("41_eguj5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09784, -0.040453, 85.046)
+
+[node name="FlowerRed4" parent="NoNavigationRegionObjects/Deko" instance=ExtResource("42_eqxsk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09784, 0.0500002, 85.046)
+
+[node name="FlowerRed5" parent="NoNavigationRegionObjects/Deko" instance=ExtResource("42_eqxsk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.4446, 1.60287, 84.3287)
+
+[node name="StoneWallTwoWithCollision2" parent="." instance=ExtResource("6_4uhcm")]
+transform = Transform3D(0.521084, 0, -0.853505, 0, 1, 0, 0.853505, 0, 0.521084, 9.31018, -0.426689, 85.2532)
+
+[node name="RockWithCollision" parent="." instance=ExtResource("3_vd0mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.06603, 0.165437, 78.465)
+
+[node name="Rock2WithCollision" parent="." instance=ExtResource("2_khw52")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6045, 0.0196754, 78.9378)
+
+[node name="RoundedRock" parent="." instance=ExtResource("76_h7d6d")]
+transform = Transform3D(0.745325, 0, -0.666702, 0, 1, 0, 0.666702, 0, 0.745325, 5.44911, 0.266507, 77.8307)
+
+[node name="TreeBundleTwoWithCollision7" parent="." instance=ExtResource("2_14qku")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.16005, -0.146779, 91.3799)
+
+[node name="TreeBundleTwoWithCollision8" parent="." instance=ExtResource("2_14qku")]
+transform = Transform3D(-0.0849126, 0, -0.996388, 0, 1, 0, 0.996388, 0, -0.0849126, -6.82363, -0.410503, 89.2676)
+
+[node name="TreeBundleOneWithCollision3" parent="." instance=ExtResource("4_iyqor")]
+transform = Transform3D(0.410114, 0, -0.912034, 0, 1, 0, 0.912034, 0, 0.410114, 20.9046, -2.83892, 92.2387)
 
 [editable path="NoNavigationRegionObjects/Enemies/SpiderEnemy"]
 [editable path="NoNavigationRegionObjects/Enemies/SpiderEnemy/DetectionComponent"]
