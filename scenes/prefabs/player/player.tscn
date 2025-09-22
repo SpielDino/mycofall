@@ -809,6 +809,7 @@ empty_mana_audio = NodePath("Controller/Model/Audio/StatsEtcAudio/EmptyManaAudio
 bush_collision_audio = NodePath("Controller/Model/Audio/MovementAudio/BushCollisionAudioStreamPlayer3D")
 
 [node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator", "empty_stamina_audio") groups=["Player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -60)
 script = ExtResource("2_6ei3l")
 player_shape = NodePath("Model")
 dodge_indicator = NodePath("Model/DodgeIndicator")

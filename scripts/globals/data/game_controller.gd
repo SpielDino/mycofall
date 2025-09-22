@@ -27,13 +27,14 @@ func edit_scenes(
 		var m := _decide_mode(add_scenes, mode)  # AUTO → START or END_FLASH [docs]
 		if m == TransitionMode.START:
 			await _fade_to(1.0, 1.0)  # fade out first [docs]
-			if freeze_player:
-				GlobalPlayer.get_player().process_mode = Node.PROCESS_MODE_DISABLED
+			#if freeze_player:
+				#GlobalPlayer.get_player().process_mode = Node.PROCESS_MODE_DISABLED
 			var res := await _load_batch(add_scenes)  # direct loads return immediately; threaded loads were none in START by default [docs]
 			_add_scenes(res, add_scenes)          # add to tree, place with global_transform as needed [docs]
 			_delete_scenes(edit_scenes)
-			GlobalPlayer.get_player().get_child(0).global_position = Vector3(0, 1.1, 7)
-			GlobalPlayer.get_player().process_mode = Node.PROCESS_MODE_INHERIT
+			print(GlobalPlayer.get_player().get_child(0).global_position)
+			GlobalPlayer.get_player().get_child(0).global_position = Vector3(0, 3.1, 7)
+			#GlobalPlayer.get_player().process_mode = Node.PROCESS_MODE_INHERIT
 
 			await _fade_to(0.0, 1.5)     # fade back in [docs]
 		elif m == TransitionMode.END_FLASH:

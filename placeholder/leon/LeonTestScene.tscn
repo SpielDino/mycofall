@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cfqc72lxixaes"]
+[gd_scene load_steps=92 format=3 uid="uid://cfqc72lxixaes"]
 
 [ext_resource type="PackedScene" uid="uid://bj1nqcrxdbdgp" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_two_with_collision.tscn" id="2_14qku"]
 [ext_resource type="PackedScene" uid="uid://tp0yu0ocu3ei" path="res://scenes/prefabs/environment/rocks/with_collision/rock_2_with_collision.tscn" id="2_khw52"]
@@ -76,6 +76,7 @@
 [ext_resource type="PackedScene" uid="uid://b1ucv3fccyj6b" path="res://scenes/prefabs/environment/trees/without_collision/tree_branch.tscn" id="65_h7d6d"]
 [ext_resource type="PackedScene" uid="uid://qww3ho4advs2" path="res://scenes/prefabs/environment/rocks/with_collision/stone_pile_with_collision_2.tscn" id="71_7juf7"]
 [ext_resource type="PackedScene" uid="uid://2edw7nm615hb" path="res://scenes/prefabs/environment/rocks/with_collision/rounded_rock.tscn" id="76_h7d6d"]
+[ext_resource type="Script" uid="uid://cie64r5ma8hcy" path="res://scripts/environment/detect_player_tutorial.gd" id="77_r1x6c"]
 
 [sub_resource type="Environment" id="Environment_26034"]
 
@@ -115,6 +116,9 @@ size = Vector3(1.54674, 1, 18.0271)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sq328"]
 size = Vector3(2.2334, 3.48181, 3.30212)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2lpg3"]
+size = Vector3(19.9008, 7.44287, 10.3179)
 
 [node name="LeonTestScene" type="Node3D"]
 
@@ -1427,6 +1431,43 @@ transform = Transform3D(-0.0849126, 0, -0.996388, 0, 1, 0, 0.996388, 0, -0.08491
 
 [node name="TreeBundleOneWithCollision3" parent="." instance=ExtResource("4_iyqor")]
 transform = Transform3D(0.410114, 0, -0.912034, 0, 1, 0, 0.912034, 0, 0.410114, 20.9046, -2.83892, 92.2387)
+
+[node name="TwoLoad" type="Area3D" parent="."]
+transform = Transform3D(0.709866, 0, -0.704337, 0, 1, 0, 0.704337, 0, 0.709866, 0.16033, 0, -22.3485)
+script = ExtResource("77_r1x6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TwoLoad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.53784)
+shape = SubResource("BoxShape3D_2lpg3")
+
+[node name="TwoUnload" type="Area3D" parent="."]
+transform = Transform3D(0.989244, 0, -0.146273, 0, 1, 0, 0.146273, 0, 0.989244, -1.20026, 0, 0.863941)
+script = ExtResource("77_r1x6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TwoUnload"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.53784)
+shape = SubResource("BoxShape3D_2lpg3")
+
+[node name="FourUnload" type="Area3D" parent="."]
+transform = Transform3D(0.989244, 0, -0.146273, 0, 1, 0, 0.146273, 0, 0.989244, 5.0189, 0, 41.5765)
+script = ExtResource("77_r1x6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FourUnload"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.53784)
+shape = SubResource("BoxShape3D_2lpg3")
+
+[node name="FourLoad" type="Area3D" parent="."]
+transform = Transform3D(0.989244, 0, -0.146273, 0, 1, 0, 0.146273, 0, 0.989244, 0.879295, 1.90735e-06, 69.5169)
+script = ExtResource("77_r1x6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FourLoad"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.53784)
+shape = SubResource("BoxShape3D_2lpg3")
+
+[connection signal="body_entered" from="TwoLoad" to="TwoLoad" method="_on_body_entered"]
+[connection signal="body_entered" from="TwoUnload" to="TwoUnload" method="_on_body_entered"]
+[connection signal="body_entered" from="FourUnload" to="FourUnload" method="_on_body_entered"]
+[connection signal="body_entered" from="FourLoad" to="FourLoad" method="_on_body_entered"]
 
 [editable path="NoNavigationRegionObjects/Enemies/SpiderEnemy"]
 [editable path="NoNavigationRegionObjects/Enemies/SpiderEnemy/DetectionComponent"]
