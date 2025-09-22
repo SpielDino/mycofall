@@ -19,10 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://di4tjv52v7pof" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass(2x_25)without_collision.tscn" id="21_fr8c0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d3xci"]
-size = Vector3(2, 15, 34.7617)
+size = Vector3(2.52881, 15.3755, 51.2446)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xoaox"]
-size = Vector3(2, 15, 34.6787)
+size = Vector3(1.82422, 15.4292, 55.5669)
 
 [node name="BeginningRoom4" type="Node3D"]
 

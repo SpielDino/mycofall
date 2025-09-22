@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlefj521fe4a8"]
 
 [ext_resource type="PackedScene" uid="uid://d2wdtfy6icf4l" path="res://scenes/prefabs/environment/trees/with_collision/tree_stump_grounded_with_collision.tscn" id="1_8647o"]
-[ext_resource type="Script" uid="uid://nuuhs6eq7g0h" path="res://scenes/prefabs/environment/objects/boss_puzzle_interact.gd" id="2_twavy"]
+[ext_resource type="Script" uid="uid://nuuhs6eq7g0h" path="res://scripts/environment/boss_puzzle_interact.gd" id="2_twavy"]
 [ext_resource type="PackedScene" uid="uid://drlryl3j1rb3a" path="res://scenes/prefabs/environment/objects/mushroom_lamp.tscn" id="3_3yoxy"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_v1fqg"]
