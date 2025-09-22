@@ -52,7 +52,7 @@ func ranged_attack():
 	await get_tree().create_timer(0.54).timeout
 	ranged_sound.play()
 	var pos: Vector3 = bullet_spawn_point.global_position 
-	var vel: Vector3 = player.get_child(0).global_position - pos
+	var vel: Vector3 = (player.get_child(0).global_position - pos).normalized()
 	var bullet = bullet_scene.instantiate()
 	get_tree().root.add_child(bullet)
 	bullet.set_parameter(player, bullet_damage, bullet_speed, homing_range, homing_strength, vel, bullet_lifetime)
