@@ -17,7 +17,7 @@ func set_parameter(playerInput: Node3D, damageInput: float, speedInput: float, t
 	speed = speedInput
 	get_child(1).get_child(0).scale = Vector3(trackingRadiusInput, trackingRadiusInput, trackingRadiusInput)
 	trackingStrength = trackingStrengthInput
-	vel = velInput
+	vel = velInput * 10
 	await get_tree().create_timer(lifetimeInput).timeout
 	queue_free()
 

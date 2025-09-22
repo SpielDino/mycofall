@@ -83,7 +83,9 @@ func get_pinged():
 
 func ping_allies():
 	for ally in allies:
-		ally.get_child(0).get_pinged()
+		if ally.state == ally.States.SEARCHING or ally.state == ally.States.IDLE or ally.state == ally.States.NONE:
+			ally.state = ally.States.SEARCHING
+			ally.get_child(0).get_pinged()
 
 func activate_tracking():
 	always_tracking = true

@@ -116,7 +116,8 @@ func play_movement_animations():
 			walking_sounds.stop()
 
 func decide_movement_type(delta):
-	searching(delta)
+	if enemy.state == enemy.States.SEARCHING:
+		searching(delta)
 	if (enemy.state == enemy.States.NONE or enemy.state == enemy.States.PATROLLING) and has_patrol_route:
 		move_between_set_locations(delta, patrol_positions)
 		enemy.state = enemy.States.PATROLLING
