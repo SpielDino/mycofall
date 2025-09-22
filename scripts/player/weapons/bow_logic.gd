@@ -2,6 +2,9 @@ extends Node3D
 
 @export var ray_position: RayCast3D
 
+@export_subgroup("Bow Shotgun")
+@export var bow_shotgun_audio: AudioStreamPlayer3D
+
 @onready var player: Node3D = GlobalPlayer.get_player()
 @onready var world = GlobalPlayer.get_world()
 
@@ -16,6 +19,7 @@ func spawn_bullet():
 	world.add_child(bullet_instance)
 
 func shotgun_spawn_bullet():
+	bow_shotgun_audio.play()
 	var direction = player.get_child(0).get_child(0)
 	#var angles = [0, 30, -30, 15, -15]
 	#var angles = [0, 30, -30, 10, -10, 20, -20]

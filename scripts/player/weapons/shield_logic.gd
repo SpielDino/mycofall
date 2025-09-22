@@ -4,6 +4,10 @@ signal hitting_with_shield
 
 @export var reset_time: float = 0.3  # small cooldown window
 
+@export_category("Sound")
+@export_subgroup("Shield Bash")
+@export var shield_bash_audio: AudioStreamPlayer3D
+
 var hit_bodies := {}   # Dictionary or Set to remember which dummies/enemies are hit
 var timer := 0.0
 var heavy_dmg: int = 200
@@ -22,9 +26,11 @@ func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Enemy"):
 		hitting_enemy(body)
 		hitting_with_shield.emit()
+		shield_bash_audio.play()
 	elif body.is_in_group("target_dummy"):
 		hitting_target_dummy(body)
 		hitting_with_shield.emit()
+		shield_bash_audio.play()
 
 func hitting_enemy(body: Node3D) -> void:
 	# Only hit if we haven't already hit this body during the current swing

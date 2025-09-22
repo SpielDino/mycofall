@@ -4,6 +4,8 @@ extends Node3D
 @export var tick_rate: float = 1.0
 @export var lifetime: float = 4.5
 
+@export var magic_hit_audio: AudioStreamPlayer3D
+
 var overlapping_bodies: Array = []
 var active: bool = true
 var upgrade_dmg: int = 0
@@ -36,6 +38,7 @@ func tick_dmg():
 
 func apply_tick_dmg():
 	for body in overlapping_bodies:
+		magic_hit_audio.play()
 		get_upgrade_dmg()
 		if body.is_in_group("Enemy"):
 			body.take_damage(dmg + upgrade_dmg, "Staff")
@@ -50,6 +53,7 @@ func apply_tick_dmg():
 				body.play_animations(true)
 
 func apply_contact_dmg(body):
+	magic_hit_audio.play()
 	get_upgrade_dmg()
 	if body.is_in_group("Enemy"):
 		body.take_damage(dmg + upgrade_dmg, "Staff", true, 1)

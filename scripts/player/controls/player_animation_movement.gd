@@ -6,6 +6,9 @@ const DEADZONE := 0.2
 @export var front_pointer: MeshInstance3D
 @export var player_shape: CollisionShape3D
 
+@export var walking_audio: AudioStreamPlayer3D
+@export var dodge_audio: AudioStreamPlayer3D
+
 var rotation_front_pointer
 var rel_vel
 var rel_vel_xz
@@ -26,6 +29,7 @@ var timer_bs: float = 0
 
 @onready var stamina_cost_per_dodge = settings.stamina_cost_per_dodge
 @onready var max_stamina = settings.max_stamina
+@onready var dodge_duration = settings.dodge_duration
 
 func _ready():
 	# Connect to the global signal
@@ -65,6 +69,7 @@ func sneak_animation():
 			sneak_dodge = false
 		self.set("parameters/StateMachine/Sneaking/blend_position", rel_vel_xz)
 		stop_rotation_during_dodge_false()
+		play_walking_sound()
 
 func dodge_animation_while_sneak(delta):
 	if GameManager.get_is_sneaking() and GameManager.get_is_dodging():
@@ -72,6 +77,7 @@ func dodge_animation_while_sneak(delta):
 		if !sneak_dodge:
 			state_machine_playback.travel("DodgeSneak")
 			sneak_dodge = true
+			play_dodge_sound()
 		stop_rotation_during_dodge_true()
 
 func dodge_animation():
@@ -81,10 +87,12 @@ func dodge_animation():
 			if !normal_dodge:
 				state_machine_playback.travel("Dodge")
 				normal_dodge = true
+				play_dodge_sound()
 		elif controller_dodge:
 			if !normal_dodge:
 				state_machine_playback.travel("DodgeController")
 				normal_dodge = true
+				play_dodge_sound()
 		stop_rotation_during_dodge_true()
 
 func rotate_based_on_last_movement():
@@ -135,6 +143,7 @@ func walking_animation_controller():
 			if !controller_move and (move_input.x != 0 or move_input.y != 0):
 				state_machine_playback.travel("WalkingController")
 				controller_move = true
+			play_walking_sound()
 			self.set("parameters/StateMachine/WalkingController/blend_position", rel_vel_xz)
 			self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
 			controller_dodge_true()
@@ -152,6 +161,7 @@ func rotate_animation_based_on_look_direction():
 		if !kbm_move and (move_input.x != 0 or move_input.y != 0):
 			state_machine_playback.travel("Walking")
 			kbm_move = true
+		play_walking_sound()
 		self.set("parameters/StateMachine/Walking/blend_position", rel_vel_xz)
 		if controller_move:
 			controller_move = false
@@ -224,3 +234,14 @@ func _on_player_knockdown_signal() -> void:
 	state_machine_playback.travel("Fall down")
 	await get_tree().create_timer(2.09).timeout
 	GameManager.set_is_knockdown(false)
+
+func play_dodge_sound():
+	#walking_audio.stop()
+	dodge_audio.play()
+	await get_tree().create_timer(dodge_duration).timeout
+	dodge_audio.stop()
+
+func play_walking_sound():
+	if !walking_audio.playing and player_controller.velocity.length() > 0.2:
+		await get_tree().create_timer(0.01).timeout
+		walking_audio.play()

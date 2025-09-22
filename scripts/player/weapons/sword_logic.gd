@@ -2,6 +2,9 @@ extends Area3D
 
 @export var reset_time: float = 0.3  # small cooldown window
 
+@export_subgroup("Sword Heavy Attack")
+@export var sword_heavy_attack_audio: AudioStreamPlayer3D
+
 var hit_bodies := {}   # Dictionary or Set to remember which dummies/enemies are hit
 var timer := 0.0
 var dmg: int = 0
@@ -63,3 +66,6 @@ func get_upgrade_dmg():
 			upgrade_dmg = 10
 		3:
 			upgrade_dmg = 20
+
+func play_heavy_attack_sound():
+	sword_heavy_attack_audio.play()

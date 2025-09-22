@@ -6,6 +6,10 @@ const DEADZONE := 0.2
 @export var player_shape: CollisionShape3D
 @export var dodge_indicator: MeshInstance3D
 
+@export_category("Sound")
+@export_subgroup("Empty Stamina")
+@export var empty_stamina_audio: AudioStreamPlayer3D
+
 # var you get from player stats script
 var speed
 var acceleration 
@@ -293,7 +297,7 @@ func dodge_with_stamina():
 		i_frame_timer = max_i_frame_timer
 		GameManager.set_having_i_frames(having_i_frames)
 	elif Input.is_action_just_pressed("dodge") and player.stamina <= stamina_cost_per_dodge:
-		#$PlayerAudio/NoStaminaSFX.play()
+		empty_stamina_audio.play()
 		pass
 
 func i_frame_timer_calc(delta):

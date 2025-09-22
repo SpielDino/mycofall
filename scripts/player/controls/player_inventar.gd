@@ -52,6 +52,10 @@ const UPGRADE_LEVEL_METAL_WEAPON: int = 3
 @export var back_shield: MeshInstance3D
 @export var back_metal_shield: MeshInstance3D
 
+@export_category("Sound")
+@export_subgroup("Swap")
+@export var swap_audio: AudioStreamPlayer3D
+
 var sword_name = "Sword"
 var shield_name = "Shield"
 var staff_name = "Staff"
@@ -100,6 +104,7 @@ func swapping_weapons():
 			GameManager.set_second_weapon_name(first_weapon_name)
 			GameManager.set_second_weapon_upgrade_level(first_weapon_upgrade_level)
 			GameManager.weapons_updated()
+			swap_audio.play()
 			#debug_game_manager_variables()
 
 func swap_second_weapon_to_first_weapon_based_on_upgrade_level():

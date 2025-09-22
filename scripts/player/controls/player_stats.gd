@@ -59,6 +59,18 @@ signal knockdown_signal
 @export var camera_height: float = 6
 @export var camera_distance_from_player: float = 8
 
+@export_category("Sound")
+@export_subgroup("Take Damage")
+@export var take_damage_audio: AudioStreamPlayer3D
+@export_subgroup("Block")
+@export var block_audio: AudioStreamPlayer3D
+@export_subgroup("Block Break")
+@export var block_break_audio: AudioStreamPlayer3D
+@export_subgroup("Empty Mana")
+@export var empty_mana_audio: AudioStreamPlayer3D
+@export_subgroup("Bush Collision")
+@export var bush_collision_audio: AudioStreamPlayer3D
+
 var stamina: float = max_stamina
 var stamina_regen_cooldown: float = 0
 var health: float = max_health
@@ -148,6 +160,8 @@ func reduce_mana(amount: int):
 		mana_changed.emit()
 		return true
 	else:
+		if !empty_mana_audio.playing:
+			empty_mana_audio.play()
 		return false
 
 func set_sneaking(value: bool):
@@ -169,6 +183,7 @@ func check_if_attack_was_blocked(attacker: Node3D, block_cost_modifier):
 		return false
 	if stamina < (blocking_stamina_cost * (1-block_cost_modifier)):
 		block_broken = broken_block_duration
+		block_break_audio.play()
 		return false
 	PlayerActionTracker.attacks_blocked += 1
 	return true
@@ -194,13 +209,15 @@ func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifie
 				stamina -= blocking_stamina_cost * (1-block_cost_modifier)
 				stamina_changed.emit()
 				health_changed.emit()
-				#$Controller/PlayerAudio/BlockedSFX.play()
+				
+				block_audio.play()
 			else: 
 				health -= damage
-				break_block()
+				take_damage_audio.play()
+				#break_block()
 		else:
 			health -= damage
-			#$Controller/PlayerAudio/HitSFX.play()
+			take_damage_audio.play()
 			health_changed.emit()
 
 func get_blocking_damage_reduction():
@@ -225,7 +242,7 @@ func heal(amount):
 func _on_area_3d_area_entered(area: Area3D) -> void:
 	if area.is_in_group("Bush"):
 		is_in_hiding_area = true
-		#$Controller/PlayerAudio/BushEntedSFX.play()
+		bush_collision_audio.play()
 		
 	if area.is_in_group("Enemy"):
 		is_in_detection_area = true
@@ -235,7 +252,7 @@ func _on_area_3d_area_exited(area: Area3D) -> void:
 		is_in_detection_area = false
 	if area.is_in_group("Bush"):
 		is_in_hiding_area = false
-		#$Controller/PlayerAudio/BushEntedSFX.play()
+		#bush_collision_audio.play()
 
 func test_knockdown_animation():
 	if !GameManager.get_first_weapon() and !GameManager.get_is_knockdown():

@@ -1,17 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://cydetofcrsgfm"]
+[gd_scene load_steps=6 format=3 uid="uid://cydetofcrsgfm"]
 
 [ext_resource type="Script" uid="uid://cihsymq2q2yu4" path="res://scripts/characters/old_man.gd" id="1_a3l34"]
 [ext_resource type="PackedScene" uid="uid://iwj0s46fserh" path="res://assets/models/character/old_mushroom.blend" id="1_j55id"]
+[ext_resource type="AudioStream" uid="uid://b4wvx0gupvhdt" path="res://assets/sounds/Old Guy/Old Guy yapping.wav" id="3_cresp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j55id"]
 radius = 0.444382
 height = 1.59824
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_spm2h"]
+streams_count = 1
+stream_0/stream = ExtResource("3_cresp")
+
 [node name="OldMan" type="Node3D"]
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("old_man_animation_player")]
+[node name="CharacterBody3D" type="CharacterBody3D" parent="." node_paths=PackedStringArray("old_man_animation_player", "old_man_audio")]
 script = ExtResource("1_a3l34")
 old_man_animation_player = NodePath("old_mushroom/AnimationPlayer")
+old_man_audio = NodePath("OldManAudioStreamPlayer3D")
 prompt_message = "Talk"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -55,6 +61,11 @@ autoplay = "Idle"
 
 [node name="TextPosition" type="Node3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.28133, 0)
+
+[node name="OldManAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="CharacterBody3D"]
+stream = SubResource("AudioStreamRandomizer_spm2h")
+volume_db = -10.0
+pitch_scale = 2.0
 
 [connection signal="interacted" from="CharacterBody3D" to="CharacterBody3D" method="_on_interacted"]
 

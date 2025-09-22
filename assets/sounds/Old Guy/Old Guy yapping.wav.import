@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b4wvx0gupvhdt"
+path="res://.godot/imported/Old Guy yapping.wav-da376380b9e98ca4992a271507b0830f.sample"
+
+[deps]
+
+source_file="res://assets/sounds/Old Guy/Old Guy yapping.wav"
+dest_files=["res://.godot/imported/Old Guy yapping.wav-da376380b9e98ca4992a271507b0830f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

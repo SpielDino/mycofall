@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://4neaph14cse0"]
+[gd_scene load_steps=7 format=3 uid="uid://4neaph14cse0"]
 
 [ext_resource type="Script" uid="uid://2ko7p5q2d4s0" path="res://scripts/player/weapons/player_heavy_magic_logic.gd" id="1_3pyyt"]
+[ext_resource type="AudioStream" uid="uid://c3xw1d5vuhy8x" path="res://assets/sounds/Battle/MagicWand/MagicHit/MagicWandHit_1.wav" id="2_lxkfc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ab7ra"]
 
@@ -12,8 +13,14 @@ bottom_radius = 4.0
 transparency = 1
 albedo_color = Color(1, 0, 1, 0.431373)
 
-[node name="PlayerHeavyMagic" type="Node3D"]
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_858oj"]
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("2_lxkfc")
+
+[node name="PlayerHeavyMagic" type="Node3D" node_paths=PackedStringArray("magic_hit_audio")]
 script = ExtResource("1_3pyyt")
+magic_hit_audio = NodePath("MagicHitAudioStreamPlayer3D")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -25,6 +32,10 @@ shape = SubResource("SphereShape3D_ab7ra")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.570186, 0)
 mesh = SubResource("CylinderMesh_3pyyt")
 surface_material_override/0 = SubResource("StandardMaterial3D_lxkfc")
+
+[node name="MagicHitAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_858oj")
+volume_db = -10.0
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

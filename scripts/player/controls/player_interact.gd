@@ -5,6 +5,10 @@ signal interacted_with_socket(hit_object)
 @export var ray_cast_helper: RayCast3D
 @export var ray_cast_helper_2: RayCast3D
 
+@export_category("Sound")
+@export_subgroup("Interaction")
+@export var interaction_audio: AudioStreamPlayer3D
+
 var talking_with_old_man: bool = false
 
 # Interacting
@@ -43,6 +47,7 @@ func show_interactable_text(hit_object):
 func interact_with_socket(hit_object):
 	if Input.is_action_just_pressed(hit_object.prompt_input) and hit_object is Socket:
 		interacted_with_socket.emit(hit_object)
+		interaction_audio.play()
 
 func interact_with_upgrade(hit_object):
 	if hit_object is Upgrade and Input.is_action_just_pressed(hit_object.prompt_input):
@@ -61,4 +66,5 @@ func interact_with_something(hit_object):
 	if !hit_object.one_time_use:
 		if Input.is_action_just_pressed(hit_object.prompt_input) and hit_object is not Socket and hit_object is not Upgrade:
 			hit_object.interact(owner)
-			print("yeah")
+			interaction_audio.play()
+			#print("yeah")

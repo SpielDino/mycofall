@@ -4,4 +4,4 @@
 
 [node name="Bush" type="Node3D"]
 
-[node name="bush_low" parent="." instance=ExtResource("1_1mext")]
+[node name="bush_low" parent="." groups=["Bush"] instance=ExtResource("1_1mext")]
