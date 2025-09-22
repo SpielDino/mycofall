@@ -34,6 +34,7 @@ func attack():
 	enemy.queue_free()
 
 func explode():
+	PlayerActionTracker.enemies_exploded += 1
 	paricles.emitting = true
 	enemy.model.visible = false
 	explosion_sound.play()

@@ -138,11 +138,15 @@ attack_walking_name = "Walk"
 stream = ExtResource("4_xm4wq")
 volume_db = -15.0
 pitch_scale = 0.6
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="RunningSounds" parent="MovementComponent" index="4"]
 stream = ExtResource("4_xm4wq")
 volume_db = -15.0
 pitch_scale = 0.6
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="EnemyAoeAttackComponent" parent="." instance=ExtResource("5_4p2hn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.41388, 0)
@@ -231,10 +235,14 @@ shape = SubResource("CapsuleShape3D_s1ben")
 stream = ExtResource("9_4n26d")
 volume_db = -2.0
 pitch_scale = 0.8
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_sn4d3")
 volume_db = -2.0
+max_distance = 20.0
+bus = &"SFX"
 
 [editable path="DetectionComponent"]
 [editable path="MovementComponent"]

@@ -21,6 +21,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862566, 1.89502, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.862566, 1.89502, 0)
 stream = ExtResource("2_pw4nx")
 volume_db = 10.0
+max_distance = 20.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]
