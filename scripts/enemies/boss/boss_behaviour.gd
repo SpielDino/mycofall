@@ -75,6 +75,7 @@ var combo_area_3: bool = false
 var spear_time_keeper: float = 0
 var destination: Vector3
 var death_timer: float = 10
+var charge_duration: float = 0
 
 enum action_types {NONE, EXPLOSION_ATTACK, RANGED_ATTACK, CHARGE_ATTACK, POISON_CLOUD_ATTACK, SPEAR_ATTACK}
 var action_type = action_types.NONE
@@ -289,7 +290,7 @@ func charge_attack_action(delta):
 	elif action_time > 51:
 		charge_collision.disabled = false
 		animation_player.play("Rush")
-		charge_attack()
+		charge_attack(delta)
 		if !walking_sound.playing:
 			walking_sound.pitch_scale = 1
 			walking_sound.play()
@@ -362,17 +363,19 @@ func spore_ranged_attack():
 		bullet.set_block_cost_modifier(0.5)
 		bullet.global_position = pos
 
-func charge_attack():
+func charge_attack(delta):
 	if !charge_attack_on_going:
 		var playerPosition: Vector3 = player.get_child(0).global_position
 		direction_to_player = (playerPosition - global_position).normalized()
 		rotate_to_target(playerPosition)
 		charge_attack_on_going = true
+		charge_duration = 0
 	velocity = direction_to_player * 10
+	charge_duration += delta
 	if in_charge_attack_area:
 		player.take_damage(charge_attack_damage, self, false, 0)
 		in_charge_attack_area = false
-	if charge_hit:
+	if charge_hit and charge_duration <= 6:
 		charge_attack_on_going = false
 
 func explosion_mini_enemies_attack():

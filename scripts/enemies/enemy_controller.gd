@@ -64,6 +64,7 @@ func detect_player_raycast():
 func take_damage(damage: int, type: String, has_knockback: bool = false, knockback_strenght: float = 0):
 	health -= damage
 	damage_sound.play()
+	get_child(0).get_pinged()
 	if health <= 0:
 		died = true
 		die()

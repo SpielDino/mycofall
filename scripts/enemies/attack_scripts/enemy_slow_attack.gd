@@ -42,8 +42,8 @@ func attack(delta):
 	if attack_timer <= 1.6667 - 0.45:
 		if !has_fired:
 			attack_sound.play()
-			var pos: Vector3 = bullet_spawn_point.global_position 
-			var vel: Vector3 = player.get_child(0).global_position - pos
+			var pos: Vector3 = bullet_spawn_point.global_position
+			var vel: Vector3 = (player.get_child(0).global_position - pos).normalized()
 			var bullet = bullet_scene.instantiate()
 			bullet.setParameter(player, bullet_damage, bullet_speed, vel)
 			get_tree().root.add_child(bullet)
