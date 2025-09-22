@@ -2,6 +2,7 @@ extends InteractableNPC
 class_name OldMan
 
 @export var old_man_animation_player: AnimationPlayer
+@export var old_man_audio: AudioStreamPlayer3D
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var played_animation = false
@@ -66,6 +67,14 @@ func _on_interacted(body: Variant) -> void:
 		DamageNumbers.display_text("Pick a weapon and start slaying", text_position.global_position, 5)
 	if talking_animation:
 		talking_animation = false
+		#old_man_audio.play(10)
+		play_offset_audio()
 		await get_tree().create_timer(5).timeout
 		playing_idle_animation()
+		old_man_audio.stop()
 		talked_animation = false
+
+
+func play_offset_audio():
+	var offset = randf_range(0.0, 8.0)
+	old_man_audio.play(offset)
