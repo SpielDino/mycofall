@@ -37,7 +37,7 @@ func die():
 	for hitbox in hitboxes:
 		hitbox.queue_free()
 	if has_death_animation:
-		animation_player.play("Die")
+		animation_player.play(death_animation_name)
 	await get_tree().create_timer(death_animation_time).timeout
 	model.visible = false
 	if has_death_particles: 
