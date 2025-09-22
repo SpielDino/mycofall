@@ -94,7 +94,7 @@ var _animations : Dictionary[String, Dictionary] = {
 	"sword":
 		{
 			"fps": 30,
-			"is_shrinking": false,
+			"is_shrinking": true,
 			"frame_id": 0,
 			"timer": 0.0,
 			"active_index": -1
@@ -102,7 +102,7 @@ var _animations : Dictionary[String, Dictionary] = {
 	"bow":
 		{
 			"fps": 30,
-			"is_shrinking": false,
+			"is_shrinking": true,
 			"frame_id": 0,
 			"timer": 0.0,
 			"active_index": -1
@@ -110,7 +110,7 @@ var _animations : Dictionary[String, Dictionary] = {
 	"staff":
 		{
 			"fps": 30,
-			"is_shrinking": false,
+			"is_shrinking": true,
 			"frame_id": 0,
 			"timer": 0.0,
 			"active_index": -1
@@ -118,7 +118,7 @@ var _animations : Dictionary[String, Dictionary] = {
 	"shield":
 		{
 			"fps": 30,
-			"is_shrinking": false,
+			"is_shrinking": true,
 			"frame_id": 0,
 			"timer": 0.0,
 			"active_index": -1
@@ -135,6 +135,10 @@ func _ready() -> void:
 		branch_three_sprite_frames,
 		weapon_one_sprite_frames,
 		weapon_two_sprite_frames,
+		sword_sprite_frames,
+		bow_sprite_frames,
+		staff_sprite_frames,
+		shield_sprite_frames
 	]
 	for animation in ANIMATION_NAMES.size() - 4:
 		if !frames[animation] || !frames[animation].resource_path.get_file().get_basename() == ANIMATION_NAMES[animation]:
@@ -142,12 +146,12 @@ func _ready() -> void:
 			continue
 		_set_current_frame_texture(frames[animation], ANIMATION_NAMES[animation], "default")
 	UIManager.toggle_menu.connect(_on_menu_toggle);
-	#GameManager.weapons_changed.connect(_update_weapon_icons)
-	#player.toggle_weapon_one.connect(_on_weapon_one_toggle
-	#player.toggle_weapon_two.connect(_on_weapon_two_toggle
+	GameManager.weapons_changed.connect(_update_weapon_icons)
+	#player.toggle_weapon_one.connect(_on_weapon_one_toggle)
+	GameManager.weapons_changed.connect(_on_weapon_two_toggle)
 	#ui.toggle_menu.connect(_on_menu_toggle
-	#player.toggle_stamina.connect(_on_stamina_toggle)
-	#player.toggle_mana.connect(_on_mana_toggle)
+	player.toggle_stamina.connect(_on_stamina_toggle)
+	player.toggle_mana.connect(_on_mana_toggle)
 
 
 func match_upgrade_level() -> String:
@@ -161,85 +165,106 @@ func match_upgrade_level() -> String:
 	return ""
 		
 func _update_weapon_icons() -> void:
-	print("weapons_picked")
 	if GameManager.get_first_weapon():
-		print("yesssir")
 		_is_weapon_one = true
 		var upgrade: String = match_upgrade_level()
-		print(GameManager.get_first_weapon_name())
-		print("%s_sword_attack" % upgrade)
-		print(weapon_slot_one)
-		print(weapon_slot_one.texture)
-		print(sword_sprite_frames.get_frame_texture("%s_sword_attack" % upgrade, 0))
 		match GameManager.get_first_weapon_name():
 			"Sword":
-				print("setting_sword")
 				weapon_slot_one.texture = sword_sprite_frames.get_frame_texture("%s_sword_attack" % upgrade, 0)
-				print(weapon_slot_one.texture)
 			"Bow":
 				weapon_slot_one.texture = bow_sprite_frames.get_frame_texture("%s_bow_block" % upgrade, 0)
 			"Staff":
 				weapon_slot_one.texture = staff_sprite_frames.get_frame_texture("%s_staff_attack" % upgrade, 0)
 			"Shield":
-				weapon_slot_one.texture = shield_sprite_frames.get_frame_texture("%s_shield_attack" % upgrade, 0)
-	#else:
-		#weapon_slot_one.texture = null
+				weapon_slot_one.texture = shield_sprite_frames.get_frame_texture("%s_shield_block" % upgrade, 0)
+	else:
+		weapon_slot_one.texture = null
 		
 	if	GameManager.get_second_weapon():
 		var upgrade: String = match_upgrade_level()
-		match GameManager.get_first_weapon_name():
+		await get_tree().create_timer(0.25).timeout
+		match GameManager.get_second_weapon_name():
 			"Sword":
-				weapon_slot_one.texture = load("res://assets/textures/ui_textures/interface/weapons/sword/half/%s_sword_half" % upgrade)
+				weapon_slot_two.texture = load("res://assets/textures/ui_textures/interface/weapons/sword/half/%s_sword_half.png" % upgrade)
 			"Bow":
-				weapon_slot_one.texture = load("res://assets/textures/ui_textures/interface/weapons/bow/half/%s_bow_half" % upgrade)
+				weapon_slot_two.texture = load("res://assets/textures/ui_textures/interface/weapons/bow/half/%s_bow_half.png" % upgrade)
 			"Staff":
-				weapon_slot_one.texture = load("res://assets/textures/ui_textures/interface/weapons/staff/half/%s_staff_half" % upgrade)
+				weapon_slot_two.texture = load("res://assets/textures/ui_textures/interface/weapons/staff/half/%s_staff_half.png" % upgrade)
 			"Shield":
-				weapon_slot_one.texture = load("res://assets/textures/ui_textures/interface/weapons/shield/half/%s_shield_half" % upgrade)
-	#else:
-		#weapon_slot_two.texture = null
+				weapon_slot_two.texture = load("res://assets/textures/ui_textures/interface/weapons/shield/half/%s_shield_half.png" % upgrade)
+	else:
+		weapon_slot_two.texture = null
 				
 func _input(event) -> void:
-	if event.is_action_pressed("pause"):
-		_on_menu_toggle()
-		toggle_menu.emit()
-	elif event.is_action_pressed("attack"):
+	if event.is_action_pressed("attack"):
 		var upgrade: String = match_upgrade_level()
 		match GameManager.get_first_weapon_name():
 			"Sword":
-				_active_animations.append({"name": "%s_sword_attack" % upgrade, "animation": sword_sprite_frames})
+				if _animations[ANIMATION_NAMES[5]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[5]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_sword_attack" % upgrade, "animation": sword_sprite_frames})
+					_animations[ANIMATION_NAMES[5]]["active_index"] = len(_active_animations) - 1;
 			"Bow":
-				_active_animations.append({"name": "%s_bow_attack" % upgrade, "animation": bow_sprite_frames})
+				if _animations[ANIMATION_NAMES[6]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[6]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_bow_attack" % upgrade, "animation": bow_sprite_frames})
+					_animations[ANIMATION_NAMES[6]]["active_index"] = len(_active_animations) - 1;
 			"Staff":
-				_active_animations.append({"name": "%s_staff_attack" % upgrade, "animation": staff_sprite_frames})
-			"Shield":
-				_active_animations.append({"name": "%s_shield_attack" % upgrade, "animation": shield_sprite_frames})
+				if _animations[ANIMATION_NAMES[7]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[7]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_staff_attack" % upgrade, "animation": staff_sprite_frames})
+					_animations[ANIMATION_NAMES[7]]["active_index"] = len(_active_animations) - 1;
 	elif event.is_action_pressed("block"):
 		var upgrade: String = match_upgrade_level()
 		match GameManager.get_first_weapon_name():
 			"Sword":
-				_active_animations.append({"name": "%s_sword_block" % upgrade, "animation": sword_sprite_frames})
+				if _animations[ANIMATION_NAMES[5]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[5]]["frame_id"] = 0
+					_animations[ANIMATION_NAMES[5]]["active_index"] = 0
+					_active_animations.append({"name": "%s_sword_block" % upgrade, "animation": sword_sprite_frames})
+					_animations[ANIMATION_NAMES[5]]["active_index"] = len(_active_animations) - 1;
 			"Bow":
-				_active_animations.append({"name": "%s_bow_block" % upgrade, "animation": bow_sprite_frames})
+				if _animations[ANIMATION_NAMES[6]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[6]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_bow_block" % upgrade, "animation": bow_sprite_frames})
+					_animations[ANIMATION_NAMES[6]]["active_index"] = len(_active_animations) - 1;
 			"Staff":
-				_active_animations.append({"name": "%s_staff_block" % upgrade, "animation": staff_sprite_frames})
+				if _animations[ANIMATION_NAMES[7]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[7]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_staff_block" % upgrade, "animation": staff_sprite_frames})
+					_animations[ANIMATION_NAMES[7]]["active_index"] = len(_active_animations) - 1;
 			"Shield":
-				_active_animations.append({"name": "%s_shield_block" % upgrade, "animation": shield_sprite_frames})
+				if _animations[ANIMATION_NAMES[8]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[8]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_shield_block" % upgrade, "animation": shield_sprite_frames})
+					_animations[ANIMATION_NAMES[8]]["active_index"] = len(_active_animations) - 1;
 	elif event.is_action_pressed("heavy_attack"):
 		var upgrade: String = match_upgrade_level()
 		match GameManager.get_first_weapon_name():
 			"Sword":
-				_active_animations.append({"name": "%s_sword_special" % upgrade, "animation": sword_sprite_frames})
+				if _animations[ANIMATION_NAMES[5]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[5]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_sword_special" % upgrade, "animation": sword_sprite_frames})
+					_animations[ANIMATION_NAMES[5]]["active_index"] = len(_active_animations) - 1;
 			"Bow":
-				_active_animations.append({"name": "%s_bow_special" % upgrade, "animation": bow_sprite_frames})
+				if _animations[ANIMATION_NAMES[6]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[6]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_bow_special" % upgrade, "animation": bow_sprite_frames})
+					_animations[ANIMATION_NAMES[6]]["active_index"] = len(_active_animations) - 1;
 			"Staff":
-				_active_animations.append({"name": "%s_staff_special" % upgrade, "animation": staff_sprite_frames})
+				if _animations[ANIMATION_NAMES[7]]["active_index"] == -1:
+					_animations[ANIMATION_NAMES[7]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_staff_special" % upgrade, "animation": staff_sprite_frames})
+					_animations[ANIMATION_NAMES[7]]["active_index"] = len(_active_animations) - 1;
 			"Shield":
-				_active_animations.append({"name": "%s_shield_special" % upgrade, "animation": shield_sprite_frames})
+				if _animations[ANIMATION_NAMES[8]]["active_index"] == -1:
+					print("play shield")
+					_animations[ANIMATION_NAMES[8]]["frame_id"] = 0
+					_active_animations.append({"name": "%s_shield_special" % upgrade, "animation": shield_sprite_frames})
+					_animations[ANIMATION_NAMES[8]]["active_index"] = len(_active_animations) - 1;
 		
 		
 func _process(delta: float) -> void:		
-	print(weapon_slot_one.texture)
 	if len(_active_animations) <= 0:
 		return
 	
@@ -267,7 +292,7 @@ func _process(delta: float) -> void:
 		
 func _check_valid_animation(sprite_frames: SpriteFrames,animation_name) -> bool:
 	if !sprite_frames.has_animation(animation_name):
-		push_error("Animation not found: ", animation_name)
+		push_error("Animation not found on sprite_frames ", sprite_frames.resource_path, ": ", animation_name)
 		return false
 	return true
 	
@@ -289,7 +314,7 @@ func _change_frame_id(frames: SpriteFrames, res_name: String, advance_frames: in
 	
 	
 func _set_current_frame_texture(frames: SpriteFrames, res_name: String, animation_name: String) -> void:
-	var element = get_node(res_name)
+	var element = get_node(res_name) if res_name != "sword" && res_name != "bow" && res_name != "staff" && res_name != "shield" else weapon_slot_one
 	element.texture = frames.get_frame_texture(animation_name, _animations[res_name]["frame_id"]);
 
 func _stop(res_name: String, index: int) -> void:
@@ -299,31 +324,32 @@ func _stop(res_name: String, index: int) -> void:
 		if _animations[animation]["active_index"] > index:
 			_animations[animation]["active_index"] -= 1
 	
-func _on_weapon_one_toggle() -> void:
-	if _animations[ANIMATION_NAMES[3]]["active_index"] == -1:
-		_active_animations.append(ANIMATION_NAMES[3]);
-		_animations[ANIMATION_NAMES[3]]["active_index"] = len(_active_animations) - 1;
-	
-	if _is_weapon_one: 
-		_animations[ANIMATION_NAMES[3]]["is_shrinking"] = true;
-	else:
-		_animations[ANIMATION_NAMES[3]]["is_shrinking"] = false;
-	_is_weapon_one = !_is_weapon_one;
-	if !_is_past_tutorial && !_is_menu:
-		_is_weapon_one_active = _is_weapon_one
+#func _on_weapon_one_toggle() -> void:
+	#if _animations[ANIMATION_NAMES[3]]["active_index"] == -1:
+		#_active_animations.append(ANIMATION_NAMES[3]);
+		#_animations[ANIMATION_NAMES[3]]["active_index"] = len(_active_animations) - 1;
+	#
+	#if _is_weapon_one: 
+		#_animations[ANIMATION_NAMES[3]]["is_shrinking"] = true;
+	#else:
+		#_animations[ANIMATION_NAMES[3]]["is_shrinking"] = false;
+	#_is_weapon_one = !_is_weapon_one;
+	#if !_is_past_tutorial && !_is_menu:
+		#_is_weapon_one_active = _is_weapon_one
 	
 func _on_weapon_two_toggle() -> void:
-	if _animations[ANIMATION_NAMES[4]]["active_index"] == -1:
-		_active_animations.append({"name": "default", "animation": weapon_two_sprite_frames});
-		_animations[ANIMATION_NAMES[4]]["active_index"] = len(_active_animations) - 1;
-	
-	if _is_weapon_two: 
-		_animations[ANIMATION_NAMES[4]]["is_shrinking"] = true;
-	else:
-		_animations[ANIMATION_NAMES[4]]["is_shrinking"] = false;
-	_is_weapon_two = !_is_weapon_two;
-	if !_is_past_tutorial && !_is_menu:
-		_is_weapon_two_active = _is_weapon_two
+	if GameManager.get_second_weapon() != _is_weapon_two_active:
+		if _animations[ANIMATION_NAMES[4]]["active_index"] == -1:
+			_active_animations.append({"name": "default", "animation": weapon_two_sprite_frames});
+			_animations[ANIMATION_NAMES[4]]["active_index"] = len(_active_animations) - 1;
+		
+		if _is_weapon_two: 
+			_animations[ANIMATION_NAMES[4]]["is_shrinking"] = true;
+		else:
+			_animations[ANIMATION_NAMES[4]]["is_shrinking"] = false;
+		_is_weapon_two = !_is_weapon_two;
+		if !_is_past_tutorial && !_is_menu:
+			_is_weapon_two_active = _is_weapon_two
 	
 func _on_menu_toggle() -> void:
 	if _animations[ANIMATION_NAMES[0]]["active_index"] == -1:
@@ -337,18 +363,18 @@ func _on_menu_toggle() -> void:
 	_is_branch_one = !_is_branch_one;
 	
 	if _is_branch_two_active:
-		_on_stamina_toggle();
+		_on_stamina_toggle(!_is_branch_two);
 		
 	if _is_branch_three_active:
-		_on_mana_toggle();
+		_on_mana_toggle(!_is_branch_three);
 	
-	if _is_weapon_one_active:
-		_on_weapon_one_toggle();
+	#if _is_weapon_one_active:
+		#_on_weapon_one_toggle();
 	
 	if _is_weapon_two_active:
 		_on_weapon_two_toggle();
 	
-func _on_stamina_toggle() -> void:
+func _on_stamina_toggle(value) -> void:
 	if _animations[ANIMATION_NAMES[1]]["active_index"] == -1:
 		_active_animations.append({"name": "default", "animation": branch_two_sprite_frames});
 		_animations[ANIMATION_NAMES[1]]["active_index"] = len(_active_animations) - 1;
@@ -362,7 +388,7 @@ func _on_stamina_toggle() -> void:
 	if !_is_past_tutorial && !_is_menu:
 		_is_branch_two_active = _is_branch_two
 	
-func _on_mana_toggle() -> void:
+func _on_mana_toggle(value) -> void:
 	if _animations[ANIMATION_NAMES[2]]["active_index"] == -1:
 		_active_animations.append({"name": "default", "animation": branch_three_sprite_frames});
 		_animations[ANIMATION_NAMES[2]]["active_index"] = len(_active_animations) - 1;

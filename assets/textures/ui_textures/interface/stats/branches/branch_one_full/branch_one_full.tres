@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=147 format=3 uid="uid://dnwc7tkiv43ov"]
+[gd_resource type="SpriteFrames" load_steps=146 format=3 uid="uid://dnwc7tkiv43ov"]
 
 [ext_resource type="Texture2D" uid="uid://xuvui8xsoxdl" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0000.png" id="1_hnibt"]
 [ext_resource type="Texture2D" uid="uid://cdk0044bkhs6o" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0001.png" id="2_r33ry"]
@@ -98,7 +98,6 @@
 [ext_resource type="Texture2D" uid="uid://ficr4ylciypq" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0095.png" id="96_k8byr"]
 [ext_resource type="Texture2D" uid="uid://b4w5y5d7hnaxm" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0096.png" id="97_2wvkd"]
 [ext_resource type="Texture2D" uid="uid://4g80b1y0rq67" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0097.png" id="98_hr74i"]
-[ext_resource type="Texture2D" uid="uid://cdo3jltabjnei" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0098.png" id="99_i461j"]
 [ext_resource type="Texture2D" uid="uid://b21khluyf4go1" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0099.png" id="100_bcde4"]
 [ext_resource type="Texture2D" uid="uid://dkv852svfkff3" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0100.png" id="101_ap317"]
 [ext_resource type="Texture2D" uid="uid://ce5t6h2fyr4ii" path="res://assets/textures/ui_textures/interface/stats/branches/branch_one_full/BranchOneWithoundWeapon0101.png" id="102_a27uf"]
@@ -443,9 +442,6 @@ animations = [{
 }, {
 "duration": 0.5,
 "texture": ExtResource("98_hr74i")
-}, {
-"duration": 0.5,
-"texture": ExtResource("99_i461j")
 }, {
 "duration": 0.5,
 "texture": ExtResource("100_bcde4")

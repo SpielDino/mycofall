@@ -11,10 +11,11 @@ extends Control
 @onready var buttons = $CenterContainer/OptionsMenu/ButtonsMargin/Buttons
 
 @onready var options_anim = $CenterContainer/OptionsMenu/AnimatedSprite2D
-@onready var pause_menu: Control = get_node_or_null("../../PauseMenu");
+@onready var pause_menu: Control = get_parent();
 
 func _ready() -> void:
 	if pause_menu == null:
+		pause_menu = get_node_or_null("../../TitleScreen")
 		push_error("Couldn't load pause menu with node: PauseMenu")
 		return
 	self.visibility_changed.connect(_on_options_pressed)
@@ -65,6 +66,7 @@ func _on_back_to_options_pressed() -> void:
 	
 func show_labels(target_modulate: int) -> void:
 	var tween_labels: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween_labels.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween_labels.parallel().tween_property(button_display, "modulate:a", target_modulate, 0.5)
 	tween_labels.parallel().tween_property(button_controls, "modulate:a", target_modulate, 0.5)
 	tween_labels.parallel().tween_property(button_back, "modulate:a", target_modulate, 0.5)

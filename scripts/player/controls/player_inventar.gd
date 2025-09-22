@@ -227,6 +227,9 @@ func take_weapon_while_no_equipped_weapon(hit_object, socket_weapon):
 		staff_name:
 			main_hand_wood_staff.visible = true
 			main_hand_crystal_wood_staff.visible = true
+			GlobalPlayer.get_player().toggle_mana.emit(true)
+			GlobalPlayer.get_player().max_mana = 200
+			GlobalPlayer.get_player().mana = 200
 		bow_name:
 			off_hand_wood_bow.visible = true
 		shield_name:
@@ -256,6 +259,9 @@ func take_weapon_while_first_weapon_active(hit_object, socket_weapon):
 			staff_name:
 				back_wood_staff.visible = true
 				back_crystal_wood_staff.visible = true
+				GlobalPlayer.get_player().toggle_mana.emit(true)
+				GlobalPlayer.get_player().max_mana = 200
+				GlobalPlayer.get_player().mana = 200
 			bow_name:
 				back_wood_bow.visible = true
 			shield_name:
@@ -304,6 +310,9 @@ func take_weapon_while_having_sword_and_shield(socket_weapon):
 	match socket_weapon:
 		staff_name:
 			main_hand_wood_staff.visible = true
+			GlobalPlayer.get_player().toggle_mana.emit(true)
+			GlobalPlayer.get_player().max_mana = 200
+			GlobalPlayer.get_player().mana = 200
 		bow_name:
 			off_hand_wood_bow.visible = true
 
@@ -319,6 +328,9 @@ func remove_first_weapon():
 		staff_name:
 			main_hand_wood_staff.visible = false
 			main_hand_crystal_wood_staff.visible = false
+			GlobalPlayer.get_player().toggle_mana.emit(false)
+			GlobalPlayer.get_player().max_mana = 0
+			GlobalPlayer.get_player().mana = 0
 		bow_name:
 			off_hand_wood_bow.visible = false
 		shield_name:
@@ -330,6 +342,9 @@ func swap_current_first_weapon_with_socket_weapon(socket_weapon):
 			main_hand_wood_sword.visible = true
 		staff_name:
 			main_hand_wood_staff.visible = true
+			GlobalPlayer.get_player().toggle_mana.emit(true)
+			GlobalPlayer.get_player().max_mana = 200
+			GlobalPlayer.get_player().mana = 200
 		bow_name:
 			off_hand_wood_bow.visible = true
 		shield_name:

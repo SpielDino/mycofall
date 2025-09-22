@@ -100,38 +100,6 @@ func _ready() -> void:
 	current_output = texB
 	ping_ab = false  # next pass will read B -> write A
 
-#func _process(delta: float) -> void:
-## 1) How many substeps this frame?
-	#var target := STEPS_PER_SEC * delta
-	#var steps := int(target)
-	#var remainder := target - float(steps)
-	#if randf() < remainder:
-		#steps += 1  # stochastic rounding for stable steps/sec
-#
-	## 2) Sub-delta for each step (optional: fixed 1/STEPS_PER_SEC)
-	#var dt_step := delta / float(steps) if (steps > 0) else 0.0
-#
-	## 3) Run N compute substeps, toggling sets without swapping RIDs
-	#for i in steps:
-		#sim_time += dt_step
-		#var params := _make_params(dt_step)       # keep layout; write dt_step/time
-		#rd.buffer_update(ubo_rid, 0, params.size() * 4, params.to_byte_array())
-#
-		#var cl := rd.compute_list_begin()
-		#rd.compute_list_bind_compute_pipeline(cl, pipeline_rid)
-		#rd.compute_list_bind_uniform_set(cl, set_ab if ping_ab else set_ba, 0)
-		#rd.compute_list_dispatch(cl,
-			#int((texture_width  + WORKGROUPS.x - 1) / WORKGROUPS.x),
-			#int((texture_height + WORKGROUPS.y - 1) / WORKGROUPS.y), 1)
-		#rd.compute_list_end()  # gives a safe sync point between substeps
-#
-		## Flip for next substep and remember latest output RID
-		#current_output = texB if ping_ab else texA
-		#ping_ab = !ping_ab
-#
-	## 4) Present last-written texture
-	#texrd.texture_rd_rid = current_output
-
 func _process(delta: float) -> void:
 	var target := STEPS_PER_SEC * delta
 	var steps := int(target)

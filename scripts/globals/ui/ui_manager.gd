@@ -70,7 +70,7 @@ var current_controller: String;
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	get_controller();
-	
+
 func update_lang(lang: String) -> void:
 	TranslationServer.set_locale(lang)
 	lang_change.emit()

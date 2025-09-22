@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://vq4k4pjrko4f"]
+
+[ext_resource type="PackedScene" uid="uid://brb2hhdmmhq14" path="res://scenes/prefabs/environment/rooms/level_rooms/combined_beginning_room.tscn" id="1_r8wni"]
+[ext_resource type="PackedScene" uid="uid://rddwidjpmb55" path="res://scenes/prefabs/environment/rooms/level_rooms/training_room.tscn" id="2_nwllm"]
+[ext_resource type="PackedScene" uid="uid://x7d3tx8qvnim" path="res://scenes/production/game/area_one/area_one.tscn" id="3_1octl"]
+[ext_resource type="PackedScene" uid="uid://cfqc72lxixaes" path="res://placeholder/leon/LeonTestScene.tscn" id="4_3e752"]
+[ext_resource type="PackedScene" uid="uid://bf7l7rjvohxal" path="res://scenes/production/working_trees/Area_4.tscn" id="5_22mi3"]
+[ext_resource type="PackedScene" uid="uid://ba41x6dsesffj" path="res://scenes/prefabs/environment/boss_arena.tscn" id="6_nwllm"]
+
+[node name="CombineFullTest" type="Node3D"]
+
+[node name="CombonedBeginningRoom" parent="." instance=ExtResource("1_r8wni")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 0, -99.9)
+
+[node name="TrainingRoom" parent="." instance=ExtResource("2_nwllm")]
+
+[node name="AreaOne" parent="." instance=ExtResource("3_1octl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.5, 0, -178)
+
+[node name="LeonTestScene" parent="." instance=ExtResource("4_3e752")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 65, 0, -314)
+
+[node name="Area4" parent="." instance=ExtResource("5_22mi3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -84.5, 0, -412)
+
+[node name="BossArena" parent="." instance=ExtResource("6_nwllm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33, -4.415, -373)

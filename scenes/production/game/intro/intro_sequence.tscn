@@ -1,7 +1,6 @@
-[gd_scene load_steps=54 format=3 uid="uid://b5evg8uvivypg"]
+[gd_scene load_steps=51 format=3 uid="uid://b5evg8uvivypg"]
 
 [ext_resource type="Script" uid="uid://jfsi7yjkejnu" path="res://scripts/environment/intro_sequence.gd" id="1_lrqtx"]
-[ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="2_246qq"]
 [ext_resource type="PackedScene" uid="uid://dgnex5i27htbn" path="res://scenes/prefabs/environment/plants/bush_test_2.tscn" id="3_3xftp"]
 [ext_resource type="PackedScene" uid="uid://irrsqnnuxdnc" path="res://scenes/prefabs/environment/miscellaneous/ground_normal_grass_(50x50).tscn" id="3_uwky1"]
 [ext_resource type="PackedScene" uid="uid://tp80vatrials" path="res://scenes/prefabs/environment/plants/bush_2.tscn" id="4_3xftp"]
@@ -44,20 +43,8 @@
 [ext_resource type="PackedScene" uid="uid://bnlu7mjuuo1pp" path="res://scenes/prefabs/environment/rooms/model_prefabs/background_test.tscn" id="41_d0iy5"]
 [ext_resource type="PackedScene" uid="uid://iduptgj62v6v" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_one_with_collision.tscn" id="42_lrqtx"]
 [ext_resource type="PackedScene" uid="uid://bj1nqcrxdbdgp" path="res://scenes/prefabs/environment/walls/with_collision/tree_bundle_two_with_collision.tscn" id="43_uwky1"]
-[ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="45_uwky1"]
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_6rpqk"]
-panorama = ExtResource("2_246qq")
-
-[sub_resource type="Sky" id="Sky_lrqtx"]
-sky_material = SubResource("PanoramaSkyMaterial_6rpqk")
-
-[sub_resource type="Environment" id="Environment_3xftp"]
-background_mode = 2
-sky = SubResource("Sky_lrqtx")
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0286
-volumetric_fog_albedo = Color(1, 0.807843, 1, 1)
+[ext_resource type="PackedScene" uid="uid://vj7to5njslw6" path="res://scenes/prefabs/environment/interactables/dynamic/socket.tscn" id="44_uwky1"]
+[ext_resource type="PackedScene" uid="uid://lhj17p5n0syu" path="res://scenes/prefabs/environment/interactables/dynamic/socket_schwerthalterung.tscn" id="47_s7d40"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_ij0lq"]
 
@@ -77,13 +64,6 @@ size = Vector3(8.08386, 1, 4.80408)
 
 [node name="IntroSequence" type="Node3D"]
 script = ExtResource("1_lrqtx")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 32.8943, 16.5461)
-shadow_enabled = true
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_3xftp")
 
 [node name="IntroAreaOne" type="Node3D" parent="."]
 
@@ -611,7 +591,7 @@ transform = Transform3D(-0.998838, 0, -0.0482047, 0, 1, 0, 0.0482047, 0, -0.9988
 transform = Transform3D(0.681832, 0, 0.731508, 0, 1, 0, -0.731508, 0, 0.681832, 16.0784, 0.0958534, 6.77611)
 
 [node name="StonePile3" parent="IntroAreaOne/Rocks" instance=ExtResource("14_jnl7p")]
-transform = Transform3D(0.726958, 0, 1.8632, 0, 2, 0, -1.8632, 0, 0.726958, -5.22281, 0.0958524, -77.6994)
+transform = Transform3D(0.726958, 0, 1.8632, 0, 2, 0, -1.8632, 0, 0.726958, -5.22281, 0.298534, -77.6994)
 
 [node name="StonePile4" parent="IntroAreaOne/Rocks" instance=ExtResource("14_jnl7p")]
 transform = Transform3D(-1.60925, 0, 1.18757, 0, 2, 0, -1.18757, 0, -1.60925, -0.496504, 0.0958515, -79.2347)
@@ -1869,11 +1849,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -125.416)
 
 [node name="Fog" type="Node3D" parent="IntroAreaThree"]
 
-[node name="Area3D" type="Area3D" parent="IntroAreaThree"]
+[node name="TutorialLoad" type="Area3D" parent="IntroAreaThree"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.25193, 0, 41.63)
 script = ExtResource("40_lrqtx")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroAreaThree/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="IntroAreaThree/TutorialLoad"]
 transform = Transform3D(0.950353, 0, -0.311174, 0, 1, 0, 0.311174, 0, 0.950353, 0.652901, -0.164337, -0.872093)
 shape = SubResource("BoxShape3D_uwky1")
 
@@ -1907,10 +1887,14 @@ transform = Transform3D(1.93757, 0, -0.495791, 0, 2, 0, 0.495791, 0, 1.93757, -7
 [node name="TreeBundleTwoWithCollision2" parent="." instance=ExtResource("43_uwky1")]
 transform = Transform3D(1.71347, 0, -1.03151, 0, 2, 0, 1.03151, 0, 1.71347, -60.9926, -0.00840735, -63.5197)
 
-[node name="Player" parent="." instance=ExtResource("45_uwky1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 58)
+[node name="Socket3" parent="." instance=ExtResource("44_uwky1")]
+transform = Transform3D(0.562055, 0, -0.8271, 0, 1, 0, 0.8271, 0, 0.562055, -4.06547, -9.53674e-07, 51.561)
+Weapon = "SHIELD"
 
-[connection signal="body_entered" from="IntroAreaThree/Area3D" to="IntroAreaThree/Area3D" method="_on_body_entered"]
+[node name="Socket" parent="." instance=ExtResource("47_s7d40")]
+transform = Transform3D(-0.508651, 0, 0.860973, 0, 1, 0, -0.860973, 0, -0.508651, -0.675272, 0, 51.8808)
+
+[connection signal="body_entered" from="IntroAreaThree/TutorialLoad" to="IntroAreaThree/TutorialLoad" method="_on_body_entered"]
 
 [editable path="IntroAreaTwo/NavigationRegion3D/Ground/GroundNormalGrass(8x25)withoutCollision4"]
 [editable path="IntroAreaTwo/NavigationRegion3D/Walls/StoneWallTwoWithCollision"]
