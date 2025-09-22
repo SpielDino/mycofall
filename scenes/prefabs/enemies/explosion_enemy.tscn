@@ -134,9 +134,13 @@ warmup_animation_time = 1.5
 
 [node name="WalkingSounds" parent="MovementComponent" index="3"]
 stream = ExtResource("4_h6co1")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="RunningSounds" parent="MovementComponent" index="4"]
 stream = ExtResource("4_h6co1")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="EnemyExplosionAttackComponent" parent="." instance=ExtResource("6_y4dku")]
 
@@ -210,10 +214,14 @@ shape = SubResource("SphereShape3D_i8y0w")
 stream = ExtResource("9_binnp")
 volume_db = -2.0
 pitch_scale = 0.8
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_h6co1")
 volume_db = -2.0
+max_distance = 20.0
+bus = &"SFX"
 
 [editable path="DetectionComponent"]
 [editable path="MovementComponent"]

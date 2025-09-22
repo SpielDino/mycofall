@@ -106,21 +106,19 @@ func calculate_aggression():
 	var rangedKills: float = PlayerActionTracker.staff_kills + PlayerActionTracker.bow_kills
 	var meleeKills: float = PlayerActionTracker.melee_kills
 	var totalKills: float = rangedKills + meleeKills
+	totalKills = clamp(totalKills, 1, 300)
 	aggression += (rangedKills - meleeKills)/totalKills
 	aggression = clamp(aggression, -0.7, 0.7)
-	print(aggression)
 
 func calculate_blocks_and_dashes():
 	var attacksBlocked: float = PlayerActionTracker.attacks_blocked
 	var attacksDodged: float = PlayerActionTracker.times_dodged_in_combat
 	var totalDodgedAndBlocked: float = attacksBlocked + attacksDodged
+	totalDodgedAndBlocked = clamp(totalDodgedAndBlocked, 1, 1000)
 	attacks_blocked_percentage = attacksBlocked / totalDodgedAndBlocked
 	attacks_dodged_percentage = attacksDodged / totalDodgedAndBlocked
 	attacks_blocked_percentage = clamp(attacks_blocked_percentage, 0.3, 0.7)
 	attacks_dodged_percentage = clamp(attacks_blocked_percentage, 0.3, 0.7)
-	print(attacks_blocked_percentage)
-	print(attacks_dodged_percentage)
-	
 
 func activate_boss():
 	calculate_aggression()

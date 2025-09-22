@@ -28,12 +28,18 @@ shape = SubResource("BoxShape3D_pp20k")
 
 [node name="RunningSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_j6m86")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="HitSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_2sari")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="TalkingSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_fgtwo")
+max_distance = 20.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]

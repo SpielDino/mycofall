@@ -379,32 +379,46 @@ draw_pass_1 = SubResource("QuadMesh_ui5th")
 [node name="LauncherSound1" type="AudioStreamPlayer3D" parent="Sounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4058, 1.36832, 0)
 stream = SubResource("AudioStreamRandomizer_gorya")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="LauncherSound2" type="AudioStreamPlayer3D" parent="Sounds"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4058, 1.36832, 0)
 stream = SubResource("AudioStreamRandomizer_gorya")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="SquishSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_rviuc")
 volume_db = -3.0
 pitch_scale = 0.5
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="SpearSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_tbb04")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="WalkingSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_v4xao")
 volume_db = -10.0
 max_db = 0.0
 pitch_scale = 0.6
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="RandomSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = SubResource("AudioStreamRandomizer_amqbu")
 volume_db = -6.0
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="PoisonSound" type="AudioStreamPlayer3D" parent="Sounds"]
 stream = ExtResource("18_amqbu")
 volume_db = -15.0
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="ExplosionsEnemySpawnpoints" type="Node3D" parent="."]
 top_level = true

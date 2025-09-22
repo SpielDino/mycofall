@@ -39,11 +39,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.50245, 4.51524, -0.292681)
 [node name="MeleeSound" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_wmj74")
 pitch_scale = 0.8
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="RangedSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_tsgm1")
 volume_db = 10.0
 pitch_scale = 0.67
+max_distance = 20.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="MeleeAttackRange" to="." method="_on_melee_attack_range_entered"]
 [connection signal="area_exited" from="MeleeAttackRange" to="." method="_on_melee_attack_range_exited"]

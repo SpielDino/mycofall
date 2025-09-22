@@ -85,6 +85,8 @@ draw_pass_1 = SubResource("QuadMesh_c7v8q")
 [node name="AttackSound" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_53rf1")
 volume_db = 8.0
+max_distance = 20.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]

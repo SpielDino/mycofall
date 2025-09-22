@@ -94,6 +94,8 @@ draw_pass_1 = SubResource("QuadMesh_lernl")
 
 [node name="ExplosionSound" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_1ifxd")
+max_distance = 20.0
+bus = &"SFX"
 
 [connection signal="area_entered" from="AttackArea" to="." method="_on_attack_area_entered"]
 [connection signal="area_exited" from="AttackArea" to="." method="_on_attack_area_exited"]

@@ -162,6 +162,14 @@ shape = SubResource("SphereShape3D_smu6q")
 walking_name = "Idle"
 attack_walking_name = "Idle"
 
+[node name="WalkingSounds" parent="MovementComponent" index="3"]
+max_distance = 20.0
+bus = &"SFX"
+
+[node name="RunningSounds" parent="MovementComponent" index="4"]
+max_distance = 20.0
+bus = &"SFX"
+
 [node name="EnemyRangedAttackComponent" parent="." instance=ExtResource("5_5x2ut")]
 
 [node name="Model" parent="." instance=ExtResource("7_5dd6s")]
@@ -295,10 +303,14 @@ shape = SubResource("CapsuleShape3D_5x2ut")
 stream = ExtResource("10_4d3mk")
 volume_db = -2.0
 pitch_scale = 0.8
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("11_216h1")
 volume_db = -2.0
+max_distance = 20.0
+bus = &"SFX"
 
 [editable path="DetectionComponent"]
 [editable path="MovementComponent"]

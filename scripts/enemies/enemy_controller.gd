@@ -37,7 +37,7 @@ func die():
 	for hitbox in hitboxes:
 		hitbox.queue_free()
 	if has_death_animation:
-		animation_player.play("Die")
+		animation_player.play(death_animation_name)
 	await get_tree().create_timer(death_animation_time).timeout
 	model.visible = false
 	if has_death_particles: 
@@ -64,7 +64,6 @@ func detect_player_raycast():
 func take_damage(damage: int, type: String, has_knockback: bool = false, knockback_strenght: float = 0):
 	health -= damage
 	damage_sound.play()
-	get_child(0).get_pinged()
 	if health <= 0:
 		died = true
 		die()
@@ -78,7 +77,9 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 		if has_knockback:
 			var direction = (global_position - player.get_child(0).global_position).normalized()
 			velocity += direction * knockback_strenght
-		get_child(0).get_pinged()
+		if state == States.IDLE or state == States.NONE or state == States.SEARCHING:
+			state = States.SEARCHING
+			get_child(0).get_pinged()
 
 func slow_rotate_to_target(target):
 	var angle_vector

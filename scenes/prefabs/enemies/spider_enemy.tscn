@@ -143,9 +143,13 @@ radius = 1.0
 
 [node name="WalkingSounds" parent="MovementComponent" index="3"]
 stream = ExtResource("4_nktgl")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="RunningSounds" parent="MovementComponent" index="4"]
 stream = ExtResource("4_nktgl")
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="EnemySlowAttackComponent" parent="." instance=ExtResource("6_7w4j6")]
 
@@ -245,10 +249,14 @@ shape = SubResource("CapsuleShape3D_fdvl8")
 stream = ExtResource("9_alc3m")
 volume_db = -2.0
 pitch_scale = 0.8
+max_distance = 20.0
+bus = &"SFX"
 
 [node name="DamageSound" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("10_nktgl")
 volume_db = -2.0
+max_distance = 20.0
+bus = &"SFX"
 
 [editable path="DetectionComponent"]
 [editable path="MovementComponent"]

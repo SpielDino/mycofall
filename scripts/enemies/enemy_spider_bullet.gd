@@ -18,7 +18,7 @@ func setParameter(playerInput: Node3D, damageInput: float, speedInput: float, ve
 	player = playerInput
 	damage = damageInput
 	speed = speedInput
-	vel = velInput
+	vel = velInput * 10
 
 func setBlockCostModifier(value):
 	blockCostModifier = value
