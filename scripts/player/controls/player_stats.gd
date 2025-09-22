@@ -4,6 +4,8 @@ signal health_changed
 signal stamina_changed
 signal mana_changed
 signal knockdown_signal
+signal toggle_stamina(value)
+signal toggle_mana(value)
 
 @export_category("Actions")
 @export_subgroup("Walking")
@@ -41,11 +43,11 @@ signal knockdown_signal
 @export var health_per_potion: float = 100
 
 @export_subgroup("Stamina")
-@export var max_stamina: float = 200
+@export var max_stamina: float = 0
 @export var stamina_per_second: float = 50
 
 @export_subgroup("Mana")
-@export var max_mana: float = 200
+@export var max_mana: float = 0
 @export_enum("Mana regeneration", "Mana from potions") var mana_type: String = "Mana regeneration"
 @export var mana_per_second: float = 10
 @export var mana_per_potion: float = 100
@@ -100,6 +102,7 @@ func _ready():
 	get_child(2).rotation.x = camera_angle * PI / 180
 	get_child(0).get_child(1).transform.origin.y = camera_height
 	get_child(0).get_child(1).spring_length = camera_distance_from_player
+	
 
 func _physics_process(delta):
 	resource_system(delta)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b8ikqpa2bdlcy"]
+[gd_scene load_steps=37 format=3 uid="uid://b8ikqpa2bdlcy"]
 
 [ext_resource type="Script" uid="uid://ds0upq80xu32l" path="res://scripts/ui/title_screen.gd" id="1_aqpy5"]
 [ext_resource type="Shader" uid="uid://ifle8h5kjraq" path="res://scripts/shader/title_screen/wind_sway_shader.gdshader" id="2_to824"]
@@ -19,6 +19,10 @@
 [ext_resource type="Texture2D" uid="uid://ljpojy6wh01i" path="res://assets/textures/ui_textures/title_screen/BottomRightpng.png" id="15_tqags"]
 [ext_resource type="Theme" uid="uid://bw0qfmu2hvgr6" path="res://assets/ui_themes/buttons/menu_buttons.tres" id="18_una1u"]
 [ext_resource type="Theme" uid="uid://snlsj1gyjpyx" path="res://assets/ui_themes/bold_text.tres" id="19_rtmth"]
+[ext_resource type="PackedScene" uid="uid://b4yec1hemrrk3" path="res://scenes/ui/menus/options.tscn" id="20_5c0cl"]
+[ext_resource type="PackedScene" uid="uid://iu8ed2r4ttfo" path="res://scenes/ui/menus/controls.tscn" id="21_ytagk"]
+[ext_resource type="PackedScene" uid="uid://dshareugcimk3" path="res://scenes/ui/menus/display.tscn" id="22_qo84g"]
+[ext_resource type="PackedScene" uid="uid://etfwgmq85ftj" path="res://scenes/ui/menus/sound.tscn" id="23_ytagk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uq7ri"]
 shader = ExtResource("2_to824")
@@ -40,20 +44,6 @@ shader_parameter/sweep_speed = 0.35
 shader_parameter/front_width = 0.35
 shader_parameter/front_soft = 0.18
 shader_parameter/seed = 17.4
-
-[sub_resource type="Animation" id="Animation_aqpy5"]
-resource_name = "IntroCutscene"
-length = 40.0
-step = 0.0166667
-
-[sub_resource type="Animation" id="Animation_w8uqo"]
-length = 0.001
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_a4ium"]
-_data = {
-&"IntroCutscene": SubResource("Animation_aqpy5"),
-&"RESET": SubResource("Animation_w8uqo")
-}
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5p4sa"]
 shader = ExtResource("2_w8uqo")
@@ -302,11 +292,6 @@ script = ExtResource("4_jqmgk")
 [node name="Title" type="Sprite2D" parent="MarginContainer/TitleAnimation"]
 position = Vector2(-639, 187)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_a4ium")
-}
-
 [node name="movingParts" type="MarginContainer" parent="."]
 layout_mode = 0
 offset_right = 40.0
@@ -461,6 +446,22 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 text = "BUTTON_EXIT_GAME"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Options" parent="." instance=ExtResource("20_5c0cl")]
+visible = false
+layout_mode = 1
+
+[node name="Controls" parent="." instance=ExtResource("21_ytagk")]
+visible = false
+layout_mode = 1
+
+[node name="Display" parent="." instance=ExtResource("22_qo84g")]
+visible = false
+layout_mode = 1
+
+[node name="Sound" parent="." instance=ExtResource("23_ytagk")]
+visible = false
+layout_mode = 1
 
 [connection signal="pressed" from="ButtonsMargin/Buttons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="ButtonsMargin/Buttons/Options" to="." method="_on_options_pressed"]

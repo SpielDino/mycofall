@@ -41,23 +41,26 @@ func _ready() -> void:
 
 func _input(event) -> void:
 	if event.is_action_pressed("pause") && !pause_menu.visible && !pause_anim.is_playing():
-		print("pause is not visible")
+		UIManager.toggle_menu.emit()
 		get_tree().paused = true
+		print("pause is not visible")
 		buttons.visible = true
 		var blend_in = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+		blend_in.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 		blend_in.tween_property(self, "modulate:a", 1, 0.5)
+		print("puase visible")
 		visible = true
 		pause_menu.visible = true;
 		pause_anim.play("open")
 		await pause_anim.animation_finished
 		show_labels(1)
-	elif event.is_action_pressed("pause") && !pause_anim.is_playing():
+	elif event.is_action_pressed("pause") && pause_menu.visible && !pause_anim.is_playing():
 		_on_resume_pressed()
-		get_tree().paused = false
 	
 
 func show_labels(target_modulate: int) -> void:
 	var tween_labels: Tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
+	tween_labels.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	tween_labels.parallel().tween_property(button_resume, "modulate:a", target_modulate, 0.5)
 	tween_labels.parallel().tween_property(button_options, "modulate:a", target_modulate, 0.5)
 	tween_labels.parallel().tween_property(button_main_menu, "modulate:a", target_modulate, 0.5)
@@ -75,6 +78,7 @@ func connect_button_signals() -> void:
 	sound_back_pressed.connect(_on_sound_back_pressed);
 
 func _on_resume_pressed() -> void:
+	UIManager.toggle_menu.emit()
 	var blend_out = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
 	buttons.visible = false
 	show_labels(0)
@@ -82,7 +86,29 @@ func _on_resume_pressed() -> void:
 	blend_out.tween_property(self, "modulate:a", 0, 0.5)
 	await pause_anim.animation_finished
 	pause_menu.visible = false
+	get_tree().paused = false
 
+func _on_main_menu_pressed() -> void:
+	get_tree().paused = false
+	GlobalPlayer.get_player().process_mode = Node.PROCESS_MODE_DISABLED
+	var bus_index =  AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_linear(bus_index, 0.0)
+	var title_screen: AddScene = AddScene.new();
+	title_screen.scene = "res://scenes/ui/title_screen.tscn"
+	title_screen.dynamic_loading = false
+	title_screen.type = AddScene.Type.GUI
+	var user_stats: EditScene = EditScene.new();
+	user_stats.scene = "res://scenes/ui/stats/user_stats.tscn"
+	user_stats.type = EditScene.Type.GUI
+	var pause_menu: EditScene = EditScene.new();
+	pause_menu.scene = "res://scenes/ui/menus/pause_menu.tscn"
+	pause_menu.type = EditScene.Type.GUI
+	var intro: EditScene = EditScene.new();
+	intro.scene = "res://scenes/production/game/intro/intro_sequence.tscn"
+	intro.type = EditScene.Type.DIMENSION_3
+	await GameManager.game_controller.edit_scenes([title_screen], [user_stats, pause_menu, intro], GameManager.game_controller.TransitionMode.START)
+	AudioServer.set_bus_volume_linear(bus_index, SettingsDataContainer.get_master_volume())
+	
 func _on_display_pressed() -> void:
 	options_menu.visible = false
 	display_menu.visible = true

@@ -8,6 +8,8 @@ enum TransitionMode {AUTO, START, END_FLASH, NONE}
 var current_3d_scenes: Dictionary[String, Node3D];
 var current_gui_scenes: Dictionary[String, Control];
 
+var cached_3d_scenes: Dictionary[String, Node3D]
+
 @onready var blend_screen = $GUI/Bending/BlendScreen
 
 func _ready() -> void:
@@ -19,14 +21,20 @@ func _ready() -> void:
 func edit_scenes(
 	add_scenes: Array[AddScene], 
 	edit_scenes: Array[EditScene] = [],
-	mode: int = TransitionMode.AUTO, 
+	mode: int = TransitionMode.AUTO,
+	freeze_player: bool = false
 	) -> void:
 		var m := _decide_mode(add_scenes, mode)  # AUTO → START or END_FLASH [docs]
 		if m == TransitionMode.START:
-			await _fade_to(1.0, 1.5)  # fade out first [docs]
+			await _fade_to(1.0, 1.0)  # fade out first [docs]
+			if freeze_player:
+				GlobalPlayer.get_player().process_mode = Node.PROCESS_MODE_DISABLED
 			var res := await _load_batch(add_scenes)  # direct loads return immediately; threaded loads were none in START by default [docs]
 			_add_scenes(res, add_scenes)          # add to tree, place with global_transform as needed [docs]
 			_delete_scenes(edit_scenes)
+			GlobalPlayer.get_player().get_child(0).global_position = Vector3(0, 1.1, 7)
+			GlobalPlayer.get_player().process_mode = Node.PROCESS_MODE_INHERIT
+
 			await _fade_to(0.0, 1.5)     # fade back in [docs]
 		elif m == TransitionMode.END_FLASH:
 			var res := await _load_batch(add_scenes)  # load everything in background while UI animates [docs]
@@ -54,9 +62,9 @@ func _delete_scenes(edit_scenes: Array[EditScene]):
 				elif scene.keep_running:
 					node.visible = false;
 				else:
+					cached_3d_scenes.get_or_add(scene_name, node)
 					node.get_parent().remove_child(node)
 			if scene.type == EditScene.Type.GUI:
-				
 				if !current_gui_scenes.has(scene_name):
 					continue;
 				var node = current_gui_scenes.get(scene_name)
@@ -136,3 +144,10 @@ func _add_scenes(resources: Array, new_scenes: Array[AddScene]) -> void:
 				current_gui_scenes.get_or_add(scene_name, new);
 		else:
 			push_warning("Resource at index %d is not a PackedScene; skipping" % i)
+
+func instantiate_cached_3d_scene(scene: String) -> void:
+	var scene_name = scene.split("/").get(scene.split("/").size() - 1).split(".").get(0)
+	if !cached_3d_scenes.has(scene_name):
+		push_warning("Scene does not exist in cached scenes: ", scene_name)
+		return
+	world_3d.add_child(cached_3d_scenes.get(scene_name))

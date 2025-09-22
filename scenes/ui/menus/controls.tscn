@@ -23,6 +23,7 @@ font_size = 40
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cfr20"]
 
 [node name="Controls" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -133,18 +134,18 @@ text = "SETTING_CONNECT_CONTROLLER"
 horizontal_alignment = 1
 
 [node name="Keyboard" type="MarginContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer"]
-custom_minimum_size = Vector2(1500, 600)
+custom_minimum_size = Vector2(1600, 600)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_constants/margin_top = 0
 
 [node name="KeyRows" type="HBoxContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard"]
-custom_minimum_size = Vector2(1200, 720)
+custom_minimum_size = Vector2(1400, 720)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme_override_constants/separation = 100
+theme_override_constants/separation = 132
 
 [node name="keysRow1" type="VBoxContainer" parent="MarginContainer/ControlsMenuContainer/MarginContainer/Keyboard/KeyRows"]
 custom_minimum_size = Vector2(500, 0)

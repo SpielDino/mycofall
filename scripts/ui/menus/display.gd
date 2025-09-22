@@ -19,7 +19,7 @@ const WINDOW_MODE_ARRAY : Array[String] = [
 
 @onready var back = $displayMenuContainer/menuMargin/NinePatchRect/buttonMargin/buttons/buttonsBack
 
-@onready var pause_menu = get_node_or_null("../../pauseMenu")
+@onready var pause_menu = get_parent()
 
 @onready var selection_row: StyleBoxTexture = preload("res://assets/textures/ui_textures/menus/buttons/options_button/selected_stylebox.tres")
 @onready var bg: StyleBoxTexture = preload("res://assets/textures/ui_textures/menus/buttons/options_button/popup_bg.tres")

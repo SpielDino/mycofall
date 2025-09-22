@@ -1,9 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bdv85b7walhv5"]
+[gd_scene load_steps=11 format=3 uid="uid://bdv85b7walhv5"]
 
 [ext_resource type="Script" uid="uid://bocxvsqa6he6" path="res://scripts/globals/data/game_controller.gd" id="1_3d1pe"]
 [ext_resource type="PackedScene" uid="uid://bogdwn2kqo3lf" path="res://scenes/prefabs/player/player.tscn" id="2_0a1jn"]
 [ext_resource type="PackedScene" uid="uid://b8ikqpa2bdlcy" path="res://scenes/ui/title_screen.tscn" id="2_d5f0b"]
+[ext_resource type="Texture2D" uid="uid://bft1vauocxu1u" path="res://assets/textures/environment_textures/sky_06_2k.png" id="3_1tsk7"]
 [ext_resource type="PackedScene" uid="uid://bt1oul08n6tr" path="res://scenes/ui/nav/Cursor.tscn" id="3_d5f0b"]
+[ext_resource type="Script" uid="uid://cdy7132mqn2xn" path="res://scripts/environment/directional_light_3d_control.gd" id="3_vbtva"]
+[ext_resource type="Script" uid="uid://be8budwvqg5yi" path="res://scripts/globals/data/world_environment.gd" id="5_bv55i"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vbtva"]
+panorama = ExtResource("3_1tsk7")
+
+[sub_resource type="Sky" id="Sky_lrqtx"]
+sky_material = SubResource("PanoramaSkyMaterial_vbtva")
+
+[sub_resource type="Environment" id="Environment_bv55i"]
+background_mode = 2
+sky = SubResource("Sky_lrqtx")
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0286
+volumetric_fog_albedo = Color(1, 0.807843, 1, 1)
 
 [node name="GameController" type="Node" node_paths=PackedStringArray("world_3d", "gui")]
 script = ExtResource("1_3d1pe")
@@ -14,7 +30,16 @@ gui = NodePath("GUI")
 
 [node name="Player" parent="World3D" instance=ExtResource("2_0a1jn")]
 process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 58)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -30)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World3D"]
+transform = Transform3D(1, 0, 0, 0, 0.507223, 0.861815, 0, -0.861815, 0.507223, 0, 32.8943, 16.5461)
+shadow_enabled = true
+script = ExtResource("3_vbtva")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="World3D"]
+environment = SubResource("Environment_bv55i")
+script = ExtResource("5_bv55i")
 
 [node name="GUI" type="Control" parent="."]
 layout_mode = 3

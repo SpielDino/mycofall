@@ -1217,6 +1217,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 7)
 shape = SubResource("CapsuleShape3D_ffkv0")
 
 [node name="DebugUI" type="Control" parent="." node_paths=PackedStringArray("controller", "input", "xyz", "speed", "sneaking", "in_detection_area", "in_hiding_area", "detected", "hidden", "health", "stamina", "mana")]
+process_mode = 4
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1150.0

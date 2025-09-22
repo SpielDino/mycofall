@@ -29,6 +29,8 @@ var _current_label: Label;
 @onready var pause_menu: Control = get_node_or_null("../../PauseMenu");
 
 func _ready() -> void:
+	if pause_menu == null:
+		pause_menu = get_node_or_null("../../TitleScreen")
 	set_process_unhandled_input(false)
 
 func _on_controls_opened() -> void:

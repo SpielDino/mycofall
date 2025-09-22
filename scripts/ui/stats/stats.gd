@@ -35,11 +35,11 @@ func _ready() -> void:
 
 	player.health_changed.connect(_on_player_health_changed)
 	player.stamina_changed.connect(_on_player_stamina_changed)
-	player.mana_changed.connect(_on_player_stamina_changed)
-
-func _input(event) -> void:
-	if event.is_action_pressed("pause"):
-		_toggle_stats()
+	player.mana_changed.connect(_on_player_mana_changed)
+	player.toggle_stamina.connect(toggle_stamina)
+	player.toggle_mana.connect(toggle_mana)
+	UIManager.toggle_menu.connect(_toggle_stats)
+	
 func _on_player_health_changed() -> void:
 	var percentage_range: float = 1 / health_stages;
 	var health_percentage: float =	player.health / player.max_health;
@@ -82,14 +82,15 @@ func _toggle_stats() -> void:
 	
 	_is_menu = !_is_menu
 	
-func _tween_stats(texture_order: Array[String], dur: float, bars: Array[HBoxContainer], index: int) -> Tween:
-	var appear = true if _is_menu else false
+func _tween_stats(texture_order: Array[String], dur: float, bars: Array[HBoxContainer], index: int, appear: bool = _is_menu) -> Tween:
 	var t := get_tree().create_tween().set_trans(Tween.TRANS_CUBIC).set_ease(
 		Tween.EASE_OUT if appear else Tween.EASE_IN
 		)  # feel
+	t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
 	if appear:
 		t.tween_interval(1.0) 
 	for path in texture_order:
+		print(path)
 		var texture_scale: Vector2 = Vector2(0.8, 0.8) if path.contains("berry") else Vector2.ONE
 		var stat: TextureRect = bars[index].get_node(path + "/pivot_bl/texture")
 		if appear:
@@ -109,3 +110,29 @@ func _on_max_health_increase() -> void:
 		5: leaf_textures.push_front("leaf_five");
 		6: 
 			leaf_textures.push_front("leaf_six");
+
+func toggle_stamina(value) -> void:
+	var texture_order: Array = stamina_textures.duplicate()  # don't mutate the base array
+	var appear = false;
+	if value:
+		is_stamina = true;
+		stamina_bar.visible = true;
+		texture_order.reverse()
+		appear = true
+	else:
+		is_stamina = false;
+		stamina_bar.visible = false;
+	_tween_stats(texture_order, 0.08, [stamina_bar], 0, appear)
+		
+func toggle_mana(value) -> void:
+	var texture_order: Array = mana_textures.duplicate()  # don't mutate the base array
+	var appear = false;
+	if value:
+		is_mana = true;
+		mana_bar.visible = true;
+		texture_order.reverse()
+		appear = true
+	else:
+		is_mana = false;
+		mana_bar.visible = false;
+	_tween_stats(texture_order, 0.08, [mana_bar], 0, appear)

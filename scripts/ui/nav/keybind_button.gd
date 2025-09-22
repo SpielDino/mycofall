@@ -3,7 +3,7 @@ extends Control
 
 const BASE_PATH_KEYS: String = "res://assets/textures/ui_textures/menus/Keys/"
 
-@onready var label: Label = $KeybindContainer/Label
+@onready var label: Label = $KeybindContainer/TextureRect/MarginContainer/Label
 @onready var button: TextureButton
 @onready var press_key_label: Label = $KeybindContainer/HBoxContainer/key/Label
 @onready var texture: TextureRect = $KeybindContainer/HBoxContainer/key/TextureRect
@@ -23,7 +23,7 @@ func _ready() -> void:
 	button.toggle_mode = true
 
 func init_onready_vars() -> void:
-	label = $KeybindContainer/Label
+	label = $KeybindContainer/TextureRect/MarginContainer/Label
 	button = $KeybindContainer/HBoxContainer/key
 	press_key_label = $KeybindContainer/HBoxContainer/key/Label
 	

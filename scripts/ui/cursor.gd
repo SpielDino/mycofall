@@ -3,10 +3,16 @@ extends Sprite2D
 var burst_scene := preload("res://scenes/ui/nav/click_burst.tscn")
 var pool: Array[CPUParticles2D] = [];
 
+@onready var hover_particles = $cursor_hover
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 func _physics_process(delta: float) -> void:
+	if !UIManager.is_menu:
+		hover_particles.visible = false
+	else:
+		hover_particles.visible = true
+		
 	global_position = lerp(global_position, get_global_mouse_position(), 33*delta)
 
 	var desired_rotation: float = -12.5 if Input.is_action_pressed("click") else 0.0;
@@ -30,6 +36,8 @@ func get_burst() -> CPUParticles2D:
 	return pool.pop_back()
 	
 func spawn_burst(pos: Vector2) -> void:
+	if !UIManager.is_menu:
+		return
 	var p := get_burst()
 	get_tree().current_scene.add_child(p)
 	p.global_position = pos

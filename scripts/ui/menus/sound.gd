@@ -10,7 +10,7 @@ extends Control
 @onready var sfx_volume_display: Label = $soundMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/sfx/HBoxContainer/Label
 @onready var voice_volume_display: Label = $soundMenuContainer/menuMargin/settingsMargin/settings/MarginContainer/VBoxContainer/voice/HBoxContainer/Label
 
-@onready var pause_menu: Control = get_node_or_null("../../PauseMenu");
+@onready var pause_menu: Control = get_parent();
 
 func _ready() -> void:
 	get_initial_settings()
@@ -49,7 +49,5 @@ func _on_back_pressed() -> void:
 	pause_menu.sound_back_pressed.emit();
 
 func set_bus_value(bus: String, value) -> void:
-	if bus == "SFX":
-		$"../AudioStreamPlayer2D".play()
 	var bus_index =  AudioServer.get_bus_index(bus)
 	AudioServer.set_bus_volume_linear(bus_index, value)
