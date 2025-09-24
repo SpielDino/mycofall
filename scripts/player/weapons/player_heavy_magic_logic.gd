@@ -10,10 +10,21 @@ var overlapping_bodies: Array = []
 var active: bool = true
 var upgrade_dmg: int = 0
 
+var outer_ring_particle: GPUParticles3D
+var pulse_ring_particle: GPUParticles3D
+var random_magic_particles: GPUParticles3D
+
 func _ready() -> void:
+	outer_ring_particle = $OuterRing
+	pulse_ring_particle = $PulseRings
+	random_magic_particles = $RandomMagicParticles
 	start_tick_dmg()
 
 func start_tick_dmg():
+	outer_ring_particle.restart()
+	outer_ring_particle.emitting = true
+	random_magic_particles.restart()
+	random_magic_particles.emitting = true
 	tick_dmg()
 	await get_tree().create_timer(lifetime).timeout
 	active = false
@@ -32,7 +43,10 @@ func _on_area_3d_body_exited(body: Node3D) -> void:
 func tick_dmg():
 	if not active:
 		return
-	await get_tree().create_timer(tick_rate).timeout
+	await get_tree().create_timer(tick_rate * 0.75).timeout
+	pulse_ring_particle.restart()
+	pulse_ring_particle.emitting = true
+	await get_tree().create_timer(tick_rate * 0.25).timeout
 	apply_tick_dmg()
 	tick_dmg()
 

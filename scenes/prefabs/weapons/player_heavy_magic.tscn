@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://4neaph14cse0"]
+[gd_scene load_steps=27 format=3 uid="uid://4neaph14cse0"]
 
 [ext_resource type="Script" uid="uid://2ko7p5q2d4s0" path="res://scripts/player/weapons/player_heavy_magic_logic.gd" id="1_3pyyt"]
 [ext_resource type="AudioStream" uid="uid://c3xw1d5vuhy8x" path="res://assets/sounds/Battle/MagicWand/MagicHit/MagicWandHit_1.wav" id="2_lxkfc"]
+[ext_resource type="Texture2D" uid="uid://b61fbjadc7xkw" path="res://assets/textures/Kenney Particles Transparent Background/light_03.png" id="3_858oj"]
+[ext_resource type="Texture2D" uid="uid://4bgdgkws3bqb" path="res://assets/textures/Kenney Particles Transparent Background/light_01.png" id="4_llfay"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_ab7ra"]
 
@@ -11,12 +13,95 @@ bottom_radius = 4.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lxkfc"]
 transparency = 1
-albedo_color = Color(1, 0, 1, 0.431373)
+albedo_color = Color(1, 0, 1, 0.0705882)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_858oj"]
 random_pitch = 1.2
 streams_count = 1
 stream_0/stream = ExtResource("2_lxkfc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_858oj"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_858oj")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_llfay"]
+_limits = [0.0, 9.5, 0.0, 1.0]
+_data = [Vector2(0, 1.2655), 0.0, 0.0, 0, 0, Vector2(0.0955883, 9.5), 0.382024, 0.382024, 0, 0, Vector2(0.99999, 9.5), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_rlpc3"]
+curve = SubResource("Curve_llfay")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_llfay"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_rlpc3")
+color = Color(0.319079, 0.000283009, 0.979801, 0.960784)
+
+[sub_resource type="QuadMesh" id="QuadMesh_858oj"]
+orientation = 1
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_858oj"]
+load_path = "res://.godot/imported/light_03.png-eb878d2de3632f30e0ddfda38f5a5eea.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_llfay"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("CompressedTexture2D_858oj")
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_858oj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_llfay"]
+curve = SubResource("Curve_858oj")
+
+[sub_resource type="Curve" id="Curve_rlpc3"]
+_limits = [0.0, 9.5, 0.0, 1.0]
+_data = [Vector2(0, 1.2655), 0.0, 0.0, 0, 0, Vector2(0.99999, 9.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_m4570"]
+curve = SubResource("Curve_rlpc3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rfdcp"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_m4570")
+color = Color(0.326666, 0, 0.98, 0.694118)
+alpha_curve = SubResource("CurveTexture_llfay")
+
+[sub_resource type="QuadMesh" id="QuadMesh_ipkq8"]
+orientation = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rlpc3"]
+transparency = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_llfay")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="Curve" id="Curve_m4570"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rfdcp"]
+curve = SubResource("Curve_m4570")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4570"]
+emission_shape_scale = Vector3(4, 0.1, 4)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 2, 0)
+attractor_interaction_enabled = false
+scale_min = 0.5
+color = Color(0.47658, 0.4606, 0.94, 0.835294)
+alpha_curve = SubResource("CurveTexture_rfdcp")
+hue_variation_min = -0.05
+hue_variation_max = 0.05
+
+[sub_resource type="QuadMesh" id="QuadMesh_rfdcp"]
 
 [node name="PlayerHeavyMagic" type="Node3D" node_paths=PackedStringArray("magic_hit_audio")]
 script = ExtResource("1_3pyyt")
@@ -26,17 +111,50 @@ magic_hit_audio = NodePath("MagicHitAudioStreamPlayer3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+visible = false
 shape = SubResource("SphereShape3D_ab7ra")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.570186, 0)
+visible = false
 mesh = SubResource("CylinderMesh_3pyyt")
 surface_material_override/0 = SubResource("StandardMaterial3D_lxkfc")
 
 [node name="MagicHitAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+visible = false
 stream = SubResource("AudioStreamRandomizer_858oj")
 volume_db = -10.0
 bus = &"SFX"
+
+[node name="OuterRing" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+material_override = SubResource("StandardMaterial3D_858oj")
+emitting = false
+amount = 1
+lifetime = 4.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_llfay")
+draw_pass_1 = SubResource("QuadMesh_858oj")
+
+[node name="PulseRings" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+material_override = SubResource("StandardMaterial3D_llfay")
+emitting = false
+amount = 1
+lifetime = 0.9
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_rfdcp")
+draw_pass_1 = SubResource("QuadMesh_ipkq8")
+
+[node name="RandomMagicParticles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.811159, 0)
+material_override = SubResource("StandardMaterial3D_rlpc3")
+amount = 20
+lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_m4570")
+draw_pass_1 = SubResource("QuadMesh_rfdcp")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
