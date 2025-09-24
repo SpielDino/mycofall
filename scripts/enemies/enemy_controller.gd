@@ -21,16 +21,21 @@ var died: bool = false
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var is_active: bool = true
 
-@onready var model = $Model
-@onready var animation_player = $Model/AnimationPlayer
-@onready var death_spores = $DeathSpores
+var model
+var animation_player
+var death_spores
 
-@onready var death_sound = $DeathSound
-@onready var damage_sound = $DamageSound
+var death_sound
+var damage_sound
 
 func _ready():
 	player = GlobalPlayer.get_player()
-
+	await GameManager.game_controller.all_queued_scenes_loaded
+	model = $Model
+	animation_player = $Model/AnimationPlayer
+	death_spores = $DeathSpores
+	death_sound = $DeathSound
+	damage_sound = $DamageSound
 func die():
 	GameManager.set_boss_puzzle()
 	death_sound.play()

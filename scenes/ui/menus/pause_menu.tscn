@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://byt6hxlbksy0i"]
+[gd_scene load_steps=10 format=3 uid="uid://byt6hxlbksy0i"]
 
 [ext_resource type="Script" uid="uid://y56anmv80gck" path="res://scripts/ui/menus/pause_menu.gd" id="1_hf471"]
 [ext_resource type="PackedScene" uid="uid://iu8ed2r4ttfo" path="res://scenes/ui/menus/controls.tscn" id="3_2f5f3"]
@@ -8,7 +8,6 @@
 [ext_resource type="Theme" uid="uid://bw0qfmu2hvgr6" path="res://assets/ui_themes/buttons/menu_buttons.tres" id="5_srbt0"]
 [ext_resource type="Theme" uid="uid://snlsj1gyjpyx" path="res://assets/ui_themes/bold_text.tres" id="6_tt2gu"]
 [ext_resource type="PackedScene" uid="uid://etfwgmq85ftj" path="res://scenes/ui/menus/sound.tscn" id="8_sn3bg"]
-[ext_resource type="AudioStream" uid="uid://cl0r21wfbeq8n" path="res://assets/sounds/mixkit-sweet-kitty-meow-93.wav" id="9_rdfhy"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sn3bg"]
 
@@ -136,10 +135,6 @@ layout_mode = 1
 [node name="Sound" parent="." instance=ExtResource("8_sn3bg")]
 visible = false
 layout_mode = 1
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("9_rdfhy")
-bus = &"SFX"
 
 [connection signal="pressed" from="CenterContainer/PauseMenu/ButtonsMargin/Buttons/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CenterContainer/PauseMenu/ButtonsMargin/Buttons/Options" to="." method="_on_options_pressed"]

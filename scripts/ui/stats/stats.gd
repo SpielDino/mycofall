@@ -19,9 +19,9 @@ var health_sprite_frames: SpriteFrames = preload("res://assets/textures/ui_textu
 var stamina_sprite_frames: SpriteFrames = preload("res://assets/textures/ui_textures/interface/stats/stamina/stamina.tres");
 var mana_sprite_frames: SpriteFrames = preload("res://assets/textures/ui_textures/interface/stats/mana/mana.tres");
 
-var leaf_textures: Array[String] = ["leaf_four", "leaf_three", "leaf_two", "leaf_one"];
-var stamina_textures: Array[String] = ["berry_four", "berry_three", "berry_two", "berry_one"];
-var mana_textures: Array[String] = ["crystal_four", "crystal_three", "crystal_two", "crystal_one"];
+var leaf_textures: Array[String] = ["leaf_one", "leaf_two", "leaf_three", "leaf_four"];
+var stamina_textures: Array[String] = ["berry_one", "berry_two", "berry_three", "berry_four"];
+var mana_textures: Array[String] = ["crystal_one", "crystal_two", "crystal_three", "crystal_four",];
 
 var _is_menu = false
 
@@ -44,30 +44,34 @@ func _on_player_health_changed() -> void:
 	var percentage_range: float = 1 / health_stages;
 	var health_percentage: float =	player.health / player.max_health;
 		
-	_update_textures(percentage_range, health_percentage, leaf_textures, health_sprite_frames, health_stages, health_bar, player.health);
+	_update_textures(percentage_range, health_percentage, leaf_textures, health_sprite_frames, int(health_stages), health_bar, player.health);
 
 func _on_player_stamina_changed() -> void:
 	var percentage_range: float = 1 / stamina_stages;
 	var stamina_percentage: float = player.stamina/ player.max_stamina;
 	
-	_update_textures(percentage_range, stamina_percentage, stamina_textures, stamina_sprite_frames, stamina_stages, stamina_bar, player.stamina);
+	_update_textures(percentage_range, stamina_percentage, stamina_textures, stamina_sprite_frames, int(stamina_stages), stamina_bar, player.stamina);
 
 func _on_player_mana_changed() -> void:
 	var percentage_range: float = 1 / mana_stages;
 	var mana_percentage: float = player.mana/ player.max_mana;
 	
-	_update_textures(percentage_range, mana_percentage, mana_textures, mana_sprite_frames, mana_stages, mana_bar, player.mana);
+	_update_textures(percentage_range, mana_percentage, mana_textures, mana_sprite_frames, int(mana_stages), mana_bar, player.mana);
 	
-func _update_textures(percentage_range: float, percentage: float, textures: Array[String], sprite_frames: SpriteFrames, stages: float, bar: HBoxContainer, stat: float) -> void:
+func _update_textures(percentage_range: float, percentage: float, textures: Array[String], sprite_frames: SpriteFrames, stages: int, bar: HBoxContainer, stat: float) -> void:
 	var normalize_frame_id: float = 1.0 if sprite_frames.get_frame_count("default") > 12 else 5.0
-	for i in range(0, stages):
-		var current_stage = (stages - (i + 1));
-		if percentage > percentage_range * current_stage:
-			var percentage_in_range: float = stat - (50 * current_stage);
-			var frame_id: int = sprite_frames.get_frame_count("default") - (percentage_in_range / normalize_frame_id) - 1
-			var element: TextureRect = bar.get_node(textures[i] + "/pivot_bl/texture")
-			element.texture = sprite_frames.get_frame_texture("default", frame_id);
-			break
+	var frame_count = sprite_frames.get_frame_count("default")
+	var current_stage = min(int(floor((stat / 50))), 3)
+	var percentage_in_range: float = (stat / 50) - current_stage ;
+	var frame_id: int = max(frame_count - roundi(percentage_in_range * frame_count) - 1, 0)
+	var element: TextureRect = bar.get_node(textures[current_stage] + "/pivot_bl/texture")
+	element.texture = sprite_frames.get_frame_texture("default", frame_id)
+	for larger_index in range((stages - 1), current_stage, -1):
+		var larger_element: TextureRect = bar.get_node(textures[larger_index] + "/pivot_bl/texture")
+		larger_element.texture = sprite_frames.get_frame_texture("default", frame_count - 1)
+
+
+
 
 func _toggle_stats() -> void:
 	var delay_between := 0.02    # spacing between leaves (seconds)

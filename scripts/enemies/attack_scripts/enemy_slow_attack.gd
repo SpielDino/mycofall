@@ -15,13 +15,15 @@ var has_fired: bool = false
 
 var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_spider_bullet.tscn")
 
-@onready var bullet_spawn_point = $BulletSpawnPoint
-@onready var attack_sound = $AttackSound
+var bullet_spawn_point
+var attack_sound
 
 func _ready():
 	enemy = get_parent()
 	player = GlobalPlayer.get_player()
-
+	await GameManager.game_controller.all_queued_scenes_loaded
+	bullet_spawn_point = $BulletSpawnPoint
+	attack_sound = $AttackSound
 func _physics_process(delta):
 	if attack_cooldown > 0:
 		attack_cooldown -= delta

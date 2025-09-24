@@ -634,7 +634,6 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-634.102, -313.92)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")
 nodes/BlockAnimation/position = Vector2(2680, 360)
 nodes/BowAnimation/node = SubResource("AnimationNodeBlend2_6ei3l")
@@ -809,7 +808,7 @@ empty_mana_audio = NodePath("Controller/Model/Audio/StatsEtcAudio/EmptyManaAudio
 bush_collision_audio = NodePath("Controller/Model/Audio/MovementAudio/BushCollisionAudioStreamPlayer3D")
 
 [node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator", "empty_stamina_audio") groups=["Player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 0, -60)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25, 0, -70)
 script = ExtResource("2_6ei3l")
 player_shape = NodePath("Model")
 dodge_indicator = NodePath("Model/DodgeIndicator")

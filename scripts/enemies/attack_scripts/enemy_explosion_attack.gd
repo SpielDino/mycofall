@@ -12,13 +12,15 @@ var is_in_damage_area: bool = false
 var has_taken_damage: bool = false
 var started: bool = false
 
-@onready var paricles = $Explosion
-@onready var explosion_sound = $ExplosionSound
+var paricles
+var explosion_sound
 
 func _ready():
 	player = GlobalPlayer.get_player()
 	enemy = get_parent()
-
+	await GameManager.game_controller.all_queued_scenes_loaded
+	paricles = $Explosion
+	explosion_sound = $ExplosionSound
 func _physics_process(delta):
 	if enemy.state == enemy.States.MOVING and !started:
 		started = true

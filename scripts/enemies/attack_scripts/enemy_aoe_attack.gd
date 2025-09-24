@@ -13,12 +13,15 @@ var is_in_attack_range: bool = false
 var is_in_damage_range: bool = false
 var attacked: bool = false
 
-@onready var particles = $AttackParticles
-@onready var attack_sound = $AttackSound
+var particles
+var attack_sound
 
 func _ready():
 	enemy = get_parent()
 	player = GlobalPlayer.get_player()
+	await GameManager.game_controller.all_queued_scenes_loaded
+	particles = $AttackParticles
+	attack_sound = $AttackSound
 
 func _physics_process(delta):
 	attack(delta)

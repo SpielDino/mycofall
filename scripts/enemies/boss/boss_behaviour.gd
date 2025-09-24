@@ -29,22 +29,22 @@ extends CharacterBody3D
 @export_subgroup("SpearAttack")
 @export var spear_damage: float = 25
 
-@onready var nav: NavigationAgent3D = $NavigationAgent3D
-@onready var spore_spawn_points = $SporeSpawnPoints
-@onready var explosion_enemy_spawn_point = $ExplosionEnemySpawnPoint
-@onready var animation_player = $Mesh/AnimationPlayer
-@onready var spore_particles = $AreaDamageParticles
-@onready var charge_collision = $ChargeCollision
-@onready var launcher_sound_1 = $Sounds/LauncherSound1
-@onready var launcher_sound_2 = $Sounds/LauncherSound2
-@onready var squish_sound = $Sounds/SquishSound
-@onready var spear_sound = $Sounds/SpearSound
-@onready var walking_sound = $Sounds/WalkingSound
-@onready var random_sound = $Sounds/RandomSound
-@onready var poison_sound = $Sounds/PoisonSound
-@onready var explosion_enemy_drop_points = $ExplosionsEnemySpawnpoints
+var nav: NavigationAgent3D 
+var spore_spawn_points 
+var explosion_enemy_spawn_point 
+var animation_player
+var spore_particles 
+var charge_collision 
+var launcher_sound_1
+var launcher_sound_2
+var squish_sound
+var spear_sound
+var walking_sound
+var random_sound
+var poison_sound
+var explosion_enemy_drop_points 
 
-@onready var health_bar = get_tree().current_scene.find_child("bossHealthMargin")
+var health_bar
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
@@ -52,7 +52,7 @@ var explosion_enemy: PackedScene = preload("res://scenes/prefabs/enemies/explosi
 var teleport_smoke: PackedScene = preload("res://scenes/prefabs/enemies/Boss_Teleport_Smoke.tscn")
 #var win: PackedScene = preload("res://Prefabs/Asset Scenes/UI/win.tscn")
 
-@onready var death_spores = GameManager.get_child_by_name(self, "DeathSpores")
+var death_spores
 
 var aggression: float = 0
 var attacks_blocked_percentage: float = 0
@@ -88,6 +88,23 @@ func _ready():
 	calculate_aggression()
 	calculate_blocks_and_dashes()
 	player = GlobalPlayer.get_player()
+	await GameManager.game_controller.all_queued_scenes_loaded
+	nav = $NavigationAgent3D
+	spore_spawn_points = $SporeSpawnPoints
+	explosion_enemy_spawn_point = $ExplosionEnemySpawnPoint
+	animation_player = $Mesh/AnimationPlayer
+	spore_particles = $AreaDamageParticles
+	charge_collision = $ChargeCollision
+	launcher_sound_1 = $Sounds/LauncherSound1
+	launcher_sound_2 = $Sounds/LauncherSound2
+	squish_sound = $Sounds/SquishSound
+	spear_sound = $Sounds/SpearSound
+	walking_sound = $Sounds/WalkingSound
+	random_sound = $Sounds/RandomSound
+	poison_sound = $Sounds/PoisonSound
+	explosion_enemy_drop_points = $ExplosionsEnemySpawnpoints
+	health_bar = get_tree().current_scene.find_child("bossHealthMargin")
+	death_spores = GameManager.get_child_by_name(self, "DeathSpores")
 
 func _physics_process(delta: float):
 	die(delta)
