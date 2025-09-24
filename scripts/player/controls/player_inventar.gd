@@ -87,6 +87,7 @@ func swapping_weapons():
 		and GameManager.get_is_blocking() == false
 		and GameManager.get_first_weapon() == true
 		and GameManager.get_second_weapon() == true
+		and GameManager.get_is_knockdown() == false
 		):
 		# Dont swap if Sword and Shield
 		if GameManager.get_first_weapon_name() == sword_name and GameManager.get_second_weapon_name() == shield_name:

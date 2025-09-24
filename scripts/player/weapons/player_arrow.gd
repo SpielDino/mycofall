@@ -1,4 +1,4 @@
-extends Node3D
+extends CharacterBody3D
 
 @export var speed = 40.0
 @export var dmg = 30
@@ -7,21 +7,28 @@ extends Node3D
 @export_subgroup("Arrow Hit")
 @export var arrow_hit_audio: AudioStreamPlayer3D
 
-var extra_dmg
-var total_dmg
+var extra_dmg: float = 0
+var total_dmg: float = 0
 var upgrade_dmg: int = 0
+var hit: bool = false
 
 func _physics_process(delta: float) -> void:
 	moving(delta)
 	lifetime_of_bullet(delta)
 
 func moving(delta):
-		position += transform.basis * Vector3(0, 0, -speed) * delta
+	if !hit:
+		velocity = (transform.basis * Vector3(0, 0, -1) * speed) * delta * (speed*1.5)
+		move_and_slide()
+	else:
+		velocity = Vector3.ZERO
+		move_and_slide()
 
 func lifetime_of_bullet(delta):
-	lifetime -= delta
-	if lifetime < 0:
-		queue_free()
+	if !hit:
+		lifetime -= delta
+		if lifetime < 0:
+			queue_free()
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	attack(body)
@@ -37,6 +44,7 @@ func attack(body):
 		body.take_damage(total_dmg + upgrade_dmg, "Bow")
 		# Normal or somewhat charged Bow Attack
 		if extra_dmg < 4:
+			hit = true
 			arrow_hit_audio.play()
 			self.get_node_or_null("Area3D").queue_free()
 			self.get_node_or_null("ArrowMesh").queue_free()
@@ -56,6 +64,7 @@ func attack(body):
 			DamageNumbers.display_number(total_dmg + upgrade_dmg, dmg_position.global_position)
 		# Normal or somewhat charged Bow Attack
 		if extra_dmg < 4:
+			hit = true
 			arrow_hit_audio.play()
 			self.get_node_or_null("Area3D").queue_free()
 			self.get_node_or_null("ArrowMesh").queue_free()
@@ -68,6 +77,10 @@ func attack(body):
 	elif body.is_in_group("weapon"):
 		pass
 	else:
+		hit = true
+		self.get_node_or_null("Area3D").queue_free()
+		self.get_node_or_null("ArrowMesh").queue_free()
+		await get_tree().create_timer(0.59).timeout
 		queue_free()
 
 func get_upgrade_dmg():

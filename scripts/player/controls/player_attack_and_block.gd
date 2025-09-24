@@ -4,8 +4,6 @@ extends Node3D
 # and player_stats scripts
 # Weapons also have their own logics and can be found in their scenes/scripts
 
-@export var lol: MeshInstance3D
-
 @export_category("Important Nodes")
 @export_subgroup("Logic Nodes")
 @export var animation_tree: AnimationTree
@@ -197,6 +195,7 @@ func sword_attack_2():
 		sword_state_machine_playback.travel("SwordAttack2")
 		sword_hit_box.get_child(1).stop()
 		sword_hit_box.get_child(1).play("Attack2")
+		sword_hit_box.timer = sword_hit_box.reset_time
 		reset_animation_timer = max_sword_animation_timer_sword_attack_1_and_2
 		combo_timer = max_combo_timer_sword_attack_2
 		combo_number = 2
@@ -207,6 +206,7 @@ func sword_attack_3():
 		sword_state_machine_playback.travel("SwordAttack3")
 		sword_hit_box.get_child(1).stop()
 		sword_hit_box.get_child(1).play("Attack3")
+		sword_hit_box.timer = sword_hit_box.reset_time
 		reset_animation_timer = max_sword_animation_timer_sword_attack_3
 		combo_timer = max_combo_timer_sword_attack_3
 		combo_number = 3
@@ -757,6 +757,5 @@ func knockdown_reset_attack_and_heavy_attack_bow_animation():
 		cooldown_heavy_attack_bow_timer = max_cooldown_heavy_attack_bow
 
 func _on_shield_logic_hitting_with_shield() -> void:
-	print(shield_bash_dash_audio.playing)
 	if shield_bash_dash_audio.playing:
 		shield_bash_dash_audio.stop()

@@ -1,9 +1,13 @@
-[gd_scene load_steps=13 format=4 uid="uid://da3smxqbl4qug"]
+[gd_scene load_steps=25 format=4 uid="uid://da3smxqbl4qug"]
 
 [ext_resource type="Script" uid="uid://nra4nd4xi1cj" path="res://scripts/player/weapons/player_shotgun_arrow_logic.gd" id="1_ei326"]
 [ext_resource type="AudioStream" uid="uid://3arf0t2aauc8" path="res://assets/sounds/Battle/BowAndArrow/ArrowImpact/ArrowImpact_1.wav" id="2_psjdr"]
 [ext_resource type="AudioStream" uid="uid://babjv8wn73q0m" path="res://assets/sounds/Battle/BowAndArrow/ArrowImpact/ArrowImpact_2.wav" id="3_avg0l"]
 [ext_resource type="AudioStream" uid="uid://bci5lgb6618rf" path="res://assets/sounds/Battle/BowAndArrow/ArrowImpact/ArrowImpact_3.wav" id="4_5k3op"]
+[ext_resource type="Shader" uid="uid://vergnuequv4r" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="5_6co2i"]
+[ext_resource type="Shader" uid="uid://vbvxn62n5kck" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="6_urlbc"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/GPUTrail-main/defaults/texture.tres" id="7_7p356"]
+[ext_resource type="Script" uid="uid://dctlv3toi4hgk" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="8_shs3p"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ov58"]
 resource_name = "Material"
@@ -140,12 +144,49 @@ stream_0/stream = ExtResource("2_psjdr")
 stream_1/stream = ExtResource("3_avg0l")
 stream_2/stream = ExtResource("4_5k3op")
 
-[node name="ArrowShotgun" type="Node3D" node_paths=PackedStringArray("arrow_hit_audio") groups=["weapon"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_s2c20"]
+size = Vector3(0.01, 0.01, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kb7lm"]
+shader = ExtResource("5_6co2i")
+
+[sub_resource type="Gradient" id="Gradient_2pgly"]
+colors = PackedColorArray(1, 1, 1, 0.392157, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_5chhl"]
+gradient = SubResource("Gradient_2pgly")
+
+[sub_resource type="Curve" id="Curve_betd2"]
+bake_resolution = 16
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oi1nk"]
+curve = SubResource("Curve_betd2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7y6b"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("6_urlbc")
+shader_parameter/tex = ExtResource("7_7p356")
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_5chhl")
+shader_parameter/curve = SubResource("CurveTexture_oi1nk")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_tgg2m"]
+material = SubResource("ShaderMaterial_e7y6b")
+
+[node name="ArrowShotgun" type="CharacterBody3D" node_paths=PackedStringArray("arrow_hit_audio") groups=["weapon"]]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_ei326")
 arrow_hit_audio = NodePath("ArrowHitAudioStreamPlayer3D")
 
 [node name="ArrowMesh" type="Node3D" parent="."]
 transform = Transform3D(-2.62268e-08, 0, -3, 0, 1.4, 0, 0.6, 0, -1.31134e-07, -0.0352437, 0, 0.0184599)
+visible = false
 
 [node name="Arrow" type="MeshInstance3D" parent="ArrowMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172839, 0, -0.0122316)
@@ -163,5 +204,26 @@ shape = SubResource("BoxShape3D_apqjk")
 stream = SubResource("AudioStreamRandomizer_naec7")
 volume_db = -20.0
 bus = &"SFX"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_s2c20")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 1)
+visible = false
+amount = 15
+lifetime = 15.0
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ShaderMaterial_kb7lm")
+draw_pass_1 = SubResource("QuadMesh_tgg2m")
+script = ExtResource("8_shs3p")
+length = 15
+length_seconds = 0.25
+color_ramp = SubResource("GradientTexture1D_5chhl")
+curve = SubResource("CurveTexture_oi1nk")
+billboard = true
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://dctlv3toi4hgk"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
