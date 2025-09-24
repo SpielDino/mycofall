@@ -36,11 +36,12 @@ func _physics_process(delta):
 func attack(delta):
 	if !is_attacking:
 		attack_cooldown = (1/attackSpeed) + 5
-	if is_in_inner_attack_area:
+	if is_in_inner_attack_area and !is_attacking:
 		is_attacking = true
 		enemy.state = enemy.States.ATTACK_TYPE_1
-	if is_attacking and !enemy.died:
 		enemy.velocity = Vector3(0, enemy.velocity.y, 0)
+	if is_attacking and !enemy.died:
+		enemy.velocity = lerp(enemy.velocity, Vector3(0, 0, 0), 0.03)
 		enemy.animation_player.speed_scale = 1
 		enemy.animation_player.play("Bump")
 		if attack_cooldown <= 5.42 and attack_cooldown > 5:

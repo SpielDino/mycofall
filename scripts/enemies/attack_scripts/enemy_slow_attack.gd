@@ -36,13 +36,14 @@ func _physics_process(delta):
 		attack_timer = 1.6667
 		enemy.rotate_to_target(player.get_child(0))
 		has_fired = false
+		enemy.velocity = Vector3(0, enemy.velocity.y, 0)
 	if enemy.state == enemy.States.ATTACK_TYPE_1:
 		attack(delta)
 	if attack_timer >= 0:
 		attack_timer -= delta
 
 func attack(delta):
-	enemy.velocity = Vector3(0, enemy.velocity.y, 0)
+	enemy.velocity = lerp(enemy.velocity, Vector3(0, 0, 0), 0.03)
 	enemy.animation_player.play("Attack")
 	if attack_timer <= 1.6667 - 0.45:
 		if !has_fired:

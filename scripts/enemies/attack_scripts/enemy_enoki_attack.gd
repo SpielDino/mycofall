@@ -45,8 +45,9 @@ func _physics_process(delta):
 	enemy.velocity = Vector3(0, enemy.velocity.y, 0)
 
 func attack_logic():
-	if enemy.state == enemy.States.ATTACK_TYPE_1 and !enemy.died:
+	if (enemy.state == enemy.States.ATTACK_TYPE_1 or enemy.state == enemy.States.SEARCHING) and !enemy.died:
 		enemy.animation_player.pause()
+		enemy.state = enemy.States.SEARCHING
 		if enemy.slow_rotate_to_target(player.get_child(0)):
 			if in_melee_range:
 				melee_attack()
