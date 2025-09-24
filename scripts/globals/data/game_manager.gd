@@ -7,7 +7,7 @@ signal attack_loading_updated
 signal heavy_attack
 signal interacted_with_upgrade_item
 
-var game_controller: GameController
+@onready var game_controller: GameController = GameController.new()
 
 var first_weapon: bool = false
 var second_weapon: bool = false
@@ -29,6 +29,12 @@ var is_heavy_attack_shield_with_sword: bool = false
 var is_knockdown: bool = false
 
 var boss_puzzle_solved: bool = false;
+
+func _ready() -> void:
+	if get_node_or_null("GameController"):
+		await get_tree().create_timer(1).timeout
+		game_controller.all_queued_scenes_loaded.emit()
+		game_controller.all_queued_scenes_added = true
 
 func get_boss_puzzle() -> bool:
 	return boss_puzzle_solved

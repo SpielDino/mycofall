@@ -94,7 +94,6 @@ func _tween_stats(texture_order: Array[String], dur: float, bars: Array[HBoxCont
 	if appear:
 		t.tween_interval(1.0) 
 	for path in texture_order:
-		print(path)
 		var texture_scale: Vector2 = Vector2(0.8, 0.8) if path.contains("berry") else Vector2.ONE
 		var stat: TextureRect = bars[index].get_node(path + "/pivot_bl/texture")
 		if appear:

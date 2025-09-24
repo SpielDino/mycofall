@@ -106,7 +106,30 @@ func _on_main_menu_pressed() -> void:
 	var intro: EditScene = EditScene.new();
 	intro.scene = "res://scenes/production/game/intro/intro_sequence.tscn"
 	intro.type = EditScene.Type.DIMENSION_3
-	await GameManager.game_controller.edit_scenes([title_screen], [user_stats, pause_menu, intro], GameManager.game_controller.TransitionMode.START)
+	GameManager.game_controller.one_loaded = false
+	var one_unload: EditScene = EditScene.new();
+	one_unload.scene = "res://scenes/prefabs/environment/rooms/level_rooms/combined_beginning_room.tscn"
+	one_unload.type = EditScene.Type.DIMENSION_3;
+	GameManager.game_controller.two_loaded = false
+	var two_unload: EditScene = EditScene.new();
+	two_unload.scene = "res://scenes/production/game/area_one/area_one.tscn"
+	two_unload.type = EditScene.Type.DIMENSION_3;
+	GameManager.game_controller.three_loaded = false
+	var three_unload: EditScene = EditScene.new();
+	three_unload.scene = "res://placeholder/leon/LeonTestScene.tscn"
+	three_unload.type = EditScene.Type.DIMENSION_3;
+	GameManager.game_controller.four_loaded = false
+	var four_unload: EditScene = EditScene.new();
+	four_unload.scene = "res://scenes/production/working_trees/Area_4.tscn"
+	four_unload.type = EditScene.Type.DIMENSION_3;
+	GameManager.game_controller.boss_loaded = false
+	var boss_unload: EditScene = EditScene.new();
+	boss_unload.scene = "res://scenes/prefabs/environment/boss_arena.tscn"
+	boss_unload.type = EditScene.Type.DIMENSION_3
+	var tutorial_unload: EditScene = EditScene.new();
+	tutorial_unload.scene = "res://scenes/prefabs/environment/rooms/level_rooms/training_room.tscn"
+	tutorial_unload.type = EditScene.Type.DIMENSION_3
+	GameManager.game_controller.edit_scenes([title_screen], [user_stats, pause_menu, tutorial_unload, intro, one_unload, two_unload, three_unload, four_unload, boss_unload], GameManager.game_controller.TransitionMode.START)
 	AudioServer.set_bus_volume_linear(bus_index, SettingsDataContainer.get_master_volume())
 	
 func _on_display_pressed() -> void:

@@ -1379,18 +1379,6 @@ transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 6.19221, 0, 0.8
 [node name="Node3D2" type="Node3D" parent="Enemies/SpiderEnemy/MovementComponent/MoveMarker" index="1"]
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -9.50927, 0, -5.70791)
 
-[node name="pilzKopf" parent="Enemies/SpiderEnemy/Model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.99989, 0.00689045, -0.0131471, -0.00402151, 0.978352, 0.206907, 0.0142882, -0.206831, 0.978272, -0.177885, 0.373838, 0.652653)
-
-[node name="PilzPo" parent="Enemies/SpiderEnemy/Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.912629, -1.36128e-05, -0.000796134, -0.000153514, 0.607537, -0.198311, 0.000781448, 0.135247, 0.890823, -0.223275, 1.01056, -0.909214)
-
-[node name="PiltzKörper_L" parent="Enemies/SpiderEnemy/Model/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999999, 0.000341712, -0.000802945, -0.000168216, 0.978368, 0.20687, 0.000856264, -0.206869, 0.978368, 0.236452, 0.613157, 0.170836)
-
-[node name="PilzKörper_R" parent="Enemies/SpiderEnemy/Model/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.999999, 0.000341712, -0.000802945, -0.000168216, 0.978368, 0.20687, 0.000856264, -0.206869, 0.978368, -0.342145, 0.492972, 0.157995)
-
 [node name="MeleeEnemy4" parent="Enemies" instance=ExtResource("51_m71uw")]
 transform = Transform3D(-0.968462, 0, -0.249163, 0, 1, 0, 0.249163, 0, -0.968462, -14.7038, 0.0686756, -24.976)
 
@@ -1426,18 +1414,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.00732, 0, 0.636292)
 
 [node name="Node3D2" type="Node3D" parent="Enemies/SpiderEnemy2/MovementComponent/MoveMarker" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75148, 0, -3.38261)
-
-[node name="pilzKopf" parent="Enemies/SpiderEnemy2/Model/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.99989, 0.00689045, -0.0131471, -0.00402151, 0.978352, 0.206907, 0.0142882, -0.206831, 0.978272, -0.177885, 0.373838, 0.652653)
-
-[node name="PilzPo" parent="Enemies/SpiderEnemy2/Model/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.912629, -1.36128e-05, -0.000796134, -0.000153514, 0.607537, -0.198311, 0.000781448, 0.135247, 0.890823, -0.223275, 1.01056, -0.909214)
-
-[node name="PiltzKörper_L" parent="Enemies/SpiderEnemy2/Model/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.999999, 0.000341712, -0.000802945, -0.000168216, 0.978368, 0.20687, 0.000856264, -0.206869, 0.978368, 0.236452, 0.613157, 0.170836)
-
-[node name="PilzKörper_R" parent="Enemies/SpiderEnemy2/Model/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.999999, 0.000341712, -0.000802945, -0.000168216, 0.978368, 0.20687, 0.000856264, -0.206869, 0.978368, -0.342145, 0.492972, 0.157995)
 
 [node name="AoeEnemy3" parent="Enemies" instance=ExtResource("53_ltlsn")]
 transform = Transform3D(-0.531192, 0, -0.847252, 0, 1, 0, 0.847252, 0, -0.531192, 8.60687, 0.164549, -71.576)

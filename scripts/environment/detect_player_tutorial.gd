@@ -18,6 +18,47 @@ func _on_body_entered(body: Node3D) -> void:
 				intro.type = EditScene.Type.DIMENSION_3;
 				GameManager.game_controller.tutorial_loaded = true
 				GameManager.game_controller.one_loaded = true
+				var two: AddScene = AddScene.new();
+				two.scene = "res://scenes/production/game/area_one/area_one.tscn"
+				two.dynamic_loading = false;
+				two.type = AddScene.Type.DIMENSION_3;
+				two.offset = Vector3(-34.5, 0.0, -178.0);
+				var three: AddScene = AddScene.new();
+				three.scene = "res://placeholder/leon/LeonTestScene.tscn"
+				three.dynamic_loading = false;
+				three.type = AddScene.Type.DIMENSION_3;
+				three.offset = Vector3(65.0, 0.0, -314.0);
+				var four: AddScene = AddScene.new();
+				four.scene = "res://scenes/production/working_trees/Area_4.tscn"
+				four.dynamic_loading = false;
+				four.type = AddScene.Type.DIMENSION_3;
+				four.offset = Vector3(-84.5, 0.0, -412);
+				var boss: AddScene = AddScene.new();
+				boss.scene = "res://scenes/prefabs/environment/boss_arena.tscn"
+				boss.dynamic_loading = false;
+				boss.type = AddScene.Type.DIMENSION_3;
+				boss.offset = Vector3(-33, -4.415, -373);
+				var one_unload: EditScene = EditScene.new();
+				one_unload.scene = "res://scenes/prefabs/environment/rooms/level_rooms/combined_beginning_room.tscn"
+				one_unload.delete = false
+				one_unload.type = EditScene.Type.DIMENSION_3;
+				var two_unload: EditScene = EditScene.new();
+				two_unload.scene = "res://scenes/production/game/area_one/area_one.tscn"
+				two_unload.delete = false
+				two_unload.type = EditScene.Type.DIMENSION_3;
+				GameManager.game_controller.three_loaded = false
+				var three_unload: EditScene = EditScene.new();
+				three_unload.scene = "res://placeholder/leon/LeonTestScene.tscn"
+				three_unload.delete = false
+				three_unload.type = EditScene.Type.DIMENSION_3;
+				var four_unload: EditScene = EditScene.new();
+				four_unload.scene = "res://scenes/production/working_trees/Area_4.tscn"
+				four_unload.delete = false
+				four_unload.type = EditScene.Type.DIMENSION_3;
+				var boss_unload: EditScene = EditScene.new();
+				boss_unload.scene = "res://scenes/prefabs/environment/boss_arena.tscn"
+				boss_unload.delete = false
+				boss_unload.type = EditScene.Type.DIMENSION_3;
 				GameManager.game_controller.edit_scenes([tutorial, one], [intro], GameManager.game_controller.TransitionMode.START, true)
 
 			"TutorialUnload":

@@ -598,10 +598,10 @@ transform = Transform3D(0.681832, 0, 0.731508, 0, 1, 0, -0.731508, 0, 0.681832, 
 transform = Transform3D(0.726958, 0, 1.8632, 0, 2, 0, -1.8632, 0, 0.726958, -5.22281, 0.298534, -77.6994)
 
 [node name="StonePile4" parent="IntroAreaOne/Rocks" instance=ExtResource("14_jnl7p")]
-transform = Transform3D(-1.60925, 0, 1.18757, 0, 2, 0, -1.18757, 0, -1.60925, -0.496504, 0.0958515, -79.2347)
+transform = Transform3D(-1.60925, 0, 1.18757, 0, 2, 0, -1.18757, 0, -1.60925, -0.496504, -0.143554, -79.2347)
 
 [node name="StonePile5" parent="IntroAreaOne/Rocks" instance=ExtResource("14_jnl7p")]
-transform = Transform3D(1.9706, 0, -0.341657, 0, 2, 0, 0.341657, 0, 1.9706, -8.19928, 0.0958515, -82.2979)
+transform = Transform3D(1.9706, 0, -0.341657, 0, 2, 0, 0.341657, 0, 1.9706, -8.19928, -0.134843, -82.2979)
 
 [node name="StonePile2" parent="IntroAreaOne/Rocks" instance=ExtResource("14_jnl7p")]
 transform = Transform3D(0.790625, 0, -0.6123, 0, 1, 0, 0.6123, 0, 0.790625, 13.7271, 0.613873, 3.57641)

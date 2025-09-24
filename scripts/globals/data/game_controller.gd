@@ -27,7 +27,6 @@ func _ready() -> void:
 	GameManager.game_controller = self
 	current_gui_scenes.get_or_add("title_screen", $GUI/TitleScreen)
 	var tween = get_tree().create_tween().set_trans(Tween.TRANS_CUBIC)
-	print(GlobalPlayer.get_player().get_child(0).global_position)
 	tween.parallel().tween_property(blend_screen, "modulate:a", 0.0, 1.5)
 
 func edit_scenes(
@@ -36,31 +35,48 @@ func edit_scenes(
 	mode: int = TransitionMode.AUTO,
 	freeze_player: bool = false
 	) -> void:
+		for scene in edited_scenes:
+			var scene_name = scene.scene.split("/").get(scene.scene.split("/").size() - 1).split(".").get(0)
+			if !current_3d_scenes.has(scene_name) && scene.type != EditScene.Type.GUI:
+				edited_scenes.erase(scene)
+			if cached_3d_scenes.has(scene_name):
+				if scene.delete == true:
+					cached_3d_scenes.erase(scene_name)
+					
 		all_queued_scenes_added = false
+		for scene in add_scenes:
+			var scene_name = scene.scene.split("/").get(scene.scene.split("/").size() - 1).split(".").get(0)
+			if cached_3d_scenes.has(scene_name):
+				instantiate_cached_3d_scene(scene.scene)
+				cached_3d_scenes.erase(scene_name)
+				add_scenes.erase(scene)
 		var m := _decide_mode(add_scenes, mode)  # AUTO → START or END_FLASH [docs]
 		if m == TransitionMode.START:
 			await _fade_to(1.0, 1.0)  # fade out first [docs]
 			var res := await _load_batch(add_scenes)  # direct loads return immediately; threaded loads were none in START by default [docs]
-			await _add_scenes(res, add_scenes)          # add to tree, place with global_transform as needed [docs]
+			_add_scenes(res, add_scenes)          # add to tree, place with global_transform as needed [docs]
 			_delete_scenes(edited_scenes)
 
 			await _fade_to(0.0, 1.5)     # fade back in [docs]
 		elif m == TransitionMode.END_FLASH:
 			var res := await _load_batch(add_scenes)  # load everything in background while UI animates [docs]
 			await _fade_to(1.0, 1.5)  # quick fade-out [docs]
-			await _add_scenes(res, add_scenes)              # swap in while black
+			_add_scenes(res, add_scenes)              # swap in while black
 			_delete_scenes(edited_scenes)
 			await _fade_to(0.0, 1.5)    # quick fade-in [docs]
 
 		elif m == TransitionMode.NONE:
 			var res := await _load_batch(add_scenes)  # no fades at all [docs]
-			await _add_scenes(res, add_scenes, true)
+			_add_scenes(res, add_scenes)
 			_delete_scenes(edited_scenes)
+		await get_tree().create_timer
+		await get_tree().process_frame
 		all_queued_scenes_loaded.emit()
+		await get_tree().physics_frame
+		await get_tree().process_frame
 		all_queued_scenes_added = true
 
-				
-			
+
 func _delete_scenes(edited_scenes: Array[EditScene]):
 		for scene in edited_scenes:
 			var scene_name = scene.scene.split("/").get(scene.scene.split("/").size() - 1).split(".").get(0)
@@ -74,6 +90,7 @@ func _delete_scenes(edited_scenes: Array[EditScene]):
 					current_3d_scenes.erase(scene_name)
 				elif scene.keep_running:
 					node.visible = false;
+					# function / variable for storing invisible scenes to do!
 				else:
 					cached_3d_scenes.get_or_add(scene_name, node)
 					current_3d_scenes.erase(scene_name)
