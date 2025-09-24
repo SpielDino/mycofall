@@ -32,7 +32,10 @@ func _ready():
 	bullet_spawn_point = $BulletSpawnPoint
 	melee_sound = $MeleeSound
 	ranged_sound = $RangedSound
+
 func _physics_process(delta):
+	if enemy.died:
+		queue_free()
 	if !GameManager.game_controller.all_queued_scenes_added:
 		return
 	if enemy.state == enemy.States.MOVING:

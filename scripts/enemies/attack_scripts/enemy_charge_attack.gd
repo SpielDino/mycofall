@@ -28,7 +28,10 @@ func _ready():
 	running_sound = $RunningSound
 	hit_sound = $HitSound
 	talking_sound = $TalkingSound
+
 func _physics_process(delta):
+	if enemy.died:
+		queue_free()
 	if is_in_attack_area and enemy.state == enemy.States.MOVING and !enemy.died:
 		ram_start()
 	if starting_to_charge:
@@ -84,7 +87,7 @@ func _on_attack_area_entered(area: Area3D) -> void:
 		is_in_attack_area = true
 
 func _on_damage_area_entered(area: Area3D) -> void:
-	if area.is_in_group("Player") and !has_hit_player and is_in_attack:
+	if area.is_in_group("Player") and !has_hit_player and is_in_attack and !enemy.died:
 		if is_charging:
 			ram_stop()
 			await get_tree().create_timer(0.5).timeout #time between hit and damage taken to represent the animtaion better

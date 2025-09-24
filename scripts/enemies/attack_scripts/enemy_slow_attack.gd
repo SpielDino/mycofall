@@ -24,7 +24,10 @@ func _ready():
 	await GameManager.game_controller.all_queued_scenes_loaded
 	bullet_spawn_point = $BulletSpawnPoint
 	attack_sound = $AttackSound
+
 func _physics_process(delta):
+	if enemy.died:
+		queue_free()
 	if attack_cooldown > 0:
 		attack_cooldown -= delta
 	if is_in_attack_area and enemy.state == enemy.States.MOVING and attack_cooldown <= 0 and !enemy.died:

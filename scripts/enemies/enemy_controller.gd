@@ -36,7 +36,10 @@ func _ready():
 	death_spores = $DeathSpores
 	death_sound = $DeathSound
 	damage_sound = $DamageSound
+
 func die():
+	death_sound.stop()
+	damage_sound.stop()
 	GameManager.set_boss_puzzle()
 	death_sound.play()
 	for hitbox in hitboxes:
@@ -82,7 +85,7 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 		if has_knockback:
 			var direction = (global_position - player.get_child(0).global_position).normalized()
 			velocity += direction * knockback_strenght
-		if state == States.IDLE or state == States.NONE or state == States.SEARCHING:
+		if state == States.IDLE or state == States.NONE or state == States.SEARCHING or state == States.PATROLLING:
 			state = States.SEARCHING
 			get_child(0).get_pinged()
 

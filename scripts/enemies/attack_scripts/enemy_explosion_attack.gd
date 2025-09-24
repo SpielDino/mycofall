@@ -21,7 +21,10 @@ func _ready():
 	await GameManager.game_controller.all_queued_scenes_loaded
 	paricles = $Explosion
 	explosion_sound = $ExplosionSound
+
 func _physics_process(delta):
+	if enemy.died:
+		queue_free()
 	if enemy.state == enemy.States.MOVING and !started:
 		started = true
 		await get_tree().create_timer(lifetime).timeout

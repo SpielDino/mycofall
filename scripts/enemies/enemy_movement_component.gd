@@ -60,6 +60,9 @@ func _physics_process(delta):
 		decide_movement_type(delta)
 		apply_gravity(delta)
 		enemy.move_and_slide()
+	if enemy.died:
+		walking_sounds.stop()
+		running_sounds.stop()
 
 func get_marker_positions(locations, positions):
 	var array: Array[Node] = locations.get_children()

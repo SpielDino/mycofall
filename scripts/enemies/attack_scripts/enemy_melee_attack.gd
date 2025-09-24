@@ -22,7 +22,10 @@ func _ready():
 	await GameManager.game_controller.all_queued_scenes_loaded
 	particles = $AttackParticles
 	attack_sound = $AttackSound
+
 func _physics_process(delta):
+	if enemy.died:
+		queue_free()
 	if attack_cooldown > 0:
 		attack_cooldown -= delta
 	elif attack_cooldown <= 0:

@@ -24,6 +24,8 @@ func _ready():
 	attack_sound = $AttackSound
 
 func _physics_process(delta):
+	if enemy.died:
+		queue_free()
 	attack(delta)
 
 func attack(delta):
@@ -38,7 +40,7 @@ func attack(delta):
 			enemy.animation_player.speed_scale = 1
 			enemy.animation_player.play("attack")
 			temp_attack_delay -= delta
-		if temp_attack_delay <= 1.333 and !attacked:
+		if temp_attack_delay <= 1.333 and !attacked and !enemy.died:
 			attack_sound.play()
 			attacked = true
 			particles.restart()
