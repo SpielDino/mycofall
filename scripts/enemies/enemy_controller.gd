@@ -42,6 +42,7 @@ func die():
 	damage_sound.stop()
 	GameManager.set_boss_puzzle()
 	death_sound.play()
+	velocity = Vector3.ZERO
 	for hitbox in hitboxes:
 		hitbox.queue_free()
 	if has_death_animation:
@@ -85,7 +86,7 @@ func take_damage(damage: int, type: String, has_knockback: bool = false, knockba
 		if has_knockback:
 			var direction = (global_position - player.get_child(0).global_position).normalized()
 			velocity += direction * knockback_strenght
-		if state == States.IDLE or state == States.NONE or state == States.SEARCHING or state == States.PATROLLING:
+		if state != States.ATTACK_TYPE_1 and state != States.ATTACK_TYPE_2 and state != States.MOVING:
 			state = States.SEARCHING
 			get_child(0).get_pinged()
 

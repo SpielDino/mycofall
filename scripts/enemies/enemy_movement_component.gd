@@ -59,7 +59,8 @@ func _physics_process(delta):
 		play_movement_animations()
 		decide_movement_type(delta)
 		apply_gravity(delta)
-		enemy.move_and_slide()
+	if movement_type != "stand still":
+			enemy.move_and_slide()
 	if enemy.died:
 		walking_sounds.stop()
 		running_sounds.stop()

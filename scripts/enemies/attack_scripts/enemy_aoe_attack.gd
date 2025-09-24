@@ -32,10 +32,11 @@ func attack(delta):
 	if is_in_attack_range and !enemy.died:
 		is_attacking = true
 		enemy.state = enemy.States.ATTACK_TYPE_1
+		enemy.velocity = Vector3(0, 0, 0)
 	if !is_attacking:
 		temp_attack_delay = attack_delay
 	if is_attacking:
-		enemy.velocity = Vector3(0, 0, 0)
+		enemy.velocity = lerp(enemy.velocity, Vector3(0, 0, 0), 0.06)
 		if temp_attack_delay > 0:
 			enemy.animation_player.speed_scale = 1
 			enemy.animation_player.play("attack")
