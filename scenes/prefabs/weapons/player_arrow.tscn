@@ -1,9 +1,13 @@
-[gd_scene load_steps=13 format=4 uid="uid://chu0gv1cp633e"]
+[gd_scene load_steps=25 format=4 uid="uid://chu0gv1cp633e"]
 
 [ext_resource type="Script" uid="uid://b30gm7y3ksvio" path="res://scripts/player/weapons/player_arrow.gd" id="1_2ceru"]
 [ext_resource type="AudioStream" uid="uid://3arf0t2aauc8" path="res://assets/sounds/Battle/BowAndArrow/ArrowImpact/ArrowImpact_1.wav" id="2_4fmxf"]
 [ext_resource type="AudioStream" uid="uid://babjv8wn73q0m" path="res://assets/sounds/Battle/BowAndArrow/ArrowImpact/ArrowImpact_2.wav" id="3_rc5n8"]
 [ext_resource type="AudioStream" uid="uid://bci5lgb6618rf" path="res://assets/sounds/Battle/BowAndArrow/ArrowImpact/ArrowImpact_3.wav" id="4_dh2m1"]
+[ext_resource type="Shader" uid="uid://vergnuequv4r" path="res://addons/GPUTrail-main/shaders/trail.gdshader" id="6_sgo5o"]
+[ext_resource type="Shader" uid="uid://vbvxn62n5kck" path="res://addons/GPUTrail-main/shaders/trail_draw_pass.gdshader" id="7_mu3rf"]
+[ext_resource type="Texture2D" uid="uid://crk6pkb7e5rwc" path="res://addons/GPUTrail-main/defaults/texture.tres" id="8_mu3rf"]
+[ext_resource type="Script" uid="uid://dctlv3toi4hgk" path="res://addons/GPUTrail-main/GPUTrail3D.gd" id="8_r3dax"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ov58"]
 resource_name = "Material"
@@ -140,7 +144,43 @@ stream_0/stream = ExtResource("2_4fmxf")
 stream_1/stream = ExtResource("3_rc5n8")
 stream_2/stream = ExtResource("4_dh2m1")
 
-[node name="Arrow" type="Node3D" node_paths=PackedStringArray("arrow_hit_audio") groups=["weapon"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_rc5n8"]
+size = Vector3(0.01, 0.01, 0.01)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fh4vn"]
+shader = ExtResource("6_sgo5o")
+
+[sub_resource type="Gradient" id="Gradient_sgo5o"]
+colors = PackedColorArray(1, 1, 1, 0.392157, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2i5pa"]
+gradient = SubResource("Gradient_sgo5o")
+
+[sub_resource type="Curve" id="Curve_mu3rf"]
+bake_resolution = 16
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cweau"]
+curve = SubResource("Curve_mu3rf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r3dax"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("7_mu3rf")
+shader_parameter/tex = ExtResource("8_mu3rf")
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_2i5pa")
+shader_parameter/curve = SubResource("CurveTexture_cweau")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_vo4ni"]
+material = SubResource("ShaderMaterial_r3dax")
+
+[node name="Arrow" type="CharacterBody3D" node_paths=PackedStringArray("arrow_hit_audio") groups=["weapon"]]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_2ceru")
 arrow_hit_audio = NodePath("ArrowHitAudioStreamPlayer3D")
 
@@ -163,5 +203,25 @@ shape = SubResource("BoxShape3D_apqjk")
 stream = SubResource("AudioStreamRandomizer_a1tgw")
 volume_db = -20.0
 bus = &"SFX"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_rc5n8")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 1)
+amount = 15
+lifetime = 15.0
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ShaderMaterial_fh4vn")
+draw_pass_1 = SubResource("QuadMesh_vo4ni")
+script = ExtResource("8_r3dax")
+length = 15
+length_seconds = 0.25
+color_ramp = SubResource("GradientTexture1D_2i5pa")
+curve = SubResource("CurveTexture_cweau")
+billboard = true
+_defaults_have_been_set = true
+metadata/_custom_type_script = "uid://dctlv3toi4hgk"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

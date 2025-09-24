@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var dmg: int = 50
+@export var dmg: int = 25
 @export var tick_rate: float = 1.0
 @export var lifetime: float = 4.5
 
@@ -41,7 +41,7 @@ func apply_tick_dmg():
 		magic_hit_audio.play()
 		get_upgrade_dmg()
 		if body.is_in_group("Enemy"):
-			body.take_damage(dmg + upgrade_dmg, "Staff")
+			body.take_damage(dmg + upgrade_dmg, "Staff", true, 5)
 			var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 			if dmg_position:
 				DamageNumbers.display_number(dmg + upgrade_dmg, dmg_position.global_position)

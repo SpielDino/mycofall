@@ -4,6 +4,7 @@ signal health_changed
 signal stamina_changed
 signal mana_changed
 signal knockdown_signal
+signal game_over_signal
 
 @export_category("Actions")
 @export_subgroup("Walking")
@@ -70,6 +71,14 @@ signal knockdown_signal
 @export var empty_mana_audio: AudioStreamPlayer3D
 @export_subgroup("Bush Collision")
 @export var bush_collision_audio: AudioStreamPlayer3D
+
+@export_category("Process")
+@export_subgroup("Controller")
+@export var controller_process: CharacterBody3D
+@export_subgroup("AnimationTree")
+@export var animation_tree_process: AnimationTree
+@export_subgroup("Attacks")
+@export var attack_process: Node3D
 
 var stamina: float = max_stamina
 var stamina_regen_cooldown: float = 0
@@ -199,6 +208,8 @@ func break_block():
 func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifier, knockdown_check: bool = false):
 	if GameManager.get_having_i_frames():
 		pass
+	elif are_you_dead:
+		pass
 	else:
 		if knockdown_check:
 			knockdown_signal.emit()
@@ -219,6 +230,7 @@ func take_damage(damage: int, attacker: Node3D, is_blockable, block_cost_modifie
 			health -= damage
 			take_damage_audio.play()
 			health_changed.emit()
+			check_if_player_can_die()
 
 func get_blocking_damage_reduction():
 	if GameManager.get_first_weapon_name() == bow_name:
@@ -261,3 +273,19 @@ func test_knockdown_animation():
 	elif GameManager.get_first_weapon() and !GameManager.get_is_knockdown():
 		if Input.is_action_just_pressed("swap_weapon"):
 			knockdown_signal.emit()
+
+func check_if_player_can_die():
+	if health <= 0:
+		if !GameManager.get_is_knockdown():
+			print("you died")
+			are_you_dead = true
+			knockdown_signal.emit()
+			self.set_physics_process(false)
+			await get_tree().create_timer(0.8).timeout
+			controller_process.set_physics_process(false)
+			animation_tree_process.set_physics_process(false)
+			animation_tree_process.queue_free()
+			attack_process.set_physics_process(false)
+			game_over_signal.emit()
+
+var are_you_dead: bool = false

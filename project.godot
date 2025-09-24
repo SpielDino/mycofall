@@ -30,6 +30,10 @@ SaveManager="*res://scripts/globals/data/save_manager.gd"
 
 window/stretch/mode="viewport"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/GPUTrail-main/plugin.cfg")
+
 [global_group]
 
 Enemy=""

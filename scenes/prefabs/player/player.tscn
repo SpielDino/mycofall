@@ -634,7 +634,7 @@ filters = ["", "Charackter/Skeleton3D:ArimIk.L", "Charackter/Skeleton3D:ArimIk.R
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_thxrw"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_evqxc"]
-graph_offset = Vector2(-634.102, -313.92)
+graph_offset = Vector2(-19.5742, -45.9478)
 nodes/BlockAnimation/node = SubResource("AnimationNodeBlend2_omwr7")
 nodes/BlockAnimation/position = Vector2(2680, 360)
 nodes/BowAnimation/node = SubResource("AnimationNodeBlend2_6ei3l")
@@ -795,18 +795,22 @@ stream_0/stream = ExtResource("54_dcmvg")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ffkv0"]
 
-[node name="Player" type="Node3D" node_paths=PackedStringArray("take_damage_audio", "block_audio", "block_break_audio", "empty_mana_audio", "bush_collision_audio") groups=["Player"]]
+[node name="Player" type="Node3D" node_paths=PackedStringArray("take_damage_audio", "block_audio", "block_break_audio", "empty_mana_audio", "bush_collision_audio", "controller_process", "animation_tree_process", "attack_process") groups=["Player"]]
 script = ExtResource("1_6jgwm")
 speed = 5.0
 rotation_type = "rotate based on second input"
 dodge_distance = 6.0
 shield_radius_protection = 120.0
+mana_per_second = 50.0
 camera_follow_speed = 0.08
 take_damage_audio = NodePath("Controller/Model/Audio/StatsEtcAudio/TakeDamageAudioStreamPlayer3D")
 block_audio = NodePath("Controller/Model/Audio/AttackBlockAudio/BlockAudio/BlockAudioStreamPlayer3D")
 block_break_audio = NodePath("Controller/Model/Audio/AttackBlockAudio/BlockAudio/ShieldBreakAudioStreamPlayer3D")
 empty_mana_audio = NodePath("Controller/Model/Audio/StatsEtcAudio/EmptyManaAudioStreamPlayer3D")
 bush_collision_audio = NodePath("Controller/Model/Audio/MovementAudio/BushCollisionAudioStreamPlayer3D")
+controller_process = NodePath("Controller")
+animation_tree_process = NodePath("Controller/Model/AnimationTree")
+attack_process = NodePath("Controller/Model/PlayerAttacksAndBlock")
 
 [node name="Controller" type="CharacterBody3D" parent="." node_paths=PackedStringArray("player_shape", "dodge_indicator", "empty_stamina_audio") groups=["Player"]]
 script = ExtResource("2_6ei3l")
@@ -1037,8 +1041,7 @@ visible = false
 [node name="LeftWoodBow" parent="Controller/Model/new_player_model/Charackter/Skeleton3D" index="32"]
 visible = false
 
-[node name="PlayerAttacksAndBlock" parent="Controller/Model" node_paths=PackedStringArray("lol", "animation_tree", "player_controller", "sword_hit_box", "shield_hix_box", "bow_charged_indicator", "shield_bash_dash_audio", "sword_attack_1_audio", "sword_attack_2_audio", "sword_attack_3_audio", "bow_aim_audio", "bow_shot_audio") instance=ExtResource("6_vo6tk")]
-lol = NodePath("../new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword")
+[node name="PlayerAttacksAndBlock" parent="Controller/Model" node_paths=PackedStringArray("animation_tree", "player_controller", "sword_hit_box", "shield_hix_box", "bow_charged_indicator", "shield_bash_dash_audio", "sword_attack_1_audio", "sword_attack_2_audio", "sword_attack_3_audio", "bow_aim_audio", "bow_shot_audio") instance=ExtResource("6_vo6tk")]
 animation_tree = NodePath("../AnimationTree")
 player_controller = NodePath("../..")
 sword_hit_box = NodePath("../new_player_model/Charackter/Skeleton3D/RightMetalSword/RightMetalSword/SwordLogic")

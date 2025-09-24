@@ -10,7 +10,7 @@ signal hitting_with_shield
 
 var hit_bodies := {}   # Dictionary or Set to remember which dummies/enemies are hit
 var timer := 0.0
-var heavy_dmg: int = 200
+var heavy_dmg: int = 50
 var is_heavy_dmg: bool = false
 var upgrade_dmg: int = 0
 
@@ -39,7 +39,7 @@ func hitting_enemy(body: Node3D) -> void:
 			is_heavy_dmg = true
 		else:
 			is_heavy_dmg = false
-		body.take_damage(heavy_dmg + upgrade_dmg, "Sword")
+		body.take_damage(heavy_dmg + upgrade_dmg, "Sword", is_heavy_dmg, 20)
 		var dmg_position = body.get_node_or_null("DamageNumbersPosition")
 		if dmg_position:
 			DamageNumbers.display_number(heavy_dmg + upgrade_dmg, dmg_position.global_position)
