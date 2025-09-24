@@ -33,22 +33,29 @@ var return_to_idle_point: bool = true
 var patrol_positions: Array[Vector3]
 var move_positions: Array[Vector3]
 
-@onready var nav: NavigationAgent3D = $NavigationAgent3D
-@onready var patrol_locations = $PatroleMarker
-@onready var move_locations = $MoveMarker
+var nav: NavigationAgent3D
+var patrol_locations
+var move_locations
 
-@onready var walking_sounds: AudioStreamPlayer3D = $WalkingSounds
-@onready var running_sounds: AudioStreamPlayer3D = $RunningSounds
+var walking_sounds: AudioStreamPlayer3D
+var running_sounds: AudioStreamPlayer3D
 
 func _ready():
 	enemy = get_parent()
 	player = GlobalPlayer.get_player()
+	await GameManager.game_controller.all_queued_scenes_loaded
+	nav = $NavigationAgent3D
+	patrol_locations = $PatroleMarker
+	move_locations = $MoveMarker
+
+	walking_sounds = $WalkingSounds
+	running_sounds = $RunningSounds
 	get_marker_positions(patrol_locations, patrol_positions)
 	get_marker_positions(move_locations, move_positions)
 	start_idle_point = global_position
 
 func _physics_process(delta):
-	if !enemy.died:
+	if !enemy.died && GameManager.game_controller.all_queued_scenes_added:
 		play_movement_animations()
 		decide_movement_type(delta)
 		apply_gravity(delta)

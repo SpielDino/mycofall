@@ -15,11 +15,11 @@ func _active_interactable_and_light():
 	if GameManager.get_first_weapon():
 		can_interact = true
 		one_time_use = false
-		light_source.visible = true
+		#light_source.visible = true
 	else:
 		can_interact = false
 		one_time_use = true
-		light_source.visible = false
+		#light_source.visible = false
 
 func _on_interacted(body: Variant) -> void:
 	if !door_open and can_interact:

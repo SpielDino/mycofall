@@ -13,14 +13,15 @@ var attack_cooldown: float = 0
 var is_in_inner_attack_area: bool = false
 var is_in_outer_attack_area: bool = false
 
-@onready var particles = $AttackParticles
-@onready var attack_sound = $AttackSound
-
+var particles
+var attack_sound
 
 func _ready():
 	enemy = get_parent()
 	player = GlobalPlayer.get_player()
-
+	await GameManager.game_controller.all_queued_scenes_loaded
+	particles = $AttackParticles
+	attack_sound = $AttackSound
 func _physics_process(delta):
 	if attack_cooldown > 0:
 		attack_cooldown -= delta

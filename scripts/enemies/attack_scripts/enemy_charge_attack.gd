@@ -17,15 +17,17 @@ var has_hit_player: bool = false
 var is_in_attack: bool = false
 var is_in_attack_area: bool = false
 
-@onready var running_sound = $RunningSound
-@onready var hit_sound = $HitSound
-@onready var talking_sound = $TalkingSound
-
+var running_sound
+var hit_sound
+var talking_sound
 
 func _ready():
 	enemy = get_parent()
 	player = GlobalPlayer.get_player()
-
+	await GameManager.game_controller.all_queued_scenes_loaded
+	running_sound = $RunningSound
+	hit_sound = $HitSound
+	talking_sound = $TalkingSound
 func _physics_process(delta):
 	if is_in_attack_area and enemy.state == enemy.States.MOVING and !enemy.died:
 		ram_start()

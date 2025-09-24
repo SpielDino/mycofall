@@ -1,5 +1,6 @@
-[gd_scene load_steps=61 format=3 uid="uid://rddwidjpmb55"]
+[gd_scene load_steps=62 format=3 uid="uid://rddwidjpmb55"]
 
+[ext_resource type="Script" uid="uid://btm75xcmgjcka" path="res://scripts/environment/enter_training_room.gd" id="1_p6jjn"]
 [ext_resource type="PackedScene" uid="uid://cvn4l4oivuwns" path="res://scenes/prefabs/environment/rooms/model_prefabs/starting_area_2.tscn" id="1_pepvg"]
 [ext_resource type="PackedScene" uid="uid://ch7852bgh1nco" path="res://scenes/prefabs/environment/interactables/dynamic/door_logic.tscn" id="2_c4ghi"]
 [ext_resource type="PackedScene" uid="uid://qww3ho4advs2" path="res://scenes/prefabs/environment/rocks/with_collision/stone_pile_with_collision_2.tscn" id="2_f6dbe"]
@@ -78,6 +79,7 @@ size = Vector3(1, 10, 6)
 size = Vector3(1, 6.8, 0.601563)
 
 [node name="TrainingRoom" type="Node3D"]
+script = ExtResource("1_p6jjn")
 
 [node name="Walls" type="Node3D" parent="."]
 

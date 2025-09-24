@@ -259,6 +259,7 @@ func take_weapon_while_first_weapon_active(hit_object, socket_weapon):
 			staff_name:
 				back_wood_staff.visible = true
 				back_crystal_wood_staff.visible = true
+				print("yess")
 				GlobalPlayer.get_player().toggle_mana.emit(true)
 				GlobalPlayer.get_player().max_mana = 200
 				GlobalPlayer.get_player().mana = 200

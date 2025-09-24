@@ -21,15 +21,20 @@ var ranged_attack_delay: float = 0.54
 
 var bullet_scene: PackedScene = preload("res://scenes/prefabs/enemies/enemy_bullet.tscn")
 
-@onready var bullet_spawn_point = $BulletSpawnPoint
-@onready var melee_sound = $MeleeSound
-@onready var ranged_sound = $RangedSound
+var bullet_spawn_point
+var melee_sound
+var ranged_sound
 
 func _ready():
 	player = GlobalPlayer.get_player()
 	enemy = get_parent()
-
+	await GameManager.game_controller.all_queued_scenes_loaded
+	bullet_spawn_point = $BulletSpawnPoint
+	melee_sound = $MeleeSound
+	ranged_sound = $RangedSound
 func _physics_process(delta):
+	if !GameManager.game_controller.all_queued_scenes_added:
+		return
 	if enemy.state == enemy.States.MOVING:
 		enemy.state = enemy.States.ATTACK_TYPE_1
 	if !is_in_attack:
